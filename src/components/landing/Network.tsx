@@ -1,4 +1,4 @@
-import { Globe2 } from "lucide-react";
+import { ArrowRight, Globe2 } from "lucide-react";
 import WorldMap from "./visuals/WorldMap";
 
 const Network = () => (
@@ -32,6 +32,14 @@ const Network = () => (
             </div>
           ))}
         </div>
+
+        <a
+          href="#agendar"
+          className="mt-8 group inline-flex items-center gap-2 rounded-full bg-gradient-accent px-7 py-4 font-semibold text-accent-foreground shadow-cta hover:shadow-glow transition-all"
+        >
+          Falar com um especialista
+          <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
+        </a>
       </div>
 
       <div className="relative">

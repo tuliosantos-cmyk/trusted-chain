@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import FlowDiagram from "./visuals/FlowDiagram";
 
 const steps = [
@@ -39,15 +40,24 @@ const HowItWorks = () => (
 
       <div className="mt-16 rounded-3xl bg-primary p-10 md:p-14 text-primary-foreground relative overflow-hidden">
         <div className="absolute -right-20 -top-20 size-72 bg-glow opacity-60" />
-        <div className="relative">
-          <span className="text-xs uppercase tracking-widest text-accent-glow font-semibold">Normas suportadas</span>
-          <div className="mt-5 flex flex-wrap gap-3">
-            {norms.map((n) => (
-              <span key={n} className="rounded-full border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-4 py-2 text-sm font-medium">
-                {n}
-              </span>
-            ))}
+        <div className="relative flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div>
+            <span className="text-xs uppercase tracking-widest text-accent-glow font-semibold">Normas suportadas</span>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {norms.map((n) => (
+                <span key={n} className="rounded-full border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-4 py-2 text-sm font-medium">
+                  {n}
+                </span>
+              ))}
+            </div>
           </div>
+          <a
+            href="#agendar"
+            className="group inline-flex items-center gap-2 rounded-full bg-gradient-accent px-6 py-3.5 font-semibold text-accent-foreground shadow-cta hover:shadow-glow transition-all whitespace-nowrap self-start md:self-end"
+          >
+            Ver com minhas normas
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+          </a>
         </div>
       </div>
     </div>
