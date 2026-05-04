@@ -75,8 +75,8 @@ const CTAForm = () => {
                       <Calendar className="size-5 text-accent-foreground" />
                     </div>
                     <div>
-                      <div className="font-display font-semibold text-xl text-primary">Fale com um especialista</div>
-                      <div className="text-sm text-muted-foreground">Diagnóstico gratuito em 30 minutos</div>
+                      <div className="font-display font-semibold text-xl text-primary">Fale com um especialista MyTS</div>
+                      <div className="text-sm text-muted-foreground">Conversa de 30 minutos, sem compromisso</div>
                     </div>
                   </div>
 
@@ -107,7 +107,7 @@ const CTAForm = () => {
                       type="submit"
                       className="sm:col-span-2 group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-accent px-6 py-4 mt-2 font-semibold text-accent-foreground shadow-cta hover:shadow-glow transition-all"
                     >
-                      Quero meu diagnóstico gratuito
+                      Agendar conversa de 30 min
                       <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
                     </button>
 
