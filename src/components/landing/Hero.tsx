@@ -1,5 +1,5 @@
-import heroImg from "@/assets/hero-dashboard.jpg";
 import { ArrowRight, Calendar, ShieldCheck } from "lucide-react";
+import DashboardMock from "./visuals/DashboardMock";
 
 const Hero = () => (
   <section className="relative bg-hero overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32 noise">
@@ -56,13 +56,9 @@ const Hero = () => (
       <div className="lg:col-span-5 animate-fade-up" style={{ animationDelay: "120ms" }}>
         <div className="relative">
           <div className="absolute -inset-6 bg-gradient-accent opacity-30 blur-3xl rounded-3xl" />
-          <img
-            src={heroImg}
-            alt="Plataforma MyTS de gestão de supply chain para indústrias de alimentos"
-            width={1536}
-            height={1024}
-            className="relative rounded-2xl border border-primary-foreground/10 shadow-elegant animate-float"
-          />
+          <div className="relative rounded-2xl border border-primary-foreground/10 shadow-elegant overflow-hidden bg-background animate-float">
+            <DashboardMock />
+          </div>
         </div>
       </div>
     </div>

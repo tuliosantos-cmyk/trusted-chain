@@ -1,10 +1,36 @@
 import { AlertTriangle, Clock, FileSearch, Users } from "lucide-react";
+import {
+  DocExpiredThumb,
+  ChasingEmailsThumb,
+  ScatteredEvidenceThumb,
+  RiskMeterThumb,
+} from "./visuals/ProblemThumbs";
 
 const items = [
-  { icon: Clock, title: "Documentos vencem sem aviso", desc: "Você só descobre quando a auditoria já chegou." },
-  { icon: Users, title: "Equipe vira central de cobrança", desc: "Tempo de qualidade gasto enviando e-mail para fornecedor renovar certificado." },
-  { icon: FileSearch, title: "Rastreabilidade impossível de provar", desc: "Evidências espalhadas em pastas e caixas de e-mail — a corrida começa na véspera da auditoria." },
-  { icon: AlertTriangle, title: "Fornecedor fora de conformidade, sua certificação em risco", desc: "Sem visibilidade em tempo real, o problema sempre chega tarde demais." },
+  {
+    icon: Clock,
+    title: "Documentos vencem sem aviso",
+    desc: "Você só descobre quando a auditoria já chegou.",
+    visual: <DocExpiredThumb />,
+  },
+  {
+    icon: Users,
+    title: "Equipe vira central de cobrança",
+    desc: "Tempo de qualidade gasto enviando e-mail para fornecedor renovar certificado.",
+    visual: <ChasingEmailsThumb />,
+  },
+  {
+    icon: FileSearch,
+    title: "Rastreabilidade impossível de provar",
+    desc: "Evidências espalhadas em pastas e caixas de e-mail — a corrida começa na véspera da auditoria.",
+    visual: <ScatteredEvidenceThumb />,
+  },
+  {
+    icon: AlertTriangle,
+    title: "Fornecedor fora de conformidade, sua certificação em risco",
+    desc: "Sem visibilidade em tempo real, o problema sempre chega tarde demais.",
+    visual: <RiskMeterThumb />,
+  },
 ];
 
 const Problem = () => (
@@ -18,13 +44,24 @@ const Problem = () => (
       </div>
 
       <div className="mt-14 grid md:grid-cols-2 gap-5">
-        {items.map(({ icon: Icon, title, desc }) => (
-          <div key={title} className="group relative rounded-2xl border border-border bg-card p-7 shadow-card hover:shadow-elegant hover:border-accent/30 transition-all">
-            <div className="size-11 rounded-xl bg-gradient-accent/10 grid place-items-center mb-5" style={{ background: "hsl(var(--accent) / 0.1)" }}>
-              <Icon className="size-5 text-accent" />
+        {items.map(({ icon: Icon, title, desc, visual }) => (
+          <div
+            key={title}
+            className="group relative rounded-2xl border border-border bg-card p-7 shadow-card hover:shadow-elegant hover:border-accent/30 transition-all overflow-hidden"
+          >
+            <div className="flex items-start gap-5">
+              <div
+                className="size-11 rounded-xl grid place-items-center shrink-0"
+                style={{ background: "hsl(var(--accent) / 0.1)" }}
+              >
+                <Icon className="size-5 text-accent" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-display font-semibold text-xl text-primary">{title}</h3>
+                <p className="mt-2 text-muted-foreground leading-relaxed">{desc}</p>
+              </div>
             </div>
-            <h3 className="font-display font-semibold text-xl text-primary">{title}</h3>
-            <p className="mt-2 text-muted-foreground leading-relaxed">{desc}</p>
+            <div className="mt-6">{visual}</div>
           </div>
         ))}
       </div>

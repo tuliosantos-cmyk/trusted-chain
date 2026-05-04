@@ -1,3 +1,5 @@
+import FlowDiagram from "./visuals/FlowDiagram";
+
 const steps = [
   { n: "01", title: "Centralização total", desc: "Documentos, certificados, auditorias e aprovações num só lugar, com histórico completo e controle de versão." },
   { n: "02", title: "Alertas e cobrança automática", desc: "O sistema avisa e cobra o fornecedor diretamente. Sua equipe só entra quando há um problema real para resolver." },
@@ -17,7 +19,12 @@ const HowItWorks = () => (
         </h2>
       </div>
 
-      <div className="mt-16 grid md:grid-cols-3 gap-6">
+      {/* Visual flow diagram */}
+      <div className="mt-14 rounded-3xl bg-gradient-card border border-border p-6 md:p-10 shadow-card">
+        <FlowDiagram />
+      </div>
+
+      <div className="mt-12 grid md:grid-cols-3 gap-6">
         {steps.map((s, i) => (
           <div key={s.n} className="relative rounded-3xl bg-gradient-card border border-border p-8 shadow-card hover:shadow-elegant transition-all">
             <div className="font-display font-bold text-7xl text-gradient leading-none opacity-90">{s.n}</div>
@@ -30,7 +37,7 @@ const HowItWorks = () => (
         ))}
       </div>
 
-      <div className="mt-20 rounded-3xl bg-primary p-10 md:p-14 text-primary-foreground relative overflow-hidden">
+      <div className="mt-16 rounded-3xl bg-primary p-10 md:p-14 text-primary-foreground relative overflow-hidden">
         <div className="absolute -right-20 -top-20 size-72 bg-glow opacity-60" />
         <div className="relative">
           <span className="text-xs uppercase tracking-widest text-accent-glow font-semibold">Normas suportadas</span>
