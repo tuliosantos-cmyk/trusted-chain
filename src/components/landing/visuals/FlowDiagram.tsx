@@ -47,7 +47,7 @@ const FlowDiagram = () => (
     ))}
 
     {/* Left: Fornecedores */}
-    <text x="90" y="32" textAnchor="middle" fill="hsl(199 95% 60%)" fontSize="10" fontWeight="700" letterSpacing="2" fontFamily="Sora, sans-serif">
+    <text x="90" y="32" textAnchor="middle" fill="hsl(199 95% 60%)" fontSize="10" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">
       FORNECEDORES
     </text>
     {[
@@ -66,14 +66,14 @@ const FlowDiagram = () => (
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <text x="50" y={s.y + 18} fill="#0f172a" fontSize="11" fontWeight="600" fontFamily="Manrope, sans-serif">
+        <text x="50" y={s.y + 18} fill="#0f172a" fontSize="11" fontWeight="600" fontFamily="Lato, sans-serif">
           {s.label}
         </text>
-        <text x="50" y={s.y + 31} fill="#64748b" fontSize="9" fontFamily="Manrope, sans-serif">
+        <text x="50" y={s.y + 31} fill="#64748b" fontSize="9" fontFamily="Lato, sans-serif">
           envia certificado
         </text>
         <rect x="130" y={s.y + 12} width="34" height="16" rx="8" fill="hsl(199 95% 60% / 0.18)" />
-        <text x="147" y={s.y + 23} textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="8" fontWeight="700" fontFamily="Sora, sans-serif">
+        <text x="147" y={s.y + 23} textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="8" fontWeight="700" fontFamily="Rubik, sans-serif">
           {s.tag}
         </text>
       </g>
@@ -85,13 +85,13 @@ const FlowDiagram = () => (
     <circle cx="450" cy="160" r="84" fill="none" stroke="hsl(199 95% 60%)" strokeWidth="1" strokeDasharray="2 6" opacity="0.6">
       <animateTransform attributeName="transform" type="rotate" from="0 450 160" to="360 450 160" dur="20s" repeatCount="indefinite" />
     </circle>
-    <text x="450" y="148" textAnchor="middle" fill="hsl(199 95% 60%)" fontSize="9" fontWeight="700" letterSpacing="2" fontFamily="Sora, sans-serif">
+    <text x="450" y="148" textAnchor="middle" fill="hsl(199 95% 60%)" fontSize="9" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">
       PLATAFORMA
     </text>
-    <text x="450" y="172" textAnchor="middle" fill="#fff" fontSize="22" fontWeight="800" fontFamily="Sora, sans-serif">
+    <text x="450" y="172" textAnchor="middle" fill="#fff" fontSize="22" fontWeight="800" fontFamily="Rubik, sans-serif">
       MyTS
     </text>
-    <text x="450" y="188" textAnchor="middle" fill="#94a3b8" fontSize="8" fontFamily="Manrope, sans-serif">
+    <text x="450" y="188" textAnchor="middle" fill="#94a3b8" fontSize="8" fontFamily="Lato, sans-serif">
       centraliza · valida · alerta
     </text>
 
@@ -104,14 +104,14 @@ const FlowDiagram = () => (
     ].map((o, i) => (
       <g key={i}>
         <circle cx={o.x} cy={o.y} r="14" fill="#fff" stroke="hsl(214 95% 54%)" strokeWidth="1.5" />
-        <text x={o.x} y={o.y + 4} textAnchor="middle" fontSize="10" fontWeight="700" fill="hsl(214 95% 40%)" fontFamily="Sora, sans-serif">
+        <text x={o.x} y={o.y + 4} textAnchor="middle" fontSize="10" fontWeight="700" fill="hsl(214 95% 40%)" fontFamily="Rubik, sans-serif">
           {o.label}
         </text>
       </g>
     ))}
 
     {/* Right: Auditoria / Você */}
-    <text x="800" y="32" textAnchor="middle" fill="hsl(199 95% 60%)" fontSize="10" fontWeight="700" letterSpacing="2" fontFamily="Sora, sans-serif">
+    <text x="800" y="32" textAnchor="middle" fill="hsl(199 95% 60%)" fontSize="10" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">
       VOCÊ · AUDITORIA
     </text>
     {[
@@ -122,10 +122,10 @@ const FlowDiagram = () => (
       <g key={s.y}>
         <rect x="720" y={s.y} width="170" height="44" rx="8" fill="#0f172a" stroke="hsl(214 95% 54% / 0.4)" />
         <rect x="730" y={s.y + 12} width="3" height="20" rx="1.5" fill="hsl(199 95% 60%)" />
-        <text x="742" y={s.y + 20} fill="#fff" fontSize="11" fontWeight="600" fontFamily="Manrope, sans-serif">
+        <text x="742" y={s.y + 20} fill="#fff" fontSize="11" fontWeight="600" fontFamily="Lato, sans-serif">
           {s.t}
         </text>
-        <text x="742" y={s.y + 33} fill="#94a3b8" fontSize="8.5" fontFamily="Manrope, sans-serif">
+        <text x="742" y={s.y + 33} fill="#94a3b8" fontSize="8.5" fontFamily="Lato, sans-serif">
           {s.s}
         </text>
       </g>

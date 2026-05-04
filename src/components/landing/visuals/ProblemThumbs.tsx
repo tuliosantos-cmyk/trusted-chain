@@ -11,12 +11,12 @@ export const DocExpiredThumb = () => (
     {/* expired stamp */}
     <g transform="translate(110, 36) rotate(-12)">
       <rect x="-4" y="-10" width="56" height="22" rx="3" fill="none" stroke="#ef4444" strokeWidth="2" />
-      <text x="24" y="5" textAnchor="middle" fill="#ef4444" fontSize="10" fontWeight="800" fontFamily="Sora, sans-serif">VENCIDO</text>
+      <text x="24" y="5" textAnchor="middle" fill="#ef4444" fontSize="10" fontWeight="800" fontFamily="Rubik, sans-serif">VENCIDO</text>
     </g>
     {/* alert badge */}
     <g transform="translate(150, 16)">
       <circle cx="18" cy="18" r="18" fill="#ef4444" />
-      <text x="18" y="23" textAnchor="middle" fill="#fff" fontSize="20" fontWeight="800" fontFamily="Sora, sans-serif">!</text>
+      <text x="18" y="23" textAnchor="middle" fill="#fff" fontSize="20" fontWeight="800" fontFamily="Rubik, sans-serif">!</text>
     </g>
   </svg>
 );
@@ -30,7 +30,7 @@ export const ChasingEmailsThumb = () => (
         <circle cx="14" cy="16" r="6" fill="hsl(214 95% 54% / 0.2)" />
         <rect x="26" y="9" width="60" height="5" rx="2" fill="#0f172a" />
         <rect x="26" y="19" width="100" height="4" rx="2" fill="#cbd5e1" />
-        <text x="148" y="20" fill="#94a3b8" fontSize="7" fontFamily="Manrope, sans-serif">
+        <text x="148" y="20" fill="#94a3b8" fontSize="7" fontFamily="Lato, sans-serif">
           {i === 0 ? "Re: Re: Re:" : i === 1 ? "Re: Re:" : "Cobrança #4"}
         </text>
       </g>
@@ -61,7 +61,7 @@ export const ScatteredEvidenceThumb = () => (
     <g transform="translate(140, 50)">
       <circle cx="0" cy="0" r="14" fill="none" stroke="hsl(214 95% 54%)" strokeWidth="3" />
       <line x1="10" y1="10" x2="20" y2="20" stroke="hsl(214 95% 54%)" strokeWidth="3" strokeLinecap="round" />
-      <text x="0" y="3" textAnchor="middle" fill="hsl(214 95% 54%)" fontSize="12" fontWeight="800" fontFamily="Sora, sans-serif">?</text>
+      <text x="0" y="3" textAnchor="middle" fill="hsl(214 95% 54%)" fontSize="12" fontWeight="800" fontFamily="Rubik, sans-serif">?</text>
     </g>
   </svg>
 );
@@ -77,10 +77,10 @@ export const RiskMeterThumb = () => (
       <line x1="0" y1="0" x2="42" y2="-38" stroke="#0f172a" strokeWidth="3" strokeLinecap="round" />
       <circle cx="0" cy="0" r="5" fill="#0f172a" />
     </g>
-    <text x="100" y="38" textAnchor="middle" fill="#ef4444" fontSize="11" fontWeight="800" fontFamily="Sora, sans-serif">
+    <text x="100" y="38" textAnchor="middle" fill="#ef4444" fontSize="11" fontWeight="800" fontFamily="Rubik, sans-serif">
       RISCO ALTO
     </text>
-    <text x="40" y="84" fill="#94a3b8" fontSize="7" fontFamily="Manrope, sans-serif">baixo</text>
-    <text x="160" y="84" fill="#94a3b8" fontSize="7" fontFamily="Manrope, sans-serif">alto</text>
+    <text x="40" y="84" fill="#94a3b8" fontSize="7" fontFamily="Lato, sans-serif">baixo</text>
+    <text x="160" y="84" fill="#94a3b8" fontSize="7" fontFamily="Lato, sans-serif">alto</text>
   </svg>
 );
