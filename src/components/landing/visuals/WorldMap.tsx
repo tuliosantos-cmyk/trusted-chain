@@ -101,7 +101,7 @@ const WorldMap = () => {
             fill="#94a3b8"
             fontSize="8"
             fontWeight="600"
-            fontFamily="Sora, sans-serif"
+            fontFamily="Rubik, sans-serif"
           >
             {p.label}
           </text>
@@ -147,7 +147,7 @@ const WorldMap = () => {
             fill="#cbd5e1"
             fontSize="8"
             fontWeight="600"
-            fontFamily="Sora, sans-serif"
+            fontFamily="Rubik, sans-serif"
           >
             {c.label}
           </text>
@@ -177,7 +177,7 @@ const WorldMap = () => {
           fill="#fff"
           fontSize="9"
           fontWeight="700"
-          fontFamily="Sora, sans-serif"
+          fontFamily="Rubik, sans-serif"
         >
           {hub.label}
         </text>
@@ -186,15 +186,15 @@ const WorldMap = () => {
       {/* Legend */}
       <g transform="translate(20, 380)">
         <circle cx="6" cy="0" r="4" fill="hsl(199 95% 60%)" stroke="#fff" strokeWidth="1" />
-        <text x="16" y="3" fill="#cbd5e1" fontSize="8" fontWeight="600" fontFamily="Sora, sans-serif">
+        <text x="16" y="3" fill="#cbd5e1" fontSize="8" fontWeight="600" fontFamily="Rubik, sans-serif">
           Hub MyTS
         </text>
         <circle cx="86" cy="0" r="3" fill="hsl(199 95% 60%)" />
-        <text x="94" y="3" fill="#cbd5e1" fontSize="8" fontWeight="600" fontFamily="Sora, sans-serif">
+        <text x="94" y="3" fill="#cbd5e1" fontSize="8" fontWeight="600" fontFamily="Rubik, sans-serif">
           Auditor local
         </text>
         <line x1="180" y1="0" x2="200" y2="0" stroke="hsl(199 95% 60%)" strokeWidth="1" strokeDasharray="2 3" opacity="0.6" />
-        <text x="206" y="3" fill="#cbd5e1" fontSize="8" fontWeight="600" fontFamily="Sora, sans-serif">
+        <text x="206" y="3" fill="#cbd5e1" fontSize="8" fontWeight="600" fontFamily="Rubik, sans-serif">
           Conexão internacional
         </text>
       </g>

@@ -29,19 +29,19 @@ const DashboardMock = () => (
     <circle cx="18" cy="17" r="5" fill="#ef4444" />
     <circle cx="36" cy="17" r="5" fill="#f59e0b" />
     <circle cx="54" cy="17" r="5" fill="#22c55e" />
-    <text x="280" y="22" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Manrope, sans-serif">
+    <text x="280" y="22" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Lato, sans-serif">
       app.myt-s.com / fornecedores
     </text>
 
     {/* Sidebar */}
     <rect x="14" y="48" width="120" height="358" rx="12" fill="#0f172a" />
     <rect x="26" y="62" width="22" height="22" rx="6" fill="url(#accentGrad)" />
-    <text x="56" y="77" fill="#fff" fontSize="9" fontWeight="700" fontFamily="Sora, sans-serif">MyTS</text>
+    <text x="56" y="77" fill="#fff" fontSize="9" fontWeight="700" fontFamily="Rubik, sans-serif">MyTS</text>
     {["Visão geral", "Fornecedores", "Documentos", "Auditorias", "Alertas"].map((label, i) => (
       <g key={label}>
         <rect x="22" y={102 + i * 32} width="104" height="24" rx="6" fill={i === 1 ? "hsl(214 95% 54% / 0.18)" : "transparent"} />
         <circle cx="32" cy={114 + i * 32} r="2.5" fill={i === 1 ? "hsl(199 95% 60%)" : "#475569"} />
-        <text x="42" y={117 + i * 32} fill={i === 1 ? "#fff" : "#94a3b8"} fontSize="9" fontFamily="Manrope, sans-serif" fontWeight={i === 1 ? 600 : 400}>
+        <text x="42" y={117 + i * 32} fill={i === 1 ? "#fff" : "#94a3b8"} fontSize="9" fontFamily="Lato, sans-serif" fontWeight={i === 1 ? 600 : 400}>
           {label}
         </text>
       </g>
@@ -55,10 +55,10 @@ const DashboardMock = () => (
     ].map((kpi, i) => (
       <g key={kpi.v} transform={`translate(${146 + i * 134}, 56)`}>
         <rect width="124" height="64" rx="10" fill="#fff" stroke="#e2e8f0" />
-        <text x="12" y="22" fill="#94a3b8" fontSize="8" fontFamily="Manrope, sans-serif" fontWeight="600" letterSpacing="1">
+        <text x="12" y="22" fill="#94a3b8" fontSize="8" fontFamily="Lato, sans-serif" fontWeight="600" letterSpacing="1">
           {kpi.v.toUpperCase()}
         </text>
-        <text x="12" y="48" fill={kpi.c} fontSize="22" fontWeight="700" fontFamily="Sora, sans-serif">
+        <text x="12" y="48" fill={kpi.c} fontSize="22" fontWeight="700" fontFamily="Rubik, sans-serif">
           {kpi.k}
         </text>
         {/* tiny sparkline */}
@@ -75,10 +75,10 @@ const DashboardMock = () => (
     {/* Chart card */}
     <g transform="translate(146, 132)">
       <rect width="258" height="148" rx="10" fill="#fff" stroke="#e2e8f0" />
-      <text x="14" y="22" fill="#0f172a" fontSize="10" fontWeight="700" fontFamily="Sora, sans-serif">
+      <text x="14" y="22" fill="#0f172a" fontSize="10" fontWeight="700" fontFamily="Rubik, sans-serif">
         Conformidade da cadeia
       </text>
-      <text x="14" y="36" fill="#94a3b8" fontSize="8" fontFamily="Manrope, sans-serif">
+      <text x="14" y="36" fill="#94a3b8" fontSize="8" fontFamily="Lato, sans-serif">
         Últimos 6 meses
       </text>
       {/* grid lines */}
@@ -106,7 +106,7 @@ const DashboardMock = () => (
     {/* Right column: alerts */}
     <g transform="translate(414, 132)">
       <rect width="132" height="148" rx="10" fill="#fff" stroke="#e2e8f0" />
-      <text x="12" y="22" fill="#0f172a" fontSize="10" fontWeight="700" fontFamily="Sora, sans-serif">Alertas</text>
+      <text x="12" y="22" fill="#0f172a" fontSize="10" fontWeight="700" fontFamily="Rubik, sans-serif">Alertas</text>
       {[
         { c: "#ef4444", t: "FSSC vencido", s: "Fornec. #214" },
         { c: "#f59e0b", t: "Vence em 7d", s: "Fornec. #082" },
@@ -115,8 +115,8 @@ const DashboardMock = () => (
         <g key={i} transform={`translate(0, ${36 + i * 36})`}>
           <rect x="8" y="0" width="116" height="30" rx="6" fill="#f8fafc" />
           <circle cx="18" cy="15" r="4" fill={a.c} />
-          <text x="28" y="13" fill="#0f172a" fontSize="8" fontWeight="600" fontFamily="Manrope, sans-serif">{a.t}</text>
-          <text x="28" y="24" fill="#94a3b8" fontSize="7" fontFamily="Manrope, sans-serif">{a.s}</text>
+          <text x="28" y="13" fill="#0f172a" fontSize="8" fontWeight="600" fontFamily="Lato, sans-serif">{a.t}</text>
+          <text x="28" y="24" fill="#94a3b8" fontSize="7" fontFamily="Lato, sans-serif">{a.s}</text>
         </g>
       ))}
     </g>
@@ -124,7 +124,7 @@ const DashboardMock = () => (
     {/* Suppliers table */}
     <g transform="translate(146, 292)">
       <rect width="400" height="114" rx="10" fill="#fff" stroke="#e2e8f0" />
-      <text x="14" y="22" fill="#0f172a" fontSize="10" fontWeight="700" fontFamily="Sora, sans-serif">
+      <text x="14" y="22" fill="#0f172a" fontSize="10" fontWeight="700" fontFamily="Rubik, sans-serif">
         Fornecedores recentes
       </text>
       {[
@@ -134,11 +134,11 @@ const DashboardMock = () => (
       ].map((row, i) => (
         <g key={row.n} transform={`translate(14, ${36 + i * 24})`}>
           <circle cx="6" cy="9" r="6" fill="#e2e8f0" />
-          <text x="20" y="12" fill="#0f172a" fontSize="9" fontWeight="600" fontFamily="Manrope, sans-serif">{row.n}</text>
-          <text x="160" y="12" fill="#64748b" fontSize="8" fontFamily="Manrope, sans-serif">{row.d}</text>
+          <text x="20" y="12" fill="#0f172a" fontSize="9" fontWeight="600" fontFamily="Lato, sans-serif">{row.n}</text>
+          <text x="160" y="12" fill="#64748b" fontSize="8" fontFamily="Lato, sans-serif">{row.d}</text>
           <rect x="320" y="2" width="58" height="14" rx="7" fill={`${row.c}`} fillOpacity="0.15" />
           <circle cx="330" cy="9" r="2.5" fill={row.c} />
-          <text x="338" y="12" fill={row.c} fontSize="7" fontWeight="700" fontFamily="Manrope, sans-serif">
+          <text x="338" y="12" fill={row.c} fontSize="7" fontWeight="700" fontFamily="Lato, sans-serif">
             {row.st === "ok" ? "CONFORME" : "ATENÇÃO"}
           </text>
         </g>

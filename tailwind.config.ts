@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Sora', 'system-ui', 'sans-serif'],
-        body: ['Manrope', 'system-ui', 'sans-serif'],
+        display: ['Rubik', 'system-ui', 'sans-serif'],
+        body: ['Lato', 'system-ui', 'sans-serif'],
       },
       colors: {
         success: {

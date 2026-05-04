@@ -73,14 +73,14 @@ export const ComplianceChart = () => (
     })}
     {/* labels */}
     {["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul"].map((m, i) => (
-      <text key={m} x={20 + i * 40} y="118" fill="#94a3b8" fontSize="8" textAnchor="middle" fontFamily="Manrope, sans-serif">
+      <text key={m} x={20 + i * 40} y="118" fill="#94a3b8" fontSize="8" textAnchor="middle" fontFamily="Lato, sans-serif">
         {m}
       </text>
     ))}
-    <text x="20" y="14" fill="#0f172a" fontSize="9" fontWeight="700" fontFamily="Sora, sans-serif">
+    <text x="20" y="14" fill="#0f172a" fontSize="9" fontWeight="700" fontFamily="Rubik, sans-serif">
       Conformidade da carteira (%)
     </text>
-    <text x="270" y="14" fill="hsl(152 65% 40%)" fontSize="9" fontWeight="700" textAnchor="end" fontFamily="Sora, sans-serif">
+    <text x="270" y="14" fill="hsl(152 65% 40%)" fontSize="9" fontWeight="700" textAnchor="end" fontFamily="Rubik, sans-serif">
       ↑ +34pp
     </text>
   </svg>
@@ -122,10 +122,10 @@ export const SupplyDonut = () => {
           />
         );
       })}
-      <text x={cx} y={cy - 2} textAnchor="middle" fill="#0f172a" fontSize="18" fontWeight="800" fontFamily="Sora, sans-serif">
+      <text x={cx} y={cy - 2} textAnchor="middle" fill="#0f172a" fontSize="18" fontWeight="800" fontFamily="Rubik, sans-serif">
         72%
       </text>
-      <text x={cx} y={cy + 12} textAnchor="middle" fill="#64748b" fontSize="7" fontFamily="Manrope, sans-serif">
+      <text x={cx} y={cy + 12} textAnchor="middle" fill="#64748b" fontSize="7" fontFamily="Lato, sans-serif">
         conforme
       </text>
 
@@ -133,10 +133,10 @@ export const SupplyDonut = () => {
       {segments.map((s, i) => (
         <g key={s.label} transform={`translate(140, ${28 + i * 24})`}>
           <rect width="10" height="10" rx="2" fill={s.color} />
-          <text x="18" y="9" fill="#0f172a" fontSize="10" fontWeight="600" fontFamily="Manrope, sans-serif">
+          <text x="18" y="9" fill="#0f172a" fontSize="10" fontWeight="600" fontFamily="Lato, sans-serif">
             {s.label}
           </text>
-          <text x="125" y="9" fill="#64748b" fontSize="10" textAnchor="end" fontFamily="Sora, sans-serif" fontWeight="700">
+          <text x="125" y="9" fill="#64748b" fontSize="10" textAnchor="end" fontFamily="Rubik, sans-serif" fontWeight="700">
             {s.value}%
           </text>
         </g>
