@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import { ComplianceChart, SupplyDonut } from "./visuals/MiniCharts";
 
 const Results = () => (
   <section id="resultados" className="py-24 md:py-32 bg-secondary/40">
@@ -16,7 +17,12 @@ const Results = () => (
           <blockquote className="mt-5 font-display text-xl md:text-2xl text-primary leading-snug">
             "A equipe parou de fazer cobrança e começou a fazer análise. A carteira cresceu sem crescer o operacional."
           </blockquote>
-          <div className="mt-8 grid grid-cols-2 gap-6 pt-6 border-t border-border">
+
+          <div className="mt-6 rounded-2xl bg-secondary/60 p-5 border border-border">
+            <ComplianceChart />
+          </div>
+
+          <div className="mt-6 grid grid-cols-2 gap-6 pt-6 border-t border-border">
             <div>
               <div className="font-display font-bold text-4xl text-gradient">−90%</div>
               <div className="mt-1 text-sm text-muted-foreground">custo com autoavaliação de fornecedores</div>
@@ -33,7 +39,12 @@ const Results = () => (
           <blockquote className="mt-5 font-display text-xl md:text-2xl text-primary leading-snug">
             "Mapeamento e desenvolvimento de toda a cadeia do agro — social, ambiental e qualidade — dentro da plataforma."
           </blockquote>
-          <ul className="mt-8 space-y-3 pt-6 border-t border-border">
+
+          <div className="mt-6 rounded-2xl bg-secondary/60 p-5 border border-border">
+            <SupplyDonut />
+          </div>
+
+          <ul className="mt-6 space-y-3 pt-6 border-t border-border">
             {["Diagnósticos automáticos por fornecedor", "Treinamentos e reconhecimento integrados"].map((t) => (
               <li key={t} className="flex items-start gap-3 text-primary">
                 <span className="mt-0.5 size-5 rounded-full bg-success/15 grid place-items-center">
