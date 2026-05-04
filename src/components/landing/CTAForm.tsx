@@ -16,7 +16,7 @@ const CTAForm = () => {
       return;
     }
     setSubmitted(true);
-    toast.success("Recebemos seu pedido. Ricardo vai entrar em contato em até 1 dia útil.");
+    toast.success("Recebemos seu pedido. Nossa equipe entra em contato em até 1 dia útil.");
   };
 
   return (
@@ -75,8 +75,8 @@ const CTAForm = () => {
                       <Calendar className="size-5 text-accent-foreground" />
                     </div>
                     <div>
-                      <div className="font-display font-semibold text-xl text-primary">Agendar conversa de 30 min</div>
-                      <div className="text-sm text-muted-foreground">Com Ricardo, fundador da MyTS</div>
+                      <div className="font-display font-semibold text-xl text-primary">Fale com um especialista</div>
+                      <div className="text-sm text-muted-foreground">Diagnóstico gratuito em 30 minutos</div>
                     </div>
                   </div>
 
@@ -107,7 +107,7 @@ const CTAForm = () => {
                       type="submit"
                       className="sm:col-span-2 group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-accent px-6 py-4 mt-2 font-semibold text-accent-foreground shadow-cta hover:shadow-glow transition-all"
                     >
-                      Escolher horário com Ricardo
+                      Quero meu diagnóstico gratuito
                       <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
                     </button>
 
@@ -124,7 +124,7 @@ const CTAForm = () => {
                   </div>
                   <h3 className="mt-6 font-display font-bold text-2xl text-primary">Pedido recebido!</h3>
                   <p className="mt-3 text-muted-foreground max-w-md mx-auto">
-                    Ricardo vai entrar em contato em até <strong className="text-primary">1 dia útil</strong> para alinhar o melhor horário.
+                    Nossa equipe vai entrar em contato em até <strong className="text-primary">1 dia útil</strong> para alinhar o melhor horário.
                   </p>
                 </div>
               )}
