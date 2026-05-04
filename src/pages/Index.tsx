@@ -6,6 +6,7 @@ import Problem from "@/components/landing/Problem";
 import HowItWorks from "@/components/landing/HowItWorks";
 import Results from "@/components/landing/Results";
 import Network from "@/components/landing/Network";
+import FinalCTA from "@/components/landing/FinalCTA";
 import CTAForm from "@/components/landing/CTAForm";
 import Footer from "@/components/landing/Footer";
 
@@ -20,6 +21,7 @@ const Index = () => {
       <HowItWorks />
       <Results />
       <Network />
+      <FinalCTA />
       <CTAForm />
       <Footer />
     </main>
