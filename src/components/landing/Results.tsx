@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { ComplianceChart, SupplyDonut } from "./visuals/MiniCharts";
 
 const Results = () => (
@@ -55,6 +55,16 @@ const Results = () => (
             ))}
           </ul>
         </article>
+      </div>
+
+      <div className="mt-14 text-center">
+        <a
+          href="#agendar"
+          className="group inline-flex items-center gap-2 rounded-full bg-gradient-accent px-7 py-4 font-semibold text-accent-foreground shadow-cta hover:shadow-glow transition-all"
+        >
+          Quero esses resultados na minha operação
+          <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
+        </a>
       </div>
     </div>
   </section>
