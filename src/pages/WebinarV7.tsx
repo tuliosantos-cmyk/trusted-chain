@@ -97,7 +97,16 @@ const WebinarV7 = () => {
                 ))}
               </div>
 
-              <p className="mt-8 text-sm text-primary-foreground/60 flex items-center gap-2">
+              <div className="mt-8 flex items-center gap-4 pt-6 border-t border-primary-foreground/10">
+                <div className="rounded-lg bg-primary-foreground/95 px-4 py-2.5 shadow-card">
+                  <img src={logoFssc} alt="FSSC 22000" className="h-7 w-auto" loading="lazy" />
+                </div>
+                <p className="text-xs text-primary-foreground/65 leading-snug max-w-xs">
+                  Conteúdo oficial sobre os novos requisitos da <strong className="text-primary-foreground/90">FSSC 22000 V7</strong>.
+                </p>
+              </div>
+
+              <p className="mt-6 text-sm text-primary-foreground/60 flex items-center gap-2">
                 <AlertTriangle className="size-3.5 text-accent-glow" />
                 Vagas limitadas. Inscrição encerra em breve.
               </p>
