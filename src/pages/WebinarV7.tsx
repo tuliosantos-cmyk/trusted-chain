@@ -414,4 +414,14 @@ const Field = ({ label, ...props }: { label: string } & React.InputHTMLAttribute
   </div>
 );
 
+const FieldLight = ({ label, ...props }: { label: string } & React.InputHTMLAttributes<HTMLInputElement>) => (
+  <div>
+    <label className="block text-sm font-medium text-primary mb-1.5">{label}</label>
+    <input
+      {...props}
+      className="w-full h-11 rounded-xl border border-border bg-secondary/60 px-4 text-primary placeholder:text-muted-foreground/60 outline-none focus:border-accent focus:ring-4 focus:ring-accent/15 transition"
+    />
+  </div>
+);
+
 export default WebinarV7;
