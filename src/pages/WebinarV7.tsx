@@ -66,44 +66,82 @@ const WebinarV7 = () => {
       {/* HERO */}
       <section className="relative bg-hero text-primary-foreground overflow-hidden noise">
         <div className="absolute inset-0 grid-pattern opacity-30" />
-        <div className="container relative py-24 md:py-32 max-w-5xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/15 bg-primary-foreground/5 px-4 py-1.5 text-xs font-medium tracking-wide text-primary-foreground/90 backdrop-blur">
-            <Sparkles className="size-3.5 text-accent-glow" />
-            Webinar gratuito · 24 de junho · 19h30 · Online
-          </div>
-          <h1 className="mt-6 font-display font-bold text-4xl md:text-6xl leading-[1.05]">
-            Sua empresa está pronta para a <span className="text-gradient">FSSC 22000 V7?</span>
-          </h1>
-          <p className="mt-6 text-lg md:text-xl text-primary-foreground/75 max-w-3xl leading-relaxed">
-            Descubra o que mudou, o que os auditores estão cobrando agora e como preparar sua operação — antes da próxima auditoria.
-          </p>
-
-          <div className="mt-10 flex flex-wrap gap-4 text-sm">
-            {[
-              [CalendarDays, "24 de junho de 2025"],
-              [Clock, "19h30 (Brasília)"],
-              [Monitor, "Online — ao vivo"],
-              [Ticket, "Gratuito"],
-            ].map(([Icon, label], i) => (
-              <div key={i} className="inline-flex items-center gap-2 rounded-xl border border-primary-foreground/15 bg-primary-foreground/5 px-4 py-2.5 backdrop-blur">
-                <Icon className="size-4 text-accent-glow" />
-                <span className="font-medium">{label as string}</span>
+        <div className="container relative py-20 md:py-28 max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Texto */}
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/15 bg-primary-foreground/5 px-4 py-1.5 text-xs font-medium tracking-wide text-primary-foreground/90 backdrop-blur">
+                <Sparkles className="size-3.5 text-accent-glow" />
+                Webinar gratuito · 24 de junho · 19h30 · Online
               </div>
-            ))}
-          </div>
+              <h1 className="mt-6 font-display font-bold text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
+                Sua empresa está pronta para a <span className="text-gradient">FSSC 22000 V7?</span>
+              </h1>
+              <p className="mt-6 text-lg md:text-xl text-primary-foreground/75 max-w-xl leading-relaxed">
+                Descubra o que mudou, o que os auditores estão cobrando agora e como preparar sua operação — antes da próxima auditoria.
+              </p>
 
-          <div className="mt-10">
-            <a
-              href="#inscricao"
-              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-accent px-7 py-4 font-semibold text-accent-foreground shadow-cta hover:shadow-glow transition-all"
-            >
-              Garantir minha vaga gratuita
-              <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
-            </a>
-            <p className="mt-4 text-sm text-primary-foreground/60 flex items-center gap-2">
-              <AlertTriangle className="size-3.5 text-accent-glow" />
-              Vagas limitadas. Inscrição encerra em breve.
-            </p>
+              <div className="mt-8 flex flex-wrap gap-3 text-sm">
+                {[
+                  [CalendarDays, "24 de junho de 2025"],
+                  [Clock, "19h30 (Brasília)"],
+                  [Monitor, "Online — ao vivo"],
+                  [Ticket, "Gratuito"],
+                ].map(([Icon, label], i) => (
+                  <div key={i} className="inline-flex items-center gap-2 rounded-xl border border-primary-foreground/15 bg-primary-foreground/5 px-4 py-2.5 backdrop-blur">
+                    <Icon className="size-4 text-accent-glow" />
+                    <span className="font-medium">{label as string}</span>
+                  </div>
+                ))}
+              </div>
+
+              <p className="mt-8 text-sm text-primary-foreground/60 flex items-center gap-2">
+                <AlertTriangle className="size-3.5 text-accent-glow" />
+                Vagas limitadas. Inscrição encerra em breve.
+              </p>
+            </div>
+
+            {/* Form */}
+            <div className="relative">
+              <div className="absolute -inset-3 bg-gradient-accent opacity-25 blur-2xl rounded-3xl" />
+              <div className="relative rounded-2xl bg-background text-foreground border border-white/10 shadow-elegant p-6 md:p-8">
+                {!submitted ? (
+                  <form onSubmit={submit} className="space-y-4">
+                    <div>
+                      <h3 className="font-display font-bold text-xl text-primary">Inscreva-se agora</h3>
+                      <p className="text-sm text-muted-foreground mt-1">Receba o link de acesso no seu e-mail.</p>
+                    </div>
+                    <FieldLight label="Nome completo *" value={form.name} onChange={handle("name")} placeholder="Seu nome" />
+                    <FieldLight label="E-mail *" type="email" value={form.email} onChange={handle("email")} placeholder="voce@empresa.com" />
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <FieldLight label="Empresa *" value={form.company} onChange={handle("company")} placeholder="Nome da empresa" />
+                      <FieldLight label="Cargo / Área" value={form.role} onChange={handle("role")} placeholder="Ex: Gerente de Qualidade" />
+                    </div>
+                    <button
+                      type="submit"
+                      className="w-full group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-accent px-6 py-3.5 font-semibold text-accent-foreground shadow-cta hover:shadow-glow transition-all"
+                    >
+                      Quero participar — é gratuito
+                      <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
+                    </button>
+                    <p className="flex items-center gap-2 text-xs text-muted-foreground justify-center text-center">
+                      <ShieldCheck className="size-3.5 text-success shrink-0" />
+                      Ao se inscrever, você concorda com nossa política de privacidade.
+                    </p>
+                  </form>
+                ) : (
+                  <div className="py-10 text-center">
+                    <div className="mx-auto size-14 rounded-full bg-success/15 grid place-items-center">
+                      <CheckCircle2 className="size-7 text-success" />
+                    </div>
+                    <h3 className="mt-5 font-display font-bold text-xl text-primary">Inscrição confirmada!</h3>
+                    <p className="mt-2 text-muted-foreground text-sm">
+                      Enviamos o link para <strong className="text-primary">{form.email}</strong>. Nos vemos no dia <strong className="text-primary">24/06 às 19h30</strong>.
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </section>
