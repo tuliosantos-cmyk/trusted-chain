@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import anneDezan from "@/assets/anne-dezan.jpg";
+import logoFssc from "@/assets/logo-fssc.png";
 import {
   ArrowRight,
   CalendarDays,
@@ -95,7 +97,16 @@ const WebinarV7 = () => {
                 ))}
               </div>
 
-              <p className="mt-8 text-sm text-primary-foreground/60 flex items-center gap-2">
+              <div className="mt-8 flex items-center gap-4 pt-6 border-t border-primary-foreground/10">
+                <div className="rounded-lg bg-primary-foreground/95 px-4 py-2.5 shadow-card">
+                  <img src={logoFssc} alt="FSSC 22000" className="h-7 w-auto" loading="lazy" />
+                </div>
+                <p className="text-xs text-primary-foreground/65 leading-snug max-w-xs">
+                  Conteúdo oficial sobre os novos requisitos da <strong className="text-primary-foreground/90">FSSC 22000 V7</strong>.
+                </p>
+              </div>
+
+              <p className="mt-6 text-sm text-primary-foreground/60 flex items-center gap-2">
                 <AlertTriangle className="size-3.5 text-accent-glow" />
                 Vagas limitadas. Inscrição encerra em breve.
               </p>
@@ -212,12 +223,12 @@ const WebinarV7 = () => {
             <div className="md:col-span-4">
               <div className="relative">
                 <div className="absolute -inset-3 bg-gradient-accent opacity-20 blur-2xl rounded-3xl" />
-                <div className="relative aspect-[4/5] rounded-2xl bg-gradient-to-br from-primary to-primary/80 grid place-items-center text-primary-foreground shadow-elegant">
-                  <div className="text-center px-6">
-                    <div className="font-display font-bold text-6xl">AD</div>
-                    <div className="mt-3 text-sm text-primary-foreground/70">Anne Dezan</div>
-                  </div>
-                </div>
+                <img
+                  src={anneDezan}
+                  alt="Anne Dezan — Auditora Líder BRCGS e palestrante do webinar FSSC 22000 V7"
+                  loading="lazy"
+                  className="relative aspect-[4/5] w-full object-cover rounded-2xl shadow-elegant border border-border"
+                />
               </div>
             </div>
 
