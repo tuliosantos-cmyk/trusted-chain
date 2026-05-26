@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import anneDezan from "@/assets/anne-dezan.jpg";
+import logoFssc from "@/assets/logo-fssc.png";
 import {
   ArrowRight,
   CalendarDays,
@@ -212,12 +214,12 @@ const WebinarV7 = () => {
             <div className="md:col-span-4">
               <div className="relative">
                 <div className="absolute -inset-3 bg-gradient-accent opacity-20 blur-2xl rounded-3xl" />
-                <div className="relative aspect-[4/5] rounded-2xl bg-gradient-to-br from-primary to-primary/80 grid place-items-center text-primary-foreground shadow-elegant">
-                  <div className="text-center px-6">
-                    <div className="font-display font-bold text-6xl">AD</div>
-                    <div className="mt-3 text-sm text-primary-foreground/70">Anne Dezan</div>
-                  </div>
-                </div>
+                <img
+                  src={anneDezan}
+                  alt="Anne Dezan — Auditora Líder BRCGS e palestrante do webinar FSSC 22000 V7"
+                  loading="lazy"
+                  className="relative aspect-[4/5] w-full object-cover rounded-2xl shadow-elegant border border-border"
+                />
               </div>
             </div>
 
