@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import anneDezan from "@/assets/anne-dezan.jpg";
 import logoFssc from "@/assets/logo-fssc.png";
+import eventInfoPills from "@/assets/event-info-pills.png";
 import {
   ArrowRight,
   CalendarDays,
