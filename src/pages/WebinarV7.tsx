@@ -5,10 +5,6 @@ import logoFssc from "@/assets/logo-fssc.png";
 import eventInfoPills from "@/assets/event-info-pills.png";
 import {
   ArrowRight,
-  CalendarDays,
-  Clock,
-  Monitor,
-  Ticket,
   CheckCircle2,
   ShieldCheck,
   Sparkles,
