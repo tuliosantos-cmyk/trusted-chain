@@ -2,9 +2,12 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import anneDezan from "@/assets/anne-dezan.jpg";
 import logoFssc from "@/assets/logo-fssc.png";
-import eventInfoPills from "@/assets/event-info-pills.png";
 import {
   ArrowRight,
+  CalendarDays,
+  Clock,
+  Monitor,
+  Ticket,
   CheckCircle2,
   ShieldCheck,
   Sparkles,
@@ -80,13 +83,19 @@ const WebinarV7 = () => {
                 Descubra o que mudou, o que os auditores estão cobrando agora e como preparar sua operação — antes da próxima auditoria.
               </p>
 
-              <img
-                src={eventInfoPills}
-                alt="24 de junho de 2025 · 19h30 (Brasília) · Online ao vivo · Gratuito"
-                className="mt-8 w-full max-w-2xl h-auto"
-                width={1024}
-                height={512}
-              />
+              <div className="mt-8 flex flex-wrap gap-3 text-sm">
+                {[
+                  [CalendarDays, "24 de junho de 2025"],
+                  [Clock, "19h30 (Brasília)"],
+                  [Monitor, "Online — ao vivo"],
+                  [Ticket, "Gratuito"],
+                ].map(([Icon, label], i) => (
+                  <div key={i} className="inline-flex items-center gap-2 rounded-xl border border-primary-foreground/15 bg-primary-foreground/5 px-4 py-2.5 backdrop-blur">
+                    <Icon className="size-4 text-accent-glow" />
+                    <span className="font-medium">{label as string}</span>
+                  </div>
+                ))}
+              </div>
 
               <div className="mt-8 flex items-center gap-4 pt-6 border-t border-primary-foreground/10">
                 <div className="rounded-lg bg-primary-foreground/95 px-4 py-2.5 shadow-card">
