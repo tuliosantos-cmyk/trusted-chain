@@ -53,14 +53,14 @@ const WebinarV7 = () => {
   return (
     <main className="min-h-screen bg-background">
       <Helmet>
-        <title>Pronto para a V7? | Webinar gratuito FSSC 22000 com Anne Dezan — 24/06</title>
+        <title>Pronto para a V7? | Webinar gratuito FSSC 22000 com Anne Dezan — 23/06</title>
         <meta
           name="description"
-          content="Webinar gratuito sobre FSSC 22000 V7 com Anne Dezan — Auditora Líder BRCGS. 24/06, 19h30, online. Entenda o que mudou e como preparar sua empresa para a próxima auditoria."
+          content="Webinar gratuito sobre FSSC 22000 V7 com Anne Dezan — Auditora Líder BRCGS. 23/06, 19h30, online. Entenda o que mudou e como preparar sua empresa para a próxima auditoria."
         />
         <link rel="canonical" href="/webinar-v7" />
         <meta property="og:title" content="Pronto para a V7? Webinar FSSC 22000 com Anne Dezan" />
-        <meta property="og:description" content="24/06, 19h30, online. Gratuito. O que mudou na FSSC 22000 V7 e como preparar sua empresa." />
+        <meta property="og:description" content="23/06, 19h30, online. Gratuito. O que mudou na FSSC 22000 V7 e como preparar sua empresa." />
         <meta property="og:url" content="/webinar-v7" />
         <meta property="og:type" content="website" />
       </Helmet>
@@ -74,7 +74,7 @@ const WebinarV7 = () => {
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/15 bg-primary-foreground/5 px-4 py-1.5 text-xs font-medium tracking-wide text-primary-foreground/90 backdrop-blur">
                 <Sparkles className="size-3.5 text-accent-glow" />
-                Webinar gratuito · 24 de junho · 19h30 · Online
+                Webinar gratuito · 23 de junho · 19h30 · Online
               </div>
               <h1 className="mt-6 font-display font-bold text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
                 Sua empresa está pronta para a <span className="text-gradient">FSSC 22000 V7?</span>
@@ -85,7 +85,7 @@ const WebinarV7 = () => {
 
               <div className="mt-8 flex flex-wrap gap-3 text-sm">
                 {[
-                  [CalendarDays, "24 de junho de 2025"],
+                  [CalendarDays, "23 de junho de 2026"],
                   [Clock, "19h30 (Brasília)"],
                   [Monitor, "Online — ao vivo"],
                   [Ticket, "Gratuito"],
@@ -147,7 +147,7 @@ const WebinarV7 = () => {
                     </div>
                     <h3 className="mt-5 font-display font-bold text-xl text-primary">Inscrição confirmada!</h3>
                     <p className="mt-2 text-muted-foreground text-sm">
-                      Enviamos o link para <strong className="text-primary">{form.email}</strong>. Nos vemos no dia <strong className="text-primary">24/06 às 19h30</strong>.
+                      Enviamos o link para <strong className="text-primary">{form.email}</strong>. Nos vemos no dia <strong className="text-primary">23/06 às 19h30</strong>.
                     </p>
                   </div>
                 )}
@@ -306,7 +306,7 @@ const WebinarV7 = () => {
 
           <dl className="mt-10 grid sm:grid-cols-2 gap-4">
             {[
-              ["Data", "24 de junho de 2025"],
+              ["Data", "23 de junho de 2026"],
               ["Horário", "19h30 (horário de Brasília)"],
               ["Formato", "Online · Ao vivo"],
               ["Investimento", "Gratuito"],
@@ -365,7 +365,7 @@ const WebinarV7 = () => {
                   </div>
                   <h3 className="mt-6 font-display font-bold text-2xl text-primary">Inscrição confirmada!</h3>
                   <p className="mt-3 text-muted-foreground max-w-md mx-auto">
-                    Enviamos o link de acesso para <strong className="text-primary">{form.email}</strong>. Nos vemos no dia <strong className="text-primary">24/06 às 19h30</strong>.
+                    Enviamos o link de acesso para <strong className="text-primary">{form.email}</strong>. Nos vemos no dia <strong className="text-primary">23/06 às 19h30</strong>.
                   </p>
                 </div>
               )}
