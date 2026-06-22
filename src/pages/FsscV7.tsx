@@ -635,29 +635,42 @@ const Tabela11 = () => {
         <strong>Obs.:</strong> Não existem sub(sub)categorias para BIII, CII, CIII, D, E, FI, FII e G.
       </p>
 
-      <div className="mt-4 flex-1 rounded-2xl overflow-hidden border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur min-h-0 flex flex-col">
-        <div className="grid grid-cols-[60px_80px_1fr] bg-primary-foreground/10 text-[10px] uppercase tracking-widest font-semibold shrink-0">
-          <div className="p-2 px-3">Cat.</div>
-          <div className="p-2 px-3">Sub</div>
-          <div className="p-2 px-3">Descrição</div>
-        </div>
-        <div className="overflow-y-auto">
-          {rows.map((r, i) => (
-            <div
-              key={r.sub}
-              className={`grid grid-cols-[60px_80px_1fr] items-center text-xs border-t border-primary-foreground/10 ${i % 2 ? "bg-primary-foreground/[0.02]" : ""}`}
-            >
-              <div className="p-2 px-3">
-                <span className={`inline-block rounded-full ${catColor[r.cat]} text-white px-2 py-0.5 text-[10px] font-bold font-mono`}>
-                  {r.cat}
-                </span>
+      {(() => {
+        const catTitles: Record<string, string> = {
+          C0: "Processamento Animal Primário",
+          CI: "Produtos Perecíveis Animais",
+          CIV: "Produtos Ambientes / Processados",
+          I: "Embalagens",
+          K: "Bioquímicos",
+        };
+        const order = ["C0", "CI", "CIV", "I", "K"];
+        const grouped = order.map((c) => ({ cat: c, items: rows.filter((r) => r.cat === c) }));
+        return (
+          <div className="mt-4 flex-1 grid grid-cols-5 gap-2.5 min-h-0">
+            {grouped.map((g) => (
+              <div
+                key={g.cat}
+                className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur flex flex-col overflow-hidden"
+              >
+                <div className={`${catColor[g.cat]} px-3 py-2 flex items-center justify-between`}>
+                  <span className="font-mono text-[11px] font-bold text-white">{g.cat}</span>
+                  <span className="text-[9px] uppercase tracking-wider text-white/85 font-semibold truncate ml-2">
+                    {catTitles[g.cat]}
+                  </span>
+                </div>
+                <div className="flex-1 p-2 flex flex-col gap-1.5">
+                  {g.items.map((r) => (
+                    <div key={r.sub} className="rounded-lg bg-primary-foreground/[0.04] px-2 py-1.5 border border-primary-foreground/5">
+                      <div className="font-mono text-[10px] text-accent-glow font-bold">{r.sub}</div>
+                      <div className="text-[10.5px] text-primary-foreground/85 leading-snug">{r.desc}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="p-2 px-3 font-mono text-accent-glow font-semibold">{r.sub}</div>
-              <div className="p-2 px-3 text-primary-foreground/85 leading-snug">{r.desc}</div>
-            </div>
-          ))}
-        </div>
-      </div>
+            ))}
+          </div>
+        );
+      })()}
     </Slide>
   );
 };
