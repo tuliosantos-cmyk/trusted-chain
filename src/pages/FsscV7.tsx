@@ -65,15 +65,10 @@ const Slide = ({
   decor?: React.ReactNode;
   pad?: string;
 }) => (
-  <section className={`${bg} relative w-full py-6 md:py-10 ${className}`}>
-    <div className="container">
-      <div
-        className="relative mx-auto w-full overflow-hidden rounded-3xl"
-        style={{ aspectRatio: "16 / 9", maxHeight: "92vh", minHeight: 520 }}
-      >
-        {decor}
-        <div className={`relative h-full w-full flex flex-col ${pad}`}>{children}</div>
-      </div>
+  <section className={`${bg} relative ${className}`} style={{ width: 1920, height: 1080, margin: 0, padding: 0, overflow: "hidden" }}>
+    <div className="relative w-full h-full overflow-hidden">
+      {decor}
+      <div className={`relative h-full w-full flex flex-col ${pad}`}>{children}</div>
     </div>
   </section>
 );
@@ -1065,7 +1060,8 @@ const Final = () => (
 
 /* ---------- Page ---------- */
 const FsscV7 = () => (
-  <main className="bg-background">
+  <main className="bg-background" style={{ margin: 0, padding: 0, overflow: "hidden" }}>
+    <style>{`html,body,#root{margin:0;padding:0;overflow-x:hidden}`}</style>
     <Helmet>
       <title>Pronto para a V7? — Anne Dezan & MyTS</title>
       <meta
