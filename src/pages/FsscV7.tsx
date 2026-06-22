@@ -452,10 +452,10 @@ const V6toV7 = () => {
 /* ---------- 06 · TRANSIÇÃO timeline (compact 16:9) ---------- */
 const Transicao = () => {
   const steps = [
-    { date: "Maio 2026", title: "PUBLICAÇÃO", desc: "Versão 7.0 do esquema é publicada oficialmente.", color: "bg-accent" },
-    { date: "até 30/abr/2027", title: "Auditorias V6", desc: "Auditorias FSSC 22000 V6 só poderão ser realizadas até esta data.", color: "bg-primary" },
-    { date: "Maio 2027", title: "Início Auditorias V7", desc: "Começa o ciclo de auditorias contra o Esquema V7.", color: "bg-accent-glow" },
-    { date: "01/mai/2027 → 30/abr/2028", title: "Auditorias de upgrade", desc: "Auditorias de upgrade contra o Esquema V7 conduzidas neste período.", color: "bg-success" },
+    { date: "Maio 2026", title: "PUBLICAÇÃO", desc: "Versão 7.0 do esquema é publicada oficialmente.", color: "bg-accent", iconText: "text-primary-foreground" },
+    { date: "até 30/abr/2027", title: "Auditorias V6", desc: "Auditorias FSSC 22000 V6 só poderão ser realizadas até esta data.", color: "bg-primary", iconText: "text-primary-foreground" },
+    { date: "Maio 2027", title: "Início Auditorias V7", desc: "Começa o ciclo de auditorias contra o Esquema V7.", color: "bg-accent-glow", iconText: "text-primary" },
+    { date: "01/mai/2027 → 30/abr/2028", title: "Auditorias de upgrade", desc: "Auditorias de upgrade contra o Esquema V7 conduzidas neste período.", color: "bg-success", iconText: "text-primary-foreground" },
   ];
   return (
     <Slide bg="bg-background" decor={<MytsWatermark className="-left-16 -bottom-16 w-[320px] [filter:invert(1)]" />}>
@@ -470,7 +470,7 @@ const Transicao = () => {
           <div className="grid grid-cols-4 gap-4">
             {steps.map((s) => (
               <div key={s.title} className="flex flex-col items-center text-center">
-                <div className={`size-[52px] rounded-full ${s.color} border-4 border-background shadow-glow flex items-center justify-center text-primary-foreground font-bold`}>
+                <div className={`size-[52px] rounded-full ${s.color} border-4 border-background shadow-glow flex items-center justify-center ${s.iconText} font-bold`}>
                   <CalendarDays className="size-5" />
                 </div>
                 <div className="mt-4 rounded-2xl bg-gradient-card border border-border p-4 shadow-card">
