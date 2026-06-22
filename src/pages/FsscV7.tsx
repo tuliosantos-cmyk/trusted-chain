@@ -990,7 +990,7 @@ const MyTSFornecedores = () => (
       </p>
 
       <div className="rounded-2xl bg-primary text-primary-foreground p-5 shadow-elegant relative overflow-hidden">
-        <div className="absolute -right-12 -top-12 size-48 bg-glow opacity-50" />
+        <div className="absolute -right-12 -top-12 size-48 bg-glow opacity-50 blur-3xl rounded-full" />
         <div className="relative">
           <div className="flex items-center gap-3 text-accent-glow">
             <img src={mytsLogo} alt="MyTS" className="h-5" />
