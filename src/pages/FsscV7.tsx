@@ -411,7 +411,7 @@ const V6toV7 = () => {
       bg="bg-primary text-primary-foreground"
       decor={
         <>
-          <div className="absolute inset-0 grid-pattern opacity-20" />
+          <div className="absolute inset-0 grid-pattern opacity-10" />
           <MytsWatermark className="-right-16 -bottom-16 w-[360px]" />
         </>
       }
