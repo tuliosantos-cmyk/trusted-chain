@@ -952,12 +952,12 @@ const TabelaAlteracoes = () => {
         <div className="overflow-y-auto">
           {subset.map((r, i) => (
             <div key={r.n} className={`grid grid-cols-[40px_1fr_1fr_40px_1fr_40px] items-center text-xs border-t border-primary-foreground/10 ${i % 2 ? "bg-primary-foreground/[0.02]" : ""}`}>
-              <td className="p-2 px-3 font-mono font-bold text-accent-glow">{r.n}</td>
-              <td className="p-2 px-3 text-primary-foreground/75 leading-snug">{r.old}</td>
-              <td className="p-2 px-3 text-primary-foreground leading-snug">{r.v1}</td>
-              <td className="p-2 px-3 text-center font-mono font-semibold text-success">{r.n1}</td>
-              <td className="p-2 px-3 text-primary-foreground leading-snug">{r.v100}</td>
-              <td className="p-2 px-3 text-center font-mono font-semibold text-orange-300">{r.n100}</td>
+              <div className="p-2 px-3 font-mono font-bold text-accent-glow">{r.n}</div>
+              <div className="p-2 px-3 text-primary-foreground/75 leading-snug">{r.old}</div>
+              <div className="p-2 px-3 text-primary-foreground leading-snug">{r.v1}</div>
+              <div className="p-2 px-3 text-center font-mono font-semibold text-success">{r.n1}</div>
+              <div className="p-2 px-3 text-primary-foreground leading-snug">{r.v100}</div>
+              <div className="p-2 px-3 text-center font-mono font-semibold text-orange-300">{r.n100}</div>
             </div>
           ))}
         </div>
