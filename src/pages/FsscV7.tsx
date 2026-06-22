@@ -65,15 +65,13 @@ const Slide = ({
   decor?: React.ReactNode;
   pad?: string;
 }) => (
-  <section className={`${bg} relative w-full py-6 md:py-10 ${className}`}>
-    <div className="container">
-      <div
-        className="relative mx-auto w-full overflow-hidden rounded-3xl"
-        style={{ aspectRatio: "16 / 9", maxHeight: "92vh", minHeight: 520 }}
-      >
-        {decor}
-        <div className={`relative h-full w-full flex flex-col ${pad}`}>{children}</div>
-      </div>
+  <section className={`${bg} relative w-full flex justify-center ${className}`}>
+    <div
+      className="relative overflow-hidden"
+      style={{ width: "1920px", height: "1080px", minWidth: "1920px", minHeight: "1080px", maxWidth: "1920px", maxHeight: "1080px", flex: "0 0 auto" }}
+    >
+      {decor}
+      <div className={`relative h-full w-full flex flex-col ${pad}`}>{children}</div>
     </div>
   </section>
 );
