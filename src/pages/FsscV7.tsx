@@ -119,24 +119,12 @@ const Hero = () => (
         </p>
 
         <div className="mt-8 flex items-center gap-5 text-primary-foreground/75">
-          <div className="size-12 rounded-full overflow-hidden ring-2 ring-accent-glow/50">
-            <img src={anneFoto} alt="Anne Dezan" className="w-full h-full object-cover" />
-          </div>
           <div>
             <div className="font-semibold text-primary-foreground">Anne Dezan</div>
             <div className="text-xs text-primary-foreground/55">Bióloga · Consultora · Auditora</div>
           </div>
           <div className="h-10 w-px bg-primary-foreground/15" />
           <img src={mytsLogo} alt="MyTS" className="h-8 opacity-90" />
-        </div>
-      </div>
-
-      <div className="hidden md:block w-[300px] lg:w-[360px] shrink-0">
-        <div className="relative">
-          <div className="absolute -inset-6 bg-gradient-accent opacity-30 blur-2xl rounded-full" />
-          <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden border-2 border-primary-foreground/15 shadow-elegant">
-            <img src={anneFoto} alt="Anne Dezan" className="w-full h-full object-cover" />
-          </div>
         </div>
       </div>
     </div>
@@ -172,7 +160,7 @@ const AnneSection = () => (
         </div>
 
         <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-          <strong className="text-primary">+10 anos</strong> de experiência na gestão da qualidade
+          <strong className="text-primary">+15 anos</strong> de experiência na gestão da qualidade
           e segurança dos alimentos. Pós-graduada em Segurança dos Alimentos, Anne une bagagem
           técnica sólida com experiência prática real.
         </p>
@@ -464,10 +452,10 @@ const V6toV7 = () => {
 /* ---------- 06 · TRANSIÇÃO timeline (compact 16:9) ---------- */
 const Transicao = () => {
   const steps = [
-    { date: "Maio 2026", title: "PUBLICAÇÃO", desc: "Versão 7.0 do esquema é publicada oficialmente.", color: "bg-accent" },
-    { date: "até 30/abr/2027", title: "Auditorias V6", desc: "Auditorias FSSC 22000 V6 só poderão ser realizadas até esta data.", color: "bg-primary" },
-    { date: "Maio 2027", title: "Início Auditorias V7", desc: "Começa o ciclo de auditorias contra o Esquema V7.", color: "bg-accent-glow" },
-    { date: "01/mai/2027 → 30/abr/2028", title: "Auditorias de upgrade", desc: "Auditorias de upgrade contra o Esquema V7 conduzidas neste período.", color: "bg-success" },
+    { date: "Maio 2026", title: "PUBLICAÇÃO", desc: "Versão 7.0 do esquema é publicada oficialmente.", color: "bg-accent", iconText: "text-primary-foreground" },
+    { date: "até 30/abr/2027", title: "Auditorias V6", desc: "Auditorias FSSC 22000 V6 só poderão ser realizadas até esta data.", color: "bg-primary", iconText: "text-primary-foreground" },
+    { date: "Maio 2027", title: "Início Auditorias V7", desc: "Começa o ciclo de auditorias contra o Esquema V7.", color: "bg-accent-glow", iconText: "text-primary" },
+    { date: "01/mai/2027 → 30/abr/2028", title: "Auditorias de upgrade", desc: "Auditorias de upgrade contra o Esquema V7 conduzidas neste período.", color: "bg-success", iconText: "text-primary-foreground" },
   ];
   return (
     <Slide bg="bg-background" decor={<MytsWatermark className="-left-16 -bottom-16 w-[320px] [filter:invert(1)]" />}>
@@ -482,7 +470,7 @@ const Transicao = () => {
           <div className="grid grid-cols-4 gap-4">
             {steps.map((s) => (
               <div key={s.title} className="flex flex-col items-center text-center">
-                <div className={`size-[52px] rounded-full ${s.color} border-4 border-background shadow-glow flex items-center justify-center text-primary-foreground font-bold`}>
+                <div className={`size-[52px] rounded-full ${s.color} border-4 border-background shadow-glow flex items-center justify-center ${s.iconText} font-bold`}>
                   <CalendarDays className="size-5" />
                 </div>
                 <div className="mt-4 rounded-2xl bg-gradient-card border border-border p-4 shadow-card">
@@ -647,29 +635,42 @@ const Tabela11 = () => {
         <strong>Obs.:</strong> Não existem sub(sub)categorias para BIII, CII, CIII, D, E, FI, FII e G.
       </p>
 
-      <div className="mt-4 flex-1 rounded-2xl overflow-hidden border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur min-h-0 flex flex-col">
-        <div className="grid grid-cols-[60px_80px_1fr] bg-primary-foreground/10 text-[10px] uppercase tracking-widest font-semibold shrink-0">
-          <div className="p-2 px-3">Cat.</div>
-          <div className="p-2 px-3">Sub</div>
-          <div className="p-2 px-3">Descrição</div>
-        </div>
-        <div className="overflow-y-auto">
-          {rows.map((r, i) => (
-            <div
-              key={r.sub}
-              className={`grid grid-cols-[60px_80px_1fr] items-center text-xs border-t border-primary-foreground/10 ${i % 2 ? "bg-primary-foreground/[0.02]" : ""}`}
-            >
-              <div className="p-2 px-3">
-                <span className={`inline-block rounded-full ${catColor[r.cat]} text-white px-2 py-0.5 text-[10px] font-bold font-mono`}>
-                  {r.cat}
-                </span>
+      {(() => {
+        const catTitles: Record<string, string> = {
+          C0: "Processamento Animal Primário",
+          CI: "Produtos Perecíveis Animais",
+          CIV: "Produtos Ambientes / Processados",
+          I: "Embalagens",
+          K: "Bioquímicos",
+        };
+        const order = ["C0", "CI", "CIV", "I", "K"];
+        const grouped = order.map((c) => ({ cat: c, items: rows.filter((r) => r.cat === c) }));
+        return (
+          <div className="mt-4 flex-1 grid grid-cols-5 gap-2.5 min-h-0">
+            {grouped.map((g) => (
+              <div
+                key={g.cat}
+                className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur flex flex-col overflow-hidden"
+              >
+                <div className={`${catColor[g.cat]} px-3 py-2 flex items-center justify-between`}>
+                  <span className="font-mono text-[11px] font-bold text-white">{g.cat}</span>
+                  <span className="text-[9px] uppercase tracking-wider text-white/85 font-semibold truncate ml-2">
+                    {catTitles[g.cat]}
+                  </span>
+                </div>
+                <div className="flex-1 p-2 flex flex-col gap-1.5">
+                  {g.items.map((r) => (
+                    <div key={r.sub} className="rounded-lg bg-primary-foreground/[0.04] px-2 py-1.5 border border-primary-foreground/5">
+                      <div className="font-mono text-[10px] text-accent-glow font-bold">{r.sub}</div>
+                      <div className="text-[10.5px] text-primary-foreground/85 leading-snug">{r.desc}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="p-2 px-3 font-mono text-accent-glow font-semibold">{r.sub}</div>
-              <div className="p-2 px-3 text-primary-foreground/85 leading-snug">{r.desc}</div>
-            </div>
-          ))}
-        </div>
-      </div>
+            ))}
+          </div>
+        );
+      })()}
     </Slide>
   );
 };
