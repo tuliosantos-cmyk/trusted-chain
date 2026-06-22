@@ -95,8 +95,8 @@ const Hero = () => (
     pad="p-8 md:p-14"
     decor={
       <>
-        <div className="absolute inset-0 grid-pattern opacity-30" />
-        <div className="absolute -top-32 left-1/4 w-[700px] h-[700px] bg-glow opacity-60 pointer-events-none" />
+        <div className="absolute inset-0 grid-pattern opacity-15" />
+        <div className="absolute -top-32 left-1/4 w-[700px] h-[700px] bg-glow opacity-60 pointer-events-none blur-3xl rounded-full" />
         <MytsWatermark className="-right-20 -bottom-20 w-[420px]" />
       </>
     }
@@ -178,8 +178,8 @@ const Contexto = () => (
     bg="bg-primary text-primary-foreground"
     decor={
       <>
-        <div className="absolute inset-0 grid-pattern opacity-20" />
-        <div className="absolute -top-40 -right-20 size-[600px] bg-glow opacity-50" />
+          <div className="absolute inset-0 grid-pattern opacity-10" />
+        <div className="absolute -top-40 -right-20 size-[600px] bg-glow opacity-50 blur-3xl rounded-full" />
         <MytsWatermark className="-left-16 -bottom-20 w-[420px]" />
       </>
     }
@@ -284,7 +284,7 @@ const Conselho = () => {
       bg="bg-primary text-primary-foreground"
       decor={
         <>
-          <div className="absolute -top-20 -right-20 size-96 bg-glow opacity-50" />
+          <div className="absolute -top-20 -right-20 size-96 bg-glow opacity-50 blur-3xl rounded-full" />
           <MytsWatermark className="-left-12 -bottom-16 w-[340px]" />
         </>
       }
@@ -411,7 +411,7 @@ const V6toV7 = () => {
       bg="bg-primary text-primary-foreground"
       decor={
         <>
-          <div className="absolute inset-0 grid-pattern opacity-20" />
+          <div className="absolute inset-0 grid-pattern opacity-10" />
           <MytsWatermark className="-right-16 -bottom-16 w-[360px]" />
         </>
       }
@@ -731,7 +731,7 @@ const RotulagemImpressao = () => {
       bg="bg-primary text-primary-foreground"
       decor={
         <>
-          <div className="absolute -top-16 -right-16 size-80 bg-glow opacity-40" />
+          <div className="absolute -top-16 -right-16 size-80 bg-glow opacity-40 blur-3xl rounded-full" />
           <MytsWatermark className="-left-16 -bottom-16 w-[300px]" />
         </>
       }
@@ -990,7 +990,7 @@ const MyTSFornecedores = () => (
       </p>
 
       <div className="rounded-2xl bg-primary text-primary-foreground p-5 shadow-elegant relative overflow-hidden">
-        <div className="absolute -right-12 -top-12 size-48 bg-glow opacity-50" />
+        <div className="absolute -right-12 -top-12 size-48 bg-glow opacity-50 blur-3xl rounded-full" />
         <div className="relative">
           <div className="flex items-center gap-3 text-accent-glow">
             <img src={mytsLogo} alt="MyTS" className="h-5" />
@@ -1024,8 +1024,8 @@ const Final = () => (
     bg="bg-primary text-primary-foreground"
     decor={
       <>
-        <div className="absolute inset-0 grid-pattern opacity-20" />
-        <div className="absolute -right-32 -bottom-32 size-[600px] bg-glow opacity-50" />
+        <div className="absolute inset-0 grid-pattern opacity-10" />
+        <div className="absolute -right-32 -bottom-32 size-[600px] bg-glow opacity-50 blur-3xl rounded-full" />
         <MytsWatermark className="-left-16 -top-16 w-[400px]" />
       </>
     }
