@@ -731,7 +731,7 @@ const RotulagemImpressao = () => {
       bg="bg-primary text-primary-foreground"
       decor={
         <>
-          <div className="absolute -top-16 -right-16 size-80 bg-glow opacity-40" />
+          <div className="absolute -top-16 -right-16 size-80 bg-glow opacity-40 blur-3xl rounded-full" />
           <MytsWatermark className="-left-16 -bottom-16 w-[300px]" />
         </>
       }
