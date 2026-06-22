@@ -160,7 +160,7 @@ const AnneSection = () => (
         </div>
 
         <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-          <strong className="text-primary">+10 anos</strong> de experiência na gestão da qualidade
+          <strong className="text-primary">+15 anos</strong> de experiência na gestão da qualidade
           e segurança dos alimentos. Pós-graduada em Segurança dos Alimentos, Anne une bagagem
           técnica sólida com experiência prática real.
         </p>
