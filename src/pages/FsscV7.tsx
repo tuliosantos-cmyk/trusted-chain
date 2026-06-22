@@ -96,7 +96,7 @@ const Hero = () => (
     decor={
       <>
         <div className="absolute inset-0 grid-pattern opacity-30" />
-        <div className="absolute -top-32 left-1/4 w-[700px] h-[700px] bg-glow opacity-60 pointer-events-none" />
+        <div className="absolute -top-32 left-1/4 w-[700px] h-[700px] bg-glow opacity-60 pointer-events-none blur-3xl rounded-full" />
         <MytsWatermark className="-right-20 -bottom-20 w-[420px]" />
       </>
     }
