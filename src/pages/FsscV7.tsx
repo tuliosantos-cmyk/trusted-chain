@@ -178,7 +178,7 @@ const Contexto = () => (
     bg="bg-primary text-primary-foreground"
     decor={
       <>
-        <div className="absolute inset-0 grid-pattern opacity-20" />
+          <div className="absolute inset-0 grid-pattern opacity-10" />
         <div className="absolute -top-40 -right-20 size-[600px] bg-glow opacity-50 blur-3xl rounded-full" />
         <MytsWatermark className="-left-16 -bottom-20 w-[420px]" />
       </>
