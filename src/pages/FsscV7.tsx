@@ -284,7 +284,7 @@ const Conselho = () => {
       bg="bg-primary text-primary-foreground"
       decor={
         <>
-          <div className="absolute -top-20 -right-20 size-96 bg-glow opacity-50" />
+          <div className="absolute -top-20 -right-20 size-96 bg-glow opacity-50 blur-3xl rounded-full" />
           <MytsWatermark className="-left-12 -bottom-16 w-[340px]" />
         </>
       }
