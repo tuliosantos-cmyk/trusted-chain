@@ -119,24 +119,12 @@ const Hero = () => (
         </p>
 
         <div className="mt-8 flex items-center gap-5 text-primary-foreground/75">
-          <div className="size-12 rounded-full overflow-hidden ring-2 ring-accent-glow/50">
-            <img src={anneFoto} alt="Anne Dezan" className="w-full h-full object-cover" />
-          </div>
           <div>
             <div className="font-semibold text-primary-foreground">Anne Dezan</div>
             <div className="text-xs text-primary-foreground/55">Bióloga · Consultora · Auditora</div>
           </div>
           <div className="h-10 w-px bg-primary-foreground/15" />
           <img src={mytsLogo} alt="MyTS" className="h-8 opacity-90" />
-        </div>
-      </div>
-
-      <div className="hidden md:block w-[300px] lg:w-[360px] shrink-0">
-        <div className="relative">
-          <div className="absolute -inset-6 bg-gradient-accent opacity-30 blur-2xl rounded-full" />
-          <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden border-2 border-primary-foreground/15 shadow-elegant">
-            <img src={anneFoto} alt="Anne Dezan" className="w-full h-full object-cover" />
-          </div>
         </div>
       </div>
     </div>
