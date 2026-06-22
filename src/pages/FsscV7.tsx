@@ -65,10 +65,14 @@ const Slide = ({
   decor?: React.ReactNode;
   pad?: string;
 }) => (
-  <section className={`${bg} relative w-full flex justify-center ${className}`}>
+  <section className={`${bg} relative w-full overflow-hidden ${className}`} style={{ aspectRatio: "16 / 9" }}>
     <div
-      className="relative overflow-hidden"
-      style={{ width: "1920px", height: "1080px", minWidth: "1920px", minHeight: "1080px", maxWidth: "1920px", maxHeight: "1080px", flex: "0 0 auto" }}
+      className="absolute top-0 left-0 origin-top-left overflow-hidden"
+      style={{
+        width: "1920px",
+        height: "1080px",
+        transform: "scale(min(1, 100vw / 1920))",
+      }}
     >
       {decor}
       <div className={`relative h-full w-full flex flex-col ${pad}`}>{children}</div>
