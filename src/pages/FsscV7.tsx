@@ -1060,7 +1060,8 @@ const Final = () => (
 
 /* ---------- Page ---------- */
 const FsscV7 = () => (
-  <main className="bg-background">
+  <main className="bg-background" style={{ margin: 0, padding: 0, overflow: "hidden" }}>
+    <style>{`html,body,#root{margin:0;padding:0;overflow-x:hidden}`}</style>
     <Helmet>
       <title>Pronto para a V7? — Anne Dezan & MyTS</title>
       <meta
