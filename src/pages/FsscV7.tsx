@@ -23,11 +23,18 @@ import {
   Eye,
   Hexagon,
   Printer,
+  Link as LinkIcon,
+  Package,
+  Recycle,
+  MessageSquare,
+  Globe,
 } from "lucide-react";
+import anneFoto from "@/assets/anne-dezan.jpeg";
+import mytsLogo from "@/assets/myts-logo.svg";
+import mytsMark from "@/assets/myts-mark.svg";
 
 /* -----------------------------------------------------------
-   FSSC 22000 V7 — Visual long-form page
-   Conteúdo extraído fielmente do deck "Atualização FSSC 22000"
+   FSSC 22000 V7 — "Pronto para a V7?" — slides 16:9
    ----------------------------------------------------------- */
 
 const Chip = ({ children }: { children: React.ReactNode }) => (
@@ -36,312 +43,461 @@ const Chip = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
-const SectionLabel = ({ n, label }: { n: string; label: string }) => (
-  <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-    <span className="font-mono text-accent-glow">{n}</span>
-    <span className="h-px w-10 bg-accent/50" />
+const SectionLabel = ({ n, label, light = false }: { n: string; label: string; light?: boolean }) => (
+  <div className={`flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] ${light ? "text-accent-glow" : "text-accent"}`}>
+    <span className="font-mono">{n}</span>
+    <span className={`h-px w-10 ${light ? "bg-accent-glow/60" : "bg-accent/50"}`} />
     {label}
   </div>
 );
 
+/* Wrapper that constrains a section to a 16:9 frame */
+const Slide = ({
+  bg = "bg-background",
+  className = "",
+  children,
+  decor,
+  pad = "p-8 md:p-14",
+}: {
+  bg?: string;
+  className?: string;
+  children: React.ReactNode;
+  decor?: React.ReactNode;
+  pad?: string;
+}) => (
+  <section className={`${bg} relative w-full py-6 md:py-10 ${className}`}>
+    <div className="container">
+      <div
+        className="relative mx-auto w-full overflow-hidden rounded-3xl"
+        style={{ aspectRatio: "16 / 9", maxHeight: "92vh", minHeight: 520 }}
+      >
+        {decor}
+        <div className={`relative h-full w-full flex flex-col ${pad}`}>{children}</div>
+      </div>
+    </div>
+  </section>
+);
+
+/* Decorative MyTS mark watermark */
+const MytsWatermark = ({ className = "" }: { className?: string }) => (
+  <img
+    src={mytsMark}
+    alt=""
+    aria-hidden
+    className={`pointer-events-none select-none absolute opacity-[0.06] ${className}`}
+  />
+);
+
 /* ---------- 01 · HERO ---------- */
 const Hero = () => (
-  <section className="relative bg-hero overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32 noise">
-    <div className="absolute inset-0 grid-pattern opacity-30" />
-    <div className="absolute -top-40 right-0 w-[700px] h-[700px] rounded-full border border-primary-foreground/10" />
-    <div className="absolute -top-20 right-20 w-[500px] h-[500px] rounded-full border border-primary-foreground/10" />
-    <div className="absolute top-32 right-40 size-6 rounded-full bg-primary-foreground" />
-    <div className="absolute -top-32 left-1/4 w-[700px] h-[700px] bg-glow opacity-60 pointer-events-none" />
+  <Slide
+    bg="bg-hero"
+    pad="p-8 md:p-14"
+    decor={
+      <>
+        <div className="absolute inset-0 grid-pattern opacity-30" />
+        <div className="absolute -top-32 left-1/4 w-[700px] h-[700px] bg-glow opacity-60 pointer-events-none" />
+        <MytsWatermark className="-right-20 -bottom-20 w-[420px]" />
+      </>
+    }
+  >
+    <div className="flex h-full items-center gap-10">
+      <div className="flex-1 min-w-0">
+        <Chip>
+          <ShieldCheck className="size-3.5 text-accent-glow" />
+          Webinar técnico · Anne Dezan & MyTS
+        </Chip>
 
-    <div className="container relative">
-      <Chip>
-        <ShieldCheck className="size-3.5 text-accent-glow" />
-        Esquema FSSC 22000 · Versão 7.0
-      </Chip>
+        <h1 className="mt-6 font-display font-bold text-5xl md:text-7xl leading-[0.95] tracking-tight text-primary-foreground">
+          Pronto para a <br />
+          <span className="text-gradient">V7?</span>
+        </h1>
 
-      <h1 className="mt-8 font-display font-bold text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight text-primary-foreground max-w-5xl">
-        Atualização <br />
-        <span className="text-gradient">FSSC 22000</span>
-      </h1>
+        <p className="mt-6 text-lg md:text-xl text-primary-foreground/75 max-w-xl">
+          Tudo o que muda na transição da Versão 6 para a Versão 7 do esquema FSSC 22000,
+          organizado visualmente.
+        </p>
 
-      <p className="mt-8 text-lg md:text-xl text-primary-foreground/70 max-w-2xl">
-        Tudo o que muda na transição da Versão 6 para a Versão 7 do esquema FSSC 22000,
-        organizado visualmente.
-      </p>
-
-      <div className="mt-12 flex flex-wrap items-center gap-6 text-primary-foreground/75">
-        <div className="flex items-center gap-3">
-          <div className="size-12 rounded-full bg-gradient-accent shadow-cta flex items-center justify-center font-display font-bold text-accent-foreground">
-            AD
+        <div className="mt-8 flex items-center gap-5 text-primary-foreground/75">
+          <div className="size-12 rounded-full overflow-hidden ring-2 ring-accent-glow/50">
+            <img src={anneFoto} alt="Anne Dezan" className="w-full h-full object-cover" />
           </div>
           <div>
             <div className="font-semibold text-primary-foreground">Anne Dezan</div>
-            <div className="text-xs text-primary-foreground/55">Apresentação técnica</div>
+            <div className="text-xs text-primary-foreground/55">Bióloga · Consultora · Auditora</div>
+          </div>
+          <div className="h-10 w-px bg-primary-foreground/15" />
+          <img src={mytsLogo} alt="MyTS" className="h-8 opacity-90" />
+        </div>
+      </div>
+
+      <div className="hidden md:block w-[300px] lg:w-[360px] shrink-0">
+        <div className="relative">
+          <div className="absolute -inset-6 bg-gradient-accent opacity-30 blur-2xl rounded-full" />
+          <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden border-2 border-primary-foreground/15 shadow-elegant">
+            <img src={anneFoto} alt="Anne Dezan" className="w-full h-full object-cover" />
           </div>
         </div>
-        <div className="h-10 w-px bg-primary-foreground/15" />
-        <div className="font-display font-bold text-2xl text-primary-foreground">&amp; MyTS</div>
       </div>
     </div>
-  </section>
+  </Slide>
 );
 
-/* ---------- 02 · ESQUEMA V6 ---------- */
-const EsquemaV6 = () => (
-  <section className="py-24 md:py-32 bg-background">
-    <div className="container">
-      <SectionLabel n="02" label="Esquema FSSC 22000 · Versão 6.0" />
-      <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl text-primary max-w-3xl">
-        Como está estruturado o esquema <span className="text-gradient">hoje</span>
-      </h2>
+/* ---------- 01b · QUEM VAI CONDUZIR · ANNE ---------- */
+const AnneSection = () => (
+  <Slide
+    bg="bg-background"
+    decor={<MytsWatermark className="-right-16 -bottom-16 w-[360px] [filter:invert(1)] opacity-[0.04]" />}
+  >
+    <SectionLabel n="01" label="Quem vai conduzir o webinar" />
 
-      <div className="mt-16 relative rounded-3xl bg-gradient-card border border-border p-8 md:p-14 shadow-card">
-        {/* Top: SGSA / ISO 22000:2018 */}
-        <div className="flex justify-center">
-          <div className="rounded-2xl bg-primary text-primary-foreground px-8 py-6 shadow-elegant text-center min-w-[260px]">
-            <div className="text-xs uppercase tracking-widest text-accent-glow font-semibold">SGSA</div>
-            <div className="mt-2 font-display font-bold text-2xl">ISO 22000:2018</div>
+    <div className="mt-4 flex-1 grid md:grid-cols-[360px_1fr] gap-10 items-center">
+      <div className="relative">
+        <div className="absolute -inset-4 bg-gradient-accent opacity-20 blur-2xl rounded-full" />
+        <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-elegant border border-border">
+          <img src={anneFoto} alt="Anne Dezan" className="w-full h-full object-cover" />
+        </div>
+      </div>
+
+      <div>
+        <h2 className="font-display font-bold text-5xl md:text-6xl text-primary leading-[1]">
+          Anne <span className="text-gradient">Dezan</span>
+        </h2>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {["Bióloga", "Consultora", "Auditora", "Perita técnica em alimentos"].map((t) => (
+            <span key={t} className="rounded-full bg-accent/10 text-accent px-3 py-1 text-xs font-semibold uppercase tracking-wide">
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+          <strong className="text-primary">+10 anos</strong> de experiência na gestão da qualidade
+          e segurança dos alimentos. Pós-graduada em Segurança dos Alimentos, Anne une bagagem
+          técnica sólida com experiência prática real.
+        </p>
+        <p className="mt-4 text-lg text-primary font-display font-semibold leading-snug">
+          Ela não vai falar de teoria — vai trazer o que vê dentro das empresas e nas auditorias.
+        </p>
+      </div>
+    </div>
+  </Slide>
+);
+
+/* ---------- 01c · CONTEXTO ---------- */
+const Contexto = () => (
+  <Slide
+    bg="bg-primary text-primary-foreground"
+    decor={
+      <>
+        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="absolute -top-40 -right-20 size-[600px] bg-glow opacity-50" />
+        <MytsWatermark className="-left-16 -bottom-20 w-[420px]" />
+      </>
+    }
+  >
+    <SectionLabel n="CTX" label="Contexto" light />
+
+    <div className="mt-4 flex-1 grid md:grid-cols-[1.1fr_1fr] gap-10 items-center">
+      <div>
+        <h2 className="font-display font-bold text-4xl md:text-6xl leading-[1.05]">
+          O esquema <span className="text-gradient">FSSC 22000</span>
+        </h2>
+        <p className="mt-6 text-lg md:text-xl text-primary-foreground/80 leading-relaxed">
+          Descreve os <strong className="text-primary-foreground">requisitos para a auditoria e certificação</strong>{" "}
+          dos SGSA's das organizações na cadeia de abastecimento de alimentos.
+        </p>
+      </div>
+
+      <div className="relative">
+        <div className="rounded-3xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-8 shadow-elegant">
+          <div className="flex items-center gap-3 text-accent-glow">
+            <Award className="size-5" />
+            <span className="text-xs uppercase tracking-widest font-semibold">O certificado</span>
           </div>
+          <p className="mt-4 text-lg text-primary-foreground/90 leading-relaxed">
+            Confirma que o <strong className="text-primary-foreground">Sistema de Gestão</strong> da organização
+            está em <span className="text-accent-glow font-semibold">conformidade</span> com os requisitos do Esquema.
+          </p>
         </div>
+      </div>
+    </div>
+  </Slide>
+);
 
-        {/* Down arrows */}
-        <div className="mt-6 flex justify-center gap-32 md:gap-64">
-          <ArrowRight className="size-8 text-accent rotate-90" />
-          <ArrowRight className="size-8 text-accent rotate-90" />
+/* ---------- 02 · ESQUEMA V6 (3 quadrados → FSSC) ---------- */
+const EsquemaV6 = () => (
+  <Slide bg="bg-background" decor={<MytsWatermark className="-right-12 -top-12 w-[280px] [filter:invert(1)]" />}>
+    <SectionLabel n="02" label="Esquema FSSC 22000 · Versão 6.0" />
+    <h2 className="mt-3 font-display font-bold text-3xl md:text-5xl text-primary">
+      Como está estruturado o esquema <span className="text-gradient">hoje</span>
+    </h2>
+
+    <div className="mt-4 flex-1 grid md:grid-cols-[1fr_auto_1fr] gap-6 items-center">
+      {/* Left: three building blocks */}
+      <div className="grid gap-3">
+        {[
+          { icon: ShieldCheck, label: "SGSA", title: "ISO 22000:2018", tone: "bg-primary text-primary-foreground" },
+          { icon: Layers, label: "PPR's", title: "ISO/TS 22002-X", tone: "bg-accent text-accent-foreground" },
+          { icon: ListChecks, label: "Por setor · Versão 6.0", title: "Requisitos Adicionais", tone: "bg-accent-glow text-primary" },
+        ].map((b) => (
+          <div key={b.title} className={`rounded-2xl px-5 py-4 shadow-card ${b.tone}`}>
+            <div className="flex items-center gap-3">
+              <b.icon className="size-5 opacity-90" />
+              <div className="text-[10px] uppercase tracking-widest font-semibold opacity-80">{b.label}</div>
+            </div>
+            <div className="mt-1 font-display font-bold text-xl">{b.title}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Middle: converging arrows */}
+      <div className="flex flex-col items-center justify-center gap-2">
+        <div className="flex flex-col gap-3 items-end">
+          <ArrowRight className="size-7 text-accent" />
+          <ArrowRight className="size-7 text-accent" />
+          <ArrowRight className="size-7 text-accent" />
         </div>
+        <div className="mt-2 text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">complementam-se</div>
+      </div>
 
-        {/* Center label */}
-        <div className="mt-6 text-center">
-          <div className="inline-block font-display font-bold text-3xl md:text-4xl text-primary">
+      {/* Right: FSSC scheme result */}
+      <div className="relative">
+        <div className="absolute -inset-4 bg-gradient-accent opacity-20 blur-2xl rounded-full" />
+        <div className="relative rounded-3xl bg-primary text-primary-foreground p-8 shadow-elegant text-center">
+          <div className="text-xs uppercase tracking-widest text-accent-glow font-semibold">Resultado</div>
+          <div className="mt-3 font-display font-bold text-3xl md:text-4xl">
             Esquema <span className="text-gradient">FSSC 22000</span>
           </div>
-        </div>
-
-        {/* Bottom: Two pillars */}
-        <div className="mt-10 grid md:grid-cols-2 gap-6">
-          <div className="rounded-2xl bg-accent text-accent-foreground p-8 shadow-elegant">
-            <div className="flex items-center gap-3">
-              <Layers className="size-6" />
-              <div className="text-xs uppercase tracking-widest font-semibold opacity-80">PPR's</div>
-            </div>
-            <div className="mt-4 font-display font-bold text-3xl">ISO/TS 22002-X</div>
-            <div className="mt-2 text-sm opacity-85">Programa de pré-requisitos por categoria</div>
-          </div>
-          <div className="rounded-2xl bg-accent text-accent-foreground p-8 shadow-elegant">
-            <div className="flex items-center gap-3">
-              <ListChecks className="size-6" />
-              <div className="text-xs uppercase tracking-widest font-semibold opacity-80">Por setor</div>
-            </div>
-            <div className="mt-4 font-display font-bold text-3xl">Requisitos Adicionais</div>
-            <div className="mt-2 text-sm opacity-85">+ BoS &nbsp;·&nbsp; + Artigos de interpretação</div>
+          <div className="mt-4 flex flex-wrap justify-center gap-2">
+            {["SGSA", "PPR's", "Req. Adicionais"].map((t) => (
+              <span key={t} className="rounded-full border border-primary-foreground/20 bg-primary-foreground/5 px-3 py-1 text-[11px] font-semibold">
+                {t}
+              </span>
+            ))}
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </Slide>
 );
 
-/* ---------- 03 · CONSELHO ---------- */
-const Conselho = () => (
-  <section className="py-24 md:py-32 bg-primary text-primary-foreground relative overflow-hidden">
-    <div className="absolute -top-20 -right-20 size-96 bg-glow opacity-50" />
-    <div className="container relative">
-      <SectionLabel n="03" label="Governança do esquema" />
-      <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl leading-tight max-w-4xl">
-        Conselho das <br />
-        <span className="text-gradient">Partes Interessadas</span>
+/* ---------- 03 · CONSELHO (texto completo) ---------- */
+const Conselho = () => {
+  const items = [
+    { i: Building2, t: "É composto por representantes dos setores de alimentação." },
+    { i: CheckCircle2, t: "É responsável pela aprovação do conteúdo e funcionamento do esquema FSSC 22000." },
+    { i: FileText, t: "É um documento que contém decisões aplicáveis ao esquema FSSC 22000." },
+    { i: GitCompare, t: "As decisões anulam ou clarificam melhor as regras existentes do regime e têm de ser aplicadas no período definido." },
+    { i: Workflow, t: "A lista de decisões é dinâmica e pode ser ajustada pelo BoS quando considerado necessário." },
+  ];
+  return (
+    <Slide
+      bg="bg-primary text-primary-foreground"
+      decor={
+        <>
+          <div className="absolute -top-20 -right-20 size-96 bg-glow opacity-50" />
+          <MytsWatermark className="-left-12 -bottom-16 w-[340px]" />
+        </>
+      }
+    >
+      <SectionLabel n="03" label="Governança do esquema" light />
+      <h2 className="mt-3 font-display font-bold text-3xl md:text-5xl leading-tight">
+        Conselho das <span className="text-gradient">Partes Interessadas</span>
       </h2>
 
-      <div className="mt-14 grid md:grid-cols-2 gap-6">
-        <div className="rounded-3xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-8">
-          <div className="flex items-center gap-3 text-accent-glow">
-            <CheckCircle2 className="size-5" />
-            <span className="text-xs uppercase tracking-widest font-semibold">Responsabilidade</span>
+      <div className="mt-6 flex-1 grid md:grid-cols-2 gap-3 content-center">
+        {items.map((it, i) => (
+          <div
+            key={i}
+            className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-5 flex items-start gap-4"
+          >
+            <div className="size-10 rounded-xl bg-gradient-accent flex items-center justify-center shrink-0 shadow-cta">
+              <it.i className="size-5 text-accent-foreground" />
+            </div>
+            <p className="text-primary-foreground/90 leading-relaxed text-[15px]">{it.t}</p>
           </div>
-          <p className="mt-4 text-lg leading-relaxed text-primary-foreground/85">
-            É responsável pela <strong className="text-primary-foreground">aprovação do conteúdo do esquema FSSC 22000</strong>.
-          </p>
-        </div>
-        <div className="rounded-3xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-8">
-          <div className="flex items-center gap-3 text-accent-glow">
-            <Workflow className="size-5" />
-            <span className="text-xs uppercase tracking-widest font-semibold">Decisão</span>
-          </div>
-          <p className="mt-4 text-lg leading-relaxed text-primary-foreground/85">
-            A revisão pode ser <strong className="text-primary-foreground">contínua ou exclusiva</strong>, e pode ser assumida pelo <strong className="text-primary-foreground">BoS</strong> quando necessário.
-          </p>
-        </div>
+        ))}
       </div>
-    </div>
-  </section>
-);
+    </Slide>
+  );
+};
 
 /* ---------- 04 · BoS v7.0 ---------- */
 const BoSCard = () => (
-  <section className="py-24 md:py-32 bg-background">
-    <div className="container">
-      <SectionLabel n="04" label="Board of Stakeholders" />
-      <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl text-primary">
-        <span className="text-gradient">BoS v.7.0</span> — Maio 2026
-      </h2>
+  <Slide bg="bg-background" decor={<MytsWatermark className="-right-16 -top-16 w-[300px] [filter:invert(1)]" />}>
+    <SectionLabel n="04" label="Board of Stakeholders" />
+    <h2 className="mt-3 font-display font-bold text-3xl md:text-5xl text-primary">
+      <span className="text-gradient">BoS v.7.0</span> — Maio 2026
+    </h2>
 
-      <div className="mt-14 rounded-3xl bg-gradient-card border border-border shadow-card overflow-hidden">
-        <div className="bg-success p-6 text-success-foreground flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Award className="size-6" />
-            <span className="font-display font-semibold text-lg">FSSC 22000 — Decision #1</span>
-          </div>
-          <span className="rounded-full bg-success-foreground/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide">
-            Mandatory
+    <div className="mt-6 flex-1 rounded-3xl bg-gradient-card border border-border shadow-card overflow-hidden flex flex-col">
+      <div className="bg-success p-4 text-success-foreground flex items-center justify-between flex-wrap gap-2">
+        <div className="flex items-center gap-3">
+          <Award className="size-5" />
+          <span className="font-display font-semibold text-lg">FSSC 22000 — Decision</span>
+          <span className="rounded-full bg-success-foreground/15 px-3 py-1 text-xs font-bold uppercase tracking-wide">
+            Number: #1
           </span>
         </div>
+        <span className="rounded-full bg-success-foreground/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide">
+          Nature: Mandatory
+        </span>
+      </div>
 
-        <div className="grid md:grid-cols-12 gap-0 divide-y md:divide-y-0 md:divide-x divide-border">
-          <div className="md:col-span-5 p-6">
-            <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Reference</div>
-            <div className="mt-2 font-display font-semibold text-xl text-primary">
-              Requirements for Version 7 Upgrade Process
-            </div>
-            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              The V7 Upgrade Process sets out the requirements for CBs and ABs on the transition
-              process, including how to transition organizations from FSSC 22000 Version 6 to Version 7.
-            </p>
+      <div className="grid md:grid-cols-12 flex-1 divide-y md:divide-y-0 md:divide-x divide-border">
+        <div className="md:col-span-5 p-6">
+          <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Reference</div>
+          <div className="mt-2 font-display font-semibold text-lg text-primary">
+            Requirements for Version 7 Upgrade Process
           </div>
-          <div className="md:col-span-2 p-6">
-            <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Decision date</div>
-            <div className="mt-2 font-display font-bold text-2xl text-primary">12 Nov 2025</div>
-          </div>
-          <div className="md:col-span-2 p-6">
-            <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Effective date</div>
-            <div className="mt-2 font-display font-bold text-2xl text-accent">01 May 2027</div>
-          </div>
-          <div className="md:col-span-3 p-6 bg-accent/5">
-            <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Transition period</div>
-            <div className="mt-2 font-display font-bold text-3xl text-primary">12 <span className="text-base font-medium text-muted-foreground">meses</span></div>
+          <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+            The V7 Upgrade Process sets out the requirements for CBs and ABs on the transition
+            process, including how to transition organizations from FSSC 22000 V6 to V7.
+          </p>
+          <a
+            href="https://www.fssc.com/schemes/fssc-22000/version-7/"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent hover:underline"
+          >
+            <LinkIcon className="size-4" /> Acessar referência oficial
+          </a>
+        </div>
+        <div className="md:col-span-2 p-6">
+          <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Decision date</div>
+          <div className="mt-2 font-display font-bold text-xl text-primary">12 Nov 2025</div>
+        </div>
+        <div className="md:col-span-2 p-6">
+          <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Effective date</div>
+          <div className="mt-2 font-display font-bold text-xl text-accent">01 May 2027</div>
+        </div>
+        <div className="md:col-span-3 p-6 bg-accent/5">
+          <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Transition period</div>
+          <div className="mt-2 font-display font-bold text-3xl text-primary">
+            12 <span className="text-base font-medium text-muted-foreground">meses</span>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </Slide>
 );
 
 /* ---------- 05 · V6 → V7 ---------- */
 const V6toV7 = () => {
-  const Stack = ({ label, items, ring }: { label: string; items: string[]; ring: string }) => (
-    <div className="flex-1">
-      <div className={`inline-block rounded-2xl ${ring} px-5 py-2 font-display font-bold text-primary-foreground text-lg shadow-elegant`}>
+  const Stack = ({
+    label,
+    items,
+    extra,
+    ring,
+    extraTone,
+  }: {
+    label: string;
+    items: string[];
+    extra: string;
+    ring: string;
+    extraTone: string;
+  }) => (
+    <div className="flex-1 flex flex-col">
+      <div className={`inline-block self-start rounded-2xl ${ring} px-4 py-1.5 font-display font-bold text-primary-foreground shadow-elegant`}>
         {label}
       </div>
-      <div className="mt-6 space-y-3">
+      <div className="mt-4 space-y-2">
         {items.map((it, i) => (
           <div
             key={i}
-            className="rounded-xl bg-primary-foreground/95 border border-primary-foreground/40 p-4 text-primary font-semibold shadow-card"
+            className="rounded-xl bg-primary-foreground/95 border border-primary-foreground/40 p-3 text-primary font-semibold shadow-card text-sm"
           >
             {it}
           </div>
         ))}
+        <div className={`rounded-xl ${extraTone} p-3 font-semibold text-sm shadow-card`}>
+          {extra}
+        </div>
       </div>
     </div>
   );
 
   return (
-    <section className="py-24 md:py-32 bg-primary text-primary-foreground relative overflow-hidden">
-      <div className="absolute inset-0 grid-pattern opacity-20" />
-      <div className="container relative">
-        <SectionLabel n="05" label="Comparativo de normas" />
-        <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl">
-          Esquema FSSC 22000 — <span className="text-gradient">V.6 → V.7</span>
-        </h2>
+    <Slide
+      bg="bg-primary text-primary-foreground"
+      decor={
+        <>
+          <div className="absolute inset-0 grid-pattern opacity-20" />
+          <MytsWatermark className="-right-16 -bottom-16 w-[360px]" />
+        </>
+      }
+    >
+      <SectionLabel n="05" label="Comparativo de normas" light />
+      <h2 className="mt-3 font-display font-bold text-3xl md:text-5xl">
+        Esquema FSSC 22000 — <span className="text-gradient">V.6 → V.7</span>
+      </h2>
 
-        <div className="mt-14 grid md:grid-cols-[1fr_auto_1fr] gap-8 items-start">
-          <Stack
-            label="Antes · V.6"
-            ring="bg-accent"
-            items={["ISO 22000:2018", "ISO/TS 22002-1"]}
-          />
-          <div className="hidden md:flex flex-col items-center pt-16">
-            <div className="rounded-full bg-gradient-accent p-4 shadow-glow">
-              <ArrowRight className="size-8 text-accent-foreground" />
-            </div>
-            <div className="mt-3 text-xs uppercase tracking-widest text-accent-glow font-semibold">Transição</div>
+      <div className="mt-6 flex-1 grid md:grid-cols-[1fr_auto_1fr] gap-6 items-center">
+        <Stack
+          label="Antes · V.6"
+          ring="bg-accent"
+          items={["ISO 22000:2018", "ISO/TS 22002-1"]}
+          extra="Requisitos adicionais"
+          extraTone="bg-accent/20 text-accent-glow border border-accent/40"
+        />
+        <div className="hidden md:flex flex-col items-center">
+          <div className="rounded-full bg-gradient-accent p-3 shadow-glow">
+            <ArrowRight className="size-7 text-accent-foreground" />
           </div>
-          <Stack
-            label="Agora · V.7"
-            ring="bg-accent-glow"
-            items={["ISO 22000:2018", "ISO 22002-100:2025", "ISO 22002-1:2025 (Categoria)"]}
-          />
+          <div className="mt-2 text-[10px] uppercase tracking-widest text-accent-glow font-semibold">
+            Transição
+          </div>
         </div>
+        <Stack
+          label="Agora · V.7"
+          ring="bg-accent-glow"
+          items={["ISO 22000:2018", "ISO 22002-100:2025", "ISO 22002-1:2025 (Categoria)"]}
+          extra="Requisitos adicionais V7"
+          extraTone="bg-accent-glow/20 text-accent-glow border border-accent-glow/50"
+        />
       </div>
-    </section>
+    </Slide>
   );
 };
 
-/* ---------- 06 · TRANSIÇÃO timeline ---------- */
-const Transicao = () => (
-  <section className="py-24 md:py-32 bg-background">
-    <div className="container">
+/* ---------- 06 · TRANSIÇÃO timeline (compact 16:9) ---------- */
+const Transicao = () => {
+  const steps = [
+    { date: "Maio 2026", title: "PUBLICAÇÃO", desc: "Versão 7.0 do esquema é publicada oficialmente.", color: "bg-accent" },
+    { date: "até 30/abr/2027", title: "Auditorias V6", desc: "Auditorias FSSC 22000 V6 só poderão ser realizadas até esta data.", color: "bg-primary" },
+    { date: "Maio 2027", title: "Início Auditorias V7", desc: "Começa o ciclo de auditorias contra o Esquema V7.", color: "bg-accent-glow" },
+    { date: "01/mai/2027 → 30/abr/2028", title: "Auditorias de upgrade", desc: "Auditorias de upgrade contra o Esquema V7 conduzidas neste período.", color: "bg-success" },
+  ];
+  return (
+    <Slide bg="bg-background" decor={<MytsWatermark className="-left-16 -bottom-16 w-[320px] [filter:invert(1)]" />}>
       <SectionLabel n="06" label="Calendário de transição" />
-      <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl text-primary">
+      <h2 className="mt-3 font-display font-bold text-3xl md:text-5xl text-primary">
         Linha do tempo da <span className="text-gradient">Transição</span>
       </h2>
 
-      <div className="mt-16 relative">
-        {/* Timeline line */}
-        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-accent-glow to-accent" />
-
-        {[
-          {
-            date: "Maio 2026",
-            title: "PUBLICAÇÃO",
-            desc: "Versão 7.0 do esquema é publicada oficialmente.",
-            side: "left",
-            color: "bg-accent",
-          },
-          {
-            date: "até 30 de abril de 2027",
-            title: "Auditorias V6",
-            desc: "As auditorias FSSC 22000 Versão 6 só poderão ser realizadas até 30 de abril de 2027.",
-            side: "right",
-            color: "bg-primary",
-          },
-          {
-            date: "Maio 2027",
-            title: "INÍCIO AUDITORIAS V7",
-            desc: "Começa o ciclo de auditorias contra o Esquema V7.",
-            side: "left",
-            color: "bg-accent-glow",
-          },
-          {
-            date: "1 maio 2027 → 30 abril 2028",
-            title: "Auditorias de upgrade",
-            desc: "As auditorias de upgrade contra o Esquema FSSC 22000 Versão 7 deverão ser conduzidas neste período.",
-            side: "right",
-            color: "bg-success",
-          },
-        ].map((s, i) => (
-          <div
-            key={i}
-            className={`relative grid md:grid-cols-2 gap-8 mb-12 ${
-              s.side === "right" ? "md:rtl" : ""
-            }`}
-          >
-            <div className={`md:ltr ${s.side === "right" ? "md:col-start-2" : ""}`}>
-              <div className="ml-12 md:ml-0 md:mr-12 rounded-2xl bg-gradient-card border border-border p-6 shadow-card">
-                <div className="text-xs uppercase tracking-widest text-accent font-semibold">{s.date}</div>
-                <div className="mt-2 font-display font-bold text-xl text-primary">{s.title}</div>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+      <div className="mt-8 flex-1 flex items-center">
+        <div className="relative w-full">
+          <div className="absolute left-0 right-0 top-[26px] h-px bg-gradient-to-r from-accent via-accent-glow to-success" />
+          <div className="grid grid-cols-4 gap-4">
+            {steps.map((s) => (
+              <div key={s.title} className="flex flex-col items-center text-center">
+                <div className={`size-[52px] rounded-full ${s.color} border-4 border-background shadow-glow flex items-center justify-center text-primary-foreground font-bold`}>
+                  <CalendarDays className="size-5" />
+                </div>
+                <div className="mt-4 rounded-2xl bg-gradient-card border border-border p-4 shadow-card">
+                  <div className="text-[10px] uppercase tracking-widest text-accent font-bold">{s.date}</div>
+                  <div className="mt-1 font-display font-bold text-base text-primary">{s.title}</div>
+                  <p className="mt-1 text-xs text-muted-foreground leading-snug">{s.desc}</p>
+                </div>
               </div>
-            </div>
-            <div
-              className={`absolute left-4 md:left-1/2 -translate-x-1/2 size-8 rounded-full ${s.color} border-4 border-background shadow-glow`}
-            />
+            ))}
           </div>
-        ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </Slide>
+  );
+};
 
 /* ---------- 07 · ESTRUTURA Requisitos Adicionais ---------- */
 const EstruturaRequisitos = () => {
@@ -357,95 +513,97 @@ const EstruturaRequisitos = () => {
     { n: "APÊNDICE 2", t: "Referências normativas" },
   ];
   return (
-    <section className="py-24 md:py-32 bg-primary text-primary-foreground">
-      <div className="container">
-        <SectionLabel n="07" label="Estrutura do documento" />
-        <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl">
-          Requisitos adicionais <span className="text-gradient">FSSC 22000</span>
-        </h2>
+    <Slide
+      bg="bg-primary text-primary-foreground"
+      decor={<MytsWatermark className="-right-16 -top-16 w-[320px]" />}
+    >
+      <SectionLabel n="07" label="Estrutura do documento" light />
+      <h2 className="mt-3 font-display font-bold text-3xl md:text-5xl">
+        Requisitos adicionais <span className="text-gradient">FSSC 22000</span>
+      </h2>
 
-        <div className="mt-14 grid md:grid-cols-5 gap-4">
+      <div className="mt-6 flex-1 flex flex-col gap-3 justify-center">
+        <div className="grid md:grid-cols-5 gap-3">
           {parts.map((p, i) => (
-            <div
-              key={p.n}
-              className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-6 hover:border-accent-glow/60 transition-all"
-            >
-              <div className="font-mono text-xs text-accent-glow font-bold">{p.n}</div>
-              <div className="mt-3 font-display font-semibold text-lg leading-snug">{p.t}</div>
-              <div className="mt-4 size-8 rounded-full bg-gradient-accent flex items-center justify-center text-sm font-bold text-accent-foreground">
+            <div key={p.n} className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-4 hover:border-accent-glow/60 transition-all">
+              <div className="font-mono text-[10px] text-accent-glow font-bold">{p.n}</div>
+              <div className="mt-2 font-display font-semibold text-sm leading-snug">{p.t}</div>
+              <div className="mt-3 size-7 rounded-full bg-gradient-accent flex items-center justify-center text-xs font-bold text-accent-foreground">
                 {i + 1}
               </div>
             </div>
           ))}
         </div>
-
-        <div className="mt-6 grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-3">
           {apx.map((p) => (
-            <div key={p.n} className="rounded-2xl border border-dashed border-primary-foreground/20 p-5 flex items-center gap-4">
+            <div key={p.n} className="rounded-2xl border border-dashed border-primary-foreground/20 p-3 flex items-center gap-3">
               <FileText className="size-5 text-accent-glow" />
               <div>
-                <div className="font-mono text-xs text-accent-glow font-bold">{p.n}</div>
-                <div className="font-display font-semibold">{p.t}</div>
+                <div className="font-mono text-[10px] text-accent-glow font-bold">{p.n}</div>
+                <div className="font-display font-semibold text-sm">{p.t}</div>
               </div>
             </div>
           ))}
         </div>
       </div>
-    </section>
+    </Slide>
   );
 };
 
 /* ---------- 08 · VISÃO GERAL ---------- */
-const VisaoGeral = () => (
-  <section className="py-24 md:py-32 bg-background">
-    <div className="container">
+const VisaoGeral = () => {
+  const semAlt = [
+    "Na estrutura do esquema (5 partes, 2 apêndices e 5 anexos)",
+    "No âmbito/cobertura/escopo do esquema",
+  ];
+  const alt = [
+    "Inclusão da série ISO 22002-X como documentos substituindo a série ISO/TS 22002-X e PAS 221 (varejo)",
+    "Adição da tabela 1.1 — Classificação de Sub(sub)categorias (competência auditores para diferentes produtos/escopos)",
+    "Alterações editoriais, esclarecimentos e emenda (melhoria contínua)",
+  ];
+  return (
+    <Slide bg="bg-background" decor={<MytsWatermark className="-left-16 -top-16 w-[260px] [filter:invert(1)]" />}>
       <SectionLabel n="08" label="Visão geral das mudanças" />
-      <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl text-primary">
+      <h2 className="mt-3 font-display font-bold text-3xl md:text-5xl text-primary">
         O que <span className="text-gradient">muda</span> — e o que segue igual
       </h2>
 
-      <div className="mt-14 grid md:grid-cols-2 gap-6">
-        <div className="rounded-3xl bg-gradient-card border-2 border-success/30 p-8 shadow-card">
+      <div className="mt-6 flex-1 grid md:grid-cols-2 gap-5">
+        <div className="rounded-3xl bg-gradient-card border-2 border-success/30 p-6 shadow-card flex flex-col">
           <div className="flex items-center gap-3">
-            <div className="size-12 rounded-2xl bg-success text-success-foreground flex items-center justify-center">
-              <CheckCircle2 className="size-6" />
+            <div className="size-10 rounded-2xl bg-success text-success-foreground flex items-center justify-center">
+              <CheckCircle2 className="size-5" />
             </div>
-            <div className="font-display font-bold text-2xl text-primary">Sem alterações</div>
+            <div className="font-display font-bold text-xl text-primary">Sem alterações</div>
           </div>
-          <div className="mt-6 space-y-2">
-            {["Parte 1 — Visão geral", "Parte 3 — Processo de certificação"].map((x) => (
-              <div key={x} className="rounded-xl bg-success/5 border border-success/20 px-4 py-3 text-sm font-medium text-primary">
-                {x}
+          <div className="mt-4 space-y-2 flex-1">
+            {semAlt.map((x) => (
+              <div key={x} className="rounded-xl bg-success/5 border border-success/20 px-3 py-2 text-sm font-medium text-primary leading-snug flex gap-2">
+                <CheckCircle2 className="size-4 text-success shrink-0 mt-0.5" /> {x}
               </div>
             ))}
           </div>
         </div>
 
-        <div className="rounded-3xl bg-gradient-card border-2 border-accent/30 p-8 shadow-card">
+        <div className="rounded-3xl bg-gradient-card border-2 border-accent/30 p-6 shadow-card flex flex-col">
           <div className="flex items-center gap-3">
-            <div className="size-12 rounded-2xl bg-accent text-accent-foreground flex items-center justify-center">
-              <AlertCircle className="size-6" />
+            <div className="size-10 rounded-2xl bg-accent text-accent-foreground flex items-center justify-center">
+              <AlertCircle className="size-5" />
             </div>
-            <div className="font-display font-bold text-2xl text-primary">Alterações</div>
+            <div className="font-display font-bold text-xl text-primary">Alterações</div>
           </div>
-          <div className="mt-6 grid grid-cols-2 gap-2">
-            {[
-              "Parte 2 — Organizações auditadas",
-              "Parte 4 — Organismos de certificação",
-              "Parte 5 — Organismos de acreditação",
-              "Apêndice 1 — Definições",
-              "Apêndice 2 — Referências",
-            ].map((x) => (
-              <div key={x} className="rounded-xl bg-accent/5 border border-accent/20 px-4 py-3 text-sm font-medium text-primary">
-                {x}
+          <div className="mt-4 space-y-2 flex-1">
+            {alt.map((x) => (
+              <div key={x} className="rounded-xl bg-accent/5 border border-accent/20 px-3 py-2 text-sm font-medium text-primary leading-snug flex gap-2">
+                <Sparkles className="size-4 text-accent shrink-0 mt-0.5" /> {x}
               </div>
             ))}
           </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </Slide>
+  );
+};
 
 /* ---------- 09 · TABELA 1.1 ---------- */
 const Tabela11 = () => {
@@ -456,18 +614,18 @@ const Tabela11 = () => {
     { cat: "CI", sub: "CI-2", desc: "Peixes, moluscos e crustáceos" },
     { cat: "CI", sub: "CI-3", desc: "Laticínios" },
     { cat: "CI", sub: "CI-4", desc: "Ovos e derivados" },
-    { cat: "CIV", sub: "CIV-1", desc: "Produtos processados térmicos e/ou sob pressão, incluindo pasteurização, esterilização comercial (UHT, conservas, autoclave) e processamento a alta pressão (HPP)" },
+    { cat: "CIV", sub: "CIV-1", desc: "Produtos processados térmicos/sob pressão (UHT, conservas, autoclave, HPP)" },
     { cat: "CIV", sub: "CIV-2", desc: "Alimentos secos e ingredientes (açúcar, sal, especiarias, farinha, etc.)" },
-    { cat: "CIV", sub: "CIV-3", desc: "Alimentos e ingredientes conservados/autopreservados (ricos em ácidos, com baixa atividade de água, com alto teor de açúcar/brix, conservados com conservantes, vinagre, molhos, conservas, picles, produtos fermentados, molho de soja, mel cru/não pasteurizado). Exclui os produtos abrangidos pela CIV-1." },
+    { cat: "CIV", sub: "CIV-3", desc: "Alimentos e ingredientes conservados/autopreservados (excl. CIV-1)" },
     { cat: "CIV", sub: "CIV-4", desc: "Produtos extrusados, panificação e confeitaria" },
     { cat: "CIV", sub: "CIV-5", desc: "Gorduras e óleos vegetais ou animais" },
-    { cat: "CIV", sub: "CIV-6", desc: "Bebidas (incluindo bebidas alcoólicas)" },
+    { cat: "CIV", sub: "CIV-6", desc: "Bebidas (incluindo alcoólicas)" },
     { cat: "I", sub: "I-1", desc: "Plásticos (rígidos e flexíveis)" },
     { cat: "I", sub: "I-2", desc: "Papel e cartão" },
     { cat: "I", sub: "I-3", desc: "Metal" },
     { cat: "I", sub: "I-4", desc: "Vidro" },
     { cat: "I", sub: "I-5", desc: "Outros: madeira, cortiça, corda, fita, tinta, etc." },
-    { cat: "K", sub: "K-1", desc: "Auxiliares de processamento, aditivos, corantes, aromas, gases, vitaminas, suplementos alimentares" },
+    { cat: "K", sub: "K-1", desc: "Auxiliares, aditivos, corantes, aromas, gases, vitaminas, suplementos" },
     { cat: "K", sub: "K-2", desc: "Bioculturas e enzimas" },
   ];
 
@@ -480,41 +638,39 @@ const Tabela11 = () => {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-primary text-primary-foreground">
-      <div className="container">
-        <SectionLabel n="09" label="Tabela 1.1" />
-        <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl">
-          (Sub)Categorias — <span className="text-gradient">Descrição</span>
-        </h2>
-        <p className="mt-4 text-primary-foreground/65 max-w-3xl">
-          <strong>Obs.:</strong> Não existem sub(sub)categorias para BIII, CII, CIII, D, E, FI, FII e G.
-        </p>
+    <Slide bg="bg-primary text-primary-foreground" decor={<MytsWatermark className="-right-12 -bottom-12 w-[300px]" />}>
+      <SectionLabel n="09" label="Tabela 1.1" light />
+      <h2 className="mt-3 font-display font-bold text-3xl md:text-4xl">
+        (Sub)Categorias — <span className="text-gradient">Descrição</span>
+      </h2>
+      <p className="mt-1 text-xs text-primary-foreground/60">
+        <strong>Obs.:</strong> Não existem sub(sub)categorias para BIII, CII, CIII, D, E, FI, FII e G.
+      </p>
 
-        <div className="mt-12 rounded-3xl overflow-hidden border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur">
-          <div className="grid grid-cols-[80px_100px_1fr] bg-primary-foreground/10 text-xs uppercase tracking-widest font-semibold">
-            <div className="p-4">(Sub) Cat.</div>
-            <div className="p-4">Sub(sub)</div>
-            <div className="p-4">Descrição</div>
-          </div>
+      <div className="mt-4 flex-1 rounded-2xl overflow-hidden border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur min-h-0 flex flex-col">
+        <div className="grid grid-cols-[60px_80px_1fr] bg-primary-foreground/10 text-[10px] uppercase tracking-widest font-semibold shrink-0">
+          <div className="p-2 px-3">Cat.</div>
+          <div className="p-2 px-3">Sub</div>
+          <div className="p-2 px-3">Descrição</div>
+        </div>
+        <div className="overflow-y-auto">
           {rows.map((r, i) => (
             <div
               key={r.sub}
-              className={`grid grid-cols-[80px_100px_1fr] items-center text-sm border-t border-primary-foreground/10 ${
-                i % 2 ? "bg-primary-foreground/[0.02]" : ""
-              }`}
+              className={`grid grid-cols-[60px_80px_1fr] items-center text-xs border-t border-primary-foreground/10 ${i % 2 ? "bg-primary-foreground/[0.02]" : ""}`}
             >
-              <div className="p-4">
-                <span className={`inline-block rounded-full ${catColor[r.cat]} text-white px-3 py-1 text-xs font-bold font-mono`}>
+              <div className="p-2 px-3">
+                <span className={`inline-block rounded-full ${catColor[r.cat]} text-white px-2 py-0.5 text-[10px] font-bold font-mono`}>
                   {r.cat}
                 </span>
               </div>
-              <div className="p-4 font-mono text-accent-glow font-semibold">{r.sub}</div>
-              <div className="p-4 text-primary-foreground/85 leading-relaxed">{r.desc}</div>
+              <div className="p-2 px-3 font-mono text-accent-glow font-semibold">{r.sub}</div>
+              <div className="p-2 px-3 text-primary-foreground/85 leading-snug">{r.desc}</div>
             </div>
           ))}
         </div>
       </div>
-    </section>
+    </Slide>
   );
 };
 
@@ -531,95 +687,79 @@ const RequisitosV7 = () => {
     { n: "2.5.8", t: "Cultura de segurança de alimentos e qualidade" },
     { n: "2.5.9", t: "Controle de qualidade" },
     { n: "2.5.10", t: "Transporte, armazenamento e estocagem" },
-    { n: "2.5.11", t: "Controle de perigos e medidas de prevenção da contaminação cruzada" },
+    { n: "2.5.11", t: "Controle de perigos e prevenção de contaminação cruzada" },
     { n: "2.5.12", t: "Verificação do PPR (E, FI)" },
-    { n: "2.5.13", t: "Design e desenvolvimento de produto", highlight: true },
-    { n: "2.5.14", t: "Rastreabilidade", highlight: true },
+    { n: "2.5.13", t: "Design e desenvolvimento de produto" },
+    { n: "2.5.14", t: "Rastreabilidade" },
     { n: "2.5.15", t: "Gestão de equipamentos" },
     { n: "2.5.16", t: "Perda e desperdício de alimentos" },
     { n: "2.5.17", t: "Requisitos de comunicação" },
-    { n: "2.5.18", t: "Requisitos para organizações com certificação multisite (BIII)" },
+    { n: "2.5.18", t: "Multisite (BIII)" },
   ];
   return (
-    <section className="py-24 md:py-32 bg-background">
-      <div className="container">
-        <SectionLabel n="10" label="Requisitos adicionais V7" />
-        <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl text-primary max-w-4xl">
-          Os <span className="text-gradient">18 requisitos</span> da seção 2.5
-        </h2>
+    <Slide bg="bg-background" decor={<MytsWatermark className="-left-16 -bottom-16 w-[320px] [filter:invert(1)]" />}>
+      <SectionLabel n="10" label="Requisitos adicionais V7" />
+      <h2 className="mt-3 font-display font-bold text-3xl md:text-4xl text-primary">
+        Os <span className="text-gradient">18 requisitos</span> da seção 2.5
+      </h2>
 
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {items.map((it) => (
-            <div
-              key={it.n}
-              className={`rounded-2xl p-5 border transition-all hover:-translate-y-0.5 hover:shadow-card ${
-                it.highlight
-                  ? "border-accent bg-accent/5 shadow-card"
-                  : "border-border bg-gradient-card"
-              }`}
-            >
-              <div className="flex items-start gap-4">
-                <div
-                  className={`font-mono text-sm font-bold px-2.5 py-1 rounded-lg ${
-                    it.highlight ? "bg-accent text-accent-foreground" : "bg-secondary text-primary"
-                  }`}
-                >
-                  {it.n}
-                </div>
-                <div className="flex-1 font-display font-semibold text-primary leading-snug">
-                  {it.t}
-                </div>
-              </div>
-              {it.highlight && (
-                <div className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-accent">
-                  <Sparkles className="size-3" /> Destaque V7
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+      <div className="mt-4 flex-1 grid grid-cols-3 md:grid-cols-6 gap-2 content-center">
+        {items.map((it) => (
+          <div key={it.n} className="rounded-xl p-3 border border-border bg-gradient-card hover:-translate-y-0.5 transition">
+            <div className="font-mono text-[11px] font-bold px-2 py-0.5 rounded-md bg-secondary text-primary inline-block">{it.n}</div>
+            <div className="mt-1.5 font-display font-semibold text-[12px] leading-tight text-primary">{it.t}</div>
+          </div>
+        ))}
       </div>
-    </section>
+    </Slide>
   );
 };
 
-/* ---------- 11 · Rotulagem / Impressão ---------- */
-const RotulagemImpressao = () => (
-  <section className="py-24 md:py-32 bg-primary text-primary-foreground">
-    <div className="container">
-      <SectionLabel n="11" label="Requisito 2.5.2 · item d)" />
-      <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl max-w-4xl">
-        Gestão das ilustrações e procedimentos de <span className="text-gradient">controle de impressão</span>
+/* ---------- 11 · Rotulagem / Impressão (texto correto) ---------- */
+const RotulagemImpressao = () => {
+  const subs = [
+    "Aprovação do padrão de arte ou amostra mestre",
+    "Processo para gerenciar alterações nas especificações de arte e impressão e para gerenciar obras de arte e materiais de impressão obsoletos",
+    "Aprovação de cada tiragem em relação à norma acordada ou à amostra principal",
+    "Processo para detectar e identificar erros de impressão durante a execução",
+    "Processo para garantir a segregação efetiva de diferentes variantes de impressão",
+    "Processo para contabilizar qualquer produto impresso não utilizado",
+  ];
+  return (
+    <Slide
+      bg="bg-primary text-primary-foreground"
+      decor={
+        <>
+          <div className="absolute -top-16 -right-16 size-80 bg-glow opacity-40" />
+          <MytsWatermark className="-left-16 -bottom-16 w-[300px]" />
+        </>
+      }
+    >
+      <SectionLabel n="11" label="Requisitos adicionais V7 · 2.5.2 d)" light />
+      <h2 className="mt-3 font-display font-bold text-2xl md:text-4xl">
+        Gestão das ilustrações e <span className="text-gradient">controle de impressão</span>
       </h2>
+      <p className="mt-2 text-sm text-primary-foreground/75 max-w-4xl">
+        <strong className="text-primary-foreground">Aplicabilidade:</strong> todas as organizações que imprimem etiquetas e/ou
+        materiais (não apenas Categoria I). Procedimentos de Gestão e Controle de Impressão de Obras de
+        Arte devem ser estabelecidos e implementados para garantir o cumprimento dos requisitos legais
+        e do cliente, abrangendo no mínimo:
+      </p>
 
-      <div className="mt-14 rounded-3xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-8 md:p-12">
-        <div className="flex items-center gap-4 mb-8">
-          <div className="size-14 rounded-2xl bg-gradient-accent flex items-center justify-center shadow-glow">
-            <Printer className="size-6 text-accent-foreground" />
-          </div>
-          <div className="font-display font-semibold text-xl">Procedimento documentado deve contemplar:</div>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-4">
-          {["i", "ii", "iii", "iv", "v", "vi"].map((r, i) => (
-            <div key={r} className="rounded-2xl border border-primary-foreground/15 bg-primary/40 p-5">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-accent-glow font-bold text-lg">{r}.</span>
-                <span className="text-xs uppercase tracking-widest text-primary-foreground/55 font-semibold">
-                  Subitem {i + 1}
-                </span>
-              </div>
-              <div className="mt-3 h-px bg-primary-foreground/10" />
-              <div className="mt-3 text-sm text-primary-foreground/65 italic">
-                Item do requisito da norma — controle de versão, aprovação, rastreabilidade e auditoria de ilustrações e materiais impressos.
-              </div>
+      <div className="mt-4 flex-1 grid grid-cols-2 md:grid-cols-3 gap-3 content-center">
+        {subs.map((s, i) => (
+          <div key={i} className="rounded-2xl border border-primary-foreground/15 bg-primary/40 p-4">
+            <div className="flex items-center gap-2">
+              <Printer className="size-4 text-accent-glow" />
+              <span className="font-mono text-accent-glow font-bold text-sm">{["i","ii","iii","iv","v","vi"][i]}.</span>
             </div>
-          ))}
-        </div>
+            <div className="mt-2 text-xs text-primary-foreground/85 leading-snug">{s}</div>
+          </div>
+        ))}
       </div>
-    </div>
-  </section>
-);
+    </Slide>
+  );
+};
 
 /* ---------- 12 · Cultura ---------- */
 const Cultura = () => {
@@ -634,275 +774,275 @@ const Cultura = () => {
     { l: "Staffing Levels", icon: Building2 },
   ];
   return (
-    <section className="py-24 md:py-32 bg-background">
-      <div className="container">
-        <SectionLabel n="12" label="Requisito 2.5.8" />
-        <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl text-primary max-w-4xl">
-          Cultura de <span className="text-gradient">qualidade e segurança</span> de alimentos
-        </h2>
-
-        <div className="mt-14 grid lg:grid-cols-[1fr_400px] gap-10 items-start">
-          <div className="space-y-4">
-            <div className="rounded-2xl bg-gradient-card border border-border p-6 shadow-card">
-              <div className="flex items-center gap-3">
-                <span className="font-mono font-bold text-accent text-lg">a)</span>
-                <span className="font-display font-semibold text-primary">Requisito da alta direção</span>
-              </div>
-              <p className="mt-3 text-muted-foreground leading-relaxed">
-                Estabelecer, implementar, manter e melhorar continuamente uma cultura positiva de
-                segurança de alimentos e qualidade, alinhada aos objetivos do SGSA.
-              </p>
-            </div>
-            <div className="rounded-2xl bg-gradient-card border border-border p-6 shadow-card">
-              <div className="flex items-center gap-3">
-                <span className="font-mono font-bold text-accent text-lg">c)</span>
-                <span className="font-display font-semibold text-primary">Avaliação e melhoria</span>
-              </div>
-              <p className="mt-3 text-muted-foreground leading-relaxed">
-                A organização deve avaliar a eficácia da cultura e implementar planos de melhoria
-                quando necessário, com evidências documentadas.
-              </p>
-            </div>
-
-            <div className="mt-2 rounded-2xl bg-accent text-accent-foreground p-5">
-              <div className="text-xs uppercase tracking-widest font-semibold opacity-80">
-                Requisitos específicos
-              </div>
-              <div className="font-display font-bold text-2xl mt-1">GFSI</div>
-            </div>
-          </div>
-
-          {/* Hex grid */}
-          <div className="rounded-3xl bg-primary text-primary-foreground p-8 shadow-elegant">
-            <div className="text-center font-display font-bold text-2xl text-gradient">
-              Quality Culture
-            </div>
-            <div className="mt-6 grid grid-cols-2 gap-3">
-              {dims.map((d) => (
-                <div key={d.l} className="relative rounded-xl border border-primary-foreground/15 bg-primary-foreground/5 p-4 hover:border-accent-glow transition">
-                  <Hexagon className="size-5 text-accent-glow mb-2" />
-                  <div className="text-sm font-semibold">{d.l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-/* ---------- 13 · Design e desenvolvimento ---------- */
-const DesignProduto = () => (
-  <section className="py-24 md:py-32 bg-primary text-primary-foreground">
-    <div className="container">
-      <SectionLabel n="13" label="Requisito 2.5.13" />
-      <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl max-w-4xl">
-        Design e <span className="text-gradient">desenvolvimento de produto</span>
+    <Slide bg="bg-background" decor={<MytsWatermark className="-right-12 -top-12 w-[280px] [filter:invert(1)]" />}>
+      <SectionLabel n="12" label="Requisito 2.5.8" />
+      <h2 className="mt-3 font-display font-bold text-3xl md:text-4xl text-primary">
+        Cultura de <span className="text-gradient">qualidade e segurança</span> de alimentos
       </h2>
 
-      <div className="mt-14 rounded-3xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-8 md:p-12">
-        <div className="flex items-center gap-3 mb-6">
-          <span className="font-mono font-bold text-accent-glow text-2xl">g)</span>
-          <span className="font-display font-semibold text-xl">Mudança em produto incorporado</span>
-        </div>
-        <p className="text-lg text-primary-foreground/85 leading-relaxed max-w-4xl">
-          Quando uma mudança for incorporada, <strong className="text-primary-foreground">não deverá ter</strong> impacto adverso sobre a
-          segurança de alimentos, a legalidade e os requisitos do cliente, devendo ser
-          devidamente validada e documentada antes da implementação.
-        </p>
-
-        <div className="mt-10 grid md:grid-cols-4 gap-4">
-          {[
-            { i: Beaker, t: "Avaliação técnica" },
-            { i: ShieldCheck, t: "Análise de perigos" },
-            { i: ClipboardCheck, t: "Validação documentada" },
-            { i: CheckCircle2, t: "Aprovação formal" },
-          ].map((s) => (
-            <div key={s.t} className="rounded-2xl border border-primary-foreground/10 bg-primary/40 p-5">
-              <s.i className="size-6 text-accent-glow" />
-              <div className="mt-3 font-display font-semibold">{s.t}</div>
+      <div className="mt-4 flex-1 grid lg:grid-cols-[1fr_360px] gap-6 items-stretch">
+        <div className="flex flex-col gap-3">
+          <div className="rounded-2xl bg-gradient-card border border-border p-4 shadow-card">
+            <div className="flex items-center gap-3">
+              <span className="font-mono font-bold text-accent text-lg">a)</span>
+              <span className="font-display font-semibold text-primary">Requisito da alta direção</span>
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-/* ---------- 14 · Impacto da mudança ---------- */
-const ImpactoMudanca = () => (
-  <section className="py-24 md:py-32 bg-background">
-    <div className="container">
-      <SectionLabel n="14" label="Resumo executivo" />
-      <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl text-primary">
-        Impacto da <span className="text-gradient">mudança</span>
-      </h2>
-
-      <div className="mt-14 grid md:grid-cols-3 gap-6">
-        {[
-          {
-            icon: Layers,
-            title: "Um padrão único",
-            desc: "Setor PPR comum em alinhamento com partes interessadas e expectativas específicas de cada categoria.",
-          },
-          {
-            icon: GitCompare,
-            title: "Alinhamento internacional",
-            desc: "Convergência entre ISO 22002-1:2025 e ISO 22002-100:2025, simplificando auditorias multinacionais.",
-          },
-          {
-            icon: Lock,
-            title: "Mais rigor e rastreabilidade",
-            desc: "Reforço em cultura, design de produto, rotulagem, gestão de fornecedores e rastreabilidade.",
-          },
-        ].map((c) => (
-          <div key={c.title} className="rounded-3xl bg-gradient-card border border-border p-8 shadow-card hover:shadow-elegant transition-all">
-            <div className="size-12 rounded-2xl bg-gradient-accent flex items-center justify-center shadow-cta">
-              <c.icon className="size-6 text-accent-foreground" />
+            <p className="mt-2 text-sm text-muted-foreground leading-snug">
+              Estabelecer, implementar, manter e melhorar continuamente uma cultura positiva de
+              segurança de alimentos e qualidade, alinhada aos objetivos do SGSA.
+            </p>
+          </div>
+          <div className="rounded-2xl bg-gradient-card border border-border p-4 shadow-card">
+            <div className="flex items-center gap-3">
+              <span className="font-mono font-bold text-accent text-lg">c)</span>
+              <span className="font-display font-semibold text-primary">Avaliação e melhoria</span>
             </div>
-            <div className="mt-6 font-display font-bold text-xl text-primary">{c.title}</div>
-            <p className="mt-3 text-muted-foreground leading-relaxed">{c.desc}</p>
+            <p className="mt-2 text-sm text-muted-foreground leading-snug">
+              A organização deve avaliar a eficácia da cultura e implementar planos de melhoria
+              quando necessário, com evidências documentadas.
+            </p>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-/* ---------- 15 · Tabela Alterações ---------- */
-const TabelaAlteracoes = () => {
-  const rows = [
-    { n: 4, old: "Construção e layout das edificações", v1: "Construção e layout dos edifícios", n1: 4, v100: "Construção e layout de edifícios", n100: 4 },
-    { n: 5, old: "Layout das instalações e área de trabalho", v1: "Projeto e leiaute das instalações e áreas de trabalho", n1: 5, v100: "Projeto e leiaute das instalações e áreas de trabalho", n100: 5 },
-    { n: 6, old: "Utilidades — ar, água e energia", v1: "Utilidades", n1: 6, v100: "Utilidades", n100: 6 },
-    { n: 7, old: "Descarte de resíduos", v1: "Gestão de resíduos, perdas e desperdício de alimentos (FLW) e reciclagem", n1: 8, v100: "Gestão de resíduos, perdas e desperdício de alimentos (FLW) e reciclagem", n100: 8 },
-    { n: 8, old: "Adequação, limpeza e manutenção de equipamentos", v1: "Adequação e manutenção de equipamentos", n1: 9, v100: "Adequação e manutenção de equipamentos", n100: 9 },
-    { n: 9, old: "Gestão de materiais adquiridos", v1: "Gestão de materiais adquiridos", n1: 10, v100: "Gestão de materiais adquiridos", n100: 10 },
-    { n: 10, old: "Medidas para a prevenção de contaminação cruzada", v1: "Medidas para prevenção de contaminação", n1: 12, v100: "Medidas para prevenção de contaminação", n100: 12 },
-    { n: 11, old: "Limpeza e Sanitização", v1: "Limpeza e Desinfecção", n1: 13, v100: "Limpeza e Desinfecção", n100: 13 },
-    { n: 12, old: "Controle de Pragas", v1: "Controle de Pragas", n1: 7, v100: "Controle de Pragas", n100: 7 },
-    { n: 13, old: "Higiene pessoal e instalação para funcionários", v1: "Higiene pessoal e instalações para trabalhadores", n1: 14, v100: "Higiene pessoal e instalações de trabalhadores", n100: 14 },
-    { n: 14, old: "Retrabalho", v1: "Uso de material para reprocesso", n1: 17, v100: "—", n100: "—" },
-    { n: 15, old: "Recolhimento", v1: "— (rec. ISO 22000 item 8.9.5)", n1: "—", v100: "— (rec. ISO 22000 item 8.9.5)", n100: "—" },
-    { n: 16, old: "Armazenamento", v1: "Armazenamento, incluindo estocagem em armazém e transporte", n1: 11, v100: "Armazenamento, incluindo estocagem em armazém e transporte", n100: 11 },
-    { n: 17, old: "Informação do produto e alerta ao consumidor", v1: "Informação sobre produtos ao consumidor", n1: 15, v100: "Informação sobre produtos ao consumidor", n100: 15 },
-    { n: 18, old: "Defesa do alimento, biovigilância e bioterrorismo", v1: "Defesa dos alimentos e fraude de alimentos", n1: 16, v100: "Defesa dos alimentos e fraude de alimentos", n100: 16 },
-  ];
-
-  return (
-    <section className="py-24 md:py-32 bg-primary text-primary-foreground">
-      <div className="container">
-        <SectionLabel n="15" label="Comparativo detalhado" />
-        <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl">
-          <span className="text-gradient">Alterações</span> entre normas PPR
-        </h2>
-
-        <div className="mt-12 overflow-x-auto rounded-3xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur">
-          <table className="min-w-full text-sm">
-            <thead>
-              <tr className="bg-primary-foreground/10 text-xs uppercase tracking-widest">
-                <th className="p-4 text-left font-semibold w-16">#</th>
-                <th className="p-4 text-left font-semibold text-accent-glow">ISO/TS 22002-1:2009</th>
-                <th className="p-4 text-left font-semibold text-success">ISO 22002-1:2025</th>
-                <th className="p-4 text-center font-semibold text-success w-16">#</th>
-                <th className="p-4 text-left font-semibold text-orange-300">ISO 22002-100:2025</th>
-                <th className="p-4 text-center font-semibold text-orange-300 w-16">#</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((r, i) => (
-                <tr key={r.n} className={`border-t border-primary-foreground/10 ${i % 2 ? "bg-primary-foreground/[0.02]" : ""}`}>
-                  <td className="p-4 font-mono font-bold text-accent-glow">{r.n}</td>
-                  <td className="p-4 text-primary-foreground/80">{r.old}</td>
-                  <td className="p-4 text-primary-foreground">{r.v1}</td>
-                  <td className="p-4 text-center font-mono font-semibold text-success">{r.n1}</td>
-                  <td className="p-4 text-primary-foreground">{r.v100}</td>
-                  <td className="p-4 text-center font-mono font-semibold text-orange-300">{r.n100}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="rounded-2xl bg-accent text-accent-foreground p-4">
+            <div className="text-[10px] uppercase tracking-widest font-semibold opacity-80">Requisitos específicos</div>
+            <div className="font-display font-bold text-xl mt-0.5">GFSI</div>
+          </div>
         </div>
-      </div>
-    </section>
-  );
-};
 
-/* ---------- 17 · MyTS — Gestão de fornecedores ---------- */
-const MyTSFornecedores = () => (
-  <section className="py-24 md:py-32 bg-background">
-    <div className="container">
-      <SectionLabel n="17" label="MyTS · Como contribuímos" />
-      <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl text-primary max-w-4xl">
-        Gestão de <span className="text-gradient">fornecedores</span> na nova FSSC 22000 V7
-      </h2>
-
-      <div className="mt-10 max-w-4xl text-lg text-muted-foreground leading-relaxed">
-        A gestão de fornecedores continua sendo um elemento fundamental para garantir a
-        segurança de alimentos e a conformidade ao longo da cadeia produtiva. A nova versão da
-        norma reforça a necessidade de monitoramento contínuo e evidências que comprovem a
-        qualificação e o desempenho dos fornecedores.
-      </div>
-
-      <div className="mt-14 rounded-3xl bg-primary text-primary-foreground p-8 md:p-12 shadow-elegant relative overflow-hidden">
-        <div className="absolute -right-20 -top-20 size-72 bg-glow opacity-60" />
-        <div className="relative">
-          <div className="flex items-center gap-3 text-accent-glow">
-            <Network className="size-5" />
-            <span className="text-xs uppercase tracking-widest font-semibold">Como a MyTS contribui</span>
-          </div>
-
-          <div className="mt-8 grid md:grid-cols-2 gap-4">
-            {[
-              { i: Building2, t: "Homologação digital de fornecedores" },
-              { i: FileText, t: "Controle automatizado de documentos e certificações" },
-              { i: AlertCircle, t: "Monitoramento de vencimentos e solicitação de atualizações" },
-              { i: ClipboardCheck, t: "Avaliação periódica de desempenho" },
-              { i: Truck, t: "Histórico completo de registros e evidências para auditorias" },
-            ].map((s) => (
-              <div key={s.t} className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-5 flex items-start gap-4">
-                <div className="size-10 shrink-0 rounded-xl bg-gradient-accent flex items-center justify-center shadow-cta">
-                  <s.i className="size-5 text-accent-foreground" />
-                </div>
-                <div className="font-display font-semibold leading-snug pt-1.5">{s.t}</div>
+        <div className="rounded-3xl bg-primary text-primary-foreground p-5 shadow-elegant flex flex-col">
+          <div className="text-center font-display font-bold text-lg text-gradient">Quality Culture</div>
+          <div className="mt-3 flex-1 grid grid-cols-2 gap-2">
+            {dims.map((d) => (
+              <div key={d.l} className="relative rounded-xl border border-primary-foreground/15 bg-primary-foreground/5 p-2.5 hover:border-accent-glow transition">
+                <d.icon className="size-4 text-accent-glow mb-1" />
+                <div className="text-xs font-semibold leading-tight">{d.l}</div>
               </div>
             ))}
           </div>
         </div>
       </div>
+    </Slide>
+  );
+};
 
-      <p className="mt-10 max-w-4xl text-lg text-muted-foreground leading-relaxed">
-        Ao automatizar essas atividades, as empresas reduzem riscos relacionados à cadeia de
-        fornecimento, aumentam a eficiência dos processos e fortalecem a conformidade com os
-        requisitos da <strong className="text-primary">FSSC 22000 V7</strong>.
+/* ---------- 13 · Design e desenvolvimento (texto correto) ---------- */
+const DesignProduto = () => {
+  const principles = [
+    { i: ShieldCheck, t: "Contenção eficaz e proteção do produto contra deterioração e danos ao longo de todas as etapas da cadeia de abastecimento." },
+    { i: Package, t: "Preservação e prolongamento da vida útil do produto que será embalado." },
+    { i: Recycle, t: "Minimização de perda e desperdício de alimentos." },
+    { i: MessageSquare, t: "Comunicação clara aos consumidores sobre como manusear, armazenar e preparar alimentos." },
+  ];
+  return (
+    <Slide
+      bg="bg-primary text-primary-foreground"
+      decor={<MytsWatermark className="-right-16 -top-16 w-[300px]" />}
+    >
+      <SectionLabel n="13" label="Requisito 2.5.13 g)" light />
+      <h2 className="mt-3 font-display font-bold text-3xl md:text-4xl">
+        Design e <span className="text-gradient">desenvolvimento de produto</span>
+      </h2>
+      <p className="mt-2 text-sm text-primary-foreground/80 max-w-5xl leading-relaxed">
+        Organizações que concebem embalagens primárias/materiais de embalagem devem levar em
+        consideração os seguintes princípios ao desenvolver novos produtos ou efetuar alterações:
       </p>
+
+      <div className="mt-4 flex-1 grid grid-cols-2 gap-3 content-center">
+        {principles.map((p, i) => (
+          <div key={i} className="rounded-2xl border border-primary-foreground/15 bg-primary/40 p-4 flex gap-3">
+            <div className="size-10 shrink-0 rounded-xl bg-gradient-accent flex items-center justify-center shadow-cta">
+              <p.i className="size-5 text-accent-foreground" />
+            </div>
+            <div>
+              <div className="font-mono text-accent-glow text-xs font-bold">{["i","ii","iii","iv"][i]}.</div>
+              <div className="text-sm text-primary-foreground/90 leading-snug">{p.t}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-3 rounded-xl bg-accent/20 border border-accent-glow/40 px-4 py-2.5 text-xs text-accent-glow">
+        Quando algum dos princípios for incorporado, <strong>não deverá ter impacto negativo na segurança dos alimentos</strong>.
+      </div>
+    </Slide>
+  );
+};
+
+/* ---------- 14 · Impacto da mudança (texto correto) ---------- */
+const ImpactoMudanca = () => {
+  const items = [
+    {
+      icon: GitCompare,
+      title: "Substituição da série",
+      desc: "As normas ISO 22002-X publicadas em Julho/2025 substituem a série anterior ISO/TS 22002-X para que as organizações certificadas FSSC 22000 sejam incluídas como parte da V7.",
+    },
+    {
+      icon: Layers,
+      title: "Padrão PPR comum",
+      desc: "Um padrão PPR comum, com partes adicionais específicas de setor.",
+    },
+    {
+      icon: ListChecks,
+      title: "Estruturas padronizadas",
+      desc: "Estruturas de PPR mais padronizadas e expectativas de auditoria mais claras.",
+    },
+    {
+      icon: AlertCircle,
+      title: "Mais requisitos por setor",
+      desc: "Para alguns setores, pode resultar em aumento de requisitos.",
+    },
+  ];
+  return (
+    <Slide bg="bg-background" decor={<MytsWatermark className="-right-16 -top-16 w-[300px] [filter:invert(1)]" />}>
+      <SectionLabel n="14" label="Resumo executivo" />
+      <h2 className="mt-3 font-display font-bold text-3xl md:text-5xl text-primary">
+        Impacto da <span className="text-gradient">mudança</span>
+      </h2>
+
+      <div className="mt-6 flex-1 grid grid-cols-2 gap-4 content-center">
+        {items.map((c) => (
+          <div key={c.title} className="rounded-2xl bg-gradient-card border border-border p-5 shadow-card hover:shadow-elegant transition">
+            <div className="size-10 rounded-xl bg-gradient-accent flex items-center justify-center shadow-cta">
+              <c.icon className="size-5 text-accent-foreground" />
+            </div>
+            <div className="mt-3 font-display font-bold text-lg text-primary">{c.title}</div>
+            <p className="mt-1.5 text-sm text-muted-foreground leading-snug">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </Slide>
+  );
+};
+
+/* ---------- 15 · Tabela Alterações — split em 2 slides 16:9 ---------- */
+const TabelaAlteracoes = () => {
+  const rows = [
+    { n: 4, old: "Construção e layout das edificações", v1: "Construção e layout dos edifícios", n1: 4, v100: "Construção e layout de edifícios", n100: 4 },
+    { n: 5, old: "Layout das instalações e área de trabalho", v1: "Projeto e leiaute das instalações e áreas de trabalho", n1: 5, v100: "Projeto e leiaute das instalações e áreas de trabalho", n100: 5 },
+    { n: 6, old: "Utilidades — ar, água e energia", v1: "Utilidades", n1: 6, v100: "Utilidades", n100: 6 },
+    { n: 7, old: "Descarte de resíduos", v1: "Gestão de resíduos, FLW e reciclagem", n1: 8, v100: "Gestão de resíduos, FLW e reciclagem", n100: 8 },
+    { n: 8, old: "Adequação, limpeza e manutenção de equipamentos", v1: "Adequação e manutenção de equipamentos", n1: 9, v100: "Adequação e manutenção de equipamentos", n100: 9 },
+    { n: 9, old: "Gestão de materiais adquiridos", v1: "Gestão de materiais adquiridos", n1: 10, v100: "Gestão de materiais adquiridos", n100: 10 },
+    { n: 10, old: "Medidas para prevenção de contaminação cruzada", v1: "Medidas para prevenção de contaminação", n1: 12, v100: "Medidas para prevenção de contaminação", n100: 12 },
+    { n: 11, old: "Limpeza e Sanitização", v1: "Limpeza e Desinfecção", n1: 13, v100: "Limpeza e Desinfecção", n100: 13 },
+    { n: 12, old: "Controle de Pragas", v1: "Controle de Pragas", n1: 7, v100: "Controle de Pragas", n100: 7 },
+    { n: 13, old: "Higiene pessoal e instalação para funcionários", v1: "Higiene pessoal e instalações para trabalhadores", n1: 14, v100: "Higiene pessoal e instalações de trabalhadores", n100: 14 },
+    { n: 14, old: "Retrabalho", v1: "Uso de material para reprocesso", n1: 17, v100: "—", n100: "—" },
+    { n: 15, old: "Recolhimento", v1: "— (rec. ISO 22000 8.9.5)", n1: "—", v100: "— (rec. ISO 22000 8.9.5)", n100: "—" },
+    { n: 16, old: "Armazenamento", v1: "Armazenamento, incl. estocagem em armazém e transporte", n1: 11, v100: "Armazenamento, incl. estocagem em armazém e transporte", n100: 11 },
+    { n: 17, old: "Informação do produto e alerta ao consumidor", v1: "Informação sobre produtos ao consumidor", n1: 15, v100: "Informação sobre produtos ao consumidor", n100: 15 },
+    { n: 18, old: "Defesa do alimento, biovigilância e bioterrorismo", v1: "Defesa e fraude de alimentos", n1: 16, v100: "Defesa e fraude de alimentos", n100: 16 },
+  ];
+
+  const Tabela = ({ subset, idx }: { subset: typeof rows; idx: string }) => (
+    <Slide bg="bg-primary text-primary-foreground" decor={<MytsWatermark className="-right-16 -bottom-16 w-[280px]" />}>
+      <SectionLabel n={idx} label={`Comparativo detalhado · parte ${idx === "15a" ? "1/2" : "2/2"}`} light />
+      <h2 className="mt-2 font-display font-bold text-2xl md:text-4xl">
+        <span className="text-gradient">Alterações</span> entre normas PPR
+      </h2>
+
+      <div className="mt-4 flex-1 overflow-hidden rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur flex flex-col min-h-0">
+        <div className="grid grid-cols-[40px_1fr_1fr_40px_1fr_40px] bg-primary-foreground/10 text-[10px] uppercase tracking-widest font-semibold shrink-0">
+          <div className="p-2 px-3">#</div>
+          <div className="p-2 px-3 text-accent-glow">ISO/TS 22002-1:2009</div>
+          <div className="p-2 px-3 text-success">ISO 22002-1:2025</div>
+          <div className="p-2 px-3 text-center text-success">#</div>
+          <div className="p-2 px-3 text-orange-300">ISO 22002-100:2025</div>
+          <div className="p-2 px-3 text-center text-orange-300">#</div>
+        </div>
+        <div className="overflow-y-auto">
+          {subset.map((r, i) => (
+            <div key={r.n} className={`grid grid-cols-[40px_1fr_1fr_40px_1fr_40px] items-center text-xs border-t border-primary-foreground/10 ${i % 2 ? "bg-primary-foreground/[0.02]" : ""}`}>
+              <div className="p-2 px-3 font-mono font-bold text-accent-glow">{r.n}</div>
+              <div className="p-2 px-3 text-primary-foreground/75 leading-snug">{r.old}</div>
+              <div className="p-2 px-3 text-primary-foreground leading-snug">{r.v1}</div>
+              <div className="p-2 px-3 text-center font-mono font-semibold text-success">{r.n1}</div>
+              <div className="p-2 px-3 text-primary-foreground leading-snug">{r.v100}</div>
+              <div className="p-2 px-3 text-center font-mono font-semibold text-orange-300">{r.n100}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Slide>
+  );
+
+  return (
+    <>
+      <Tabela subset={rows.slice(0, 8)} idx="15a" />
+      <Tabela subset={rows.slice(8)} idx="15b" />
+    </>
+  );
+};
+
+/* ---------- 17 · MyTS — Gestão de fornecedores ---------- */
+const MyTSFornecedores = () => (
+  <Slide bg="bg-background" decor={<MytsWatermark className="-left-16 -bottom-16 w-[320px] [filter:invert(1)]" />}>
+    <SectionLabel n="17" label="MyTS · Como contribuímos" />
+    <h2 className="mt-3 font-display font-bold text-3xl md:text-4xl text-primary">
+      Gestão de <span className="text-gradient">fornecedores</span> na FSSC 22000 V7
+    </h2>
+
+    <div className="mt-4 flex-1 grid md:grid-cols-[1fr_1.2fr] gap-6 items-stretch">
+      <p className="text-base text-muted-foreground leading-relaxed self-center">
+        A gestão de fornecedores continua sendo um elemento fundamental para garantir a
+        segurança de alimentos e a conformidade. A nova versão da norma reforça o monitoramento
+        contínuo e evidências que comprovem a qualificação e o desempenho dos fornecedores.
+      </p>
+
+      <div className="rounded-2xl bg-primary text-primary-foreground p-5 shadow-elegant relative overflow-hidden">
+        <div className="absolute -right-12 -top-12 size-48 bg-glow opacity-50" />
+        <div className="relative">
+          <div className="flex items-center gap-3 text-accent-glow">
+            <img src={mytsLogo} alt="MyTS" className="h-5" />
+            <span className="text-[10px] uppercase tracking-widest font-semibold">Como a MyTS contribui</span>
+          </div>
+          <div className="mt-3 grid grid-cols-1 gap-2">
+            {[
+              { i: Building2, t: "Homologação digital de fornecedores" },
+              { i: FileText, t: "Controle automatizado de documentos e certificações" },
+              { i: AlertCircle, t: "Monitoramento de vencimentos e cobrança automática" },
+              { i: ClipboardCheck, t: "Avaliação periódica de desempenho" },
+              { i: Truck, t: "Histórico de evidências para auditorias" },
+            ].map((s) => (
+              <div key={s.t} className="rounded-xl border border-primary-foreground/15 bg-primary-foreground/5 p-3 flex items-center gap-3">
+                <div className="size-8 shrink-0 rounded-lg bg-gradient-accent flex items-center justify-center">
+                  <s.i className="size-4 text-accent-foreground" />
+                </div>
+                <div className="font-display font-semibold text-sm">{s.t}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
+  </Slide>
 );
 
 /* ---------- 18 · CTA Final ---------- */
 const Final = () => (
-  <section className="py-24 md:py-32 bg-primary text-primary-foreground relative overflow-hidden">
-    <div className="absolute inset-0 grid-pattern opacity-20" />
-    <div className="absolute -right-32 -bottom-32 size-[600px] bg-glow opacity-50" />
-    <div className="container relative grid lg:grid-cols-2 gap-12 items-center">
+  <Slide
+    bg="bg-primary text-primary-foreground"
+    decor={
+      <>
+        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="absolute -right-32 -bottom-32 size-[600px] bg-glow opacity-50" />
+        <MytsWatermark className="-left-16 -top-16 w-[400px]" />
+      </>
+    }
+  >
+    <div className="flex-1 grid lg:grid-cols-2 gap-10 items-center">
       <div>
-        <SectionLabel n="18" label="Conclusão" />
-        <p className="mt-6 text-xl text-primary-foreground/80 leading-relaxed">
+        <SectionLabel n="18" label="Conclusão" light />
+        <p className="mt-4 text-base md:text-lg text-primary-foreground/80 leading-relaxed">
           A FSSC 22000 V7 reforça a importância do controle e monitoramento dos fornecedores
           para garantir a segurança de alimentos e a conformidade da cadeia produtiva.
         </p>
-        <h2 className="mt-10 font-display font-bold text-5xl md:text-6xl leading-[1.05] tracking-tight">
+        <h2 className="mt-6 font-display font-bold text-4xl md:text-5xl leading-[1.05]">
           Visibilidade total,<br />
-          controle completo e <br />
+          controle completo e<br />
           <span className="text-gradient">conformidade garantida</span>
         </h2>
 
-        <a
-          href="#"
-          className="mt-12 inline-flex items-center gap-3 rounded-full bg-gradient-accent px-8 py-4 font-semibold text-accent-foreground shadow-cta hover:shadow-glow transition-all"
-        >
+        <a href="#" className="mt-8 inline-flex items-center gap-3 rounded-full bg-gradient-accent px-6 py-3 font-semibold text-accent-foreground shadow-cta hover:shadow-glow transition-all">
           Falar com a MyTS
           <ArrowRight className="size-4" />
         </a>
@@ -910,30 +1050,34 @@ const Final = () => (
 
       <div className="relative">
         <div className="absolute -inset-8 bg-gradient-accent opacity-30 blur-3xl rounded-full" />
-        <div className="relative aspect-square rounded-[3rem] border-2 border-primary-foreground/20 bg-primary/50 backdrop-blur p-12 flex flex-col items-center justify-center text-center">
-          <ShieldCheck className="size-20 text-accent-glow" />
-          <div className="mt-6 font-display font-bold text-3xl">FSSC 22000</div>
-          <div className="text-xl text-accent-glow font-semibold">Versão 7.0</div>
-          <div className="mt-6 text-xs uppercase tracking-widest text-primary-foreground/55">
+        <div className="relative aspect-square max-w-[380px] mx-auto rounded-[2.5rem] border-2 border-primary-foreground/20 bg-primary/50 backdrop-blur p-10 flex flex-col items-center justify-center text-center">
+          <img src={mytsLogo} alt="MyTS" className="h-10 mb-4 opacity-90" />
+          <div className="h-px w-16 bg-accent-glow/40 my-2" />
+          <ShieldCheck className="size-12 text-accent-glow mt-2" />
+          <div className="mt-3 font-display font-bold text-2xl">FSSC 22000</div>
+          <div className="text-base text-accent-glow font-semibold">Versão 7.0</div>
+          <div className="mt-3 text-[10px] uppercase tracking-widest text-primary-foreground/55">
             Maio 2026 · Vigência Maio 2027
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </Slide>
 );
 
 /* ---------- Page ---------- */
 const FsscV7 = () => (
   <main className="bg-background">
     <Helmet>
-      <title>Atualização FSSC 22000 V7 — Anne Dezan & MyTS</title>
+      <title>Pronto para a V7? — Anne Dezan & MyTS</title>
       <meta
         name="description"
-        content="Versão visual da apresentação Atualização FSSC 22000 V7: esquema, transição, requisitos adicionais e impacto da mudança."
+        content="Webinar Pronto para a V7?: tudo o que muda na transição da Versão 6 para a Versão 7 do esquema FSSC 22000."
       />
     </Helmet>
     <Hero />
+    <AnneSection />
+    <Contexto />
     <EsquemaV6 />
     <Conselho />
     <BoSCard />
