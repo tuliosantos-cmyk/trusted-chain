@@ -1,38 +1,47 @@
-## Objetivo
-Gerar um arquivo `.pptx` 16:9 com todas as seções da página `/fssc-v7`, mantendo exatamente o visual atual (cores, ícones, layout, logo MyTS, foto da Anne, tabelas, timeline etc.) e disponibilizar para download no chat.
+## Diagnóstico
+O problema no PPTX atual veio da forma como capturei a página: forcei cada slide a 1920×1080 via CSS, mas o componente `Slide` foi desenhado para `maxHeight: 92vh` (≈ 993px) — sobrou ~90px de espaço vazio no rodapé de muitos slides, e em outros o `flex justify-center` não preencheu o frame inflado. Resultado: layout "solto", conteúdo desalinhado, sensação de mal diagramado.
 
-## Abordagem
-Como as seções já são montadas no formato `Slide` (16:9) com componentes ricos (SVG, gradientes, ícones Lucide), a forma mais fiel de exportar para PowerPoint é **capturar cada seção como imagem em alta resolução** e montar o PPTX com uma imagem por slide ocupando 100% do slide. Isso garante 1:1 com o que está na tela, sem risco de quebrar tipografia ou layout no Office.
+## Plano de correção
 
-## Passos
+1. **Refazer as capturas com renderização nativa**
+   - Subir o Playwright com viewport `1920 × 1175` (assim `92vh` = ~1081, que casa naturalmente com o aspect-ratio 16/9 = 1080).
+   - **Remover** o CSS que forçava altura fixa. Manter só:
+     - Esconder scrollbars
+     - Largura do `container` em 1920px
+     - Zerar paddings externos do `<section>`
+   - Deixar o componente `Slide` desenhar do jeito original — frame interno fica 1920×1080 sem espaço residual.
 
-1. **Renderizar a página em alta resolução**
-   - Subir um script Playwright apontando para `http://localhost:8080/fssc-v7`.
-   - Viewport 1920×1080, `deviceScaleFactor: 2` (export em ~3840×2160 por seção, ótimo para projeção).
-   - Aguardar fontes e imagens carregarem (`document.fonts.ready` + espera de `img` decodificados).
+2. **Garantir conteúdo completo em cada slide**
+   - Esperar `document.fonts.ready` + todos `<img>` carregados.
+   - Para cada slide, antes do screenshot: rolar até ele, esperar 250ms, verificar `boundingBox` ≈ 1920×1080. Se não bater, logar e re-tentar.
+   - Screenshot só do frame interno (`section .container > div`), 2x DPR → 3840×2160.
 
-2. **Capturar cada `Slide` individualmente**
-   - Selecionar cada `<section>` da página na ordem em que aparecem.
-   - Para cada seção: rolar até ela, forçar `aspect-ratio 16/9` em 1920×1080, e tirar screenshot só daquele elemento (`element.screenshot`).
-   - Salvar como `slide-01.png`, `slide-02.png`, … em `/tmp/fssc-v7-export/`.
+3. **Ajustes pontuais via CSS de export (apenas se necessário)**
+   - Aumentar levemente alguns gaps em slides muito densos (ex.: timeline seção 06) só durante o export, para evitar elementos colados na borda.
+   - Forçar `image-rendering: -webkit-optimize-contrast` para SVGs (logo MyTS) ficarem nítidos.
 
-3. **Montar o PPTX 16:9**
-   - Usar `python-pptx` com `SlideWidth=13.333"` e `SlideHeight=7.5"` (widescreen padrão).
-   - Para cada PNG: criar slide em branco + `add_picture` cobrindo o slide inteiro (x=0, y=0, w=13.333, h=7.5).
-   - Definir título do arquivo: `FSSC-22000-V7-Anne-Dezan-MyTS.pptx`.
+4. **Reconstruir o PPTX**
+   - 13.333" × 7.5" (16:9 widescreen).
+   - 1 imagem por slide cobrindo 100% do slide.
+   - Salvar como `FSSC-22000-V7_v2.pptx` em `/mnt/documents/`.
 
-4. **QA visual obrigatório**
-   - Converter o PPTX gerado em PDF via LibreOffice e renderizar cada página com `pdftoppm`.
-   - Inspecionar todos os slides procurando: corte de conteúdo, faltando ícone, foto da Anne ausente onde deveria estar, tabela cortada, etc.
-   - Se algum slide vier com defeito, ajustar a captura (espera adicional, scroll, fontes) e regerar antes de entregar.
+5. **QA visual obrigatório, slide a slide**
+   - Converter para PDF via LibreOffice e gerar JPGs.
+   - Inspecionar **cada um dos 20 slides** procurando: corte de conteúdo, espaço vazio anormal, ícone faltando, texto sobreposto, foto da Anne ausente onde deveria estar.
+   - Listar problemas encontrados e corrigir antes de entregar — não entregar na primeira passada sem revisão.
 
-5. **Entrega**
-   - Salvar o arquivo final em `/mnt/documents/FSSC-22000-V7.pptx`.
-   - Enviar via `<presentation-artifact>` no chat para download direto.
+6. **Entrega**
+   - Mandar `FSSC-22000-V7_v2.pptx` aqui no chat via `<presentation-artifact>`.
 
-## Detalhes técnicos
-- O PPTX será essencialmente "imagens em slides" — não terá textos editáveis dentro do PowerPoint. Isso é o trade-off para manter 100% da fidelidade visual (gradientes, SVGs, ícones Lucide, MyTS watermark). Se você quiser texto editável depois, dá pra fazer numa segunda passada reconstruindo cada slide nativo no python-pptx, mas é um trabalho bem maior e o visual perde fidelidade.
-- Arquivo final tende a ficar entre 8-20 MB dependendo da quantidade de slides (≈ 20 seções @ 2x).
-- Não vou alterar nenhum código da página `/fssc-v7` — só gerar o export.
+## Observação importante
+Esse caminho continua gerando o PPTX como **imagens** (1 imagem por slide) para preservar 100% do visual da página (gradientes, SVGs, ícones Lucide, watermark MyTS). Texto não vai ser editável no PowerPoint.
 
-Se estiver de acordo, é só aprovar que eu gero o `.pptx` e mando aqui.
+Se você quiser **texto editável** dentro do PowerPoint (poder mudar uma palavra, ajustar cor de uma célula da tabela, etc.), aí o caminho é outro: reconstruir cada slide nativamente com formas e caixas de texto via `python-pptx`. Funciona, mas:
+- demora bem mais (cada slide precisa ser remontado à mão)
+- alguns elementos ricos (gradientes complexos, SVG da logo, watermark, hexágonos da Cultura de Qualidade) ficam mais simples que na página original
+- exige outra rodada de QA
+
+**Me confirma qual versão você quer:**
+- **(A)** Refazer como imagens, arrumadinho (rápido — esse plano acima)
+- **(B)** Refazer nativo editável no PowerPoint (mais demorado, visual um pouco mais simples)
+- **(C)** Fazer as duas e te entregar os dois arquivos
