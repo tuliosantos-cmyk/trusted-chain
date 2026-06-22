@@ -164,9 +164,6 @@ const AnneSection = () => (
           e segurança dos alimentos. Pós-graduada em Segurança dos Alimentos, Anne une bagagem
           técnica sólida com experiência prática real.
         </p>
-        <p className="mt-4 text-lg text-primary font-display font-semibold leading-snug">
-          Ela não vai falar de teoria — vai trazer o que vê dentro das empresas e nas auditorias.
-        </p>
       </div>
     </div>
   </Slide>
