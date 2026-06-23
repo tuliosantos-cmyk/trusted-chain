@@ -1062,7 +1062,7 @@ const MyTSFornecedores = () => {
   ];
 
   return (
-    <Slide bg="bg-background" pad="p-6 md:p-10" decor={<MytsWatermark className="-left-16 -bottom-16 w-[320px] [filter:invert(1)]" />}>
+    <Slide bg="bg-background" pad="p-5 md:p-8" decor={<MytsWatermark className="-left-16 -bottom-16 w-[280px] [filter:invert(1)]" />}>
       <SectionLabel n="17" label="MyTS · Como contribuímos" />
       <h2 className="mt-1 font-display font-bold text-2xl md:text-3xl text-primary leading-none">
         Gestão de <span className="text-gradient">fornecedores</span> na FSSC 22000 V7
