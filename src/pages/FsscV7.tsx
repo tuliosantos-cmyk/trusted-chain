@@ -1606,6 +1606,7 @@ const FsscV7 = () => (
     <Contexto />
     <QuemSomos />
     <PlataformaV7 />
+    <CasesReaisV7 />
     <EsquemaV6 />
     <Conselho />
     <BoSCard />
