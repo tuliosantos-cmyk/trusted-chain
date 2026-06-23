@@ -1324,7 +1324,46 @@ const Encerramento = () => (
         Foi um prazer percorrer essa transição com você.
       </p>
 
-      <div className="mt-10 grid md:grid-cols-3 gap-4 w-full max-w-4xl">
+      {/* Card repetido — próximo passo */}
+      <div className="mt-8 w-full max-w-xl text-left">
+        <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-6 relative overflow-hidden">
+          <div className="absolute -right-10 -top-10 size-40 bg-glow opacity-40 blur-3xl rounded-full" />
+          <div className="relative">
+            <div className="flex items-center gap-3">
+              <img src={mytsLogo} alt="MyTS" className="h-5 opacity-90" />
+              <span className="text-[10px] uppercase tracking-widest font-semibold text-accent-glow">
+                Próximo passo
+              </span>
+            </div>
+            <p className="mt-4 font-display font-semibold text-lg leading-snug text-primary-foreground">
+              Quer entender como isso se aplica à sua operação?
+            </p>
+            <p className="mt-2 text-sm text-primary-foreground/75 leading-relaxed">
+              Agende uma conversa com{" "}
+              <span className="font-semibold text-primary-foreground">André Tanzi</span>,
+              Diretor Comercial da MyTS.
+            </p>
+            <div className="mt-5 space-y-2 text-sm">
+              <a
+                href="mailto:andre.tanzi@myt-s.com"
+                className="flex items-center gap-3 rounded-lg border border-primary-foreground/10 bg-primary-foreground/5 px-3 py-2 hover:bg-primary-foreground/10 transition-colors"
+              >
+                <MessageSquare className="size-4 text-accent-glow" />
+                <span className="font-mono">andre.tanzi@myt-s.com</span>
+              </a>
+              <a
+                href="#"
+                className="flex items-center gap-3 rounded-lg border border-primary-foreground/10 bg-primary-foreground/5 px-3 py-2 hover:bg-primary-foreground/10 transition-colors"
+              >
+                <LinkIcon className="size-4 text-accent-glow" />
+                <span>LinkedIn · André Tanzi</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-8 grid md:grid-cols-3 gap-4 w-full max-w-4xl">
         {[
           {
             i: MessageSquare,
