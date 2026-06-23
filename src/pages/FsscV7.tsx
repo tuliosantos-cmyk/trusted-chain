@@ -102,6 +102,40 @@ const MytsWatermark = ({ className = "" }: { className?: string }) => (
   />
 );
 
+/* ---------- 00 · SPLASH — Proteção de tela ---------- */
+const SplashScreen = () => (
+  <Slide
+    bg="bg-[#0a0e1a]"
+    pad="p-0"
+    decor={
+      <>
+        <div className="absolute inset-0 grid-pattern opacity-10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[900px] bg-glow opacity-40 blur-3xl rounded-full" />
+        <MytsWatermark className="-right-20 -bottom-20 w-[420px]" />
+      </>
+    }
+  >
+    <div className="flex-1 flex flex-col items-center justify-center text-center gap-8">
+      <img src={mytsLogo} alt="MyTS" className="h-16 opacity-90" />
+      <h1 className="font-display font-bold text-5xl md:text-7xl tracking-tight text-primary-foreground">
+        Começaremos em breve
+      </h1>
+      <p className="text-lg md:text-xl text-primary-foreground/60 max-w-xl">
+        O webinar começará em instantes. Agradecemos sua paciência.
+      </p>
+      <div className="mt-4 flex items-center gap-2">
+        <span className="relative flex h-3 w-3">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-glow opacity-75" />
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-accent-glow" />
+        </span>
+        <span className="text-sm text-accent-glow font-medium uppercase tracking-widest">
+          Aguardando início
+        </span>
+      </div>
+    </div>
+  </Slide>
+);
+
 /* ---------- 01 · HERO ---------- */
 const Hero = () => (
   <Slide
@@ -1594,6 +1628,7 @@ const FsscV7 = () => (
         content="Webinar Pronto para a V7?: tudo o que muda na transição da Versão 6 para a Versão 7 do esquema FSSC 22000."
       />
     </Helmet>
+    <SplashScreen />
     <Hero />
     <AnneSection />
     <Contexto />
