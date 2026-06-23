@@ -1031,48 +1031,99 @@ const TabelaAlteracoes = () => {
 };
 
 /* ---------- 17 · MyTS — Gestão de fornecedores ---------- */
-const MyTSFornecedores = () => (
-  <Slide bg="bg-background" decor={<MytsWatermark className="-left-16 -bottom-16 w-[320px] [filter:invert(1)]" />}>
-    <SectionLabel n="17" label="MyTS · Como contribuímos" />
-    <h2 className="mt-3 font-display font-bold text-3xl md:text-4xl text-primary">
-      Gestão de <span className="text-gradient">fornecedores</span> na FSSC 22000 V7
-    </h2>
+const MyTSFornecedores = () => {
+  const etapas = [
+    {
+      i: Building2,
+      tag: "Seleção",
+      t: "Avaliação de capacidade",
+      d: "Comprovar que o fornecedor atende às expectativas, requisitos e especificações de qualidade e segurança de alimentos.",
+    },
+    {
+      i: ClipboardCheck,
+      tag: "Aprovação",
+      t: "Critérios justificados por risco",
+      d: "Auditoria do site, certificação de terceiros adequada ou evidência equivalente — definidos a partir da avaliação de perigos.",
+    },
+    {
+      i: Eye,
+      tag: "Monitoramento",
+      t: "Desempenho contínuo",
+      d: "Conformidade com especificações, atendimento ao CoA e resultados satisfatórios de auditoria para manter o status de aprovado.",
+    },
+  ];
 
-    <div className="mt-4 flex-1 grid md:grid-cols-[1fr_1.2fr] gap-6 items-stretch">
-      <p className="text-base text-muted-foreground leading-relaxed self-center">
-        A gestão de fornecedores continua sendo um elemento fundamental para garantir a
-        segurança de alimentos e a conformidade. A nova versão da norma reforça o monitoramento
-        contínuo e evidências que comprovem a qualificação e o desempenho dos fornecedores.
-      </p>
+  const mytsMap = [
+    { i: Building2, t: "Homologação digital com critérios baseados em risco" },
+    { i: FileText, t: "Documentos, certificações e CoA centralizados" },
+    { i: AlertCircle, t: "Alertas de vencimento e cobrança automática" },
+    { i: ClipboardCheck, t: "Avaliação periódica e reavaliação de status" },
+    { i: Truck, t: "Trilha de evidências pronta para auditoria" },
+  ];
 
-      <div className="rounded-2xl bg-primary text-primary-foreground p-5 shadow-elegant relative overflow-hidden">
-        <div className="absolute -right-12 -top-12 size-48 bg-glow opacity-50 blur-3xl rounded-full" />
-        <div className="relative">
-          <div className="flex items-center gap-3 text-accent-glow">
-            <img src={mytsLogo} alt="MyTS" className="h-5" />
-            <span className="text-[10px] uppercase tracking-widest font-semibold">Como a MyTS contribui</span>
+  return (
+    <Slide bg="bg-background" decor={<MytsWatermark className="-left-16 -bottom-16 w-[320px] [filter:invert(1)]" />}>
+      <SectionLabel n="17" label="MyTS · Como contribuímos" />
+      <h2 className="mt-2 font-display font-bold text-3xl md:text-4xl text-primary leading-[1.05]">
+        Gestão de <span className="text-gradient">fornecedores</span> na FSSC 22000 V7
+      </h2>
+
+      {/* Citação da norma */}
+      <div className="mt-3 rounded-xl border-l-4 border-accent bg-secondary/60 px-4 py-2.5">
+        <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest font-semibold text-accent">
+          <FileText className="size-3" />
+          ISO 22002-1:2025 · ISO 22002-100:2025 — Seleção e gestão de fornecedores
+        </div>
+        <p className="mt-1 text-xs md:text-sm text-primary/85 leading-snug">
+          "Deve existir um processo definido para a <strong>seleção, aprovação e monitoramento</strong> de fornecedores,
+          justificado com base em uma <strong>avaliação de perigos</strong>, incluindo o risco potencial para o produto final."
+        </p>
+      </div>
+
+      {/* Fluxo das 3 etapas */}
+      <div className="mt-3 grid md:grid-cols-3 gap-3">
+        {etapas.map((e, idx) => (
+          <div key={e.t} className="relative rounded-xl border border-border bg-card p-3 shadow-card">
+            <div className="flex items-center justify-between">
+              <span className="text-[9px] uppercase tracking-widest font-bold text-accent">
+                {String(idx + 1).padStart(2, "0")} · {e.tag}
+              </span>
+              <div className="size-8 rounded-lg bg-gradient-accent flex items-center justify-center">
+                <e.i className="size-4 text-accent-foreground" />
+              </div>
+            </div>
+            <div className="mt-1.5 font-display font-bold text-sm text-primary leading-tight">{e.t}</div>
+            <p className="mt-1 text-[11px] text-muted-foreground leading-snug">{e.d}</p>
+            {idx < etapas.length - 1 && (
+              <ArrowRight className="hidden md:block absolute -right-2.5 top-1/2 -translate-y-1/2 size-4 text-accent z-10 bg-background rounded-full" />
+            )}
           </div>
-          <div className="mt-3 grid grid-cols-1 gap-2">
-            {[
-              { i: Building2, t: "Homologação digital de fornecedores" },
-              { i: FileText, t: "Controle automatizado de documentos e certificações" },
-              { i: AlertCircle, t: "Monitoramento de vencimentos e cobrança automática" },
-              { i: ClipboardCheck, t: "Avaliação periódica de desempenho" },
-              { i: Truck, t: "Histórico de evidências para auditorias" },
-            ].map((s) => (
-              <div key={s.t} className="rounded-xl border border-primary-foreground/15 bg-primary-foreground/5 p-3 flex items-center gap-3">
-                <div className="size-8 shrink-0 rounded-lg bg-gradient-accent flex items-center justify-center">
-                  <s.i className="size-4 text-accent-foreground" />
-                </div>
-                <div className="font-display font-semibold text-sm">{s.t}</div>
+        ))}
+      </div>
+
+      {/* Como a MyTS contribui */}
+      <div className="mt-3 rounded-2xl bg-primary text-primary-foreground p-4 shadow-elegant relative overflow-hidden">
+        <div className="absolute -right-12 -top-12 size-48 bg-glow opacity-50 blur-3xl rounded-full" />
+        <div className="relative grid md:grid-cols-[auto_1fr] gap-4 items-center">
+          <div className="flex md:flex-col items-center md:items-start gap-2 md:gap-1 md:pr-4 md:border-r md:border-primary-foreground/15">
+            <img src={mytsLogo} alt="MyTS" className="h-5" />
+            <span className="text-[10px] uppercase tracking-widest font-semibold text-accent-glow leading-tight">
+              Como a MyTS<br className="hidden md:block" /> operacionaliza
+            </span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-2">
+            {mytsMap.map((s) => (
+              <div key={s.t} className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 p-2 flex md:flex-col items-center md:items-start gap-2 md:gap-1.5">
+                <s.i className="size-4 text-accent-glow shrink-0" />
+                <div className="font-display font-semibold text-[11px] leading-tight">{s.t}</div>
               </div>
             ))}
           </div>
         </div>
       </div>
-    </div>
-  </Slide>
-);
+    </Slide>
+  );
+};
 
 /* ---------- 18 · CTA Final ---------- */
 const Final = () => (
