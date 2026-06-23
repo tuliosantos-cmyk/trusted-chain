@@ -1324,46 +1324,66 @@ const Encerramento = () => (
         Foi um prazer percorrer essa transição com você.
       </p>
 
-      {/* Card repetido — próximo passo */}
-      <div className="mt-8 w-full max-w-xl text-left">
-        <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-6 relative overflow-hidden">
-          <div className="absolute -right-10 -top-10 size-40 bg-glow opacity-40 blur-3xl rounded-full" />
-          <div className="relative">
-            <div className="flex items-center gap-3">
-              <img src={mytsLogo} alt="MyTS" className="h-5 opacity-90" />
-              <span className="text-[10px] uppercase tracking-widest font-semibold text-accent-glow">
-                Próximo passo
-              </span>
+      {/* Card destaque — próximo passo com André */}
+      <div className="mt-10 w-full max-w-4xl text-left">
+        <div className="relative overflow-hidden rounded-3xl border border-primary-foreground/15 bg-primary-foreground/[0.04] backdrop-blur-xl p-7 md:p-8">
+          <div className="absolute -right-24 -top-24 size-72 bg-glow opacity-50 blur-3xl rounded-full" />
+          <div className="absolute left-0 top-0 h-full w-1 bg-gradient-accent" />
+
+          <div className="relative grid md:grid-cols-[1.2fr_1fr] gap-7 items-center">
+            {/* Lado esquerdo — mensagem */}
+            <div>
+              <div className="flex items-center gap-3">
+                <img src={mytsLogo} alt="MyTS" className="h-5 opacity-90" />
+                <span className="h-px w-8 bg-primary-foreground/25" />
+                <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-accent-glow">
+                  Próximo passo
+                </span>
+              </div>
+              <p className="mt-4 font-display font-semibold text-2xl md:text-[26px] leading-[1.15] text-primary-foreground">
+                Quer entender como isso se aplica à <span className="text-gradient">sua operação?</span>
+              </p>
+              <p className="mt-3 text-sm text-primary-foreground/70 leading-relaxed">
+                Agende uma conversa com{" "}
+                <span className="font-semibold text-primary-foreground">André Tanzi</span>,
+                Diretor Comercial da MyTS.
+              </p>
             </div>
-            <p className="mt-4 font-display font-semibold text-lg leading-snug text-primary-foreground">
-              Quer entender como isso se aplica à sua operação?
-            </p>
-            <p className="mt-2 text-sm text-primary-foreground/75 leading-relaxed">
-              Agende uma conversa com{" "}
-              <span className="font-semibold text-primary-foreground">André Tanzi</span>,
-              Diretor Comercial da MyTS.
-            </p>
-            <div className="mt-5 space-y-2 text-sm">
+
+            {/* Lado direito — contato */}
+            <div className="md:border-l md:border-primary-foreground/10 md:pl-7 space-y-2.5">
               <a
                 href="mailto:andre.tanzi@myt-s.com"
-                className="flex items-center gap-3 rounded-lg border border-primary-foreground/10 bg-primary-foreground/5 px-3 py-2 hover:bg-primary-foreground/10 transition-colors"
+                className="group flex items-center gap-3 rounded-xl border border-primary-foreground/10 bg-primary-foreground/5 px-3.5 py-2.5 hover:bg-primary-foreground/10 hover:border-accent-glow/40 transition-all"
               >
-                <MessageSquare className="size-4 text-accent-glow" />
-                <span className="font-mono">andre.tanzi@myt-s.com</span>
+                <div className="size-8 rounded-lg bg-gradient-accent flex items-center justify-center shrink-0">
+                  <MessageSquare className="size-4 text-accent-foreground" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-[10px] uppercase tracking-widest text-primary-foreground/50">E-mail</div>
+                  <div className="font-mono text-xs text-primary-foreground truncate">andre.tanzi@myt-s.com</div>
+                </div>
+                <ArrowRight className="size-4 text-accent-glow group-hover:translate-x-1 transition-transform" />
               </a>
               <a
                 href="#"
-                className="flex items-center gap-3 rounded-lg border border-primary-foreground/10 bg-primary-foreground/5 px-3 py-2 hover:bg-primary-foreground/10 transition-colors"
+                className="group flex items-center gap-3 rounded-xl border border-primary-foreground/10 bg-primary-foreground/5 px-3.5 py-2.5 hover:bg-primary-foreground/10 hover:border-accent-glow/40 transition-all"
               >
-                <LinkIcon className="size-4 text-accent-glow" />
-                <span>LinkedIn · André Tanzi</span>
+                <div className="size-8 rounded-lg bg-gradient-accent flex items-center justify-center shrink-0">
+                  <LinkIcon className="size-4 text-accent-foreground" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-[10px] uppercase tracking-widest text-primary-foreground/50">LinkedIn</div>
+                  <div className="text-xs text-primary-foreground truncate">André Tanzi</div>
+                </div>
+                <ArrowRight className="size-4 text-accent-glow group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-8 grid md:grid-cols-3 gap-4 w-full max-w-4xl">
+      <div className="mt-6 grid md:grid-cols-3 gap-4 w-full max-w-4xl">
         {[
           {
             i: MessageSquare,
