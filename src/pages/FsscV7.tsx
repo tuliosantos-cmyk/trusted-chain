@@ -1799,6 +1799,7 @@ const FsscV7 = () => (
     <RotulagemImpressao />
     <Cultura />
     <DesignProduto />
+    <Rastreabilidade />
     <ImpactoMudanca />
     <TabelaAlteracoes />
     <MyTSFornecedores />
