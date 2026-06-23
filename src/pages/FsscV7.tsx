@@ -32,6 +32,13 @@ import {
 import anneFoto from "@/assets/anne-dezan.jpeg";
 import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
+import logoCarrefour from "@/assets/logos/carrefour.png.asset.json";
+import logoCvale from "@/assets/logos/cvale.webp.asset.json";
+import logoKorin from "@/assets/logos/korin.png.asset.json";
+import logoAval from "@/assets/logos/aval.png.asset.json";
+import logoMartins from "@/assets/logos/martins.jpg.asset.json";
+import logoAtakarejo from "@/assets/logos/atakarejo.webp.asset.json";
+import logoCasaPao from "@/assets/logos/casa-pao-queijo.png.asset.json";
 
 /* -----------------------------------------------------------
    FSSC 22000 V7 — "Pronto para a V7?" — slides 16:9
@@ -1313,11 +1320,22 @@ const QuemSomos = () => (
         <p className="text-center text-xs uppercase tracking-widest text-muted-foreground font-medium mb-4">
           Quem já confia na MyTS para sustentar sua cadeia
         </p>
-        <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
-          {["Carrefour", "C.Vale", "Korin", "AVAL", "Redes Martins", "Atakarejo"].map((l) => (
-            <span key={l} className="font-display font-semibold text-lg text-muted-foreground/50">
-              {l}
-            </span>
+        <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
+          {[
+            { src: logoCarrefour.url, alt: "Grupo Carrefour Brasil" },
+            { src: logoCvale.url, alt: "C.Vale" },
+            { src: logoKorin.url, alt: "Korin" },
+            { src: logoAval.url, alt: "AVAL" },
+            { src: logoMartins.url, alt: "Redes Martins" },
+            { src: logoAtakarejo.url, alt: "Atakarejo" },
+            { src: logoCasaPao.url, alt: "Casa do Pão de Queijo" },
+          ].map((l) => (
+            <img
+              key={l.alt}
+              src={l.src}
+              alt={l.alt}
+              className="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+            />
           ))}
         </div>
       </div>
