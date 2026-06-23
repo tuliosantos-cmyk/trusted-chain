@@ -1628,6 +1628,7 @@ const FsscV7 = () => (
         content="Webinar Pronto para a V7?: tudo o que muda na transição da Versão 6 para a Versão 7 do esquema FSSC 22000."
       />
     </Helmet>
+    <SplashScreen />
     <Hero />
     <AnneSection />
     <Contexto />
