@@ -32,6 +32,13 @@ import {
 import anneFoto from "@/assets/anne-dezan.jpeg";
 import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
+import logoCarrefour from "@/assets/logos/carrefour.png.asset.json";
+import logoCvale from "@/assets/logos/cvale.webp.asset.json";
+import logoKorin from "@/assets/logos/korin.png.asset.json";
+import logoAval from "@/assets/logos/aval.png.asset.json";
+import logoMartins from "@/assets/logos/martins.jpg.asset.json";
+import logoAtakarejo from "@/assets/logos/atakarejo.webp.asset.json";
+import logoCasaPao from "@/assets/logos/casa-pao-queijo.png.asset.json";
 
 /* -----------------------------------------------------------
    FSSC 22000 V7 — "Pronto para a V7?" — slides 16:9
