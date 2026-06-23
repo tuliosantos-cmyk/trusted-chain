@@ -1058,6 +1058,201 @@ const Final = () => (
   </Slide>
 );
 
+/* ---------- 19 · Bridge MyTS + André Tanzi ---------- */
+const BridgeAndre = () => (
+  <Slide
+    bg="bg-primary text-primary-foreground"
+    decor={
+      <>
+        <div className="absolute inset-0 grid-pattern opacity-10" />
+        <div className="absolute -left-32 top-1/3 size-[520px] bg-glow opacity-40 blur-3xl rounded-full" />
+        <MytsWatermark className="-right-16 -bottom-16 w-[360px]" />
+      </>
+    }
+  >
+    <SectionLabel n="19" label="Da norma à rotina" light />
+    <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl leading-[1.05] max-w-4xl">
+      A norma evolui.<br />
+      A forma de <span className="text-gradient">sustentá-la</span>, também.
+    </h2>
+
+    <div className="mt-6 flex-1 grid md:grid-cols-[1.1fr_1fr] gap-8 items-center">
+      <p className="text-lg text-primary-foreground/80 leading-relaxed max-w-xl">
+        A V7 reforça que segurança de alimentos se prova com{" "}
+        <span className="text-accent-glow font-semibold">evidência contínua</span> — e isso pede
+        menos planilha e mais processo. É nesse ponto que a MyTS existe: para que controle de
+        fornecedores deixe de ser esforço manual e vire{" "}
+        <span className="text-accent-glow font-semibold">rotina confiável</span>.
+      </p>
+
+      <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-6 relative overflow-hidden">
+        <div className="absolute -right-10 -top-10 size-40 bg-glow opacity-40 blur-3xl rounded-full" />
+        <div className="relative">
+          <div className="flex items-center gap-3">
+            <img src={mytsLogo} alt="MyTS" className="h-5 opacity-90" />
+            <span className="text-[10px] uppercase tracking-widest font-semibold text-accent-glow">
+              Próximo passo
+            </span>
+          </div>
+          <p className="mt-4 font-display font-semibold text-lg leading-snug">
+            Quer entender como isso se aplica à sua operação?
+          </p>
+          <p className="mt-2 text-sm text-primary-foreground/75 leading-relaxed">
+            Agende uma conversa com{" "}
+            <span className="font-semibold text-primary-foreground">André Tanzi</span>,
+            Diretor Comercial da MyTS.
+          </p>
+          <div className="mt-5 space-y-2 text-sm">
+            <a
+              href="mailto:andre.tanzi@myt-s.com"
+              className="flex items-center gap-3 rounded-lg border border-primary-foreground/10 bg-primary-foreground/5 px-3 py-2 hover:bg-primary-foreground/10 transition-colors"
+            >
+              <MessageSquare className="size-4 text-accent-glow" />
+              <span className="font-mono">andre.tanzi@myt-s.com</span>
+            </a>
+            <a
+              href="#"
+              className="flex items-center gap-3 rounded-lg border border-primary-foreground/10 bg-primary-foreground/5 px-3 py-2 hover:bg-primary-foreground/10 transition-colors"
+            >
+              <LinkIcon className="size-4 text-accent-glow" />
+              <span>LinkedIn · André Tanzi</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Slide>
+);
+
+/* ---------- 20 · Finalização da Anne ---------- */
+const FinalAnne = () => (
+  <Slide
+    bg="bg-background"
+    decor={
+      <>
+        <div className="absolute -top-32 -right-32 size-[600px] bg-glow opacity-25 blur-3xl rounded-full" />
+        <MytsWatermark className="-left-16 -bottom-16 w-[320px] [filter:invert(1)]" />
+      </>
+    }
+  >
+    <SectionLabel n="20" label="Para levar daqui" />
+    <div className="mt-4 flex-1 grid md:grid-cols-[1.4fr_1fr] gap-10 items-center">
+      <div>
+        <h2 className="font-display font-bold text-4xl md:text-5xl leading-[1.05] text-primary">
+          A V7 não muda o destino.<br />
+          <span className="text-gradient">Refina o caminho.</span>
+        </h2>
+        <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
+          A estrutura, o escopo e o propósito do esquema seguem firmes. O que a Versão 7
+          traz é mais <span className="text-primary font-semibold">clareza</span>, mais{" "}
+          <span className="text-primary font-semibold">padronização</span> e expectativas
+          de auditoria melhor definidas. Quem começa a se preparar agora chega na transição
+          com tranquilidade — e não com pressa.
+        </p>
+
+        <div className="mt-8 flex items-center gap-4">
+          <img
+            src={anneFoto}
+            alt="Anne Dezan"
+            className="size-16 rounded-full object-cover border-2 border-accent/40"
+          />
+          <div>
+            <div className="font-display font-semibold text-primary text-lg">Anne Dezan</div>
+            <div className="text-sm text-muted-foreground">
+              Bióloga · Consultora · Auditora
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative">
+        <div className="absolute -inset-6 bg-gradient-accent opacity-20 blur-3xl rounded-full" />
+        <div className="relative rounded-[2rem] border border-border bg-card p-8 shadow-elegant">
+          <Sparkles className="size-8 text-accent" />
+          <p className="mt-4 font-display text-xl leading-snug text-primary">
+            "Quem se prepara agora chega na transição com{" "}
+            <span className="text-gradient">tranquilidade</span> — e não com pressa."
+          </p>
+          <div className="mt-6 h-px w-12 bg-accent/50" />
+          <div className="mt-3 text-xs uppercase tracking-widest text-muted-foreground">
+            Mensagem final · Anne Dezan
+          </div>
+        </div>
+      </div>
+    </div>
+  </Slide>
+);
+
+/* ---------- 21 · Encerramento oficial ---------- */
+const Encerramento = () => (
+  <Slide
+    bg="bg-hero"
+    decor={
+      <>
+        <div className="absolute inset-0 grid-pattern opacity-15" />
+        <div className="absolute -top-32 left-1/3 size-[700px] bg-glow opacity-60 blur-3xl rounded-full" />
+        <MytsWatermark className="-right-20 -bottom-20 w-[420px]" />
+      </>
+    }
+  >
+    <div className="flex-1 flex flex-col items-center justify-center text-center">
+      <Chip>
+        <Sparkles className="size-3.5 text-accent-glow" />
+        Obrigado por participar
+      </Chip>
+
+      <h2 className="mt-6 font-display font-bold text-6xl md:text-8xl leading-[0.95] tracking-tight text-primary-foreground">
+        Pronto para a <span className="text-gradient">V7.</span>
+      </h2>
+
+      <p className="mt-6 text-xl md:text-2xl text-primary-foreground/75 max-w-2xl">
+        Foi um prazer percorrer essa transição com você.
+      </p>
+
+      <div className="mt-10 grid md:grid-cols-3 gap-4 w-full max-w-4xl">
+        {[
+          {
+            i: MessageSquare,
+            t: "Dúvidas técnicas sobre a transição",
+            cta: "Falar com a Anne",
+          },
+          {
+            i: Building2,
+            t: "Conhecer a MyTS de perto",
+            cta: "Falar com a MyTS",
+          },
+          {
+            i: FileText,
+            t: "Receber o material desta apresentação",
+            cta: "Inscrever-se",
+          },
+        ].map((s) => (
+          <a
+            key={s.t}
+            href="#"
+            className="group rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-5 text-left hover:bg-primary-foreground/10 transition-colors"
+          >
+            <div className="size-10 rounded-lg bg-gradient-accent flex items-center justify-center">
+              <s.i className="size-5 text-accent-foreground" />
+            </div>
+            <div className="mt-4 text-sm text-primary-foreground/75 leading-snug">{s.t}</div>
+            <div className="mt-3 flex items-center gap-2 text-accent-glow font-semibold text-sm">
+              {s.cta}
+              <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div className="mt-12 flex items-center gap-4 text-primary-foreground/55 text-xs uppercase tracking-widest">
+        <img src={mytsLogo} alt="MyTS" className="h-4 opacity-70" />
+        <span>·</span>
+        <span>Anne Dezan</span>
+      </div>
+    </div>
+  </Slide>
+);
+
 /* ---------- Page ---------- */
 const FsscV7 = () => (
   <main className="bg-background" style={{ margin: 0, padding: 0, overflow: "hidden" }}>
@@ -1088,6 +1283,9 @@ const FsscV7 = () => (
     <TabelaAlteracoes />
     <MyTSFornecedores />
     <Final />
+    <BridgeAndre />
+    <FinalAnne />
+    <Encerramento />
   </main>
 );
 
