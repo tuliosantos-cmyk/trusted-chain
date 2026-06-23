@@ -924,7 +924,49 @@ const DesignProduto = () => {
   );
 };
 
-/* ---------- 14 · Impacto da mudança (texto correto) ---------- */
+/* ---------- 13b · Rastreabilidade ---------- */
+const Rastreabilidade = () => {
+  const items = [
+    { i: LinkIcon, t: "Sistema de rastreabilidade documentado, capaz de rastrear produtos ao longo de toda a cadeia de abastecimento." },
+    { i: Boxes, t: "Identificação de lotes de matérias-primas, embalagens e produtos acabados, incluindo fornecedores e clientes." },
+    { i: ClipboardCheck, t: "Teste periódico do sistema de rastreabilidade para garantir sua eficácia em situações de recall ou retirada." },
+    { i: FileText, t: "Registros de rastreabilidade mantidos por um período de tempo definido, acessíveis e protegidos." },
+  ];
+  return (
+    <Slide
+      bg="bg-background"
+      decor={<MytsWatermark className="-left-16 -top-16 w-[300px] [filter:invert(1)]" />}
+    >
+      <SectionLabel n="13b" label="Requisito 2.5.14" />
+      <h2 className="mt-3 font-display font-bold text-3xl md:text-4xl text-primary">
+        <span className="text-gradient">Rastreabilidade</span> do produto
+      </h2>
+      <p className="mt-2 text-sm text-muted-foreground max-w-5xl leading-relaxed">
+        A organização deve estabelecer e manter um sistema de rastreabilidade que permita identificar
+        o fornecedor de matérias-primas e o cliente do produto acabado, lote a lote:
+      </p>
+
+      <div className="mt-5 flex-1 grid grid-cols-2 gap-3 content-center">
+        {items.map((it, i) => (
+          <div key={i} className="rounded-2xl border border-border bg-gradient-card p-4 flex gap-3 shadow-card">
+            <div className="size-10 shrink-0 rounded-xl bg-gradient-accent flex items-center justify-center shadow-cta">
+              <it.i className="size-5 text-accent-foreground" />
+            </div>
+            <div>
+              <div className="font-mono text-accent text-xs font-bold">{["a)","b)","c)","d)"][i]}</div>
+              <div className="text-sm text-primary leading-snug">{it.t}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-3 rounded-xl bg-accent/10 border border-accent/30 px-4 py-2.5 text-xs text-accent">
+        O sistema deve permitir a <strong>recuperação rápida e eficiente</strong> de produtos em caso de incidente de segurança de alimentos.
+      </div>
+    </Slide>
+  );
+};
+
 const ImpactoMudanca = () => {
   const items = [
     {
@@ -1757,6 +1799,7 @@ const FsscV7 = () => (
     <RotulagemImpressao />
     <Cultura />
     <DesignProduto />
+    <Rastreabilidade />
     <ImpactoMudanca />
     <TabelaAlteracoes />
     <MyTSFornecedores />
