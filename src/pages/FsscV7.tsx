@@ -85,14 +85,7 @@ const Slide = ({
       scrollSnapAlign: "center",
     }}
   >
-    <div
-      className="relative slide-inner"
-      style={{
-        width: 1920,
-        height: 1080,
-        transformOrigin: "top left",
-      }}
-    >
+    <div className="relative h-full w-full slide-inner">
       {decor}
       <div className={`relative h-full w-full flex flex-col ${pad}`}>{children}</div>
     </div>
@@ -1411,7 +1404,7 @@ const PlataformaV7 = () => {
   return (
     <Slide
       bg="bg-primary text-primary-foreground"
-      pad="p-10 md:p-16"
+      pad="p-10 md:p-12"
       decor={
         <>
           <div className="absolute inset-0 grid-pattern opacity-10" />
@@ -1490,26 +1483,26 @@ const CasesReaisV7 = () => {
         Cases reais
       </div>
 
-      <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl leading-[1.05]">
+      <h2 className="mt-3 font-display font-bold text-4xl md:text-5xl leading-[1.05]">
         Da auditoria à <span className="text-gradient">transparência para o consumidor</span>
       </h2>
 
       {/* Layout assimétrico: Carrefour em destaque */}
-      <div className="mt-8 flex-1 grid md:grid-cols-[1.6fr_1fr] gap-5 min-h-0">
+      <div className="mt-5 grid md:grid-cols-[1.55fr_1fr] gap-5 items-stretch min-h-0">
         {/* Carrefour — destaque principal */}
-        <div className="rounded-2xl border-2 border-accent-glow/40 bg-primary-foreground/5 backdrop-blur p-8 flex flex-col shadow-elegant">
+        <div className="rounded-2xl border-2 border-accent-glow/40 bg-primary-foreground/5 backdrop-blur p-6 flex flex-col shadow-elegant">
           <div className="flex items-center justify-between">
             <div>
               <span className="inline-block rounded-lg bg-accent-glow/15 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-accent-glow">
                 Jornada da Autonomia
               </span>
-              <h3 className="mt-2 font-display font-bold text-3xl text-primary-foreground">
+              <h3 className="mt-2 font-display font-bold text-3xl leading-none text-primary-foreground">
                 Grupo Carrefour
               </h3>
             </div>
             <img src={logoCarrefour.url} alt="Carrefour" className="h-10 w-auto object-contain opacity-90" />
           </div>
-          <p className="mt-2 text-lg text-primary-foreground/70">
+          <p className="mt-3 text-lg leading-snug text-primary-foreground/70">
             Governança de cadeia de FLV em escala multivarejo
           </p>
           <p className="mt-4 text-base text-primary-foreground/90 leading-relaxed">
@@ -1520,10 +1513,10 @@ const CasesReaisV7 = () => {
             plataforma multivarejo com trilhas Social, Ambiental e Qualidade, dashboards em tempo real e governança compartilhada entre varejistas.
           </p>
 
-          <div className="mt-auto pt-6">
-            <div className="rounded-xl bg-accent-glow/10 border border-accent-glow/30 p-4 flex items-start gap-3">
+          <div className="mt-auto pt-4">
+            <div className="rounded-xl bg-accent-glow/10 border border-accent-glow/30 p-3 flex items-start gap-3">
               <Globe className="size-6 text-accent-glow shrink-0 mt-0.5" />
-              <p className="text-base text-primary-foreground/90 leading-relaxed">
+              <p className="text-sm text-primary-foreground/90 leading-relaxed">
                 Governança compartilhada entre varejistas com visibilidade do Tier 1 ao produtor na origem.
               </p>
             </div>
@@ -1531,17 +1524,17 @@ const CasesReaisV7 = () => {
         </div>
 
         {/* Korin — case secundário */}
-        <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-6 flex flex-col">
+        <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-5 flex flex-col">
           <div className="flex items-center justify-between">
             <span className="inline-block rounded-lg bg-primary-foreground/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest text-primary-foreground/70">
               MyTS 360
             </span>
             <img src={logoKorin.url} alt="Korin" className="h-8 w-auto object-contain opacity-80" />
           </div>
-          <h3 className="mt-3 font-display font-bold text-2xl text-primary-foreground">Korin</h3>
-          <p className="mt-1 text-base text-primary-foreground/60">Transparência de cadeia do campo à mesa</p>
+          <h3 className="mt-3 font-display font-bold text-2xl leading-none text-primary-foreground">Korin</h3>
+          <p className="mt-2 text-sm text-primary-foreground/60 leading-snug">Transparência de cadeia do campo à mesa</p>
 
-          <p className="mt-4 text-base text-primary-foreground/85 leading-relaxed flex-1">
+          <p className="mt-4 text-sm text-primary-foreground/85 leading-relaxed flex-1">
             A Korin usa o MyTS 360 para coletar, validar e comunicar dados de 38 produtores rurais e 116 pessoas diretamente no campo. O consumidor escaneia um QR Code na embalagem e vê quem produziu, como criou e por que confiar.
           </p>
 
@@ -1550,23 +1543,23 @@ const CasesReaisV7 = () => {
             homologação com critérios claros, monitoramento contínuo de conformidade e ESG, e dados organizados que viram ativo de marca.
           </p>
 
-          <div className="mt-5 grid grid-cols-2 gap-3">
+          <div className="mt-4 grid grid-cols-4 gap-2">
             {[
               { n: "38", l: "produtores" },
               { n: "116", l: "pessoas no campo" },
               { n: "13%", l: "orgânico" },
               { n: "47%", l: "mão de obra familiar" },
             ].map((b) => (
-              <div key={b.l} className="rounded-lg bg-primary-foreground/10 border border-primary-foreground/10 p-3 text-center">
-                <div className="font-display font-bold text-xl text-accent-glow">{b.n}</div>
-                <div className="mt-0.5 text-[10px] uppercase tracking-wider text-primary-foreground/60 font-semibold leading-tight">{b.l}</div>
+              <div key={b.l} className="rounded-lg bg-primary-foreground/10 border border-primary-foreground/10 px-2 py-3 text-center">
+                <div className="font-display font-bold text-lg leading-none text-accent-glow">{b.n}</div>
+                <div className="mt-1 text-[9px] uppercase tracking-wide text-primary-foreground/60 font-semibold leading-tight">{b.l}</div>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <p className="mt-4 text-center text-sm text-primary-foreground/60">
+      <p className="mt-4 text-center text-sm text-primary-foreground/60 leading-snug">
         Da auditoria de certificação à transparência para o consumidor — a MyTS opera em cada elo da cadeia.
       </p>
     </Slide>
@@ -1592,7 +1585,7 @@ const FsscV7 = () => (
       html,body,#root{margin:0;padding:0;background:#0a0e1a}
       html{scroll-snap-type:y proximity}
       .slide-frame{container-type:inline-size;container-name:slide}
-      .slide-inner{transform:scale(calc(100cqw / 1920))}
+      .slide-inner{overflow:hidden}
     `}</style>
     <Helmet>
       <title>Pronto para a V7? — Anne Dezan & MyTS</title>
