@@ -1253,6 +1253,178 @@ const Encerramento = () => (
   </Slide>
 );
 
+/* ---------- 01d · Quem é a MyTS ---------- */
+const QuemSomos = () => (
+  <Slide
+    bg="bg-background"
+    decor={<MytsWatermark className="-right-16 -bottom-16 w-[360px] [filter:invert(1)] opacity-[0.04]" />}
+  >
+    <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+      <span className="font-mono">01d</span>
+      <span className="h-px w-10 bg-accent/50" />
+      MyTS · Quem somos
+    </div>
+
+    <h2 className="mt-3 font-display font-bold text-4xl md:text-5xl text-primary leading-[1.1] max-w-4xl">
+      A inteligência por trás de uma{" "}
+      <span className="text-gradient">cadeia de fornecedores</span> confiável.
+    </h2>
+
+    <div className="mt-6 flex-1 flex flex-col">
+      <div className="grid md:grid-cols-3 gap-5">
+        {[
+          {
+            i: Network,
+            title: "Construída com quem vive a norma",
+            body: "Desenvolvida lado a lado com indústrias e consultores de segurança de alimentos.",
+          },
+          {
+            i: ClipboardCheck,
+            title: "Pensada para auditoria",
+            body: "Cada controle existe para virar evidência defensável — não só registro.",
+          },
+          {
+            i: Globe,
+            title: "O fornecedor acessa, envia e acompanha",
+            body: "Sua equipe valida — não opera. Da homologação ao histórico, em um só lugar.",
+          },
+        ].map((c) => (
+          <div
+            key={c.title}
+            className="rounded-2xl border border-border bg-card p-6 shadow-card flex flex-col"
+          >
+            <div className="size-10 rounded-xl bg-gradient-accent flex items-center justify-center shadow-cta">
+              <c.i className="size-5 text-accent-foreground" />
+            </div>
+            <h3 className="mt-4 font-display font-semibold text-lg text-primary leading-snug">
+              {c.title}
+            </h3>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">
+              {c.body}
+            </p>
+            <div className="mt-4 flex items-center gap-1 text-accent text-sm font-semibold">
+              <ArrowRight className="size-4" />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-6 border-t border-border pt-5">
+        <p className="text-center text-xs uppercase tracking-widest text-muted-foreground font-medium mb-4">
+          Quem já confia na MyTS para sustentar sua cadeia
+        </p>
+        <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
+          {["Carrefour", "C.Vale", "Korin", "AVAL", "Redes Martins", "Atakarejo"].map((l) => (
+            <span key={l} className="font-display font-semibold text-lg text-muted-foreground/50">
+              {l}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </Slide>
+);
+
+/* ---------- 01e · A plataforma + FSSC 22000 V7 ---------- */
+const PlataformaV7 = () => {
+  const blocks = [
+    {
+      icon: Truck,
+      title: "Gestão de Fornecedores",
+      items: [
+        "Homologação e qualificação digital, com aprovação registrada",
+        "Avaliação periódica de desempenho com critérios padronizados",
+        "O fornecedor acessa a própria conta e resolve as pendências — sem sua equipe cobrar",
+      ],
+      check: "Atende: monitoramento cont [0.020,0.068]n contínuo e qualificação que a V7 reforça",
+    },
+    {
+      icon: FileText,
+      title: "Gestão de Documentos",
+      items: [
+        "Controle automatizado de certificações e documentos",
+        "Alertas de vencimento e cobrança automática antes do prazo",
+        "Histórico completo e acessível na hora que o auditor pedir",
+      ],
+      check: "Atende: documentação sempre válida, disponível e defensável",
+    },
+    {
+      icon: Workflow,
+      title: "Gestão de Processos",
+      items: [
+        "Fluxos padronizados com histórico auditável de ponta a ponta",
+        "Checklists, autoavaliações e registros centralizados",
+        "Evidência pronta para apresentar — sem correria na véspera",
+      ],
+      check: "Atende: evidência contínua exigida na auditoria de upgrade",
+    },
+  ];
+
+  return (
+    <Slide
+      bg="bg-primary text-primary-foreground"
+      decor={
+        <>
+          <div className="absolute inset-0 grid-pattern opacity-10" />
+          <div className="absolute -top-40 -right-20 size-[600px] bg-glow opacity-50 blur-3xl rounded-full" />
+          <MytsWatermark className="-left-16 -bottom-20 w-[420px]" />
+        </>
+      }
+    >
+      <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent-glow">
+        <span className="font-mono">01e</span>
+        <span className="h-px w-10 bg-accent-glow/60" />
+        MyTS · A plataforma
+      </div>
+
+      <h2 className="mt-3 font-display font-bold text-3xl md:text-5xl leading-[1.05]">
+        Três frentes, um só controle.{" "}
+        <span className="text-gradient">Tudo pronto para a V7.</span>
+      </h2>
+
+      <p className="mt-3 text-lg text-primary-foreground/80 leading-relaxed max-w-3xl">
+        Fornecedor, processo e documento — onde a V7 mais cobra evidência.
+      </p>
+
+      <div className="mt-5 flex-1 grid md:grid-cols-3 gap-5 content-start">
+        {blocks.map((b) => (
+          <div
+            key={b.title}
+            className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-6 flex flex-col"
+          >
+            <div className="flex items-center gap-3">
+              <div className="size-10 rounded-xl bg-gradient-accent flex items-center justify-center shadow-cta">
+                <b.icon className="size-5 text-accent-foreground" />
+              </div>
+              <h3 className="font-display font-semibold text-lg text-primary-foreground">
+                {b.title}
+              </h3>
+            </div>
+            <ul className="mt-4 space-y-2 flex-1">
+              {b.items.map((it, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-sm text-primary-foreground/85 leading-relaxed">
+                  <CheckCircle2 className="size-4 text-accent-glow shrink-0 mt-0.5" />
+                  {it}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-4 pt-3 border-t border-primary-foreground/10 flex items-start gap-2">
+              <CheckCircle2 className="size-4 text-accent-glow shrink-0 mt-0.5" />
+              <span className="text-xs text-accent-glow font-semibold uppercase tracking-wide">
+                {b.check}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p className="mt-4 text-center text-sm text-primary-foreground/60">
+        Cada exigência da norma encontra, na MyTS, um processo que a sustenta.
+      </p>
+    </Slide>
+  );
+};
+
 /* ---------- Page ---------- */
 const FsscV7 = () => (
   <main className="bg-background" style={{ margin: 0, padding: 0, overflow: "hidden" }}>
@@ -1267,6 +1439,8 @@ const FsscV7 = () => (
     <Hero />
     <AnneSection />
     <Contexto />
+    <QuemSomos />
+    <PlataformaV7 />
     <EsquemaV6 />
     <Conselho />
     <BoSCard />
