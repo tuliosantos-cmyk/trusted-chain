@@ -1562,7 +1562,7 @@ const FsscV7 = () => (
     <EsquemaV6 />
     <Conselho />
     <BoSCard />
-    <V6toV7 />
+    
     <Transicao />
     <EstruturaRequisitos />
     <VisaoGeral />
