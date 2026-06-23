@@ -73,21 +73,23 @@ const Slide = ({
   pad?: string;
 }) => (
   <section
-    className={`${bg} relative ${className}`}
+    className={`${bg} relative ${className} slide-frame`}
     style={{
-      width: "100vw",
+      width: "min(100%, calc((100vh - 64px) * 16 / 9))",
       aspectRatio: "16 / 9",
-      margin: 0,
+      margin: "0 auto",
       padding: 0,
       overflow: "hidden",
+      borderRadius: 16,
+      boxShadow: "0 30px 80px -20px rgba(0,0,0,0.55)",
+      scrollSnapAlign: "center",
     }}
   >
     <div
-      className="relative"
+      className="relative slide-inner"
       style={{
         width: 1920,
         height: 1080,
-        transform: "scale(calc(100vw / 1920))",
         transformOrigin: "top left",
       }}
     >
