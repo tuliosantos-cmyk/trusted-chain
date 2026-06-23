@@ -73,21 +73,23 @@ const Slide = ({
   pad?: string;
 }) => (
   <section
-    className={`${bg} relative ${className}`}
+    className={`${bg} relative ${className} slide-frame`}
     style={{
-      width: "100vw",
+      width: "min(100%, calc((100vh - 64px) * 16 / 9))",
       aspectRatio: "16 / 9",
-      margin: 0,
+      margin: "0 auto",
       padding: 0,
       overflow: "hidden",
+      borderRadius: 16,
+      boxShadow: "0 30px 80px -20px rgba(0,0,0,0.55)",
+      scrollSnapAlign: "center",
     }}
   >
     <div
-      className="relative"
+      className="relative slide-inner"
       style={{
         width: 1920,
         height: 1080,
-        transform: "scale(calc(100vw / 1920))",
         transformOrigin: "top left",
       }}
     >
@@ -1462,8 +1464,25 @@ const PlataformaV7 = () => {
 
 /* ---------- Page ---------- */
 const FsscV7 = () => (
-  <main className="bg-background" style={{ margin: 0, padding: 0, overflow: "hidden" }}>
-    <style>{`html,body,#root{margin:0;padding:0;overflow-x:hidden}`}</style>
+  <main
+    className="bg-[#0a0e1a]"
+    style={{
+      margin: 0,
+      padding: "32px 0",
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: 32,
+      overflowX: "hidden",
+    }}
+  >
+    <style>{`
+      html,body,#root{margin:0;padding:0;background:#0a0e1a}
+      html{scroll-snap-type:y proximity}
+      .slide-frame{container-type:inline-size;container-name:slide}
+      .slide-inner{transform:scale(calc(100cqw / 1920))}
+    `}</style>
     <Helmet>
       <title>Pronto para a V7? — Anne Dezan & MyTS</title>
       <meta
