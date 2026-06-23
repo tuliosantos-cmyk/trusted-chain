@@ -110,8 +110,7 @@ const SplashScreen = () => (
     decor={
       <>
         <div className="absolute inset-0 grid-pattern opacity-10" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[800:m
-900px] bg-glow opacity-40 blur-3xl rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[900px] bg-glow opacity-40 blur-3xl rounded-full" />
         <MytsWatermark className="-right-20 -bottom-20 w-[420px]" />
       </>
     }
