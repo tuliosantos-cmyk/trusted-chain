@@ -1320,11 +1320,22 @@ const QuemSomos = () => (
         <p className="text-center text-xs uppercase tracking-widest text-muted-foreground font-medium mb-4">
           Quem já confia na MyTS para sustentar sua cadeia
         </p>
-        <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
-          {["Carrefour", "C.Vale", "Korin", "AVAL", "Redes Martins", "Atakarejo"].map((l) => (
-            <span key={l} className="font-display font-semibold text-lg text-muted-foreground/50">
-              {l}
-            </span>
+        <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
+          {[
+            { src: logoCarrefour.url, alt: "Grupo Carrefour Brasil" },
+            { src: logoCvale.url, alt: "C.Vale" },
+            { src: logoKorin.url, alt: "Korin" },
+            { src: logoAval.url, alt: "AVAL" },
+            { src: logoMartins.url, alt: "Redes Martins" },
+            { src: logoAtakarejo.url, alt: "Atakarejo" },
+            { src: logoCasaPao.url, alt: "Casa do Pão de Queijo" },
+          ].map((l) => (
+            <img
+              key={l.alt}
+              src={l.src}
+              alt={l.alt}
+              className="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+            />
           ))}
         </div>
       </div>
