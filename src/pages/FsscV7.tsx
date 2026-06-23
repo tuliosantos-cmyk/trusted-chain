@@ -1062,60 +1062,60 @@ const MyTSFornecedores = () => {
   ];
 
   return (
-    <Slide bg="bg-background" pad="p-5 md:p-8" decor={<MytsWatermark className="-left-16 -bottom-16 w-[280px] [filter:invert(1)]" />}>
+    <Slide bg="bg-background" pad="p-6 md:p-10" decor={<MytsWatermark className="-left-16 -bottom-16 w-[280px] [filter:invert(1)]" />}>
       <SectionLabel n="17" label="MyTS · Como contribuímos" />
-      <h2 className="mt-1 font-display font-bold text-2xl md:text-3xl text-primary leading-none">
+      <h2 className="mt-2 font-display font-bold text-3xl md:text-4xl text-primary leading-tight">
         Gestão de <span className="text-gradient">fornecedores</span> na FSSC 22000 V7
       </h2>
 
       {/* Citação da norma */}
-      <div className="mt-2 rounded-xl border-l-4 border-accent bg-secondary/60 px-3 py-2">
-        <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest font-semibold text-accent">
-          <FileText className="size-3" />
+      <div className="mt-4 rounded-xl border-l-4 border-accent bg-secondary/60 px-5 py-3">
+        <div className="flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-accent">
+          <FileText className="size-4" />
           ISO 22002-1:2025 · ISO 22002-100:2025
         </div>
-        <p className="mt-0.5 text-[11px] text-primary/85 leading-snug">
+        <p className="mt-1.5 text-sm text-primary/85 leading-relaxed">
           Processo definido para <strong>seleção, aprovação e monitoramento</strong> de fornecedores,
           justificado por uma <strong>avaliação de perigos</strong>.
         </p>
       </div>
 
       {/* Fluxo das 3 etapas */}
-      <div className="mt-2 grid md:grid-cols-3 gap-2">
+      <div className="mt-5 grid md:grid-cols-3 gap-3">
         {etapas.map((e, idx) => (
-          <div key={e.t} className="relative rounded-xl border border-border bg-card p-2.5 shadow-card">
+          <div key={e.t} className="relative rounded-xl border border-border bg-card p-4 shadow-card">
             <div className="flex items-center justify-between">
-              <span className="text-[9px] uppercase tracking-widest font-bold text-accent">
+              <span className="text-xs uppercase tracking-widest font-bold text-accent">
                 {String(idx + 1).padStart(2, "0")} · {e.tag}
               </span>
-              <div className="size-7 rounded-lg bg-gradient-accent flex items-center justify-center">
-                <e.i className="size-3.5 text-accent-foreground" />
+              <div className="size-9 rounded-lg bg-gradient-accent flex items-center justify-center">
+                <e.i className="size-5 text-accent-foreground" />
               </div>
             </div>
-            <div className="mt-1 font-display font-bold text-xs text-primary leading-tight">{e.t}</div>
-            <p className="mt-0.5 text-[10px] text-muted-foreground leading-snug">{e.d}</p>
+            <div className="mt-3 font-display font-bold text-sm text-primary leading-tight">{e.t}</div>
+            <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{e.d}</p>
             {idx < etapas.length - 1 && (
-              <ArrowRight className="hidden md:block absolute -right-2 top-1/2 -translate-y-1/2 size-3.5 text-accent z-10 bg-background rounded-full" />
+              <ArrowRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 size-5 text-accent z-10 bg-background rounded-full" />
             )}
           </div>
         ))}
       </div>
 
       {/* Como a MyTS contribui */}
-      <div className="mt-2 rounded-2xl bg-primary text-primary-foreground p-3 shadow-elegant relative overflow-hidden">
+      <div className="mt-5 rounded-2xl bg-primary text-primary-foreground p-5 shadow-elegant relative overflow-hidden">
         <div className="absolute -right-12 -top-12 size-48 bg-glow opacity-50 blur-3xl rounded-full" />
-        <div className="relative grid md:grid-cols-[auto_1fr] gap-3 items-center">
-          <div className="flex md:flex-col items-center md:items-start gap-1.5 md:pr-3 md:border-r md:border-primary-foreground/15">
-            <img src={mytsLogo} alt="MyTS" className="h-4" />
-            <span className="text-[9px] uppercase tracking-widest font-semibold text-accent-glow leading-tight">
+        <div className="relative grid md:grid-cols-[auto_1fr] gap-4 items-center">
+          <div className="flex md:flex-col items-center md:items-start gap-2 md:pr-4 md:border-r md:border-primary-foreground/15">
+            <img src={mytsLogo} alt="MyTS" className="h-6" />
+            <span className="text-xs uppercase tracking-widest font-semibold text-accent-glow leading-tight">
               Como a MyTS<br className="hidden md:block" /> operacionaliza
             </span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-1.5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
             {mytsMap.map((s) => (
-              <div key={s.t} className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 p-1.5 flex md:flex-col items-center md:items-start gap-1.5 md:gap-1">
-                <s.i className="size-3.5 text-accent-glow shrink-0" />
-                <div className="font-display font-semibold text-[10px] leading-tight">{s.t}</div>
+              <div key={s.t} className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 p-2.5 flex md:flex-col items-center md:items-start gap-2">
+                <s.i className="size-5 text-accent-glow shrink-0" />
+                <div className="font-display font-semibold text-xs leading-snug">{s.t}</div>
               </div>
             ))}
           </div>
