@@ -946,15 +946,15 @@ const Rastreabilidade = () => {
         o fornecedor de matérias-primas e o cliente do produto acabado, lote a lote:
       </p>
 
-      <div className="mt-4 flex-1 grid grid-cols-2 gap-3 content-center">
+      <div className="mt-4 flex-1 grid grid-cols-2 gap-4 content-center">
         {items.map((it, i) => (
-          <div key={i} className="rounded-2xl border border-primary-foreground/15 bg-primary/40 p-4 flex gap-3">
-            <div className="size-10 shrink-0 rounded-xl bg-gradient-accent flex items-center justify-center shadow-cta">
-              <it.i className="size-5 text-accent-foreground" />
+          <div key={i} className="rounded-2xl border-2 border-accent-glow/30 bg-primary-foreground/5 backdrop-blur p-5 flex gap-4 shadow-elegant hover:border-accent-glow/60 transition-all">
+            <div className="size-12 shrink-0 rounded-xl bg-gradient-accent flex items-center justify-center shadow-cta">
+              <it.i className="size-6 text-accent-foreground" />
             </div>
             <div>
-              <div className="font-mono text-accent-glow text-xs font-bold">{["a)","b)","c)","d)"][i]}</div>
-              <div className="text-sm text-primary-foreground/90 leading-snug">{it.t}</div>
+              <div className="font-mono text-accent-glow text-sm font-bold">{["a)","b)","c)","d)"][i]}</div>
+              <div className="text-sm text-primary-foreground leading-snug">{it.t}</div>
             </div>
           </div>
         ))}
