@@ -1425,30 +1425,31 @@ const PlataformaV7 = () => {
         MyTS · A plataforma
       </div>
 
-      <h2 className="mt-3 font-display font-bold text-3xl md:text-5xl leading-[1.05]">
+      <h2 className="mt-2 font-display font-bold text-3xl md:text-5xl leading-[1.05]">
         Três frentes, um só controle.{" "}
         <span className="text-gradient">Tudo pronto para a V7.</span>
       </h2>
 
-      <p className="mt-3 text-lg text-primary-foreground/80 leading-relaxed max-w-3xl">
+      <p className="mt-2 text-lg text-primary-foreground/80 leading-relaxed max-w-3xl">
         Fornecedor, processo e documento — onde a V7 mais cobra evidência.
       </p>
 
-      <div className="mt-5 flex-1 grid md:grid-cols-3 gap-5 content-start">
+      {/* Módulos */}
+      <div className="mt-4 grid md:grid-cols-3 gap-4 content-start">
         {blocks.map((b) => (
           <div
             key={b.title}
-            className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-6 flex flex-col"
+            className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-5 flex flex-col"
           >
             <div className="flex items-center gap-3">
-              <div className="size-10 rounded-xl bg-gradient-accent flex items-center justify-center shadow-cta">
-                <b.icon className="size-5 text-accent-foreground" />
+              <div className="size-9 rounded-xl bg-gradient-accent flex items-center justify-center shadow-cta">
+                <b.icon className="size-4 text-accent-foreground" />
               </div>
-              <h3 className="font-display font-semibold text-lg text-primary-foreground">
+              <h3 className="font-display font-semibold text-base text-primary-foreground">
                 {b.title}
               </h3>
             </div>
-            <ul className="mt-4 space-y-2 flex-1">
+            <ul className="mt-3 space-y-1.5 flex-1">
               {b.items.map((it, idx) => (
                 <li key={idx} className="flex items-start gap-2 text-sm text-primary-foreground/85 leading-relaxed">
                   <CheckCircle2 className="size-4 text-accent-glow shrink-0 mt-0.5" />
@@ -1456,7 +1457,7 @@ const PlataformaV7 = () => {
                 </li>
               ))}
             </ul>
-            <div className="mt-4 pt-3 border-t border-primary-foreground/10 flex items-start gap-2">
+            <div className="mt-3 pt-2 border-t border-primary-foreground/10 flex items-start gap-2">
               <CheckCircle2 className="size-4 text-accent-glow shrink-0 mt-0.5" />
               <span className="text-xs text-accent-glow font-semibold uppercase tracking-wide">
                 {b.check}
@@ -1466,8 +1467,60 @@ const PlataformaV7 = () => {
         ))}
       </div>
 
-      <p className="mt-4 text-center text-sm text-primary-foreground/60">
-        Cada exigência da norma encontra, na MyTS, um processo que a sustenta.
+      {/* Faixa Cases Reais */}
+      <div className="mt-4 grid grid-cols-2 gap-4">
+        {/* Korin */}
+        <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-5 flex flex-col">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-semibold uppercase tracking-widest text-accent-glow">MyTS 360 · Korin</span>
+            <img src={logoKorin.url} alt="Korin" className="h-6 w-auto object-contain opacity-80" />
+          </div>
+          <p className="mt-1 text-xs text-primary-foreground/60">Transparência de cadeia do campo à mesa</p>
+          <p className="mt-2 text-sm text-primary-foreground/85 leading-relaxed">
+            A Korin usa o MyTS 360 para coletar, validar e comunicar dados de 38 produtores rurais e 116 pessoas diretamente no campo. O consumidor escaneia um QR Code na embalagem e vê quem produziu, como criou e por que confiar.
+          </p>
+          <p className="mt-2 text-xs text-primary-foreground/60 leading-relaxed">
+            <span className="text-primary-foreground font-semibold">O que a MyTS entrega:</span> homologação com critérios claros, monitoramento contínuo de conformidade e ESG, e dados organizados que viram ativo de marca.
+          </p>
+          <div className="mt-auto pt-3 grid grid-cols-4 gap-2">
+            {[
+              { n: "38", l: "produtores rurais" },
+              { n: "116", l: "pessoas no campo" },
+              { n: "13%", l: "certificação orgânica" },
+              { n: "47%", l: "mão de obra familiar" },
+            ].map((b) => (
+              <div key={b.l} className="rounded-lg bg-primary-foreground/10 border border-primary-foreground/10 p-2 text-center">
+                <div className="font-display font-bold text-base text-accent-glow">{b.n}</div>
+                <div className="mt-0.5 text-[9px] uppercase tracking-wider text-primary-foreground/60 font-semibold leading-tight">{b.l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Carrefour */}
+        <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-5 flex flex-col">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-semibold uppercase tracking-widest text-accent-glow">Jornada da Autonomia · Carrefour</span>
+            <img src={logoCarrefour.url} alt="Carrefour" className="h-6 w-auto object-contain opacity-80" />
+          </div>
+          <p className="mt-1 text-xs text-primary-foreground/60">Governança de cadeia de FLV em escala multivarejo</p>
+          <p className="mt-2 text-sm text-primary-foreground/85 leading-relaxed">
+            Desenvolvida a pedido do Grupo Carrefour, a Jornada da Autonomia usa a MyTS para monitorar e qualificar a cadeia de FLV do Tier 1 ao produtor na origem — exatamente onde as auditorias tradicionais não chegam.
+          </p>
+          <p className="mt-2 text-xs text-primary-foreground/60 leading-relaxed">
+            <span className="text-primary-foreground font-semibold">O que a MyTS entrega:</span> plataforma multivarejo com trilhas Social, Ambiental e Qualidade, dashboards em tempo real e governança compartilhada entre varejistas.
+          </p>
+          <div className="mt-auto pt-3 flex items-center gap-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/10 p-3">
+            <Globe className="size-4 text-accent-glow shrink-0" />
+            <p className="text-xs text-primary-foreground/85">
+              Governança compartilhada entre varejistas com visibilidade do Tier 1 ao produtor na origem.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <p className="mt-3 text-center text-xs text-primary-foreground/60">
+        Da auditoria de certificação à transparência para o consumidor — a MyTS opera em cada elo da cadeia.
       </p>
     </Slide>
   );
@@ -1509,7 +1562,7 @@ const FsscV7 = () => (
     <EsquemaV6 />
     <Conselho />
     <BoSCard />
-    <V6toV7 />
+    
     <Transicao />
     <EstruturaRequisitos />
     <VisaoGeral />
