@@ -1283,6 +1283,9 @@ const FsscV7 = () => (
     <TabelaAlteracoes />
     <MyTSFornecedores />
     <Final />
+    <BridgeAndre />
+    <FinalAnne />
+    <Encerramento />
   </main>
 );
 
