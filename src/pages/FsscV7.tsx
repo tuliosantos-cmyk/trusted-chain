@@ -1439,6 +1439,8 @@ const FsscV7 = () => (
     <Hero />
     <AnneSection />
     <Contexto />
+    <QuemSomos />
+    <PlataformaV7 />
     <EsquemaV6 />
     <Conselho />
     <BoSCard />
