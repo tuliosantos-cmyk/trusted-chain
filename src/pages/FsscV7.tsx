@@ -85,14 +85,7 @@ const Slide = ({
       scrollSnapAlign: "center",
     }}
   >
-    <div
-      className="relative slide-inner"
-      style={{
-        width: 1920,
-        height: 1080,
-        transformOrigin: "top left",
-      }}
-    >
+    <div className="relative h-full w-full slide-inner">
       {decor}
       <div className={`relative h-full w-full flex flex-col ${pad}`}>{children}</div>
     </div>
@@ -1592,7 +1585,7 @@ const FsscV7 = () => (
       html,body,#root{margin:0;padding:0;background:#0a0e1a}
       html{scroll-snap-type:y proximity}
       .slide-frame{container-type:inline-size;container-name:slide}
-      .slide-inner{transform:scale(calc(100cqw / 1920))}
+      .slide-inner{overflow:hidden}
     `}</style>
     <Helmet>
       <title>Pronto para a V7? — Anne Dezan & MyTS</title>
