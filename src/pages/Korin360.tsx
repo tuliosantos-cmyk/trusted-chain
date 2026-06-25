@@ -583,38 +583,117 @@ const BenchmarkMarcas = () => {
   );
 };
 
-/* ---------- 08 · PRÓXIMA FASE ---------- */
-const ProximaFase = () => {
-  const pilares = [
+/* ---------- 07 · PRÓXIMA FASE — QR NA EMBALAGEM ---------- */
+const ProximaFaseQR = () => {
+  const cards = [
     {
-      icon: Megaphone,
-      t: "Fortalecer a comunicação",
-      d: ["Maior atuação de assessoria de imprensa", "Lançamentos em veículos relevantes", "Conteúdo institucional contínuo"],
-    },
-    {
-      icon: Globe,
-      t: "Potencializar canais digitais",
-      d: ["Protagonismo para os produtores", "Calendário permanente de conteúdo", "Campanhas sobre origem e sustentabilidade"],
+      icon: QrCode,
+      t: "Na embalagem externa",
+      d: [
+        "QR Code sai do folheto interno para a embalagem do produto",
+        "Acesso imediato na gôndola, sem precisar abrir",
+        "Elemento permanente de comunicação no shelf",
+      ],
     },
     {
       icon: Store,
-      t: "Explorar o ponto de venda",
-      d: ["Materiais de gôndola", "Destaque visual para o QR Code", "Reforço dos diferenciais Korin"],
+      t: "Impacto no ponto de venda",
+      d: [
+        "Gatilho de diferenciação no momento de decisão",
+        "Informação autoexplicativa, sem depender de vendedor",
+        "Destaque visual e curiosidade entre concorrentes",
+      ],
     },
     {
-      icon: UserPlus,
-      t: "Estratégia com influenciadores",
-      d: ["Alimentação saudável", "Sustentabilidade e consumo consciente", "Agronegócio"],
+      icon: TrendingUp,
+      t: "Conversão e marca",
+      d: [
+        "Valida origem e práticas antes da compra",
+        "Reduz barreiras de confiança em categorias sensíveis",
+        "Scan rate vira KPI mensurável de interesse real",
+      ],
     },
+  ];
+  return (
+    <Slide
+      bg="bg-primary text-primary-foreground"
+      decor={
+        <>
+          <div className="absolute inset-0 grid-pattern opacity-10" />
+          <div className="absolute -bottom-32 right-1/4 size-[600px] bg-glow opacity-50 blur-3xl rounded-full" />
+          <MytsWatermark className="-left-16 -top-16 w-[360px]" />
+        </>
+      }
+    >
+      <SectionLabel n="07" label="Próxima Fase" light />
+
+      <h2 className="mt-3 font-display font-bold text-3xl md:text-[42px] text-primary-foreground leading-[1.08] max-w-5xl">
+        QR Code na embalagem: do folheto à{" "}
+        <span className="text-gradient">gôndola</span>
+      </h2>
+
+      <p className="mt-2 text-sm md:text-base text-primary-foreground/80 max-w-3xl">
+        Evoluir o ponto de contato para o momento exato da decisão de compra.
+      </p>
+
+      <div className="mt-5 flex-1 grid grid-cols-3 gap-4 items-stretch">
+        {cards.map((c) => (
+          <div
+            key={c.t}
+            className="rounded-2xl border-2 border-accent-glow/25 bg-primary-foreground/[0.04] backdrop-blur-sm p-5 flex flex-col hover:border-accent-glow/50 transition-colors"
+          >
+            <div className="flex items-center gap-3">
+              <div className="size-11 rounded-xl bg-gradient-accent flex items-center justify-center shrink-0">
+                <c.icon className="size-5 text-accent-foreground" />
+              </div>
+              <div className="font-display font-bold text-[15px] text-primary-foreground leading-tight">{c.t}</div>
+            </div>
+            <ul className="mt-4 space-y-2.5 flex-1">
+              {c.d.map((x) => (
+                <li key={x} className="flex items-start gap-2 text-[12.5px] text-primary-foreground/85 leading-snug">
+                  <span className="mt-1.5 size-1.5 rounded-full bg-accent-glow shrink-0" />
+                  <span>{x}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-5 rounded-xl border border-accent-glow/25 bg-accent-glow/10 px-6 py-3 text-center">
+        <p className="text-primary-foreground text-sm md:text-base">
+          A gôndola é o momento de decisão.{" "}
+          <span className="text-accent-glow font-semibold">
+            O QR vira um gatilho de diferenciação imediata.
+          </span>
+        </p>
+      </div>
+    </Slide>
+  );
+};
+
+/* ---------- 08 · PRÓXIMA FASE — EXPANSÃO DO PORTFÓLIO ---------- */
+const ProximaFasePortfolio = () => {
+  const cards = [
     {
-      icon: Mail,
-      t: "Relacionamento direto",
-      d: ["Captação de e-mails e newsletter", "CRM", "Campanhas de relacionamento"],
+      icon: ShieldCheck,
+      t: "Brand trust sistêmico",
+      d: "Não é um produto transparente — é uma marca transparente. O consumidor passa a confiar na Korin como sistema produtivo.",
     },
     {
       icon: Boxes,
-      t: "Expandir o modelo",
-      d: ["Aplicar a metodologia Korin 360", "Novas categorias: carnes, pescados", "Demais produtos do portfólio"],
+      t: "Efeito halo entre categorias",
+      d: "Um produto com alta percepção de valor 'contamina positivamente' os demais. Quem entra por ovos pode migrar para carnes e processados.",
+    },
+    {
+      icon: Globe,
+      t: "Diferenciação estrutural",
+      d: "Poucas marcas mostram coerência de origem em múltiplas categorias. Cria barreira de narrativa + dados + conteúdo.",
+    },
+    {
+      icon: LinkIcon,
+      t: "Ecossistema de relacionamento",
+      d: "QR → hub → jornadas de exploração → conteúdos → CRM. Expande de campanha para plataforma de relacionamento contínuo.",
     },
   ];
   return (
@@ -622,40 +701,41 @@ const ProximaFase = () => {
       bg="bg-background"
       decor={<MytsWatermark className="-right-16 -bottom-16 w-[360px] [filter:invert(1)] opacity-[0.04]" />}
     >
-      <SectionLabel n="07" label="Próxima Fase do Korin 360" />
+      <SectionLabel n="07" label="Próxima Fase" />
 
-      <h2 className="mt-3 font-display font-bold text-3xl md:text-5xl text-primary leading-[1.05] max-w-5xl">
-        De projeto de transparência para uma{" "}
-        <span className="text-gradient">plataforma de marca</span>
+      <h2 className="mt-3 font-display font-bold text-3xl md:text-[42px] text-primary leading-[1.08] max-w-5xl">
+        Do produto isolado ao{" "}
+        <span className="text-gradient">ecossistema Korin</span>
       </h2>
 
-      <p className="mt-3 text-sm md:text-base text-muted-foreground max-w-3xl">
-        O Korin 360 demonstrou que existe valor em conectar consumidores à origem. O próximo passo é torná-lo
-        uma plataforma permanente de diferenciação, relacionamento e fortalecimento da marca.
+      <p className="mt-2 text-sm md:text-base text-muted-foreground max-w-3xl">
+        Expandir o Korin 360 para outras linhas da marca e construir uma plataforma permanente de origem.
       </p>
 
-      <div className="mt-5 flex-1 grid grid-cols-3 grid-rows-2 gap-3.5">
-        {pilares.map((p) => (
+      <div className="mt-5 flex-1 grid grid-cols-2 gap-4 items-stretch">
+        {cards.map((c) => (
           <div
-            key={p.t}
-            className="rounded-2xl border border-border bg-gradient-card shadow-card p-4 flex flex-col hover:shadow-elegant hover:border-accent/40 transition-all"
+            key={c.t}
+            className="rounded-2xl border border-border bg-gradient-card shadow-card p-5 flex flex-col hover:shadow-elegant hover:border-accent/40 transition-all"
           >
             <div className="flex items-center gap-3">
-              <div className="size-10 rounded-lg bg-gradient-accent flex items-center justify-center shrink-0">
-                <p.icon className="size-5 text-accent-foreground" />
+              <div className="size-11 rounded-xl bg-gradient-accent flex items-center justify-center shrink-0">
+                <c.icon className="size-5 text-accent-foreground" />
               </div>
-              <div className="font-display font-bold text-base text-primary leading-tight">{p.t}</div>
+              <div className="font-display font-bold text-[15px] text-primary leading-tight">{c.t}</div>
             </div>
-            <ul className="mt-3 space-y-1.5">
-              {p.d.map((x) => (
-                <li key={x} className="flex items-start gap-2 text-xs text-muted-foreground">
-                  <span className="mt-1 size-1 rounded-full bg-accent shrink-0" />
-                  <span>{x}</span>
-                </li>
-              ))}
-            </ul>
+            <p className="mt-4 text-[12.5px] text-muted-foreground leading-relaxed flex-1">{c.d}</p>
           </div>
         ))}
+      </div>
+
+      <div className="mt-5 rounded-xl bg-primary text-primary-foreground px-6 py-3 text-center">
+        <p className="text-sm md:text-base">
+          De campanha de transparência para{" "}
+          <span className="text-accent-glow font-semibold">
+            plataforma de marca expandida.
+          </span>
+        </p>
       </div>
     </Slide>
   );
@@ -783,7 +863,8 @@ const Korin360 = () => (
     <Resultados />
     <BenchmarkMercado />
     <BenchmarkMarcas />
-    <ProximaFase />
+    <ProximaFaseQR />
+    <ProximaFasePortfolio />
     <MensagemFinal />
   </main>
 );
