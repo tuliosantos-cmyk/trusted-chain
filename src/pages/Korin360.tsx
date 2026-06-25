@@ -611,9 +611,9 @@ const ProximaFase = () => {
       mockupAlt: "Mockup do portfólio Korin com produtos conectados em um ecossistema unificado",
       bullets: [
         "Brand trust sistêmico em toda a linha",
-        "Efeito halo entre categorias de produto",
-        "Relacionamento contínuo via CRM e conteúdo",
-        "Diferenciação estrutural: narrativa + dados",
+        "Efeito elo entre categorias de produto",
+        "Relacionamento contínuo via conteúdos",
+        "\n",
       ],
     },
   ];
