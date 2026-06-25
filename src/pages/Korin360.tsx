@@ -592,15 +592,29 @@ const ProximaFase = () => {
       icon: QrCode,
       eyebrow: "Ponto de contato",
       t: "QR Code na embalagem",
-      d: "Do folheto interno para a embalagem externa. Acesso imediato na gôndola, sem precisar abrir o produto.",
-      bullets: ["Gatilho de diferenciação no PDV", "Informação autoexplicativa", "Scan rate como KPI mensurável"],
+      lead: "Do folheto interno para a embalagem externa — acesso imediato na gôndola, sem precisar abrir o produto.",
+      mockup: mockupQR,
+      mockupAlt: "Mockup de embalagem Korin com QR Code sendo escaneado por smartphone",
+      bullets: [
+        "Gatilho de diferenciação no PDV",
+        "Informação autoexplicativa para o consumidor",
+        "Scan rate como KPI mensurável de engajamento",
+        "Conexão direta marca ↔ origem ↔ consumidor",
+      ],
     },
     {
       icon: Boxes,
       eyebrow: "Expansão de marca",
       t: "Ecossistema Korin",
-      d: "Expandir o Korin 360 para outras linhas e construir uma plataforma permanente de origem e relacionamento.",
-      bullets: ["Brand trust sistêmico", "Efeito halo entre categorias", "Diferenciação estrutural de narrativa + dados"],
+      lead: "Do produto isolado para uma plataforma permanente que conecta todo o portfólio à narrativa de origem.",
+      mockup: mockupEcossistema,
+      mockupAlt: "Mockup do portfólio Korin com produtos conectados em um ecossistema unificado",
+      bullets: [
+        "Brand trust sistêmico em toda a linha",
+        "Efeito halo entre categorias de produto",
+        "Relacionamento contínuo via CRM e conteúdo",
+        "Diferenciação estrutural: narrativa + dados",
+      ],
     },
   ];
   return (
@@ -617,60 +631,65 @@ const ProximaFase = () => {
     >
       <SectionLabel n="07" label="Próxima Fase" light />
 
-      <h2 className="mt-2 font-display font-bold text-[34px] text-primary-foreground leading-[1.06] max-w-5xl">
+      <h2 className="mt-2 font-display font-bold text-[32px] text-primary-foreground leading-[1.06] max-w-5xl">
         De um projeto de transparência para uma{" "}
         <span className="text-gradient">plataforma de marca expandida</span>
       </h2>
 
-      <div className="mt-5 flex-1 grid grid-cols-[1.1fr_1fr] gap-5 min-h-0">
-        {/* Cards */}
-        <div className="flex flex-col gap-4 min-h-0">
-          {cards.map((c) => (
-            <div
-              key={c.t}
-              className="flex-1 rounded-2xl border-2 border-accent-glow/25 bg-primary-foreground/[0.04] backdrop-blur-sm p-5 flex flex-col hover:border-accent-glow/50 transition-colors min-h-0"
-            >
+      <div className="mt-5 flex-1 grid grid-cols-2 gap-6 min-h-0">
+        {cards.map((c) => (
+          <div
+            key={c.t}
+            className="rounded-2xl border-2 border-accent-glow/25 bg-primary-foreground/[0.04] backdrop-blur-sm overflow-hidden flex flex-col hover:border-accent-glow/50 transition-colors min-h-0"
+          >
+            {/* Mockup */}
+            <div className="relative h-[210px] w-full overflow-hidden bg-primary-foreground/5 shrink-0">
+              <img
+                src={c.mockup}
+                alt={c.mockupAlt}
+                loading="lazy"
+                width={1280}
+                height={1280}
+                className="size-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/10 to-transparent" />
+              <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-primary/70 backdrop-blur-sm px-2.5 py-1 text-[10px] uppercase tracking-widest text-accent-glow font-semibold border border-accent-glow/30">
+                {c.eyebrow}
+              </div>
+            </div>
+
+            {/* Body */}
+            <div className="flex-1 p-5 flex flex-col min-h-0">
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-xl bg-gradient-accent flex items-center justify-center shrink-0">
                   <c.icon className="size-5 text-accent-foreground" />
                 </div>
-                <div>
-                  <div className="text-[11px] uppercase tracking-widest text-accent-glow/80 font-semibold leading-none">{c.eyebrow}</div>
-                  <div className="mt-0.5 font-display font-bold text-[16px] text-primary-foreground leading-tight">{c.t}</div>
+                <div className="font-display font-bold text-[18px] text-primary-foreground leading-tight">
+                  {c.t}
                 </div>
               </div>
-              <p className="mt-3 text-[13px] text-primary-foreground/80 leading-snug">{c.d}</p>
+              <p className="mt-3 text-[13px] text-primary-foreground/85 leading-snug">{c.lead}</p>
               <ul className="mt-3 space-y-1.5">
                 {c.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-2 text-[12px] text-primary-foreground/75 leading-snug">
+                  <li
+                    key={b}
+                    className="flex items-start gap-2 text-[12.5px] text-primary-foreground/80 leading-snug"
+                  >
                     <span className="mt-1.5 size-1.5 rounded-full bg-accent-glow shrink-0" />
                     <span>{b}</span>
                   </li>
                 ))}
               </ul>
             </div>
-          ))}
-        </div>
-
-        {/* Mockup area */}
-        <div className="rounded-2xl border-2 border-dashed border-primary-foreground/20 bg-primary-foreground/[0.03] flex flex-col items-center justify-center gap-4 p-6 text-center">
-          <div className="size-16 rounded-2xl bg-primary-foreground/5 flex items-center justify-center border border-primary-foreground/10">
-            <Smartphone className="size-8 text-primary-foreground/30" />
           </div>
-          <div>
-            <div className="font-display font-semibold text-[15px] text-primary-foreground/70">Espaço para mockup</div>
-            <p className="mt-1.5 text-[12px] text-primary-foreground/45 max-w-[200px] leading-snug">
-              Ilustração da embalagem com QR Code no ponto de venda
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
 
       <div className="mt-4 rounded-xl border border-accent-glow/25 bg-accent-glow/10 px-6 py-3 text-center">
         <p className="text-primary-foreground text-[13.5px]">
           QR → hub → jornadas → conteúdos → relacionamento.{" "}
           <span className="text-accent-glow font-semibold">
-            De campanha para plataforma contínua.
+            De campanha pontual para plataforma contínua de marca.
           </span>
         </p>
       </div>
