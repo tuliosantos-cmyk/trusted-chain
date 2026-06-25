@@ -28,6 +28,11 @@ import {
 import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
 import logoKorin from "@/assets/logos/korin.png.asset.json";
+import imgVital from "@/assets/bench/vital.png.asset.json";
+import imgCarrefourBC from "@/assets/bench/carrefour-blockchain.webp.asset.json";
+import imgFrigol from "@/assets/bench/frigol.png.asset.json";
+import imgCarrefourSabor from "@/assets/bench/carrefour-sabor.jpg.asset.json";
+import imgMowi from "@/assets/bench/mowi.webp.asset.json";
 
 /* -----------------------------------------------------------
    KORIN 360 — Transparência que aproxima — slides 16:9
