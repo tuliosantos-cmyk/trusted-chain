@@ -598,8 +598,8 @@ const ProximaFase = () => {
       bullets: [
         "Gatilho de diferenciação no PDV",
         "Informação autoexplicativa para o consumidor",
-        "Scan rate como KPI mensurável de engajamento",
         "Conexão direta marca ↔ origem ↔ consumidor",
+        "\n",
       ],
     },
     {
