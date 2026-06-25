@@ -560,18 +560,18 @@ const BenchmarkMarcas = () => {
                   className="h-5 w-auto rounded shadow-sm"
                 />
                 <div className="min-w-0">
-                  <div className="font-display font-bold text-[12px] leading-tight text-primary-foreground truncate">
+                  <div className="font-display font-bold text-[13.5px] leading-tight text-primary-foreground truncate">
                     {m.nome}
                   </div>
-                  <div className="text-[9px] uppercase tracking-wider text-accent-glow">{m.cat}</div>
+                  <div className="text-[13px] uppercase tracking-wider text-accent-glow">{m.cat}</div>
                 </div>
               </div>
-              <p className="mt-2 text-[10.5px] leading-snug text-primary-foreground/75">{m.o}</p>
+              <p className="mt-2 text-[12.5px] leading-snug text-primary-foreground/75">{m.o}</p>
               <div className="mt-auto pt-2 border-t border-primary-foreground/10">
-                <div className="text-[8.5px] uppercase tracking-widest text-accent-glow/80 font-semibold">
+                <div className="text-[13px] uppercase tracking-widest text-accent-glow/80 font-semibold">
                   Resultado
                 </div>
-                <p className="mt-0.5 text-[10.5px] leading-snug text-primary-foreground font-medium">{m.r}</p>
+                <p className="mt-0.5 text-[12.5px] leading-snug text-primary-foreground font-medium">{m.r}</p>
               </div>
             </div>
           </div>
@@ -697,7 +697,7 @@ const MensagemFinal = () => (
               <div className="flex items-center gap-3">
                 <img src={mytsLogo} alt="MyTS" className="h-5 opacity-90" />
                 <span className="h-px w-8 bg-primary-foreground/25" />
-                <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-accent-glow">
+                <span className="text-[13.5px] uppercase tracking-[0.2em] font-semibold text-accent-glow">
                   Próximo passo
                 </span>
               </div>
@@ -720,7 +720,7 @@ const MensagemFinal = () => (
                   <Mail className="size-4 text-accent-foreground" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[10px] uppercase tracking-widest text-primary-foreground/50">E-mail</div>
+                  <div className="text-[13.5px] uppercase tracking-widest text-primary-foreground/50">E-mail</div>
                   <div className="font-mono text-xs text-primary-foreground truncate">andre.tanzi@myt-s.com</div>
                 </div>
                 <ArrowRight className="size-4 text-accent-glow group-hover:translate-x-1 transition-transform" />
@@ -733,7 +733,7 @@ const MensagemFinal = () => (
                   <LinkIcon className="size-4 text-accent-foreground" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[10px] uppercase tracking-widest text-primary-foreground/50">LinkedIn</div>
+                  <div className="text-[13.5px] uppercase tracking-widest text-primary-foreground/50">LinkedIn</div>
                   <div className="text-xs text-primary-foreground truncate">André Tanzi</div>
                 </div>
                 <ArrowRight className="size-4 text-accent-glow group-hover:translate-x-1 transition-transform" />
