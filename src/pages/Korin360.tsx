@@ -35,6 +35,7 @@ import imgCarrefourSabor from "@/assets/bench/carrefour-sabor.jpg.asset.json";
 import imgMowi from "@/assets/bench/mowi.webp.asset.json";
 import imgRewe from "@/assets/bench/rewe.webp.asset.json";
 import imgLlet from "@/assets/bench/llet-nostra.jpg.asset.json";
+import imgNatureSweet from "@/assets/bench/naturesweet.jpg.asset.json";
 
 /* -----------------------------------------------------------
    KORIN 360 — Transparência que aproxima — slides 16:9
@@ -485,11 +486,12 @@ const BenchmarkMarcas = () => {
       r: "Reforço em alimentação saudável e sustentável",
     },
     {
-      flag: "it",
-      nome: "Barilla",
-      cat: "Molhos e ingredientes",
-      o: "QR Code com rastreabilidade do manjericão, identificação dos agricultores, data de colheita e origem dos ingredientes",
-      r: "Expansão da iniciativa para novos produtos após o sucesso do lançamento inicial",
+      flag: "us",
+      nome: "NatureSweet",
+      cat: "Tomates, pepinos e pimentões",
+      img: imgNatureSweet.url,
+      o: "QR Code que apresenta trabalhadores rurais, vídeos das fazendas e histórias reais das pessoas por trás da produção",
+      r: "Viralizou no TikTok com +500 mil curtidas — humanizar a cadeia é a mesma tese da Korin",
     },
     {
       flag: "no",
