@@ -454,6 +454,7 @@ const BenchmarkMarcas = () => {
       nome: "Vital Farms",
       cat: "Ovos",
       img: imgVital.url,
+      imgPosition: "object-top",
       o: "Nome do produtor na embalagem + QR Code + vídeos das fazendas",
       r: "Listada na Nasdaq, em +23 mil lojas, próxima de US$ 1bi/ano",
     },
@@ -538,7 +539,7 @@ const BenchmarkMarcas = () => {
                 <img
                   src={m.img}
                   alt={m.nome}
-                  className="w-full h-full object-cover object-center"
+                  className={`w-full h-full object-cover ${m.imgPosition || "object-center"}`}
                   loading="lazy"
                 />
               </div>
