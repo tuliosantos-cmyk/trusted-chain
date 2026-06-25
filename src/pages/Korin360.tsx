@@ -36,6 +36,8 @@ import imgMowi from "@/assets/bench/mowi.webp.asset.json";
 import imgRewe from "@/assets/bench/rewe.webp.asset.json";
 import imgLlet from "@/assets/bench/llet-nostra.jpg.asset.json";
 import imgNatureSweet from "@/assets/bench/naturesweet.jpg.asset.json";
+import mockupQR from "@/assets/korin/mockup-qr-embalagem.jpg";
+import mockupEcossistema from "@/assets/korin/mockup-ecossistema.jpg";
 
 /* -----------------------------------------------------------
    KORIN 360 — Transparência que aproxima — slides 16:9
