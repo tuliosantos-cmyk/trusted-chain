@@ -552,7 +552,7 @@ const BenchmarkMarcas = () => {
                 <QrCode className="size-7 text-primary-foreground/30" />
               </div>
             )}
-            <div className="p-2.5 flex flex-col flex-1 min-h-0">
+            <div className="p-3 flex flex-col flex-1 min-h-0">
               <div className="flex items-center gap-2">
                 <img
                   src={`https://flagcdn.com/w40/${m.flag}.png`}
@@ -560,18 +560,18 @@ const BenchmarkMarcas = () => {
                   className="h-4 w-auto rounded shadow-sm shrink-0"
                 />
                 <div className="min-w-0">
-                  <div className="font-display font-bold text-[12.5px] leading-tight text-primary-foreground truncate">
+                  <div className="font-display font-bold text-[13px] leading-tight text-primary-foreground truncate">
                     {m.nome}
                   </div>
-                  <div className="text-[10px] uppercase tracking-wider text-accent-glow truncate">{m.cat}</div>
+                  <div className="text-[10.5px] uppercase tracking-wider text-accent-glow truncate">{m.cat}</div>
                 </div>
               </div>
-              <p className="mt-1.5 text-[11px] leading-snug text-primary-foreground/75">{m.o}</p>
+              <p className="mt-1.5 text-[11.5px] leading-snug text-primary-foreground/75">{m.o}</p>
               <div className="mt-auto pt-1.5 border-t border-primary-foreground/10">
-                <div className="text-[9.5px] uppercase tracking-widest text-accent-glow/80 font-semibold">
+                <div className="text-[10px] uppercase tracking-widest text-accent-glow/80 font-semibold">
                   Resultado
                 </div>
-                <p className="mt-0.5 text-[11px] leading-snug text-primary-foreground font-medium">{m.r}</p>
+                <p className="mt-0.5 text-[11.5px] leading-snug text-primary-foreground font-medium">{m.r}</p>
               </div>
             </div>
           </div>
