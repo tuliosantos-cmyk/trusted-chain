@@ -538,7 +538,7 @@ const BenchmarkMarcas = () => {
                 <img
                   src={m.img}
                   alt={m.nome}
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-center"
                   loading="lazy"
                 />
               </div>
