@@ -863,7 +863,8 @@ const Korin360 = () => (
     <Resultados />
     <BenchmarkMercado />
     <BenchmarkMarcas />
-    <ProximaFase />
+    <ProximaFaseQR />
+    <ProximaFasePortfolio />
     <MensagemFinal />
   </main>
 );
