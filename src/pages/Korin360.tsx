@@ -33,6 +33,8 @@ import imgCarrefourBC from "@/assets/bench/carrefour-blockchain.webp.asset.json"
 import imgFrigol from "@/assets/bench/frigol.png.asset.json";
 import imgCarrefourSabor from "@/assets/bench/carrefour-sabor.jpg.asset.json";
 import imgMowi from "@/assets/bench/mowi.webp.asset.json";
+import imgRewe from "@/assets/bench/rewe.webp.asset.json";
+import imgLlet from "@/assets/bench/llet-nostra.jpg.asset.json";
 
 /* -----------------------------------------------------------
    KORIN 360 — Transparência que aproxima — slides 16:9
@@ -501,6 +503,7 @@ const BenchmarkMarcas = () => {
       flag: "🇩🇪",
       nome: "REWE Bio",
       cat: "Carnes e laticínios",
+      img: imgRewe.url,
       o: "QR Code nas embalagens: fazenda de origem, etapas da produção, sustentabilidade, regionalidade e produtores",
       r: "REWE afirma que origem e procedência são fatores decisivos de compra — mesma tese da Korin",
     },
@@ -508,6 +511,7 @@ const BenchmarkMarcas = () => {
       flag: "🇪🇸",
       nome: "Llet Nostra",
       cat: "Leite",
+      img: imgLlet.url,
       o: "QR Code com fazenda, data da ordenha, cadeia validada e destaque para +100 fazendas familiares",
       r: "Marco no mercado catalão: transformou produtores familiares em protagonistas da marca",
     },
