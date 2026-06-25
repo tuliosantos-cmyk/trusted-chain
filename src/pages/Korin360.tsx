@@ -482,11 +482,11 @@ const BenchmarkMarcas = () => {
       r: "Reforço em alimentação saudável e sustentável",
     },
     {
-      flag: "🇧🇷",
-      nome: "Fazenda da Toca",
-      cat: "Ovos orgânicos",
-      o: "Storytelling forte sobre origem e produção regenerativa",
-      r: "Referência brasileira em ovos premium e regenerativos",
+      flag: "🇮🇹",
+      nome: "Barilla",
+      cat: "Molhos e ingredientes",
+      o: "QR Code com rastreabilidade do manjericão, identificação dos agricultores, data de colheita e origem dos ingredientes",
+      r: "Expansão da iniciativa para novos produtos após o sucesso do lançamento inicial",
     },
     {
       flag: "🇳🇴",
