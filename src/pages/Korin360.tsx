@@ -554,7 +554,11 @@ const BenchmarkMarcas = () => {
             )}
             <div className="p-3 flex flex-col flex-1">
               <div className="flex items-center gap-2">
-                <span className="text-xl leading-none">{m.flag}</span>
+                <img
+                  src={`https://flagcdn.com/w40/${m.flag}.png`}
+                  alt={m.flag.toUpperCase()}
+                  className="h-5 w-auto rounded shadow-sm"
+                />
                 <div className="min-w-0">
                   <div className="font-display font-bold text-[12px] leading-tight text-primary-foreground truncate">
                     {m.nome}
