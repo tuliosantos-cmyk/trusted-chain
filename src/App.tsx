@@ -8,6 +8,7 @@ import Index from "./pages/Index.tsx";
 import WebinarV7 from "./pages/WebinarV7.tsx";
 import JornadaAutonomia from "./pages/JornadaAutonomia.tsx";
 import FsscV7 from "./pages/FsscV7.tsx";
+import Korin360 from "./pages/Korin360.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
