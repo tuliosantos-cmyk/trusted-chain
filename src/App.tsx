@@ -25,6 +25,7 @@ const App = () => (
             <Route path="/webinar-v7" element={<WebinarV7 />} />
             <Route path="/jornada-autonomia" element={<JornadaAutonomia />} />
             <Route path="/fssc-v7" element={<FsscV7 />} />
+            <Route path="/korin-360" element={<Korin360 />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
