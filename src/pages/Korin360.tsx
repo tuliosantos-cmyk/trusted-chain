@@ -497,18 +497,18 @@ const BenchmarkMarcas = () => {
       r: "Liderança global em pescados sustentáveis",
     },
     {
-      flag: "🇨🇱",
-      nome: "Salmones Camanchaca",
-      cat: "Salmão",
-      o: "Plataforma digital de rastreabilidade e certificações",
-      r: "Fortalecimento em mercados premium e exportação",
+      flag: "🇩🇪",
+      nome: "REWE Bio",
+      cat: "Carnes e laticínios",
+      o: "QR Code nas embalagens: fazenda de origem, etapas da produção, sustentabilidade, regionalidade e produtores",
+      r: "REWE afirma que origem e procedência são fatores decisivos de compra — mesma tese da Korin",
     },
     {
-      flag: "🇧🇷",
-      nome: "Netuno",
-      cat: "Pescados",
-      o: "Comunicação sobre origem responsável e certificações ASC",
-      r: "Diferenciação em food service e varejo premium",
+      flag: "🇪🇸",
+      nome: "Llet Nostra",
+      cat: "Leite",
+      o: "QR Code com fazenda, data da ordenha, cadeia validada e destaque para +100 fazendas familiares",
+      r: "Marco no mercado catalão: transformou produtores familiares em protagonistas da marca",
     },
   ];
   return (
