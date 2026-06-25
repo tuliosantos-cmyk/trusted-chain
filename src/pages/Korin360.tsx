@@ -452,7 +452,7 @@ const BenchmarkMercado = () => {
 const BenchmarkMarcas = () => {
   const marcas = [
     {
-      flag: "🇺🇸",
+      flag: "us",
       nome: "Vital Farms",
       cat: "Ovos",
       img: imgVital.url,
@@ -461,7 +461,7 @@ const BenchmarkMarcas = () => {
       r: "Listada na Nasdaq, em +23 mil lojas, próxima de US$ 1bi/ano",
     },
     {
-      flag: "🇫🇷",
+      flag: "fr",
       nome: "Carrefour · Garantia de Origem",
       cat: "Carnes, leite, frutas",
       img: imgCarrefourSabor.url,
@@ -469,7 +469,7 @@ const BenchmarkMarcas = () => {
       r: "Principal diferencial de marca própria e referência em transparência",
     },
     {
-      flag: "🇧🇷",
+      flag: "br",
       nome: "Frigol",
       cat: "Carne bovina",
       img: imgFrigol.url,
@@ -477,7 +477,7 @@ const BenchmarkMarcas = () => {
       r: "100% dos fornecedores diretos monitorados",
     },
     {
-      flag: "🇫🇷",
+      flag: "fr",
       nome: "Carrefour Bio",
       cat: "Orgânicos",
       img: imgCarrefourBC.url,
@@ -485,14 +485,14 @@ const BenchmarkMarcas = () => {
       r: "Reforço em alimentação saudável e sustentável",
     },
     {
-      flag: "🇮🇹",
+      flag: "it",
       nome: "Barilla",
       cat: "Molhos e ingredientes",
       o: "QR Code com rastreabilidade do manjericão, identificação dos agricultores, data de colheita e origem dos ingredientes",
       r: "Expansão da iniciativa para novos produtos após o sucesso do lançamento inicial",
     },
     {
-      flag: "🇳🇴",
+      flag: "no",
       nome: "Mowi",
       cat: "Salmão",
       img: imgMowi.url,
@@ -500,7 +500,7 @@ const BenchmarkMarcas = () => {
       r: "Liderança global em pescados sustentáveis",
     },
     {
-      flag: "🇩🇪",
+      flag: "de",
       nome: "REWE Bio",
       cat: "Carnes e laticínios",
       img: imgRewe.url,
@@ -508,7 +508,7 @@ const BenchmarkMarcas = () => {
       r: "REWE afirma que origem e procedência são fatores decisivos de compra — mesma tese da Korin",
     },
     {
-      flag: "🇪🇸",
+      flag: "es",
       nome: "Llet Nostra",
       cat: "Leite",
       img: imgLlet.url,
@@ -554,7 +554,11 @@ const BenchmarkMarcas = () => {
             )}
             <div className="p-3 flex flex-col flex-1">
               <div className="flex items-center gap-2">
-                <span className="text-xl leading-none">{m.flag}</span>
+                <img
+                  src={`https://flagcdn.com/w40/${m.flag}.png`}
+                  alt={m.flag.toUpperCase()}
+                  className="h-5 w-auto rounded shadow-sm"
+                />
                 <div className="min-w-0">
                   <div className="font-display font-bold text-[12px] leading-tight text-primary-foreground truncate">
                     {m.nome}
