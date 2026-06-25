@@ -277,7 +277,7 @@ const EsquemaV6 = () => (
           <div key={b.title} className={`rounded-2xl px-5 py-4 shadow-card ${b.tone}`}>
             <div className="flex items-center gap-3">
               <b.icon className="size-5 opacity-90" />
-              <div className="text-[10px] uppercase tracking-widest font-semibold opacity-80">{b.label}</div>
+              <div className="text-[13.5px] uppercase tracking-widest font-semibold opacity-80">{b.label}</div>
             </div>
             <div className="mt-1 font-display font-bold text-xl">{b.title}</div>
           </div>
@@ -291,7 +291,7 @@ const EsquemaV6 = () => (
           <ArrowRight className="size-7 text-accent" />
           <ArrowRight className="size-7 text-accent" />
         </div>
-        <div className="mt-2 text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">complementam-se</div>
+        <div className="mt-2 text-[13.5px] uppercase tracking-widest text-muted-foreground font-semibold">complementam-se</div>
       </div>
 
       {/* Right: FSSC scheme result */}
@@ -304,7 +304,7 @@ const EsquemaV6 = () => (
           </div>
           <div className="mt-4 flex flex-wrap justify-center gap-2">
             {["SGSA", "PPR's", "Req. Adicionais"].map((t) => (
-              <span key={t} className="rounded-full border border-primary-foreground/20 bg-primary-foreground/5 px-3 py-1 text-[11px] font-semibold">
+              <span key={t} className="rounded-full border border-primary-foreground/20 bg-primary-foreground/5 px-3 py-1 text-[13px] font-semibold">
                 {t}
               </span>
             ))}
@@ -463,7 +463,7 @@ const V6toV7 = () => {
             ].map((b) => (
               <div key={b.l} className="rounded-xl bg-primary-foreground/60 border border-border p-3 text-center">
                 <div className="font-display font-bold text-xl text-accent">{b.n}</div>
-                <div className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground font-semibold leading-tight">{b.l}</div>
+                <div className="mt-1 text-[13.5px] uppercase tracking-wider text-muted-foreground font-semibold leading-tight">{b.l}</div>
               </div>
             ))}
           </div>
@@ -530,7 +530,7 @@ const Transicao = () => {
                   <CalendarDays className="size-5" />
                 </div>
                 <div className="mt-4 rounded-2xl bg-gradient-card border border-border p-4 shadow-card">
-                  <div className="text-[10px] uppercase tracking-widest text-accent font-bold">{s.date}</div>
+                  <div className="text-[13.5px] uppercase tracking-widest text-accent font-bold">{s.date}</div>
                   <div className="mt-1 font-display font-bold text-base text-primary">{s.title}</div>
                   <p className="mt-1 text-xs text-muted-foreground leading-snug">{s.desc}</p>
                 </div>
@@ -570,7 +570,7 @@ const EstruturaRequisitos = () => {
         <div className="grid md:grid-cols-5 gap-3">
           {parts.map((p, i) => (
             <div key={p.n} className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-4 hover:border-accent-glow/60 transition-all">
-              <div className="font-mono text-[10px] text-accent-glow font-bold">{p.n}</div>
+              <div className="font-mono text-[13.5px] text-accent-glow font-bold">{p.n}</div>
               <div className="mt-2 font-display font-semibold text-sm leading-snug">{p.t}</div>
               <div className="mt-3 size-7 rounded-full bg-gradient-accent flex items-center justify-center text-xs font-bold text-accent-foreground">
                 {i + 1}
@@ -583,7 +583,7 @@ const EstruturaRequisitos = () => {
             <div key={p.n} className="rounded-2xl border border-dashed border-primary-foreground/20 p-3 flex items-center gap-3">
               <FileText className="size-5 text-accent-glow" />
               <div>
-                <div className="font-mono text-[10px] text-accent-glow font-bold">{p.n}</div>
+                <div className="font-mono text-[13.5px] text-accent-glow font-bold">{p.n}</div>
                 <div className="font-display font-semibold text-sm">{p.t}</div>
               </div>
             </div>
@@ -709,16 +709,16 @@ const Tabela11 = () => {
                 className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur flex flex-col overflow-hidden"
               >
                 <div className={`${catColor[g.cat]} px-3 py-2 flex items-center justify-between`}>
-                  <span className="font-mono text-[11px] font-bold text-white">{g.cat}</span>
-                  <span className="text-[9px] uppercase tracking-wider text-white/85 font-semibold truncate ml-2">
+                  <span className="font-mono text-[13px] font-bold text-white">{g.cat}</span>
+                  <span className="text-[13px] uppercase tracking-wider text-white/85 font-semibold truncate ml-2">
                     {catTitles[g.cat]}
                   </span>
                 </div>
                 <div className="flex-1 p-2 flex flex-col gap-1.5">
                   {g.items.map((r) => (
                     <div key={r.sub} className="rounded-lg bg-primary-foreground/[0.04] px-2 py-1.5 border border-primary-foreground/5">
-                      <div className="font-mono text-[10px] text-accent-glow font-bold">{r.sub}</div>
-                      <div className="text-[10.5px] text-primary-foreground/85 leading-snug">{r.desc}</div>
+                      <div className="font-mono text-[13.5px] text-accent-glow font-bold">{r.sub}</div>
+                      <div className="text-[12.5px] text-primary-foreground/85 leading-snug">{r.desc}</div>
                     </div>
                   ))}
                 </div>
@@ -763,8 +763,8 @@ const RequisitosV7 = () => {
       <div className="mt-4 flex-1 grid grid-cols-3 md:grid-cols-6 gap-2 content-center">
         {items.map((it) => (
           <div key={it.n} className="rounded-xl p-3 border border-border bg-gradient-card hover:-translate-y-0.5 transition">
-            <div className="font-mono text-[11px] font-bold px-2 py-0.5 rounded-md bg-secondary text-primary inline-block">{it.n}</div>
-            <div className="mt-1.5 font-display font-semibold text-[12px] leading-tight text-primary">{it.t}</div>
+            <div className="font-mono text-[13px] font-bold px-2 py-0.5 rounded-md bg-secondary text-primary inline-block">{it.n}</div>
+            <div className="mt-1.5 font-display font-semibold text-[13.5px] leading-tight text-primary">{it.t}</div>
           </div>
         ))}
       </div>
@@ -860,7 +860,7 @@ const Cultura = () => {
             </p>
           </div>
           <div className="rounded-2xl bg-accent text-accent-foreground p-4">
-            <div className="text-[10px] uppercase tracking-widest font-semibold opacity-80">Requisitos específicos</div>
+            <div className="text-[13.5px] uppercase tracking-widest font-semibold opacity-80">Requisitos específicos</div>
             <div className="font-display font-bold text-xl mt-0.5">GFSI</div>
           </div>
         </div>
@@ -1040,7 +1040,7 @@ const TabelaAlteracoes = () => {
       </h2>
 
       <div className="mt-4 flex-1 overflow-hidden rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur flex flex-col min-h-0">
-        <div className="grid grid-cols-[40px_1fr_1fr_40px_1fr_40px] bg-primary-foreground/10 text-[10px] uppercase tracking-widest font-semibold shrink-0">
+        <div className="grid grid-cols-[40px_1fr_1fr_40px_1fr_40px] bg-primary-foreground/10 text-[13.5px] uppercase tracking-widest font-semibold shrink-0">
           <div className="p-2 px-3">#</div>
           <div className="p-2 px-3 text-accent-glow">ISO/TS 22002-1:2009</div>
           <div className="p-2 px-3 text-success">ISO 22002-1:2025</div>
@@ -1206,7 +1206,7 @@ const Final = () => (
           <ShieldCheck className="size-12 text-accent-glow mt-2" />
           <div className="mt-3 font-display font-bold text-2xl">FSSC 22000</div>
           <div className="text-base text-accent-glow font-semibold">Versão 7.0</div>
-          <div className="mt-3 text-[10px] uppercase tracking-widest text-primary-foreground/55">
+          <div className="mt-3 text-[13.5px] uppercase tracking-widest text-primary-foreground/55">
             Maio 2026 · Vigência Maio 2027
           </div>
         </div>
@@ -1247,7 +1247,7 @@ const BridgeAndre = () => (
         <div className="relative">
           <div className="flex items-center gap-3">
             <img src={mytsLogo} alt="MyTS" className="h-5 opacity-90" />
-            <span className="text-[10px] uppercase tracking-widest font-semibold text-accent-glow">
+            <span className="text-[13.5px] uppercase tracking-widest font-semibold text-accent-glow">
               Próximo passo
             </span>
           </div>
@@ -1378,7 +1378,7 @@ const Encerramento = () => (
               <div className="flex items-center gap-3">
                 <img src={mytsLogo} alt="MyTS" className="h-5 opacity-90" />
                 <span className="h-px w-8 bg-primary-foreground/25" />
-                <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-accent-glow">
+                <span className="text-[13.5px] uppercase tracking-[0.2em] font-semibold text-accent-glow">
                   Próximo passo
                 </span>
               </div>
@@ -1402,7 +1402,7 @@ const Encerramento = () => (
                   <MessageSquare className="size-4 text-accent-foreground" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[10px] uppercase tracking-widest text-primary-foreground/50">E-mail</div>
+                  <div className="text-[13.5px] uppercase tracking-widest text-primary-foreground/50">E-mail</div>
                   <div className="font-mono text-xs text-primary-foreground truncate">andre.tanzi@myt-s.com</div>
                 </div>
                 <ArrowRight className="size-4 text-accent-glow group-hover:translate-x-1 transition-transform" />
@@ -1415,7 +1415,7 @@ const Encerramento = () => (
                   <LinkIcon className="size-4 text-accent-foreground" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[10px] uppercase tracking-widest text-primary-foreground/50">LinkedIn</div>
+                  <div className="text-[13.5px] uppercase tracking-widest text-primary-foreground/50">LinkedIn</div>
                   <div className="text-xs text-primary-foreground truncate">André Tanzi</div>
                 </div>
                 <ArrowRight className="size-4 text-accent-glow group-hover:translate-x-1 transition-transform" />
@@ -1712,7 +1712,7 @@ const CasesReaisV7 = () => {
         {/* Korin — case secundário */}
         <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-5 flex flex-col">
           <div className="flex items-center justify-between">
-            <span className="inline-block rounded-lg bg-primary-foreground/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest text-primary-foreground/70">
+            <span className="inline-block rounded-lg bg-primary-foreground/10 px-3 py-1.5 text-[13px] font-bold uppercase tracking-widest text-primary-foreground/70">
               MyTS 360
             </span>
             <img src={logoKorin.url} alt="Korin" className="h-8 w-auto object-contain opacity-80" />
@@ -1738,7 +1738,7 @@ const CasesReaisV7 = () => {
             ].map((b) => (
               <div key={b.l} className="rounded-lg bg-primary-foreground/10 border border-primary-foreground/10 px-2 py-3 text-center">
                 <div className="font-display font-bold text-lg leading-none text-accent-glow">{b.n}</div>
-                <div className="mt-1 text-[9px] uppercase tracking-wide text-primary-foreground/60 font-semibold leading-tight">{b.l}</div>
+                <div className="mt-1 text-[13px] uppercase tracking-wide text-primary-foreground/60 font-semibold leading-tight">{b.l}</div>
               </div>
             ))}
           </div>
