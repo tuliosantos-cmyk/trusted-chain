@@ -532,14 +532,14 @@ const BenchmarkMarcas = () => {
         Quem está transformando origem em <span className="text-gradient">vantagem competitiva</span>
       </h2>
 
-      <div className="mt-4 flex-1 grid grid-cols-4 grid-rows-2 gap-2.5 min-h-0">
+      <div className="mt-4 flex-1 grid grid-cols-4 grid-rows-2 gap-3 min-h-0">
         {marcas.map((m) => (
           <div
             key={m.nome}
             className="rounded-xl border border-primary-foreground/15 bg-primary-foreground/[0.04] backdrop-blur overflow-hidden flex flex-col hover:border-accent-glow/50 transition-colors min-h-0"
           >
             {m.img ? (
-              <div className="h-16 w-full overflow-hidden bg-primary-foreground/5 shrink-0">
+              <div className="h-20 w-full overflow-hidden bg-primary-foreground/5 shrink-0">
                 <img
                   src={m.img}
                   alt={m.nome}
@@ -548,11 +548,11 @@ const BenchmarkMarcas = () => {
                 />
               </div>
             ) : (
-              <div className="h-16 w-full bg-gradient-to-br from-primary-foreground/10 to-primary-foreground/[0.02] flex items-center justify-center shrink-0">
+              <div className="h-20 w-full bg-gradient-to-br from-primary-foreground/10 to-primary-foreground/[0.02] flex items-center justify-center shrink-0">
                 <QrCode className="size-7 text-primary-foreground/30" />
               </div>
             )}
-            <div className="p-2.5 flex flex-col flex-1 min-h-0">
+            <div className="p-3.5 flex flex-col flex-1 min-h-0">
               <div className="flex items-center gap-2">
                 <img
                   src={`https://flagcdn.com/w40/${m.flag}.png`}
@@ -560,18 +560,18 @@ const BenchmarkMarcas = () => {
                   className="h-4 w-auto rounded shadow-sm shrink-0"
                 />
                 <div className="min-w-0">
-                  <div className="font-display font-bold text-[12.5px] leading-tight text-primary-foreground truncate">
+                  <div className="font-display font-bold text-[13.5px] leading-tight text-primary-foreground truncate">
                     {m.nome}
                   </div>
-                  <div className="text-[10px] uppercase tracking-wider text-accent-glow truncate">{m.cat}</div>
+                  <div className="text-[11px] uppercase tracking-wider text-accent-glow truncate">{m.cat}</div>
                 </div>
               </div>
-              <p className="mt-1.5 text-[11px] leading-snug text-primary-foreground/75">{m.o}</p>
-              <div className="mt-auto pt-1.5 border-t border-primary-foreground/10">
-                <div className="text-[9.5px] uppercase tracking-widest text-accent-glow/80 font-semibold">
+              <p className="mt-2 text-[12px] leading-snug text-primary-foreground/75">{m.o}</p>
+              <div className="mt-auto pt-2 border-t border-primary-foreground/10">
+                <div className="text-[10.5px] uppercase tracking-widest text-accent-glow/80 font-semibold">
                   Resultado
                 </div>
-                <p className="mt-0.5 text-[11px] leading-snug text-primary-foreground font-medium">{m.r}</p>
+                <p className="mt-0.5 text-[12px] leading-snug text-primary-foreground font-medium">{m.r}</p>
               </div>
             </div>
           </div>
