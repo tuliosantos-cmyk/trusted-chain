@@ -28,6 +28,11 @@ import {
 import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
 import logoKorin from "@/assets/logos/korin.png.asset.json";
+import imgVital from "@/assets/bench/vital.png.asset.json";
+import imgCarrefourBC from "@/assets/bench/carrefour-blockchain.webp.asset.json";
+import imgFrigol from "@/assets/bench/frigol.png.asset.json";
+import imgCarrefourSabor from "@/assets/bench/carrefour-sabor.jpg.asset.json";
+import imgMowi from "@/assets/bench/mowi.webp.asset.json";
 
 /* -----------------------------------------------------------
    KORIN 360 — Transparência que aproxima — slides 16:9
@@ -448,6 +453,7 @@ const BenchmarkMarcas = () => {
       flag: "🇺🇸",
       nome: "Vital Farms",
       cat: "Ovos",
+      img: imgVital.url,
       o: "Nome do produtor na embalagem + QR Code + vídeos das fazendas",
       r: "Listada na Nasdaq, em +23 mil lojas, próxima de US$ 1bi/ano",
     },
@@ -455,6 +461,7 @@ const BenchmarkMarcas = () => {
       flag: "🇫🇷",
       nome: "Carrefour · Garantia de Origem",
       cat: "Carnes, leite, frutas",
+      img: imgCarrefourSabor.url,
       o: "QR Code, rastreabilidade, produtor e informações da cadeia",
       r: "Principal diferencial de marca própria e referência em transparência",
     },
@@ -462,6 +469,7 @@ const BenchmarkMarcas = () => {
       flag: "🇧🇷",
       nome: "Frigol",
       cat: "Carne bovina",
+      img: imgFrigol.url,
       o: "QR Code com fazenda, bioma e conformidade socioambiental",
       r: "100% dos fornecedores diretos monitorados",
     },
@@ -469,6 +477,7 @@ const BenchmarkMarcas = () => {
       flag: "🇫🇷",
       nome: "Carrefour Bio",
       cat: "Orgânicos",
+      img: imgCarrefourBC.url,
       o: "Blockchain e QR Code com origem, certificações e produtor",
       r: "Reforço em alimentação saudável e sustentável",
     },
@@ -483,6 +492,7 @@ const BenchmarkMarcas = () => {
       flag: "🇳🇴",
       nome: "Mowi",
       cat: "Salmão",
+      img: imgMowi.url,
       o: "QR Code e rastreabilidade completa da cadeia do pescado",
       r: "Liderança global em pescados sustentáveis",
     },
@@ -521,26 +531,39 @@ const BenchmarkMarcas = () => {
         {marcas.map((m) => (
           <div
             key={m.nome}
-            className="rounded-xl border border-primary-foreground/15 bg-primary-foreground/[0.04] backdrop-blur p-3.5 flex flex-col hover:border-accent-glow/50 transition-colors"
+            className="rounded-xl border border-primary-foreground/15 bg-primary-foreground/[0.04] backdrop-blur overflow-hidden flex flex-col hover:border-accent-glow/50 transition-colors"
           >
-            <div className="flex items-center gap-2">
-              <span className="text-2xl leading-none">{m.flag}</span>
-              <div className="min-w-0">
-                <div className="font-display font-bold text-[13px] leading-tight text-primary-foreground truncate">
-                  {m.nome}
+            {m.img ? (
+              <div className="h-24 w-full overflow-hidden bg-primary-foreground/5">
+                <img
+                  src={m.img}
+                  alt={m.nome}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            ) : (
+              <div className="h-24 w-full bg-gradient-to-br from-primary-foreground/10 to-primary-foreground/[0.02] flex items-center justify-center">
+                <QrCode className="size-8 text-primary-foreground/30" />
+              </div>
+            )}
+            <div className="p-3 flex flex-col flex-1">
+              <div className="flex items-center gap-2">
+                <span className="text-xl leading-none">{m.flag}</span>
+                <div className="min-w-0">
+                  <div className="font-display font-bold text-[12px] leading-tight text-primary-foreground truncate">
+                    {m.nome}
+                  </div>
+                  <div className="text-[9px] uppercase tracking-wider text-accent-glow">{m.cat}</div>
                 </div>
-                <div className="text-[10px] uppercase tracking-wider text-accent-glow">{m.cat}</div>
               </div>
-            </div>
-            <div className="mt-2.5 flex items-start gap-1.5">
-              <QrCode className="size-3 text-primary-foreground/50 mt-0.5 shrink-0" />
-              <p className="text-[11px] leading-snug text-primary-foreground/75">{m.o}</p>
-            </div>
-            <div className="mt-auto pt-2.5 border-t border-primary-foreground/10">
-              <div className="text-[9px] uppercase tracking-widest text-accent-glow/80 font-semibold">
-                Resultado
+              <p className="mt-2 text-[10.5px] leading-snug text-primary-foreground/75">{m.o}</p>
+              <div className="mt-auto pt-2 border-t border-primary-foreground/10">
+                <div className="text-[8.5px] uppercase tracking-widest text-accent-glow/80 font-semibold">
+                  Resultado
+                </div>
+                <p className="mt-0.5 text-[10.5px] leading-snug text-primary-foreground font-medium">{m.r}</p>
               </div>
-              <p className="mt-0.5 text-[11px] leading-snug text-primary-foreground font-medium">{m.r}</p>
             </div>
           </div>
         ))}
