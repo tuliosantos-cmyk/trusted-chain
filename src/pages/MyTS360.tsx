@@ -773,8 +773,8 @@ const MyTS360 = () => (
     <style>{`
       html,body,#root{margin:0;padding:0;background:#0a0e1a}
       html{scroll-snap-type:y proximity}
-      .slide-frame{container-type:inline-size;container-name:slide}
-      .slide-inner{overflow:hidden}
+      .slide-frame{container-type:inline-size;container-name:slide;position:relative}
+      .slide-stage{position:absolute;top:0;left:0;width:1920px;height:1080px;transform-origin:top left;transform:scale(calc(100cqw / 1920));overflow:hidden}
     `}</style>
     <Helmet>
       <title>MyTS 360 — Transformando certificações em experiências · Produtor do Bem</title>
