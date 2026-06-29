@@ -217,14 +217,14 @@ const DaCertificacao = () => {
     { icon: Eye, t: "Consumidor reconhece" },
     { icon: ArrowDown, t: "Fim da jornada", muted: true },
   ];
-  const com = [
+  const partida = [
     { icon: Building2, t: "Empresa certificada" },
     { icon: Award, t: "Selo Produtor do Bem" },
-    { icon: QrCode, t: "QR Code na embalagem" },
+  ];
+  const experiencia = [
     { icon: Globe, t: "Website personalizado" },
     { icon: Users, t: "Conheça produtores & fazendas" },
-    { icon: BookOpen, t: "Boas práticas + significado da certificação" },
-    { icon: Share2, t: "Compartilhe e fortaleça a confiança" },
+    { icon: BookOpen, t: "Boas práticas + significado do selo" },
   ];
   return (
     <Slide
@@ -268,7 +268,7 @@ const DaCertificacao = () => {
         </div>
 
         {/* COM MyTS 360 */}
-        <div className="rounded-2xl border-2 border-accent/40 bg-gradient-to-br from-accent/10 to-accent-glow/5 shadow-elegant p-7 flex flex-col min-h-0">
+        <div className="rounded-2xl border-2 border-accent/40 bg-gradient-to-br from-accent/10 to-accent-glow/5 shadow-elegant p-6 flex flex-col min-h-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5 text-sm uppercase tracking-widest font-semibold text-accent">
               <Sparkles className="size-4" /> Com MyTS 360
@@ -277,18 +277,55 @@ const DaCertificacao = () => {
               jornada ampliada
             </span>
           </div>
-          <div className="mt-5 flex-1 flex flex-col justify-between gap-2 min-h-0">
-            {com.map((s) => (
-              <div
-                key={s.t}
-                className="flex items-center gap-4 rounded-xl px-5 py-3 bg-background/70 border border-accent/20"
-              >
-                <div className="size-10 rounded-lg bg-gradient-accent flex items-center justify-center shrink-0">
-                  <s.icon className="size-5 text-accent-foreground" />
+          <div className="mt-4 flex-1 flex flex-col justify-between gap-3 min-h-0">
+            {/* Linha 1 — ponto de partida */}
+            <div className="grid grid-cols-2 gap-3">
+              {partida.map((s) => (
+                <div
+                  key={s.t}
+                  className="flex items-center gap-3 rounded-xl px-4 py-2.5 bg-background/70 border border-accent/20"
+                >
+                  <div className="size-8 rounded-lg bg-gradient-accent flex items-center justify-center shrink-0">
+                    <s.icon className="size-4 text-accent-foreground" />
+                  </div>
+                  <span className="text-base font-semibold text-primary leading-tight">{s.t}</span>
                 </div>
-                <span className="text-lg font-semibold text-primary">{s.t}</span>
+              ))}
+            </div>
+
+            {/* Linha 2 — gatilho QR (destaque) */}
+            <div className="flex items-center gap-4 rounded-xl px-5 py-3 bg-accent/15 border-2 border-accent/50 shadow-glow">
+              <div className="size-11 rounded-lg bg-gradient-accent flex items-center justify-center shrink-0">
+                <QrCode className="size-6 text-accent-foreground" />
               </div>
-            ))}
+              <div className="flex-1">
+                <div className="text-[10px] uppercase tracking-widest font-bold text-accent">o gatilho</div>
+                <div className="text-lg font-bold text-primary leading-tight">QR Code na embalagem</div>
+              </div>
+            </div>
+
+            {/* Linha 3 — experiência digital agrupada */}
+            <div className="rounded-xl border border-accent/25 bg-background/50 p-3.5">
+              <div className="text-[10px] uppercase tracking-widest font-bold text-accent mb-2.5 flex items-center gap-2">
+                <Sparkles className="size-3" /> Experiência digital
+              </div>
+              <div className="space-y-1.5">
+                {experiencia.map((s) => (
+                  <div key={s.t} className="flex items-center gap-3 text-primary">
+                    <s.icon className="size-4 shrink-0 text-accent" />
+                    <span className="text-sm font-medium leading-tight">{s.t}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Linha 4 — resultado */}
+            <div className="flex items-center gap-3 rounded-xl px-5 py-3 bg-gradient-accent text-accent-foreground">
+              <Share2 className="size-5 shrink-0" />
+              <span className="text-base font-bold leading-tight">
+                Compartilhe e fortaleça a confiança
+              </span>
+            </div>
           </div>
         </div>
       </div>
