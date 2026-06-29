@@ -87,17 +87,7 @@ const Slide = ({
       scrollSnapAlign: "center",
     }}
   >
-    <div
-      className="slide-inner"
-      style={{
-        position: "relative",
-        width: "1920px",
-        height: "1080px",
-        transformOrigin: "top left",
-        transform: "scale(calc(100cqw / 1920px))",
-        overflow: "hidden",
-      }}
-    >
+    <div className="relative h-full w-full slide-inner">
       {decor}
       <div className={`relative h-full w-full flex flex-col ${pad}`}>{children}</div>
     </div>
