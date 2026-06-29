@@ -405,9 +405,9 @@ const Beneficios = () => {
 /* ---------- 05 · MODELO VALIDADO ---------- */
 const ModeloValidado = () => {
   const stats = [
-    { icon: TrendingUp, v: "+9.700", l: "acessos ao ambiente digital" },
+    { icon: TrendingUp, v: "+9.700", l: "sessões registradas no ambiente digital" },
     { icon: Smartphone, v: "83%", l: "via dispositivos móveis" },
-    { icon: Clock, v: "+2min", l: "tempo médio de navegação" },
+    { icon: Clock, v: "+2min", l: "tempo médio por sessão" },
     { icon: Users, v: "milhares", l: "de consumidores conectados à origem" },
   ];
   const entregas = [
