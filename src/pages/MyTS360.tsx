@@ -613,7 +613,7 @@ const Oportunidade = () => {
   return (
     <Slide
       bg="bg-hero"
-      className="p-10 md:p-12"
+      pad="p-10 md:p-12"
       decor={
         <>
           <div className="absolute inset-0 grid-pattern opacity-15" />
