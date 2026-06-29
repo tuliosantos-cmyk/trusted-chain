@@ -1,23 +1,23 @@
-## Diagnóstico (slide 04 · "Um modelo validado")
+## Slide 06 (Oportunidade) — ajuste de layout
 
-Mesmo padrão do slide 02: no viewport real (1338×813) o título `text-5xl` quebra em 3 linhas, empurra o grid de stats, comprime a faixa "O que foi entregue" e a frase azul de rodapé colide com os 7 cards de entregas (ícones cortados, labels sobrepostas pela faixa).
+Mesmo viewport real do usuário (1338×813) que causou cortes nos slides 02 e 04 está cortando o 06: título em 2 linhas grandes, seções "Hoje" e "Novo" empurradas pra baixo, faixa de rodapé sobreposta.
 
-## Solução — densidade ajustada, só neste slide
+### Mudanças em `src/pages/MyTS360.tsx` › `Oportunidade`
 
-`src/pages/MyTS360.tsx`, componente `ModeloValidado` (≈ linhas 460–513):
+1. **Padding do Slide** → de padrão para `p-10 md:p-12`.
+2. **Título**: `text-5xl` → `text-4xl`, `mt-4` → `mt-3`.
+3. **Espaçamento do grid principal**: `mt-9` → `mt-6`, `gap-6` → `gap-5`.
+4. **Coluna "Hoje"**:
+   - Padding card: `p-7` → `p-5`.
+   - Itens: `py-4 px-5` → `py-2.5 px-4`, ícone `size-6` → `size-5`, texto `text-xl` → `text-base`.
+   - `gap-3` → `gap-2`.
+5. **Bloco "+" central**:
+   - Círculo `size-20` → `size-14`, "+" `text-5xl` → `text-3xl`.
+6. **Coluna "Novo"**:
+   - Padding card: `p-7` → `p-5`.
+   - Itens: `px-4 py-3.5` → `px-3 py-2.5`, container ícone `size-11` → `size-9`, ícone `size-5` → `size-4`, texto `text-lg` → `text-sm`.
+   - `gap-3` → `gap-2.5`.
+7. **Faixa de rodapé**:
+   - `mt-6 px-7 py-4` → `mt-4 px-6 py-3`, texto `text-xl` → `text-base`.
 
-1. **Slide**: passar `pad="p-10 md:p-12"` (libera ~64px verticais).
-2. **Título h2**: `text-5xl` → `text-4xl`; `mt-5` → `mt-3`.
-3. **Grid de stats** (`mt-8` → `mt-5`, `gap-5` → `gap-4`):
-   - card `p-6` → `p-4`
-   - ícone `size-8` → `size-7`, margem `mt-3` → `mt-2`
-   - valor `text-4xl` → `text-3xl`
-   - label `text-base` → `text-sm`, `mt-3` → `mt-1.5`
-4. **Bloco "O que foi entregue"** (`mt-7` → `mt-4`, `p-7` → `p-4`):
-   - grid interno `mt-5` → `mt-3`, `gap-4` → `gap-3`
-   - cards de entrega `p-4` → `p-2.5`, `gap-3` → `gap-2`
-   - caixa do ícone `size-14` → `size-10`, ícone `size-7` → `size-5`
-   - label `text-base` → `text-xs`
-5. **Faixa azul inferior**: `mt-5` → `mt-3`, `px-7 py-4` → `px-6 py-3`, `text-xl` → `text-base`.
-
-Resultado: stats em uma linha sem aperto, os 7 cards de entrega ficam visíveis por inteiro com ícones e labels, e a faixa de rodapé fica abaixo deles sem sobreposição — válido em 1338×813 e ainda equilibrado em 1920×1080.
+Resultado esperado: título em 1 linha, as duas colunas com altura confortável, faixa de rodapé visível com folga acima do footer do slide, sem sobreposição.

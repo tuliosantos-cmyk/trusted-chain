@@ -613,6 +613,7 @@ const Oportunidade = () => {
   return (
     <Slide
       bg="bg-hero"
+      className="p-10 md:p-12"
       decor={
         <>
           <div className="absolute inset-0 grid-pattern opacity-15" />
@@ -624,59 +625,59 @@ const Oportunidade = () => {
     >
       <SectionLabel n="06" label="Oportunidade para a Produtor do Bem" light />
 
-      <h2 className="mt-4 font-display font-bold text-5xl leading-[1.05] max-w-6xl text-primary-foreground">
+      <h2 className="mt-3 font-display font-bold text-4xl leading-[1.05] max-w-6xl text-primary-foreground">
         Um <span className="text-gradient">novo benefício</span> para todas as empresas certificadas
       </h2>
 
-      <div className="mt-9 grid grid-cols-[0.85fr_auto_1.6fr] gap-6 items-stretch flex-1 min-h-0">
+      <div className="mt-6 grid grid-cols-[0.85fr_auto_1.6fr] gap-5 items-stretch flex-1 min-h-0">
         {/* HOJE */}
-        <div className="rounded-3xl border border-primary-foreground/15 bg-primary-foreground/[0.04] backdrop-blur p-7 flex flex-col">
-          <div className="text-sm uppercase tracking-widest font-semibold text-primary-foreground/55">
+        <div className="rounded-3xl border border-primary-foreground/15 bg-primary-foreground/[0.04] backdrop-blur p-5 flex flex-col">
+          <div className="text-xs uppercase tracking-widest font-semibold text-primary-foreground/55">
             Hoje, a Produtor do Bem entrega
           </div>
-          <div className="mt-5 flex-1 flex flex-col justify-around gap-3">
+          <div className="mt-4 flex-1 flex flex-col justify-around gap-2">
             {hoje.map((h) => (
               <div
                 key={h}
-                className="flex items-center gap-3.5 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 px-5 py-4"
+                className="flex items-center gap-3 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 px-4 py-2.5"
               >
-                <CheckCircle2 className="size-6 text-primary-foreground/60 shrink-0" />
-                <span className="text-xl font-semibold text-primary-foreground">{h}</span>
+                <CheckCircle2 className="size-5 text-primary-foreground/60 shrink-0" />
+                <span className="text-base font-semibold text-primary-foreground">{h}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* + */}
-        <div className="flex flex-col items-center justify-center px-2 gap-3">
-          <div className="size-20 rounded-full bg-gradient-accent flex items-center justify-center shadow-glow">
-            <span className="font-display font-bold text-5xl text-accent-foreground leading-none">
+        <div className="flex flex-col items-center justify-center px-2 gap-2">
+          <div className="size-14 rounded-full bg-gradient-accent flex items-center justify-center shadow-glow">
+            <span className="font-display font-bold text-3xl text-accent-foreground leading-none">
               +
             </span>
           </div>
-          <div className="text-xs uppercase tracking-widest text-accent-glow font-semibold text-center">
+          <div className="text-[10px] uppercase tracking-widest text-accent-glow font-semibold text-center">
             MyTS 360
           </div>
         </div>
 
         {/* NOVO */}
-        <div className="relative rounded-3xl border-2 border-accent-glow/40 bg-gradient-to-br from-accent/15 to-accent-glow/5 backdrop-blur p-7 flex flex-col shadow-elegant">
-          <div className="absolute -top-4 left-7 rounded-full bg-gradient-accent px-4 py-1.5 text-xs uppercase tracking-widest font-bold text-accent-foreground shadow-cta">
+        <div className="relative rounded-3xl border-2 border-accent-glow/40 bg-gradient-to-br from-accent/15 to-accent-glow/5 backdrop-blur p-5 flex flex-col shadow-elegant">
+          <div className="absolute -top-3 left-6 rounded-full bg-gradient-accent px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-accent-foreground shadow-cta">
             Novo
           </div>
-          <div className="text-sm uppercase tracking-widest font-semibold text-accent-glow mt-1">
+          <div className="text-xs uppercase tracking-widest font-semibold text-accent-glow mt-1">
             Passa a entregar também
           </div>
-          <div className="mt-5 grid grid-cols-2 gap-3 flex-1">
+          <div className="mt-4 grid grid-cols-2 gap-2.5 flex-1">
             {novos.map((n) => (
               <div
                 key={n.t}
-                className="flex items-center gap-3.5 rounded-xl bg-primary-foreground/[0.06] border border-accent-glow/20 px-4 py-3.5"
+                className="flex items-center gap-3 rounded-xl bg-primary-foreground/[0.06] border border-accent-glow/20 px-3 py-2.5"
               >
-                <div className="size-11 rounded-xl bg-gradient-accent flex items-center justify-center shrink-0">
-                  <n.icon className="size-5 text-accent-foreground" />
+                <div className="size-9 rounded-xl bg-gradient-accent flex items-center justify-center shrink-0">
+                  <n.icon className="size-4 text-accent-foreground" />
                 </div>
-                <span className="text-lg font-semibold text-primary-foreground leading-tight">
+                <span className="text-sm font-semibold text-primary-foreground leading-tight">
                   {n.t}
                 </span>
               </div>
@@ -685,8 +686,8 @@ const Oportunidade = () => {
         </div>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-accent-glow/25 bg-primary-foreground/[0.05] backdrop-blur px-7 py-4 text-center">
-        <p className="text-primary-foreground text-xl">
+      <div className="mt-4 rounded-2xl border border-accent-glow/25 bg-primary-foreground/[0.05] backdrop-blur px-6 py-3 text-center">
+        <p className="text-primary-foreground text-base">
           Cada certificação passa a contar uma história. Cada produto passa a mostrar seu propósito.{" "}
           <span className="text-accent-glow font-semibold">
             Cada consumidor passa a entender o valor por trás do selo.
