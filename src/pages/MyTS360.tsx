@@ -568,11 +568,8 @@ const Oportunidade = () => {
     { icon: BookOpen, t: "Storytelling" },
     { icon: Eye, t: "Transparência" },
     { icon: Smartphone, t: "Experiência digital" },
-    { icon: Sprout, t: "Valorização dos produtores" },
-    { icon: Megaphone, t: "Conteúdo para marketing" },
     { icon: Store, t: "Diferenciação no PDV" },
     { icon: Users, t: "Relacionamento com consumidores" },
-    { icon: TrendingUp, t: "Inteligência para a cadeia" },
   ];
   return (
     <Slide
