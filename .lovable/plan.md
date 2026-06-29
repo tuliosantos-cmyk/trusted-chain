@@ -1,36 +1,54 @@
-## Nova rota: `/korin-360`
+## Revisões editoriais — `src/pages/MyTS360.tsx`
 
-Criar página de apresentação no mesmo padrão visual da `FsscV7.tsx` (slides 16:9, navy + azul elétrico, logo MyTS no rodapé, chips, `SectionLabel`, `Slide` wrapper) com o conteúdo do projeto Korin 360.
+Aplicar todas as sugestões aceitas, com des-eco vocabular incluído na mesma rodada.
 
-### Estrutura de slides
+### Slide 01 — Por que MyTS 360
+Enxugar de 3 parágrafos pesados para 2 + adicionar o gancho de dor (estilo pain-led).
+- Manter 1º parágrafo institucional curto sobre a Produtor do Bem.
+- Fundir 2º+3º num parágrafo único que nomeia o **custo da invisibilidade**: "Quando esse valor não chega ao consumidor, o produto certificado compete no preço como qualquer outro — e a lealdade que a boa prática mereceria nunca se forma."
+- Card lateral "Não substituímos a certificação" permanece intacto (é o tom certo, validado).
 
-1. **Capa** — "KORIN 360 — Transparência que aproxima consumidores da origem dos alimentos". Logo Korin + selo "by MyTS", kicker, subtítulo, pílulas (Origem · Sustentabilidade · Bem-estar animal · Transparência).
+### Slide 03 — Benefícios / Ecossistema
+Reordenar a coluna **"Para a Produtor do Bem"** para puxar o argumento comercial pro topo:
+1. **"Torna a certificação mais atraente para novas empresas"** (era 4º, vira 1º + reescrito)
+2. Fortalece o reconhecimento da certificação
+3. Amplia a visibilidade do trabalho
+4. Aproxima consumidores da missão
 
-2. **Sobre o Projeto** — "Tornando visível aquilo que sempre esteve na essência da Korin". Texto introdutório enxuto + destaque "+30 anos de Agricultura Natural".
+Des-eco: tirar "Cria experiência digital para consumidores" da coluna das empresas certificadas (já dito no slide 1 e 5) → trocar por algo mais B2B-comercial tipo **"Justifica preço premium no PDV"**.
 
-3. **Como o projeto foi construído** — Esquema visual horizontal em 3 etapas com setas: **Coleta → Consolidação → Conexão**. Cada etapa com ícone (ClipboardCheck / Layers / LinkIcon), título e descrição curta. Faixa final: "O Korin 360 não cria um novo posicionamento. Ele torna visível aquilo que a Korin já faz há mais de 30 anos."
+### Slide 04 — Modelo validado
+Trocar labels das métricas para algo defensável (mantendo os números):
+- "+9.700" → label: **"sessões registradas no ambiente digital"** (era "acessos") — não promete humano único.
+- "83% mobile" → mantém.
+- "+2min" → label: **"tempo médio por sessão"** (era "tempo médio de navegação") — termo padrão de analytics.
+- "milhares" → label fica como está.
 
-4. **Estratégia de Posicionamento** — "Do campo à mesa". Grid 2×2 de canais: **Embalagem (QR Code) · Website · Assessoria de Imprensa · Redes Sociais**, cada um com ícone (Package, Globe, MessageSquare, Network) e descrição.
+### Slide 05 — Mercado (logos + práticas)
+**Lista "práticas":** trocar "Rastreabilidade" → **"Origem dos alimentos"** (alinha com regra fixada no Korin: rastreabilidade é vocabulário de cadeia, não de consumidor).
 
-5. **Resultados** — Dashboard com 4 stat cards grandes: **9,7 mil acessos · 83% mobile · 2min11s navegação · 25–44 anos / Sudeste**. Abaixo, card "Principal aprendizado" listando o que o consumidor quer saber (4 bullets).
+Des-eco: remover "Transparência" (repete com o tom geral do deck) → substituir por **"Bem-estar animal"** ou **"Conteúdo do produtor"** (mais concreto, menos abstrato).
 
-6. **Benchmark — O mercado** — 2 colunas: "O que o mercado está fazendo" (5 bullets) vs "Oportunidade Korin" (6 checks). Frase de fechamento em destaque.
+**Logos:** os 6 atuais foram verificados e todos têm QR/origem real ao consumidor — Vital Farms (cartons com nome da fazenda + vídeo 360°), Carrefour Garantia de Origem (blockchain + QR), Minerva, NatureSweet ("Hearts Behind the Harvest" QR labels), Mowi (QR egg-to-plate), Llet Nostra (traçabilitat digital auditada no envàs). Confirmar que o array está com esses 6; remover qualquer Barilla/Tesco se ainda houver.
 
-7. **Benchmark de marcas (NOVO — cards do mercado)** — Grid de 8 cards (4×2) com cada marca: bandeira + nome, categoria (pill), o que fizeram (1 linha), resultado (1 linha em destaque). Marcas: Vital Farms 🇺🇸, Carrefour Garantia de Origem 🇫🇷, Frigol 🇧🇷, Carrefour Bio 🇫🇷, Fazenda da Toca 🇧🇷, Mowi 🇳🇴, Salmones Camanchaca 🇨🇱, Netuno 🇧🇷. Texto enxuto para caber sem poluir. Posicionado **logo após o slide 6 de Benchmark** porque é o "melhor lugar" — ilustra concretamente o que foi dito sobre o mercado.
+### Slide 06 — Oportunidade
+Cortar a lista "passa a entregar também" de 8 → 5 itens. Manter os de maior valor de pitch:
+1. Storytelling
+2. Transparência
+3. Experiência digital
+4. Diferenciação no PDV
+5. Relacionamento com consumidores
 
-8. **Próxima Fase — Pilares** — Grid 3×2 com 6 pilares (ícones + bullets curtos): Fortalecer comunicação · Potencializar digitais · Explorar PDV · Influenciadores · Relacionamento direto (CRM) · Expandir modelo (novas categorias).
+Removidos: "Valorização dos produtores" (já está implícito em storytelling + repete slide 1), "Conteúdo para marketing" (B2B vago), **"Inteligência para a cadeia"** (vago + tom destoa, conforme crítica).
 
-9. **Mensagem Final** — Slide fundo navy, frase grande de fechamento + CTA "Quer levar essa metodologia para sua marca?" (mesmo quadrinho-CTA reutilizado da FsscV7 para coesão).
+### Não mexer
+- Slide 02 (jornada hoje vs MyTS 360) — validado como melhor frame.
+- Slide 07 (encerramento) — fecho "experiências de confiança" é proposital.
+- Hero e estrutura geral.
 
-### Implementação técnica
+### Técnico
+Edições pontuais em arrays de strings e parágrafos JSX. Sem novos componentes, sem mudança de layout, sem novos assets. Total: ~8-10 `line_replace` em um único arquivo.
 
-- Novo arquivo `src/pages/Korin360.tsx` reutilizando os helpers visuais (`Chip`, `SectionLabel`, `Slide`, watermark MyTS) copiados/adaptados de `FsscV7.tsx`.
-- Registrar rota `/korin-360` em `src/App.tsx`.
-- Usar `logoKorin` (já existe em `src/assets/logos/korin.png`) e `mytsLogo` / `mytsMark`.
-- Bandeiras dos países como emoji para evitar imports.
-- Ícones lucide já disponíveis no projeto.
-- Sem alterações em backend, design tokens ou outras páginas.
-
-### Pendente (não bloqueante)
-
-Você mencionou que vai mandar prints dos exemplos de marcas depois — vou deixar os cards com texto + emoji-bandeira primeiro; quando os prints chegarem, troco por imagens reais.
+### Fora do escopo desta rodada
+- Reescrita completa do slide 1 numa versão alternativa "pain-led extrema" — posso fazer numa segunda rodada se quiser.
+- Slide novo de "modelo / próximo passo" que o crítico mencionou — se quiser, abre como pedido separado.
