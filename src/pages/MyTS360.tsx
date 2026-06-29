@@ -94,7 +94,7 @@ const Slide = ({
         width: "1920px",
         height: "1080px",
         transformOrigin: "top left",
-        transform: "scale(calc(100cqw / 1920))",
+        transform: "scale(calc(100cqw / 1920px))",
         overflow: "hidden",
       }}
     >
