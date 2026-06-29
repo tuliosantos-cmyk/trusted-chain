@@ -87,7 +87,7 @@ const Slide = ({
       scrollSnapAlign: "center",
     }}
   >
-    <div className="relative h-full w-full slide-inner">
+    <div className="slide-stage">
       {decor}
       <div className={`relative h-full w-full flex flex-col ${pad}`}>{children}</div>
     </div>
@@ -585,15 +585,15 @@ const Oportunidade = () => {
       decor={
         <>
           <div className="absolute inset-0 grid-pattern opacity-15" />
-          <div className="absolute top-1/3 -right-40 size-[700px] bg-glow opacity-45 blur-3xl rounded-full" />
-          <div className="absolute -bottom-40 left-1/4 size-[600px] bg-glow opacity-35 blur-3xl rounded-full" />
+          <div className="absolute top-1/2 -right-40 size-[700px] bg-glow opacity-40 blur-3xl rounded-full" />
+          <div className="absolute -bottom-40 left-1/4 size-[600px] bg-glow opacity-30 blur-3xl rounded-full" />
           <MytsWatermark className="-right-24 -bottom-24 w-[480px]" />
         </>
       }
     >
       <SectionLabel n="06" label="Oportunidade para a Produtor do Bem" light />
 
-      <h2 className="mt-4 font-display font-bold text-5xl leading-[1.05] max-w-6xl text-primary-foreground">
+      <h2 className="mt-8 font-display font-bold text-[44px] leading-[1.1] max-w-6xl text-primary-foreground">
         Um <span className="text-gradient">novo benefício</span> para todas as empresas certificadas
       </h2>
 
@@ -773,8 +773,8 @@ const MyTS360 = () => (
     <style>{`
       html,body,#root{margin:0;padding:0;background:#0a0e1a}
       html{scroll-snap-type:y proximity}
-      .slide-frame{container-type:inline-size;container-name:slide}
-      .slide-inner{overflow:hidden}
+      .slide-frame{container-type:inline-size;container-name:slide;position:relative}
+      .slide-stage{position:absolute;top:0;left:0;width:1920px;height:1080px;transform-origin:top left;transform:scale(calc(100cqw / 1920px));overflow:hidden}
     `}</style>
     <Helmet>
       <title>MyTS 360 — Transformando certificações em experiências · Produtor do Bem</title>
