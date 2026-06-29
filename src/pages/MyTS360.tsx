@@ -585,8 +585,8 @@ const Oportunidade = () => {
       decor={
         <>
           <div className="absolute inset-0 grid-pattern opacity-15" />
-          <div className="absolute top-1/3 -right-40 size-[700px] bg-glow opacity-45 blur-3xl rounded-full" />
-          <div className="absolute -bottom-40 left-1/4 size-[600px] bg-glow opacity-35 blur-3xl rounded-full" />
+          <div className="absolute top-1/2 -right-40 size-[700px] bg-glow opacity-40 blur-3xl rounded-full" />
+          <div className="absolute -bottom-40 left-1/4 size-[600px] bg-glow opacity-30 blur-3xl rounded-full" />
           <MytsWatermark className="-right-24 -bottom-24 w-[480px]" />
         </>
       }
