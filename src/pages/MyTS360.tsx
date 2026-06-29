@@ -593,7 +593,7 @@ const Oportunidade = () => {
     >
       <SectionLabel n="06" label="Oportunidade para a Produtor do Bem" light />
 
-      <h2 className="mt-4 font-display font-bold text-5xl leading-[1.05] max-w-6xl text-primary-foreground">
+      <h2 className="mt-8 font-display font-bold text-[44px] leading-[1.1] max-w-6xl text-primary-foreground">
         Um <span className="text-gradient">novo benefício</span> para todas as empresas certificadas
       </h2>
 
