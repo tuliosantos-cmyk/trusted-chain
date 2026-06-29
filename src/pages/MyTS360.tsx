@@ -460,50 +460,51 @@ const ModeloValidado = () => {
   return (
     <Slide
       bg="bg-background"
+      pad="p-10 md:p-12"
       decor={<MytsWatermark className="-right-20 -bottom-20 w-[440px] [filter:invert(1)] opacity-[0.04]" />}
     >
       <SectionLabel n="04" label="Um modelo validado" />
 
-      <h2 className="mt-5 font-display font-bold text-5xl text-primary leading-[1.05] max-w-5xl">
+      <h2 className="mt-3 font-display font-bold text-4xl text-primary leading-[1.05] max-w-5xl">
         Projeto entregue para uma indústria brasileira de alimentos —{" "}
         <span className="text-gradient">resultados em ~1 ano</span>
       </h2>
 
-      <div className="mt-8 grid grid-cols-4 gap-5">
+      <div className="mt-5 grid grid-cols-4 gap-4">
         {stats.map((s) => (
           <div
             key={s.l}
-            className="rounded-2xl border border-border bg-gradient-card shadow-card p-6"
+            className="rounded-2xl border border-border bg-gradient-card shadow-card p-4"
           >
-            <s.icon className="size-8 text-accent" />
-            <div className="mt-3 font-display font-bold text-4xl text-primary leading-none whitespace-nowrap">
+            <s.icon className="size-7 text-accent" />
+            <div className="mt-2 font-display font-bold text-3xl text-primary leading-none whitespace-nowrap">
               {s.v}
             </div>
-            <div className="mt-3 text-base text-muted-foreground leading-snug">{s.l}</div>
+            <div className="mt-1.5 text-sm text-muted-foreground leading-snug">{s.l}</div>
           </div>
         ))}
       </div>
 
-      <div className="mt-7 flex-1 rounded-3xl border-2 border-accent/30 bg-accent/5 p-7 min-h-0 flex flex-col">
+      <div className="mt-4 flex-1 rounded-3xl border-2 border-accent/30 bg-accent/5 p-4 min-h-0 flex flex-col">
         <div className="flex items-center gap-2.5 text-accent font-semibold uppercase text-sm tracking-widest">
           <CheckCircle2 className="size-5" /> O que foi entregue
         </div>
-        <div className="mt-5 grid grid-cols-7 gap-4 flex-1">
+        <div className="mt-3 grid grid-cols-7 gap-3 flex-1">
           {entregas.map((e) => (
             <div
               key={e.t}
-              className="rounded-2xl border border-border bg-background p-4 flex flex-col items-center justify-center text-center gap-3"
+              className="rounded-2xl border border-border bg-background p-2.5 flex flex-col items-center justify-center text-center gap-2"
             >
-              <div className="size-14 rounded-xl bg-gradient-accent flex items-center justify-center">
-                <e.icon className="size-7 text-accent-foreground" />
+              <div className="size-10 rounded-xl bg-gradient-accent flex items-center justify-center">
+                <e.icon className="size-5 text-accent-foreground" />
               </div>
-              <div className="text-base font-semibold text-primary leading-tight">{e.t}</div>
+              <div className="text-xs font-semibold text-primary leading-tight">{e.t}</div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="mt-5 rounded-2xl bg-primary text-primary-foreground px-7 py-4 text-center text-xl">
+      <div className="mt-3 rounded-2xl bg-primary text-primary-foreground px-6 py-3 text-center text-base">
         Consumidores valorizam{" "}
         <span className="text-accent-glow font-semibold">
           conhecer a origem dos alimentos e as pessoas por trás da produção.
