@@ -175,23 +175,18 @@ const Sobre = () => (
     </h2>
 
     <div className="mt-10 grid grid-cols-[1.4fr_1fr] gap-10 flex-1 min-h-0">
-      <div className="flex flex-col justify-between text-2xl text-muted-foreground leading-relaxed max-w-3xl">
+      <div className="flex flex-col justify-center gap-8 text-2xl text-muted-foreground leading-relaxed max-w-3xl">
         <p>
-          A <span className="font-semibold text-primary">Produtor do Bem</span> nasceu com um propósito
-          claro: promover sistemas de produção mais responsáveis e conectar empresas, produtores e
-          consumidores por meio da confiança.
+          A <span className="font-semibold text-primary">Produtor do Bem</span> certifica boas práticas
+          reais em <span className="font-semibold text-primary">bem-estar animal</span>,{" "}
+          <span className="font-semibold text-primary">sustentabilidade</span> e responsabilidade
+          socioambiental — um valor que hoje permanece{" "}
+          <span className="font-semibold text-primary">invisível ao consumidor final</span>.
         </p>
         <p>
-          Suas certificações representam muito mais do que conformidade — reconhecem boas práticas em{" "}
-          <span className="font-semibold text-primary">bem-estar animal</span>,{" "}
-          <span className="font-semibold text-primary">sustentabilidade</span>, responsabilidade
-          socioambiental e qualidade na produção.
-        </p>
-        <p>
-          O desafio é que grande parte desse valor permanece{" "}
-          <span className="font-semibold text-primary">invisível ao consumidor final</span>. O MyTS
-          360 nasce para ampliar esse valor, transformando cada certificação em uma experiência
-          digital de transparência, educação e relacionamento.
+          Quando esse valor não chega à prateleira, o produto certificado{" "}
+          <span className="font-semibold text-primary">compete no preço como qualquer outro</span> — e
+          a lealdade que a boa prática mereceria nunca se forma. O MyTS 360 nasce para virar esse jogo.
         </p>
       </div>
 
