@@ -229,18 +229,19 @@ const DaCertificacao = () => {
   return (
     <Slide
       bg="bg-background"
+      pad="p-10 md:p-12"
       decor={<MytsWatermark className="-right-20 -bottom-20 w-[440px] [filter:invert(1)] opacity-[0.04]" />}
     >
       <SectionLabel n="02" label="Da certificação à experiência" />
 
-      <h2 className="mt-5 font-display font-bold text-5xl text-primary leading-[1.05] max-w-5xl">
+      <h2 className="mt-3 font-display font-bold text-4xl text-primary leading-[1.05] max-w-5xl">
         A certificação deixa de ser um selo —{" "}
         <span className="text-gradient">passa a contar uma história</span>
       </h2>
 
-      <div className="mt-8 grid grid-cols-2 gap-8 flex-1 min-h-0">
+      <div className="mt-5 grid grid-cols-2 gap-6 flex-1 min-h-0">
         {/* HOJE */}
-        <div className="rounded-2xl border border-border bg-gradient-card shadow-card p-7 flex flex-col min-h-0">
+        <div className="rounded-2xl border border-border bg-gradient-card shadow-card p-5 flex flex-col min-h-0">
           <div className="flex items-center justify-between">
             <div className="text-sm uppercase tracking-widest font-semibold text-muted-foreground">
               Hoje
@@ -249,18 +250,18 @@ const DaCertificacao = () => {
               jornada curta
             </span>
           </div>
-          <div className="mt-5 flex-1 flex flex-col justify-around min-h-0">
+          <div className="mt-3 flex-1 flex flex-col justify-around min-h-0">
             {hoje.map((s, i) => (
               <div key={s.t + i}>
                 <div
-                  className={`flex items-center gap-4 rounded-xl px-5 py-4 ${
+                  className={`flex items-center gap-4 rounded-xl px-4 py-2.5 ${
                     s.muted
                       ? "bg-muted/40 text-muted-foreground"
                       : "bg-background border border-border text-primary"
                   }`}
                 >
-                  <s.icon className="size-6 shrink-0" />
-                  <span className="text-xl font-medium">{s.t}</span>
+                  <s.icon className="size-5 shrink-0" />
+                  <span className="text-base font-medium">{s.t}</span>
                 </div>
               </div>
             ))}
@@ -268,7 +269,7 @@ const DaCertificacao = () => {
         </div>
 
         {/* COM MyTS 360 */}
-        <div className="rounded-2xl border-2 border-accent/40 bg-gradient-to-br from-accent/10 to-accent-glow/5 shadow-elegant p-6 flex flex-col min-h-0">
+        <div className="rounded-2xl border-2 border-accent/40 bg-gradient-to-br from-accent/10 to-accent-glow/5 shadow-elegant p-5 flex flex-col min-h-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5 text-sm uppercase tracking-widest font-semibold text-accent">
               <Sparkles className="size-4" /> Com MyTS 360
@@ -277,42 +278,42 @@ const DaCertificacao = () => {
               jornada ampliada
             </span>
           </div>
-          <div className="mt-4 flex-1 flex flex-col justify-between gap-3 min-h-0">
+          <div className="mt-3 flex-1 flex flex-col justify-between gap-2.5 min-h-0">
             {/* Linha 1 — ponto de partida */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2.5">
               {partida.map((s) => (
                 <div
                   key={s.t}
-                  className="flex items-center gap-3 rounded-xl px-4 py-2.5 bg-background/70 border border-accent/20"
+                  className="flex items-center gap-3 rounded-xl px-3.5 py-2 bg-background/70 border border-accent/20"
                 >
-                  <div className="size-8 rounded-lg bg-gradient-accent flex items-center justify-center shrink-0">
-                    <s.icon className="size-4 text-accent-foreground" />
+                  <div className="size-7 rounded-lg bg-gradient-accent flex items-center justify-center shrink-0">
+                    <s.icon className="size-3.5 text-accent-foreground" />
                   </div>
-                  <span className="text-base font-semibold text-primary leading-tight">{s.t}</span>
+                  <span className="text-sm font-semibold text-primary leading-tight">{s.t}</span>
                 </div>
               ))}
             </div>
 
             {/* Linha 2 — gatilho QR (destaque) */}
-            <div className="flex items-center gap-4 rounded-xl px-5 py-3 bg-accent/15 border-2 border-accent/50 shadow-glow">
-              <div className="size-11 rounded-lg bg-gradient-accent flex items-center justify-center shrink-0">
-                <QrCode className="size-6 text-accent-foreground" />
+            <div className="flex items-center gap-3.5 rounded-xl px-4 py-2.5 bg-accent/15 border-2 border-accent/50 shadow-glow">
+              <div className="size-9 rounded-lg bg-gradient-accent flex items-center justify-center shrink-0">
+                <QrCode className="size-5 text-accent-foreground" />
               </div>
               <div className="flex-1">
                 <div className="text-[10px] uppercase tracking-widest font-bold text-accent">o gatilho</div>
-                <div className="text-lg font-bold text-primary leading-tight">QR Code na embalagem</div>
+                <div className="text-base font-bold text-primary leading-tight">QR Code na embalagem</div>
               </div>
             </div>
 
             {/* Linha 3 — experiência digital agrupada */}
-            <div className="rounded-xl border border-accent/25 bg-background/50 p-3.5">
-              <div className="text-[10px] uppercase tracking-widest font-bold text-accent mb-2.5 flex items-center gap-2">
+            <div className="rounded-xl border border-accent/25 bg-background/50 p-3">
+              <div className="text-[10px] uppercase tracking-widest font-bold text-accent mb-2 flex items-center gap-2">
                 <Sparkles className="size-3" /> Experiência digital
               </div>
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 {experiencia.map((s) => (
                   <div key={s.t} className="flex items-center gap-3 text-primary">
-                    <s.icon className="size-4 shrink-0 text-accent" />
+                    <s.icon className="size-3.5 shrink-0 text-accent" />
                     <span className="text-sm font-medium leading-tight">{s.t}</span>
                   </div>
                 ))}
@@ -320,8 +321,8 @@ const DaCertificacao = () => {
             </div>
 
             {/* Linha 4 — resultado */}
-            <div className="flex items-center gap-3 rounded-xl px-5 py-3 bg-gradient-accent text-accent-foreground">
-              <Share2 className="size-5 shrink-0" />
+            <div className="flex items-center gap-3 rounded-xl px-4 py-2.5 bg-gradient-accent text-accent-foreground">
+              <Share2 className="size-4 shrink-0" />
               <span className="text-base font-bold leading-tight">
                 Compartilhe e fortaleça a confiança
               </span>
@@ -330,7 +331,7 @@ const DaCertificacao = () => {
         </div>
       </div>
 
-      <div className="mt-6 rounded-2xl bg-primary text-primary-foreground px-7 py-4 text-center text-xl">
+      <div className="mt-4 rounded-2xl bg-primary text-primary-foreground px-6 py-3 text-center text-base">
         Cada produto passa a mostrar{" "}
         <span className="text-accent-glow font-semibold">
           quem produziu, quais práticas foram adotadas e por que a certificação faz diferença.
