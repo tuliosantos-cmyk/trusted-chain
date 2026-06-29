@@ -227,7 +227,46 @@ const DaCertificacao = () => {
     { icon: BookOpen, t: "Boas práticas + significado do selo" },
   ];
   return (
-...
+    <Slide
+      bg="bg-background"
+      decor={<MytsWatermark className="-right-20 -bottom-20 w-[440px] [filter:invert(1)] opacity-[0.04]" />}
+    >
+      <SectionLabel n="02" label="Da certificação à experiência" />
+
+      <h2 className="mt-5 font-display font-bold text-5xl text-primary leading-[1.05] max-w-5xl">
+        A certificação deixa de ser um selo —{" "}
+        <span className="text-gradient">passa a contar uma história</span>
+      </h2>
+
+      <div className="mt-8 grid grid-cols-2 gap-8 flex-1 min-h-0">
+        {/* HOJE */}
+        <div className="rounded-2xl border border-border bg-gradient-card shadow-card p-7 flex flex-col min-h-0">
+          <div className="flex items-center justify-between">
+            <div className="text-sm uppercase tracking-widest font-semibold text-muted-foreground">
+              Hoje
+            </div>
+            <span className="text-xs text-muted-foreground/70 px-3 py-1 rounded-full border border-border">
+              jornada curta
+            </span>
+          </div>
+          <div className="mt-5 flex-1 flex flex-col justify-around min-h-0">
+            {hoje.map((s, i) => (
+              <div key={s.t + i}>
+                <div
+                  className={`flex items-center gap-4 rounded-xl px-5 py-4 ${
+                    s.muted
+                      ? "bg-muted/40 text-muted-foreground"
+                      : "bg-background border border-border text-primary"
+                  }`}
+                >
+                  <s.icon className="size-6 shrink-0" />
+                  <span className="text-xl font-medium">{s.t}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* COM MyTS 360 */}
         <div className="rounded-2xl border-2 border-accent/40 bg-gradient-to-br from-accent/10 to-accent-glow/5 shadow-elegant p-6 flex flex-col min-h-0">
           <div className="flex items-center justify-between">
