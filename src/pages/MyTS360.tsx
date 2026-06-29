@@ -482,16 +482,16 @@ const Mercado = () => {
     { nome: "Carrefour", flag: "fr" },
     { nome: "Minerva", flag: "br" },
     { nome: "NatureSweet", flag: "us" },
-    { nome: "Barilla", flag: "it" },
-    { nome: "Tesco", flag: "gb" },
+    { nome: "Mowi", flag: "no" },
+    { nome: "Llet Nostra", flag: "es" },
   ];
   const praticas = [
     "QR Codes",
     "Histórias dos produtores",
-    "Rastreabilidade",
+    "Origem dos alimentos",
+    "Bem-estar animal",
     "Sustentabilidade",
     "Conteúdo digital",
-    "Transparência",
   ];
   return (
     <Slide
