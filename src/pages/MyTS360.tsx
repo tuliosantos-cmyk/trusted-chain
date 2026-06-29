@@ -312,10 +312,10 @@ const Beneficios = () => {
       cor: "from-accent/15 to-accent/0",
       borda: "border-accent/30",
       itens: [
+        "Torna a certificação mais atraente para novas empresas",
         "Fortalece o reconhecimento da certificação",
-        "Aproxima consumidores da missão",
         "Amplia a visibilidade do trabalho",
-        "Gera valor percebido para novas empresas certificadas",
+        "Aproxima consumidores da missão",
       ],
     },
     {
@@ -325,9 +325,9 @@ const Beneficios = () => {
       borda: "border-primary/25",
       itens: [
         "Diferencia seus produtos no PDV",
+        "Justifica preço premium na prateleira",
         "Valoriza seus produtores",
         "Reforça atributos de sustentabilidade",
-        "Cria experiência digital para consumidores",
         "Gera conteúdo para marketing",
       ],
     },
