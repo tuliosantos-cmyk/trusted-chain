@@ -1,23 +1,41 @@
-## Slide 06 (Oportunidade) — ajuste de layout
+## Slide 06 — aplicar direção "Premium Evolution"
 
-Mesmo viewport real do usuário (1338×813) que causou cortes nos slides 02 e 04 está cortando o 06: título em 2 linhas grandes, seções "Hoje" e "Novo" empurradas pra baixo, faixa de rodapé sobreposta.
+Refazer `Oportunidade` em `src/pages/MyTS360.tsx` seguindo o protótipo escolhido (v1).
 
-### Mudanças em `src/pages/MyTS360.tsx` › `Oportunidade`
+### Estrutura nova
 
-1. **Padding do Slide** → de padrão para `p-10 md:p-12`.
-2. **Título**: `text-5xl` → `text-4xl`, `mt-4` → `mt-3`.
-3. **Espaçamento do grid principal**: `mt-9` → `mt-6`, `gap-6` → `gap-5`.
-4. **Coluna "Hoje"**:
-   - Padding card: `p-7` → `p-5`.
-   - Itens: `py-4 px-5` → `py-2.5 px-4`, ícone `size-6` → `size-5`, texto `text-xl` → `text-base`.
-   - `gap-3` → `gap-2`.
-5. **Bloco "+" central**:
-   - Círculo `size-20` → `size-14`, "+" `text-5xl` → `text-3xl`.
-6. **Coluna "Novo"**:
-   - Padding card: `p-7` → `p-5`.
-   - Itens: `px-4 py-3.5` → `px-3 py-2.5`, container ícone `size-11` → `size-9`, ícone `size-5` → `size-4`, texto `text-lg` → `text-sm`.
-   - `gap-3` → `gap-2.5`.
-7. **Faixa de rodapé**:
-   - `mt-6 px-7 py-4` → `mt-4 px-6 py-3`, texto `text-xl` → `text-base`.
+```
+┌──────────────────────────────────────────────────────────┐
+│ 06 · OPORTUNIDADE PARA A PRODUTOR DO BEM                 │
+│ Um novo benefício para todas as empresas certificadas    │
+│                                                          │
+│  HOJE A PDB ENTREGA   │  + │  COM MYTS 360 [NOVO]        │
+│  ┌───────────────┐    │ ●  │  ┌────┐┌────┐┌────┐         │
+│  │ • Protocolos  │    │ │  │  │ ST ││ TR ││ EX │  (col-2)│
+│  │ • Auditorias  │    │ +  │  └────┘└────┘└────┘         │
+│  │ • Certificaç. │    │ │  │  ┌──────┐┌──────┐           │
+│  │ • Credibilid. │    │ ●  │  │  PDV ││ REL  │   (col-3) │
+│  └───────────────┘    │    │  └──────┘└──────┘           │
+├──────────────────────────────────────────────────────────┤
+│ Cada certificação… Cada consumidor passa a entender…     │
+└──────────────────────────────────────────────────────────┘
+```
 
-Resultado esperado: título em 1 linha, as duas colunas com altura confortável, faixa de rodapé visível com folga acima do footer do slide, sem sobreposição.
+### Mudanças
+
+- `Slide` com `pad="p-0"` para permitir faixa de rodapé full-bleed.
+- Header próprio (sem `SectionLabel`): label `06 · …` em `text-[11px] tracking-[0.3em]` + título `text-[44px] extrabold` em 1 linha.
+- Coluna **Hoje** estreita (22% da largura): 4 pílulas com bullet pequeno (`size-1.5`).
+- Conector central: linha vertical fina com gradiente → círculo `size-14` `bg-gradient-accent` `shadow-glow` com "+" → linha vertical.
+- Coluna **Novo** flexível: 5 cards em grid `grid-cols-6 gap-3.5`:
+  - 3 cards `col-span-2` na linha 1 (Storytelling, Transparência, Experiência digital)
+  - 2 cards `col-span-3` na linha 2 (PDV, Relacionamento)
+- Cards com `bg-gradient-to-br from-primary-foreground/10 to-transparent`, ícone Lucide `size-6 text-accent-glow` acima do label `text-base font-semibold`, hover `border-accent-glow/40`.
+- Badge "Novo" inline ao lado do subtítulo, `bg-gradient-accent` com `shadow-cta`.
+- Faixa de fechamento full-bleed: borda superior, `bg-primary-foreground/5`, copy mantida (não-itálica), com destaque `text-accent-glow` na frase final.
+
+### Tokens
+
+Tudo via tokens do projeto (`bg-hero`, `bg-gradient-accent`, `accent-glow`, `primary-foreground`, `shadow-glow`, `shadow-cta`, `text-gradient`). Zero cores hardcoded.
+
+Resultado: encaixe perfeito sem buracos, 5 itens organizados em pirâmide invertida 3+2, hierarquia clara "Hoje → + → Novo", rodapé ancorado.
