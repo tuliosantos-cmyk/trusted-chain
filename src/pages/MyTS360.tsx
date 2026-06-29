@@ -443,7 +443,7 @@ const ModeloValidado = () => {
             className="rounded-2xl border border-border bg-gradient-card shadow-card p-6"
           >
             <s.icon className="size-8 text-accent" />
-            <div className="mt-3 font-display font-bold text-5xl text-primary leading-none">
+            <div className="mt-3 font-display font-bold text-4xl text-primary leading-none whitespace-nowrap">
               {s.v}
             </div>
             <div className="mt-3 text-base text-muted-foreground leading-snug">{s.l}</div>
@@ -585,15 +585,15 @@ const Oportunidade = () => {
       decor={
         <>
           <div className="absolute inset-0 grid-pattern opacity-15" />
-          <div className="absolute -top-44 left-1/4 size-[800px] bg-glow opacity-55 blur-3xl rounded-full" />
-          <div className="absolute -bottom-40 right-1/4 size-[600px] bg-glow opacity-40 blur-3xl rounded-full" />
+          <div className="absolute top-1/3 -right-40 size-[700px] bg-glow opacity-45 blur-3xl rounded-full" />
+          <div className="absolute -bottom-40 left-1/4 size-[600px] bg-glow opacity-35 blur-3xl rounded-full" />
           <MytsWatermark className="-right-24 -bottom-24 w-[480px]" />
         </>
       }
     >
       <SectionLabel n="06" label="Oportunidade para a Produtor do Bem" light />
 
-      <h2 className="mt-5 font-display font-bold text-6xl leading-[1.05] max-w-6xl text-primary-foreground">
+      <h2 className="mt-4 font-display font-bold text-5xl leading-[1.05] max-w-6xl text-primary-foreground">
         Um <span className="text-gradient">novo benefício</span> para todas as empresas certificadas
       </h2>
 
@@ -684,17 +684,17 @@ const MensagemFinal = () => (
         MyTS 360
       </Chip>
 
-      <h2 className="mt-10 font-display font-bold text-8xl leading-[1.02] tracking-tight text-primary-foreground max-w-6xl">
+      <h2 className="mt-8 font-display font-bold text-7xl leading-[1.02] tracking-tight text-primary-foreground max-w-5xl">
         Transformando certificações em{" "}
         <span className="text-gradient">experiências de confiança.</span>
       </h2>
 
-      <div className="mt-14 w-full max-w-4xl">
-        <div className="relative overflow-hidden rounded-3xl border border-primary-foreground/15 bg-primary-foreground/[0.04] backdrop-blur-xl p-9">
+      <div className="mt-10 w-full max-w-4xl">
+        <div className="relative overflow-hidden rounded-3xl border border-primary-foreground/15 bg-primary-foreground/[0.04] backdrop-blur-xl p-8">
           <div className="absolute -right-32 -top-32 size-96 bg-glow opacity-50 blur-3xl rounded-full" />
           <div className="absolute left-0 top-0 h-full w-1.5 bg-gradient-accent" />
 
-          <div className="relative grid grid-cols-[1.2fr_1fr] gap-9 items-center text-left">
+          <div className="relative grid grid-cols-[1.2fr_1fr] gap-8 items-center text-left">
             <div>
               <div className="flex items-center gap-3">
                 <img src={mytsLogo} alt="MyTS" className="h-6 opacity-90" />
@@ -703,11 +703,11 @@ const MensagemFinal = () => (
                   Próximo passo
                 </span>
               </div>
-              <p className="mt-5 font-display font-semibold text-4xl leading-[1.15] text-primary-foreground">
+              <p className="mt-4 font-display font-semibold text-3xl leading-[1.15] text-primary-foreground">
                 Vamos desenhar isso para a{" "}
                 <span className="text-gradient">Produtor do Bem?</span>
               </p>
-              <p className="mt-4 text-lg text-primary-foreground/70 leading-relaxed">
+              <p className="mt-3 text-base text-primary-foreground/70 leading-relaxed">
                 Agende uma conversa com{" "}
                 <span className="font-semibold text-primary-foreground">André Tanzi</span>, Diretor
                 Comercial da MyTS.
