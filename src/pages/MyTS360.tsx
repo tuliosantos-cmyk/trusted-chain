@@ -87,7 +87,7 @@ const Slide = ({
       scrollSnapAlign: "center",
     }}
   >
-    <div className="relative h-full w-full slide-inner">
+    <div className="slide-stage">
       {decor}
       <div className={`relative h-full w-full flex flex-col ${pad}`}>{children}</div>
     </div>
