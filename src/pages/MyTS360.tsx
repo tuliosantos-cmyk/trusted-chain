@@ -395,31 +395,31 @@ const Beneficios = () => {
     >
       <SectionLabel n="03" label="Benefícios para todo o ecossistema" light />
 
-      <h2 className="mt-5 font-display font-bold text-5xl leading-[1.05] max-w-5xl text-primary-foreground">
+      <h2 className="mt-4 font-display font-bold text-4xl leading-[1.05] max-w-5xl text-primary-foreground">
         Um modelo que fortalece <span className="text-gradient">toda a cadeia</span>
       </h2>
 
-      <div className="mt-10 flex-1 grid grid-cols-3 gap-6 min-h-0">
+      <div className="mt-6 flex-1 grid grid-cols-3 gap-5 min-h-0">
         {colunas.map((c) => (
           <div
             key={c.eyebrow}
-            className={`rounded-3xl border-2 ${c.borda} bg-gradient-to-b ${c.cor} bg-primary/40 backdrop-blur-sm p-8 flex flex-col min-h-0`}
+            className={`rounded-3xl border-2 ${c.borda} bg-gradient-to-b ${c.cor} bg-primary/40 backdrop-blur-sm p-6 flex flex-col min-h-0 overflow-hidden`}
           >
-            <div className="flex items-center gap-4">
-              <div className="size-16 rounded-2xl bg-gradient-accent flex items-center justify-center shrink-0">
-                <c.icon className="size-8 text-accent-foreground" />
+            <div className="flex items-center gap-3">
+              <div className="size-14 rounded-2xl bg-gradient-accent flex items-center justify-center shrink-0">
+                <c.icon className="size-7 text-accent-foreground" />
               </div>
-              <div className="text-sm uppercase tracking-widest font-semibold text-accent-glow leading-tight">
+              <div className="text-sm uppercase tracking-wider font-semibold text-accent-glow leading-tight">
                 {c.eyebrow}
               </div>
             </div>
-            <div className="mt-7 flex-1 flex flex-col justify-around gap-2">
+            <div className="mt-5 flex-1 flex flex-col justify-start gap-3">
               {c.itens.map((it) => (
                 <div
                   key={it}
-                  className="flex items-start gap-3 text-xl text-primary-foreground/90 leading-snug"
+                  className="flex items-start gap-3 text-base text-primary-foreground/90 leading-snug"
                 >
-                  <CheckCircle2 className="size-6 text-accent-glow shrink-0 mt-0.5" />
+                  <CheckCircle2 className="size-5 text-accent-glow shrink-0 mt-0.5" />
                   <span>{it}</span>
                 </div>
               ))}
@@ -428,8 +428,8 @@ const Beneficios = () => {
         ))}
       </div>
 
-      <div className="mt-6 rounded-2xl border border-accent-glow/25 bg-accent-glow/10 px-7 py-4 text-center">
-        <p className="text-primary-foreground text-xl">
+      <div className="mt-5 rounded-2xl border border-accent-glow/25 bg-accent-glow/10 px-7 py-3 text-center">
+        <p className="text-primary-foreground text-base">
           O MyTS 360 fortalece toda a cadeia:{" "}
           <span className="text-accent-glow font-semibold">
             quem certifica, quem produz e quem consome.
