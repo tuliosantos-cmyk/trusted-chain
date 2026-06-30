@@ -1,17 +1,17 @@
-## Ajuste — Slide 03 (Benefícios para todo o ecossistema)
+## Exportar `/myts-360` como apresentação .pptx
 
-**Problema:** os itens com check da terceira coluna estão estourando o card e/ou avançando sobre a faixa de rodapé "O MyTS 360 fortalece toda a cadeia…". A coluna com mais bullets não cabe na altura disponível porque os tokens atuais (`p-8`, `text-xl`, ícone `size-6` + `size-16` no header, `gap` largo e faixa final `py-4 text-xl`) consomem mais altura do que os 1080px do slide comportam após o título.
+Dado o nível de detalhe visual (gradientes, ícones Lucide, mockups, bandeiras, brilhos), a rota mais fiel é renderizar cada slide via Playwright em 1920×1080 e embutir como imagem em um `.pptx` 16:9. Resultado: pixel-perfect idêntico ao deck atual, pronto para apresentar no PowerPoint/Keynote ou subir no Google Drive/Canva.
 
-## O que mudar em `src/pages/MyTS360.tsx` (bloco do `EcossistemaBeneficios`, linhas ~396–438)
+## Passos
 
-1. **Título mais compacto:** `text-5xl` → `text-4xl`, `mt-5` → `mt-4`.
-2. **Grid dos cards:** `mt-10 gap-6` → `mt-6 gap-5`, manter `min-h-0` e adicionar `overflow-hidden` em cada card para garantir contenção.
-3. **Cards:** padding `p-8` → `p-6`, header com ícone `size-16` → `size-14` e ícone interno `size-8` → `size-7`, eyebrow `text-sm` mantido mas com `tracking-wider`.
-4. **Lista de bullets:** trocar `justify-around gap-2` por `justify-start gap-3`, reduzir texto `text-xl` → `text-base leading-snug`, check `size-6` → `size-5`, `mt-7` do wrapper → `mt-5`.
-5. **Faixa de rodapé:** `mt-6 py-4 text-xl` → `mt-5 py-3 text-base`, mantendo o destaque do span em `text-accent-glow`.
+1. **Captura** — script Playwright headless no `http://localhost:8080/myts-360`, viewport 1920×1080, espera de fontes/imagens, e screenshot de cada `<section data-slide>` (8 slides). PNGs em `/tmp/myts360/slide-XX.png`.
+2. **Montagem** — script Node com `pptxgenjs`:
+   - Layout `LAYOUT_WIDE` (13.33×7.5in, 16:9).
+   - 1 slide por PNG, `addImage` full-bleed (`x:0, y:0, w:13.33, h:7.5`), embedado em base64.
+   - Notas do apresentador opcionais (título do slide).
+3. **QA visual** — converter o .pptx para PDF via LibreOffice e inspecionar todas as 8 páginas como JPG para garantir que nada ficou cortado/borrado.
+4. **Entrega** — salvar em `/mnt/documents/MyTS360.pptx` e emitir `<presentation-artifact>` para download direto no chat.
 
-Resultado esperado: as três colunas terminam acima da faixa final, sem corte nem sobreposição, mantendo a hierarquia visual e o gradiente premium.
+## Trade-off (transparência)
 
-## Validação
-
-Capturar screenshot do `/myts-360` no viewport 1338×813 via Playwright após a edição para confirmar que nenhum item escapa do card e a faixa final permanece visível.
+Textos não ficam editáveis nativamente — cada slide é uma imagem. Em troca, fidelidade visual é 100% do que está no preview. Se você precisar editar texto depois, dá pra: (a) editar na página `/myts-360` e re-exportar, ou (b) eu gerar uma segunda versão "editável" reconstruindo com formas/textos do pptxgenjs (perde gradientes complexos e ícones).
