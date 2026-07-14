@@ -579,14 +579,14 @@ const S04Consequencia = () => {
         {custos.map((c, i) => (
           <div
             key={c.t}
-            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-8 pl-10 flex flex-col justify-center"
+            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-10 pl-12 flex flex-col justify-center overflow-hidden"
           >
-            <div className="absolute left-0 top-6 bottom-6 w-2 rounded-r-full bg-gradient-accent" />
-            <div className="font-display font-bold text-5xl text-accent leading-none">0{i + 1}</div>
-            <div className="mt-4 font-display font-bold text-3xl text-primary leading-tight">
+            <div className="absolute left-0 top-8 bottom-8 w-2 rounded-r-full bg-gradient-accent" />
+            <div className="font-display font-bold text-7xl text-accent leading-none">0{i + 1}</div>
+            <div className="mt-5 font-display font-bold text-4xl text-primary leading-tight">
               {c.t}
             </div>
-            <div className="mt-3 text-lg text-muted-foreground leading-snug">{c.d}</div>
+            <div className="mt-4 text-xl text-muted-foreground leading-snug">{c.d}</div>
           </div>
         ))}
       </div>
