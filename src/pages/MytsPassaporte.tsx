@@ -498,17 +498,17 @@ const S03Desafio = () => {
       <div className="mt-8 grid grid-cols-[1fr_auto_1fr] gap-6 flex-1 min-h-0 items-stretch">
         {/* Caos */}
         <div className="relative h-full rounded-2xl border border-dashed border-muted-foreground/30 bg-muted/20 overflow-hidden">
-          <div className="absolute top-4 left-4 text-xs uppercase tracking-widest text-muted-foreground font-semibold z-10">
+          <div className="absolute top-5 left-5 text-sm uppercase tracking-widest text-muted-foreground font-semibold z-10">
             Hoje · disperso
           </div>
           {disperso.map((d) => (
             <div
               key={d.t}
               style={d.style as React.CSSProperties}
-              className="absolute rounded-lg bg-background border border-border shadow-card px-3 py-2 flex items-center gap-2"
+              className="absolute rounded-xl bg-background border border-border shadow-card px-5 py-3 flex items-center gap-3"
             >
-              <FileText className="size-4 text-muted-foreground" />
-              <span className="text-sm font-medium text-primary whitespace-nowrap">{d.t}</span>
+              <FileText className="size-6 text-muted-foreground" />
+              <span className="text-lg font-semibold text-primary whitespace-nowrap">{d.t}</span>
             </div>
           ))}
         </div>
