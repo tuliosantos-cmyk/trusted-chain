@@ -1258,7 +1258,7 @@ const S14Time = () => {
           return (
             <div
               key={p.nome + i}
-              className={`rounded-2xl p-5 flex flex-col items-center text-center ${
+              className={`rounded-2xl p-6 flex flex-col items-center text-center ${
                 real
                   ? "bg-gradient-card border border-border shadow-card"
                   : "bg-muted/30 border border-dashed border-muted-foreground/30"
@@ -1266,16 +1266,16 @@ const S14Time = () => {
             >
               <AvatarPessoa nome={real ? p.nome : "??"} />
               <div
-                className={`mt-4 font-display font-bold text-lg leading-tight ${
+                className={`mt-5 font-display font-bold text-2xl leading-tight ${
                   real ? "text-primary" : "text-muted-foreground"
                 }`}
               >
                 {p.nome}
               </div>
-              <div className="mt-1 text-xs uppercase tracking-widest text-accent font-semibold">
+              <div className="mt-2 text-sm uppercase tracking-widest text-accent font-semibold">
                 {p.cargo}
               </div>
-              <div className="mt-3 text-sm text-muted-foreground leading-snug">{p.bio}</div>
+              <div className="mt-3 text-base text-muted-foreground leading-snug">{p.bio}</div>
             </div>
           );
         })}
