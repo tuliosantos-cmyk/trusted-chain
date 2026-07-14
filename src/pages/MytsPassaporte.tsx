@@ -1014,9 +1014,9 @@ const S10Aplicacoes = () => {
       </div>
 
       <div className="mt-5 flex items-center justify-between rounded-xl bg-primary text-primary-foreground px-6 py-4">
-        <span className="font-display font-bold text-xl">Uma plataforma.</span>
+        <span className="font-display font-bold text-xl">Um núcleo comum de dados.</span>
         <ArrowRight className="size-5 text-accent-glow" />
-        <span className="font-display font-bold text-xl text-accent-glow">Diversas aplicações.</span>
+        <span className="font-display font-bold text-xl text-accent-glow">Vários setores atendidos.</span>
       </div>
     </Slide>
   );
