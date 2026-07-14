@@ -530,12 +530,12 @@ const S02Mercado = () => {
 /* ---------- 03 · O DESAFIO ---------- */
 const S03Desafio = () => {
   const disperso = [
-    { t: "Planilhas", style: { top: "18%", left: "8%", transform: "rotate(-6deg)" } },
-    { t: "Certificados", style: { top: "10%", right: "10%", transform: "rotate(4deg)" } },
-    { t: "PDFs", style: { top: "38%", left: "20%", transform: "rotate(-2deg)" } },
-    { t: "E-mails", style: { top: "45%", right: "14%", transform: "rotate(6deg)" } },
-    { t: "Fotos", style: { bottom: "22%", left: "10%", transform: "rotate(-4deg)" } },
-    { t: "Conhecimento local", style: { bottom: "12%", right: "8%", transform: "rotate(3deg)" } },
+    { t: "Planilhas", icon: Table, style: { top: "16%", left: "6%", transform: "rotate(-6deg)" } },
+    { t: "Certificados", icon: FileCheck, style: { top: "8%", right: "8%", transform: "rotate(4deg)" } },
+    { t: "PDFs", icon: File, style: { top: "36%", left: "18%", transform: "rotate(-2deg)" } },
+    { t: "E-mails", icon: Mail, style: { top: "44%", right: "10%", transform: "rotate(6deg)" } },
+    { t: "Fotos", icon: Image, style: { bottom: "24%", left: "8%", transform: "rotate(-4deg)" } },
+    { t: "Conhecimento local", icon: Brain, style: { bottom: "10%", right: "6%", transform: "rotate(3deg)" } },
   ] as const;
   return (
     <Slide bg="bg-background" decor={<MytsWatermark className="-right-16 -bottom-16 w-[380px] [filter:invert(1)] opacity-[0.04]" />}>
@@ -552,16 +552,19 @@ const S03Desafio = () => {
           <div className="absolute top-5 left-5 text-sm uppercase tracking-widest text-muted-foreground font-semibold z-10">
             Hoje · disperso
           </div>
-          {disperso.map((d) => (
-            <div
-              key={d.t}
-              style={d.style as React.CSSProperties}
-              className="absolute rounded-xl bg-background border border-border shadow-card px-5 py-3 flex items-center gap-3"
-            >
-              <FileText className="size-6 text-muted-foreground" />
-              <span className="text-lg font-semibold text-primary whitespace-nowrap">{d.t}</span>
-            </div>
-          ))}
+          {disperso.map((d) => {
+            const Icon = d.icon;
+            return (
+              <div
+                key={d.t}
+                style={d.style as React.CSSProperties}
+                className="absolute rounded-2xl bg-background border border-border shadow-card px-7 py-4 flex items-center gap-4"
+              >
+                <Icon className="size-8 text-accent" />
+                <span className="text-xl font-semibold text-primary whitespace-nowrap">{d.t}</span>
+              </div>
+            );
+          })}
         </div>
 
         {/* Seta */}
