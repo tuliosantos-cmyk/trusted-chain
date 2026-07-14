@@ -827,68 +827,78 @@ const S09Ecossistema = () => {
       </h2>
 
       <div className="mt-8 grid grid-cols-3 gap-5 flex-1 min-h-0 items-stretch">
-        {parceiros.map((p) => (
-          <div
-            key={p.nome}
-            className={`relative rounded-2xl p-6 flex flex-col ${
-              p.destaque
-                ? "bg-primary text-primary-foreground border-2 border-accent shadow-glow scale-[1.03]"
-                : "bg-gradient-card border border-border shadow-card"
-            }`}
-          >
-            {p.destaque && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-accent text-accent-foreground text-[10px] font-bold uppercase tracking-widest px-3 py-1">
-                Infraestrutura
-              </div>
-            )}
+        {parceiros.map((p) => {
+          const logoSrc =
+            p.nome === "Groundd" ? grounddAsset.url : p.nome === "RAMO" ? ramoAsset.url : null;
+          return (
             <div
-              className={`size-14 rounded-xl grid place-items-center ${
-                p.destaque ? "bg-gradient-accent" : "bg-primary/10"
+              key={p.nome}
+              className={`relative rounded-2xl p-7 flex flex-col ${
+                p.destaque
+                  ? "bg-primary text-primary-foreground border-2 border-accent shadow-glow scale-[1.03]"
+                  : "bg-gradient-card border border-border shadow-card"
               }`}
             >
-              <p.icon
-                className={`size-7 ${p.destaque ? "text-accent-foreground" : "text-primary"}`}
-              />
-            </div>
-            <div
-              className={`mt-4 font-display font-bold text-3xl leading-tight ${
-                p.destaque ? "text-primary-foreground" : "text-primary"
-              }`}
-            >
-              {p.nome}
-            </div>
-            <div
-              className={`mt-1 text-sm uppercase tracking-widest font-semibold ${
-                p.destaque ? "text-accent-glow" : "text-accent"
-              }`}
-            >
-              {p.papel}
-            </div>
-            <div
-              className={`mt-5 h-px ${
-                p.destaque ? "bg-primary-foreground/15" : "bg-border"
-              }`}
-            />
-            <div className="mt-4 space-y-2 flex-1">
-              {p.itens.map((it) => (
-                <div key={it} className="flex items-start gap-2">
-                  <CheckCircle2
-                    className={`size-4 mt-0.5 shrink-0 ${
-                      p.destaque ? "text-accent-glow" : "text-accent"
-                    }`}
-                  />
-                  <span
-                    className={`text-sm ${
-                      p.destaque ? "text-primary-foreground/90" : "text-primary/80"
-                    }`}
-                  >
-                    {it}
-                  </span>
+              {p.destaque && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-accent text-accent-foreground text-[11px] font-bold uppercase tracking-widest px-4 py-1.5">
+                  Infraestrutura
                 </div>
-              ))}
+              )}
+              {logoSrc ? (
+                <div className="rounded-xl bg-background border border-border grid place-items-center px-4 py-3 h-16 self-start">
+                  <img src={logoSrc} alt={p.nome} className="h-9 w-auto object-contain" />
+                </div>
+              ) : (
+                <div
+                  className={`size-16 rounded-2xl grid place-items-center ${
+                    p.destaque ? "bg-gradient-accent" : "bg-primary/10"
+                  }`}
+                >
+                  <p.icon
+                    className={`size-8 ${p.destaque ? "text-accent-foreground" : "text-primary"}`}
+                  />
+                </div>
+              )}
+              <div
+                className={`mt-5 font-display font-bold text-4xl leading-tight ${
+                  p.destaque ? "text-primary-foreground" : "text-primary"
+                }`}
+              >
+                {p.nome}
+              </div>
+              <div
+                className={`mt-2 text-base uppercase tracking-widest font-semibold ${
+                  p.destaque ? "text-accent-glow" : "text-accent"
+                }`}
+              >
+                {p.papel}
+              </div>
+              <div
+                className={`mt-5 h-px ${
+                  p.destaque ? "bg-primary-foreground/15" : "bg-border"
+                }`}
+              />
+              <div className="mt-4 space-y-3 flex-1">
+                {p.itens.map((it) => (
+                  <div key={it} className="flex items-start gap-2.5">
+                    <CheckCircle2
+                      className={`size-5 mt-0.5 shrink-0 ${
+                        p.destaque ? "text-accent-glow" : "text-accent"
+                      }`}
+                    />
+                    <span
+                      className={`text-base ${
+                        p.destaque ? "text-primary-foreground/90" : "text-primary/80"
+                      }`}
+                    >
+                      {it}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <p className="mt-6 text-center text-base text-muted-foreground">
