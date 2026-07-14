@@ -450,23 +450,19 @@ const S02Mercado = () => {
         {forcas.map((f, i) => (
           <div
             key={f.t}
-            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-8 flex flex-col justify-between overflow-hidden"
+            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-8 flex flex-col justify-center overflow-hidden"
           >
-            <div className="flex items-start justify-between">
-              <div className="size-20 rounded-2xl bg-gradient-accent grid place-items-center shadow-cta">
-                <f.icon className="size-10 text-accent-foreground" />
-              </div>
-              <div className="font-display font-bold text-3xl text-accent/40 leading-none">
-                0{i + 1}
-              </div>
+            <div className="absolute top-5 right-6 font-display font-bold text-4xl text-accent/25 leading-none">
+              0{i + 1}
             </div>
-            <div>
-              <div className="font-display font-bold text-4xl text-primary leading-[1.05]">
-                {f.t}
-              </div>
-              <div className="mt-4 text-xl text-muted-foreground leading-snug">
-                {f.d}
-              </div>
+            <div className="size-20 rounded-2xl bg-gradient-accent grid place-items-center shadow-cta">
+              <f.icon className="size-10 text-accent-foreground" />
+            </div>
+            <div className="mt-6 font-display font-bold text-4xl text-primary leading-[1.05]">
+              {f.t}
+            </div>
+            <div className="mt-4 text-xl text-muted-foreground leading-snug">
+              {f.d}
             </div>
           </div>
         ))}
