@@ -180,16 +180,16 @@ const FluxoInfraestrutura = () => {
         {steps.slice(0, 3).map((s) => (
           <div
             key={s.t}
-            className="flex items-center gap-4 rounded-xl border border-border bg-gradient-card shadow-card px-5 py-4"
+            className="flex items-center gap-5 rounded-xl border border-border bg-gradient-card shadow-card px-6 py-5"
           >
-            <div className="size-12 rounded-xl bg-gradient-accent grid place-items-center shrink-0">
-              <s.icon className="size-6 text-accent-foreground" />
+            <div className="size-16 rounded-xl bg-gradient-accent grid place-items-center shrink-0">
+              <s.icon className="size-8 text-accent-foreground" />
             </div>
             <div className="min-w-0">
-              <div className="font-display font-semibold text-primary text-base leading-tight">
+              <div className="font-display font-semibold text-primary text-2xl leading-tight">
                 {s.t}
               </div>
-              <div className="text-sm text-muted-foreground truncate">{s.s}</div>
+              <div className="text-lg text-muted-foreground leading-snug">{s.s}</div>
             </div>
           </div>
         ))}
@@ -222,31 +222,31 @@ const FluxoInfraestrutura = () => {
         {steps.slice(3).map((s) => (
           <div
             key={s.t}
-            className="flex items-center gap-4 rounded-xl border border-border bg-gradient-card shadow-card px-5 py-3.5"
+            className="flex items-center gap-5 rounded-xl border border-border bg-gradient-card shadow-card px-6 py-4"
           >
-            <div className="size-12 rounded-xl bg-primary grid place-items-center shrink-0">
-              <s.icon className="size-6 text-accent-glow" />
+            <div className="size-16 rounded-xl bg-primary grid place-items-center shrink-0">
+              <s.icon className="size-8 text-accent-glow" />
             </div>
             <div className="min-w-0">
-              <div className="font-display font-semibold text-primary text-base leading-tight">
+              <div className="font-display font-semibold text-primary text-2xl leading-tight">
                 {s.t}
               </div>
-              <div className="text-sm text-muted-foreground truncate">{s.s}</div>
+              <div className="text-lg text-muted-foreground leading-snug">{s.s}</div>
             </div>
           </div>
         ))}
-        <div className="mt-1 rounded-xl border border-accent/30 bg-accent/5 p-4">
-          <div className="text-xs uppercase tracking-widest text-accent font-bold mb-2">
+        <div className="mt-1 rounded-xl border border-accent/30 bg-accent/5 p-5">
+          <div className="text-sm uppercase tracking-widest text-accent font-bold mb-3">
             Mercado
           </div>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-2.5">
             {destinos.map((d) => (
               <div
                 key={d.t}
-                className="flex items-center gap-2 rounded-lg bg-background border border-border px-3 py-2"
+                className="flex items-center gap-2.5 rounded-lg bg-background border border-border px-3.5 py-2.5"
               >
-                <d.icon className="size-4 text-accent shrink-0" />
-                <span className="text-xs font-semibold text-primary truncate">{d.t}</span>
+                <d.icon className="size-5 text-accent shrink-0" />
+                <span className="text-base font-semibold text-primary truncate">{d.t}</span>
               </div>
             ))}
           </div>
