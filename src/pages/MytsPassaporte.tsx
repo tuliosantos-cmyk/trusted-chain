@@ -1410,16 +1410,16 @@ const S13Institucional = () => {
     >
       <SectionLabel n="12" label="Quem somos" light />
 
-      <div className="mt-8 flex flex-col gap-8 flex-1 min-h-0">
+      <div className="mt-6 flex flex-col gap-6 flex-1 min-h-0">
         {/* -------- Zona 1 · Manifesto herói -------- */}
-        <div className="flex items-start gap-7">
-          <img src={mytsLogo} alt="MyTS" className="h-18 shrink-0 mt-1" />
-          <div className="h-18 w-px bg-primary-foreground/20 shrink-0" />
+        <div className="flex items-start gap-6">
+          <img src={mytsLogo} alt="MyTS" className="h-16 shrink-0 mt-1" />
+          <div className="h-16 w-px bg-primary-foreground/20 shrink-0" />
           <div className="flex-1">
-            <div className="text-sm uppercase tracking-[0.28em] text-accent-glow font-semibold">
+            <div className="text-xs uppercase tracking-[0.28em] text-accent-glow font-semibold">
               My Trusted Source
             </div>
-            <p className="mt-4 font-display font-bold text-[46px] text-primary-foreground leading-[1.12] max-w-[1100px]">
+            <p className="mt-3 font-display font-bold text-[44px] text-primary-foreground leading-[1.12] max-w-[1100px]">
               Existimos para transformar informações dispersas em{" "}
               <span className="text-gradient">confiança, acesso a mercado e valor</span>{" "}
               ao longo das cadeias produtivas.
@@ -1428,21 +1428,21 @@ const S13Institucional = () => {
         </div>
 
         {/* -------- Zona 2 · Pilares + Posicionamento -------- */}
-        <div className="grid grid-cols-[1.3fr_0.85fr] gap-7 flex-1 min-h-0">
+        <div className="grid grid-cols-[1.3fr_0.85fr] gap-6 flex-1 min-h-0">
           {/* Pilares */}
           <div className="grid grid-cols-3 gap-5">
             {pilares.map((p) => (
               <div
                 key={p.t}
-                className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.06] backdrop-blur p-8 flex flex-col"
+                className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.06] backdrop-blur p-7 flex flex-col"
               >
                 <div className="size-16 rounded-xl bg-accent/15 border border-accent/30 grid place-items-center">
                   <p.icon className="size-8 text-accent-glow" />
                 </div>
-                <div className="mt-6 font-display font-bold text-[22px] text-primary-foreground leading-tight">
+                <div className="mt-5 font-display font-bold text-[20px] text-primary-foreground leading-tight">
                   {p.t}
                 </div>
-                <div className="mt-3 text-base text-primary-foreground/75 leading-relaxed">
+                <div className="mt-3 text-[15px] text-primary-foreground/75 leading-relaxed">
                   {p.d}
                 </div>
               </div>
@@ -1450,16 +1450,16 @@ const S13Institucional = () => {
           </div>
 
           {/* Card destaque · Posicionamento */}
-          <div className="rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/20 to-transparent backdrop-blur p-9 flex flex-col justify-center">
-            <div className="flex items-center gap-2.5 text-accent-glow text-sm uppercase tracking-[0.24em] font-semibold">
-              <ShieldCheck className="size-5" />
+          <div className="rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/20 to-transparent backdrop-blur p-8 flex flex-col justify-center">
+            <div className="flex items-center gap-2 text-accent-glow text-xs uppercase tracking-[0.24em] font-semibold">
+              <ShieldCheck className="size-4" />
               Posicionamento
             </div>
-            <div className="mt-5 font-display font-bold text-[34px] text-primary-foreground leading-[1.08]">
+            <div className="mt-4 font-display font-bold text-[30px] text-primary-foreground leading-[1.08]">
               Uma infraestrutura.<br />
               <span className="text-gradient">Múltiplas aplicações.</span>
             </div>
-            <p className="mt-5 text-base text-primary-foreground/80 leading-relaxed">
+            <p className="mt-4 text-[15px] text-primary-foreground/80 leading-relaxed">
               Rastreabilidade, governança, Passaporte Digital e inteligência —
               tudo sobre a mesma base de dados confiável.
             </p>
