@@ -713,15 +713,15 @@ const S07Alem = () => {
         {cards.map((c) => (
           <div
             key={c.t}
-            className="group relative rounded-2xl border border-border bg-gradient-card shadow-card p-5 flex flex-col hover:border-accent/40 transition-colors"
+            className="group relative rounded-2xl border border-border bg-gradient-card shadow-card p-7 flex flex-col hover:border-accent/40 transition-colors"
           >
-            <div className="size-11 rounded-xl bg-gradient-accent grid place-items-center">
-              <c.icon className="size-5 text-accent-foreground" />
+            <div className="size-14 rounded-2xl bg-gradient-accent grid place-items-center">
+              <c.icon className="size-7 text-accent-foreground" />
             </div>
-            <div className="mt-4 font-display font-bold text-xl text-primary leading-tight">
+            <div className="mt-5 font-display font-bold text-2xl text-primary leading-tight">
               {c.t}
             </div>
-            <div className="mt-2 text-sm text-muted-foreground leading-snug">{c.d}</div>
+            <div className="mt-3 text-base text-muted-foreground leading-snug">{c.d}</div>
           </div>
         ))}
       </div>
