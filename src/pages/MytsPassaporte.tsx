@@ -571,7 +571,6 @@ const S03Patrimonio = () => (
 );
 
 /* Importa Brain aqui pois só é usado no S03 */
-import { Brain } from "lucide-react";
 
 /* ---------- 04 · O DESAFIO ---------- */
 const S04Desafio = () => {
@@ -1256,7 +1255,6 @@ const S12Aplicacoes = () => {
   );
 };
 
-import { Handshake } from "lucide-react";
 
 /* ---------- 13 · IMPACTO PARA CADA PARTICIPANTE ---------- */
 const S13Impacto = () => {
