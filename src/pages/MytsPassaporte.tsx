@@ -1002,31 +1002,31 @@ const S11Experiencia = () => {
           return (
             <div
               key={c.t + i}
-              className={`rounded-2xl p-5 flex flex-col ${
+              className={`rounded-2xl p-6 flex flex-col ${
                 real
                   ? "bg-gradient-card border border-border shadow-card"
                   : "bg-muted/30 border border-dashed border-muted-foreground/30"
               }`}
             >
               <div
-                className={`size-12 rounded-xl grid place-items-center ${
+                className={`size-16 rounded-2xl grid place-items-center ${
                   real ? "bg-primary text-primary-foreground" : "bg-background text-muted-foreground"
                 }`}
               >
-                <span className="font-display font-bold text-lg">
+                <span className="font-display font-bold text-2xl">
                   {c.t.replace(/[()]/g, "").slice(0, 1)}
                 </span>
               </div>
               <div
-                className={`mt-4 font-display font-bold text-xl leading-tight ${
+                className={`mt-5 font-display font-bold text-2xl leading-tight ${
                   real ? "text-primary" : "text-muted-foreground"
                 }`}
               >
                 {c.t}
               </div>
-              <div className="mt-2 text-sm text-muted-foreground leading-snug">{c.d}</div>
+              <div className="mt-3 text-base text-muted-foreground leading-snug">{c.d}</div>
               {!real && (
-                <div className="mt-auto pt-3 text-[10px] uppercase tracking-widest text-muted-foreground/60 font-semibold">
+                <div className="mt-auto pt-3 text-[11px] uppercase tracking-widest text-muted-foreground/60 font-semibold">
                   Editar por apresentação
                 </div>
               )}
