@@ -1337,7 +1337,7 @@ const S12Valor = () => {
           return (
             <div
               key={p.titulo}
-              className={`relative rounded-2xl p-6 flex flex-col ${
+              className={`relative rounded-2xl p-7 flex flex-col ${
                 dark
                   ? "bg-primary text-primary-foreground border border-accent/30"
                   : "bg-gradient-card border border-border shadow-card"
@@ -1345,31 +1345,31 @@ const S12Valor = () => {
             >
               <div className="flex items-center gap-4">
                 <div
-                  className={`size-12 rounded-xl grid place-items-center shrink-0 ${
+                  className={`size-14 rounded-xl grid place-items-center shrink-0 ${
                     dark ? "bg-accent-glow/20" : "bg-gradient-accent"
                   }`}
                 >
                   <p.icon
-                    className={`size-6 ${dark ? "text-accent-glow" : "text-accent-foreground"}`}
+                    className={`size-7 ${dark ? "text-accent-glow" : "text-accent-foreground"}`}
                   />
                 </div>
                 <div
-                  className={`font-display font-bold text-2xl leading-tight ${
+                  className={`font-display font-bold text-3xl leading-tight ${
                     dark ? "text-primary-foreground" : "text-primary"
                   }`}
                 >
                   {p.titulo}
                 </div>
               </div>
-              <div className={`mt-4 h-px ${dark ? "bg-primary-foreground/15" : "bg-border"}`} />
-              <div className="mt-4 grid grid-cols-1 gap-2 content-start">
+              <div className={`mt-5 h-px ${dark ? "bg-primary-foreground/15" : "bg-border"}`} />
+              <div className="mt-5 grid grid-cols-1 gap-3 content-start">
                 {p.itens.map((it) => (
-                  <div key={it} className="flex items-center gap-2.5">
+                  <div key={it} className="flex items-center gap-3">
                     <CheckCircle2
-                      className={`size-4 shrink-0 ${dark ? "text-accent-glow" : "text-accent"}`}
+                      className={`size-5 shrink-0 ${dark ? "text-accent-glow" : "text-accent"}`}
                     />
                     <span
-                      className={`text-base leading-snug ${
+                      className={`text-lg leading-snug ${
                         dark ? "text-primary-foreground/90" : "text-primary/85"
                       }`}
                     >
