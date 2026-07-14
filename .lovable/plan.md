@@ -1,46 +1,52 @@
-## Ajustes no `/myts-passaporte`
+## Redesign do Slide 12 — "Quem somos"
 
-Duas frentes:
+### Diagnóstico
+Hoje o slide 12 empilha 5 blocos competindo por atenção: header institucional, manifesto, 3 pilares, ecossistema (5 badges), card "Posicionamento", card "Por que a MyTS" (3 diferenciais) e rodapé de parceiros. Resultado: nenhuma hierarquia clara, o olho não sabe onde começar, e há muita redundância entre "pilares" e "diferenciais" (ambos dizem tecnologia + método + rede/dados).
 
-### 1. Logos reais dos parceiros (Groundd + RAMO)
+### Nova proposta — 3 zonas simples, 1 ideia por zona
 
-- Subir `user-uploads://groundd.png` e `user-uploads://ramo.png` como Lovable Assets (`src/assets/logos/groundd.png.asset.json` e `ramo.png.asset.json`), sem copiar binário pro repo.
-- Substituir os chips de texto "Groundd" e "RAMO" por `<img>` reais em:
-  - Slide 01 (Capa) — faixa "em parceria com"
-  - Slide 09 (Ecossistema de competências) — cards laterais Groundd e RAMO ganham a logo no topo do card
-  - Slide 16 (Encerramento) — assinatura tripla MyTS · Groundd · RAMO
-- Como as logos vêm em preto/verde escuro sobre fundo branco e os slides são navy, envolver cada `<img>` em um "chip" branco com padding (rounded, `bg-background`, sombra suave) pra garantir legibilidade — mesma tratativa dada aos logos Korin/Carrefour no slide 11.
+```text
+┌──────────────────────────────────────────────────────────────┐
+│ 12 · QUEM SOMOS                                              │
+│                                                              │
+│ [MyTS logo]  MANIFESTO GRANDE (1 frase forte, 2 linhas)      │
+│              destacando "confiança, acesso a mercado e valor"│
+│                                                              │
+├───────────────────────────┬──────────────────────────────────┤
+│                           │                                  │
+│  3 PILARES (o que somos)  │  CARD DESTAQUE                   │
+│  ┌────┐ ┌────┐ ┌────┐     │  "Uma infraestrutura.            │
+│  │icon│ │icon│ │icon│     │   Múltiplas aplicações."         │
+│  │Tec │ │Mét │ │Rede│     │                                  │
+│  └────┘ └────┘ └────┘     │  + 1 parágrafo curto             │
+│                           │                                  │
+├───────────────────────────┴──────────────────────────────────┤
+│ CONSÓRCIO DE EXECUÇÃO                                        │
+│ [MyTS mark] × [Groundd logo] × [RAMO logo]                   │
+└──────────────────────────────────────────────────────────────┘
+```
 
-### 2. Proporção do conteúdo dentro dos boxes
+### O que muda concretamente
 
-Diagnóstico: os cards em si estão bem dimensionados, mas o conteúdo interno (ícones, títulos, bullets, números) está subdimensionado pro tamanho projetado. Vou aumentar tipografia e ícones dentro dos cards, sem mexer no tamanho externo dos boxes.
+**Removido (reduz ruído):**
+- Bloco "Ecossistema conectado" (5 badges Produtores/Compradores/Consumidores/Investidores/Parceiros) — essa mensagem já aparece nos slides 07 e 09, aqui polui.
+- Card "Por que a MyTS" com os 3 diferenciais numerados — é uma repetição dos 3 pilares em outras palavras.
+- Subtítulo "Infraestrutura digital de confiança · desde 2020" — enxuga o header.
 
-Ajustes por slide:
+**Mantido e reforçado:**
+- Header MyTS enxuto (logo + label "My Trusted Source").
+- Manifesto vira o herói do slide (fonte maior, ocupa faixa superior inteira, com destaque em gradient na frase-chave).
+- 3 pilares (Tecnologia · Metodologia · Rede) — únicos "o que somos", com ícones e cards maiores/mais respirados.
+- Card lateral "Posicionamento" mantido como âncora visual à direita.
+- Rodapé de consórcio mantido, mas incluindo a marca MyTS junto a Groundd e RAMO para reforçar o trio.
 
-| Slide | O que aumenta |
-|---|---|
-| 02 O mercado mudou (4 cards) | ícone 28→40px, título do card 18→24px, corpo 14→18px, mais padding interno |
-| 04 A consequência (2×2 numerado) | numeral "01–04" 32→56px, título 20→26px, corpo 14→18px |
-| 07 Muito além da rastreabilidade (3×2) | ícone 24→36px, título 18→22px, corpo 14→17px |
-| 09 Ecossistema (3 colunas) | logo/ícone do parceiro maior, título 22→28px, bullets 14→17px, card central MyTS ainda mais destacado |
-| 11 Experiência em projetos | logos ampliadas (~1.4×), placeholders com tipografia maior |
-| 12 O valor (2×2 perfis) | ícone do perfil 28→40px, título 22→28px, bullets 15→18px, mais respiro entre bullets |
-| 13 Quem somos (mini-stats) | número da stat 36→64px, label 14→18px |
-| 14 Nosso time (5 avatares) | avatar circular 64→96px, nome 16→22px, cargo 12→16px, bio 12→15px |
-| 15 Próximos passos (timeline) | numeral do marco 20→32px, título 18→24px, descrição 14→17px |
-
-Slides 01, 03, 05, 06, 08, 10, 16 já têm hierarquia dominante correta — mantidos.
-
-Regra: nada é hardcoded em px no JSX; uso classes Tailwind (`text-2xl`, `text-lg`, `p-8`, `gap-6`, `w-10 h-10` nos ícones Lucide) mantendo os design tokens semânticos do `index.css`. Sem alterar layout externo dos cards nem quebrar responsividade da tela 16:9.
-
-### Verificação
-
-Após o build, Playwright captura os 16 slides em 1600×900 e eu revejo visualmente pra confirmar que:
-- logos dos parceiros aparecem nítidas nos slides 01/09/16
-- não sobra card "vazio" nem quebra de linha esquisita depois do aumento tipográfico
-- densidade continua respirando (nenhum slide estoura os 1080px verticais)
+### Layout técnico
+- Faixa superior full-width: header + manifesto (≈ 30% da altura útil).
+- Faixa central grid `1.3fr / 0.85fr`: pilares à esquerda, card Posicionamento à direita (≈ 50%).
+- Rodapé consórcio full-width (≈ 20%).
+- Tipografia respeitando tokens: manifesto `text-[44px]`, pilares título `text-xl`, corpo `text-base`, tudo com `text-primary-foreground` e acentos via `text-accent-glow`/`text-gradient`.
+- Sem alterar tokens globais nem outros slides.
 
 ### Fora de escopo
-
-- Trocar fotos placeholder do time por fotos reais (aguardando material)
-- Exportar para .pptx
+- Substituir fotos/nomes reais (slide 13 do time).
+- Ajustes de outros slides.
