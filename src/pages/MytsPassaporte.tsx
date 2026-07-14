@@ -612,19 +612,19 @@ const S05Resposta = () => (
       </>
     }
   >
-    <div className="flex flex-col justify-center h-full max-w-5xl mx-auto text-center items-center">
+    <div className="flex flex-col justify-center h-full max-w-6xl mx-auto text-center items-center">
       <SectionLabel n="04" label="A resposta" light />
 
-      <h1 className="mt-6 font-display font-bold text-[140px] leading-[0.85] tracking-tight text-primary-foreground">
+      <h1 className="mt-6 font-display font-bold text-[180px] leading-[0.85] tracking-tight text-primary-foreground">
         My<span className="text-gradient">TS</span>
       </h1>
 
-      <p className="mt-4 text-4xl text-primary-foreground/95 font-medium leading-tight">
+      <p className="mt-5 text-5xl text-primary-foreground/95 font-medium leading-tight">
         Infraestrutura Digital de{" "}
         <span className="text-accent-glow font-semibold">Confiança</span>
       </p>
 
-      <p className="mt-8 text-xl text-primary-foreground/75 leading-relaxed max-w-3xl">
+      <p className="mt-8 text-2xl text-primary-foreground/75 leading-relaxed max-w-4xl">
         Transformamos informações dispersas em uma infraestrutura digital que conecta{" "}
         <span className="text-primary-foreground font-semibold">produtores, compradores, consumidores, investidores</span> e parceiros. Mais do
         que rastrear produtos, organizamos dados, estruturamos evidências e fortalecemos relações
@@ -632,11 +632,11 @@ const S05Resposta = () => (
       </p>
 
       <div className="mt-10 flex items-center gap-6">
-        <div className="text-primary-foreground/60 uppercase tracking-widest text-sm">
+        <div className="text-primary-foreground/60 uppercase tracking-widest text-lg">
           Uma única infraestrutura
         </div>
-        <div className="h-6 w-px bg-accent-glow/40" />
-        <div className="text-accent-glow uppercase tracking-widest text-sm font-bold">
+        <div className="h-8 w-px bg-accent-glow/40" />
+        <div className="text-accent-glow uppercase tracking-widest text-lg font-bold">
           Múltiplas aplicações
         </div>
       </div>
