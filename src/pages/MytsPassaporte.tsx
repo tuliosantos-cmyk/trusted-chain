@@ -745,6 +745,7 @@ const S08Passaporte = () => {
   return (
     <Slide
       bg="bg-hero"
+      pad="p-12 md:p-16"
       decor={
         <>
           <div className="absolute inset-0 grid-pattern opacity-10" />
@@ -754,29 +755,29 @@ const S08Passaporte = () => {
     >
       <SectionLabel n="07" label="Passaporte Digital" light />
 
-      <div className="mt-6 grid grid-cols-[1.2fr_1fr] gap-10 flex-1 min-h-0">
+      <div className="mt-6 grid grid-cols-[1.1fr_1fr] gap-12 flex-1 min-h-0 items-center">
         <div className="flex flex-col justify-center">
-          <h2 className="font-display font-bold text-5xl text-primary-foreground leading-[1.05] max-w-2xl">
+          <h2 className="font-display font-bold text-6xl text-primary-foreground leading-[1.05] max-w-2xl">
             Tornando a{" "}
             <span className="text-gradient">confiança visível</span>.
           </h2>
 
-          <p className="mt-5 text-lg text-primary-foreground/75 max-w-xl leading-relaxed">
+          <p className="mt-6 text-xl text-primary-foreground/75 max-w-xl leading-relaxed">
             Toda a inteligência construída pela MyTS é disponibilizada de forma simples por meio
             do Passaporte Digital. Ao escanear o QR Code, compradores e consumidores acessam:
           </p>
 
-          <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 max-w-xl">
+          <div className="mt-6 grid grid-cols-2 gap-x-8 gap-y-3 max-w-xl">
             {bullets.map((b) => (
-              <div key={b} className="flex items-center gap-2">
-                <CheckCircle2 className="size-4 text-accent-glow shrink-0" />
-                <span className="text-primary-foreground/85 text-sm">{b}</span>
+              <div key={b} className="flex items-center gap-3">
+                <CheckCircle2 className="size-5 text-accent-glow shrink-0" />
+                <span className="text-primary-foreground/85 text-base">{b}</span>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 rounded-xl border-l-4 border-accent-glow bg-primary-foreground/5 backdrop-blur px-5 py-4 max-w-xl">
-            <div className="text-base text-primary-foreground/90 leading-snug">
+          <div className="mt-8 rounded-xl border-l-4 border-accent-glow bg-primary-foreground/5 backdrop-blur px-6 py-5 max-w-xl">
+            <div className="text-lg text-primary-foreground/90 leading-snug">
               Transparência deixa de ser um relatório —{" "}
               <span className="text-accent-glow font-semibold">
                 passa a fazer parte da experiência do produto
