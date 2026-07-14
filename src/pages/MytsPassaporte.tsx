@@ -1112,7 +1112,7 @@ const S12Valor = () => {
           return (
             <div
               key={p.titulo}
-              className={`relative rounded-2xl p-8 flex flex-col ${
+              className={`relative rounded-2xl p-8 flex flex-col justify-center ${
                 dark
                   ? "bg-primary text-primary-foreground border border-accent/30"
                   : "bg-gradient-card border border-border shadow-card"
