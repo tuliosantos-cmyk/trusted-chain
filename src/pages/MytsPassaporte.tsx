@@ -679,11 +679,11 @@ const S05Resposta = () => (
 
       <div className="mt-10 flex items-center gap-6">
         <div className="text-primary-foreground/60 uppercase tracking-widest text-lg">
-          Uma única infraestrutura
+          Dados dispersos
         </div>
-        <div className="h-8 w-px bg-accent-glow/40" />
+        <ArrowRight className="size-5 text-accent-glow" />
         <div className="text-accent-glow uppercase tracking-widest text-lg font-bold">
-          Múltiplas aplicações
+          Cadeia de confiança
         </div>
       </div>
     </div>
@@ -1014,9 +1014,9 @@ const S10Aplicacoes = () => {
       </div>
 
       <div className="mt-5 flex items-center justify-between rounded-xl bg-primary text-primary-foreground px-6 py-4">
-        <span className="font-display font-bold text-xl">Uma plataforma.</span>
+        <span className="font-display font-bold text-xl">Um núcleo comum de dados.</span>
         <ArrowRight className="size-5 text-accent-glow" />
-        <span className="font-display font-bold text-xl text-accent-glow">Diversas aplicações.</span>
+        <span className="font-display font-bold text-xl text-accent-glow">Vários setores atendidos.</span>
       </div>
     </Slide>
   );
@@ -1474,11 +1474,30 @@ const S13Institucional = () => {
 /* ---------- 14 · NOSSO TIME ---------- */
 const S14Time = () => {
   const time = [
-    { nome: "Valmir Rodrigues", cargo: "CEO — MyTS", bio: "Lidera a visão e estratégia da MyTS." },
-    { nome: "(Nome)", cargo: "Diretoria — Groundd", bio: "Especialista em desenvolvimento territorial." },
-    { nome: "(Nome)", cargo: "Groundd", bio: "Metodologia CERS e engajamento comunitário." },
-    { nome: "(Nome)", cargo: "RAMO", bio: "Inteligência geoespacial e NatureOS." },
-    { nome: "(Nome)", cargo: "MyTS", bio: "Tecnologia e infraestrutura de dados." },
+    {
+      nome: "Valmir Rodrigues",
+      cargo: "CEO — MyTS",
+      bio: "Lidera a visão e estratégia da MyTS.",
+      real: true,
+    },
+    {
+      nome: "Liderança Groundd",
+      cargo: "Território & Comunidades",
+      bio: "Desenvolvimento territorial e metodologia CERS.",
+      real: false,
+    },
+    {
+      nome: "Liderança RAMO",
+      cargo: "Inteligência Geoespacial",
+      bio: "Geoanálise territorial e NatureOS.",
+      real: false,
+    },
+    {
+      nome: "Time MyTS",
+      cargo: "Tecnologia & Dados",
+      bio: "Plataforma, infraestrutura e produto.",
+      real: false,
+    },
   ];
   return (
     <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[360px] [filter:invert(1)] opacity-[0.04]" />}>
@@ -1489,33 +1508,26 @@ const S14Time = () => {
         <span className="text-gradient">tecnologia, território e mercado</span>.
       </h2>
 
-      <div className="mt-10 grid grid-cols-5 gap-5 flex-1 min-h-0">
-        {time.map((p, i) => {
-          const real = !p.nome.startsWith("(");
-          return (
-            <div
-              key={p.nome + i}
-              className={`rounded-2xl p-6 flex flex-col items-center text-center justify-center ${
-                real
-                  ? "bg-gradient-card border border-border shadow-card"
-                  : "bg-muted/30 border border-dashed border-muted-foreground/30"
-              }`}
-            >
-              <AvatarPessoa nome={real ? p.nome : "??"} />
-              <div
-                className={`mt-5 font-display font-bold text-2xl leading-tight ${
-                  real ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
-                {p.nome}
-              </div>
-              <div className="mt-2 text-sm uppercase tracking-widest text-accent font-semibold">
-                {p.cargo}
-              </div>
-              <div className="mt-3 text-base text-muted-foreground leading-snug">{p.bio}</div>
+      <div className="mt-10 grid grid-cols-4 gap-6 flex-1 min-h-0">
+        {time.map((p, i) => (
+          <div
+            key={p.nome + i}
+            className={`rounded-2xl p-7 flex flex-col items-center text-center justify-center ${
+              p.real
+                ? "bg-gradient-card border border-border shadow-card"
+                : "bg-gradient-card border border-dashed border-accent/30"
+            }`}
+          >
+            <AvatarPessoa nome={p.nome} />
+            <div className="mt-5 font-display font-bold text-2xl leading-tight text-primary">
+              {p.nome}
             </div>
-          );
-        })}
+            <div className="mt-2 text-sm uppercase tracking-widest text-accent font-semibold">
+              {p.cargo}
+            </div>
+            <div className="mt-3 text-base text-muted-foreground leading-snug">{p.bio}</div>
+          </div>
+        ))}
       </div>
     </Slide>
   );
