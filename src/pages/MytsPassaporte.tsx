@@ -157,79 +157,79 @@ const FluxoInfraestrutura = () => {
     { icon: Landmark, t: "Inst. Financeiras" },
   ];
   return (
-    <div className="grid grid-cols-[1fr_auto_1.1fr] gap-8 items-stretch h-full min-h-0">
+    <div className="grid grid-cols-[1fr_auto_1.1fr] gap-6 items-stretch h-full min-h-0">
       {/* Coluna esquerda: entradas */}
-      <div className="flex flex-col justify-center gap-3">
+      <div className="flex flex-col justify-center gap-4">
         {steps.slice(0, 3).map((s) => (
           <div
             key={s.t}
-            className="flex items-center gap-3 rounded-xl border border-border bg-gradient-card shadow-card px-4 py-3"
+            className="flex items-center gap-4 rounded-xl border border-border bg-gradient-card shadow-card px-5 py-4"
           >
-            <div className="size-10 rounded-lg bg-gradient-accent grid place-items-center shrink-0">
-              <s.icon className="size-5 text-accent-foreground" />
+            <div className="size-12 rounded-xl bg-gradient-accent grid place-items-center shrink-0">
+              <s.icon className="size-6 text-accent-foreground" />
             </div>
             <div className="min-w-0">
-              <div className="font-display font-semibold text-primary text-sm leading-tight">
+              <div className="font-display font-semibold text-primary text-base leading-tight">
                 {s.t}
               </div>
-              <div className="text-[11px] text-muted-foreground truncate">{s.s}</div>
+              <div className="text-sm text-muted-foreground truncate">{s.s}</div>
             </div>
           </div>
         ))}
       </div>
 
       {/* Coluna centro: hub MyTS */}
-      <div className="flex flex-col items-center justify-center gap-4 px-2">
-        <ArrowRight className="size-6 text-accent -rotate-0 md:rotate-0" />
+      <div className="flex flex-col items-center justify-center gap-5 px-2">
+        <ArrowRight className="size-8 text-accent -rotate-0 md:rotate-0" />
         <div className="relative">
-          <div className="absolute -inset-8 bg-gradient-accent opacity-20 blur-3xl rounded-full" />
-          <div className="relative size-40 rounded-full bg-primary border-2 border-accent grid place-items-center shadow-glow">
+          <div className="absolute -inset-10 bg-gradient-accent opacity-20 blur-3xl rounded-full" />
+          <div className="relative size-48 rounded-full bg-primary border-2 border-accent grid place-items-center shadow-glow">
             <div className="text-center">
-              <div className="text-[10px] uppercase tracking-widest text-accent-glow font-semibold">
+              <div className="text-xs uppercase tracking-widest text-accent-glow font-semibold">
                 Infraestrutura
               </div>
-              <div className="font-display font-bold text-primary-foreground text-3xl leading-none mt-1">
+              <div className="font-display font-bold text-primary-foreground text-4xl leading-none mt-1">
                 MyTS
               </div>
-              <div className="text-[10px] text-primary-foreground/60 mt-1">
+              <div className="text-xs text-primary-foreground/60 mt-1">
                 de confiança
               </div>
             </div>
           </div>
         </div>
-        <ArrowRight className="size-6 text-accent" />
+        <ArrowRight className="size-8 text-accent" />
       </div>
 
       {/* Coluna direita: saídas + destinos */}
-      <div className="flex flex-col justify-center gap-3">
+      <div className="flex flex-col justify-center gap-4">
         {steps.slice(3).map((s) => (
           <div
             key={s.t}
-            className="flex items-center gap-3 rounded-xl border border-border bg-gradient-card shadow-card px-4 py-2.5"
+            className="flex items-center gap-4 rounded-xl border border-border bg-gradient-card shadow-card px-5 py-3.5"
           >
-            <div className="size-10 rounded-lg bg-primary grid place-items-center shrink-0">
-              <s.icon className="size-5 text-accent-glow" />
+            <div className="size-12 rounded-xl bg-primary grid place-items-center shrink-0">
+              <s.icon className="size-6 text-accent-glow" />
             </div>
             <div className="min-w-0">
-              <div className="font-display font-semibold text-primary text-sm leading-tight">
+              <div className="font-display font-semibold text-primary text-base leading-tight">
                 {s.t}
               </div>
-              <div className="text-[11px] text-muted-foreground truncate">{s.s}</div>
+              <div className="text-sm text-muted-foreground truncate">{s.s}</div>
             </div>
           </div>
         ))}
-        <div className="mt-1 rounded-xl border border-accent/30 bg-accent/5 p-3">
-          <div className="text-[10px] uppercase tracking-widest text-accent font-bold mb-2">
+        <div className="mt-1 rounded-xl border border-accent/30 bg-accent/5 p-4">
+          <div className="text-xs uppercase tracking-widest text-accent font-bold mb-2">
             Mercado
           </div>
           <div className="grid grid-cols-2 gap-2">
             {destinos.map((d) => (
               <div
                 key={d.t}
-                className="flex items-center gap-2 rounded-lg bg-background border border-border px-2 py-1.5"
+                className="flex items-center gap-2 rounded-lg bg-background border border-border px-3 py-2"
               >
-                <d.icon className="size-3.5 text-accent shrink-0" />
-                <span className="text-[11px] font-medium text-primary truncate">{d.t}</span>
+                <d.icon className="size-4 text-accent shrink-0" />
+                <span className="text-xs font-semibold text-primary truncate">{d.t}</span>
               </div>
             ))}
           </div>
@@ -242,29 +242,29 @@ const FluxoInfraestrutura = () => {
 /* Mockup Smartphone com Passaporte — Slide 08 */
 const MockupPassaporte = () => (
   <div className="relative flex items-center justify-center h-full">
-    <div className="absolute -inset-4 bg-gradient-accent opacity-25 blur-3xl rounded-full" />
+    <div className="absolute -inset-6 bg-gradient-accent opacity-25 blur-3xl rounded-full" />
     {/* Smartphone frame */}
-    <div className="relative w-[280px] rounded-[38px] bg-primary p-3 border border-primary-foreground/10 shadow-2xl">
-      <div className="relative rounded-[28px] overflow-hidden bg-background aspect-[9/18]">
+    <div className="relative w-[340px] rounded-[44px] bg-primary p-3.5 border border-primary-foreground/10 shadow-2xl">
+      <div className="relative rounded-[34px] overflow-hidden bg-background aspect-[9/18]">
         {/* status bar */}
-        <div className="absolute top-0 inset-x-0 h-6 bg-primary/5 flex items-center justify-between px-4">
-          <span className="text-[9px] font-semibold text-primary">9:41</span>
-          <span className="text-[9px] text-primary/70">MyTS</span>
+        <div className="absolute top-0 inset-x-0 h-7 bg-primary/5 flex items-center justify-between px-5">
+          <span className="text-[10px] font-semibold text-primary">9:41</span>
+          <span className="text-[10px] text-primary/70">MyTS</span>
         </div>
         {/* header product */}
-        <div className="pt-8 px-4 pb-3 bg-gradient-to-br from-primary to-primary/90 text-primary-foreground">
-          <div className="text-[9px] uppercase tracking-widest text-accent-glow font-bold">
+        <div className="pt-10 px-5 pb-4 bg-gradient-to-br from-primary to-primary/90 text-primary-foreground">
+          <div className="text-[10px] uppercase tracking-widest text-accent-glow font-bold">
             Passaporte Digital
           </div>
-          <div className="mt-1 font-display font-bold text-lg leading-tight">
+          <div className="mt-1 font-display font-bold text-2xl leading-tight">
             Cacau Silvestre
           </div>
-          <div className="text-[10px] text-primary-foreground/70">
+          <div className="text-xs text-primary-foreground/70">
             Comunidade Ribeirinha · Amazonas
           </div>
         </div>
         {/* content list */}
-        <div className="p-3 space-y-2">
+        <div className="p-4 space-y-3">
           {[
             { icon: MapPin, t: "Origem verificada", v: "Médio Juruá, AM" },
             { icon: Users, t: "Produtores", v: "42 famílias" },
@@ -274,26 +274,26 @@ const MockupPassaporte = () => (
           ].map((r) => (
             <div
               key={r.t}
-              className="flex items-center gap-2 rounded-lg border border-border bg-gradient-card px-2 py-1.5"
+              className="flex items-center gap-3 rounded-lg border border-border bg-gradient-card px-3 py-2"
             >
-              <div className="size-6 rounded-md bg-accent/10 grid place-items-center shrink-0">
-                <r.icon className="size-3 text-accent" />
+              <div className="size-7 rounded-md bg-accent/10 grid place-items-center shrink-0">
+                <r.icon className="size-4 text-accent" />
               </div>
               <div className="min-w-0 flex-1">
-                <div className="text-[8px] uppercase tracking-wider text-muted-foreground">
+                <div className="text-[9px] uppercase tracking-wider text-muted-foreground">
                   {r.t}
                 </div>
-                <div className="text-[10px] font-semibold text-primary truncate">
+                <div className="text-xs font-semibold text-primary truncate">
                   {r.v}
                 </div>
               </div>
-              <CheckCircle2 className="size-3 text-accent shrink-0" />
+              <CheckCircle2 className="size-4 text-accent shrink-0" />
             </div>
           ))}
         </div>
         {/* CTA */}
-        <div className="absolute bottom-3 inset-x-3">
-          <div className="rounded-lg bg-gradient-accent text-accent-foreground text-center text-[10px] font-bold py-2">
+        <div className="absolute bottom-4 inset-x-4">
+          <div className="rounded-lg bg-gradient-accent text-accent-foreground text-center text-xs font-bold py-2.5">
             Conheça esta história
           </div>
         </div>
@@ -301,8 +301,8 @@ const MockupPassaporte = () => (
     </div>
 
     {/* QR code flutuante */}
-    <div className="absolute -left-6 top-8 rounded-2xl bg-background border border-border shadow-elegant p-3 rotate-[-6deg]">
-      <div className="grid grid-cols-8 gap-0.5 w-[88px]">
+    <div className="absolute -left-8 top-10 rounded-2xl bg-background border border-border shadow-elegant p-4 rotate-[-6deg]">
+      <div className="grid grid-cols-8 gap-0.5 w-[104px]">
         {Array.from({ length: 64 }).map((_, i) => {
           // padrão pseudo-aleatório determinístico
           const on = (i * 7 + (i % 5) * 3) % 3 !== 0;
@@ -314,7 +314,7 @@ const MockupPassaporte = () => (
           );
         })}
       </div>
-      <div className="mt-2 text-center text-[8px] font-mono uppercase tracking-widest text-muted-foreground">
+      <div className="mt-2 text-center text-[9px] font-mono uppercase tracking-widest text-muted-foreground">
         scan
       </div>
     </div>
@@ -612,19 +612,19 @@ const S05Resposta = () => (
       </>
     }
   >
-    <div className="flex flex-col justify-center h-full max-w-5xl mx-auto text-center items-center">
+    <div className="flex flex-col justify-center h-full max-w-6xl mx-auto text-center items-center">
       <SectionLabel n="04" label="A resposta" light />
 
-      <h1 className="mt-6 font-display font-bold text-[140px] leading-[0.85] tracking-tight text-primary-foreground">
+      <h1 className="mt-6 font-display font-bold text-[180px] leading-[0.85] tracking-tight text-primary-foreground">
         My<span className="text-gradient">TS</span>
       </h1>
 
-      <p className="mt-4 text-4xl text-primary-foreground/95 font-medium leading-tight">
+      <p className="mt-5 text-5xl text-primary-foreground/95 font-medium leading-tight">
         Infraestrutura Digital de{" "}
         <span className="text-accent-glow font-semibold">Confiança</span>
       </p>
 
-      <p className="mt-8 text-xl text-primary-foreground/75 leading-relaxed max-w-3xl">
+      <p className="mt-8 text-2xl text-primary-foreground/75 leading-relaxed max-w-4xl">
         Transformamos informações dispersas em uma infraestrutura digital que conecta{" "}
         <span className="text-primary-foreground font-semibold">produtores, compradores, consumidores, investidores</span> e parceiros. Mais do
         que rastrear produtos, organizamos dados, estruturamos evidências e fortalecemos relações
@@ -632,11 +632,11 @@ const S05Resposta = () => (
       </p>
 
       <div className="mt-10 flex items-center gap-6">
-        <div className="text-primary-foreground/60 uppercase tracking-widest text-sm">
+        <div className="text-primary-foreground/60 uppercase tracking-widest text-lg">
           Uma única infraestrutura
         </div>
-        <div className="h-6 w-px bg-accent-glow/40" />
-        <div className="text-accent-glow uppercase tracking-widest text-sm font-bold">
+        <div className="h-8 w-px bg-accent-glow/40" />
+        <div className="text-accent-glow uppercase tracking-widest text-lg font-bold">
           Múltiplas aplicações
         </div>
       </div>
@@ -653,16 +653,16 @@ const S06ComoFunciona = () => (
   >
     <SectionLabel n="05" label="Como funciona" />
 
-    <h2 className="mt-3 font-display font-bold text-4xl text-primary leading-[1.05] max-w-5xl">
+    <h2 className="mt-3 font-display font-bold text-5xl text-primary leading-[1.05] max-w-5xl">
       Da origem ao mercado —{" "}
       <span className="text-gradient">uma única jornada de dado</span>.
     </h2>
 
-    <div className="mt-6 flex-1 min-h-0">
+    <div className="mt-5 flex-1 min-h-0">
       <FluxoInfraestrutura />
     </div>
 
-    <p className="mt-4 text-center text-base text-muted-foreground italic">
+    <p className="mt-4 text-center text-lg text-muted-foreground italic">
       Cada informação é registrada uma única vez e{" "}
       <span className="font-semibold text-primary not-italic">gera valor para toda a cadeia</span>.
     </p>
@@ -745,6 +745,7 @@ const S08Passaporte = () => {
   return (
     <Slide
       bg="bg-hero"
+      pad="p-12 md:p-16"
       decor={
         <>
           <div className="absolute inset-0 grid-pattern opacity-10" />
@@ -754,29 +755,29 @@ const S08Passaporte = () => {
     >
       <SectionLabel n="07" label="Passaporte Digital" light />
 
-      <div className="mt-6 grid grid-cols-[1.2fr_1fr] gap-10 flex-1 min-h-0">
+      <div className="mt-6 grid grid-cols-[1.1fr_1fr] gap-12 flex-1 min-h-0 items-center">
         <div className="flex flex-col justify-center">
-          <h2 className="font-display font-bold text-5xl text-primary-foreground leading-[1.05] max-w-2xl">
+          <h2 className="font-display font-bold text-6xl text-primary-foreground leading-[1.05] max-w-2xl">
             Tornando a{" "}
             <span className="text-gradient">confiança visível</span>.
           </h2>
 
-          <p className="mt-5 text-lg text-primary-foreground/75 max-w-xl leading-relaxed">
+          <p className="mt-6 text-xl text-primary-foreground/75 max-w-xl leading-relaxed">
             Toda a inteligência construída pela MyTS é disponibilizada de forma simples por meio
             do Passaporte Digital. Ao escanear o QR Code, compradores e consumidores acessam:
           </p>
 
-          <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 max-w-xl">
+          <div className="mt-6 grid grid-cols-2 gap-x-8 gap-y-3 max-w-xl">
             {bullets.map((b) => (
-              <div key={b} className="flex items-center gap-2">
-                <CheckCircle2 className="size-4 text-accent-glow shrink-0" />
-                <span className="text-primary-foreground/85 text-sm">{b}</span>
+              <div key={b} className="flex items-center gap-3">
+                <CheckCircle2 className="size-5 text-accent-glow shrink-0" />
+                <span className="text-primary-foreground/85 text-base">{b}</span>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 rounded-xl border-l-4 border-accent-glow bg-primary-foreground/5 backdrop-blur px-5 py-4 max-w-xl">
-            <div className="text-base text-primary-foreground/90 leading-snug">
+          <div className="mt-8 rounded-xl border-l-4 border-accent-glow bg-primary-foreground/5 backdrop-blur px-6 py-5 max-w-xl">
+            <div className="text-lg text-primary-foreground/90 leading-snug">
               Transparência deixa de ser um relatório —{" "}
               <span className="text-accent-glow font-semibold">
                 passa a fazer parte da experiência do produto
@@ -828,48 +829,48 @@ const S09Ecossistema = () => {
         <span className="text-gradient">inteligência</span> — em uma única solução.
       </h2>
 
-      <div className="mt-8 grid grid-cols-3 gap-5 flex-1 min-h-0 items-stretch">
+      <div className="mt-8 grid grid-cols-3 gap-6 flex-1 min-h-0 items-stretch">
         {parceiros.map((p) => {
           const logoSrc =
             p.nome === "Groundd" ? grounddAsset.url : p.nome === "RAMO" ? ramoAsset.url : null;
           return (
             <div
               key={p.nome}
-              className={`relative rounded-2xl p-7 flex flex-col ${
+              className={`relative rounded-2xl p-8 flex flex-col ${
                 p.destaque
                   ? "bg-primary text-primary-foreground border-2 border-accent shadow-glow scale-[1.03]"
                   : "bg-gradient-card border border-border shadow-card"
               }`}
             >
               {p.destaque && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-accent text-accent-foreground text-[11px] font-bold uppercase tracking-widest px-4 py-1.5">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-accent text-accent-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5">
                   Infraestrutura
                 </div>
               )}
               {logoSrc ? (
-                <div className="rounded-xl bg-background border border-border grid place-items-center px-4 py-3 h-16 self-start">
-                  <img src={logoSrc} alt={p.nome} className="h-9 w-auto object-contain" />
+                <div className="rounded-xl bg-background border border-border grid place-items-center px-5 py-3.5 h-20 self-start">
+                  <img src={logoSrc} alt={p.nome} className="h-11 w-auto object-contain" />
                 </div>
               ) : (
                 <div
-                  className={`size-16 rounded-2xl grid place-items-center ${
+                  className={`size-20 rounded-2xl grid place-items-center ${
                     p.destaque ? "bg-gradient-accent" : "bg-primary/10"
                   }`}
                 >
                   <p.icon
-                    className={`size-8 ${p.destaque ? "text-accent-foreground" : "text-primary"}`}
+                    className={`size-10 ${p.destaque ? "text-accent-foreground" : "text-primary"}`}
                   />
                 </div>
               )}
               <div
-                className={`mt-5 font-display font-bold text-4xl leading-tight ${
+                className={`mt-6 font-display font-bold text-5xl leading-tight ${
                   p.destaque ? "text-primary-foreground" : "text-primary"
                 }`}
               >
                 {p.nome}
               </div>
               <div
-                className={`mt-2 text-base uppercase tracking-widest font-semibold ${
+                className={`mt-2 text-lg uppercase tracking-widest font-semibold ${
                   p.destaque ? "text-accent-glow" : "text-accent"
                 }`}
               >
@@ -880,16 +881,16 @@ const S09Ecossistema = () => {
                   p.destaque ? "bg-primary-foreground/15" : "bg-border"
                 }`}
               />
-              <div className="mt-4 space-y-3 flex-1">
+              <div className="mt-5 space-y-4 flex-1">
                 {p.itens.map((it) => (
-                  <div key={it} className="flex items-start gap-2.5">
+                  <div key={it} className="flex items-start gap-3">
                     <CheckCircle2
-                      className={`size-5 mt-0.5 shrink-0 ${
+                      className={`size-6 mt-0.5 shrink-0 ${
                         p.destaque ? "text-accent-glow" : "text-accent"
                       }`}
                     />
                     <span
-                      className={`text-base ${
+                      className={`text-lg ${
                         p.destaque ? "text-primary-foreground/90" : "text-primary/80"
                       }`}
                     >
@@ -903,7 +904,7 @@ const S09Ecossistema = () => {
         })}
       </div>
 
-      <p className="mt-6 text-center text-base text-muted-foreground">
+      <p className="mt-6 text-center text-lg text-muted-foreground">
         Competências complementares. <span className="font-semibold text-primary">Uma única solução.</span>
       </p>
     </Slide>
@@ -940,33 +941,33 @@ const S10Aplicacoes = () => {
         <span className="text-gradient">diferentes cadeias produtivas</span>.
       </h2>
 
-      <div className="mt-8 grid grid-cols-3 gap-4 flex-1 min-h-0 content-center">
+      <div className="mt-6 grid grid-cols-3 gap-4 flex-1 min-h-0">
         {apps.map((a, i) => (
           <div
             key={a.t}
-            className={`group flex items-center gap-4 rounded-xl border bg-gradient-card px-5 py-4 shadow-card hover:border-accent/40 transition-colors ${
+            className={`group flex items-center gap-5 rounded-xl border bg-gradient-card px-6 py-5 shadow-card hover:border-accent/40 transition-colors ${
               [0, 4, 8].includes(i) ? "border-accent/30" : "border-border"
             }`}
           >
             <div
-              className={`size-11 rounded-lg grid place-items-center shrink-0 ${
+              className={`size-12 rounded-lg grid place-items-center shrink-0 ${
                 [0, 4, 8].includes(i) ? "bg-gradient-accent" : "bg-primary/5"
               }`}
             >
               <a.icon
-                className={`size-5 ${
+                className={`size-6 ${
                   [0, 4, 8].includes(i) ? "text-accent-foreground" : "text-accent"
                 }`}
               />
             </div>
-            <span className="font-display font-semibold text-primary text-lg leading-tight">
+            <span className="font-display font-semibold text-primary text-xl leading-tight">
               {a.t}
             </span>
           </div>
         ))}
       </div>
 
-      <div className="mt-6 flex items-center justify-between rounded-xl bg-primary text-primary-foreground px-6 py-4">
+      <div className="mt-5 flex items-center justify-between rounded-xl bg-primary text-primary-foreground px-6 py-4">
         <span className="font-display font-bold text-xl">Uma plataforma.</span>
         <ArrowRight className="size-5 text-accent-glow" />
         <span className="font-display font-bold text-xl text-accent-glow">Diversas aplicações.</span>
