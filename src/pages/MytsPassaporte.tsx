@@ -1032,17 +1032,17 @@ const S11Experiencia = () => (
   >
     <SectionLabel n="10" label="Experiência construída em projetos reais" />
 
-    <h2 className="mt-5 font-display font-bold text-6xl text-primary leading-[1.05] max-w-5xl">
+    <h2 className="mt-4 font-display font-bold text-4xl text-primary leading-[1.05] max-w-4xl">
       A metodologia MyTS evolui a partir de{" "}
       <span className="text-gradient">desafios reais</span>.
     </h2>
 
-    <p className="mt-5 text-2xl text-muted-foreground max-w-4xl leading-snug">
-      Dois cases que consolidaram a infraestrutura MyTS em pontas opostas da cadeia:
-      relação direta com o consumidor e governança da rede de fornecedores.
+    <p className="mt-3 text-base text-muted-foreground max-w-3xl leading-snug">
+      Dois cases em pontas opostas da cadeia: relação direta com o consumidor e
+      governança da rede de fornecedores.
     </p>
 
-    <div className="mt-10 grid grid-cols-2 gap-8 flex-1 min-h-0 items-stretch">
+    <div className="mt-5 grid grid-cols-2 gap-6 flex-1 min-h-0 items-stretch">
       {/* ---------- CASE KORIN ---------- */}
       <div className="relative rounded-3xl bg-gradient-card border border-border shadow-elegant overflow-hidden flex flex-col">
         <div className="flex items-center gap-4 px-8 pt-7 pb-5 border-b border-border/70">
