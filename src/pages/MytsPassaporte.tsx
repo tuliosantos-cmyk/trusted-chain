@@ -941,33 +941,33 @@ const S10Aplicacoes = () => {
         <span className="text-gradient">diferentes cadeias produtivas</span>.
       </h2>
 
-      <div className="mt-8 grid grid-cols-3 gap-4 flex-1 min-h-0 content-center">
+      <div className="mt-6 grid grid-cols-3 gap-4 flex-1 min-h-0">
         {apps.map((a, i) => (
           <div
             key={a.t}
-            className={`group flex items-center gap-4 rounded-xl border bg-gradient-card px-5 py-4 shadow-card hover:border-accent/40 transition-colors ${
+            className={`group flex items-center gap-5 rounded-xl border bg-gradient-card px-6 py-5 shadow-card hover:border-accent/40 transition-colors ${
               [0, 4, 8].includes(i) ? "border-accent/30" : "border-border"
             }`}
           >
             <div
-              className={`size-11 rounded-lg grid place-items-center shrink-0 ${
+              className={`size-13 rounded-lg grid place-items-center shrink-0 ${
                 [0, 4, 8].includes(i) ? "bg-gradient-accent" : "bg-primary/5"
               }`}
             >
               <a.icon
-                className={`size-5 ${
+                className={`size-6 ${
                   [0, 4, 8].includes(i) ? "text-accent-foreground" : "text-accent"
                 }`}
               />
             </div>
-            <span className="font-display font-semibold text-primary text-lg leading-tight">
+            <span className="font-display font-semibold text-primary text-xl leading-tight">
               {a.t}
             </span>
           </div>
         ))}
       </div>
 
-      <div className="mt-6 flex items-center justify-between rounded-xl bg-primary text-primary-foreground px-6 py-4">
+      <div className="mt-5 flex items-center justify-between rounded-xl bg-primary text-primary-foreground px-6 py-4">
         <span className="font-display font-bold text-xl">Uma plataforma.</span>
         <ArrowRight className="size-5 text-accent-glow" />
         <span className="font-display font-bold text-xl text-accent-glow">Diversas aplicações.</span>
