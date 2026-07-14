@@ -1380,11 +1380,6 @@ const S12Valor = () => {
 
 /* ---------- 13 · QUEM SOMOS ---------- */
 const S13Institucional = () => {
-  const stats = [
-    { n: "20+", t: "Clientes atendidos" },
-    { n: "1.000+", t: "Fornecedores gerenciados" },
-    { n: "8", t: "Setores de atuação" },
-  ];
   const pilares = [
     {
       icon: Database,
@@ -1409,6 +1404,11 @@ const S13Institucional = () => {
     { icon: Wallet, t: "Investidores" },
     { icon: Handshake, t: "Parceiros" },
   ];
+  const diferenciais = [
+    { t: "Dados como ativo", d: "Transformamos informações dispersas em evidências estruturadas e auditáveis." },
+    { t: "Território no centro", d: "Conectamos origem geoespacial, comunidade e impacto em uma única visão." },
+    { t: "Pronto para o mercado", d: "Passaporte Digital, relatórios ESG e integração com compradores e reguladores." },
+  ];
   return (
     <Slide
       bg="bg-hero"
@@ -1422,13 +1422,13 @@ const S13Institucional = () => {
     >
       <SectionLabel n="12" label="Quem somos" light />
 
-      <div className="mt-6 grid grid-cols-[1.35fr_1fr] gap-10 flex-1 min-h-0">
+      <div className="mt-5 grid grid-cols-[1.2fr_0.85fr] gap-8 flex-1 min-h-0">
         {/* -------- Coluna esquerda -------- */}
         <div className="flex flex-col min-h-0">
           {/* Cabeçalho institucional */}
           <div className="flex items-center gap-5">
-            <img src={mytsLogo} alt="MyTS" className="h-16" />
-            <div className="h-12 w-px bg-primary-foreground/20" />
+            <img src={mytsLogo} alt="MyTS" className="h-14" />
+            <div className="h-10 w-px bg-primary-foreground/20" />
             <div>
               <div className="text-sm uppercase tracking-[0.25em] text-accent-glow font-semibold">
                 My Trusted Source
@@ -1440,20 +1440,20 @@ const S13Institucional = () => {
           </div>
 
           {/* Manifesto */}
-          <p className="mt-6 font-display text-3xl text-primary-foreground leading-[1.2] max-w-2xl">
+          <p className="mt-5 font-display text-[28px] text-primary-foreground leading-[1.22] max-w-2xl">
             Existimos para transformar informações dispersas em{" "}
             <span className="text-gradient">confiança, acesso a mercado e valor</span>{" "}
             ao longo das cadeias produtivas.
           </p>
 
           {/* Pilares */}
-          <div className="mt-6 grid grid-cols-3 gap-4">
+          <div className="mt-5 grid grid-cols-3 gap-4">
             {pilares.map((p) => (
               <div
                 key={p.t}
                 className="rounded-xl border border-primary-foreground/15 bg-primary-foreground/[0.06] backdrop-blur p-4"
               >
-                <div className="size-9 rounded-lg bg-accent/15 border border-accent/30 grid place-items-center">
+                <div className="size-10 rounded-lg bg-accent/15 border border-accent/30 grid place-items-center">
                   <p.icon className="size-5 text-accent-glow" />
                 </div>
                 <div className="mt-3 font-display font-bold text-base text-primary-foreground leading-tight">
@@ -1467,7 +1467,7 @@ const S13Institucional = () => {
           </div>
 
           {/* Ecossistema conectado */}
-          <div className="mt-6">
+          <div className="mt-5">
             <div className="text-[11px] uppercase tracking-[0.25em] text-primary-foreground/50 font-semibold">
               Conectamos todo o ecossistema
             </div>
@@ -1489,23 +1489,6 @@ const S13Institucional = () => {
               ))}
             </div>
           </div>
-
-          {/* Parceiros */}
-          <div className="mt-auto pt-5 border-t border-primary-foreground/15">
-            <div className="flex items-center justify-between">
-              <div className="text-[11px] uppercase tracking-[0.25em] text-primary-foreground/50 font-semibold">
-                Consórcio de execução
-              </div>
-              <div className="flex items-center gap-6">
-                <div className="rounded-lg bg-primary-foreground/95 px-4 py-2">
-                  <img src={grounddAsset.url} alt="Groundd" className="h-6" />
-                </div>
-                <div className="rounded-lg bg-primary-foreground/95 px-4 py-2">
-                  <img src={ramoAsset.url} alt="RAMO" className="h-6" />
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* -------- Coluna direita -------- */}
@@ -1516,35 +1499,53 @@ const S13Institucional = () => {
               <ShieldCheck className="size-4" />
               Posicionamento
             </div>
-            <div className="mt-3 font-display font-bold text-2xl text-primary-foreground leading-tight">
+            <div className="mt-3 font-display font-bold text-[26px] text-primary-foreground leading-[1.1]">
               Uma infraestrutura.<br />
               Múltiplas aplicações.
             </div>
-            <p className="mt-2 text-sm text-primary-foreground/75 leading-snug">
+            <p className="mt-3 text-sm text-primary-foreground/75 leading-relaxed">
               Rastreabilidade, governança, Passaporte Digital e inteligência —
               tudo sobre a mesma base de dados confiável.
             </p>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 gap-3 flex-1 min-h-0">
-            {stats.map((s) => (
-              <div
-                key={s.t}
-                className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-6 py-4 flex items-center gap-5"
-              >
-                <div className="font-display font-bold text-6xl text-gradient leading-none">
-                  {s.n}
+          {/* Diferenciais */}
+          <div className="flex-1 min-h-0 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-6">
+            <div className="text-[11px] uppercase tracking-[0.25em] text-primary-foreground/50 font-semibold mb-4">
+              Por que a MyTS
+            </div>
+            <div className="space-y-4">
+              {diferenciais.map((d, i) => (
+                <div key={d.t} className="flex gap-4">
+                  <div className="shrink-0 size-7 rounded-full bg-accent/15 border border-accent/30 grid place-items-center text-xs font-bold text-accent-glow">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div>
+                    <div className="font-display font-bold text-base text-primary-foreground leading-tight">
+                      {d.t}
+                    </div>
+                    <div className="mt-1 text-[13px] text-primary-foreground/65 leading-snug">
+                      {d.d}
+                    </div>
+                  </div>
                 </div>
-                <div className="text-primary-foreground/75 uppercase tracking-widest text-xs font-semibold leading-tight">
-                  {s.t}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          <div className="text-[10px] uppercase tracking-[0.25em] text-primary-foreground/40 font-semibold">
-            números institucionais · editáveis
+          {/* Parceiros */}
+          <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-5">
+            <div className="text-[11px] uppercase tracking-[0.25em] text-primary-foreground/50 font-semibold mb-3">
+              Consórcio de execução
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="rounded-lg bg-primary-foreground/95 px-4 py-2 flex-1 flex items-center justify-center">
+                <img src={grounddAsset.url} alt="Groundd" className="h-6" />
+              </div>
+              <div className="rounded-lg bg-primary-foreground/95 px-4 py-2 flex-1 flex items-center justify-center">
+                <img src={ramoAsset.url} alt="RAMO" className="h-6" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
