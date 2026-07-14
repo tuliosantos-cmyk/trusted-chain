@@ -38,8 +38,11 @@ import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
 import grounddAsset from "@/assets/logos/groundd.png.asset.json";
 import ramoAsset from "@/assets/logos/ramo.png.asset.json";
+import korinAsset from "@/assets/logos/korin.png.asset.json";
+import carrefourAsset from "@/assets/logos/carrefour.png.asset.json";
 import produtorImg from "@/assets/passaporte/produtor.jpg";
 import geoImg from "@/assets/passaporte/geolocalizacao.jpg";
+import korinMockup from "@/assets/korin/mockup-qr-embalagem.jpg";
 
 /* Chip branco com a logo do parceiro — legibilidade sobre fundo navy */
 const PartnerLogo = ({
