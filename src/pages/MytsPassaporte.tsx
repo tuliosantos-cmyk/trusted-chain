@@ -569,18 +569,18 @@ const S04Consequencia = () => {
         O custo de uma cadeia <span className="text-gradient">sem visibilidade</span>.
       </h2>
 
-      <div className="mt-8 grid grid-cols-2 gap-5 flex-1 min-h-0">
+      <div className="mt-8 grid grid-cols-2 gap-6 flex-1 min-h-0">
         {custos.map((c, i) => (
           <div
             key={c.t}
-            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-6 pl-8 flex flex-col justify-center"
+            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-8 pl-10 flex flex-col justify-center"
           >
-            <div className="absolute left-0 top-6 bottom-6 w-1.5 rounded-r-full bg-gradient-accent" />
-            <div className="text-xs font-mono font-bold text-accent">0{i + 1}</div>
-            <div className="mt-2 font-display font-bold text-2xl text-primary leading-tight">
+            <div className="absolute left-0 top-6 bottom-6 w-2 rounded-r-full bg-gradient-accent" />
+            <div className="font-display font-bold text-5xl text-accent leading-none">0{i + 1}</div>
+            <div className="mt-4 font-display font-bold text-3xl text-primary leading-tight">
               {c.t}
             </div>
-            <div className="mt-2 text-base text-muted-foreground">{c.d}</div>
+            <div className="mt-3 text-lg text-muted-foreground leading-snug">{c.d}</div>
           </div>
         ))}
       </div>
