@@ -33,6 +33,11 @@ import {
   Fingerprint,
   Radar,
   Wallet,
+  Table,
+  File,
+  Image,
+  Lightbulb,
+  Brain,
 } from "lucide-react";
 import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
