@@ -428,8 +428,8 @@ const S01Capa = () => (
               Em parceria com
             </div>
             <div className="flex items-center gap-6">
-              <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-12" />
-              <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-12" />
+              <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-8" variant="dark" />
+              <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-8" variant="dark" />
             </div>
           </div>
           <div className="h-16 w-px bg-primary-foreground/15" />
@@ -1696,8 +1696,8 @@ const S16Encerramento = () => (
             Em parceria com
           </div>
           <div className="flex items-center gap-5">
-            <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-9" />
-            <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-9" />
+            <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-8" variant="dark" />
+            <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-8" variant="dark" />
           </div>
         </div>
       </div>
