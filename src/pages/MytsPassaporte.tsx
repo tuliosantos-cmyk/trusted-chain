@@ -459,13 +459,13 @@ const S02Mercado = () => {
 /* ---------- 03 · O DESAFIO ---------- */
 const S03Desafio = () => {
   const disperso = [
-    { t: "Planilhas", r: "rotate-[-6deg]", pos: "top-4 left-4" },
-    { t: "Certificados", r: "rotate-[3deg]", pos: "top-8 left-32" },
-    { t: "PDFs", r: "rotate-[-2deg]", pos: "top-24 left-16" },
-    { t: "E-mails", r: "rotate-[8deg]", pos: "top-40 left-40" },
-    { t: "Fotos", r: "rotate-[-4deg]", pos: "top-56 left-8" },
-    { t: "Conhecimento local", r: "rotate-[5deg]", pos: "top-64 left-36" },
-  ];
+    { t: "Planilhas", style: { top: "18%", left: "8%", transform: "rotate(-6deg)" } },
+    { t: "Certificados", style: { top: "10%", right: "10%", transform: "rotate(4deg)" } },
+    { t: "PDFs", style: { top: "38%", left: "20%", transform: "rotate(-2deg)" } },
+    { t: "E-mails", style: { top: "45%", right: "14%", transform: "rotate(6deg)" } },
+    { t: "Fotos", style: { bottom: "22%", left: "10%", transform: "rotate(-4deg)" } },
+    { t: "Conhecimento local", style: { bottom: "12%", right: "8%", transform: "rotate(3deg)" } },
+  ] as const;
   return (
     <Slide bg="bg-background" decor={<MytsWatermark className="-right-16 -bottom-16 w-[380px] [filter:invert(1)] opacity-[0.04]" />}>
       <SectionLabel n="02" label="O desafio" />
@@ -475,25 +475,26 @@ const S03Desafio = () => {
         das cadeias produtivas.
       </h2>
 
-      <div className="mt-8 grid grid-cols-[1fr_auto_1fr] gap-6 flex-1 min-h-0 items-center">
+      <div className="mt-8 grid grid-cols-[1fr_auto_1fr] gap-6 flex-1 min-h-0 items-stretch">
         {/* Caos */}
-        <div className="relative h-full rounded-2xl border border-dashed border-muted-foreground/30 bg-muted/20 p-4 overflow-hidden">
-          <div className="absolute top-3 left-4 text-xs uppercase tracking-widest text-muted-foreground font-semibold">
+        <div className="relative h-full rounded-2xl border border-dashed border-muted-foreground/30 bg-muted/20 overflow-hidden">
+          <div className="absolute top-4 left-4 text-xs uppercase tracking-widest text-muted-foreground font-semibold z-10">
             Hoje · disperso
           </div>
           {disperso.map((d) => (
             <div
               key={d.t}
-              className={`absolute ${d.pos} ${d.r} rounded-lg bg-background border border-border shadow-card px-3 py-2 flex items-center gap-2`}
+              style={d.style as React.CSSProperties}
+              className="absolute rounded-lg bg-background border border-border shadow-card px-3 py-2 flex items-center gap-2"
             >
               <FileText className="size-4 text-muted-foreground" />
-              <span className="text-sm font-medium text-primary">{d.t}</span>
+              <span className="text-sm font-medium text-primary whitespace-nowrap">{d.t}</span>
             </div>
           ))}
         </div>
 
         {/* Seta */}
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center justify-center gap-2">
           <div className="rounded-full bg-gradient-accent p-3 shadow-cta">
             <ArrowRight className="size-6 text-accent-foreground" />
           </div>
@@ -501,11 +502,11 @@ const S03Desafio = () => {
         </div>
 
         {/* Organizado */}
-        <div className="relative h-full rounded-2xl border border-accent/30 bg-gradient-card shadow-elegant p-6 flex flex-col">
+        <div className="relative h-full rounded-2xl border border-accent/30 bg-gradient-card shadow-elegant p-6 flex flex-col justify-center">
           <div className="text-xs uppercase tracking-widest text-accent font-semibold">
             Organizado · gerando valor
           </div>
-          <div className="mt-4 flex-1 flex flex-col gap-2 justify-center">
+          <div className="mt-5 flex flex-col gap-3">
             {[
               "Boas práticas registradas",
               "Comunidades reconhecidas",
@@ -514,13 +515,14 @@ const S03Desafio = () => {
               "Histórias reais comunicáveis",
             ].map((t) => (
               <div key={t} className="flex items-center gap-3">
-                <CheckCircle2 className="size-4 text-accent shrink-0" />
-                <span className="text-base text-primary">{t}</span>
+                <CheckCircle2 className="size-5 text-accent shrink-0" />
+                <span className="text-lg text-primary">{t}</span>
               </div>
             ))}
           </div>
         </div>
       </div>
+
 
       <p className="mt-5 text-lg text-muted-foreground max-w-4xl">
         Tudo já existe. Sem organização, essas informações{" "}
