@@ -1264,7 +1264,7 @@ const S14Time = () => {
           return (
             <div
               key={p.nome + i}
-              className={`rounded-2xl p-6 flex flex-col items-center text-center ${
+              className={`rounded-2xl p-6 flex flex-col items-center text-center justify-center ${
                 real
                   ? "bg-gradient-card border border-border shadow-card"
                   : "bg-muted/30 border border-dashed border-muted-foreground/30"
