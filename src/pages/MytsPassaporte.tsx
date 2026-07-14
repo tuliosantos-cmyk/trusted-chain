@@ -446,20 +446,22 @@ const S02Mercado = () => {
         <span className="text-gradient">Tornou-se uma exigência.</span>
       </h2>
 
-      <div className="mt-8 grid grid-cols-4 gap-4 flex-1 min-h-0">
+      <div className="mt-8 grid grid-cols-4 gap-5 flex-1 min-h-0">
         {forcas.map((f, i) => (
           <div
             key={f.t}
-            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-7 flex flex-col"
+            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-8 flex flex-col justify-center overflow-hidden"
           >
-            <div className="text-sm font-mono text-accent">0{i + 1}</div>
-            <div className="mt-3 size-16 rounded-2xl bg-gradient-accent grid place-items-center">
-              <f.icon className="size-8 text-accent-foreground" />
+            <div className="absolute top-5 right-6 font-display font-bold text-4xl text-accent/25 leading-none">
+              0{i + 1}
             </div>
-            <div className="mt-5 font-display font-bold text-3xl text-primary leading-tight">
+            <div className="size-20 rounded-2xl bg-gradient-accent grid place-items-center shadow-cta">
+              <f.icon className="size-10 text-accent-foreground" />
+            </div>
+            <div className="mt-6 font-display font-bold text-4xl text-primary leading-[1.05]">
               {f.t}
             </div>
-            <div className="mt-3 text-lg text-muted-foreground leading-snug">
+            <div className="mt-4 text-xl text-muted-foreground leading-snug">
               {f.d}
             </div>
           </div>
@@ -573,14 +575,14 @@ const S04Consequencia = () => {
         {custos.map((c, i) => (
           <div
             key={c.t}
-            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-8 pl-10 flex flex-col justify-center"
+            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-10 pl-12 flex flex-col justify-center overflow-hidden"
           >
-            <div className="absolute left-0 top-6 bottom-6 w-2 rounded-r-full bg-gradient-accent" />
-            <div className="font-display font-bold text-5xl text-accent leading-none">0{i + 1}</div>
-            <div className="mt-4 font-display font-bold text-3xl text-primary leading-tight">
+            <div className="absolute left-0 top-8 bottom-8 w-2 rounded-r-full bg-gradient-accent" />
+            <div className="font-display font-bold text-7xl text-accent leading-none">0{i + 1}</div>
+            <div className="mt-5 font-display font-bold text-4xl text-primary leading-tight">
               {c.t}
             </div>
-            <div className="mt-3 text-lg text-muted-foreground leading-snug">{c.d}</div>
+            <div className="mt-4 text-xl text-muted-foreground leading-snug">{c.d}</div>
           </div>
         ))}
       </div>
@@ -713,15 +715,15 @@ const S07Alem = () => {
         {cards.map((c) => (
           <div
             key={c.t}
-            className="group relative rounded-2xl border border-border bg-gradient-card shadow-card p-7 flex flex-col hover:border-accent/40 transition-colors"
+            className="group relative rounded-2xl border border-border bg-gradient-card shadow-card p-8 flex flex-col justify-center hover:border-accent/40 transition-colors overflow-hidden"
           >
-            <div className="size-14 rounded-2xl bg-gradient-accent grid place-items-center">
-              <c.icon className="size-7 text-accent-foreground" />
+            <div className="size-16 rounded-2xl bg-gradient-accent grid place-items-center shadow-cta">
+              <c.icon className="size-8 text-accent-foreground" />
             </div>
-            <div className="mt-5 font-display font-bold text-2xl text-primary leading-tight">
+            <div className="mt-6 font-display font-bold text-3xl text-primary leading-tight">
               {c.t}
             </div>
-            <div className="mt-3 text-base text-muted-foreground leading-snug">{c.d}</div>
+            <div className="mt-3 text-lg text-muted-foreground leading-snug">{c.d}</div>
           </div>
         ))}
       </div>
@@ -1002,7 +1004,7 @@ const S11Experiencia = () => {
           return (
             <div
               key={c.t + i}
-              className={`rounded-2xl p-6 flex flex-col ${
+              className={`rounded-2xl p-6 flex flex-col justify-center ${
                 real
                   ? "bg-gradient-card border border-border shadow-card"
                   : "bg-muted/30 border border-dashed border-muted-foreground/30"
@@ -1106,7 +1108,7 @@ const S12Valor = () => {
           return (
             <div
               key={p.titulo}
-              className={`relative rounded-2xl p-8 flex flex-col ${
+              className={`relative rounded-2xl p-8 flex flex-col justify-center ${
                 dark
                   ? "bg-primary text-primary-foreground border border-accent/30"
                   : "bg-gradient-card border border-border shadow-card"
@@ -1123,7 +1125,7 @@ const S12Valor = () => {
                   />
                 </div>
                 <div
-                  className={`font-display font-bold text-3xl ${
+                  className={`font-display font-bold text-4xl leading-[1.05] ${
                     dark ? "text-primary-foreground" : "text-primary"
                   }`}
                 >
@@ -1131,14 +1133,14 @@ const S12Valor = () => {
                 </div>
               </div>
               <div className={`mt-5 h-px ${dark ? "bg-primary-foreground/15" : "bg-border"}`} />
-              <div className="mt-5 grid grid-cols-1 gap-3 flex-1 content-start">
+              <div className="mt-5 grid grid-cols-1 gap-3 content-center">
                 {p.itens.map((it) => (
                   <div key={it} className="flex items-center gap-3">
                     <CheckCircle2
-                      className={`size-5 shrink-0 ${dark ? "text-accent-glow" : "text-accent"}`}
+                      className={`size-6 shrink-0 ${dark ? "text-accent-glow" : "text-accent"}`}
                     />
                     <span
-                      className={`text-lg ${
+                      className={`text-xl ${
                         dark ? "text-primary-foreground/90" : "text-primary/85"
                       }`}
                     >
@@ -1258,7 +1260,7 @@ const S14Time = () => {
           return (
             <div
               key={p.nome + i}
-              className={`rounded-2xl p-6 flex flex-col items-center text-center ${
+              className={`rounded-2xl p-6 flex flex-col items-center text-center justify-center ${
                 real
                   ? "bg-gradient-card border border-border shadow-card"
                   : "bg-muted/30 border border-dashed border-muted-foreground/30"
