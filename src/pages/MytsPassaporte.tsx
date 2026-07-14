@@ -1563,30 +1563,32 @@ const S15Proximos = () => {
         cadeia, do território e dos objetivos estratégicos do parceiro.
       </p>
 
-      <div className="mt-10 relative flex-1 min-h-0">
-        {/* linha do tempo */}
-        <div className="absolute top-16 left-8 right-8 h-0.5 bg-gradient-to-r from-accent via-accent-glow to-accent" />
+      <div className="mt-10 relative flex-1 min-h-0 flex flex-col justify-center">
+        <div className="relative w-full">
+          {/* linha do tempo */}
+          <div className="absolute top-12 left-8 right-8 h-0.5 bg-gradient-to-r from-accent via-accent-glow to-accent" />
 
-        <div className="grid grid-cols-4 gap-5 relative">
-          {marcos.map((m, i) => (
-            <div key={m.t} className="flex flex-col items-center text-center">
-              <div className="relative">
-                <div className="absolute -inset-2 bg-gradient-accent opacity-30 blur-xl rounded-full" />
-                <div className="relative size-24 rounded-full bg-primary border-2 border-accent grid place-items-center">
-                  <m.icon className="size-10 text-accent-glow" />
+          <div className="grid grid-cols-4 gap-5 relative">
+            {marcos.map((m, i) => (
+              <div key={m.t} className="flex flex-col items-center text-center">
+                <div className="relative">
+                  <div className="absolute -inset-2 bg-gradient-accent opacity-30 blur-xl rounded-full" />
+                  <div className="relative size-24 rounded-full bg-primary border-2 border-accent grid place-items-center">
+                    <m.icon className="size-10 text-accent-glow" />
+                  </div>
+                </div>
+                <div className="mt-4 text-sm font-mono font-bold text-accent">
+                  ETAPA 0{i + 1}
+                </div>
+                <div className="mt-2 font-display font-bold text-2xl text-primary leading-tight">
+                  {m.t}
+                </div>
+                <div className="mt-3 text-base text-muted-foreground max-w-[240px] leading-snug">
+                  {m.d}
                 </div>
               </div>
-              <div className="mt-4 text-sm font-mono font-bold text-accent">
-                ETAPA 0{i + 1}
-              </div>
-              <div className="mt-2 font-display font-bold text-2xl text-primary leading-tight">
-                {m.t}
-              </div>
-              <div className="mt-3 text-base text-muted-foreground max-w-[240px] leading-snug">
-                {m.d}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
