@@ -1045,22 +1045,22 @@ const S11Experiencia = () => (
     <div className="mt-5 grid grid-cols-2 gap-6 flex-1 min-h-0 items-stretch">
       {/* ---------- CASE KORIN ---------- */}
       <div className="relative rounded-3xl bg-gradient-card border border-border shadow-elegant overflow-hidden flex flex-col">
-        <div className="flex items-center gap-4 px-8 pt-7 pb-5 border-b border-border/70">
-          <div className="rounded-xl bg-background border border-border shadow-card px-4 py-2.5">
-            <img src={korinAsset.url} alt="Korin" className="h-9 w-auto object-contain" />
+        <div className="flex items-center gap-4 px-6 pt-5 pb-4 border-b border-border/70">
+          <div className="rounded-xl bg-background border border-border shadow-card px-3 py-2">
+            <img src={korinAsset.url} alt="Korin" className="h-7 w-auto object-contain" />
           </div>
           <div className="min-w-0">
             <div className="text-[11px] uppercase tracking-[0.22em] text-accent font-bold">
               Case · Consumidor
             </div>
-            <div className="font-display font-bold text-2xl text-primary leading-tight truncate">
+            <div className="font-display font-bold text-xl text-primary leading-tight truncate">
               Transparência que aproxima
             </div>
           </div>
         </div>
 
-        <div className="relative px-6 pt-6">
-          <div className="relative rounded-2xl overflow-hidden border border-border shadow-card aspect-[16/10]">
+        <div className="relative px-5 pt-4">
+          <div className="relative rounded-2xl overflow-hidden border border-border shadow-card aspect-[16/8]">
             <img
               src={korinMockup}
               alt="Consumidor escaneando QR Code em embalagem Korin"
@@ -1073,15 +1073,15 @@ const S11Experiencia = () => (
           </div>
         </div>
 
-        <div className="px-8 py-6 flex-1 flex flex-col gap-4">
-          <ul className="space-y-2.5">
+        <div className="px-6 py-4 flex-1 flex flex-col gap-4">
+          <ul className="space-y-1.5">
             {[
               "Passaporte Digital acessado por QR Code direto na gôndola",
               "História da origem, granjas e boas práticas contadas ao consumidor",
               "Canal contínuo entre marca, produtor e comprador final",
             ].map((b) => (
-              <li key={b} className="flex items-start gap-3 text-lg text-primary/85 leading-snug">
-                <CheckCircle2 className="size-5 text-accent shrink-0 mt-1" />
+              <li key={b} className="flex items-start gap-3 text-sm text-primary/85 leading-snug">
+                <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" />
                 <span>{b}</span>
               </li>
             ))}
@@ -1091,7 +1091,7 @@ const S11Experiencia = () => (
             {["Bem-estar animal", "Origem verificada", "Storytelling de cadeia"].map((t) => (
               <span
                 key={t}
-                className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-semibold px-3 py-1.5 uppercase tracking-wider"
+                className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-semibold px-2.5 py-1 uppercase tracking-wider"
               >
                 <Leaf className="size-3.5" />
                 {t}
@@ -1103,23 +1103,23 @@ const S11Experiencia = () => (
 
       {/* ---------- CASE CARREFOUR ---------- */}
       <div className="relative rounded-3xl bg-gradient-card border border-border shadow-elegant overflow-hidden flex flex-col">
-        <div className="flex items-center gap-4 px-8 pt-7 pb-5 border-b border-border/70">
-          <div className="rounded-xl bg-background border border-border shadow-card px-4 py-2.5">
-            <img src={carrefourAsset.url} alt="Carrefour" className="h-9 w-auto object-contain" />
+        <div className="flex items-center gap-4 px-6 pt-5 pb-4 border-b border-border/70">
+          <div className="rounded-xl bg-background border border-border shadow-card px-3 py-2">
+            <img src={carrefourAsset.url} alt="Carrefour" className="h-7 w-auto object-contain" />
           </div>
           <div className="min-w-0">
             <div className="text-[11px] uppercase tracking-[0.22em] text-accent font-bold">
               Case · Cadeia de fornecedores
             </div>
-            <div className="font-display font-bold text-2xl text-primary leading-tight truncate">
+            <div className="font-display font-bold text-xl text-primary leading-tight truncate">
               Jornada da Autonomia
             </div>
           </div>
         </div>
 
         {/* Dashboard mockup — JSX */}
-        <div className="relative px-6 pt-6">
-          <div className="relative rounded-2xl overflow-hidden border border-primary/15 shadow-card aspect-[16/10] bg-primary text-primary-foreground">
+        <div className="relative px-5 pt-4">
+          <div className="relative rounded-2xl overflow-hidden border border-primary/15 shadow-card aspect-[16/8] bg-primary text-primary-foreground">
             {/* barra topo */}
             <div className="flex items-center justify-between px-4 py-2 bg-primary-foreground/5 border-b border-primary-foreground/10">
               <div className="flex items-center gap-1.5">
@@ -1158,7 +1158,7 @@ const S11Experiencia = () => (
               </div>
 
               {/* main */}
-              <div className="p-3 space-y-2.5">
+              <div className="p-3 space-y-1.5">
                 {/* KPI row */}
                 <div className="grid grid-cols-3 gap-2">
                   {[
@@ -1231,15 +1231,15 @@ const S11Experiencia = () => (
           </div>
         </div>
 
-        <div className="px-8 py-6 flex-1 flex flex-col gap-4">
-          <ul className="space-y-2.5">
+        <div className="px-6 py-4 flex-1 flex flex-col gap-4">
+          <ul className="space-y-1.5">
             {[
               "Programa multivarejo de desenvolvimento e conformidade de fornecedores",
               "Visibilidade contínua de Tier 1, 2 e 3 com trilhas Social · Ambiental · Qualidade",
               "Evidência ESG real para relatórios de sustentabilidade e regulação",
             ].map((b) => (
-              <li key={b} className="flex items-start gap-3 text-lg text-primary/85 leading-snug">
-                <CheckCircle2 className="size-5 text-accent shrink-0 mt-1" />
+              <li key={b} className="flex items-start gap-3 text-sm text-primary/85 leading-snug">
+                <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" />
                 <span>{b}</span>
               </li>
             ))}
@@ -1249,7 +1249,7 @@ const S11Experiencia = () => (
             {["Governança de cadeia", "Risco fornecedor", "Evidência ESG"].map((t) => (
               <span
                 key={t}
-                className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-semibold px-3 py-1.5 uppercase tracking-wider"
+                className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-semibold px-2.5 py-1 uppercase tracking-wider"
               >
                 <ShieldCheck className="size-3.5" />
                 {t}
