@@ -31,6 +31,8 @@ import {
   Wallet,
   GraduationCap,
   Award,
+  Brain,
+  Handshake,
   TreePine,
   HandHeart,
   Home,
