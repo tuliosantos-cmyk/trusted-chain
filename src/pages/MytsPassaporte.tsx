@@ -1400,6 +1400,7 @@ const S13Institucional = () => {
   return (
     <Slide
       bg="bg-hero"
+      pad="p-10 md:p-12"
       decor={
         <>
           <div className="absolute inset-0 grid-pattern opacity-10" />
@@ -1410,16 +1411,16 @@ const S13Institucional = () => {
     >
       <SectionLabel n="12" label="Quem somos" light />
 
-      <div className="mt-6 flex flex-col gap-6 flex-1 min-h-0">
+      <div className="mt-5 flex flex-col gap-5 flex-1 min-h-0">
         {/* -------- Zona 1 · Manifesto herói -------- */}
-        <div className="flex items-start gap-6">
-          <img src={mytsLogo} alt="MyTS" className="h-16 shrink-0 mt-1" />
-          <div className="h-16 w-px bg-primary-foreground/20 shrink-0" />
+        <div className="flex items-start gap-5">
+          <img src={mytsLogo} alt="MyTS" className="h-14 shrink-0 mt-1" />
+          <div className="h-14 w-px bg-primary-foreground/20 shrink-0" />
           <div className="flex-1">
             <div className="text-xs uppercase tracking-[0.28em] text-accent-glow font-semibold">
               My Trusted Source
             </div>
-            <p className="mt-3 font-display font-bold text-[42px] text-primary-foreground leading-[1.12] max-w-[1100px]">
+            <p className="mt-2 font-display font-bold text-[38px] text-primary-foreground leading-[1.12] max-w-[1100px]">
               Existimos para transformar informações dispersas em{" "}
               <span className="text-gradient">confiança, acesso a mercado e valor</span>{" "}
               ao longo das cadeias produtivas.
@@ -1427,27 +1428,26 @@ const S13Institucional = () => {
           </div>
         </div>
 
-        {/* -------- Zona 2 · Pilares + Posicionamento -------- */}
-        <div className="grid grid-cols-[1.3fr_0.85fr] gap-6 flex-1 min-h-0">
-          {/* Pilares */}
-          <div className="grid grid-cols-3 gap-4">
-            {pilares.map((p) => (
-              <div
-                key={p.t}
-                className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.06] backdrop-blur p-6 flex flex-col"
-              >
-                <div className="size-14 rounded-xl bg-accent/15 border border-accent/30 grid place-items-center">
+        {/* -------- Zona 2 · Pilares + Posicionamento (2×2) -------- */}
+        <div className="grid grid-cols-2 grid-rows-2 gap-5 flex-1 min-h-0">
+          {pilares.map((p) => (
+            <div
+              key={p.t}
+              className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.06] backdrop-blur p-7 flex flex-col justify-center"
+            >
+              <div className="flex items-center gap-4">
+                <div className="size-14 rounded-xl bg-accent/15 border border-accent/30 grid place-items-center shrink-0">
                   <p.icon className="size-7 text-accent-glow" />
                 </div>
-                <div className="mt-5 font-display font-bold text-xl text-primary-foreground leading-tight">
+                <div className="font-display font-bold text-[22px] text-primary-foreground leading-tight">
                   {p.t}
                 </div>
-                <div className="mt-2 text-[15px] text-primary-foreground/70 leading-snug">
-                  {p.d}
-                </div>
               </div>
-            ))}
-          </div>
+              <div className="mt-4 text-[15px] text-primary-foreground/75 leading-relaxed">
+                {p.d}
+              </div>
+            </div>
+          ))}
 
           {/* Card destaque · Posicionamento */}
           <div className="rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/20 to-transparent backdrop-blur p-7 flex flex-col justify-center">
@@ -1455,7 +1455,7 @@ const S13Institucional = () => {
               <ShieldCheck className="size-4" />
               Posicionamento
             </div>
-            <div className="mt-4 font-display font-bold text-[30px] text-primary-foreground leading-[1.08]">
+            <div className="mt-4 font-display font-bold text-[28px] text-primary-foreground leading-[1.08]">
               Uma infraestrutura.<br />
               <span className="text-gradient">Múltiplas aplicações.</span>
             </div>
@@ -1463,28 +1463,6 @@ const S13Institucional = () => {
               Rastreabilidade, governança, Passaporte Digital e inteligência —
               tudo sobre a mesma base de dados confiável.
             </p>
-          </div>
-        </div>
-
-        {/* -------- Zona 3 · Consórcio de execução -------- */}
-        <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-8 py-5">
-          <div className="flex items-center justify-between gap-8">
-            <div className="text-[11px] uppercase tracking-[0.28em] text-primary-foreground/55 font-semibold shrink-0">
-              Consórcio de execução
-            </div>
-            <div className="flex items-center gap-6">
-              <div className="rounded-lg bg-primary-foreground/95 px-6 py-3 grid place-items-center">
-                <img src={mytsLogo} alt="MyTS" className="h-8 [filter:invert(1)_hue-rotate(180deg)_saturate(4)]" style={{ filter: "none" }} />
-              </div>
-              <div className="text-primary-foreground/30 text-xl font-light">×</div>
-              <div className="rounded-lg bg-primary-foreground/95 px-6 py-3 grid place-items-center">
-                <img src={grounddAsset.url} alt="Groundd" className="h-8" />
-              </div>
-              <div className="text-primary-foreground/30 text-xl font-light">×</div>
-              <div className="rounded-lg bg-primary-foreground/95 px-6 py-3 grid place-items-center">
-                <img src={ramoAsset.url} alt="RAMO" className="h-8" />
-              </div>
-            </div>
           </div>
         </div>
       </div>
