@@ -653,16 +653,16 @@ const S06ComoFunciona = () => (
   >
     <SectionLabel n="05" label="Como funciona" />
 
-    <h2 className="mt-3 font-display font-bold text-4xl text-primary leading-[1.05] max-w-5xl">
+    <h2 className="mt-3 font-display font-bold text-5xl text-primary leading-[1.05] max-w-5xl">
       Da origem ao mercado —{" "}
       <span className="text-gradient">uma única jornada de dado</span>.
     </h2>
 
-    <div className="mt-6 flex-1 min-h-0">
+    <div className="mt-5 flex-1 min-h-0">
       <FluxoInfraestrutura />
     </div>
 
-    <p className="mt-4 text-center text-base text-muted-foreground italic">
+    <p className="mt-4 text-center text-lg text-muted-foreground italic">
       Cada informação é registrada uma única vez e{" "}
       <span className="font-semibold text-primary not-italic">gera valor para toda a cadeia</span>.
     </p>
