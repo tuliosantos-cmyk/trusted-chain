@@ -1433,12 +1433,12 @@ const S16Encerramento = () => (
 
         <div className="flex flex-col items-end gap-4">
           <img src={mytsLogo} alt="MyTS" className="h-12 opacity-95" />
-          <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-primary-foreground/60">
-            <span className="font-semibold text-primary-foreground">MyTS</span>
-            <span className="size-1 rounded-full bg-primary-foreground/40" />
-            <span>Groundd</span>
-            <span className="size-1 rounded-full bg-primary-foreground/40" />
-            <span>RAMO</span>
+          <div className="text-[11px] uppercase tracking-widest text-primary-foreground/50 font-semibold">
+            Em parceria com
+          </div>
+          <div className="flex items-center gap-3">
+            <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-6" />
+            <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-6" />
           </div>
         </div>
       </div>
