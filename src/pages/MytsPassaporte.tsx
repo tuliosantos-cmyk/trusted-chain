@@ -1384,30 +1384,18 @@ const S13Institucional = () => {
     {
       icon: Database,
       t: "Tecnologia proprietária",
-      d: "Plataforma modular para captura, estruturação e visualização de evidências.",
+      d: "Plataforma modular para captura, estruturação e visualização de evidências ao longo da cadeia.",
     },
     {
       icon: Compass,
       t: "Metodologia de cadeia",
-      d: "Conhecimento profundo dos elos, riscos e oportunidades de cada setor.",
+      d: "Conhecimento profundo dos elos, riscos e oportunidades de cada setor produtivo.",
     },
     {
       icon: HeartHandshake,
       t: "Rede de parceiros",
-      d: "Especialistas em território, socioambiental e inteligência geoespacial.",
+      d: "Especialistas em território, socioambiental e inteligência geoespacial atuando em consórcio.",
     },
-  ];
-  const ecossistema = [
-    { icon: Sprout, t: "Produtores" },
-    { icon: Building2, t: "Compradores" },
-    { icon: Users, t: "Consumidores" },
-    { icon: Wallet, t: "Investidores" },
-    { icon: Handshake, t: "Parceiros" },
-  ];
-  const diferenciais = [
-    { t: "Dados como ativo", d: "Transformamos informações dispersas em evidências estruturadas e auditáveis." },
-    { t: "Território no centro", d: "Conectamos origem geoespacial, comunidade e impacto em uma única visão." },
-    { t: "Pronto para o mercado", d: "Passaporte Digital, relatórios ESG e integração com compradores e reguladores." },
   ];
   return (
     <Slide
@@ -1422,133 +1410,79 @@ const S13Institucional = () => {
     >
       <SectionLabel n="12" label="Quem somos" light />
 
-      <div className="mt-5 flex flex-col gap-5 flex-1 min-h-0">
-        {/* -------- Grid principal -------- */}
-        <div className="grid grid-cols-[1.15fr_0.85fr] gap-8 flex-1 min-h-0">
-          {/* Coluna esquerda */}
-          <div className="flex flex-col min-h-0">
-            {/* Cabeçalho institucional */}
-            <div className="flex items-center gap-5">
-              <img src={mytsLogo} alt="MyTS" className="h-14" />
-              <div className="h-10 w-px bg-primary-foreground/20" />
-              <div>
-                <div className="text-sm uppercase tracking-[0.25em] text-accent-glow font-semibold">
-                  My Trusted Source
-                </div>
-                <div className="text-primary-foreground/60 text-sm mt-1">
-                  Infraestrutura digital de confiança · desde 2020
-                </div>
-              </div>
+      <div className="mt-6 flex flex-col gap-6 flex-1 min-h-0">
+        {/* -------- Zona 1 · Manifesto herói -------- */}
+        <div className="flex items-start gap-6">
+          <img src={mytsLogo} alt="MyTS" className="h-16 shrink-0 mt-1" />
+          <div className="h-16 w-px bg-primary-foreground/20 shrink-0" />
+          <div className="flex-1">
+            <div className="text-xs uppercase tracking-[0.28em] text-accent-glow font-semibold">
+              My Trusted Source
             </div>
-
-            {/* Manifesto */}
-            <p className="mt-5 font-display text-[26px] text-primary-foreground leading-[1.22] max-w-2xl">
+            <p className="mt-3 font-display font-bold text-[42px] text-primary-foreground leading-[1.12] max-w-[1100px]">
               Existimos para transformar informações dispersas em{" "}
               <span className="text-gradient">confiança, acesso a mercado e valor</span>{" "}
               ao longo das cadeias produtivas.
             </p>
-
-            {/* Pilares */}
-            <div className="mt-5 grid grid-cols-3 gap-4">
-              {pilares.map((p) => (
-                <div
-                  key={p.t}
-                  className="rounded-xl border border-primary-foreground/15 bg-primary-foreground/[0.06] backdrop-blur p-4"
-                >
-                  <div className="size-10 rounded-lg bg-accent/15 border border-accent/30 grid place-items-center">
-                    <p.icon className="size-5 text-accent-glow" />
-                  </div>
-                  <div className="mt-3 font-display font-bold text-base text-primary-foreground leading-tight">
-                    {p.t}
-                  </div>
-                  <div className="mt-1.5 text-[13px] text-primary-foreground/65 leading-snug">
-                    {p.d}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Ecossistema conectado */}
-            <div className="mt-auto pt-5">
-              <div className="text-[11px] uppercase tracking-[0.25em] text-primary-foreground/50 font-semibold">
-                Conectamos todo o ecossistema
-              </div>
-              <div className="mt-3 flex items-center gap-2">
-                {ecossistema.map((e, i) => (
-                  <div key={e.t} className="flex items-center gap-2">
-                    <div className="flex flex-col items-center gap-1.5 min-w-[92px]">
-                      <div className="size-11 rounded-full bg-primary-foreground/8 border border-primary-foreground/20 grid place-items-center">
-                        <e.icon className="size-5 text-accent-glow" />
-                      </div>
-                      <div className="text-xs text-primary-foreground/80 font-semibold">
-                        {e.t}
-                      </div>
-                    </div>
-                    {i < ecossistema.length - 1 && (
-                      <div className="w-6 h-px bg-primary-foreground/25" />
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Coluna direita */}
-          <div className="flex flex-col gap-4 min-h-0">
-            {/* Card destaque */}
-            <div className="rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/15 to-transparent backdrop-blur p-6">
-              <div className="flex items-center gap-2 text-accent-glow text-xs uppercase tracking-[0.2em] font-semibold">
-                <ShieldCheck className="size-4" />
-                Posicionamento
-              </div>
-              <div className="mt-3 font-display font-bold text-[26px] text-primary-foreground leading-[1.1]">
-                Uma infraestrutura.<br />
-                Múltiplas aplicações.
-              </div>
-              <p className="mt-3 text-sm text-primary-foreground/75 leading-relaxed">
-                Rastreabilidade, governança, Passaporte Digital e inteligência —
-                tudo sobre a mesma base de dados confiável.
-              </p>
-            </div>
-
-            {/* Diferenciais */}
-            <div className="flex-1 min-h-0 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-5">
-              <div className="text-[11px] uppercase tracking-[0.25em] text-primary-foreground/50 font-semibold mb-3">
-                Por que a MyTS
-              </div>
-              <div className="space-y-3">
-                {diferenciais.map((d, i) => (
-                  <div key={d.t} className="flex gap-3">
-                    <div className="shrink-0 size-6 rounded-full bg-accent/15 border border-accent/30 grid place-items-center text-[10px] font-bold text-accent-glow">
-                      {String(i + 1).padStart(2, "0")}
-                    </div>
-                    <div>
-                      <div className="font-display font-bold text-[15px] text-primary-foreground leading-tight">
-                        {d.t}
-                      </div>
-                      <div className="mt-0.5 text-[12px] text-primary-foreground/65 leading-snug">
-                        {d.d}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
 
-        {/* -------- Rodapé: Parceiros -------- */}
-        <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-6 py-4">
-          <div className="flex items-center justify-between gap-6">
-            <div className="text-[11px] uppercase tracking-[0.25em] text-primary-foreground/50 font-semibold shrink-0">
+        {/* -------- Zona 2 · Pilares + Posicionamento -------- */}
+        <div className="grid grid-cols-[1.3fr_0.85fr] gap-6 flex-1 min-h-0">
+          {/* Pilares */}
+          <div className="grid grid-cols-3 gap-4">
+            {pilares.map((p) => (
+              <div
+                key={p.t}
+                className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.06] backdrop-blur p-6 flex flex-col"
+              >
+                <div className="size-14 rounded-xl bg-accent/15 border border-accent/30 grid place-items-center">
+                  <p.icon className="size-7 text-accent-glow" />
+                </div>
+                <div className="mt-5 font-display font-bold text-xl text-primary-foreground leading-tight">
+                  {p.t}
+                </div>
+                <div className="mt-2 text-[15px] text-primary-foreground/70 leading-snug">
+                  {p.d}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Card destaque · Posicionamento */}
+          <div className="rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/20 to-transparent backdrop-blur p-7 flex flex-col justify-center">
+            <div className="flex items-center gap-2 text-accent-glow text-xs uppercase tracking-[0.24em] font-semibold">
+              <ShieldCheck className="size-4" />
+              Posicionamento
+            </div>
+            <div className="mt-4 font-display font-bold text-[30px] text-primary-foreground leading-[1.08]">
+              Uma infraestrutura.<br />
+              <span className="text-gradient">Múltiplas aplicações.</span>
+            </div>
+            <p className="mt-4 text-[15px] text-primary-foreground/75 leading-relaxed">
+              Rastreabilidade, governança, Passaporte Digital e inteligência —
+              tudo sobre a mesma base de dados confiável.
+            </p>
+          </div>
+        </div>
+
+        {/* -------- Zona 3 · Consórcio de execução -------- */}
+        <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-8 py-5">
+          <div className="flex items-center justify-between gap-8">
+            <div className="text-[11px] uppercase tracking-[0.28em] text-primary-foreground/55 font-semibold shrink-0">
               Consórcio de execução
             </div>
-            <div className="flex items-center gap-5">
-              <div className="rounded-lg bg-primary-foreground/95 px-6 py-2.5">
-                <img src={grounddAsset.url} alt="Groundd" className="h-7" />
+            <div className="flex items-center gap-6">
+              <div className="rounded-lg bg-primary-foreground/95 px-6 py-3 grid place-items-center">
+                <img src={mytsLogo} alt="MyTS" className="h-8 [filter:invert(1)_hue-rotate(180deg)_saturate(4)]" style={{ filter: "none" }} />
               </div>
-              <div className="rounded-lg bg-primary-foreground/95 px-6 py-2.5">
-                <img src={ramoAsset.url} alt="RAMO" className="h-7" />
+              <div className="text-primary-foreground/30 text-xl font-light">×</div>
+              <div className="rounded-lg bg-primary-foreground/95 px-6 py-3 grid place-items-center">
+                <img src={grounddAsset.url} alt="Groundd" className="h-8" />
+              </div>
+              <div className="text-primary-foreground/30 text-xl font-light">×</div>
+              <div className="rounded-lg bg-primary-foreground/95 px-6 py-3 grid place-items-center">
+                <img src={ramoAsset.url} alt="RAMO" className="h-8" />
               </div>
             </div>
           </div>
@@ -1557,6 +1491,7 @@ const S13Institucional = () => {
     </Slide>
   );
 };
+
 
 /* ---------- 14 · NOSSO TIME ---------- */
 const S14Time = () => {
