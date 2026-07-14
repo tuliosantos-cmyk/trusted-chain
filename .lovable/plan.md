@@ -1,47 +1,46 @@
-## Nova apresentação: `/myts-passaporte`
+## Ajustes no `/myts-passaporte`
 
-Deck institucional MyTS "Infraestrutura Digital de Confiança" com 16 slides 16:9, no mesmo padrão visual/tipográfico do `/myts-360` (navy + azul elétrico, Rubik/Lato, chips, `SectionLabel`, cards `bg-gradient-dark-card`, decor sutil com grid/glow).
+Duas frentes:
 
-Cliente da capa fica como placeholder editável **(Cliente)** — trocado manualmente antes de cada apresentação.
+### 1. Logos reais dos parceiros (Groundd + RAMO)
 
-## Estrutura dos 16 slides
+- Subir `user-uploads://groundd.png` e `user-uploads://ramo.png` como Lovable Assets (`src/assets/logos/groundd.png.asset.json` e `ramo.png.asset.json`), sem copiar binário pro repo.
+- Substituir os chips de texto "Groundd" e "RAMO" por `<img>` reais em:
+  - Slide 01 (Capa) — faixa "em parceria com"
+  - Slide 09 (Ecossistema de competências) — cards laterais Groundd e RAMO ganham a logo no topo do card
+  - Slide 16 (Encerramento) — assinatura tripla MyTS · Groundd · RAMO
+- Como as logos vêm em preto/verde escuro sobre fundo branco e os slides são navy, envolver cada `<img>` em um "chip" branco com padding (rounded, `bg-background`, sombra suave) pra garantir legibilidade — mesma tratativa dada aos logos Korin/Carrefour no slide 11.
 
-Cada slide é uma `Slide` (mesmo componente do MyTS360) 16:9, com decor próprio, ícones Lucide e uma peça visual distinta — sem repetir layouts.
+### 2. Proporção do conteúdo dentro dos boxes
 
-| # | Slide | Peça visual principal |
-|---|-------|----------------------|
-| 01 | **Capa** — MyTS · Infraestrutura Digital de Confiança · em parceria com Groundd e RAMO · Apresentação para (Cliente) | Hero navy com grid pattern, glow radial, marca MyTS grande, chips dos parceiros |
-| 02 | **O mercado mudou** — confiança virou exigência (consumidores/compradores/investidores/reguladores) | 4 cards em grid com ícones (Users, ShoppingBag, TrendingUp, Scale) + linha do "novo contrato de mercado" |
-| 03 | **O desafio** — patrimônio invisível disperso em docs/planilhas/certificados | Ilustração SVG "caos → ordem": documentos flutuantes desorganizados de um lado, migrando para um hub central |
-| 04 | **A consequência** — 4 custos numerados (acesso a mercado, risco regulatório, baixa valorização, processos lentos) | Grid 2×2 numerado 01–04 com barra lateral em accent-glow, tagline final "A cadeia produz valor. O mercado não enxerga." |
-| 05 | **A resposta: MyTS** — Infraestrutura Digital de Confiança | Slide manifesto navy, tipografia grande, "uma infraestrutura · múltiplas aplicações" com halo |
-| 06 | **Como funciona** — diagrama do fluxo Diagnóstico → Desenvolvimento → Organização → Evidências → Inteligência Territorial → Passaporte Digital → Mercado | SVG vertical/horizontal com 7 nós conectados, mercado final se ramificando em 4 destinos (Consumidores, Compradores, Investidores, Instituições Financeiras). Estilo herdado do `FlowDiagram` |
-| 07 | **Muito além da rastreabilidade** — 6 capacidades da plataforma | Grid 3×2 de cards com ícones (Users=Fornecedores, FileCheck=Documental, Route=Rastreabilidade, Sprout=Socioambiental, QrCode=Passaporte, BarChart=Analítica) |
-| 08 | **Passaporte Digital** — tornando a confiança visível | Split: à esquerda copy + bullets; à direita mockup de smartphone com QR Code e tela do Passaporte (produto, origem, produtor, evidências) — SVG estilo mockup do MyTS360 |
-| 09 | **Ecossistema de competências** — MyTS + Groundd + RAMO | 3 colunas com card destacado MyTS ao centro (maior, accent), Groundd e RAMO nas laterais. Ícones (Database, Sprout, Satellite/Map) |
-| 10 | **Onde essa solução gera valor** — 9 cadeias/aplicações | Constelação de chips/pills flutuantes (Sociobiodiversidade, Agricultura regenerativa, Bem-estar animal, Cooperativas, Programas de fornecedores, Marketplaces, Grandes compradores, Instituições financeiras, Fundos de impacto) sobre grid, com tagline "Uma plataforma. Diversas aplicações." |
-| 11 | **Experiência em projetos reais** — Korin, Carrefour, Damm + placeholders (Cliente) | Strip de logos (reusar assets `korin.png`, `carrefour.png` já no projeto) + 2 cards placeholder editáveis |
-| 12 | **O valor** — o que muda para cada participante | Grid 2×2: Produtores / Compradores / Consumidores / Investidores. Cada card com ícone, 4–5 bullets curtos, cor de acento por perfil |
-| 13 | **Quem somos** — MyTS / My Trusted Source | Slide institucional: logo grande, tagline, parágrafo + 3 mini-stats placeholder (clientes, fornecedores, setores) prontos para preencher |
-| 14 | **Nosso time** — Valmir + 4 placeholders | Grid de 5 cards de pessoa com avatar circular (placeholder monograma), nome, cargo, bio curta editável |
-| 15 | **Próximos passos** — como cada projeto é estruturado | Timeline horizontal com 4 marcos (Diagnóstico → Desenho → Implantação → Evolução), copy sobre personalização |
-| 16 | **Encerramento** — "Confiança não nasce no ponto de venda" + contatos | Slide navy full-bleed, tipografia dramática, bloco de contato (Valmir, André, email, site), assinatura tripla MyTS · Groundd · RAMO |
+Diagnóstico: os cards em si estão bem dimensionados, mas o conteúdo interno (ícones, títulos, bullets, números) está subdimensionado pro tamanho projetado. Vou aumentar tipografia e ícones dentro dos cards, sem mexer no tamanho externo dos boxes.
 
-## Detalhes técnicos
+Ajustes por slide:
 
-- **Arquivo:** `src/pages/MytsPassaporte.tsx` (mesmo esqueleto do `MyTS360.tsx` — reuso de `Slide`, `Chip`, `SectionLabel`, `Deck`)
-- **Rota:** adicionar `<Route path="/myts-passaporte" element={<MytsPassaporte />} />` em `src/App.tsx`
-- **Componentes visuais novos** (locais ao arquivo, para não poluir `components/`):
-  - `FluxoInfraestrutura` — SVG do slide 6 (7 nós → 4 saídas), com linhas animadas dashed no estilo `FlowDiagram`
-  - `MockupPassaporte` — SVG de smartphone com QR + tela do Passaporte (slide 8)
-  - `EcossistemaTri` — layout dos 3 parceiros (slide 9)
-  - `AvatarPessoa` — círculo com monograma + gradiente (slide 14)
-- **Design tokens:** só usar semantic tokens já definidos em `index.css` (`bg-gradient-dark-card`, `bg-gradient-accent`, `text-accent-glow`, `shadow-glow`, `grid-pattern`). Zero cor hardcoded.
-- **SEO / head:** `<Helmet>` com title "MyTS · Infraestrutura Digital de Confiança" e meta description do encerramento.
-- **Sem backend, sem novas dependências.** Só React + Tailwind + Lucide, exatamente como o MyTS360.
+| Slide | O que aumenta |
+|---|---|
+| 02 O mercado mudou (4 cards) | ícone 28→40px, título do card 18→24px, corpo 14→18px, mais padding interno |
+| 04 A consequência (2×2 numerado) | numeral "01–04" 32→56px, título 20→26px, corpo 14→18px |
+| 07 Muito além da rastreabilidade (3×2) | ícone 24→36px, título 18→22px, corpo 14→17px |
+| 09 Ecossistema (3 colunas) | logo/ícone do parceiro maior, título 22→28px, bullets 14→17px, card central MyTS ainda mais destacado |
+| 11 Experiência em projetos | logos ampliadas (~1.4×), placeholders com tipografia maior |
+| 12 O valor (2×2 perfis) | ícone do perfil 28→40px, título 22→28px, bullets 15→18px, mais respiro entre bullets |
+| 13 Quem somos (mini-stats) | número da stat 36→64px, label 14→18px |
+| 14 Nosso time (5 avatares) | avatar circular 64→96px, nome 16→22px, cargo 12→16px, bio 12→15px |
+| 15 Próximos passos (timeline) | numeral do marco 20→32px, título 18→24px, descrição 14→17px |
 
-## Fora de escopo desta entrega
+Slides 01, 03, 05, 06, 08, 10, 16 já têm hierarquia dominante correta — mantidos.
 
-- Exportar para .pptx (podemos fazer depois com o mesmo pipeline Playwright + pptxgenjs que usamos no MyTS360).
-- Editor visual dos textos (por enquanto conteúdo é hardcoded — trocar (Cliente) exige editar o arquivo).
-- Fotos reais do time (usamos placeholders com monograma até você mandar).
+Regra: nada é hardcoded em px no JSX; uso classes Tailwind (`text-2xl`, `text-lg`, `p-8`, `gap-6`, `w-10 h-10` nos ícones Lucide) mantendo os design tokens semânticos do `index.css`. Sem alterar layout externo dos cards nem quebrar responsividade da tela 16:9.
+
+### Verificação
+
+Após o build, Playwright captura os 16 slides em 1600×900 e eu revejo visualmente pra confirmar que:
+- logos dos parceiros aparecem nítidas nos slides 01/09/16
+- não sobra card "vazio" nem quebra de linha esquisita depois do aumento tipográfico
+- densidade continua respirando (nenhum slide estoura os 1080px verticais)
+
+### Fora de escopo
+
+- Trocar fotos placeholder do time por fotos reais (aguardando material)
+- Exportar para .pptx

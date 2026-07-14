@@ -36,6 +36,23 @@ import {
 } from "lucide-react";
 import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
+import grounddAsset from "@/assets/logos/groundd.png.asset.json";
+import ramoAsset from "@/assets/logos/ramo.png.asset.json";
+
+/* Chip branco com a logo do parceiro — legibilidade sobre fundo navy */
+const PartnerLogo = ({
+  src,
+  alt,
+  className = "h-8",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) => (
+  <span className="inline-flex items-center justify-center rounded-lg bg-background px-3 py-1.5 shadow-card">
+    <img src={src} alt={alt} className={`${className} w-auto object-contain`} />
+  </span>
+);
 
 /* -----------------------------------------------------------
    MyTS · Infraestrutura Digital de Confiança — deck institucional
@@ -316,8 +333,8 @@ const AvatarPessoa = ({ nome }: { nome: string }) => {
   return (
     <div className="relative">
       <div className="absolute -inset-1 bg-gradient-accent opacity-40 blur-md rounded-full" />
-      <div className="relative size-20 rounded-full bg-primary border-2 border-accent-glow/40 grid place-items-center">
-        <span className="font-display font-bold text-2xl text-accent-glow">{iniciais}</span>
+      <div className="relative size-28 rounded-full bg-primary border-2 border-accent-glow/40 grid place-items-center">
+        <span className="font-display font-bold text-4xl text-accent-glow">{iniciais}</span>
       </div>
     </div>
   );
@@ -359,13 +376,14 @@ const S01Capa = () => (
           Transformando origem, território e impacto em valor para cadeias produtivas.
         </p>
 
-        <div className="mt-10 flex items-center gap-6">
+        <div className="mt-10 flex items-center gap-6 flex-wrap">
           <div className="rounded-xl bg-primary-foreground/10 border border-primary-foreground/15 px-5 py-3">
-            <div className="text-xs uppercase tracking-widest text-primary-foreground/55">
+            <div className="text-xs uppercase tracking-widest text-primary-foreground/55 mb-2">
               Em parceria com
             </div>
-            <div className="font-display font-bold text-primary-foreground text-xl leading-tight">
-              Groundd · RAMO
+            <div className="flex items-center gap-3">
+              <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-7" />
+              <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-7" />
             </div>
           </div>
           <div className="h-12 w-px bg-primary-foreground/15" />
@@ -432,16 +450,16 @@ const S02Mercado = () => {
         {forcas.map((f, i) => (
           <div
             key={f.t}
-            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-6 flex flex-col"
+            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-7 flex flex-col"
           >
-            <div className="text-xs font-mono text-accent">0{i + 1}</div>
-            <div className="mt-3 size-12 rounded-xl bg-gradient-accent grid place-items-center">
-              <f.icon className="size-6 text-accent-foreground" />
+            <div className="text-sm font-mono text-accent">0{i + 1}</div>
+            <div className="mt-3 size-16 rounded-2xl bg-gradient-accent grid place-items-center">
+              <f.icon className="size-8 text-accent-foreground" />
             </div>
-            <div className="mt-4 font-display font-bold text-2xl text-primary leading-tight">
+            <div className="mt-5 font-display font-bold text-3xl text-primary leading-tight">
               {f.t}
             </div>
-            <div className="mt-2 text-base text-muted-foreground leading-snug">
+            <div className="mt-3 text-lg text-muted-foreground leading-snug">
               {f.d}
             </div>
           </div>
@@ -551,18 +569,18 @@ const S04Consequencia = () => {
         O custo de uma cadeia <span className="text-gradient">sem visibilidade</span>.
       </h2>
 
-      <div className="mt-8 grid grid-cols-2 gap-5 flex-1 min-h-0">
+      <div className="mt-8 grid grid-cols-2 gap-6 flex-1 min-h-0">
         {custos.map((c, i) => (
           <div
             key={c.t}
-            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-6 pl-8 flex flex-col justify-center"
+            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-8 pl-10 flex flex-col justify-center"
           >
-            <div className="absolute left-0 top-6 bottom-6 w-1.5 rounded-r-full bg-gradient-accent" />
-            <div className="text-xs font-mono font-bold text-accent">0{i + 1}</div>
-            <div className="mt-2 font-display font-bold text-2xl text-primary leading-tight">
+            <div className="absolute left-0 top-6 bottom-6 w-2 rounded-r-full bg-gradient-accent" />
+            <div className="font-display font-bold text-5xl text-accent leading-none">0{i + 1}</div>
+            <div className="mt-4 font-display font-bold text-3xl text-primary leading-tight">
               {c.t}
             </div>
-            <div className="mt-2 text-base text-muted-foreground">{c.d}</div>
+            <div className="mt-3 text-lg text-muted-foreground leading-snug">{c.d}</div>
           </div>
         ))}
       </div>
@@ -695,15 +713,15 @@ const S07Alem = () => {
         {cards.map((c) => (
           <div
             key={c.t}
-            className="group relative rounded-2xl border border-border bg-gradient-card shadow-card p-5 flex flex-col hover:border-accent/40 transition-colors"
+            className="group relative rounded-2xl border border-border bg-gradient-card shadow-card p-7 flex flex-col hover:border-accent/40 transition-colors"
           >
-            <div className="size-11 rounded-xl bg-gradient-accent grid place-items-center">
-              <c.icon className="size-5 text-accent-foreground" />
+            <div className="size-14 rounded-2xl bg-gradient-accent grid place-items-center">
+              <c.icon className="size-7 text-accent-foreground" />
             </div>
-            <div className="mt-4 font-display font-bold text-xl text-primary leading-tight">
+            <div className="mt-5 font-display font-bold text-2xl text-primary leading-tight">
               {c.t}
             </div>
-            <div className="mt-2 text-sm text-muted-foreground leading-snug">{c.d}</div>
+            <div className="mt-3 text-base text-muted-foreground leading-snug">{c.d}</div>
           </div>
         ))}
       </div>
@@ -809,68 +827,78 @@ const S09Ecossistema = () => {
       </h2>
 
       <div className="mt-8 grid grid-cols-3 gap-5 flex-1 min-h-0 items-stretch">
-        {parceiros.map((p) => (
-          <div
-            key={p.nome}
-            className={`relative rounded-2xl p-6 flex flex-col ${
-              p.destaque
-                ? "bg-primary text-primary-foreground border-2 border-accent shadow-glow scale-[1.03]"
-                : "bg-gradient-card border border-border shadow-card"
-            }`}
-          >
-            {p.destaque && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-accent text-accent-foreground text-[10px] font-bold uppercase tracking-widest px-3 py-1">
-                Infraestrutura
-              </div>
-            )}
+        {parceiros.map((p) => {
+          const logoSrc =
+            p.nome === "Groundd" ? grounddAsset.url : p.nome === "RAMO" ? ramoAsset.url : null;
+          return (
             <div
-              className={`size-14 rounded-xl grid place-items-center ${
-                p.destaque ? "bg-gradient-accent" : "bg-primary/10"
+              key={p.nome}
+              className={`relative rounded-2xl p-7 flex flex-col ${
+                p.destaque
+                  ? "bg-primary text-primary-foreground border-2 border-accent shadow-glow scale-[1.03]"
+                  : "bg-gradient-card border border-border shadow-card"
               }`}
             >
-              <p.icon
-                className={`size-7 ${p.destaque ? "text-accent-foreground" : "text-primary"}`}
-              />
-            </div>
-            <div
-              className={`mt-4 font-display font-bold text-3xl leading-tight ${
-                p.destaque ? "text-primary-foreground" : "text-primary"
-              }`}
-            >
-              {p.nome}
-            </div>
-            <div
-              className={`mt-1 text-sm uppercase tracking-widest font-semibold ${
-                p.destaque ? "text-accent-glow" : "text-accent"
-              }`}
-            >
-              {p.papel}
-            </div>
-            <div
-              className={`mt-5 h-px ${
-                p.destaque ? "bg-primary-foreground/15" : "bg-border"
-              }`}
-            />
-            <div className="mt-4 space-y-2 flex-1">
-              {p.itens.map((it) => (
-                <div key={it} className="flex items-start gap-2">
-                  <CheckCircle2
-                    className={`size-4 mt-0.5 shrink-0 ${
-                      p.destaque ? "text-accent-glow" : "text-accent"
-                    }`}
-                  />
-                  <span
-                    className={`text-sm ${
-                      p.destaque ? "text-primary-foreground/90" : "text-primary/80"
-                    }`}
-                  >
-                    {it}
-                  </span>
+              {p.destaque && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-accent text-accent-foreground text-[11px] font-bold uppercase tracking-widest px-4 py-1.5">
+                  Infraestrutura
                 </div>
-              ))}
+              )}
+              {logoSrc ? (
+                <div className="rounded-xl bg-background border border-border grid place-items-center px-4 py-3 h-16 self-start">
+                  <img src={logoSrc} alt={p.nome} className="h-9 w-auto object-contain" />
+                </div>
+              ) : (
+                <div
+                  className={`size-16 rounded-2xl grid place-items-center ${
+                    p.destaque ? "bg-gradient-accent" : "bg-primary/10"
+                  }`}
+                >
+                  <p.icon
+                    className={`size-8 ${p.destaque ? "text-accent-foreground" : "text-primary"}`}
+                  />
+                </div>
+              )}
+              <div
+                className={`mt-5 font-display font-bold text-4xl leading-tight ${
+                  p.destaque ? "text-primary-foreground" : "text-primary"
+                }`}
+              >
+                {p.nome}
+              </div>
+              <div
+                className={`mt-2 text-base uppercase tracking-widest font-semibold ${
+                  p.destaque ? "text-accent-glow" : "text-accent"
+                }`}
+              >
+                {p.papel}
+              </div>
+              <div
+                className={`mt-5 h-px ${
+                  p.destaque ? "bg-primary-foreground/15" : "bg-border"
+                }`}
+              />
+              <div className="mt-4 space-y-3 flex-1">
+                {p.itens.map((it) => (
+                  <div key={it} className="flex items-start gap-2.5">
+                    <CheckCircle2
+                      className={`size-5 mt-0.5 shrink-0 ${
+                        p.destaque ? "text-accent-glow" : "text-accent"
+                      }`}
+                    />
+                    <span
+                      className={`text-base ${
+                        p.destaque ? "text-primary-foreground/90" : "text-primary/80"
+                      }`}
+                    >
+                      {it}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <p className="mt-6 text-center text-base text-muted-foreground">
@@ -974,31 +1002,31 @@ const S11Experiencia = () => {
           return (
             <div
               key={c.t + i}
-              className={`rounded-2xl p-5 flex flex-col ${
+              className={`rounded-2xl p-6 flex flex-col ${
                 real
                   ? "bg-gradient-card border border-border shadow-card"
                   : "bg-muted/30 border border-dashed border-muted-foreground/30"
               }`}
             >
               <div
-                className={`size-12 rounded-xl grid place-items-center ${
+                className={`size-16 rounded-2xl grid place-items-center ${
                   real ? "bg-primary text-primary-foreground" : "bg-background text-muted-foreground"
                 }`}
               >
-                <span className="font-display font-bold text-lg">
+                <span className="font-display font-bold text-2xl">
                   {c.t.replace(/[()]/g, "").slice(0, 1)}
                 </span>
               </div>
               <div
-                className={`mt-4 font-display font-bold text-xl leading-tight ${
+                className={`mt-5 font-display font-bold text-2xl leading-tight ${
                   real ? "text-primary" : "text-muted-foreground"
                 }`}
               >
                 {c.t}
               </div>
-              <div className="mt-2 text-sm text-muted-foreground leading-snug">{c.d}</div>
+              <div className="mt-3 text-base text-muted-foreground leading-snug">{c.d}</div>
               {!real && (
-                <div className="mt-auto pt-3 text-[10px] uppercase tracking-widest text-muted-foreground/60 font-semibold">
+                <div className="mt-auto pt-3 text-[11px] uppercase tracking-widest text-muted-foreground/60 font-semibold">
                   Editar por apresentação
                 </div>
               )}
@@ -1072,45 +1100,45 @@ const S12Valor = () => {
         <span className="text-gradient">cada participante</span> da cadeia.
       </h2>
 
-      <div className="mt-8 grid grid-cols-2 gap-5 flex-1 min-h-0">
+      <div className="mt-8 grid grid-cols-2 gap-6 flex-1 min-h-0">
         {perfis.map((p) => {
           const dark = p.cor === "primary";
           return (
             <div
               key={p.titulo}
-              className={`relative rounded-2xl p-6 flex flex-col ${
+              className={`relative rounded-2xl p-8 flex flex-col ${
                 dark
                   ? "bg-primary text-primary-foreground border border-accent/30"
                   : "bg-gradient-card border border-border shadow-card"
               }`}
             >
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-5">
                 <div
-                  className={`size-12 rounded-xl grid place-items-center ${
+                  className={`size-16 rounded-2xl grid place-items-center ${
                     dark ? "bg-accent-glow/20" : "bg-gradient-accent"
                   }`}
                 >
                   <p.icon
-                    className={`size-6 ${dark ? "text-accent-glow" : "text-accent-foreground"}`}
+                    className={`size-8 ${dark ? "text-accent-glow" : "text-accent-foreground"}`}
                   />
                 </div>
                 <div
-                  className={`font-display font-bold text-2xl ${
+                  className={`font-display font-bold text-3xl ${
                     dark ? "text-primary-foreground" : "text-primary"
                   }`}
                 >
                   {p.titulo}
                 </div>
               </div>
-              <div className={`mt-4 h-px ${dark ? "bg-primary-foreground/15" : "bg-border"}`} />
-              <div className="mt-4 grid grid-cols-1 gap-2 flex-1 content-start">
+              <div className={`mt-5 h-px ${dark ? "bg-primary-foreground/15" : "bg-border"}`} />
+              <div className="mt-5 grid grid-cols-1 gap-3 flex-1 content-start">
                 {p.itens.map((it) => (
-                  <div key={it} className="flex items-center gap-2">
+                  <div key={it} className="flex items-center gap-3">
                     <CheckCircle2
-                      className={`size-4 shrink-0 ${dark ? "text-accent-glow" : "text-accent"}`}
+                      className={`size-5 shrink-0 ${dark ? "text-accent-glow" : "text-accent"}`}
                     />
                     <span
-                      className={`text-base ${
+                      className={`text-lg ${
                         dark ? "text-primary-foreground/90" : "text-primary/85"
                       }`}
                     >
@@ -1183,21 +1211,21 @@ const S13Institucional = () => {
           </div>
         </div>
 
-        <div className="flex flex-col justify-center gap-4">
+        <div className="flex flex-col justify-center gap-5">
           {stats.map((s) => (
             <div
               key={s.t}
-              className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-6"
+              className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-7"
             >
-              <div className="font-display font-bold text-6xl text-gradient leading-none">
+              <div className="font-display font-bold text-8xl text-gradient leading-none">
                 {s.n}
               </div>
-              <div className="mt-2 text-primary-foreground/70 uppercase tracking-widest text-xs font-semibold">
+              <div className="mt-3 text-primary-foreground/75 uppercase tracking-widest text-base font-semibold">
                 {s.t}
               </div>
             </div>
           ))}
-          <div className="text-[10px] uppercase tracking-widest text-primary-foreground/40 font-semibold">
+          <div className="text-[11px] uppercase tracking-widest text-primary-foreground/40 font-semibold">
             números institucionais · editáveis
           </div>
         </div>
@@ -1230,7 +1258,7 @@ const S14Time = () => {
           return (
             <div
               key={p.nome + i}
-              className={`rounded-2xl p-5 flex flex-col items-center text-center ${
+              className={`rounded-2xl p-6 flex flex-col items-center text-center ${
                 real
                   ? "bg-gradient-card border border-border shadow-card"
                   : "bg-muted/30 border border-dashed border-muted-foreground/30"
@@ -1238,16 +1266,16 @@ const S14Time = () => {
             >
               <AvatarPessoa nome={real ? p.nome : "??"} />
               <div
-                className={`mt-4 font-display font-bold text-lg leading-tight ${
+                className={`mt-5 font-display font-bold text-2xl leading-tight ${
                   real ? "text-primary" : "text-muted-foreground"
                 }`}
               >
                 {p.nome}
               </div>
-              <div className="mt-1 text-xs uppercase tracking-widest text-accent font-semibold">
+              <div className="mt-2 text-sm uppercase tracking-widest text-accent font-semibold">
                 {p.cargo}
               </div>
-              <div className="mt-3 text-sm text-muted-foreground leading-snug">{p.bio}</div>
+              <div className="mt-3 text-base text-muted-foreground leading-snug">{p.bio}</div>
             </div>
           );
         })}
@@ -1280,24 +1308,24 @@ const S15Proximos = () => {
 
       <div className="mt-10 relative flex-1 min-h-0">
         {/* linha do tempo */}
-        <div className="absolute top-14 left-8 right-8 h-0.5 bg-gradient-to-r from-accent via-accent-glow to-accent" />
+        <div className="absolute top-16 left-8 right-8 h-0.5 bg-gradient-to-r from-accent via-accent-glow to-accent" />
 
         <div className="grid grid-cols-4 gap-5 relative">
           {marcos.map((m, i) => (
             <div key={m.t} className="flex flex-col items-center text-center">
               <div className="relative">
                 <div className="absolute -inset-2 bg-gradient-accent opacity-30 blur-xl rounded-full" />
-                <div className="relative size-16 rounded-full bg-primary border-2 border-accent grid place-items-center">
-                  <m.icon className="size-7 text-accent-glow" />
+                <div className="relative size-24 rounded-full bg-primary border-2 border-accent grid place-items-center">
+                  <m.icon className="size-10 text-accent-glow" />
                 </div>
               </div>
-              <div className="mt-3 text-xs font-mono font-bold text-accent">
+              <div className="mt-4 text-sm font-mono font-bold text-accent">
                 ETAPA 0{i + 1}
               </div>
-              <div className="mt-1 font-display font-bold text-xl text-primary leading-tight">
+              <div className="mt-2 font-display font-bold text-2xl text-primary leading-tight">
                 {m.t}
               </div>
-              <div className="mt-2 text-sm text-muted-foreground max-w-[220px] leading-snug">
+              <div className="mt-3 text-base text-muted-foreground max-w-[240px] leading-snug">
                 {m.d}
               </div>
             </div>
@@ -1405,12 +1433,12 @@ const S16Encerramento = () => (
 
         <div className="flex flex-col items-end gap-4">
           <img src={mytsLogo} alt="MyTS" className="h-12 opacity-95" />
-          <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-primary-foreground/60">
-            <span className="font-semibold text-primary-foreground">MyTS</span>
-            <span className="size-1 rounded-full bg-primary-foreground/40" />
-            <span>Groundd</span>
-            <span className="size-1 rounded-full bg-primary-foreground/40" />
-            <span>RAMO</span>
+          <div className="text-[11px] uppercase tracking-widest text-primary-foreground/50 font-semibold">
+            Em parceria com
+          </div>
+          <div className="flex items-center gap-3">
+            <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-6" />
+            <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-6" />
           </div>
         </div>
       </div>
