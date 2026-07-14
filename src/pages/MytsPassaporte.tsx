@@ -333,8 +333,8 @@ const AvatarPessoa = ({ nome }: { nome: string }) => {
   return (
     <div className="relative">
       <div className="absolute -inset-1 bg-gradient-accent opacity-40 blur-md rounded-full" />
-      <div className="relative size-20 rounded-full bg-primary border-2 border-accent-glow/40 grid place-items-center">
-        <span className="font-display font-bold text-2xl text-accent-glow">{iniciais}</span>
+      <div className="relative size-28 rounded-full bg-primary border-2 border-accent-glow/40 grid place-items-center">
+        <span className="font-display font-bold text-4xl text-accent-glow">{iniciais}</span>
       </div>
     </div>
   );
