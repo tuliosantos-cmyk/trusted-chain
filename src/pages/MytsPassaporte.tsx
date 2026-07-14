@@ -38,8 +38,11 @@ import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
 import grounddAsset from "@/assets/logos/groundd.png.asset.json";
 import ramoAsset from "@/assets/logos/ramo.png.asset.json";
+import korinAsset from "@/assets/logos/korin.png.asset.json";
+import carrefourAsset from "@/assets/logos/carrefour.png.asset.json";
 import produtorImg from "@/assets/passaporte/produtor.jpg";
 import geoImg from "@/assets/passaporte/geolocalizacao.jpg";
+import korinMockup from "@/assets/korin/mockup-qr-embalagem.jpg";
 
 /* Chip branco com a logo do parceiro — legibilidade sobre fundo navy */
 const PartnerLogo = ({
@@ -1020,74 +1023,248 @@ const S10Aplicacoes = () => {
 };
 
 /* ---------- 11 · EXPERIÊNCIA ---------- */
-const S11Experiencia = () => {
-  const clientes = [
-    { t: "Korin", d: "Sustentabilidade 360 e canal de transparência ao consumidor." },
-    { t: "Carrefour", d: "Jornada da Autonomia — desenvolvimento e conformidade de fornecedores." },
-    { t: "Damm Pescados", d: "Governança documental e transparência de cadeia." },
-    { t: "(Cliente)", d: "Descrição curta do projeto." },
-    { t: "(Cliente)", d: "Descrição curta do projeto." },
-  ];
-  return (
-    <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[360px] [filter:invert(1)] opacity-[0.04]" />}>
-      <SectionLabel n="10" label="Experiência construída em projetos reais" />
+const S11Experiencia = () => (
+  <Slide
+    bg="bg-background"
+    decor={
+      <MytsWatermark className="-right-20 -bottom-20 w-[360px] [filter:invert(1)] opacity-[0.04]" />
+    }
+  >
+    <SectionLabel n="10" label="Experiência construída em projetos reais" />
 
-      <h2 className="mt-5 font-display font-bold text-5xl text-primary leading-[1.05] max-w-5xl">
-        A metodologia MyTS evolui a partir de{" "}
-        <span className="text-gradient">desafios reais</span>.
-      </h2>
+    <h2 className="mt-4 font-display font-bold text-4xl text-primary leading-[1.05] max-w-4xl">
+      A metodologia MyTS evolui a partir de{" "}
+      <span className="text-gradient">desafios reais</span>.
+    </h2>
 
-      <p className="mt-4 text-lg text-muted-foreground max-w-3xl">
-        Aplicada em iniciativas de desenvolvimento de fornecedores, transparência,
-        rastreabilidade e fortalecimento de cadeias produtivas.
-      </p>
+    <p className="mt-3 text-base text-muted-foreground max-w-3xl leading-snug">
+      Dois cases em pontas opostas da cadeia: relação direta com o consumidor e
+      governança da rede de fornecedores.
+    </p>
 
-      <div className="mt-8 grid grid-cols-5 gap-4 flex-1 min-h-0">
-        {clientes.map((c, i) => {
-          const real = !c.t.startsWith("(");
-          return (
-            <div
-              key={c.t + i}
-              className={`rounded-2xl p-6 flex flex-col justify-center ${
-                real
-                  ? "bg-gradient-card border border-border shadow-card"
-                  : "bg-muted/30 border border-dashed border-muted-foreground/30"
-              }`}
-            >
-              <div
-                className={`size-16 rounded-2xl grid place-items-center ${
-                  real ? "bg-primary text-primary-foreground" : "bg-background text-muted-foreground"
-                }`}
-              >
-                <span className="font-display font-bold text-2xl">
-                  {c.t.replace(/[()]/g, "").slice(0, 1)}
-                </span>
-              </div>
-              <div
-                className={`mt-5 font-display font-bold text-2xl leading-tight ${
-                  real ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
-                {c.t}
-              </div>
-              <div className="mt-3 text-base text-muted-foreground leading-snug">{c.d}</div>
-              {!real && (
-                <div className="mt-auto pt-3 text-[11px] uppercase tracking-widest text-muted-foreground/60 font-semibold">
-                  Editar por apresentação
-                </div>
-              )}
+    <div className="mt-5 grid grid-cols-2 gap-6 flex-1 min-h-0 items-stretch">
+      {/* ---------- CASE KORIN ---------- */}
+      <div className="relative rounded-3xl bg-gradient-card border border-border shadow-elegant overflow-hidden flex flex-col">
+        <div className="flex items-center gap-4 px-6 pt-5 pb-4 border-b border-border/70">
+          <div className="rounded-xl bg-background border border-border shadow-card px-3 py-2">
+            <img src={korinAsset.url} alt="Korin" className="h-7 w-auto object-contain" />
+          </div>
+          <div className="min-w-0">
+            <div className="text-[11px] uppercase tracking-[0.22em] text-accent font-bold">
+              Case · Consumidor
             </div>
-          );
-        })}
+            <div className="font-display font-bold text-xl text-primary leading-tight truncate">
+              Transparência que aproxima
+            </div>
+          </div>
+        </div>
+
+        <div className="relative px-5 pt-4">
+          <div className="relative rounded-2xl overflow-hidden border border-border shadow-card aspect-[16/8]">
+            <img
+              src={korinMockup}
+              alt="Consumidor escaneando QR Code em embalagem Korin"
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute top-3 left-3 rounded-full bg-primary/90 backdrop-blur text-primary-foreground text-[10px] font-bold uppercase tracking-widest px-3 py-1.5">
+              QR na embalagem
+            </div>
+          </div>
+        </div>
+
+        <div className="px-6 py-4 flex-1 flex flex-col gap-4">
+          <ul className="space-y-1.5">
+            {[
+              "Passaporte Digital acessado por QR Code direto na gôndola",
+              "História da origem, granjas e boas práticas contadas ao consumidor",
+              "Canal contínuo entre marca, produtor e comprador final",
+            ].map((b) => (
+              <li key={b} className="flex items-start gap-3 text-sm text-primary/85 leading-snug">
+                <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" />
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-auto flex flex-wrap gap-2 pt-3">
+            {["Bem-estar animal", "Origem verificada", "Storytelling de cadeia"].map((t) => (
+              <span
+                key={t}
+                className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-semibold px-2.5 py-1 uppercase tracking-wider"
+              >
+                <Leaf className="size-3.5" />
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
 
-      <p className="mt-6 text-center text-base text-muted-foreground italic">
-        Cada projeto fortalece uma metodologia preparada para{" "}
-        <span className="font-semibold text-primary not-italic">diferentes setores e desafios</span>.
-      </p>
-    </Slide>
-  );
-};
+      {/* ---------- CASE CARREFOUR ---------- */}
+      <div className="relative rounded-3xl bg-gradient-card border border-border shadow-elegant overflow-hidden flex flex-col">
+        <div className="flex items-center gap-4 px-6 pt-5 pb-4 border-b border-border/70">
+          <div className="rounded-xl bg-background border border-border shadow-card px-3 py-2">
+            <img src={carrefourAsset.url} alt="Carrefour" className="h-7 w-auto object-contain" />
+          </div>
+          <div className="min-w-0">
+            <div className="text-[11px] uppercase tracking-[0.22em] text-accent font-bold">
+              Case · Cadeia de fornecedores
+            </div>
+            <div className="font-display font-bold text-xl text-primary leading-tight truncate">
+              Jornada da Autonomia
+            </div>
+          </div>
+        </div>
+
+        {/* Dashboard mockup — JSX */}
+        <div className="relative px-5 pt-4">
+          <div className="relative rounded-2xl overflow-hidden border border-primary/15 shadow-card aspect-[16/8] bg-primary text-primary-foreground">
+            {/* barra topo */}
+            <div className="flex items-center justify-between px-4 py-2 bg-primary-foreground/5 border-b border-primary-foreground/10">
+              <div className="flex items-center gap-1.5">
+                <span className="size-2 rounded-full bg-destructive/70" />
+                <span className="size-2 rounded-full bg-yellow-400/70" />
+                <span className="size-2 rounded-full bg-success/70" />
+              </div>
+              <div className="text-[9px] font-mono text-primary-foreground/60 tracking-wider">
+                jornada-da-autonomia · MyTS
+              </div>
+              <div className="size-3 rounded-full bg-accent-glow/40" />
+            </div>
+
+            <div className="grid grid-cols-[110px_1fr] h-[calc(100%-24px)]">
+              {/* sidebar */}
+              <div className="border-r border-primary-foreground/10 py-3 px-2.5 space-y-1.5 bg-primary-foreground/[0.03]">
+                {[
+                  { i: BarChart3, l: "Painel", on: true },
+                  { i: Users, l: "Fornecedores" },
+                  { i: FileCheck, l: "Docs" },
+                  { i: Route, l: "Tiers" },
+                  { i: ShieldCheck, l: "Conformidade" },
+                ].map((m) => (
+                  <div
+                    key={m.l}
+                    className={`flex items-center gap-1.5 rounded-md px-2 py-1.5 ${
+                      m.on
+                        ? "bg-accent/20 text-accent-glow"
+                        : "text-primary-foreground/55"
+                    }`}
+                  >
+                    <m.i className="size-3" />
+                    <span className="text-[9px] font-semibold truncate">{m.l}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* main */}
+              <div className="p-3 space-y-1.5">
+                {/* KPI row */}
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { n: "247", l: "Fornecedores" },
+                    { n: "92%", l: "Conformidade" },
+                    { n: "3", l: "Tiers mapeados" },
+                  ].map((k) => (
+                    <div
+                      key={k.l}
+                      className="rounded-md border border-primary-foreground/10 bg-primary-foreground/5 px-2 py-1.5"
+                    >
+                      <div className="text-[9px] uppercase tracking-widest text-primary-foreground/50">
+                        {k.l}
+                      </div>
+                      <div className="font-display font-bold text-lg leading-none text-accent-glow mt-0.5">
+                        {k.n}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Chart mock */}
+                <div className="rounded-md border border-primary-foreground/10 bg-primary-foreground/5 p-2.5">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="text-[9px] uppercase tracking-widest text-primary-foreground/60 font-semibold">
+                      Evolução mensal
+                    </div>
+                    <div className="text-[9px] text-accent-glow font-mono">+18%</div>
+                  </div>
+                  <div className="flex items-end gap-1 h-10">
+                    {[35, 48, 42, 60, 55, 72, 68, 84, 78, 92, 88, 95].map((h, idx) => (
+                      <div
+                        key={idx}
+                        className={`flex-1 rounded-sm ${
+                          idx === 11 ? "bg-accent-glow" : "bg-accent/50"
+                        }`}
+                        style={{ height: `${h}%` }}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Progress list */}
+                <div className="space-y-1.5">
+                  {[
+                    { l: "Tier 1 — Distribuidores", v: 96 },
+                    { l: "Tier 2 — Processadores", v: 84 },
+                    { l: "Tier 3 — Produtores", v: 61 },
+                  ].map((p) => (
+                    <div key={p.l}>
+                      <div className="flex items-center justify-between text-[9px] text-primary-foreground/70">
+                        <span className="truncate">{p.l}</span>
+                        <span className="font-mono text-accent-glow">{p.v}%</span>
+                      </div>
+                      <div className="mt-1 h-1 rounded-full bg-primary-foreground/10 overflow-hidden">
+                        <div
+                          className="h-full rounded-full bg-gradient-accent"
+                          style={{ width: `${p.v}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute top-9 right-3 rounded-full bg-accent-glow/95 text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1.5">
+              Dashboard ESG
+            </div>
+          </div>
+        </div>
+
+        <div className="px-6 py-4 flex-1 flex flex-col gap-4">
+          <ul className="space-y-1.5">
+            {[
+              "Programa multivarejo de desenvolvimento e conformidade de fornecedores",
+              "Visibilidade contínua de Tier 1, 2 e 3 com trilhas Social · Ambiental · Qualidade",
+              "Evidência ESG real para relatórios de sustentabilidade e regulação",
+            ].map((b) => (
+              <li key={b} className="flex items-start gap-3 text-sm text-primary/85 leading-snug">
+                <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" />
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-auto flex flex-wrap gap-2 pt-3">
+            {["Governança de cadeia", "Risco fornecedor", "Evidência ESG"].map((t) => (
+              <span
+                key={t}
+                className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-semibold px-2.5 py-1 uppercase tracking-wider"
+              >
+                <ShieldCheck className="size-3.5" />
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p className="mt-6 text-center text-lg text-muted-foreground italic">
+      Dois pontos da cadeia — <span className="font-semibold text-primary not-italic">uma única infraestrutura</span>.
+    </p>
+  </Slide>
+);
 
 /* ---------- 12 · O VALOR POR PARTICIPANTE ---------- */
 const S12Valor = () => {
