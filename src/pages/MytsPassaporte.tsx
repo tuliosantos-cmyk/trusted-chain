@@ -36,6 +36,23 @@ import {
 } from "lucide-react";
 import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
+import grounddAsset from "@/assets/logos/groundd.png.asset.json";
+import ramoAsset from "@/assets/logos/ramo.png.asset.json";
+
+/* Chip branco com a logo do parceiro — legibilidade sobre fundo navy */
+const PartnerLogo = ({
+  src,
+  alt,
+  className = "h-8",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) => (
+  <span className="inline-flex items-center justify-center rounded-lg bg-background px-3 py-1.5 shadow-card">
+    <img src={src} alt={alt} className={`${className} w-auto object-contain`} />
+  </span>
+);
 
 /* -----------------------------------------------------------
    MyTS · Infraestrutura Digital de Confiança — deck institucional
