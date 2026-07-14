@@ -1323,45 +1323,45 @@ const S12Valor = () => {
         <span className="text-gradient">cada participante</span> da cadeia.
       </h2>
 
-      <div className="mt-8 grid grid-cols-2 gap-6 flex-1 min-h-0">
+      <div className="mt-6 grid grid-cols-2 gap-5 flex-1 min-h-0">
         {perfis.map((p) => {
           const dark = p.cor === "primary";
           return (
             <div
               key={p.titulo}
-              className={`relative rounded-2xl p-8 flex flex-col justify-center ${
+              className={`relative rounded-2xl p-6 flex flex-col ${
                 dark
                   ? "bg-primary text-primary-foreground border border-accent/30"
                   : "bg-gradient-card border border-border shadow-card"
               }`}
             >
-              <div className="flex items-center gap-5">
+              <div className="flex items-center gap-4">
                 <div
-                  className={`size-16 rounded-2xl grid place-items-center ${
+                  className={`size-12 rounded-xl grid place-items-center shrink-0 ${
                     dark ? "bg-accent-glow/20" : "bg-gradient-accent"
                   }`}
                 >
                   <p.icon
-                    className={`size-8 ${dark ? "text-accent-glow" : "text-accent-foreground"}`}
+                    className={`size-6 ${dark ? "text-accent-glow" : "text-accent-foreground"}`}
                   />
                 </div>
                 <div
-                  className={`font-display font-bold text-4xl leading-[1.05] ${
+                  className={`font-display font-bold text-2xl leading-tight ${
                     dark ? "text-primary-foreground" : "text-primary"
                   }`}
                 >
                   {p.titulo}
                 </div>
               </div>
-              <div className={`mt-5 h-px ${dark ? "bg-primary-foreground/15" : "bg-border"}`} />
-              <div className="mt-5 grid grid-cols-1 gap-3 content-center">
+              <div className={`mt-4 h-px ${dark ? "bg-primary-foreground/15" : "bg-border"}`} />
+              <div className="mt-4 grid grid-cols-1 gap-2 content-start">
                 {p.itens.map((it) => (
-                  <div key={it} className="flex items-center gap-3">
+                  <div key={it} className="flex items-center gap-2.5">
                     <CheckCircle2
-                      className={`size-6 shrink-0 ${dark ? "text-accent-glow" : "text-accent"}`}
+                      className={`size-4 shrink-0 ${dark ? "text-accent-glow" : "text-accent"}`}
                     />
                     <span
-                      className={`text-xl ${
+                      className={`text-base leading-snug ${
                         dark ? "text-primary-foreground/90" : "text-primary/85"
                       }`}
                     >
