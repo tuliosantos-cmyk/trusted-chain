@@ -242,29 +242,29 @@ const FluxoInfraestrutura = () => {
 /* Mockup Smartphone com Passaporte — Slide 08 */
 const MockupPassaporte = () => (
   <div className="relative flex items-center justify-center h-full">
-    <div className="absolute -inset-4 bg-gradient-accent opacity-25 blur-3xl rounded-full" />
+    <div className="absolute -inset-6 bg-gradient-accent opacity-25 blur-3xl rounded-full" />
     {/* Smartphone frame */}
-    <div className="relative w-[280px] rounded-[38px] bg-primary p-3 border border-primary-foreground/10 shadow-2xl">
-      <div className="relative rounded-[28px] overflow-hidden bg-background aspect-[9/18]">
+    <div className="relative w-[340px] rounded-[44px] bg-primary p-3.5 border border-primary-foreground/10 shadow-2xl">
+      <div className="relative rounded-[34px] overflow-hidden bg-background aspect-[9/18]">
         {/* status bar */}
-        <div className="absolute top-0 inset-x-0 h-6 bg-primary/5 flex items-center justify-between px-4">
-          <span className="text-[9px] font-semibold text-primary">9:41</span>
-          <span className="text-[9px] text-primary/70">MyTS</span>
+        <div className="absolute top-0 inset-x-0 h-7 bg-primary/5 flex items-center justify-between px-5">
+          <span className="text-[10px] font-semibold text-primary">9:41</span>
+          <span className="text-[10px] text-primary/70">MyTS</span>
         </div>
         {/* header product */}
-        <div className="pt-8 px-4 pb-3 bg-gradient-to-br from-primary to-primary/90 text-primary-foreground">
-          <div className="text-[9px] uppercase tracking-widest text-accent-glow font-bold">
+        <div className="pt-10 px-5 pb-4 bg-gradient-to-br from-primary to-primary/90 text-primary-foreground">
+          <div className="text-[10px] uppercase tracking-widest text-accent-glow font-bold">
             Passaporte Digital
           </div>
-          <div className="mt-1 font-display font-bold text-lg leading-tight">
+          <div className="mt-1 font-display font-bold text-2xl leading-tight">
             Cacau Silvestre
           </div>
-          <div className="text-[10px] text-primary-foreground/70">
+          <div className="text-xs text-primary-foreground/70">
             Comunidade Ribeirinha · Amazonas
           </div>
         </div>
         {/* content list */}
-        <div className="p-3 space-y-2">
+        <div className="p-4 space-y-3">
           {[
             { icon: MapPin, t: "Origem verificada", v: "Médio Juruá, AM" },
             { icon: Users, t: "Produtores", v: "42 famílias" },
@@ -274,26 +274,26 @@ const MockupPassaporte = () => (
           ].map((r) => (
             <div
               key={r.t}
-              className="flex items-center gap-2 rounded-lg border border-border bg-gradient-card px-2 py-1.5"
+              className="flex items-center gap-3 rounded-lg border border-border bg-gradient-card px-3 py-2"
             >
-              <div className="size-6 rounded-md bg-accent/10 grid place-items-center shrink-0">
-                <r.icon className="size-3 text-accent" />
+              <div className="size-7 rounded-md bg-accent/10 grid place-items-center shrink-0">
+                <r.icon className="size-4 text-accent" />
               </div>
               <div className="min-w-0 flex-1">
-                <div className="text-[8px] uppercase tracking-wider text-muted-foreground">
+                <div className="text-[9px] uppercase tracking-wider text-muted-foreground">
                   {r.t}
                 </div>
-                <div className="text-[10px] font-semibold text-primary truncate">
+                <div className="text-xs font-semibold text-primary truncate">
                   {r.v}
                 </div>
               </div>
-              <CheckCircle2 className="size-3 text-accent shrink-0" />
+              <CheckCircle2 className="size-4 text-accent shrink-0" />
             </div>
           ))}
         </div>
         {/* CTA */}
-        <div className="absolute bottom-3 inset-x-3">
-          <div className="rounded-lg bg-gradient-accent text-accent-foreground text-center text-[10px] font-bold py-2">
+        <div className="absolute bottom-4 inset-x-4">
+          <div className="rounded-lg bg-gradient-accent text-accent-foreground text-center text-xs font-bold py-2.5">
             Conheça esta história
           </div>
         </div>
@@ -301,8 +301,8 @@ const MockupPassaporte = () => (
     </div>
 
     {/* QR code flutuante */}
-    <div className="absolute -left-6 top-8 rounded-2xl bg-background border border-border shadow-elegant p-3 rotate-[-6deg]">
-      <div className="grid grid-cols-8 gap-0.5 w-[88px]">
+    <div className="absolute -left-8 top-10 rounded-2xl bg-background border border-border shadow-elegant p-4 rotate-[-6deg]">
+      <div className="grid grid-cols-8 gap-0.5 w-[104px]">
         {Array.from({ length: 64 }).map((_, i) => {
           // padrão pseudo-aleatório determinístico
           const on = (i * 7 + (i % 5) * 3) % 3 !== 0;
@@ -314,7 +314,7 @@ const MockupPassaporte = () => (
           );
         })}
       </div>
-      <div className="mt-2 text-center text-[8px] font-mono uppercase tracking-widest text-muted-foreground">
+      <div className="mt-2 text-center text-[9px] font-mono uppercase tracking-widest text-muted-foreground">
         scan
       </div>
     </div>
