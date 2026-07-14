@@ -1008,7 +1008,7 @@ const S11Experiencia = () => {
           return (
             <div
               key={c.t + i}
-              className={`rounded-2xl p-6 flex flex-col ${
+              className={`rounded-2xl p-6 flex flex-col justify-center ${
                 real
                   ? "bg-gradient-card border border-border shadow-card"
                   : "bg-muted/30 border border-dashed border-muted-foreground/30"
