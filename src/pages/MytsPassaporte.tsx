@@ -576,11 +576,11 @@ const S03Desafio = () => {
         </div>
 
         {/* Organizado */}
-        <div className="relative h-full rounded-2xl border border-accent/30 bg-gradient-card shadow-elegant p-8 flex flex-col justify-center">
-          <div className="text-sm uppercase tracking-widest text-accent font-bold">
+        <div className="relative h-full rounded-2xl border border-accent/30 bg-gradient-card shadow-elegant p-10 flex flex-col justify-center">
+          <div className="text-lg uppercase tracking-widest text-accent font-bold">
             Organizado · gerando valor
           </div>
-          <div className="mt-6 flex flex-col gap-4">
+          <div className="mt-8 flex flex-col gap-5">
             {[
               "Boas práticas registradas",
               "Comunidades reconhecidas",
@@ -588,9 +588,9 @@ const S03Desafio = () => {
               "Impactos positivos evidenciados",
               "Histórias reais comunicáveis",
             ].map((t) => (
-              <div key={t} className="flex items-center gap-4">
-                <CheckCircle2 className="size-7 text-accent shrink-0" />
-                <span className="text-xl font-medium text-primary">{t}</span>
+              <div key={t} className="flex items-center gap-5">
+                <CheckCircle2 className="size-9 text-accent shrink-0" />
+                <span className="text-2xl font-medium text-primary">{t}</span>
               </div>
             ))}
           </div>
