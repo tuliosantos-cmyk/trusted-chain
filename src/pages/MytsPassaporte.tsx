@@ -1451,9 +1451,9 @@ const S16Encerramento = () => (
           <div className="text-[11px] uppercase tracking-widest text-primary-foreground/50 font-semibold">
             Em parceria com
           </div>
-          <div className="flex items-center gap-3">
-            <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-6" />
-            <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-6" />
+          <div className="flex items-center gap-5">
+            <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-9" />
+            <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-9" />
           </div>
         </div>
       </div>
