@@ -1211,21 +1211,21 @@ const S13Institucional = () => {
           </div>
         </div>
 
-        <div className="flex flex-col justify-center gap-4">
+        <div className="flex flex-col justify-center gap-5">
           {stats.map((s) => (
             <div
               key={s.t}
-              className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-6"
+              className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-7"
             >
-              <div className="font-display font-bold text-6xl text-gradient leading-none">
+              <div className="font-display font-bold text-8xl text-gradient leading-none">
                 {s.n}
               </div>
-              <div className="mt-2 text-primary-foreground/70 uppercase tracking-widest text-xs font-semibold">
+              <div className="mt-3 text-primary-foreground/75 uppercase tracking-widest text-base font-semibold">
                 {s.t}
               </div>
             </div>
           ))}
-          <div className="text-[10px] uppercase tracking-widest text-primary-foreground/40 font-semibold">
+          <div className="text-[11px] uppercase tracking-widest text-primary-foreground/40 font-semibold">
             números institucionais · editáveis
           </div>
         </div>
