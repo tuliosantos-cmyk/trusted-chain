@@ -950,7 +950,7 @@ const S10Aplicacoes = () => {
             }`}
           >
             <div
-              className={`size-13 rounded-lg grid place-items-center shrink-0 ${
+              className={`size-12 rounded-lg grid place-items-center shrink-0 ${
                 [0, 4, 8].includes(i) ? "bg-gradient-accent" : "bg-primary/5"
               }`}
             >
