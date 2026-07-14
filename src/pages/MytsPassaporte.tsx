@@ -446,21 +446,27 @@ const S02Mercado = () => {
         <span className="text-gradient">Tornou-se uma exigência.</span>
       </h2>
 
-      <div className="mt-8 grid grid-cols-4 gap-4 flex-1 min-h-0">
+      <div className="mt-8 grid grid-cols-4 gap-5 flex-1 min-h-0">
         {forcas.map((f, i) => (
           <div
             key={f.t}
-            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-7 flex flex-col"
+            className="relative rounded-2xl border border-border bg-gradient-card shadow-card p-8 flex flex-col justify-between overflow-hidden"
           >
-            <div className="text-sm font-mono text-accent">0{i + 1}</div>
-            <div className="mt-3 size-16 rounded-2xl bg-gradient-accent grid place-items-center">
-              <f.icon className="size-8 text-accent-foreground" />
+            <div className="flex items-start justify-between">
+              <div className="size-20 rounded-2xl bg-gradient-accent grid place-items-center shadow-cta">
+                <f.icon className="size-10 text-accent-foreground" />
+              </div>
+              <div className="font-display font-bold text-3xl text-accent/40 leading-none">
+                0{i + 1}
+              </div>
             </div>
-            <div className="mt-5 font-display font-bold text-3xl text-primary leading-tight">
-              {f.t}
-            </div>
-            <div className="mt-3 text-lg text-muted-foreground leading-snug">
-              {f.d}
+            <div>
+              <div className="font-display font-bold text-4xl text-primary leading-[1.05]">
+                {f.t}
+              </div>
+              <div className="mt-4 text-xl text-muted-foreground leading-snug">
+                {f.d}
+              </div>
             </div>
           </div>
         ))}
