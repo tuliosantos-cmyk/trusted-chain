@@ -10,6 +10,7 @@ import JornadaAutonomia from "./pages/JornadaAutonomia.tsx";
 import FsscV7 from "./pages/FsscV7.tsx";
 import Korin360 from "./pages/Korin360.tsx";
 import MyTS360 from "./pages/MyTS360.tsx";
+import MytsPassaporte from "./pages/MytsPassaporte.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/fssc-v7" element={<FsscV7 />} />
             <Route path="/korin-360" element={<Korin360 />} />
             <Route path="/myts-360" element={<MyTS360 />} />
+            <Route path="/myts-passaporte" element={<MytsPassaporte />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
