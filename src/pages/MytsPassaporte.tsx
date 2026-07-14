@@ -1636,9 +1636,9 @@ const S16Encerramento = () => (
         </div>
       </div>
 
-      <div className="grid grid-cols-[1.3fr_1fr] gap-8 items-end">
+        <div className="grid grid-cols-[1.3fr_1fr] gap-8 items-end">
         <div className="grid grid-cols-2 gap-4">
-          <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-5">
+          <div className="col-span-2 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-5">
             <div className="text-xs uppercase tracking-widest text-primary-foreground/50">
               CEO
             </div>
@@ -1647,17 +1647,8 @@ const S16Encerramento = () => (
             </div>
             <div className="mt-1 text-xs text-primary-foreground/60">MyTS</div>
           </div>
-          <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-5">
-            <div className="text-xs uppercase tracking-widest text-primary-foreground/50">
-              Diretor Comercial
-            </div>
-            <div className="mt-1 font-display font-bold text-xl text-primary-foreground">
-              André Tanzi
-            </div>
-            <div className="mt-1 text-xs text-primary-foreground/60">MyTS</div>
-          </div>
           <a
-            href="mailto:contato@myt-s.com"
+            href="mailto:valmir@myt-s.com"
             className="group flex items-center gap-3 rounded-xl border border-primary-foreground/10 bg-primary-foreground/5 px-4 py-3 hover:bg-primary-foreground/10 hover:border-accent-glow/40 transition-all"
           >
             <div className="size-10 rounded-lg bg-gradient-accent grid place-items-center">
@@ -1668,7 +1659,7 @@ const S16Encerramento = () => (
                 Contato
               </div>
               <div className="font-mono text-sm text-primary-foreground truncate">
-                contato@myt-s.com
+                valmir@myt-s.com
               </div>
             </div>
           </a>
