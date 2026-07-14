@@ -829,48 +829,48 @@ const S09Ecossistema = () => {
         <span className="text-gradient">inteligência</span> — em uma única solução.
       </h2>
 
-      <div className="mt-8 grid grid-cols-3 gap-5 flex-1 min-h-0 items-stretch">
+      <div className="mt-8 grid grid-cols-3 gap-6 flex-1 min-h-0 items-stretch">
         {parceiros.map((p) => {
           const logoSrc =
             p.nome === "Groundd" ? grounddAsset.url : p.nome === "RAMO" ? ramoAsset.url : null;
           return (
             <div
               key={p.nome}
-              className={`relative rounded-2xl p-7 flex flex-col ${
+              className={`relative rounded-2xl p-8 flex flex-col ${
                 p.destaque
                   ? "bg-primary text-primary-foreground border-2 border-accent shadow-glow scale-[1.03]"
                   : "bg-gradient-card border border-border shadow-card"
               }`}
             >
               {p.destaque && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-accent text-accent-foreground text-[11px] font-bold uppercase tracking-widest px-4 py-1.5">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-accent text-accent-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5">
                   Infraestrutura
                 </div>
               )}
               {logoSrc ? (
-                <div className="rounded-xl bg-background border border-border grid place-items-center px-4 py-3 h-16 self-start">
-                  <img src={logoSrc} alt={p.nome} className="h-9 w-auto object-contain" />
+                <div className="rounded-xl bg-background border border-border grid place-items-center px-5 py-3.5 h-20 self-start">
+                  <img src={logoSrc} alt={p.nome} className="h-11 w-auto object-contain" />
                 </div>
               ) : (
                 <div
-                  className={`size-16 rounded-2xl grid place-items-center ${
+                  className={`size-20 rounded-2xl grid place-items-center ${
                     p.destaque ? "bg-gradient-accent" : "bg-primary/10"
                   }`}
                 >
                   <p.icon
-                    className={`size-8 ${p.destaque ? "text-accent-foreground" : "text-primary"}`}
+                    className={`size-10 ${p.destaque ? "text-accent-foreground" : "text-primary"}`}
                   />
                 </div>
               )}
               <div
-                className={`mt-5 font-display font-bold text-4xl leading-tight ${
+                className={`mt-6 font-display font-bold text-5xl leading-tight ${
                   p.destaque ? "text-primary-foreground" : "text-primary"
                 }`}
               >
                 {p.nome}
               </div>
               <div
-                className={`mt-2 text-base uppercase tracking-widest font-semibold ${
+                className={`mt-2 text-lg uppercase tracking-widest font-semibold ${
                   p.destaque ? "text-accent-glow" : "text-accent"
                 }`}
               >
@@ -881,16 +881,16 @@ const S09Ecossistema = () => {
                   p.destaque ? "bg-primary-foreground/15" : "bg-border"
                 }`}
               />
-              <div className="mt-4 space-y-3 flex-1">
+              <div className="mt-5 space-y-4 flex-1">
                 {p.itens.map((it) => (
-                  <div key={it} className="flex items-start gap-2.5">
+                  <div key={it} className="flex items-start gap-3">
                     <CheckCircle2
-                      className={`size-5 mt-0.5 shrink-0 ${
+                      className={`size-6 mt-0.5 shrink-0 ${
                         p.destaque ? "text-accent-glow" : "text-accent"
                       }`}
                     />
                     <span
-                      className={`text-base ${
+                      className={`text-lg ${
                         p.destaque ? "text-primary-foreground/90" : "text-primary/80"
                       }`}
                     >
@@ -904,7 +904,7 @@ const S09Ecossistema = () => {
         })}
       </div>
 
-      <p className="mt-6 text-center text-base text-muted-foreground">
+      <p className="mt-6 text-center text-lg text-muted-foreground">
         Competências complementares. <span className="font-semibold text-primary">Uma única solução.</span>
       </p>
     </Slide>
