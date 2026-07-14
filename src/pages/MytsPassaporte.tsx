@@ -679,11 +679,11 @@ const S05Resposta = () => (
 
       <div className="mt-10 flex items-center gap-6">
         <div className="text-primary-foreground/60 uppercase tracking-widest text-lg">
-          Uma única infraestrutura
+          Dados dispersos
         </div>
-        <div className="h-8 w-px bg-accent-glow/40" />
+        <ArrowRight className="size-5 text-accent-glow" />
         <div className="text-accent-glow uppercase tracking-widest text-lg font-bold">
-          Múltiplas aplicações
+          Cadeia de confiança
         </div>
       </div>
     </div>
