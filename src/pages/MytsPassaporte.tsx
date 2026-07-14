@@ -1441,33 +1441,33 @@ const S13Institucional = () => {
           {pilares.map((p) => (
             <div
               key={p.t}
-              className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.06] backdrop-blur p-7 flex flex-col justify-center"
+              className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.06] backdrop-blur p-8 flex flex-col justify-center"
             >
-              <div className="flex items-center gap-4">
-                <div className="size-14 rounded-xl bg-accent/15 border border-accent/30 grid place-items-center shrink-0">
-                  <p.icon className="size-7 text-accent-glow" />
+              <div className="flex items-center gap-5">
+                <div className="size-16 rounded-xl bg-accent/15 border border-accent/30 grid place-items-center shrink-0">
+                  <p.icon className="size-8 text-accent-glow" />
                 </div>
-                <div className="font-display font-bold text-[22px] text-primary-foreground leading-tight">
+                <div className="font-display font-bold text-[26px] text-primary-foreground leading-tight">
                   {p.t}
                 </div>
               </div>
-              <div className="mt-4 text-[15px] text-primary-foreground/75 leading-relaxed">
+              <div className="mt-5 text-[17px] text-primary-foreground/75 leading-relaxed">
                 {p.d}
               </div>
             </div>
           ))}
 
           {/* Card destaque · Posicionamento */}
-          <div className="rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/20 to-transparent backdrop-blur p-7 flex flex-col justify-center">
-            <div className="flex items-center gap-2 text-accent-glow text-xs uppercase tracking-[0.24em] font-semibold">
-              <ShieldCheck className="size-4" />
+          <div className="rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/20 to-transparent backdrop-blur p-8 flex flex-col justify-center">
+            <div className="flex items-center gap-2 text-accent-glow text-sm uppercase tracking-[0.24em] font-semibold">
+              <ShieldCheck className="size-5" />
               Posicionamento
             </div>
-            <div className="mt-4 font-display font-bold text-[28px] text-primary-foreground leading-[1.08]">
+            <div className="mt-5 font-display font-bold text-[34px] text-primary-foreground leading-[1.08]">
               Uma infraestrutura.<br />
               <span className="text-gradient">Múltiplas aplicações.</span>
             </div>
-            <p className="mt-4 text-[15px] text-primary-foreground/75 leading-relaxed">
+            <p className="mt-5 text-[17px] text-primary-foreground/75 leading-relaxed">
               Rastreabilidade, governança, Passaporte Digital e inteligência —
               tudo sobre a mesma base de dados confiável.
             </p>
