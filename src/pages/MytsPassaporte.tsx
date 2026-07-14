@@ -38,6 +38,8 @@ import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
 import grounddAsset from "@/assets/logos/groundd.png.asset.json";
 import ramoAsset from "@/assets/logos/ramo.png.asset.json";
+import produtorImg from "@/assets/passaporte/produtor.jpg";
+import geoImg from "@/assets/passaporte/geolocalizacao.jpg";
 
 /* Chip branco com a logo do parceiro — legibilidade sobre fundo navy */
 const PartnerLogo = ({
@@ -259,12 +261,12 @@ const MockupPassaporte = () => (
     <div className="relative w-[340px] rounded-[44px] bg-primary p-3.5 border border-primary-foreground/10 shadow-2xl">
       <div className="relative rounded-[34px] overflow-hidden bg-background aspect-[9/18]">
         {/* status bar */}
-        <div className="absolute top-0 inset-x-0 h-7 bg-primary/5 flex items-center justify-between px-5">
+        <div className="absolute top-0 inset-x-0 h-7 bg-primary/5 flex items-center justify-between px-5 z-10">
           <span className="text-[10px] font-semibold text-primary">9:41</span>
           <span className="text-[10px] text-primary/70">MyTS</span>
         </div>
         {/* header product */}
-        <div className="pt-10 px-5 pb-4 bg-gradient-to-br from-primary to-primary/90 text-primary-foreground">
+        <div className="pt-9 px-5 pb-3 bg-gradient-to-br from-primary to-primary/90 text-primary-foreground">
           <div className="text-[10px] uppercase tracking-widest text-accent-glow font-bold">
             Passaporte Digital
           </div>
@@ -275,8 +277,37 @@ const MockupPassaporte = () => (
             Comunidade Ribeirinha · Amazonas
           </div>
         </div>
+
+        {/* media strip: produtor + geolocalização */}
+        <div className="px-4 pt-3 grid grid-cols-2 gap-2">
+          {[
+            { src: produtorImg, label: "Produtor", caption: "Seu Raimundo" },
+            { src: geoImg, label: "Geolocalização", caption: "-5.78, -67.34" },
+          ].map((m) => (
+            <div
+              key={m.label}
+              className="relative rounded-lg overflow-hidden border border-border bg-primary/5 aspect-[4/3]"
+            >
+              <img
+                src={m.src}
+                alt={m.label}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/85 to-transparent px-1.5 py-1">
+                <div className="text-[8px] uppercase tracking-wider text-accent-glow font-bold leading-none">
+                  {m.label}
+                </div>
+                <div className="text-[9px] font-semibold text-primary-foreground truncate leading-tight">
+                  {m.caption}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* content list */}
-        <div className="p-4 space-y-3">
+        <div className="px-4 pt-3 pb-16 space-y-2">
           {[
             { icon: MapPin, t: "Origem verificada", v: "Médio Juruá, AM" },
             { icon: Users, t: "Produtores", v: "42 famílias" },
@@ -286,7 +317,7 @@ const MockupPassaporte = () => (
           ].map((r) => (
             <div
               key={r.t}
-              className="flex items-center gap-3 rounded-lg border border-border bg-gradient-card px-3 py-2"
+              className="flex items-center gap-3 rounded-lg border border-border bg-gradient-card px-3 py-1.5"
             >
               <div className="size-7 rounded-md bg-accent/10 grid place-items-center shrink-0">
                 <r.icon className="size-4 text-accent" />
