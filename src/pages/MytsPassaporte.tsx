@@ -1116,31 +1116,31 @@ const S12Valor = () => {
             >
               <div className="flex items-center gap-5">
                 <div
-                  className={`size-16 rounded-2xl grid place-items-center ${
+                  className={`size-20 rounded-2xl grid place-items-center ${
                     dark ? "bg-accent-glow/20" : "bg-gradient-accent"
                   }`}
                 >
                   <p.icon
-                    className={`size-8 ${dark ? "text-accent-glow" : "text-accent-foreground"}`}
+                    className={`size-10 ${dark ? "text-accent-glow" : "text-accent-foreground"}`}
                   />
                 </div>
                 <div
-                  className={`font-display font-bold text-3xl ${
+                  className={`font-display font-bold text-5xl ${
                     dark ? "text-primary-foreground" : "text-primary"
                   }`}
                 >
                   {p.titulo}
                 </div>
               </div>
-              <div className={`mt-5 h-px ${dark ? "bg-primary-foreground/15" : "bg-border"}`} />
-              <div className="mt-5 grid grid-cols-1 gap-3 flex-1 content-start">
+              <div className={`mt-6 h-px ${dark ? "bg-primary-foreground/15" : "bg-border"}`} />
+              <div className="mt-6 grid grid-cols-1 gap-4 content-center">
                 {p.itens.map((it) => (
-                  <div key={it} className="flex items-center gap-3">
+                  <div key={it} className="flex items-center gap-4">
                     <CheckCircle2
-                      className={`size-5 shrink-0 ${dark ? "text-accent-glow" : "text-accent"}`}
+                      className={`size-7 shrink-0 ${dark ? "text-accent-glow" : "text-accent"}`}
                     />
                     <span
-                      className={`text-lg ${
+                      className={`text-2xl ${
                         dark ? "text-primary-foreground/90" : "text-primary/85"
                       }`}
                     >
