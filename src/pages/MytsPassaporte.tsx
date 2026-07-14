@@ -44,15 +44,27 @@ const PartnerLogo = ({
   src,
   alt,
   className = "h-8",
+  variant = "light",
 }: {
   src: string;
   alt: string;
   className?: string;
-}) => (
-  <span className="inline-flex items-center justify-center rounded-lg bg-background px-3 py-1.5 shadow-card">
-    <img src={src} alt={alt} className={`${className} w-auto object-contain`} />
-  </span>
-);
+  /** "light" = renderiza logo em branco sobre fundo escuro (sem caixa);
+   *  "dark"  = mantém logo original sobre caixa branca (fundos claros). */
+  variant?: "light" | "dark";
+}) =>
+  variant === "light" ? (
+    <img
+      src={src}
+      alt={alt}
+      className={`${className} w-auto object-contain`}
+      style={{ filter: "invert(1) brightness(1.15) contrast(1.05)", mixBlendMode: "screen" }}
+    />
+  ) : (
+    <span className="inline-flex items-center justify-center rounded-lg bg-background px-3 py-1.5 shadow-card">
+      <img src={src} alt={alt} className={`${className} w-auto object-contain`} />
+    </span>
+  );
 
 /* -----------------------------------------------------------
    MyTS · Infraestrutura Digital de Confiança — deck institucional
@@ -356,42 +368,42 @@ const S01Capa = () => (
       </>
     }
   >
-    <div className="flex h-full items-center gap-12">
+    <div className="flex h-full items-center gap-14">
       <div className="flex-1 min-w-0">
         <Chip>
-          <Fingerprint className="size-4 text-accent-glow" />
+          <Fingerprint className="size-5 text-accent-glow" />
           Deck institucional · MyTS
         </Chip>
 
-        <h1 className="mt-8 font-display font-bold text-[128px] leading-[0.9] tracking-tight text-primary-foreground">
+        <h1 className="mt-10 font-display font-bold text-[200px] leading-[0.88] tracking-tight text-primary-foreground">
           My<span className="text-gradient">TS</span>
         </h1>
 
-        <p className="mt-6 text-4xl text-primary-foreground/95 max-w-3xl leading-tight font-medium">
+        <p className="mt-8 text-6xl text-primary-foreground/95 max-w-4xl leading-[1.05] font-medium">
           Infraestrutura Digital de{" "}
           <span className="text-accent-glow font-semibold">Confiança</span>.
         </p>
 
-        <p className="mt-5 text-xl text-primary-foreground/70 max-w-2xl leading-relaxed">
+        <p className="mt-8 text-3xl text-primary-foreground/75 max-w-3xl leading-snug">
           Transformando origem, território e impacto em valor para cadeias produtivas.
         </p>
 
-        <div className="mt-10 flex items-center gap-6 flex-wrap">
-          <div className="rounded-xl bg-primary-foreground/10 border border-primary-foreground/15 px-5 py-3">
-            <div className="text-xs uppercase tracking-widest text-primary-foreground/55 mb-2">
+        <div className="mt-14 flex items-center gap-8 flex-wrap">
+          <div className="rounded-2xl bg-primary-foreground/10 border border-primary-foreground/15 px-7 py-5">
+            <div className="text-sm uppercase tracking-widest text-primary-foreground/60 mb-3 font-semibold">
               Em parceria com
             </div>
-            <div className="flex items-center gap-3">
-              <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-7" />
-              <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-7" />
+            <div className="flex items-center gap-6">
+              <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-12" />
+              <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-12" />
             </div>
           </div>
-          <div className="h-12 w-px bg-primary-foreground/15" />
+          <div className="h-16 w-px bg-primary-foreground/15" />
           <div>
-            <div className="text-xs uppercase tracking-widest text-primary-foreground/55">
+            <div className="text-sm uppercase tracking-widest text-primary-foreground/60 font-semibold">
               Apresentação para
             </div>
-            <div className="font-display font-bold text-accent-glow text-xl leading-tight">
+            <div className="mt-1 font-display font-bold text-accent-glow text-3xl leading-tight">
               (Cliente)
             </div>
           </div>
@@ -399,8 +411,8 @@ const S01Capa = () => (
       </div>
 
       <div className="hidden md:flex flex-col items-end gap-6 shrink-0">
-        <img src={mytsLogo} alt="MyTS" className="h-16 opacity-95" />
-        <div className="text-right text-primary-foreground/60 text-xs uppercase tracking-widest">
+        <img src={mytsLogo} alt="MyTS" className="h-24 opacity-95" />
+        <div className="text-right text-primary-foreground/60 text-sm uppercase tracking-widest">
           My Trusted Source
         </div>
       </div>
@@ -1439,9 +1451,9 @@ const S16Encerramento = () => (
           <div className="text-[11px] uppercase tracking-widest text-primary-foreground/50 font-semibold">
             Em parceria com
           </div>
-          <div className="flex items-center gap-3">
-            <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-6" />
-            <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-6" />
+          <div className="flex items-center gap-5">
+            <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-9" />
+            <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-9" />
           </div>
         </div>
       </div>
