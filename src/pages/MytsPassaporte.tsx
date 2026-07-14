@@ -1420,7 +1420,7 @@ const S13Institucional = () => {
             <div className="text-xs uppercase tracking-[0.28em] text-accent-glow font-semibold">
               My Trusted Source
             </div>
-            <p className="mt-2 font-display font-bold text-[40px] text-primary-foreground leading-[1.12] max-w-[1100px]">
+            <p className="mt-2 font-display font-bold text-[38px] text-primary-foreground leading-[1.12] max-w-[1100px]">
               Existimos para transformar informações dispersas em{" "}
               <span className="text-gradient">confiança, acesso a mercado e valor</span>{" "}
               ao longo das cadeias produtivas.
@@ -1428,27 +1428,26 @@ const S13Institucional = () => {
           </div>
         </div>
 
-        {/* -------- Zona 2 · Pilares + Posicionamento -------- */}
-        <div className="grid grid-cols-[1.3fr_0.85fr] gap-5 flex-1 min-h-0">
-          {/* Pilares */}
-          <div className="grid grid-cols-3 gap-4">
-            {pilares.map((p) => (
-              <div
-                key={p.t}
-                className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.06] backdrop-blur p-6 flex flex-col"
-              >
-                <div className="size-14 rounded-xl bg-accent/15 border border-accent/30 grid place-items-center">
+        {/* -------- Zona 2 · Pilares + Posicionamento (2×2) -------- */}
+        <div className="grid grid-cols-2 grid-rows-2 gap-5 flex-1 min-h-0">
+          {pilares.map((p) => (
+            <div
+              key={p.t}
+              className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.06] backdrop-blur p-7 flex flex-col justify-center"
+            >
+              <div className="flex items-center gap-4">
+                <div className="size-14 rounded-xl bg-accent/15 border border-accent/30 grid place-items-center shrink-0">
                   <p.icon className="size-7 text-accent-glow" />
                 </div>
-                <div className="mt-4 font-display font-bold text-xl text-primary-foreground leading-tight">
+                <div className="font-display font-bold text-[22px] text-primary-foreground leading-tight">
                   {p.t}
                 </div>
-                <div className="mt-2 text-[15px] text-primary-foreground/70 leading-snug">
-                  {p.d}
-                </div>
               </div>
-            ))}
-          </div>
+              <div className="mt-4 text-[15px] text-primary-foreground/75 leading-relaxed">
+                {p.d}
+              </div>
+            </div>
+          ))}
 
           {/* Card destaque · Posicionamento */}
           <div className="rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/20 to-transparent backdrop-blur p-7 flex flex-col justify-center">
