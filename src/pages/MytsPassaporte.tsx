@@ -376,13 +376,14 @@ const S01Capa = () => (
           Transformando origem, território e impacto em valor para cadeias produtivas.
         </p>
 
-        <div className="mt-10 flex items-center gap-6">
+        <div className="mt-10 flex items-center gap-6 flex-wrap">
           <div className="rounded-xl bg-primary-foreground/10 border border-primary-foreground/15 px-5 py-3">
-            <div className="text-xs uppercase tracking-widest text-primary-foreground/55">
+            <div className="text-xs uppercase tracking-widest text-primary-foreground/55 mb-2">
               Em parceria com
             </div>
-            <div className="font-display font-bold text-primary-foreground text-xl leading-tight">
-              Groundd · RAMO
+            <div className="flex items-center gap-3">
+              <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-7" />
+              <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-7" />
             </div>
           </div>
           <div className="h-12 w-px bg-primary-foreground/15" />
