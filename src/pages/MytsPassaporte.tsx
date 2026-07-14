@@ -1400,6 +1400,7 @@ const S13Institucional = () => {
   return (
     <Slide
       bg="bg-hero"
+      pad="p-10 md:p-12"
       decor={
         <>
           <div className="absolute inset-0 grid-pattern opacity-10" />
