@@ -988,14 +988,40 @@ const S09QuemSomos = () => (
 
       <div className="grid grid-cols-3 gap-5">
         {[
-          { n: "Valmir Rodrigues", r: "CEO · MyTS", d: "Lidera a construção de infraestrutura de confiança para cadeias produtivas no Brasil e no exterior." },
-          { n: "Marisa Rodrigues", r: "Fundadora · Groundd", d: "Atuação em desenvolvimento territorial, governança comunitária e prontidão socioambiental." },
-          { n: "Federico Ferlito", r: "Head de GIS · RAMO", d: "Lidera a camada de inteligência geoespacial da iniciativa." },
+          {
+            n: "Valmir Rodrigues",
+            r: "CEO · MyTS",
+            d: "Empreendedor com mais de 20 anos em cadeias de fornecimento de alimentos. Fundou a MyTS para simplificar a qualificação de fornecedores, ampliar governança e reduzir riscos com tecnologia prática e centrada nas pessoas.",
+            photo: null,
+          },
+          {
+            n: "Marisa Rodrigues",
+            r: "CEO · Groundd",
+            d: "Zootecnista e fundadora da Groundd. Atua com comunidades, governos, ONGs e empresas para estruturar iniciativas de comércio responsável e negócios positivos para a natureza — protegendo paisagens e criando oportunidades reais.",
+            photo: null,
+          },
+          {
+            n: "Time RAMO",
+            r: "Inteligência geoespacial",
+            d: "Camada de inteligência espacial da iniciativa, com o NatureOS como base de evidência territorial. Bios em breve.",
+            photo: null,
+          },
         ].map((p) => (
-          <div key={p.n} className="border-t border-primary-foreground/10 pt-4">
-            <div className="font-display font-bold text-lg text-primary-foreground">{p.n}</div>
-            <div className="text-[11px] font-mono uppercase tracking-widest text-accent-glow mt-0.5">{p.r}</div>
-            <p className="mt-2 text-[13px] text-primary-foreground/65 leading-snug">{p.d}</p>
+          <div key={p.n} className="border-t border-primary-foreground/10 pt-4 flex gap-4">
+            <div className="size-16 rounded-full bg-primary-foreground/5 border border-primary-foreground/15 grid place-items-center flex-shrink-0 overflow-hidden">
+              {p.photo ? (
+                <img src={p.photo} alt={p.n} className="w-full h-full object-cover" />
+              ) : (
+                <span className="font-display font-bold text-primary-foreground/40 text-xl">
+                  {p.n.split(" ").map((w) => w[0]).slice(0, 2).join("")}
+                </span>
+              )}
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="font-display font-bold text-lg text-primary-foreground leading-tight">{p.n}</div>
+              <div className="text-[11px] font-mono uppercase tracking-widest text-accent-glow mt-0.5">{p.r}</div>
+              <p className="mt-2 text-[12.5px] text-primary-foreground/70 leading-snug">{p.d}</p>
+            </div>
           </div>
         ))}
       </div>
