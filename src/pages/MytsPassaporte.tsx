@@ -201,7 +201,7 @@ const ChallengeFlow = () => {
 
 /* Slide 03 — Hub da abordagem */
 const InitiativeHub = () => (
-  <svg viewBox="0 0 640 380" className="w-full h-full" role="img" aria-label="MyTS no núcleo, Groundd e RAMO como camadas complementares" preserveAspectRatio="xMidYMid meet">
+  <svg viewBox="0 0 640 460" className="w-full h-full" role="img" aria-label="MyTS no núcleo, Groundd e RAMO como camadas complementares" preserveAspectRatio="xMidYMid meet">
     <defs>
       <linearGradient id="hub-accent" x1="0" y1="0" x2="1" y2="0">
         <stop offset="0%" stopColor="hsl(214 95% 54%)" />
@@ -213,44 +213,44 @@ const InitiativeHub = () => (
       </radialGradient>
     </defs>
 
-    <line x1="180" y1="130" x2="320" y2="190" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
-    <line x1="180" y1="260" x2="320" y2="190" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
-    <line x1="460" y1="130" x2="320" y2="190" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
-    <line x1="460" y1="260" x2="320" y2="190" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
+    <line x1="180" y1="150" x2="320" y2="230" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
+    <line x1="180" y1="320" x2="320" y2="230" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
+    <line x1="460" y1="150" x2="320" y2="230" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
+    <line x1="460" y1="320" x2="320" y2="230" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
 
-    <circle cx="320" cy="190" r="150" fill="url(#hub-glow)" />
-    <circle cx="320" cy="190" r="96" fill="hsl(222 65% 14%)" stroke="hsl(214 95% 54%)" strokeWidth="2" />
-    <circle cx="320" cy="190" r="118" fill="none" stroke="hsl(199 95% 60%)" strokeWidth="1" strokeDasharray="2 6" opacity="0.6">
-      <animateTransform attributeName="transform" type="rotate" from="0 320 190" to="360 320 190" dur="24s" repeatCount="indefinite" />
+    <circle cx="320" cy="230" r="180" fill="url(#hub-glow)" />
+    <circle cx="320" cy="230" r="120" fill="hsl(222 65% 14%)" stroke="hsl(214 95% 54%)" strokeWidth="2" />
+    <circle cx="320" cy="230" r="146" fill="none" stroke="hsl(199 95% 60%)" strokeWidth="1" strokeDasharray="2 6" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate" from="0 320 230" to="360 320 230" dur="24s" repeatCount="indefinite" />
     </circle>
-    <text x="320" y="172" textAnchor="middle" fill="hsl(199 95% 60%)" fontSize="11" fontWeight="700" letterSpacing="3" fontFamily="Rubik, sans-serif">INFRAESTRUTURA</text>
-    <text x="320" y="206" textAnchor="middle" fill="#fff" fontSize="36" fontWeight="800" fontFamily="Rubik, sans-serif">MyTS</text>
-    <text x="320" y="228" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Lato, sans-serif">dados · evidências · governança</text>
+    <text x="320" y="208" textAnchor="middle" fill="hsl(199 95% 60%)" fontSize="13" fontWeight="700" letterSpacing="3" fontFamily="Rubik, sans-serif">INFRAESTRUTURA</text>
+    <text x="320" y="248" textAnchor="middle" fill="#fff" fontSize="44" fontWeight="800" fontFamily="Rubik, sans-serif">MyTS</text>
+    <text x="320" y="274" textAnchor="middle" fill="#94a3b8" fontSize="12" fontFamily="Lato, sans-serif">dados · evidências · governança</text>
 
     <g>
-      <rect x="30" y="95" width="170" height="80" rx="16" fill="#fff" stroke="hsl(214 32% 91%)" />
-      <text x="115" y="125" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="12" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">GROUNDD</text>
-      <text x="115" y="147" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">Pessoas · Território</text>
-      <text x="115" y="163" textAnchor="middle" fill="hsl(215 16% 42%)" fontSize="11" fontFamily="Lato, sans-serif">CERS · capacitação</text>
+      <rect x="20" y="110" width="190" height="90" rx="16" fill="#fff" stroke="hsl(214 32% 91%)" />
+      <text x="115" y="142" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">GROUNDD</text>
+      <text x="115" y="167" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="14" fontWeight="600" fontFamily="Lato, sans-serif">Pessoas · Território</text>
+      <text x="115" y="186" textAnchor="middle" fill="hsl(215 16% 42%)" fontSize="12" fontFamily="Lato, sans-serif">CERS · capacitação</text>
     </g>
 
     <g>
-      <rect x="440" y="95" width="170" height="80" rx="16" fill="#fff" stroke="hsl(214 32% 91%)" />
-      <text x="525" y="125" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="12" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">RAMO</text>
-      <text x="525" y="147" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">Inteligência espacial</text>
-      <text x="525" y="163" textAnchor="middle" fill="hsl(215 16% 42%)" fontSize="11" fontFamily="Lato, sans-serif">NatureOS · geoanálise</text>
+      <rect x="430" y="110" width="190" height="90" rx="16" fill="#fff" stroke="hsl(214 32% 91%)" />
+      <text x="525" y="142" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">RAMO</text>
+      <text x="525" y="167" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="14" fontWeight="600" fontFamily="Lato, sans-serif">Inteligência espacial</text>
+      <text x="525" y="186" textAnchor="middle" fill="hsl(215 16% 42%)" fontSize="12" fontFamily="Lato, sans-serif">NatureOS · geoanálise</text>
     </g>
 
     <g>
-      <rect x="30" y="225" width="170" height="72" rx="16" fill="hsl(152 65% 40% / 0.14)" stroke="hsl(152 65% 40% / 0.45)" />
-      <text x="115" y="253" textAnchor="middle" fill="hsl(152 65% 30%)" fontSize="12" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">PRODUTOR</text>
-      <text x="115" y="277" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="12" fontWeight="600" fontFamily="Lato, sans-serif">protagonista</text>
+      <rect x="20" y="275" width="190" height="82" rx="16" fill="hsl(152 65% 40% / 0.14)" stroke="hsl(152 65% 40% / 0.45)" />
+      <text x="115" y="307" textAnchor="middle" fill="hsl(152 65% 30%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">PRODUTOR</text>
+      <text x="115" y="333" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">protagonista</text>
     </g>
 
     <g>
-      <rect x="440" y="225" width="170" height="72" rx="16" fill="hsl(214 95% 54% / 0.12)" stroke="hsl(214 95% 54% / 0.45)" />
-      <text x="525" y="253" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="12" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">MERCADO</text>
-      <text x="525" y="277" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="12" fontWeight="600" fontFamily="Lato, sans-serif">acesso &amp; reconhecimento</text>
+      <rect x="430" y="275" width="190" height="82" rx="16" fill="hsl(214 95% 54% / 0.12)" stroke="hsl(214 95% 54% / 0.45)" />
+      <text x="525" y="307" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">MERCADO</text>
+      <text x="525" y="333" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">acesso &amp; reconhecimento</text>
     </g>
   </svg>
 );
@@ -267,33 +267,33 @@ const JourneySteps = () => {
   ];
   return (
     <div className="relative w-full">
-      <div className="absolute left-12 right-12 top-[124px] h-1.5 rounded-full bg-gradient-to-r from-accent via-accent-glow to-accent opacity-70" />
+      <div className="absolute left-20 right-20 top-[180px] h-1.5 rounded-full bg-gradient-to-r from-accent via-accent-glow to-accent opacity-70" />
       <div className="grid grid-cols-6 gap-4 relative">
         {etapas.map((e, i) => (
           <div key={e.t} className="flex flex-col items-center text-center">
-            <div className="text-[13px] font-mono font-bold text-accent tracking-widest mb-2">
+            <div className="text-[14px] font-mono font-bold text-accent tracking-widest mb-2">
               0{i + 1}
             </div>
             <div className="mb-3 inline-block rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 text-[12px] font-mono font-bold tracking-widest uppercase text-accent">
               {e.by}
             </div>
             <div className="relative">
-              <div className="absolute -inset-3 bg-gradient-accent opacity-25 blur-xl rounded-full" />
+              <div className="absolute -inset-5 bg-gradient-accent opacity-30 blur-2xl rounded-full" />
               <div
-                className={`relative size-32 rounded-full grid place-items-center border-2 ${
+                className={`relative size-48 rounded-full grid place-items-center border-2 ${
                   i === etapas.length - 1
                     ? "bg-gradient-accent border-accent-glow shadow-cta"
                     : "bg-primary border-accent"
                 }`}
               >
                 <e.icon
-                  className={`size-14 ${
+                  className={`size-20 ${
                     i === etapas.length - 1 ? "text-accent-foreground" : "text-accent-glow"
                   }`}
                 />
               </div>
             </div>
-            <div className="mt-6 font-display font-bold text-[26px] text-primary leading-tight">
+            <div className="mt-8 font-display font-bold text-[30px] text-primary leading-tight">
               {e.t}
             </div>
           </div>
@@ -315,12 +315,12 @@ const VirtuousCycle = () => {
     { t: "Territórios preservados" },
     { t: "Confiança na cadeia" },
   ];
-  const cx = 340;
+  const cx = 440;
   const cy = 340;
-  const r = 250;
+  const r = 230;
   return (
     <div className="relative w-full h-full flex items-center justify-center">
-      <svg viewBox="0 0 680 680" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
+      <svg viewBox="0 0 880 680" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="cyc-grad" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="hsl(214 95% 54%)" />
@@ -353,8 +353,8 @@ const VirtuousCycle = () => {
           const midAngle = (angle + next) / 2;
           const mx = cx + Math.cos(midAngle) * (r + 20);
           const my = cy + Math.sin(midAngle) * (r + 20);
-          const labelX = cx + Math.cos(angle) * (r + 78);
-          const labelY = cy + Math.sin(angle) * (r + 78);
+          const labelX = cx + Math.cos(angle) * (r + 95);
+          const labelY = cy + Math.sin(angle) * (r + 65);
           return (
             <g key={n.t}>
               <path
@@ -477,7 +477,7 @@ const S01Potencial = () => (
 /* 02 — O desafio */
 const S02Desafio = () => (
   <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[460px] [filter:invert(1)]" />}>
-    <div className="flex flex-col h-full gap-8">
+    <div className="flex flex-col h-full gap-6">
       <div className="flex items-center justify-between">
         <SectionLabel n="02" label="QUAL É O PROBLEMA" />
         <div className="text-sm font-mono uppercase tracking-[0.22em] text-muted-foreground">
@@ -485,13 +485,11 @@ const S02Desafio = () => (
         </div>
       </div>
 
-      <div>
-        <h2 className="font-display font-extrabold text-primary text-6xl md:text-7xl leading-[1.02] max-w-5xl">
-          O valor existe. A comprovação, hoje, <span className="text-gradient">não chega ao mercado</span>.
-        </h2>
-      </div>
+      <h2 className="font-display font-extrabold text-primary text-7xl md:text-[88px] leading-[1.0] max-w-6xl">
+        O valor existe. A comprovação, hoje, <span className="text-gradient">não chega ao mercado</span>.
+      </h2>
 
-      <div className="flex-1 flex flex-col justify-center">
+      <div className="flex-1 flex items-center min-h-0">
         <ChallengeFlow />
       </div>
 
@@ -518,11 +516,13 @@ const S02Desafio = () => (
         ].map((c) => (
           <div key={c.t} className="bg-gradient-card border border-border rounded-2xl p-8 shadow-card">
             <div className="flex items-center justify-between">
-              <c.icon className="size-8 text-accent" />
+              <div className="size-14 rounded-2xl bg-accent/10 grid place-items-center">
+                <c.icon className="size-8 text-accent" />
+              </div>
               <div className="text-[12px] font-mono uppercase tracking-[0.22em] text-muted-foreground">{c.t}</div>
             </div>
-            <div className="mt-4 font-display font-extrabold text-4xl leading-none text-gradient">{c.kpi}</div>
-            <div className="mt-4 text-[16px] text-muted-foreground leading-snug">{c.s}</div>
+            <div className="mt-5 font-display font-extrabold text-5xl leading-none text-gradient">{c.kpi}</div>
+            <div className="mt-4 text-[17px] text-muted-foreground leading-snug">{c.s}</div>
           </div>
         ))}
       </div>
@@ -542,23 +542,23 @@ const S03Abordagem = () => (
       </>
     }
   >
-    <div className="flex flex-col h-full gap-6">
+    <div className="flex flex-col h-full gap-5">
       <div className="flex items-center justify-between">
         <SectionLabel n="03" label="O QUE É" light />
         <Chip light>Nossa abordagem</Chip>
       </div>
 
-      <div className="max-w-5xl">
+      <div className="max-w-6xl">
         <h2 className="font-display font-extrabold text-6xl md:text-7xl leading-[1.02]">
-          Como transformamos impacto <br />em <span className="text-gradient">acesso a mercado</span>.
+          Como transformamos impacto em <span className="text-gradient">acesso a mercado</span>.
         </h2>
-        <p className="mt-5 text-xl text-primary-foreground/80 max-w-3xl">
+        <p className="mt-4 text-xl text-primary-foreground/80 max-w-4xl">
           Uma iniciativa que integra <strong className="text-primary-foreground">desenvolvimento territorial</strong>, <strong className="text-primary-foreground">infraestrutura digital</strong> e <strong className="text-primary-foreground">inteligência geoespacial</strong> — com o produtor no centro.
         </p>
       </div>
 
-      <div className="flex-1 grid grid-cols-12 gap-8 min-h-0">
-        <div className="col-span-7 flex items-center justify-center min-h-0">
+      <div className="flex-1 grid grid-cols-12 gap-8 min-h-0 items-stretch">
+        <div className="col-span-7 min-h-0 flex items-stretch">
           <InitiativeHub />
         </div>
         <div className="col-span-5 flex flex-col gap-5 justify-center">
@@ -576,20 +576,20 @@ const S03Abordagem = () => (
               desc: "NatureOS · geoanálise e evidência espacial de território.",
             },
           ].map((p) => (
-            <div key={p.name} className="bg-gradient-dark-card border border-primary-foreground/10 rounded-2xl p-6 backdrop-blur flex items-center gap-5">
-              <div className="size-16 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 grid place-items-center flex-shrink-0">
+            <div key={p.name} className="bg-gradient-dark-card border border-primary-foreground/10 rounded-2xl p-7 backdrop-blur flex items-center gap-6">
+              <div className="size-20 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10 grid place-items-center flex-shrink-0">
                 {p.logo ? (
-                  <PartnerLogo src={p.logo} alt={p.name} className="h-8" variant="light" />
+                  <PartnerLogo src={p.logo} alt={p.name} className="h-10" variant="light" />
                 ) : (
-                  <img src={mytsLogo} alt="MyTS" className="h-7 [filter:invert(1)]" />
+                  <img src={mytsLogo} alt="MyTS" className="h-9 [filter:invert(1)]" />
                 )}
               </div>
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline gap-3 flex-wrap">
-                  <div className="font-display font-extrabold text-2xl">{p.name}</div>
-                  <div className="text-[11px] font-mono uppercase tracking-[0.22em] text-accent-glow">{p.tag}</div>
+                  <div className="font-display font-extrabold text-3xl">{p.name}</div>
+                  <div className="text-[12px] font-mono uppercase tracking-[0.22em] text-accent-glow">{p.tag}</div>
                 </div>
-                <p className="text-[15px] text-primary-foreground/75 leading-snug mt-1">{p.desc}</p>
+                <p className="text-[16px] text-primary-foreground/80 leading-snug mt-1.5">{p.desc}</p>
               </div>
             </div>
           ))}
@@ -602,7 +602,7 @@ const S03Abordagem = () => (
 /* 04 — Como funciona */
 const S04ComoFunciona = () => (
   <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[460px] [filter:invert(1)]" />}>
-    <div className="flex flex-col h-full gap-6">
+    <div className="flex flex-col h-full gap-5">
       <div className="flex items-center justify-between">
         <SectionLabel n="04" label="A JORNADA" />
         <div className="text-sm font-mono uppercase tracking-[0.22em] text-muted-foreground">
@@ -611,20 +611,20 @@ const S04ComoFunciona = () => (
       </div>
 
       <div>
-        <h2 className="font-display font-extrabold text-primary text-6xl md:text-7xl leading-[1.02] max-w-5xl">
-          Como funciona
+        <h2 className="font-display font-extrabold text-primary text-7xl md:text-[92px] leading-[1.0] max-w-6xl">
+          Como <span className="text-gradient">funciona</span>
         </h2>
-        <p className="mt-3 text-muted-foreground text-xl max-w-4xl">
+        <p className="mt-4 text-muted-foreground text-2xl max-w-5xl">
           Cada etapa tem uma organização responsável — e cada organização entrega o que sabe fazer melhor.
         </p>
       </div>
 
-      <div className="flex-1 flex items-center">
+      <div className="flex-1 flex items-center min-h-0">
         <JourneySteps />
       </div>
 
       <div className="text-center">
-        <p className="font-display text-3xl text-primary/90 max-w-4xl mx-auto leading-tight">
+        <p className="font-display text-3xl md:text-4xl text-primary/90 max-w-5xl mx-auto leading-tight">
           Cada etapa fortalece capacidades que <span className="text-gradient font-bold">permanecem no território</span>.
         </p>
       </div>
@@ -838,23 +838,23 @@ const S07Diferencial = () => (
         </h2>
       </div>
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="flex-1 grid grid-cols-3 gap-6 min-h-0">
         {[
           { icon: HandHeart, t: "Pessoas antes de plataforma", d: "O produtor é o ponto de partida — não o consumidor final da tecnologia." },
           { icon: Scale, t: "Metodologia + tecnologia", d: "Capacitação de campo, evidência espacial e infraestrutura digital numa única entrega." },
           { icon: ShieldCheck, t: "Confiança auditável", d: "Cada dado tem origem, versão e rastreabilidade — pronto para regulador, comprador e financiador." },
         ].map((d) => (
-          <div key={d.t} className="bg-gradient-dark-card border border-primary-foreground/10 rounded-2xl p-8 backdrop-blur">
-            <div className="size-14 rounded-xl bg-accent/15 grid place-items-center">
-              <d.icon className="size-7 text-accent-glow" />
+          <div key={d.t} className="bg-gradient-dark-card border border-primary-foreground/10 rounded-2xl p-10 backdrop-blur flex flex-col">
+            <div className="size-20 rounded-2xl bg-accent/15 grid place-items-center">
+              <d.icon className="size-10 text-accent-glow" />
             </div>
-            <div className="mt-5 font-display font-extrabold text-2xl">{d.t}</div>
-            <p className="mt-3 text-[16px] text-primary-foreground/75 leading-snug">{d.d}</p>
+            <div className="mt-8 font-display font-extrabold text-3xl leading-tight">{d.t}</div>
+            <p className="mt-4 text-[18px] text-primary-foreground/80 leading-snug">{d.d}</p>
           </div>
         ))}
       </div>
 
-      <div className="mt-auto">
+      <div>
         <div className="text-sm font-mono uppercase tracking-[0.22em] text-primary-foreground/50 mb-4">
           Já aplicado em
         </div>
