@@ -201,7 +201,7 @@ const ChallengeFlow = () => {
 
 /* Slide 03 — Hub da abordagem */
 const InitiativeHub = () => (
-  <svg viewBox="0 0 640 380" className="w-full h-full" role="img" aria-label="MyTS no núcleo, Groundd e RAMO como camadas complementares" preserveAspectRatio="xMidYMid meet">
+  <svg viewBox="0 0 640 460" className="w-full h-full" role="img" aria-label="MyTS no núcleo, Groundd e RAMO como camadas complementares" preserveAspectRatio="xMidYMid meet">
     <defs>
       <linearGradient id="hub-accent" x1="0" y1="0" x2="1" y2="0">
         <stop offset="0%" stopColor="hsl(214 95% 54%)" />
@@ -213,44 +213,44 @@ const InitiativeHub = () => (
       </radialGradient>
     </defs>
 
-    <line x1="180" y1="130" x2="320" y2="190" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
-    <line x1="180" y1="260" x2="320" y2="190" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
-    <line x1="460" y1="130" x2="320" y2="190" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
-    <line x1="460" y1="260" x2="320" y2="190" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
+    <line x1="180" y1="150" x2="320" y2="230" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
+    <line x1="180" y1="320" x2="320" y2="230" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
+    <line x1="460" y1="150" x2="320" y2="230" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
+    <line x1="460" y1="320" x2="320" y2="230" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
 
-    <circle cx="320" cy="190" r="150" fill="url(#hub-glow)" />
-    <circle cx="320" cy="190" r="96" fill="hsl(222 65% 14%)" stroke="hsl(214 95% 54%)" strokeWidth="2" />
-    <circle cx="320" cy="190" r="118" fill="none" stroke="hsl(199 95% 60%)" strokeWidth="1" strokeDasharray="2 6" opacity="0.6">
-      <animateTransform attributeName="transform" type="rotate" from="0 320 190" to="360 320 190" dur="24s" repeatCount="indefinite" />
+    <circle cx="320" cy="230" r="180" fill="url(#hub-glow)" />
+    <circle cx="320" cy="230" r="120" fill="hsl(222 65% 14%)" stroke="hsl(214 95% 54%)" strokeWidth="2" />
+    <circle cx="320" cy="230" r="146" fill="none" stroke="hsl(199 95% 60%)" strokeWidth="1" strokeDasharray="2 6" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate" from="0 320 230" to="360 320 230" dur="24s" repeatCount="indefinite" />
     </circle>
-    <text x="320" y="172" textAnchor="middle" fill="hsl(199 95% 60%)" fontSize="11" fontWeight="700" letterSpacing="3" fontFamily="Rubik, sans-serif">INFRAESTRUTURA</text>
-    <text x="320" y="206" textAnchor="middle" fill="#fff" fontSize="36" fontWeight="800" fontFamily="Rubik, sans-serif">MyTS</text>
-    <text x="320" y="228" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Lato, sans-serif">dados · evidências · governança</text>
+    <text x="320" y="208" textAnchor="middle" fill="hsl(199 95% 60%)" fontSize="13" fontWeight="700" letterSpacing="3" fontFamily="Rubik, sans-serif">INFRAESTRUTURA</text>
+    <text x="320" y="248" textAnchor="middle" fill="#fff" fontSize="44" fontWeight="800" fontFamily="Rubik, sans-serif">MyTS</text>
+    <text x="320" y="274" textAnchor="middle" fill="#94a3b8" fontSize="12" fontFamily="Lato, sans-serif">dados · evidências · governança</text>
 
     <g>
-      <rect x="30" y="95" width="170" height="80" rx="16" fill="#fff" stroke="hsl(214 32% 91%)" />
-      <text x="115" y="125" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="12" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">GROUNDD</text>
-      <text x="115" y="147" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">Pessoas · Território</text>
-      <text x="115" y="163" textAnchor="middle" fill="hsl(215 16% 42%)" fontSize="11" fontFamily="Lato, sans-serif">CERS · capacitação</text>
+      <rect x="20" y="110" width="190" height="90" rx="16" fill="#fff" stroke="hsl(214 32% 91%)" />
+      <text x="115" y="142" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">GROUNDD</text>
+      <text x="115" y="167" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="14" fontWeight="600" fontFamily="Lato, sans-serif">Pessoas · Território</text>
+      <text x="115" y="186" textAnchor="middle" fill="hsl(215 16% 42%)" fontSize="12" fontFamily="Lato, sans-serif">CERS · capacitação</text>
     </g>
 
     <g>
-      <rect x="440" y="95" width="170" height="80" rx="16" fill="#fff" stroke="hsl(214 32% 91%)" />
-      <text x="525" y="125" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="12" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">RAMO</text>
-      <text x="525" y="147" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">Inteligência espacial</text>
-      <text x="525" y="163" textAnchor="middle" fill="hsl(215 16% 42%)" fontSize="11" fontFamily="Lato, sans-serif">NatureOS · geoanálise</text>
+      <rect x="430" y="110" width="190" height="90" rx="16" fill="#fff" stroke="hsl(214 32% 91%)" />
+      <text x="525" y="142" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">RAMO</text>
+      <text x="525" y="167" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="14" fontWeight="600" fontFamily="Lato, sans-serif">Inteligência espacial</text>
+      <text x="525" y="186" textAnchor="middle" fill="hsl(215 16% 42%)" fontSize="12" fontFamily="Lato, sans-serif">NatureOS · geoanálise</text>
     </g>
 
     <g>
-      <rect x="30" y="225" width="170" height="72" rx="16" fill="hsl(152 65% 40% / 0.14)" stroke="hsl(152 65% 40% / 0.45)" />
-      <text x="115" y="253" textAnchor="middle" fill="hsl(152 65% 30%)" fontSize="12" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">PRODUTOR</text>
-      <text x="115" y="277" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="12" fontWeight="600" fontFamily="Lato, sans-serif">protagonista</text>
+      <rect x="20" y="275" width="190" height="82" rx="16" fill="hsl(152 65% 40% / 0.14)" stroke="hsl(152 65% 40% / 0.45)" />
+      <text x="115" y="307" textAnchor="middle" fill="hsl(152 65% 30%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">PRODUTOR</text>
+      <text x="115" y="333" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">protagonista</text>
     </g>
 
     <g>
-      <rect x="440" y="225" width="170" height="72" rx="16" fill="hsl(214 95% 54% / 0.12)" stroke="hsl(214 95% 54% / 0.45)" />
-      <text x="525" y="253" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="12" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">MERCADO</text>
-      <text x="525" y="277" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="12" fontWeight="600" fontFamily="Lato, sans-serif">acesso &amp; reconhecimento</text>
+      <rect x="430" y="275" width="190" height="82" rx="16" fill="hsl(214 95% 54% / 0.12)" stroke="hsl(214 95% 54% / 0.45)" />
+      <text x="525" y="307" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">MERCADO</text>
+      <text x="525" y="333" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">acesso &amp; reconhecimento</text>
     </g>
   </svg>
 );
