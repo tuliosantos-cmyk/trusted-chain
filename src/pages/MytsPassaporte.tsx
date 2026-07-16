@@ -844,12 +844,12 @@ const S07Diferencial = () => (
           { icon: Scale, t: "Metodologia + tecnologia", d: "Capacitação de campo, evidência espacial e infraestrutura digital numa única entrega." },
           { icon: ShieldCheck, t: "Confiança auditável", d: "Cada dado tem origem, versão e rastreabilidade — pronto para regulador, comprador e financiador." },
         ].map((d) => (
-          <div key={d.t} className="bg-gradient-dark-card border border-primary-foreground/10 rounded-2xl p-7 backdrop-blur flex flex-col">
-            <div className="size-14 rounded-2xl bg-accent/15 grid place-items-center">
-              <d.icon className="size-7 text-accent-glow" />
+          <div key={d.t} className="bg-gradient-dark-card border border-primary-foreground/10 rounded-2xl p-8 backdrop-blur flex flex-col">
+            <div className="size-16 rounded-2xl bg-accent/15 grid place-items-center">
+              <d.icon className="size-8 text-accent-glow" />
             </div>
-            <div className="mt-5 font-display font-extrabold text-2xl leading-tight">{d.t}</div>
-            <p className="mt-3 text-[15px] text-primary-foreground/80 leading-snug">{d.d}</p>
+            <div className="mt-6 font-display font-extrabold text-[28px] leading-tight">{d.t}</div>
+            <p className="mt-4 text-[17px] text-primary-foreground/80 leading-relaxed">{d.d}</p>
           </div>
         ))}
       </div>
