@@ -602,7 +602,7 @@ const S03Abordagem = () => (
 /* 04 — Como funciona */
 const S04ComoFunciona = () => (
   <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[460px] [filter:invert(1)]" />}>
-    <div className="flex flex-col h-full gap-6">
+    <div className="flex flex-col h-full gap-5">
       <div className="flex items-center justify-between">
         <SectionLabel n="04" label="A JORNADA" />
         <div className="text-sm font-mono uppercase tracking-[0.22em] text-muted-foreground">
@@ -611,20 +611,20 @@ const S04ComoFunciona = () => (
       </div>
 
       <div>
-        <h2 className="font-display font-extrabold text-primary text-6xl md:text-7xl leading-[1.02] max-w-5xl">
-          Como funciona
+        <h2 className="font-display font-extrabold text-primary text-7xl md:text-[92px] leading-[1.0] max-w-6xl">
+          Como <span className="text-gradient">funciona</span>
         </h2>
-        <p className="mt-3 text-muted-foreground text-xl max-w-4xl">
+        <p className="mt-4 text-muted-foreground text-2xl max-w-5xl">
           Cada etapa tem uma organização responsável — e cada organização entrega o que sabe fazer melhor.
         </p>
       </div>
 
-      <div className="flex-1 flex items-center">
+      <div className="flex-1 flex items-center min-h-0">
         <JourneySteps />
       </div>
 
       <div className="text-center">
-        <p className="font-display text-3xl text-primary/90 max-w-4xl mx-auto leading-tight">
+        <p className="font-display text-3xl md:text-4xl text-primary/90 max-w-5xl mx-auto leading-tight">
           Cada etapa fortalece capacidades que <span className="text-gradient font-bold">permanecem no território</span>.
         </p>
       </div>
