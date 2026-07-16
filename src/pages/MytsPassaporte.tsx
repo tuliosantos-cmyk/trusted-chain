@@ -476,7 +476,7 @@ const S01Potencial = () => (
 
 /* 02 — O desafio */
 const S02Desafio = () => (
-  <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[460px] [filter:brightness(0)_invert(1)]" />}>
+  <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[460px] [filter:invert(1)]" />}>
     <div className="flex flex-col h-full gap-6">
       <div className="flex items-center justify-between">
         <SectionLabel n="02" label="QUAL É O PROBLEMA" />
@@ -601,7 +601,7 @@ const S03Abordagem = () => (
 
 /* 04 — Como funciona */
 const S04ComoFunciona = () => (
-  <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[460px] [filter:brightness(0)_invert(1)]" />}>
+  <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[460px] [filter:invert(1)]" />}>
     <div className="flex flex-col h-full gap-5">
       <div className="flex items-center justify-between">
         <SectionLabel n="04" label="A JORNADA" />
@@ -652,7 +652,7 @@ const S05Entregamos = () => {
     },
   ];
   return (
-    <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[440px] [filter:brightness(0)_invert(1)]" />}>
+    <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[440px] [filter:invert(1)]" />}>
       <div className="flex flex-col h-full gap-6">
         <div className="flex items-center justify-between">
           <SectionLabel n="05" label="O QUE ENTREGAMOS" />
@@ -706,7 +706,7 @@ const S05Entregamos = () => {
 
 /* 06 — Antes → Depois */
 const S06AntesDepois = () => (
-  <Slide bg="bg-background" decor={<MytsWatermark className="-right-16 -bottom-16 w-[420px] [filter:brightness(0)_invert(1)]" />}>
+  <Slide bg="bg-background" decor={<MytsWatermark className="-right-16 -bottom-16 w-[420px] [filter:invert(1)]" />}>
     <div className="flex flex-col h-full gap-6">
       <div className="flex items-center justify-between">
         <SectionLabel n="06" label="O QUE MUDA NA PRÁTICA" />
@@ -881,7 +881,7 @@ const S07Diferencial = () => (
 
 /* 08 — O impacto */
 const S08Impacto = () => (
-  <Slide bg="bg-background" decor={<MytsWatermark className="-right-16 -bottom-16 w-[400px] [filter:brightness(0)_invert(1)]" />}>
+  <Slide bg="bg-background" decor={<MytsWatermark className="-right-16 -bottom-16 w-[400px] [filter:invert(1)]" />}>
     <div className="grid grid-cols-12 gap-10 h-full">
       <div className="col-span-5 flex flex-col justify-between">
         <SectionLabel n="08" label="O IMPACTO" />
