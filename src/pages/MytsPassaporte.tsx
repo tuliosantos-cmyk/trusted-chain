@@ -56,7 +56,7 @@ const PartnerLogo = ({
       src={src}
       alt={alt}
       className={`${className} w-auto object-contain`}
-      style={{ filter: "invert(1) brightness(1.15) contrast(1.05)", mixBlendMode: "screen" }}
+      style={{ filter: "brightness(0) invert(1)" }}
     />
   ) : (
     <img src={src} alt={alt} className={`${className} w-auto object-contain`} />
