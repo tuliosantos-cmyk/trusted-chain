@@ -315,12 +315,12 @@ const VirtuousCycle = () => {
     { t: "Territórios preservados" },
     { t: "Confiança na cadeia" },
   ];
-  const cx = 340;
+  const cx = 440;
   const cy = 340;
-  const r = 250;
+  const r = 230;
   return (
     <div className="relative w-full h-full flex items-center justify-center">
-      <svg viewBox="0 0 680 680" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
+      <svg viewBox="0 0 880 680" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="cyc-grad" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="hsl(214 95% 54%)" />
