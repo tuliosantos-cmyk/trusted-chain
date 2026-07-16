@@ -408,7 +408,7 @@ const S01Potencial = () => (
     <div className="grid grid-cols-12 gap-10 h-full">
       <div className="col-span-7 flex flex-col justify-between">
         <div className="flex items-center gap-5">
-          <img src={mytsLogo} alt="MyTS" className="h-10 [filter:invert(1)]" />
+          <img src={mytsLogo} alt="MyTS" className="h-10 [filter:brightness(0)_invert(1)]" />
           <SectionLabel n="01" label="POR QUE ISSO IMPORTA" light />
         </div>
 
@@ -476,7 +476,7 @@ const S01Potencial = () => (
 
 /* 02 — O desafio */
 const S02Desafio = () => (
-  <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[460px] [filter:invert(1)]" />}>
+  <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[460px] [filter:brightness(0)_invert(1)]" />}>
     <div className="flex flex-col h-full gap-6">
       <div className="flex items-center justify-between">
         <SectionLabel n="02" label="QUAL É O PROBLEMA" />
@@ -581,7 +581,7 @@ const S03Abordagem = () => (
                 {p.logo ? (
                   <PartnerLogo src={p.logo} alt={p.name} className="h-10" variant="light" />
                 ) : (
-                  <img src={mytsLogo} alt="MyTS" className="h-9 [filter:invert(1)]" />
+                  <img src={mytsLogo} alt="MyTS" className="h-9 [filter:brightness(0)_invert(1)]" />
                 )}
               </div>
               <div className="min-w-0 flex-1">
@@ -601,7 +601,7 @@ const S03Abordagem = () => (
 
 /* 04 — Como funciona */
 const S04ComoFunciona = () => (
-  <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[460px] [filter:invert(1)]" />}>
+  <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[460px] [filter:brightness(0)_invert(1)]" />}>
     <div className="flex flex-col h-full gap-5">
       <div className="flex items-center justify-between">
         <SectionLabel n="04" label="A JORNADA" />
@@ -652,7 +652,7 @@ const S05Entregamos = () => {
     },
   ];
   return (
-    <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[440px] [filter:invert(1)]" />}>
+    <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[440px] [filter:brightness(0)_invert(1)]" />}>
       <div className="flex flex-col h-full gap-6">
         <div className="flex items-center justify-between">
           <SectionLabel n="05" label="O QUE ENTREGAMOS" />
@@ -706,7 +706,7 @@ const S05Entregamos = () => {
 
 /* 06 — Antes → Depois */
 const S06AntesDepois = () => (
-  <Slide bg="bg-background" decor={<MytsWatermark className="-right-16 -bottom-16 w-[420px] [filter:invert(1)]" />}>
+  <Slide bg="bg-background" decor={<MytsWatermark className="-right-16 -bottom-16 w-[420px] [filter:brightness(0)_invert(1)]" />}>
     <div className="flex flex-col h-full gap-6">
       <div className="flex items-center justify-between">
         <SectionLabel n="06" label="O QUE MUDA NA PRÁTICA" />
@@ -881,7 +881,7 @@ const S07Diferencial = () => (
 
 /* 08 — O impacto */
 const S08Impacto = () => (
-  <Slide bg="bg-background" decor={<MytsWatermark className="-right-16 -bottom-16 w-[400px] [filter:invert(1)]" />}>
+  <Slide bg="bg-background" decor={<MytsWatermark className="-right-16 -bottom-16 w-[400px] [filter:brightness(0)_invert(1)]" />}>
     <div className="grid grid-cols-12 gap-10 h-full">
       <div className="col-span-5 flex flex-col justify-between">
         <SectionLabel n="08" label="O IMPACTO" />
@@ -941,7 +941,7 @@ const S09QuemSomos = () => (
     <div className="flex flex-col h-full gap-6">
       <div className="flex items-center justify-between">
         <SectionLabel n="09" label="QUEM SOMOS" light />
-        <img src={mytsLogo} alt="MyTS" className="h-8 [filter:invert(1)]" />
+        <img src={mytsLogo} alt="MyTS" className="h-8 [filter:brightness(0)_invert(1)]" />
       </div>
 
       <div>
@@ -973,7 +973,7 @@ const S09QuemSomos = () => (
               {o.logo ? (
                 <PartnerLogo src={o.logo} alt={o.name} className="h-8" variant="light" />
               ) : (
-                <img src={mytsLogo} alt="MyTS" className="h-8 [filter:invert(1)]" />
+                <img src={mytsLogo} alt="MyTS" className="h-8 [filter:brightness(0)_invert(1)]" />
               )}
             </div>
             <div className="mt-5 font-display font-extrabold text-3xl">{o.name}</div>
