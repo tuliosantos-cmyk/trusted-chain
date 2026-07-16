@@ -267,7 +267,7 @@ const JourneySteps = () => {
   ];
   return (
     <div className="relative w-full">
-      <div className="absolute left-16 right-16 top-[152px] h-1.5 rounded-full bg-gradient-to-r from-accent via-accent-glow to-accent opacity-70" />
+      <div className="absolute left-20 right-20 top-[180px] h-1.5 rounded-full bg-gradient-to-r from-accent via-accent-glow to-accent opacity-70" />
       <div className="grid grid-cols-6 gap-4 relative">
         {etapas.map((e, i) => (
           <div key={e.t} className="flex flex-col items-center text-center">
@@ -278,22 +278,22 @@ const JourneySteps = () => {
               {e.by}
             </div>
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-accent opacity-25 blur-xl rounded-full" />
+              <div className="absolute -inset-5 bg-gradient-accent opacity-30 blur-2xl rounded-full" />
               <div
-                className={`relative size-40 rounded-full grid place-items-center border-2 ${
+                className={`relative size-48 rounded-full grid place-items-center border-2 ${
                   i === etapas.length - 1
                     ? "bg-gradient-accent border-accent-glow shadow-cta"
                     : "bg-primary border-accent"
                 }`}
               >
                 <e.icon
-                  className={`size-16 ${
+                  className={`size-20 ${
                     i === etapas.length - 1 ? "text-accent-foreground" : "text-accent-glow"
                   }`}
                 />
               </div>
             </div>
-            <div className="mt-7 font-display font-bold text-[28px] text-primary leading-tight">
+            <div className="mt-8 font-display font-bold text-[30px] text-primary leading-tight">
               {e.t}
             </div>
           </div>
