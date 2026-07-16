@@ -1040,6 +1040,129 @@ const S09QuemSomos = () => (
   </Slide>
 );
 
+/* 00 — Capa de introdução */
+const S00Intro = () => (
+  <Slide
+    bg="bg-hero"
+    className="text-primary-foreground"
+    pad="p-10 md:p-16"
+    decor={
+      <>
+        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="absolute -top-40 -right-40 w-[720px] h-[720px] bg-glow blur-3xl opacity-45" />
+        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-glow blur-3xl opacity-30" />
+        <MytsWatermark className="right-10 -bottom-24 w-[560px]" />
+      </>
+    }
+  >
+    <div className="flex flex-col h-full items-center justify-center text-center">
+      <div className="flex flex-col items-center gap-8">
+        <img src={mytsLogo} alt="MyTS" className="h-16 [filter:brightness(0)_invert(1)]" />
+        <div className="inline-flex items-center gap-3 rounded-full border border-accent/30 bg-accent/10 px-6 py-2.5 text-sm font-semibold tracking-[0.18em] uppercase text-accent-glow backdrop-blur">
+          <Sprout className="size-4" />
+          Passaporte Digital
+        </div>
+      </div>
+
+      <h1 className="mt-12 font-display font-black text-7xl md:text-[120px] leading-[0.95] tracking-tight max-w-5xl">
+        Do território <br />
+        <span className="text-gradient">ao mercado</span>
+      </h1>
+
+      <p className="mt-10 text-2xl md:text-3xl text-primary-foreground/80 leading-relaxed max-w-3xl">
+        Uma jornada que transforma impacto socioambiental em reconhecimento, rastreabilidade e acesso a novas oportunidades.
+      </p>
+
+      <div className="mt-16 flex items-center gap-10 text-primary-foreground/60">
+        <div className="flex items-center gap-3">
+          <div className="size-10 rounded-full bg-primary-foreground/10 grid place-items-center">
+            <HandHeart className="size-5 text-accent-glow" />
+          </div>
+          <span className="text-base font-medium">Pessoas</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="size-10 rounded-full bg-primary-foreground/10 grid place-items-center">
+            <TreePine className="size-5 text-accent-glow" />
+          </div>
+          <span className="text-base font-medium">Territórios</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="size-10 rounded-full bg-primary-foreground/10 grid place-items-center">
+            <Coins className="size-5 text-accent-glow" />
+          </div>
+          <span className="text-base font-medium">Cadeias</span>
+        </div>
+      </div>
+
+      <div className="mt-auto text-sm font-mono uppercase tracking-[0.25em] text-primary-foreground/40">
+        MyTS · Groundd · RAMO
+      </div>
+    </div>
+  </Slide>
+);
+
+/* 10 — Fechamento */
+const S10Fechamento = () => (
+  <Slide
+    bg="bg-hero"
+    className="text-primary-foreground"
+    pad="p-10 md:p-16"
+    decor={
+      <>
+        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-glow blur-3xl opacity-35" />
+        <MytsWatermark className="-right-20 -bottom-20 w-[520px]" />
+      </>
+    }
+  >
+    <div className="flex flex-col h-full items-center justify-center text-center">
+      <div className="inline-flex items-center gap-3 rounded-full border border-accent/30 bg-accent/10 px-6 py-2.5 text-sm font-semibold tracking-[0.18em] uppercase text-accent-glow backdrop-blur">
+        <ShieldCheck className="size-4" />
+        Pronto para começar
+      </div>
+
+      <h2 className="mt-10 font-display font-black text-6xl md:text-[100px] leading-[0.95] tracking-tight max-w-5xl">
+        O potencial existe. <br />
+        <span className="text-gradient">Vamos torná-lo visível.</span>
+      </h2>
+
+      <p className="mt-10 text-2xl md:text-3xl text-primary-foreground/80 leading-relaxed max-w-3xl">
+        Converse com a gente e descubra como levar o Passaporte Digital MyTS aos produtores e cadeias que você trabalha.
+      </p>
+
+      <div className="mt-14 grid grid-cols-2 gap-6 max-w-2xl w-full">
+        <a
+          href="mailto:valmir@myt-s.com"
+          className="group flex items-center justify-center gap-4 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 px-8 py-5 hover:bg-primary-foreground/10 transition-colors"
+        >
+          <Mail className="size-6 text-accent-glow" />
+          <div className="text-left">
+            <div className="text-xs font-mono uppercase tracking-[0.22em] text-primary-foreground/50">Email</div>
+            <div className="text-lg font-display font-bold text-primary-foreground">valmir@myt-s.com</div>
+          </div>
+        </a>
+        <a
+          href="https://myt-s.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center justify-center gap-4 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 px-8 py-5 hover:bg-primary-foreground/10 transition-colors"
+        >
+          <Globe className="size-6 text-accent-glow" />
+          <div className="text-left">
+            <div className="text-xs font-mono uppercase tracking-[0.22em] text-primary-foreground/50">Site</div>
+            <div className="text-lg font-display font-bold text-primary-foreground">myt-s.com</div>
+          </div>
+        </a>
+      </div>
+
+      <div className="mt-auto flex items-center gap-6 text-primary-foreground/50">
+        <img src={mytsLogo} alt="MyTS" className="h-7 [filter:brightness(0)_invert(1)] opacity-70" />
+        <span className="text-sm font-mono uppercase tracking-[0.22em]">Fortalecemos pessoas · conectamos territórios</span>
+      </div>
+    </div>
+  </Slide>
+);
+
 /* ============================================================
    Página
    ============================================================ */
