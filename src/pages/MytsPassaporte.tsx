@@ -831,25 +831,25 @@ const S07Diferencial = () => (
       </div>
 
       <div>
-        <h2 className="font-display font-extrabold text-6xl md:text-7xl leading-[1.02] max-w-6xl">
+        <h2 className="font-display font-extrabold text-4xl md:text-5xl leading-[1.05] max-w-5xl">
           Não fazemos <span className="line-through opacity-40">apenas</span> auditorias.<br />
           Não entregamos <span className="line-through opacity-40">apenas</span> tecnologia.<br />
           Integramos tudo numa <span className="text-gradient">jornada contínua</span>.
         </h2>
       </div>
 
-      <div className="flex-1 grid grid-cols-3 gap-6 min-h-0">
+      <div className="flex-1 grid grid-cols-3 gap-5 min-h-0">
         {[
           { icon: HandHeart, t: "Pessoas antes de plataforma", d: "O produtor é o ponto de partida — não o consumidor final da tecnologia." },
           { icon: Scale, t: "Metodologia + tecnologia", d: "Capacitação de campo, evidência espacial e infraestrutura digital numa única entrega." },
           { icon: ShieldCheck, t: "Confiança auditável", d: "Cada dado tem origem, versão e rastreabilidade — pronto para regulador, comprador e financiador." },
         ].map((d) => (
-          <div key={d.t} className="bg-gradient-dark-card border border-primary-foreground/10 rounded-2xl p-10 backdrop-blur flex flex-col">
-            <div className="size-20 rounded-2xl bg-accent/15 grid place-items-center">
-              <d.icon className="size-10 text-accent-glow" />
+          <div key={d.t} className="bg-gradient-dark-card border border-primary-foreground/10 rounded-2xl p-7 backdrop-blur flex flex-col">
+            <div className="size-14 rounded-2xl bg-accent/15 grid place-items-center">
+              <d.icon className="size-7 text-accent-glow" />
             </div>
-            <div className="mt-8 font-display font-extrabold text-3xl leading-tight">{d.t}</div>
-            <p className="mt-4 text-[18px] text-primary-foreground/80 leading-snug">{d.d}</p>
+            <div className="mt-5 font-display font-extrabold text-2xl leading-tight">{d.t}</div>
+            <p className="mt-3 text-[15px] text-primary-foreground/80 leading-snug">{d.d}</p>
           </div>
         ))}
       </div>
