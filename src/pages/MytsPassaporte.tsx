@@ -992,13 +992,13 @@ const S09QuemSomos = () => (
             n: "Valmir Rodrigues",
             r: "CEO · MyTS",
             d: "Empreendedor com mais de 20 anos em cadeias de fornecimento de alimentos. Fundou a MyTS para simplificar a qualificação de fornecedores, ampliar governança e reduzir riscos com tecnologia prática e centrada nas pessoas.",
-            photo: null,
+            photo: valmirAsset.url,
           },
           {
             n: "Marisa Rodrigues",
             r: "CEO · Groundd",
             d: "Zootecnista e fundadora da Groundd. Atua com comunidades, governos, ONGs e empresas para estruturar iniciativas de comércio responsável e negócios positivos para a natureza — protegendo paisagens e criando oportunidades reais.",
-            photo: null,
+            photo: marisaAsset.url,
           },
           {
             n: "Time RAMO",
