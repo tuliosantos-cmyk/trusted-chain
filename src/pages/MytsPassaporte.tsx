@@ -38,6 +38,8 @@ import ramoAsset from "@/assets/logos/ramo.png.asset.json";
 import korinAsset from "@/assets/logos/korin.png.asset.json";
 import carrefourAsset from "@/assets/logos/carrefour.png.asset.json";
 import produtorImg from "@/assets/passaporte/produtor.jpg";
+import valmirAsset from "@/assets/team/valmir.png.asset.json";
+import marisaAsset from "@/assets/team/marisa.png.asset.json";
 
 /* ============================================================
    Primitivos
