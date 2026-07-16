@@ -353,8 +353,8 @@ const VirtuousCycle = () => {
           const midAngle = (angle + next) / 2;
           const mx = cx + Math.cos(midAngle) * (r + 20);
           const my = cy + Math.sin(midAngle) * (r + 20);
-          const labelX = cx + Math.cos(angle) * (r + 78);
-          const labelY = cy + Math.sin(angle) * (r + 78);
+          const labelX = cx + Math.cos(angle) * (r + 95);
+          const labelY = cy + Math.sin(angle) * (r + 65);
           return (
             <g key={n.t}>
               <path
