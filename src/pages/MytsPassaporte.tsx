@@ -752,7 +752,7 @@ const S06AntesDepois = () => (
               <div className="font-display font-extrabold text-primary text-3xl leading-tight">Invisível</div>
             </div>
           </div>
-          <ul className="mt-6 space-y-4 flex-1">
+          <ul className="mt-5 space-y-3 flex-1">
             {[
               "Documentos espalhados em pastas e no WhatsApp",
               "Nunca participou de capacitação formal",
@@ -760,8 +760,8 @@ const S06AntesDepois = () => (
               "Não consegue provar boas práticas socioambientais",
               "Renda instável, sem acesso a mercado premium",
             ].map((t) => (
-              <li key={t} className="flex items-start gap-3 text-[17px] text-primary/80 leading-snug">
-                <span className="mt-2.5 size-2 rounded-full bg-destructive/60 flex-shrink-0" />
+              <li key={t} className="flex items-start gap-3 text-[15px] text-primary/80 leading-relaxed">
+                <span className="mt-2 size-2 rounded-full bg-destructive/60 flex-shrink-0" />
                 {t}
               </li>
             ))}
@@ -792,7 +792,7 @@ const S06AntesDepois = () => (
               <div className="font-display font-extrabold text-primary-foreground text-3xl leading-tight">Reconhecido</div>
             </div>
           </div>
-          <ul className="relative mt-6 space-y-4 flex-1">
+          <ul className="relative mt-5 space-y-3 flex-1">
             {[
               "Documentos e evidências centralizados na MyTS",
               "Capacitado em boas práticas e governança",
@@ -800,8 +800,8 @@ const S06AntesDepois = () => (
               "Passaporte Digital: história e impacto rastreáveis via QR",
               "Acessa compradores exigentes — Korin, redes, exportação",
             ].map((t) => (
-              <li key={t} className="flex items-start gap-3 text-[17px] text-primary-foreground/90 leading-snug">
-                <CheckCircle2 className="size-5 text-accent-glow mt-0.5 flex-shrink-0" />
+              <li key={t} className="flex items-start gap-3 text-[15px] text-primary-foreground/90 leading-relaxed">
+                <CheckCircle2 className="size-4 text-accent-glow mt-0.5 flex-shrink-0" />
                 {t}
               </li>
             ))}
