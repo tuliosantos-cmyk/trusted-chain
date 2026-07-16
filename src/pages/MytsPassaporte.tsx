@@ -243,14 +243,14 @@ const InitiativeHub = () => (
 
     <g>
       <rect x="20" y="275" width="190" height="82" rx="16" fill="hsl(152 65% 40% / 0.14)" stroke="hsl(152 65% 40% / 0.45)" />
-      <text x="115" y="307" textAnchor="middle" fill="hsl(152 65% 30%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">PRODUTOR</text>
-      <text x="115" y="333" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">protagonista</text>
+      <text x="115" y="307" textAnchor="middle" fill="hsl(152 75% 70%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">PRODUTOR</text>
+      <text x="115" y="333" textAnchor="middle" fill="#e2e8f0" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">protagonista</text>
     </g>
 
     <g>
       <rect x="430" y="275" width="190" height="82" rx="16" fill="hsl(214 95% 54% / 0.12)" stroke="hsl(214 95% 54% / 0.45)" />
-      <text x="525" y="307" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">MERCADO</text>
-      <text x="525" y="333" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">acesso &amp; reconhecimento</text>
+      <text x="525" y="307" textAnchor="middle" fill="hsl(199 95% 70%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">MERCADO</text>
+      <text x="525" y="333" textAnchor="middle" fill="#e2e8f0" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">acesso &amp; reconhecimento</text>
     </g>
   </svg>
 );
