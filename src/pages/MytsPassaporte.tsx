@@ -1193,6 +1193,7 @@ const MytsPassaporte = () => (
         content="MyTS: infraestrutura que fortalece produtores, organiza evidências socioambientais e conecta cadeias produtivas ao mercado — em uma única jornada contínua com Groundd e RAMO."
       />
     </Helmet>
+    <S00Intro />
     <S01Potencial />
     <S02Desafio />
     <S03Abordagem />
@@ -1202,6 +1203,7 @@ const MytsPassaporte = () => (
     <S07Diferencial />
     <S08Impacto />
     <S09QuemSomos />
+    <S10Fechamento />
   </main>
 );
 
