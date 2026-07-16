@@ -542,23 +542,23 @@ const S03Abordagem = () => (
       </>
     }
   >
-    <div className="flex flex-col h-full gap-6">
+    <div className="flex flex-col h-full gap-5">
       <div className="flex items-center justify-between">
         <SectionLabel n="03" label="O QUE É" light />
         <Chip light>Nossa abordagem</Chip>
       </div>
 
-      <div className="max-w-5xl">
+      <div className="max-w-6xl">
         <h2 className="font-display font-extrabold text-6xl md:text-7xl leading-[1.02]">
-          Como transformamos impacto <br />em <span className="text-gradient">acesso a mercado</span>.
+          Como transformamos impacto em <span className="text-gradient">acesso a mercado</span>.
         </h2>
-        <p className="mt-5 text-xl text-primary-foreground/80 max-w-3xl">
+        <p className="mt-4 text-xl text-primary-foreground/80 max-w-4xl">
           Uma iniciativa que integra <strong className="text-primary-foreground">desenvolvimento territorial</strong>, <strong className="text-primary-foreground">infraestrutura digital</strong> e <strong className="text-primary-foreground">inteligência geoespacial</strong> — com o produtor no centro.
         </p>
       </div>
 
-      <div className="flex-1 grid grid-cols-12 gap-8 min-h-0">
-        <div className="col-span-7 flex items-center justify-center min-h-0">
+      <div className="flex-1 grid grid-cols-12 gap-8 min-h-0 items-stretch">
+        <div className="col-span-7 min-h-0 flex items-stretch">
           <InitiativeHub />
         </div>
         <div className="col-span-5 flex flex-col gap-5 justify-center">
@@ -576,20 +576,20 @@ const S03Abordagem = () => (
               desc: "NatureOS · geoanálise e evidência espacial de território.",
             },
           ].map((p) => (
-            <div key={p.name} className="bg-gradient-dark-card border border-primary-foreground/10 rounded-2xl p-6 backdrop-blur flex items-center gap-5">
-              <div className="size-16 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 grid place-items-center flex-shrink-0">
+            <div key={p.name} className="bg-gradient-dark-card border border-primary-foreground/10 rounded-2xl p-7 backdrop-blur flex items-center gap-6">
+              <div className="size-20 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10 grid place-items-center flex-shrink-0">
                 {p.logo ? (
-                  <PartnerLogo src={p.logo} alt={p.name} className="h-8" variant="light" />
+                  <PartnerLogo src={p.logo} alt={p.name} className="h-10" variant="light" />
                 ) : (
-                  <img src={mytsLogo} alt="MyTS" className="h-7 [filter:invert(1)]" />
+                  <img src={mytsLogo} alt="MyTS" className="h-9 [filter:invert(1)]" />
                 )}
               </div>
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline gap-3 flex-wrap">
-                  <div className="font-display font-extrabold text-2xl">{p.name}</div>
-                  <div className="text-[11px] font-mono uppercase tracking-[0.22em] text-accent-glow">{p.tag}</div>
+                  <div className="font-display font-extrabold text-3xl">{p.name}</div>
+                  <div className="text-[12px] font-mono uppercase tracking-[0.22em] text-accent-glow">{p.tag}</div>
                 </div>
-                <p className="text-[15px] text-primary-foreground/75 leading-snug mt-1">{p.desc}</p>
+                <p className="text-[16px] text-primary-foreground/80 leading-snug mt-1.5">{p.desc}</p>
               </div>
             </div>
           ))}
