@@ -801,7 +801,7 @@ const S06AntesDepois = () => (
               "Acessa compradores exigentes — Korin, redes, exportação",
             ].map((t) => (
               <li key={t} className="flex items-start gap-3 text-[15px] text-primary-foreground/90 leading-relaxed">
-                <CheckCircle2 className="size-1 text-accent-glow mt-0.5 flex-shrink-0" />
+                <CheckCircle2 className="size-4 text-accent-glow mt-0.5 flex-shrink-0" />
                 {t}
               </li>
             ))}
