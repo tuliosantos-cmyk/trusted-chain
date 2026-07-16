@@ -267,33 +267,33 @@ const JourneySteps = () => {
   ];
   return (
     <div className="relative w-full">
-      <div className="absolute left-12 right-12 top-[124px] h-1.5 rounded-full bg-gradient-to-r from-accent via-accent-glow to-accent opacity-70" />
+      <div className="absolute left-16 right-16 top-[152px] h-1.5 rounded-full bg-gradient-to-r from-accent via-accent-glow to-accent opacity-70" />
       <div className="grid grid-cols-6 gap-4 relative">
         {etapas.map((e, i) => (
           <div key={e.t} className="flex flex-col items-center text-center">
-            <div className="text-[13px] font-mono font-bold text-accent tracking-widest mb-2">
+            <div className="text-[14px] font-mono font-bold text-accent tracking-widest mb-2">
               0{i + 1}
             </div>
             <div className="mb-3 inline-block rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 text-[12px] font-mono font-bold tracking-widest uppercase text-accent">
               {e.by}
             </div>
             <div className="relative">
-              <div className="absolute -inset-3 bg-gradient-accent opacity-25 blur-xl rounded-full" />
+              <div className="absolute -inset-4 bg-gradient-accent opacity-25 blur-xl rounded-full" />
               <div
-                className={`relative size-32 rounded-full grid place-items-center border-2 ${
+                className={`relative size-40 rounded-full grid place-items-center border-2 ${
                   i === etapas.length - 1
                     ? "bg-gradient-accent border-accent-glow shadow-cta"
                     : "bg-primary border-accent"
                 }`}
               >
                 <e.icon
-                  className={`size-14 ${
+                  className={`size-16 ${
                     i === etapas.length - 1 ? "text-accent-foreground" : "text-accent-glow"
                   }`}
                 />
               </div>
             </div>
-            <div className="mt-6 font-display font-bold text-[26px] text-primary leading-tight">
+            <div className="mt-7 font-display font-bold text-[28px] text-primary leading-tight">
               {e.t}
             </div>
           </div>
