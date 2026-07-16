@@ -1,89 +1,79 @@
-## Objetivo
+## Diagnóstico
 
-Reescrever `/myts-passaporte` (`src/pages/MytsPassaporte.tsx`) do formato atual (16 slides) para uma **narrativa enxuta de 8 slides** sintetizando o melhor das duas versões (Claude + GPT): estrutura objetiva do Claude + força narrativa/visual do GPT, com o produtor como protagonista desde o slide 1 e diagramas substituindo blocos de texto sempre que possível.
+Cada `Slide` é 16:9 (~1600×900 no preview atual), mas eu estou dimensionando os elementos como se fossem uma seção de landing page normal. Resultado: títulos `text-5xl`, cards `p-6`, gaps `gap-5`, ícones `size-6`, corpo `text-[13-15px]` — tudo pequeno para uma tela inteira. O olho vê "componentes flutuando em vazio".
 
-Foco: deck de 10–15 min para fundos/financiadores, cada slide respondendo a **uma pergunta clara**.
+Raiz do problema:
+1. **Padding do Slide muito frouxo**: `p-12 md:p-16` come 128px de cada lado sem devolver densidade
+2. **Escalas tipográficas subdimensionadas**: títulos deveriam ser 72-96px, não 48px
+3. **Cards pequenos** com padding tímido (`p-5/6/7`) e ícones `size-6`
+4. **Gaps entre elementos** (`gap-3/4/5`) somados ao padding do slide criam "ilhas" isoladas
+5. **Diagramas SVG limitados** por `max-h-[380-560px]` — poderiam usar 100% do espaço vertical
+6. **Corpo de texto 13-15px** parece pequeno numa tela grande de apresentação
 
-## Nova estrutura (8 slides)
+## Estratégia
 
-```text
-01 — O potencial já existe. O reconhecimento ainda não.   [Por que isso importa?]
-02 — O desafio                                            [Qual é o problema?]
-03 — Nossa iniciativa                                     [O que é?]
-04 — Como funciona                                        [A jornada]
-05 — O que entregamos                                     [Desenvolvimento · Evidências · Mercado]
-06 — Por que funciona (MyTS + Groundd + RAMO + cases)     [Por que somos diferentes?]
-07 — O impacto                                            [Ciclo virtuoso]
-08 — Quem somos                                           [Time + contato]
-```
+Reescala global e proporcional em `src/pages/MytsPassaporte.tsx`, sem mudar copy, estrutura, cores, ordem dos slides nem tokens do design system.
 
-## Copy final (síntese Claude + GPT)
+### 1. Padding do Slide
+- `pad` padrão: `p-12 md:p-16` → **`p-10 md:p-14`** (recupera ~30-50px de área útil por lado)
 
-### Slide 01 — O potencial já existe. O reconhecimento ainda não.
-Narrativa curta primeiro, dados depois (3 números, não mais). Fecha com a linha-manifesto "O impacto já existe. O reconhecimento ainda não." KPIs: 77% agricultura familiar · R$ 170 bi sociobiodiversidade até 2040 · territórios indígenas entre as áreas mais preservadas.
+### 2. Escala tipográfica (todos os slides)
 
-### Slide 02 — O desafio
-Praticamente sem texto corrido. Um **fluxo vertical/horizontal**: Produtor → planilhas → WhatsApp → papel → certificados → ninguém vê → não acessa mercado → recebe menos. Ao lado, 3 chips curtos com os efeitos em Empresas / Consumidores / Investidores. Uma stat de reforço (62% dos consumidores trocariam de marca — Deloitte/GS1).
+| Elemento | Antes | Depois |
+|---|---|---|
+| H1 capa (S01) | `text-6xl md:text-7xl` | `text-7xl md:text-8xl` |
+| H2 slides internos | `text-5xl md:text-6xl` | `text-6xl md:text-7xl` |
+| Assinatura S05 "jornada" | `text-[64px]` | `text-[88px] md:text-[104px]` (essa é a frase-assinatura do deck) |
+| Subtítulos/lead | `text-lg/xl` | `text-xl/2xl` |
+| Corpo em cards | `text-[13-15px]` | `text-[16-18px]` |
+| KPIs numéricos (S01) | `text-2xl` (compactos) | `text-4xl` (voltar ao formato grande) |
 
-### Slide 03 — Nossa iniciativa
-Título "Como transformamos impacto em acesso a mercado." Diagrama central: **MyTS no núcleo**, Groundd e RAMO orbitando como camadas complementares. Abaixo, fluxo linear enxuto: Território → Capacitação → Organização → Evidências → Passaporte → Mercado.
+### 3. Cards, ícones e gaps
+- Ícones principais: `size-6` → `size-8/10`; ícone-container `size-11/12` → `size-14/16`
+- Padding cards: `p-6/7` → `p-8/10`
+- Gap entre cards: `gap-4/5` → `gap-6/8`
+- Radius: manter `rounded-2xl` (consistente)
 
-### Slide 04 — Como funciona
-Só o fluxo, sem parágrafos: Diagnóstico → Capacitação → Organização → Validação → Passaporte Digital → Mercado. Uma frase-âncora embaixo: "Cada etapa fortalece capacidades que permanecem no território."
+### 4. Diagramas SVG
+- `InitiativeHub` (S03): remover `max-h-[380px]`, deixar preencher o container (flex-1)
+- `JourneySteps` (S04): aumentar círculos `size-24` → `size-32`; label `text-[22px]` → `text-[26px]`; pill parceiro `text-[10px]` → `text-[12px]`
+- `VirtuousCycle` (S08): remover `max-h-[560px]`; aumentar raio/nós; fonte dos labels 13→16
+- `ChallengeFlow` (S02): nós `size-20` → `size-28`; ícone `size-8` → `size-11`; label `text-[15px]` → `text-[17px]`
 
-### Slide 05 — O que entregamos
-Reorganizado **por entrega, não por público** (mudança do GPT):
-- **Desenvolvimento** — diagnóstico, capacitação, trilhas, acompanhamento
-- **Evidências** — documentos, indicadores, conformidade, rastreabilidade, governança
-- **Conexão com mercado** — Passaporte Digital, QR Code, história, transparência, reconhecimento
+### 5. Ajustes por slide
 
-Layout: 3 colunas com ícones grandes.
+**S01 (Potencial)** — voltar KPIs para o formato "big number + descrição empilhada" (não linha compacta), foto do produtor maior; grid `12` mantido, mas col-span da foto puxa mais peso visual.
 
-### Slide 06 — Por que funciona
-Manifesto curto: "Não fazemos apenas auditorias. Não entregamos apenas tecnologia. Não realizamos apenas capacitações. Integramos tudo numa jornada contínua."
-Abaixo, 3 cards MyTS / Groundd / RAMO (1 linha cada) + faixa de cases reduzida:
-- **Korin** — Passaporte Digital para consumidores
-- **Carrefour** — Jornada da Autonomia, desenvolvimento de fornecedores
+**S02 (Desafio)** — flow com nós maiores; grid de dados `grid-cols-3` já bom, cada card com número gigante em destaque.
 
-### Slide 07 — O impacto
-Diagrama circular (ciclo virtuoso): Produtores preparados → Evidências → Reconhecimento → Acesso a mercado → Renda → Comunidades fortalecidas → Territórios conservados → Confiança na cadeia → (volta). Uma frase de fechamento.
+**S03 (Abordagem)** — hub SVG preenchendo 100% do col-span; cards MyTS/Groundd/RAMO com padding maior, logo/ícone maior.
 
-### Slide 08 — Quem somos
-3 cards de time (Valmir · Marisa · Federico) com bios curtas (placeholder marcado onde faltar dado) + contato (`valmir@myt-s.com · myt-s.com`) + logos MyTS / Groundd / RAMO coloridos.
+**S04 (Jornada)** — timeline preenchendo a largura, círculos maiores; frase-âncora `text-2xl` → `text-3xl`.
 
-## Diagramas novos (SVG inline, mesmos tokens do sistema visual atual)
+**S05 (Entregamos)** — a linha "Não vendemos software. Entregamos jornada." vira o herói tipográfico do slide (~96-104px). Cards de entrega maiores.
 
-1. **`ChallengeFlow`** (Slide 2) — cadeia horizontal com nós Produtor → planilha → WhatsApp → papel → certificado → invisível → sem mercado → menos renda. Linhas tracejadas animadas, ícones Lucide dentro de nós circulares, cor `--muted` esmaecendo à direita para reforçar "perda de valor".
-2. **`InitiativeHub`** (Slide 3) — evolução do `FlowDiagram` atual: núcleo MyTS + satélites Groundd e RAMO + anel externo com as 6 etapas da jornada. Reaproveita gradientes `--gradient-accent` / `centerGlow`.
-3. **`JourneySteps`** (Slide 4) — timeline horizontal de 6 marcos, numerados 01–06, com conector gradient e ícone por etapa. Nada de texto extra.
-4. **`VirtuousCycle`** (Slide 7) — círculo com 8 nós ligados por setas curvas (SVG), ícones pequenos e labels curtas. Substitui a lista textual atual.
+**S06 (Antes → Depois)** — retrato do José maior (col-span 3 → coluna mais alta); listas Antes/Depois com texto 15→17px, spacing generoso.
 
-Todos os SVGs em `src/components/landing/visuals/` seguindo o padrão de `FlowDiagram.tsx` / `DashboardMock.tsx` (viewBox, HSL tokens diretos, sem cores hardcoded fora do padrão já usado).
+**S07 (Diferencial)** — manifesto 60→72px; cards diferencial e cases maiores.
 
-## Padrão visual (mantido)
+**S08 (Impacto)** — coluna esquerda ganha `text-3xl` na lista de propósito; ciclo virtuoso ocupa 100% do col-span 7.
 
-- Alternância `bg-hero` (navy, slides emocionais 01 · 03 · 06 · 08 capa/encerramento) vs `bg-background` (claro, slides de estrutura/dados 02 · 04 · 05 · 07).
-- `SectionLabel` renumerado 01→08.
-- Tipografia: Rubik display / Lato body, escalas já definidas.
-- Tokens semânticos apenas (`text-accent`, `text-accent-glow`, `text-gradient`, `bg-gradient-card`, `bg-gradient-dark-card`, `shadow-elegant`, `shadow-cta`). Zero cor hardcoded.
-- Logos MyTS + Groundd + RAMO coloridos na capa e no slide 8; monocromo/branco quando sobre navy nos slides internos.
+**S09 (Quem somos)** — fotos do time maiores (`size-16` → `size-24`), cards das 3 orgs com padding maior.
 
-## O que NÃO vou fazer
+### 6. Regra geral de densidade
+- Nenhum `flex-1` órfão gerando ar; usar `justify-between` ou `gap` proporcional
+- Substituir `mt-auto` "solto" por distribuição explícita
+- Onde há espaço vertical sobrando, aumentar tamanho do elemento visual dominante do slide (diagrama, foto, número)
 
-- Não mexer em outras rotas/arquivos (`Index`, `Korin360`, `MyTS360`, etc.).
-- Não mudar paleta, fontes, tokens ou `index.css`.
-- Não adicionar dados/cases/clientes que não estão nos textos acima (sem "Mercado Livre", sem "MIDR" no corpo).
-- Não recuperar seções removidas anteriormente (bloco "20+/1.000+/8", "Consórcio de execução", "Diretor Comercial").
-- Não pluralizar CSDDD como argumento forte — manter só menção leve, ênfase em EUDR (nota do próprio texto do usuário).
+## Não vou fazer
+
+- Não mudar copy, ordem de slides, cores, tokens ou fontes
+- Não trocar componentes (mesmo `Slide`, `SectionLabel`, `Chip`)
+- Não mexer em outras rotas
+- Não usar cores hardcoded
 
 ## Validação
 
-- `bun run build` limpo.
-- Playwright headless 1920×1080 varrendo os 8 slides, screenshots salvos em `/tmp/browser/passaporte/` e revisados um a um: sem overflow, sem colunas com alturas quebradas, diagramas legíveis, sem texto órfão de versões antigas.
-- Checklist final: cada slide responde à sua pergunta (importância / problema / o que é / como / entregas / diferencial / impacto / quem), e o produtor aparece como protagonista já no slide 1.
-
-## Entregáveis
-
-1. `src/pages/MytsPassaporte.tsx` reescrito para os 8 slides.
-2. 4 novos componentes em `src/components/landing/visuals/` (`ChallengeFlow`, `InitiativeHub`, `JourneySteps`, `VirtuousCycle`).
-3. Relatório curto no chat com screenshots dos 8 slides finais.
+- Build limpo (`bun run build`)
+- Playwright headless 1920×1080, screenshot dos 9 slides em `/tmp/browser/passaporte/`, revisão visual comparando "densidade antes/depois"
+- Checklist por slide: título domina ≥ 25% da altura útil ou o hero visual domina; nenhum card com mais de 40% de padding interno vazio; diagramas encostam nas bordas do container.
