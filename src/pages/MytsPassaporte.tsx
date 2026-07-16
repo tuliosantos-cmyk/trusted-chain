@@ -56,7 +56,7 @@ const PartnerLogo = ({
       src={src}
       alt={alt}
       className={`${className} w-auto object-contain`}
-      style={{ filter: "invert(1) brightness(1.15) contrast(1.05)", mixBlendMode: "screen" }}
+      style={{ filter: "brightness(0) invert(1)" }}
     />
   ) : (
     <img src={src} alt={alt} className={`${className} w-auto object-contain`} />
@@ -243,14 +243,14 @@ const InitiativeHub = () => (
 
     <g>
       <rect x="20" y="275" width="190" height="82" rx="16" fill="hsl(152 65% 40% / 0.14)" stroke="hsl(152 65% 40% / 0.45)" />
-      <text x="115" y="307" textAnchor="middle" fill="hsl(152 65% 30%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">PRODUTOR</text>
-      <text x="115" y="333" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">protagonista</text>
+      <text x="115" y="307" textAnchor="middle" fill="hsl(152 75% 70%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">PRODUTOR</text>
+      <text x="115" y="333" textAnchor="middle" fill="#e2e8f0" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">protagonista</text>
     </g>
 
     <g>
       <rect x="430" y="275" width="190" height="82" rx="16" fill="hsl(214 95% 54% / 0.12)" stroke="hsl(214 95% 54% / 0.45)" />
-      <text x="525" y="307" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">MERCADO</text>
-      <text x="525" y="333" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">acesso &amp; reconhecimento</text>
+      <text x="525" y="307" textAnchor="middle" fill="hsl(199 95% 70%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">MERCADO</text>
+      <text x="525" y="333" textAnchor="middle" fill="#e2e8f0" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">acesso &amp; reconhecimento</text>
     </g>
   </svg>
 );
@@ -408,7 +408,7 @@ const S01Potencial = () => (
     <div className="grid grid-cols-12 gap-10 h-full">
       <div className="col-span-7 flex flex-col justify-between">
         <div className="flex items-center gap-5">
-          <img src={mytsLogo} alt="MyTS" className="h-10 [filter:invert(1)]" />
+          <img src={mytsLogo} alt="MyTS" className="h-10 [filter:brightness(0)_invert(1)]" />
           <SectionLabel n="01" label="POR QUE ISSO IMPORTA" light />
         </div>
 
@@ -581,7 +581,7 @@ const S03Abordagem = () => (
                 {p.logo ? (
                   <PartnerLogo src={p.logo} alt={p.name} className="h-10" variant="light" />
                 ) : (
-                  <img src={mytsLogo} alt="MyTS" className="h-9 [filter:invert(1)]" />
+                  <img src={mytsLogo} alt="MyTS" className="h-9 [filter:brightness(0)_invert(1)]" />
                 )}
               </div>
               <div className="min-w-0 flex-1">
@@ -941,7 +941,7 @@ const S09QuemSomos = () => (
     <div className="flex flex-col h-full gap-6">
       <div className="flex items-center justify-between">
         <SectionLabel n="09" label="QUEM SOMOS" light />
-        <img src={mytsLogo} alt="MyTS" className="h-8 [filter:invert(1)]" />
+        <img src={mytsLogo} alt="MyTS" className="h-8 [filter:brightness(0)_invert(1)]" />
       </div>
 
       <div>
@@ -973,7 +973,7 @@ const S09QuemSomos = () => (
               {o.logo ? (
                 <PartnerLogo src={o.logo} alt={o.name} className="h-8" variant="light" />
               ) : (
-                <img src={mytsLogo} alt="MyTS" className="h-8 [filter:invert(1)]" />
+                <img src={mytsLogo} alt="MyTS" className="h-8 [filter:brightness(0)_invert(1)]" />
               )}
             </div>
             <div className="mt-5 font-display font-extrabold text-3xl">{o.name}</div>
