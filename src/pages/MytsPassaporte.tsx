@@ -477,7 +477,7 @@ const S01Potencial = () => (
 /* 02 — O desafio */
 const S02Desafio = () => (
   <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[460px] [filter:invert(1)]" />}>
-    <div className="flex flex-col h-full gap-8">
+    <div className="flex flex-col h-full gap-6">
       <div className="flex items-center justify-between">
         <SectionLabel n="02" label="QUAL É O PROBLEMA" />
         <div className="text-sm font-mono uppercase tracking-[0.22em] text-muted-foreground">
@@ -485,13 +485,11 @@ const S02Desafio = () => (
         </div>
       </div>
 
-      <div>
-        <h2 className="font-display font-extrabold text-primary text-6xl md:text-7xl leading-[1.02] max-w-5xl">
-          O valor existe. A comprovação, hoje, <span className="text-gradient">não chega ao mercado</span>.
-        </h2>
-      </div>
+      <h2 className="font-display font-extrabold text-primary text-7xl md:text-[88px] leading-[1.0] max-w-6xl">
+        O valor existe. A comprovação, hoje, <span className="text-gradient">não chega ao mercado</span>.
+      </h2>
 
-      <div className="flex-1 flex flex-col justify-center">
+      <div className="flex-1 flex items-center min-h-0">
         <ChallengeFlow />
       </div>
 
@@ -518,11 +516,13 @@ const S02Desafio = () => (
         ].map((c) => (
           <div key={c.t} className="bg-gradient-card border border-border rounded-2xl p-8 shadow-card">
             <div className="flex items-center justify-between">
-              <c.icon className="size-8 text-accent" />
+              <div className="size-14 rounded-2xl bg-accent/10 grid place-items-center">
+                <c.icon className="size-8 text-accent" />
+              </div>
               <div className="text-[12px] font-mono uppercase tracking-[0.22em] text-muted-foreground">{c.t}</div>
             </div>
-            <div className="mt-4 font-display font-extrabold text-4xl leading-none text-gradient">{c.kpi}</div>
-            <div className="mt-4 text-[16px] text-muted-foreground leading-snug">{c.s}</div>
+            <div className="mt-5 font-display font-extrabold text-5xl leading-none text-gradient">{c.kpi}</div>
+            <div className="mt-4 text-[17px] text-muted-foreground leading-snug">{c.s}</div>
           </div>
         ))}
       </div>
