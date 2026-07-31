@@ -497,12 +497,6 @@ const S00Capa = () => (
             Groundd · RAMO
           </span>
         </div>
-        <span
-          className="rounded-full border border-primary-foreground/15 bg-primary-foreground/[0.05] font-mono uppercase text-primary-foreground/55"
-          style={{ fontSize: T.mono, letterSpacing: "0.18em", padding: "10px 20px" }}
-        >
-          Apresentação para investidores
-        </span>
       </div>
 
       {/* corpo — texto + foto */}
