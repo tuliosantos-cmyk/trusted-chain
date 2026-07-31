@@ -656,8 +656,8 @@ const S01Abertura = () => (
 
       {/* foto — 508px */}
       <PhotoSlot
-        src={produtorImg}
-        alt="Produtor em seu território"
+        src={rinaldoAsset.url}
+        alt="Produtor em seu aviário"
         caption="Quem sustenta as cadeias"
         light
         className="border border-primary-foreground/10"
