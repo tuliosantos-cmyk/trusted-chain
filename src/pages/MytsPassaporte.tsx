@@ -522,18 +522,6 @@ const S00Capa = () => (
             de produtores, cooperativas e comunidades em valor reconhecido.
           </p>
 
-          <div
-            className="inline-flex w-fit items-center rounded-full bg-gradient-accent shadow-cta"
-            style={{ gap: 14, padding: "18px 32px", marginTop: 40 }}
-          >
-            <Sprout style={{ width: 26, height: 26 }} className="text-accent-foreground" />
-            <span
-              className="font-display font-black text-accent-foreground"
-              style={{ fontSize: 22, letterSpacing: "0.01em" }}
-            >
-              MyTS Passaporte Digital
-            </span>
-          </div>
         </div>
 
         {/* foto */}
@@ -675,8 +663,8 @@ const S02Problema = () => (
           className="font-display font-black tracking-tight text-primary"
           style={{ fontSize: T.title, lineHeight: 1.06, width: 780, flexShrink: 0 }}
         >
-          O mercado já reconhece o valor da floresta.{" "}
-          <span className="text-gradient">Ainda falta reconhecer o valor de quem a mantém em pé.</span>
+          O mercado exige rastreabilidade, impacto comprovado e origem confiável.{" "}
+          <span className="text-gradient">Ainda falta enxergar quem realmente sustenta isso em pé.</span>
         </h2>
         <div className="flex-1 text-muted-foreground" style={{ fontSize: T.small, lineHeight: 1.6 }}>
           <p>
@@ -725,8 +713,8 @@ const S02Problema = () => (
         style={{ height: 108, marginTop: 24, padding: "0 36px" }}
       >
         <p className="font-display font-bold text-primary" style={{ fontSize: 26, lineHeight: 1.3 }}>
-          É um gap estrutural dos dois lados. E ele não se resolve com boa vontade —{" "}
-          <span className="text-accent">se resolve com infraestrutura.</span>
+          É um gap de quem produz e de quem compra. E ele só se fecha com dados, governança e
+          infraestrutura — não com boa vontade.
         </p>
       </div>
     </div>
@@ -932,9 +920,9 @@ const S04Ciclo = () => (
             >
               Modelo já validado
             </span>
-            <div className="flex items-center" style={{ gap: 36, marginTop: 18 }}>
-              <PartnerLogo src={korinAsset.url} alt="Korin" height={34} />
-              <PartnerLogo src={carrefourAsset.url} alt="Carrefour" height={34} />
+            <div className="flex items-center" style={{ gap: 44, marginTop: 22 }}>
+              <PartnerLogo src={korinAsset.url} alt="Korin" height={52} />
+              <PartnerLogo src={carrefourAsset.url} alt="Carrefour" height={52} />
             </div>
           </div>
         </div>
@@ -1130,7 +1118,7 @@ const S06Convite = () => (
             className="font-mono uppercase text-primary-foreground/50"
             style={{ fontSize: T.mono, letterSpacing: "0.2em" }}
           >
-            Consórcio
+            Realização
           </span>
           <div className="flex items-center" style={{ gap: 32, marginTop: 22 }}>
             <img src={mytsLogo} alt="MyTS" style={{ height: 28, filter: "brightness(0) invert(1)" }} />
