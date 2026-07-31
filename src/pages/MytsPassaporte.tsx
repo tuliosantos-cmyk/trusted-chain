@@ -539,13 +539,11 @@ const S03Infraestrutura = () => {
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-4">
-                    <span className="font-display text-[26px] font-black text-primary-foreground">
+                    <span className="font-display text-[28px] font-black text-primary-foreground">
                       {c.nome}
                     </span>
-                    {c.logo && (
-                      <PartnerLogo src={c.logo} alt={c.nome} className="h-6 opacity-70" />
-                    )}
                   </div>
+
                   <p className="mt-1.5 text-[17px] leading-snug text-primary-foreground/70">
                     {c.texto}
                   </p>
