@@ -360,37 +360,42 @@ const S01Abertura = () => (
       </>
     }
   >
-    <div className="flex h-full items-stretch gap-12">
-      <div className="flex flex-[1.35] flex-col">
+    <div className="flex h-full min-h-0 items-stretch gap-10">
+      <div className="flex min-h-0 flex-[1.35] flex-col justify-between py-1">
         <div className="flex items-center gap-6">
-          <img src={mytsLogo} alt="MyTS" className="h-12 [filter:brightness(0)_invert(1)]" />
-          <span className="h-8 w-px bg-primary-foreground/20" />
-          <span className="text-sm font-mono uppercase tracking-[0.24em] text-primary-foreground/60">
+          <img src={mytsLogo} alt="MyTS" className="h-10 [filter:brightness(0)_invert(1)]" />
+          <span className="h-7 w-px bg-primary-foreground/20" />
+          <span className="text-xs font-mono uppercase tracking-[0.24em] text-primary-foreground/60">
             Groundd · RAMO
           </span>
         </div>
 
-        <h1 className="mt-auto font-display text-[68px] font-black leading-[0.98] tracking-tight text-primary-foreground">
-          O impacto já existe.
-          <br />
-          <span className="text-gradient">O reconhecimento ainda não.</span>
-        </h1>
+        <div className="flex flex-col gap-5">
+          <h1 className="font-display text-[clamp(38px,3.6vw,58px)] font-black leading-[1.02] tracking-tight text-primary-foreground">
+            O impacto já existe.
+            <br />
+            <span className="text-gradient">O reconhecimento ainda não.</span>
+          </h1>
 
-        <p className="mt-8 max-w-[820px] text-[21px] leading-relaxed text-primary-foreground/75">
-          Existem milhares de produtores, cooperativas e comunidades tradicionais que já fazem o
-          trabalho certo. Preservam territórios. Produzem alimentos. Mantêm conhecimentos que
-          sustentam cadeias inteiras.
-        </p>
-        <p className="mt-5 max-w-[820px] text-[21px] leading-relaxed text-primary-foreground/75">
-          O que falta não é capacidade. Falta uma <strong className="font-bold text-primary-foreground">infraestrutura</strong> que
-          transforme esse impacto em reconhecimento, acesso ao mercado e geração de valor.
-        </p>
+          <div className="flex flex-col gap-3">
+            <p className="max-w-[760px] text-[clamp(13px,1.15vw,17px)] leading-relaxed text-primary-foreground/75">
+              Existem milhares de produtores, cooperativas e comunidades tradicionais que já fazem o
+              trabalho certo. Preservam territórios. Produzem alimentos. Mantêm conhecimentos que
+              sustentam cadeias inteiras.
+            </p>
+            <p className="max-w-[760px] text-[clamp(13px,1.15vw,17px)] leading-relaxed text-primary-foreground/75">
+              O que falta não é capacidade. Falta uma{" "}
+              <strong className="font-bold text-primary-foreground">infraestrutura</strong> que
+              transforme esse impacto em reconhecimento, acesso ao mercado e geração de valor.
+            </p>
+          </div>
 
-        <p className="mt-8 border-l-4 border-accent-glow pl-6 font-display text-[26px] italic leading-snug text-accent-glow">
-          É essa infraestrutura que conecta quem produz valor a quem busca gerar impacto.
-        </p>
+          <p className="border-l-4 border-accent-glow pl-5 font-display text-[clamp(15px,1.5vw,22px)] italic leading-snug text-accent-glow">
+            É essa infraestrutura que conecta quem produz valor a quem busca gerar impacto.
+          </p>
+        </div>
 
-        <div className="mt-auto flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-3">
           <Chip light>Produtores</Chip>
           <Chip light>Cooperativas</Chip>
           <Chip light>Comunidades tradicionais</Chip>
@@ -402,9 +407,10 @@ const S01Abertura = () => (
         alt="Produtor em seu território"
         caption="Quem sustenta as cadeias"
         light
-        className="w-[34%] shrink-0 border border-primary-foreground/10"
+        className="h-full w-[32%] shrink-0 self-stretch border border-primary-foreground/10"
       />
     </div>
+
   </Slide>
 );
 
