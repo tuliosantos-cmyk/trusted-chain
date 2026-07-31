@@ -514,88 +514,86 @@ const S03Infraestrutura = () => {
         </>
       }
     >
-      <div className="flex h-full flex-col">
+      <div className="flex h-full min-h-0 flex-col gap-[2.2%]">
         <SectionLabel n="03" label="O QUE É" light />
 
-        <div className="mt-6 flex items-start gap-12">
-          <h2 className="max-w-[54%] font-display text-[46px] font-black leading-[1.02] tracking-tight text-primary-foreground">
+        <div className="flex items-start gap-8">
+          <h2 className="max-w-[52%] font-display text-[clamp(24px,2.6vw,42px)] font-black leading-[1.05] tracking-tight text-primary-foreground">
             A infraestrutura <span className="text-gradient">invisível</span> das cadeias
             sustentáveis
           </h2>
-          <div className="flex-1">
-            <div className="flex flex-wrap gap-3">
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap gap-2">
               {["Não é um software", "Não é uma consultoria", "Não é uma auditoria"].map((t) => (
                 <span
                   key={t}
-                  className="rounded-full border border-primary-foreground/15 px-5 py-2 text-[15px] font-semibold text-primary-foreground/45 line-through decoration-destructive/70"
+                  className="whitespace-nowrap rounded-full border border-primary-foreground/15 px-4 py-1.5 text-[clamp(11px,0.95vw,15px)] font-semibold text-primary-foreground/45 line-through decoration-destructive/70"
                 >
                   {t}
                 </span>
               ))}
             </div>
-            <p className="mt-4 text-[18px] leading-relaxed text-primary-foreground/75">
+            <p className="mt-3 text-[clamp(12px,1.05vw,17px)] leading-relaxed text-primary-foreground/75">
               É a infraestrutura que ninguém vê, mas que permite que produtores, cooperativas,
               empresas e investidores confiem nas mesmas informações — e gerem valor a partir delas.
             </p>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-1 items-stretch gap-8">
-          <div className="relative flex flex-[1.4] flex-col justify-between gap-4">
-            <div className="absolute left-[38px] top-8 bottom-24 w-px bg-gradient-to-b from-accent-glow/60 to-accent/10" />
+        <div className="flex min-h-0 flex-1 items-stretch gap-6">
+          <div className="relative flex min-w-0 flex-[1.4] flex-col justify-between gap-[2%]">
+            <div className="absolute left-[5%] top-[8%] bottom-[26%] w-px bg-gradient-to-b from-accent-glow/60 to-accent/10" />
             {camadas.map((c) => (
               <div
                 key={c.nome}
-                className="relative flex items-center gap-6 rounded-2xl border border-primary-foreground/12 bg-primary-foreground/[0.06] p-6 backdrop-blur"
+                className="relative flex min-h-0 flex-1 items-center gap-5 rounded-2xl border border-primary-foreground/12 bg-primary-foreground/[0.06] px-5 py-[2%] backdrop-blur"
               >
-                <div className="grid size-[76px] shrink-0 place-items-center rounded-2xl bg-gradient-accent shadow-glow">
-                  <c.icon className="size-9 text-accent-foreground" />
+                <div className="grid aspect-square w-[clamp(44px,4.4vw,72px)] shrink-0 place-items-center rounded-2xl bg-gradient-accent shadow-glow">
+                  <c.icon className="size-[clamp(20px,2vw,34px)] text-accent-foreground" />
                 </div>
                 <div className="min-w-0">
-                  <div className="flex items-center gap-4">
-                    <span className="font-display text-[28px] font-black text-primary-foreground">
-                      {c.nome}
-                    </span>
-                  </div>
-
-                  <p className="mt-1.5 text-[17px] leading-snug text-primary-foreground/70">
+                  <span className="font-display text-[clamp(17px,1.7vw,27px)] font-black text-primary-foreground">
+                    {c.nome}
+                  </span>
+                  <p className="mt-1 text-[clamp(11px,1vw,16px)] leading-snug text-primary-foreground/70">
                     {c.texto}
                   </p>
                 </div>
               </div>
             ))}
-            <p className="relative rounded-2xl bg-gradient-accent px-7 py-5 font-display text-[22px] font-bold leading-snug text-accent-foreground">
+            <p className="relative rounded-2xl bg-gradient-accent px-6 py-[1.8%] font-display text-[clamp(13px,1.35vw,21px)] font-bold leading-snug text-accent-foreground">
               Juntas, essas capacidades transformam impacto local em oportunidades de mercado.
             </p>
           </div>
 
-          <div className="flex w-[36%] shrink-0 flex-col rounded-3xl border border-accent-glow/30 bg-primary-foreground/[0.07] p-8 backdrop-blur">
+          <div className="flex w-[34%] shrink-0 flex-col rounded-3xl border border-accent-glow/30 bg-primary-foreground/[0.07] p-[3%] backdrop-blur">
             <div className="flex items-center gap-3 text-accent-glow">
-              <ShieldCheck className="size-7" />
-              <span className="text-sm font-mono uppercase tracking-[0.2em]">
+              <ShieldCheck className="size-[clamp(16px,1.5vw,26px)] shrink-0" />
+              <span className="text-[clamp(10px,0.85vw,13px)] font-mono uppercase tracking-[0.2em]">
                 O que sua organização viabiliza
               </span>
             </div>
-            <ul className="mt-6 flex flex-1 flex-col justify-center gap-5">
+            <ul className="mt-[4%] flex min-h-0 flex-1 flex-col justify-center gap-[4%]">
               {viabiliza.map((v) => (
-                <li key={v} className="flex items-start gap-4">
-                  <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-full bg-accent-glow/15">
-                    <Check className="size-5 text-accent-glow" />
+                <li key={v} className="flex items-start gap-3">
+                  <span className="mt-0.5 grid size-[clamp(20px,1.9vw,30px)] shrink-0 place-items-center rounded-full bg-accent-glow/15">
+                    <Check className="size-[clamp(12px,1.1vw,18px)] text-accent-glow" />
                   </span>
-                  <span className="text-[19px] font-semibold leading-snug text-primary-foreground">
+                  <span className="text-[clamp(12px,1.15vw,18px)] font-semibold leading-snug text-primary-foreground">
                     {v}
                   </span>
                 </li>
               ))}
             </ul>
             <PhotoSlot
-              hint="Foto de cooperativa · panorâmica"
+              hint="Foto de cooperativa"
               light
-              className="mt-6 h-[110px] w-full"
+              className="mt-[4%] h-[18%] min-h-[64px] w-full shrink-0"
             />
           </div>
         </div>
       </div>
+
     </Slide>
   );
 };
