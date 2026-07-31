@@ -1164,7 +1164,7 @@ const MytsPassaporte = () => {
         .no-print{display:none !important}
         .slide-frame{box-shadow:none !important;border-radius:0 !important;break-after:page;page-break-after:always}
         /* Sombras difusas e blur viram artefatos rosa/magenta na conversao para PDF */
-        .slide-frame *{backdrop-filter:none !important;-webkit-backdrop-filter:none !important;filter:none !important;mix-blend-mode:normal !important}
+        .slide-frame *{backdrop-filter:none !important;-webkit-backdrop-filter:none !important;mix-blend-mode:normal !important}
         .slide-frame .shadow-glow,
         .slide-frame .shadow-cta,
         .slide-frame .shadow-elegant,
