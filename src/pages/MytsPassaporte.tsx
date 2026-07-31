@@ -1138,23 +1138,32 @@ const S06Convite = () => (
 /* ============================================================
    Página
    ============================================================ */
-const MytsPassaporte = () => (
+const MytsPassaporte = () => {
+  const printMode = usePrintMode();
+  return (
   <main
     className="bg-[#0a0e1a]"
     style={{
       margin: 0,
-      padding: "32px 0",
+      padding: printMode ? 0 : "32px 0",
       minHeight: "100vh",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      gap: 32,
+      gap: printMode ? 0 : 32,
       overflowX: "hidden",
     }}
   >
     <style>{`
       html,body,#root{margin:0;padding:0;background:#0a0e1a}
-      html{scroll-snap-type:y proximity}
+      ${printMode ? "" : "html{scroll-snap-type:y proximity}"}
+      *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      @page{size:1600px 900px landscape;margin:0}
+      @media print{
+        html,body,#root{background:#fff}
+        .no-print{display:none !important}
+        .slide-frame{box-shadow:none !important;border-radius:0 !important;break-after:page;page-break-after:always}
+      }
     `}</style>
     <Helmet>
       <title>MyTS — O impacto já existe. O reconhecimento ainda não.</title>
@@ -1163,7 +1172,17 @@ const MytsPassaporte = () => (
         content="A infraestrutura que transforma o impacto de produtores, cooperativas e comunidades em reconhecimento, acesso ao mercado e geração de valor — MyTS, Groundd e RAMO."
       />
     </Helmet>
+    {!printMode && (
+      <button
+        type="button"
+        onClick={() => window.open(`${window.location.pathname}?print`, "_blank")}
+        className="no-print fixed right-6 top-6 z-50 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-medium text-white backdrop-blur transition hover:bg-white/20"
+      >
+        Baixar PDF
+      </button>
+    )}
     <S00Capa />
+
     <S01Abertura />
     <S02Problema />
     <S03Infraestrutura />
