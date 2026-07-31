@@ -1,31 +1,21 @@
 import { Helmet } from "react-helmet-async";
 import {
   Sprout,
-  ArrowRight,
-  ShieldCheck,
   Users,
   Building2,
   TrendingUp,
-  FileCheck,
-  Database,
-  Store,
-  Mail,
-  Globe,
-  GraduationCap,
-  TreePine,
-  HandHeart,
   Coins,
-  FileSpreadsheet,
-  MessageCircle,
-  FileText,
-  EyeOff,
-  TrendingDown,
-  Radar,
-  Fingerprint,
-  Scale,
-  Quote,
-  CheckCircle2,
-  XCircle,
+  TreePine,
+  ShieldCheck,
+  Globe,
+  Mail,
+  Camera,
+  Check,
+  ArrowRight,
+  Handshake,
+  Landmark,
+  Satellite,
+  Network,
 } from "lucide-react";
 import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
@@ -34,8 +24,7 @@ import ramoAsset from "@/assets/logos/ramo.png.asset.json";
 import korinAsset from "@/assets/logos/korin.png.asset.json";
 import carrefourAsset from "@/assets/logos/carrefour.png.asset.json";
 import produtorImg from "@/assets/passaporte/produtor.jpg";
-import valmirAsset from "@/assets/team/valmir.png.asset.json";
-import marisaAsset from "@/assets/team/marisa.png.asset.json";
+import territorioImg from "@/assets/passaporte/geolocalizacao.jpg";
 
 /* ============================================================
    Primitivos
@@ -136,1028 +125,676 @@ const MytsWatermark = ({ className = "" }: { className?: string }) => (
   />
 );
 
-/* ============================================================
-   Diagramas customizados
-   ============================================================ */
-
-/* Slide 02 — Fluxo do desafio */
-const ChallengeFlow = () => {
-  const nos = [
-    { icon: Sprout, t: "Produtor", tone: "start" },
-    { icon: FileSpreadsheet, t: "Planilhas soltas" },
-    { icon: MessageCircle, t: "WhatsApp" },
-    { icon: FileText, t: "Papel & PDF" },
-    { icon: EyeOff, t: "Invisível ao mercado", tone: "warn" },
-    { icon: TrendingDown, t: "Menos renda", tone: "end" },
-  ];
-  return (
-    <div className="w-full">
-      <div className="grid grid-cols-11 items-center gap-0">
-        {nos.map((n, i) => (
-          <div key={n.t} className="contents">
-            <div className="col-span-1 flex flex-col items-center text-center">
-              <div
-                className={`relative size-28 rounded-3xl grid place-items-center border-2 shadow-elegant ${
-                  n.tone === "start"
-                    ? "bg-gradient-accent border-accent-glow"
-                    : n.tone === "warn"
-                    ? "bg-destructive/10 border-destructive/40"
-                    : n.tone === "end"
-                    ? "bg-primary border-primary"
-                    : "bg-card border-border"
-                }`}
-              >
-                <n.icon
-                  className={`size-12 ${
-                    n.tone === "start"
-                      ? "text-accent-foreground"
-                      : n.tone === "warn"
-                      ? "text-destructive"
-                      : n.tone === "end"
-                      ? "text-accent-glow"
-                      : "text-muted-foreground"
-                  }`}
-                />
-              </div>
-              <div
-                className={`mt-4 font-display font-bold text-[18px] leading-tight max-w-[160px] ${
-                  n.tone === "warn" ? "text-destructive" : "text-primary"
-                }`}
-              >
-                {n.t}
-              </div>
-            </div>
-            {i < nos.length - 1 && (
-              <div className="col-span-1 flex items-center justify-center -mt-8">
-                <ArrowRight className="size-8 text-muted-foreground/60" />
-              </div>
-            )}
-          </div>
-        ))}
+/* Slot de foto — recebe a imagem quando existir, senão mostra moldura tracejada */
+const PhotoSlot = ({
+  src,
+  alt,
+  caption,
+  hint,
+  className = "",
+  imgClassName = "",
+  light = false,
+}: {
+  src?: string;
+  alt?: string;
+  caption?: string;
+  hint?: string;
+  className?: string;
+  imgClassName?: string;
+  light?: boolean;
+}) => (
+  <figure className={`relative overflow-hidden rounded-3xl ${className}`}>
+    {src ? (
+      <>
+        <img src={src} alt={alt ?? ""} className={`h-full w-full object-cover ${imgClassName}`} />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent" />
+      </>
+    ) : (
+      <div
+        className={`h-full w-full grid place-items-center gap-3 border-2 border-dashed ${
+          light
+            ? "border-primary-foreground/25 bg-primary-foreground/5"
+            : "border-accent/30 bg-accent/5"
+        }`}
+      >
+        <Camera className={`size-10 ${light ? "text-primary-foreground/50" : "text-accent/60"}`} />
+        <span
+          className={`px-6 text-center text-sm font-mono uppercase tracking-[0.18em] ${
+            light ? "text-primary-foreground/50" : "text-accent/70"
+          }`}
+        >
+          {hint ?? "Foto a enviar"}
+        </span>
       </div>
-    </div>
-  );
-};
-
-/* Slide 03 — Hub da abordagem */
-const InitiativeHub = () => (
-  <svg viewBox="0 0 640 460" className="w-full h-full" role="img" aria-label="MyTS no núcleo, Groundd e RAMO como camadas complementares" preserveAspectRatio="xMidYMid meet">
-    <defs>
-      <linearGradient id="hub-accent" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stopColor="hsl(214 95% 54%)" />
-        <stop offset="100%" stopColor="hsl(199 95% 60%)" />
-      </linearGradient>
-      <radialGradient id="hub-glow">
-        <stop offset="0%" stopColor="hsl(199 95% 60%)" stopOpacity="0.55" />
-        <stop offset="100%" stopColor="hsl(214 95% 54%)" stopOpacity="0" />
-      </radialGradient>
-    </defs>
-
-    <line x1="180" y1="150" x2="320" y2="230" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
-    <line x1="180" y1="320" x2="320" y2="230" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
-    <line x1="460" y1="150" x2="320" y2="230" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
-    <line x1="460" y1="320" x2="320" y2="230" stroke="url(#hub-accent)" strokeWidth="2" strokeDasharray="4 5" opacity="0.6" />
-
-    <circle cx="320" cy="230" r="180" fill="url(#hub-glow)" />
-    <circle cx="320" cy="230" r="120" fill="hsl(222 65% 14%)" stroke="hsl(214 95% 54%)" strokeWidth="2" />
-    <circle cx="320" cy="230" r="146" fill="none" stroke="hsl(199 95% 60%)" strokeWidth="1" strokeDasharray="2 6" opacity="0.6">
-      <animateTransform attributeName="transform" type="rotate" from="0 320 230" to="360 320 230" dur="24s" repeatCount="indefinite" />
-    </circle>
-    <text x="320" y="208" textAnchor="middle" fill="hsl(199 95% 60%)" fontSize="13" fontWeight="700" letterSpacing="3" fontFamily="Rubik, sans-serif">INFRAESTRUTURA</text>
-    <text x="320" y="248" textAnchor="middle" fill="#fff" fontSize="44" fontWeight="800" fontFamily="Rubik, sans-serif">MyTS</text>
-    <text x="320" y="274" textAnchor="middle" fill="#94a3b8" fontSize="12" fontFamily="Lato, sans-serif">dados · evidências · governança</text>
-
-    <g>
-      <rect x="20" y="110" width="190" height="90" rx="16" fill="#fff" stroke="hsl(214 32% 91%)" />
-      <text x="115" y="142" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">GROUNDD</text>
-      <text x="115" y="167" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="14" fontWeight="600" fontFamily="Lato, sans-serif">Pessoas · Território</text>
-      <text x="115" y="186" textAnchor="middle" fill="hsl(215 16% 42%)" fontSize="12" fontFamily="Lato, sans-serif">CERS · capacitação</text>
-    </g>
-
-    <g>
-      <rect x="430" y="110" width="190" height="90" rx="16" fill="#fff" stroke="hsl(214 32% 91%)" />
-      <text x="525" y="142" textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">RAMO</text>
-      <text x="525" y="167" textAnchor="middle" fill="hsl(222 47% 11%)" fontSize="14" fontWeight="600" fontFamily="Lato, sans-serif">Inteligência espacial</text>
-      <text x="525" y="186" textAnchor="middle" fill="hsl(215 16% 42%)" fontSize="12" fontFamily="Lato, sans-serif">NatureOS · geoanálise</text>
-    </g>
-
-    <g>
-      <rect x="20" y="275" width="190" height="82" rx="16" fill="hsl(152 65% 40% / 0.14)" stroke="hsl(152 65% 40% / 0.45)" />
-      <text x="115" y="307" textAnchor="middle" fill="hsl(152 75% 70%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">PRODUTOR</text>
-      <text x="115" y="333" textAnchor="middle" fill="#e2e8f0" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">protagonista</text>
-    </g>
-
-    <g>
-      <rect x="430" y="275" width="190" height="82" rx="16" fill="hsl(214 95% 54% / 0.12)" stroke="hsl(214 95% 54% / 0.45)" />
-      <text x="525" y="307" textAnchor="middle" fill="hsl(199 95% 70%)" fontSize="13" fontWeight="700" letterSpacing="2" fontFamily="Rubik, sans-serif">MERCADO</text>
-      <text x="525" y="333" textAnchor="middle" fill="#e2e8f0" fontSize="13" fontWeight="600" fontFamily="Lato, sans-serif">acesso &amp; reconhecimento</text>
-    </g>
-  </svg>
+    )}
+    {src && caption && (
+      <figcaption className="absolute inset-x-0 bottom-0 p-6">
+        <span className="text-lg font-display font-bold text-primary-foreground drop-shadow">
+          {caption}
+        </span>
+      </figcaption>
+    )}
+  </figure>
 );
 
-/* Slide 04 — Timeline horizontal + parceiro por etapa */
-const JourneySteps = () => {
-  const etapas = [
-    { icon: Radar, t: "Diagnóstico", by: "Groundd" },
-    { icon: GraduationCap, t: "Capacitação", by: "Groundd" },
-    { icon: Database, t: "Organização", by: "MyTS" },
-    { icon: FileCheck, t: "Evidências", by: "MyTS + RAMO" },
-    { icon: Fingerprint, t: "Passaporte Digital", by: "MyTS" },
-    { icon: Store, t: "Mercado", by: "resultado" },
-  ];
-  return (
-    <div className="relative w-full">
-      <div className="absolute left-20 right-20 top-[180px] h-1.5 rounded-full bg-gradient-to-r from-accent via-accent-glow to-accent opacity-70" />
-      <div className="grid grid-cols-6 gap-4 relative">
-        {etapas.map((e, i) => (
-          <div key={e.t} className="flex flex-col items-center text-center">
-            <div className="text-[14px] font-mono font-bold text-accent tracking-widest mb-2">
-              0{i + 1}
-            </div>
-            <div className="mb-3 inline-block rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 text-[12px] font-mono font-bold tracking-widest uppercase text-accent">
-              {e.by}
-            </div>
-            <div className="relative">
-              <div className="absolute -inset-5 bg-gradient-accent opacity-30 blur-2xl rounded-full" />
-              <div
-                className={`relative size-48 rounded-full grid place-items-center border-2 ${
-                  i === etapas.length - 1
-                    ? "bg-gradient-accent border-accent-glow shadow-cta"
-                    : "bg-primary border-accent"
-                }`}
-              >
-                <e.icon
-                  className={`size-20 ${
-                    i === etapas.length - 1 ? "text-accent-foreground" : "text-accent-glow"
-                  }`}
-                />
-              </div>
-            </div>
-            <div className="mt-8 font-display font-bold text-[30px] text-primary leading-tight">
-              {e.t}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-/* Slide 08 — Ciclo virtuoso */
-const VirtuousCycle = () => {
-  const nos = [
-    { t: "Produtores preparados" },
-    { t: "Evidências" },
-    { t: "Reconhecimento" },
-    { t: "Acesso a mercado" },
-    { t: "Mais renda" },
-    { t: "Comunidades fortes" },
-    { t: "Territórios preservados" },
-    { t: "Confiança na cadeia" },
-  ];
-  const cx = 440;
-  const cy = 340;
-  const r = 230;
-  return (
-    <div className="relative w-full h-full flex items-center justify-center">
-      <svg viewBox="0 0 880 680" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
-        <defs>
-          <linearGradient id="cyc-grad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="hsl(214 95% 54%)" />
-            <stop offset="100%" stopColor="hsl(199 95% 60%)" />
-          </linearGradient>
-          <marker id="cyc-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-            <path d="M0,0 L10,5 L0,10 z" fill="hsl(199 95% 60%)" />
-          </marker>
-          <radialGradient id="cyc-glow">
-            <stop offset="0%" stopColor="hsl(199 95% 60%)" stopOpacity="0.35" />
-            <stop offset="100%" stopColor="hsl(214 95% 54%)" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-
-        <circle cx={cx} cy={cy} r={r + 50} fill="url(#cyc-glow)" />
-        <circle cx={cx} cy={cy} r={r} fill="none" stroke="url(#cyc-grad)" strokeWidth="1.5" strokeDasharray="4 6" opacity="0.6" />
-
-        <circle cx={cx} cy={cy} r="102" fill="hsl(222 65% 14%)" stroke="hsl(214 95% 54%)" strokeWidth="2" />
-        <text x={cx} y={cy - 10} textAnchor="middle" fill="hsl(199 95% 60%)" fontSize="13" fontWeight="700" letterSpacing="3" fontFamily="Rubik, sans-serif">CICLO</text>
-        <text x={cx} y={cy + 18} textAnchor="middle" fill="#fff" fontSize="22" fontWeight="800" fontFamily="Rubik, sans-serif">VIRTUOSO</text>
-        <text x={cx} y={cy + 42} textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Lato, sans-serif">cada elo fortalece o próximo</text>
-
-        {nos.map((n, i) => {
-          const angle = (i / nos.length) * Math.PI * 2 - Math.PI / 2;
-          const x = cx + Math.cos(angle) * r;
-          const y = cy + Math.sin(angle) * r;
-          const next = ((i + 1) / nos.length) * Math.PI * 2 - Math.PI / 2;
-          const nx = cx + Math.cos(next) * r;
-          const ny = cy + Math.sin(next) * r;
-          const midAngle = (angle + next) / 2;
-          const mx = cx + Math.cos(midAngle) * (r + 20);
-          const my = cy + Math.sin(midAngle) * (r + 20);
-          const labelX = cx + Math.cos(angle) * (r + 95);
-          const labelY = cy + Math.sin(angle) * (r + 65);
-          return (
-            <g key={n.t}>
-              <path
-                d={`M ${x} ${y} Q ${mx} ${my} ${nx} ${ny}`}
-                fill="none"
-                stroke="url(#cyc-grad)"
-                strokeWidth="1.8"
-                markerEnd="url(#cyc-arr)"
-                opacity="0.75"
-              />
-              <circle cx={x} cy={y} r="32" fill="#fff" stroke="hsl(214 95% 54%)" strokeWidth="2" />
-              <text x={x} y={y + 6} textAnchor="middle" fill="hsl(214 95% 40%)" fontSize="18" fontWeight="700" fontFamily="Rubik, sans-serif">
-                {i + 1}
-              </text>
-              <text
-                x={labelX}
-                y={labelY}
-                textAnchor="middle"
-                fill="hsl(222 47% 11%)"
-                fontSize="16"
-                fontWeight="700"
-                fontFamily="Lato, sans-serif"
-              >
-                {n.t}
-              </text>
-            </g>
-          );
-        })}
-      </svg>
-    </div>
-  );
-};
-
 /* ============================================================
-   SLIDES
+   Diagramas
    ============================================================ */
 
-/* 01 — O potencial já existe. */
-const S01Potencial = () => (
-  <Slide
-    bg="bg-hero"
-    className="text-primary-foreground"
-    decor={
-      <>
-        <div className="absolute inset-0 grid-pattern opacity-25" />
-        <div className="absolute -top-40 -right-40 w-[640px] h-[640px] bg-glow blur-3xl opacity-40" />
-        <MytsWatermark className="-right-20 -bottom-20 w-[520px]" />
-      </>
-    }
-  >
-    <div className="grid grid-cols-12 gap-10 h-full">
-      <div className="col-span-7 flex flex-col justify-between">
-        <div className="flex items-center gap-5">
-          <img src={mytsLogo} alt="MyTS" className="h-10 [filter:brightness(0)_invert(1)]" />
-          <SectionLabel n="01" label="POR QUE ISSO IMPORTA" light />
-        </div>
+/* Slide 02 — o gap estrutural entre quem produz e quem compra */
+const GapDiagram = () => (
+  <div className="relative flex h-full items-stretch gap-0">
+    {/* margem esquerda */}
+    <div className="flex flex-1 flex-col justify-center rounded-3xl border border-border bg-card p-7 shadow-card">
 
-        <div>
-          <h1 className="font-display font-extrabold leading-[1.0] tracking-tight text-7xl md:text-8xl">
-            O potencial <span className="text-gradient">já existe</span>.
-            <br />
-            O reconhecimento <br /> ainda não.
-          </h1>
-          <p className="mt-10 text-2xl text-primary-foreground/85 leading-relaxed max-w-2xl">
-            Todos os dias, milhões de pequenos produtores, cooperativas, povos indígenas e comunidades tradicionais conservam florestas, produzem alimentos e mantêm conhecimentos que sustentam pessoas, territórios e economias inteiras.
-          </p>
-          <p className="mt-5 text-xl text-primary-foreground/60 max-w-2xl">
-            Ainda assim, boa parte desse valor permanece invisível para quem compra, investe ou financia essas cadeias.
-          </p>
-        </div>
-
-        <div className="text-sm text-primary-foreground/50 font-mono uppercase tracking-[0.25em]">
-          MyTS · Passaporte Digital
-        </div>
+      <div className="flex items-center gap-3 text-accent">
+        <Sprout className="size-7" />
+        <span className="text-sm font-mono uppercase tracking-[0.2em]">Quem produz</span>
       </div>
+      <p className="mt-4 text-[19px] font-display font-bold leading-tight text-primary">
+        Produtores, cooperativas e associações
+      </p>
+      <ul className="mt-4 space-y-2 text-[15px] leading-snug text-muted-foreground">
+        <li>· Boas práticas já existentes</li>
+        <li>· Sem comprovação de origem</li>
+        <li>· Sem histórico organizado</li>
+      </ul>
+    </div>
 
-      <div className="col-span-5 flex flex-col gap-5 min-h-0">
-        <div className="relative rounded-2xl overflow-hidden border border-primary-foreground/15 shadow-elegant flex-[0_0_44%]">
-          <img src={produtorImg} alt="Produtor" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent" />
-          <div className="absolute bottom-6 left-7 right-7">
-            <div className="text-[12px] font-mono uppercase tracking-[0.28em] text-accent-glow">
-              O verdadeiro protagonista
-            </div>
-            <div className="mt-2 font-display font-bold text-primary-foreground text-2xl leading-tight">
-              O produtor que conserva, cultiva e sustenta cadeias inteiras.
-            </div>
-          </div>
-        </div>
+    {/* vão */}
+    <div className="relative w-40 shrink-0">
+      <div className="absolute inset-y-6 left-1/2 -translate-x-1/2 border-l-2 border-dashed border-destructive/40" />
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-destructive/40 bg-destructive/10 px-4 py-2 text-center">
+        <span className="block text-[13px] font-mono uppercase tracking-[0.18em] text-destructive">
+          Gap
+        </span>
+        <span className="block text-[13px] font-semibold text-destructive/80">estrutural</span>
+      </div>
+    </div>
 
-        <div className="flex-1 flex flex-col gap-4 min-h-0">
-          {[
-            { k: "77%", v: "dos estabelecimentos rurais do Brasil são da agricultura familiar", src: "Censo Agropecuário IBGE" },
-            { k: "R$ 170 bi", v: "potencial da sociobiodiversidade até 2040", src: "Imaflora · TNC" },
-            { k: "30,5%", v: "das florestas do Brasil protegidas por territórios tradicionais", src: "MapBiomas · ISA" },
-          ].map((kpi) => (
-            <div
-              key={kpi.k}
-              className="flex-1 bg-gradient-dark-card border border-primary-foreground/10 rounded-2xl px-6 py-5 backdrop-blur flex items-center gap-6"
+    {/* margem direita */}
+    <div className="flex flex-1 flex-col justify-center rounded-3xl border border-border bg-card p-7 shadow-card">
+      <div className="flex items-center gap-3 text-accent">
+        <Building2 className="size-7" />
+        <span className="text-sm font-mono uppercase tracking-[0.2em]">Quem compra</span>
+      </div>
+      <p className="mt-4 text-[19px] font-display font-bold leading-tight text-primary">
+        Empresas, varejo e mercados exigentes
+      </p>
+      <ul className="mt-4 space-y-2 text-[15px] leading-snug text-muted-foreground">
+        <li>· Pressão regulatória crescente</li>
+        <li>· Precisam de rastreabilidade real</li>
+        <li>· Não enxergam a base da cadeia</li>
+      </ul>
+    </div>
+  </div>
+);
+
+/* Slide 04 — ciclo virtuoso */
+const CicloVirtuoso = () => {
+  const nos = [
+    "Produtor fortalecido",
+    "Maior renda",
+    "Cooperativas mais fortes",
+    "Territórios preservados",
+    "Cadeias resilientes",
+    "Mercados confiáveis",
+    "Novos investimentos",
+    "Mais produtores fortalecidos",
+  ];
+  const cx = 480;
+  const cy = 360;
+  const r = 250;
+  return (
+    <svg
+      viewBox="0 0 960 720"
+      className="h-full w-full"
+      role="img"
+      aria-label="Ciclo virtuoso do valor compartilhado"
+    >
+      <defs>
+        <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="hsl(214 95% 54%)" />
+          <stop offset="100%" stopColor="hsl(199 95% 60%)" />
+        </linearGradient>
+        <radialGradient id="coreGlow">
+          <stop offset="0%" stopColor="hsl(199 95% 60%)" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="hsl(214 95% 54%)" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+
+      <circle cx={cx} cy={cy} r={r + 60} fill="url(#coreGlow)" />
+      <circle
+        cx={cx}
+        cy={cy}
+        r={r}
+        fill="none"
+        stroke="url(#ringGrad)"
+        strokeWidth="3"
+        strokeDasharray="10 12"
+        opacity="0.75"
+      >
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from={`0 ${cx} ${cy}`}
+          to={`360 ${cx} ${cy}`}
+          dur="40s"
+          repeatCount="indefinite"
+        />
+      </circle>
+
+      {/* núcleo */}
+      <circle cx={cx} cy={cy} r="120" fill="hsl(222 65% 14%)" stroke="hsl(214 95% 54%)" strokeWidth="3" />
+      <text
+        x={cx}
+        y={cy - 18}
+        textAnchor="middle"
+        fill="hsl(199 95% 60%)"
+        fontSize="15"
+        fontWeight="700"
+        letterSpacing="3"
+        fontFamily="Rubik, sans-serif"
+      >
+        CENTRO
+      </text>
+      <text x={cx} y={cy + 14} textAnchor="middle" fill="#fff" fontSize="27" fontWeight="800" fontFamily="Rubik, sans-serif">
+        Valor
+      </text>
+      <text x={cx} y={cy + 46} textAnchor="middle" fill="#fff" fontSize="25" fontWeight="800" fontFamily="Rubik, sans-serif">
+        compartilhado
+      </text>
+
+
+      {nos.map((n, i) => {
+        const a = (i / nos.length) * 2 * Math.PI - Math.PI / 2;
+        const x = cx + r * Math.cos(a);
+        const y = cy + r * Math.sin(a);
+        const words = n.split(" ");
+        const lines: string[] = [];
+        let cur = "";
+        words.forEach((w) => {
+          if ((cur + " " + w).trim().length > 14) {
+            lines.push(cur.trim());
+            cur = w;
+          } else cur = `${cur} ${w}`;
+        });
+        if (cur.trim()) lines.push(cur.trim());
+        return (
+          <g key={n}>
+            <circle cx={x} cy={y} r="16" fill="hsl(214 95% 54%)" stroke="#fff" strokeWidth="4" />
+            <text
+              x={x}
+              y={y - 26 - (lines.length - 1) * 20}
+              textAnchor="middle"
+              fill="hsl(222 65% 14%)"
+              fontSize="19"
+              fontWeight="700"
+              fontFamily="Rubik, sans-serif"
             >
-              <div className="font-display font-extrabold text-4xl text-gradient leading-none min-w-[140px]">
-                {kpi.k}
-              </div>
-              <div className="flex-1">
-                <div className="text-[16px] text-primary-foreground/90 leading-snug">
-                  {kpi.v}
-                </div>
-                <div className="mt-1.5 text-[11px] font-mono uppercase tracking-[0.22em] text-primary-foreground/45">
-                  {kpi.src}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </Slide>
-);
+              {lines.map((l, li) => (
+                <tspan key={l} x={x} dy={li === 0 ? 0 : 22}>
+                  {l}
+                </tspan>
+              ))}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+};
 
-/* 02 — O desafio */
-const S02Desafio = () => (
-  <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[460px] [filter:invert(1)]" />}>
-    <div className="flex flex-col h-full gap-6">
-      <div className="flex items-center justify-between">
-        <SectionLabel n="02" label="QUAL É O PROBLEMA" />
-        <div className="text-sm font-mono uppercase tracking-[0.22em] text-muted-foreground">
-          o desafio não está na produção — está na comprovação
-        </div>
-      </div>
+/* ============================================================
+   Slides
+   ============================================================ */
 
-      <h2 className="font-display font-extrabold text-primary text-7xl md:text-[88px] leading-[1.0] max-w-6xl">
-        O valor existe. A comprovação, hoje, <span className="text-gradient">não chega ao mercado</span>.
-      </h2>
-
-      <div className="flex-1 flex items-center min-h-0">
-        <ChallengeFlow />
-      </div>
-
-      <div className="grid grid-cols-3 gap-6">
-        {[
-          {
-            icon: Building2,
-            t: "Empresas",
-            kpi: "7 países",
-            s: "com leis de due diligence de cadeia (EUDR, CSDDD, UK, França, Alemanha, EUA e Noruega) já exigindo rastreabilidade auditável",
-          },
-          {
-            icon: Users,
-            t: "Consumidores",
-            kpi: "62%",
-            s: "trocariam de marca sem informação clara sobre origem e impacto (Deloitte · GS1)",
-          },
-          {
-            icon: TrendingUp,
-            t: "Investidores",
-            kpi: "US$ 1,5 tri",
-            s: "em fundos de impacto exigem métricas verificáveis — sem evidência, não há alocação (GIIN 2024)",
-          },
-        ].map((c) => (
-          <div key={c.t} className="bg-gradient-card border border-border rounded-2xl p-8 shadow-card">
-            <div className="flex items-center justify-between">
-              <div className="size-14 rounded-2xl bg-accent/10 grid place-items-center">
-                <c.icon className="size-8 text-accent" />
-              </div>
-              <div className="text-[12px] font-mono uppercase tracking-[0.22em] text-muted-foreground">{c.t}</div>
-            </div>
-            <div className="mt-5 font-display font-extrabold text-5xl leading-none text-gradient">{c.kpi}</div>
-            <div className="mt-4 text-[17px] text-muted-foreground leading-snug">{c.s}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </Slide>
-);
-
-/* 03 — Nossa abordagem */
-const S03Abordagem = () => (
+/* ---------- 01 · Abertura ---------- */
+const S01Abertura = () => (
   <Slide
     bg="bg-hero"
-    className="text-primary-foreground"
     decor={
       <>
-        <div className="absolute inset-0 grid-pattern opacity-25" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[820px] h-[820px] bg-glow blur-3xl opacity-30" />
+        <div className="absolute inset-0 grid-pattern opacity-30" />
+        <MytsWatermark className="-right-24 -bottom-24 w-[420px]" />
       </>
     }
   >
-    <div className="flex flex-col h-full gap-5">
-      <div className="flex items-center justify-between">
+    <div className="flex h-full items-stretch gap-12">
+      <div className="flex flex-[1.35] flex-col">
+        <div className="flex items-center gap-6">
+          <img src={mytsLogo} alt="MyTS" className="h-12 [filter:brightness(0)_invert(1)]" />
+          <span className="h-8 w-px bg-primary-foreground/20" />
+          <span className="text-sm font-mono uppercase tracking-[0.24em] text-primary-foreground/60">
+            Groundd · RAMO
+          </span>
+        </div>
+
+        <h1 className="mt-auto font-display text-[68px] font-black leading-[0.98] tracking-tight text-primary-foreground">
+          O impacto já existe.
+          <br />
+          <span className="text-gradient">O reconhecimento ainda não.</span>
+        </h1>
+
+        <p className="mt-8 max-w-[820px] text-[21px] leading-relaxed text-primary-foreground/75">
+          Existem milhares de produtores, cooperativas e comunidades tradicionais que já fazem o
+          trabalho certo. Preservam territórios. Produzem alimentos. Mantêm conhecimentos que
+          sustentam cadeias inteiras.
+        </p>
+        <p className="mt-5 max-w-[820px] text-[21px] leading-relaxed text-primary-foreground/75">
+          O que falta não é capacidade. Falta uma <strong className="font-bold text-primary-foreground">infraestrutura</strong> que
+          transforme esse impacto em reconhecimento, acesso ao mercado e geração de valor.
+        </p>
+
+        <p className="mt-8 border-l-4 border-accent-glow pl-6 font-display text-[26px] italic leading-snug text-accent-glow">
+          É essa infraestrutura que conecta quem produz valor a quem busca gerar impacto.
+        </p>
+
+        <div className="mt-auto flex flex-wrap gap-3">
+          <Chip light>Produtores</Chip>
+          <Chip light>Cooperativas</Chip>
+          <Chip light>Comunidades tradicionais</Chip>
+        </div>
+      </div>
+
+      <PhotoSlot
+        src={produtorImg}
+        alt="Produtor em seu território"
+        caption="Quem sustenta as cadeias"
+        light
+        className="w-[34%] shrink-0 border border-primary-foreground/10"
+      />
+    </div>
+  </Slide>
+);
+
+/* ---------- 02 · O problema ---------- */
+const S02Problema = () => (
+  <Slide bg="bg-background" decor={<MytsWatermark className="-left-20 -bottom-20 w-[320px]" />}>
+    <div className="flex h-full flex-col">
+      <SectionLabel n="02" label="O PROBLEMA" />
+
+      <div className="mt-6 flex items-start gap-12">
+        <h2 className="max-w-[62%] font-display text-[46px] font-black leading-[1.02] tracking-tight text-primary">
+          O mercado já reconhece o valor da floresta.{" "}
+          <span className="text-gradient">Ainda falta reconhecer o valor de quem a mantém em pé.</span>
+        </h2>
+        <div className="flex-1 space-y-4 text-[17px] leading-relaxed text-muted-foreground">
+          <p>
+            Os produtores não precisam aprender a produzir melhor — eles já sabem. O que falta é a
+            estrutura que permite ao mercado enxergar, comprovar e remunerar esse valor.
+          </p>
+          <p>
+            Sem comprovação de origem, sem documentação, sem histórico organizado, produtores,
+            cooperativas e associações ficam fora das cadeias que mais pagam — enquanto empresas
+            enfrentam pressão regulatória crescente por rastreabilidade real.
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-8 flex flex-1 items-stretch gap-8">
+        <PhotoSlot
+          hint="Foto de produtor · quadrada"
+          className="aspect-square w-[22%] shrink-0"
+        />
+
+        <div className="flex-1">
+          <GapDiagram />
+        </div>
+
+        <div className="flex w-[20%] shrink-0 flex-col justify-center rounded-3xl bg-primary p-8 text-primary-foreground shadow-elegant">
+          <div className="font-display text-[80px] font-black leading-none text-accent-glow">77%</div>
+          <p className="mt-4 text-[17px] font-semibold leading-snug">
+            dos estabelecimentos rurais brasileiros pertencem à agricultura familiar.
+          </p>
+          <span className="mt-3 text-sm text-primary-foreground/50">Censo Agropecuário IBGE</span>
+        </div>
+      </div>
+
+      <div className="mt-8 rounded-2xl border border-accent/25 bg-accent/5 px-8 py-6">
+        <p className="font-display text-[26px] font-bold leading-snug text-primary">
+          É um gap estrutural dos dois lados. E ele não se resolve com boa vontade —{" "}
+          <span className="text-accent">se resolve com infraestrutura.</span>
+        </p>
+      </div>
+    </div>
+  </Slide>
+);
+
+/* ---------- 03 · A infraestrutura invisível ---------- */
+const S03Infraestrutura = () => {
+  const camadas = [
+    {
+      icon: Users,
+      logo: grounddAsset.url,
+      nome: "Groundd",
+      texto: "Mobiliza pessoas, fortalece comunidades e desenvolve capacidades no território.",
+    },
+    {
+      icon: Satellite,
+      logo: ramoAsset.url,
+      nome: "RAMO",
+      texto: "Transforma o território em evidências verificáveis por meio de inteligência geoespacial.",
+    },
+    {
+      icon: Network,
+      logo: null,
+      nome: "MyTS",
+      texto:
+        "Conecta pessoas, evidências e mercado em uma infraestrutura digital de confiança, governança e rastreabilidade.",
+    },
+  ];
+  const viabiliza = [
+    "Desenvolvimento de produtores, cooperativas e associações",
+    "Evidências auditáveis de origem e impacto",
+    "Preparação para mercados exigentes",
+    "Passaporte Digital e conexão com compradores",
+  ];
+  return (
+    <Slide
+      bg="bg-hero"
+      decor={
+        <>
+          <div className="absolute inset-0 grid-pattern opacity-25" />
+          <MytsWatermark className="-right-20 top-10 w-[340px]" />
+        </>
+      }
+    >
+      <div className="flex h-full flex-col">
         <SectionLabel n="03" label="O QUE É" light />
-        <Chip light>Nossa abordagem</Chip>
-      </div>
 
-      <div className="max-w-6xl">
-        <h2 className="font-display font-extrabold text-6xl md:text-7xl leading-[1.02]">
-          Como transformamos impacto em <span className="text-gradient">acesso a mercado</span>.
-        </h2>
-        <p className="mt-4 text-xl text-primary-foreground/80 max-w-4xl">
-          Uma iniciativa que integra <strong className="text-primary-foreground">desenvolvimento territorial</strong>, <strong className="text-primary-foreground">infraestrutura digital</strong> e <strong className="text-primary-foreground">inteligência geoespacial</strong> — com o produtor no centro.
-        </p>
-      </div>
-
-      <div className="flex-1 grid grid-cols-12 gap-8 min-h-0 items-stretch">
-        <div className="col-span-7 min-h-0 flex items-stretch">
-          <InitiativeHub />
-        </div>
-        <div className="col-span-5 flex flex-col gap-5 justify-center">
-          {[
-            {
-              logo: null, name: "MyTS", tag: "Infraestrutura digital",
-              desc: "Dados, evidências, rastreabilidade e Passaporte Digital.",
-            },
-            {
-              logo: grounddAsset.url, name: "Groundd", tag: "Pessoas & território",
-              desc: "Metodologia CERS, engajamento comunitário e capacitação.",
-            },
-            {
-              logo: ramoAsset.url, name: "RAMO", tag: "Inteligência espacial",
-              desc: "NatureOS · geoanálise e evidência espacial de território.",
-            },
-          ].map((p) => (
-            <div key={p.name} className="bg-gradient-dark-card border border-primary-foreground/10 rounded-2xl p-7 backdrop-blur flex items-center gap-6">
-              <div className="size-20 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10 grid place-items-center flex-shrink-0">
-                {p.logo ? (
-                  <PartnerLogo src={p.logo} alt={p.name} className="h-10" variant="light" />
-                ) : (
-                  <img src={mytsLogo} alt="MyTS" className="h-9 [filter:brightness(0)_invert(1)]" />
-                )}
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="flex items-baseline gap-3 flex-wrap">
-                  <div className="font-display font-extrabold text-3xl">{p.name}</div>
-                  <div className="text-[12px] font-mono uppercase tracking-[0.22em] text-accent-glow">{p.tag}</div>
-                </div>
-                <p className="text-[16px] text-primary-foreground/80 leading-snug mt-1.5">{p.desc}</p>
-              </div>
+        <div className="mt-6 flex items-start gap-12">
+          <h2 className="max-w-[54%] font-display text-[46px] font-black leading-[1.02] tracking-tight text-primary-foreground">
+            A infraestrutura <span className="text-gradient">invisível</span> das cadeias
+            sustentáveis
+          </h2>
+          <div className="flex-1">
+            <div className="flex flex-wrap gap-3">
+              {["Não é um software", "Não é uma consultoria", "Não é uma auditoria"].map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full border border-primary-foreground/15 px-5 py-2 text-[15px] font-semibold text-primary-foreground/45 line-through decoration-destructive/70"
+                >
+                  {t}
+                </span>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </Slide>
-);
-
-/* 04 — Como funciona */
-const S04ComoFunciona = () => (
-  <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[460px] [filter:invert(1)]" />}>
-    <div className="flex flex-col h-full gap-5">
-      <div className="flex items-center justify-between">
-        <SectionLabel n="04" label="A JORNADA" />
-        <div className="text-sm font-mono uppercase tracking-[0.22em] text-muted-foreground">
-          seis etapas · uma jornada contínua
-        </div>
-      </div>
-
-      <div>
-        <h2 className="font-display font-extrabold text-primary text-7xl md:text-[92px] leading-[1.0] max-w-6xl">
-          Como <span className="text-gradient">funciona</span>
-        </h2>
-        <p className="mt-4 text-muted-foreground text-2xl max-w-5xl">
-          Cada etapa tem uma organização responsável — e cada organização entrega o que sabe fazer melhor.
-        </p>
-      </div>
-
-      <div className="flex-1 flex items-center min-h-0">
-        <JourneySteps />
-      </div>
-
-      <div className="text-center">
-        <p className="font-display text-3xl md:text-4xl text-primary/90 max-w-5xl mx-auto leading-tight">
-          Cada etapa fortalece capacidades que <span className="text-gradient font-bold">permanecem no território</span>.
-        </p>
-      </div>
-    </div>
-  </Slide>
-);
-
-/* 05 — O que entregamos */
-const S05Entregamos = () => {
-  const blocos = [
-    {
-      icon: GraduationCap,
-      t: "Desenvolvimento",
-      items: ["Diagnóstico territorial", "Capacitação", "Trilhas de evolução", "Acompanhamento contínuo"],
-    },
-    {
-      icon: FileCheck,
-      t: "Evidências",
-      items: ["Documentos organizados", "Indicadores auditáveis", "Conformidade", "Rastreabilidade & governança"],
-    },
-    {
-      icon: Store,
-      t: "Conexão com mercado",
-      items: ["Passaporte Digital", "QR Code de transparência", "História do produtor", "Reconhecimento"],
-    },
-  ];
-  return (
-    <Slide bg="bg-background" decor={<MytsWatermark className="-right-20 -bottom-20 w-[440px] [filter:invert(1)]" />}>
-      <div className="flex flex-col h-full gap-6">
-        <div className="flex items-center justify-between">
-          <SectionLabel n="05" label="O QUE ENTREGAMOS" />
-          <div className="text-sm font-mono uppercase tracking-[0.22em] text-muted-foreground">
-            três entregas · um único ecossistema de confiança
+            <p className="mt-4 text-[18px] leading-relaxed text-primary-foreground/75">
+              É a infraestrutura que ninguém vê, mas que permite que produtores, cooperativas,
+              empresas e investidores confiem nas mesmas informações — e gerem valor a partir delas.
+            </p>
           </div>
         </div>
 
-        {/* Assinatura tipográfica gigante */}
-        <div className="relative">
-          <div className="absolute -left-4 -top-6 text-[180px] leading-none text-accent/10 font-display font-black select-none">"</div>
-          <h2 className="relative font-display font-black text-primary text-[88px] md:text-[104px] leading-[0.95] tracking-tight max-w-6xl">
-            Não vendemos <span className="line-through text-muted-foreground/40 font-bold">software</span>.
-            <br />
-            Entregamos <span className="text-gradient">jornada</span>.
-          </h2>
-        </div>
+        <div className="mt-8 flex flex-1 items-stretch gap-8">
+          <div className="relative flex flex-[1.4] flex-col justify-between gap-4">
+            <div className="absolute left-[38px] top-8 bottom-24 w-px bg-gradient-to-b from-accent-glow/60 to-accent/10" />
+            {camadas.map((c) => (
+              <div
+                key={c.nome}
+                className="relative flex items-center gap-6 rounded-2xl border border-primary-foreground/12 bg-primary-foreground/[0.06] p-6 backdrop-blur"
+              >
+                <div className="grid size-[76px] shrink-0 place-items-center rounded-2xl bg-gradient-accent shadow-glow">
+                  <c.icon className="size-9 text-accent-foreground" />
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-4">
+                    <span className="font-display text-[28px] font-black text-primary-foreground">
+                      {c.nome}
+                    </span>
+                  </div>
 
-        <div className="flex-1 grid grid-cols-3 gap-8 min-h-0">
-          {blocos.map((b, i) => (
-            <div
-              key={b.t}
-              className="relative bg-gradient-card border border-border rounded-2xl p-10 shadow-card flex flex-col"
-            >
-              <div className="flex items-center justify-between">
-                <div className="text-sm font-mono font-bold text-accent tracking-[0.22em]">
-                  0{i + 1}
-                </div>
-                <div className="size-16 rounded-2xl bg-accent/10 grid place-items-center">
-                  <b.icon className="size-8 text-accent" />
+                  <p className="mt-1.5 text-[17px] leading-snug text-primary-foreground/70">
+                    {c.texto}
+                  </p>
                 </div>
               </div>
-              <div className="mt-6 font-display font-extrabold text-primary text-4xl leading-tight">
-                {b.t}
-              </div>
-              <ul className="mt-6 space-y-3.5 flex-1">
-                {b.items.map((it) => (
-                  <li key={it} className="flex items-start gap-3 text-[18px] text-primary/85">
-                    <span className="mt-2.5 size-2 rounded-full bg-accent flex-shrink-0" />
-                    {it}
-                  </li>
-                ))}
-              </ul>
+            ))}
+            <p className="relative rounded-2xl bg-gradient-accent px-7 py-5 font-display text-[22px] font-bold leading-snug text-accent-foreground">
+              Juntas, essas capacidades transformam impacto local em oportunidades de mercado.
+            </p>
+          </div>
+
+          <div className="flex w-[36%] shrink-0 flex-col rounded-3xl border border-accent-glow/30 bg-primary-foreground/[0.07] p-8 backdrop-blur">
+            <div className="flex items-center gap-3 text-accent-glow">
+              <ShieldCheck className="size-7" />
+              <span className="text-sm font-mono uppercase tracking-[0.2em]">
+                O que sua organização viabiliza
+              </span>
             </div>
-          ))}
+            <ul className="mt-6 flex flex-1 flex-col justify-center gap-5">
+              {viabiliza.map((v) => (
+                <li key={v} className="flex items-start gap-4">
+                  <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-full bg-accent-glow/15">
+                    <Check className="size-5 text-accent-glow" />
+                  </span>
+                  <span className="text-[19px] font-semibold leading-snug text-primary-foreground">
+                    {v}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <PhotoSlot
+              hint="Foto de cooperativa · panorâmica"
+              light
+              className="mt-6 h-[110px] w-full"
+            />
+          </div>
         </div>
       </div>
     </Slide>
   );
 };
 
-/* 06 — Antes → Depois */
-const S06AntesDepois = () => (
-  <Slide bg="bg-background" decor={<MytsWatermark className="-right-16 -bottom-16 w-[420px] [filter:invert(1)]" />}>
-    <div className="flex flex-col h-full gap-6">
-      <div className="flex items-center justify-between">
-        <SectionLabel n="06" label="O QUE MUDA NA PRÁTICA" />
-        <div className="text-sm font-mono uppercase tracking-[0.22em] text-muted-foreground">
-          da invisibilidade ao reconhecimento
-        </div>
-      </div>
+/* ---------- 04 · Ciclo virtuoso ---------- */
+const S04Ciclo = () => (
+  <Slide bg="bg-background" decor={<MytsWatermark className="-left-24 -top-16 w-[320px]" />}>
+    <div className="flex h-full flex-col">
+      <SectionLabel n="04" label="O CICLO VIRTUOSO" />
 
-      <div>
-        <h2 className="font-display font-extrabold text-primary text-6xl md:text-7xl leading-[1.02] max-w-5xl">
-          Antes e depois de <span className="text-gradient">passar pela jornada</span>.
-        </h2>
-      </div>
-
-      <div className="flex-1 grid grid-cols-12 gap-6 min-h-0">
-        {/* Retrato */}
-        <div className="col-span-3 flex flex-col gap-4 min-h-0">
-          <div className="relative rounded-2xl overflow-hidden border border-border shadow-elegant flex-1 min-h-0">
-            <img src={produtorImg} alt="Produtor" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent" />
-            <div className="absolute bottom-5 left-5 right-5 text-primary-foreground">
-              <div className="text-[11px] font-mono uppercase tracking-[0.28em] text-accent-glow">exemplo</div>
-              <div className="font-display font-extrabold text-3xl leading-tight mt-1">José</div>
-              <div className="text-sm text-primary-foreground/80">Produtor de cacau · Sul da Bahia</div>
-            </div>
-          </div>
-          <div className="rounded-xl border border-border bg-gradient-card p-5">
-            <Quote className="size-5 text-accent" />
-            <p className="mt-2 text-[15px] italic text-primary/80 leading-snug">
-              "O impacto sempre esteve no meu trabalho. Faltava só quem enxergasse."
-            </p>
-          </div>
+      <div className="mt-4 flex flex-1 items-stretch gap-10">
+        <div className="flex-[1.4]">
+          <CicloVirtuoso />
         </div>
 
-        {/* Antes */}
-        <div className="col-span-4 bg-muted/40 border border-border rounded-2xl p-8 flex flex-col">
-          <div className="flex items-center gap-4">
-            <div className="size-14 rounded-full bg-destructive/10 grid place-items-center">
-              <XCircle className="size-7 text-destructive" />
-            </div>
-            <div>
-              <div className="text-[11px] font-mono uppercase tracking-[0.28em] text-muted-foreground">antes da jornada</div>
-              <div className="font-display font-extrabold text-primary text-3xl leading-tight">Invisível</div>
-            </div>
-          </div>
-          <ul className="mt-5 space-y-3 flex-1">
-            {[
-              "Documentos espalhados em pastas e no WhatsApp",
-              "Nunca participou de capacitação formal",
-              "Vende apenas para o atravessador local",
-              "Não consegue provar boas práticas socioambientais",
-              "Renda instável, sem acesso a mercado premium",
-            ].map((t) => (
-              <li key={t} className="flex items-start gap-3 text-[15px] text-primary/80 leading-relaxed">
-                <span className="mt-2 size-2 rounded-full bg-destructive/60 flex-shrink-0" />
-                {t}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Seta */}
-        <div className="col-span-1 flex items-center justify-center">
-          <div className="flex flex-col items-center gap-3">
-            <div className="size-16 rounded-full bg-gradient-accent grid place-items-center shadow-cta">
-              <ArrowRight className="size-8 text-accent-foreground" />
-            </div>
-            <div className="text-[11px] font-mono uppercase tracking-widest text-accent text-center leading-tight">
-              jornada<br />MyTS
-            </div>
-          </div>
-        </div>
-
-        {/* Depois */}
-        <div className="col-span-4 bg-primary text-primary-foreground border border-accent/30 rounded-2xl p-8 flex flex-col relative overflow-hidden">
-          <div className="absolute -right-20 -top-20 size-72 bg-glow opacity-40" />
-          <div className="relative flex items-center gap-4">
-            <div className="size-14 rounded-full bg-success/20 grid place-items-center">
-              <CheckCircle2 className="size-7 text-success" />
-            </div>
-            <div>
-              <div className="text-[11px] font-mono uppercase tracking-[0.28em] text-accent-glow">depois da jornada</div>
-              <div className="font-display font-extrabold text-primary-foreground text-3xl leading-tight">Reconhecido</div>
-            </div>
-          </div>
-          <ul className="relative mt-5 space-y-3 flex-1">
-            {[
-              "Documentos e evidências centralizados na MyTS",
-              "Capacitado em boas práticas e governança",
-              "Cooperativa organizada, com dados auditáveis",
-              "Passaporte Digital: história e impacto rastreáveis via QR",
-              "Acessa compradores exigentes — Korin, redes, exportação",
-            ].map((t) => (
-              <li key={t} className="flex items-start gap-3 text-[15px] text-primary-foreground/90 leading-relaxed">
-                <CheckCircle2 className="size-4 text-accent-glow mt-0.5 flex-shrink-0" />
-                {t}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  </Slide>
-);
-
-/* 07 — Por que somos diferentes */
-const S07Diferencial = () => (
-  <Slide
-    bg="bg-hero"
-    className="text-primary-foreground"
-    decor={
-      <>
-        <div className="absolute inset-0 grid-pattern opacity-25" />
-        <div className="absolute -top-40 -left-40 w-[620px] h-[620px] bg-glow blur-3xl opacity-40" />
-      </>
-    }
-  >
-    <div className="flex flex-col h-full gap-6">
-      <div className="flex items-center justify-between">
-        <SectionLabel n="07" label="POR QUE SOMOS DIFERENTES" light />
-        <Chip light>Diferencial</Chip>
-      </div>
-
-      <div>
-        <h2 className="font-display font-extrabold text-4xl md:text-5xl leading-[1.05] max-w-5xl">
-          Não fazemos <span className="line-through opacity-40">apenas</span> auditorias.<br />
-          Não entregamos <span className="line-through opacity-40">apenas</span> tecnologia.<br />
-          Integramos tudo numa <span className="text-gradient">jornada contínua</span>.
-        </h2>
-      </div>
-
-      <div className="flex-1 grid grid-cols-3 gap-5 min-h-0">
-        {[
-          { icon: HandHeart, t: "Pessoas antes de plataforma", d: "O produtor é o ponto de partida — não o consumidor final da tecnologia." },
-          { icon: Scale, t: "Metodologia + tecnologia", d: "Capacitação de campo, evidência espacial e infraestrutura digital numa única entrega." },
-          { icon: ShieldCheck, t: "Confiança auditável", d: "Cada dado tem origem, versão e rastreabilidade — pronto para regulador, comprador e financiador." },
-        ].map((d) => (
-          <div key={d.t} className="bg-gradient-dark-card border border-primary-foreground/10 rounded-2xl p-8 backdrop-blur flex flex-col">
-            <div className="size-16 rounded-2xl bg-accent/15 grid place-items-center">
-              <d.icon className="size-8 text-accent-glow" />
-            </div>
-            <div className="mt-6 font-display font-extrabold text-[28px] leading-tight">{d.t}</div>
-            <p className="mt-4 text-[17px] text-primary-foreground/80 leading-relaxed">{d.d}</p>
-          </div>
-        ))}
-      </div>
-
-      <div>
-        <div className="text-sm font-mono uppercase tracking-[0.22em] text-primary-foreground/50 mb-4">
-          Já aplicado em
-        </div>
-        <div className="grid grid-cols-2 gap-6">
-          <div className="flex items-center gap-6 bg-primary-foreground/5 border border-primary-foreground/10 rounded-2xl px-8 py-6">
-            <PartnerLogo src={korinAsset.url} alt="Korin" className="h-12" variant="light" />
-            <div>
-              <div className="font-display font-bold text-primary-foreground text-2xl">Korin</div>
-              <div className="text-[15px] text-primary-foreground/60 mt-0.5">Passaporte Digital em produtos que chegam ao consumidor final</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-6 bg-primary-foreground/5 border border-primary-foreground/10 rounded-2xl px-8 py-6">
-            <PartnerLogo src={carrefourAsset.url} alt="Carrefour" className="h-12" variant="light" />
-            <div>
-              <div className="font-display font-bold text-primary-foreground text-2xl">Carrefour</div>
-              <div className="text-[15px] text-primary-foreground/60 mt-0.5">Jornada da Autonomia · desenvolvimento de fornecedores</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </Slide>
-);
-
-/* 08 — O impacto */
-const S08Impacto = () => (
-  <Slide bg="bg-background" decor={<MytsWatermark className="-right-16 -bottom-16 w-[400px] [filter:invert(1)]" />}>
-    <div className="grid grid-cols-12 gap-10 h-full">
-      <div className="col-span-5 flex flex-col justify-between">
-        <SectionLabel n="08" label="O IMPACTO" />
-
-        <div>
-          <div className="text-sm font-mono uppercase tracking-[0.28em] text-accent mb-5">
-            Comece pelo propósito
-          </div>
-          <h2 className="font-display font-extrabold text-primary text-[56px] leading-[1.02]">
-            Quando fortalecemos <span className="text-gradient">quem produz</span>,
+        <div className="flex w-[34%] shrink-0 flex-col justify-center gap-8">
+          <h2 className="font-display text-[42px] font-black leading-[1.05] tracking-tight text-primary">
+            Impacto social, conservação e desenvolvimento econômico{" "}
+            <span className="text-gradient">deixam de competir e passam a crescer juntos.</span>
           </h2>
-          <ul className="mt-7 space-y-3 text-2xl text-primary/85 leading-tight">
-            <li>fortalecemos <strong className="text-primary">comunidades</strong>,</li>
-            <li>que fortalecem <strong className="text-primary">territórios</strong>,</li>
-            <li>que fortalecem <strong className="text-primary">cadeias</strong>,</li>
-            <li>que fortalecem <strong className="text-primary">mercados</strong>.</li>
-          </ul>
 
-          <div className="mt-8 grid grid-cols-3 gap-4">
+          <div className="space-y-3">
             {[
-              { icon: HandHeart, t: "Social" },
-              { icon: TreePine, t: "Ambiental" },
-              { icon: Coins, t: "Econômico" },
-            ].map((d) => (
-              <div key={d.t} className="rounded-xl border border-border bg-gradient-card p-5 text-center">
-                <d.icon className="size-8 text-accent mx-auto" />
-                <div className="mt-2 text-base font-display font-bold text-primary">{d.t}</div>
+              { icon: Sprout, t: "Produtor fortalecido gera mais renda" },
+              { icon: TreePine, t: "Renda sustenta territórios preservados" },
+              { icon: Coins, t: "Confiança atrai novos investimentos" },
+            ].map((i) => (
+              <div
+                key={i.t}
+                className="flex items-center gap-4 rounded-2xl border border-border bg-card px-6 py-4 shadow-card"
+              >
+                <i.icon className="size-7 shrink-0 text-accent" />
+                <span className="text-[17px] font-semibold leading-snug text-primary">{i.t}</span>
               </div>
             ))}
           </div>
-        </div>
 
-        <div className="text-lg text-primary/70 italic">
-          Esse é o propósito da MyTS.
+          <div className="rounded-3xl bg-primary p-7">
+            <span className="text-sm font-mono uppercase tracking-[0.2em] text-accent-glow">
+              Modelo já validado
+            </span>
+            <div className="mt-5 flex items-center gap-8">
+              <PartnerLogo src={korinAsset.url} alt="Korin" className="h-9" />
+              <PartnerLogo src={carrefourAsset.url} alt="Carrefour" className="h-9" />
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div className="col-span-7 min-h-0">
-        <VirtuousCycle />
       </div>
     </div>
   </Slide>
 );
 
-/* 09 — Quem somos */
-const S09QuemSomos = () => (
-  <Slide
-    bg="bg-hero"
-    className="text-primary-foreground"
-    decor={
-      <>
-        <div className="absolute inset-0 grid-pattern opacity-20" />
-        <div className="absolute -bottom-40 -right-40 w-[620px] h-[620px] bg-glow blur-3xl opacity-40" />
-      </>
-    }
-  >
-    <div className="flex flex-col h-full gap-6">
-      <div className="flex items-center justify-between">
-        <SectionLabel n="09" label="QUEM SOMOS" light />
-        <img src={mytsLogo} alt="MyTS" className="h-8 [filter:brightness(0)_invert(1)]" />
-      </div>
+/* ---------- 05 · Oportunidade estratégica ---------- */
+const S05Oportunidade = () => {
+  const blocos = [
+    {
+      icon: Sprout,
+      titulo: "Para quem produz",
+      itens: ["Mais renda", "Mais autonomia", "Mais acesso a oportunidades de mercado"],
+    },
+    {
+      icon: TreePine,
+      titulo: "Para o território",
+      itens: ["Mais conservação", "Mais desenvolvimento local", "Mais valorização da sociobiodiversidade"],
+    },
+    {
+      icon: Building2,
+      titulo: "Para sua empresa",
+      itens: ["Fornecedores preparados", "Impacto comprovado", "Menor risco regulatório"],
+    },
+    {
+      icon: Landmark,
+      titulo: "Para investidores",
+      itens: ["Ecossistema estruturado", "Impacto em métricas verificáveis", "Rastreabilidade auditável"],
+    },
+  ];
+  return (
+    <Slide
+      bg="bg-hero"
+      decor={
+        <>
+          <div className="absolute inset-0 grid-pattern opacity-25" />
+          <MytsWatermark className="-right-24 -bottom-20 w-[380px]" />
+        </>
+      }
+    >
+      <div className="flex h-full flex-col">
+        <SectionLabel n="05" label="POR QUE É ESTRATÉGICO" light />
 
-      <div>
-        <h2 className="font-display font-extrabold text-6xl md:text-7xl leading-[1.02]">
-          Três organizações. <span className="text-gradient">Uma única jornada.</span>
+        <h2 className="mt-6 max-w-[78%] font-display text-[44px] font-black leading-[1.04] tracking-tight text-primary-foreground">
+          Investir nessa infraestrutura significa{" "}
+          <span className="text-gradient">fortalecer todos os elos da cadeia ao mesmo tempo.</span>
         </h2>
-      </div>
 
-      <div className="grid grid-cols-3 gap-6">
-        {[
-          {
-            name: "MyTS", role: "My Trusted Source",
-            desc: "Infraestrutura tecnológica e metodológica que transforma informação dispersa em confiança e acesso a mercado.",
-            logo: null,
-          },
-          {
-            name: "Groundd", role: "Impacto & território",
-            desc: "Empresa liderada por mulheres, especializada em desenvolvimento territorial, engajamento comunitário e metodologia CERS.",
-            logo: grounddAsset.url,
-          },
-          {
-            name: "RAMO", role: "Nature-tech · geoespacial",
-            desc: "Inteligência geoespacial sob demanda via NatureOS, mapeando áreas produtivas e gerando evidência espacial de território.",
-            logo: ramoAsset.url,
-          },
-        ].map((o) => (
-          <div key={o.name} className="bg-gradient-dark-card border border-primary-foreground/10 rounded-2xl p-7 backdrop-blur">
-            <div className="h-10 flex items-center">
-              {o.logo ? (
-                <PartnerLogo src={o.logo} alt={o.name} className="h-8" variant="light" />
-              ) : (
-                <img src={mytsLogo} alt="MyTS" className="h-8 [filter:brightness(0)_invert(1)]" />
-              )}
-            </div>
-            <div className="mt-5 font-display font-extrabold text-3xl">{o.name}</div>
-            <div className="text-[12px] font-mono uppercase tracking-[0.22em] text-accent-glow mt-1.5">{o.role}</div>
-            <p className="mt-4 text-[15px] text-primary-foreground/75 leading-snug">{o.desc}</p>
-          </div>
-        ))}
-      </div>
+        <div className="mt-8 grid flex-1 grid-cols-4 gap-5">
+          {blocos.map((b) => (
+            <div
+              key={b.titulo}
+              className="flex flex-col justify-center rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06] p-8 backdrop-blur"
+            >
+              <div className="grid size-[76px] place-items-center rounded-2xl bg-gradient-accent shadow-glow">
+                <b.icon className="size-9 text-accent-foreground" />
+              </div>
+              <h3 className="mt-6 font-display text-[27px] font-black leading-tight text-primary-foreground">
+                {b.titulo}
+              </h3>
+              <ul className="mt-5 space-y-4">
+                {b.itens.map((i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <Check className="mt-1 size-6 shrink-0 text-accent-glow" />
+                    <span className="text-[19px] leading-snug text-primary-foreground/80">{i}</span>
+                  </li>
+                ))}
 
-      <div className="grid grid-cols-3 gap-6">
-        {[
-          {
-            n: "Valmir Rodrigues",
-            r: "CEO · MyTS",
-            d: "Empreendedor com mais de 20 anos em cadeias de fornecimento de alimentos. Fundou a MyTS para simplificar a qualificação de fornecedores, ampliar governança e reduzir riscos com tecnologia prática e centrada nas pessoas.",
-            photo: valmirAsset.url,
-          },
-          {
-            n: "Marisa Rodrigues",
-            r: "CEO · Groundd",
-            d: "Zootecnista e fundadora da Groundd. Atua com comunidades, governos, ONGs e empresas para estruturar iniciativas de comércio responsável e negócios positivos para a natureza — protegendo paisagens e criando oportunidades reais.",
-            photo: marisaAsset.url,
-          },
-          {
-            n: "Time RAMO",
-            r: "Inteligência geoespacial",
-            d: "Camada de inteligência espacial da iniciativa, com o NatureOS como base de evidência territorial. Bios em breve.",
-            photo: null,
-          },
-        ].map((p) => (
-          <div key={p.n} className="border-t border-primary-foreground/10 pt-5 flex gap-5">
-            <div className="size-24 rounded-full bg-primary-foreground/5 border border-primary-foreground/15 grid place-items-center flex-shrink-0 overflow-hidden">
-              {p.photo ? (
-                <img src={p.photo} alt={p.n} className="w-full h-full object-cover" />
-              ) : (
-                <span className="font-display font-bold text-primary-foreground/40 text-3xl">
-                  {p.n.split(" ").map((w) => w[0]).slice(0, 2).join("")}
-                </span>
-              )}
+              </ul>
             </div>
-            <div className="min-w-0 flex-1">
-              <div className="font-display font-bold text-xl text-primary-foreground leading-tight">{p.n}</div>
-              <div className="text-[12px] font-mono uppercase tracking-[0.22em] text-accent-glow mt-1">{p.r}</div>
-              <p className="mt-2 text-[14px] text-primary-foreground/75 leading-snug">{p.d}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-auto flex items-center justify-between border-t border-primary-foreground/10 pt-6">
-        <div className="flex items-center gap-8 text-primary-foreground/80">
-          <a href="mailto:valmir@myt-s.com" className="flex items-center gap-2.5 text-base hover:text-accent-glow">
-            <Mail className="size-5" /> valmir@myt-s.com
-          </a>
-          <a href="https://myt-s.com" className="flex items-center gap-2.5 text-base hover:text-accent-glow">
-            <Globe className="size-5" /> myt-s.com
-          </a>
+          ))}
         </div>
-        <div className="text-[12px] font-mono uppercase tracking-[0.22em] text-primary-foreground/45">
-          Fortalecemos pessoas · conectamos territórios
+
+        <div className="relative mt-7 overflow-hidden rounded-3xl border border-accent-glow/25">
+          <img
+            src={territorioImg}
+            alt=""
+            aria-hidden
+            className="absolute inset-0 h-full w-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-primary/75" />
+          <div className="relative flex items-center gap-10 px-9 py-7">
+            <span className="font-display text-[62px] font-black leading-none text-accent-glow">
+              US$ 1,5 tri
+            </span>
+            <div className="h-14 w-px bg-primary-foreground/20" />
+            <p className="max-w-[720px] text-[19px] font-semibold leading-snug text-primary-foreground">
+              em fundos de impacto já exigem evidências verificáveis para investir.
+              <span className="ml-3 font-normal text-primary-foreground/50">GIIN, 2024</span>
+            </p>
+            <TrendingUp className="ml-auto size-12 text-accent-glow/60" />
+          </div>
         </div>
       </div>
-    </div>
-  </Slide>
-);
+    </Slide>
+  );
+};
 
-/* 00 — Capa de introdução */
-const S00Intro = () => (
+/* ---------- 06 · Convite ---------- */
+const S06Convite = () => (
   <Slide
     bg="bg-hero"
-    className="text-primary-foreground"
-    pad="p-10 md:p-16"
     decor={
       <>
-        <div className="absolute inset-0 grid-pattern opacity-20" />
-        <div className="absolute -top-40 -right-40 w-[720px] h-[720px] bg-glow blur-3xl opacity-45" />
-        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-glow blur-3xl opacity-30" />
-        <MytsWatermark className="right-10 -bottom-24 w-[560px]" />
+        <div className="absolute inset-0 bg-glow" />
+        <MytsWatermark className="-left-24 -bottom-24 w-[420px]" />
       </>
     }
   >
-    <div className="flex flex-col h-full items-center justify-center text-center">
-      <div className="flex flex-col items-center gap-8">
-        <img src={mytsLogo} alt="MyTS" className="h-16 [filter:brightness(0)_invert(1)]" />
-        <div className="inline-flex items-center gap-3 rounded-full border border-accent/30 bg-accent/10 px-6 py-2.5 text-sm font-semibold tracking-[0.18em] uppercase text-accent-glow backdrop-blur">
-          <Sprout className="size-4" />
-          Passaporte Digital
+    <div className="flex h-full items-stretch gap-12">
+      <div className="flex flex-[1.5] flex-col">
+        <SectionLabel n="06" label="CONVITE" light />
+
+        <h2 className="mt-auto font-display text-[58px] font-black leading-[1.0] tracking-tight text-primary-foreground">
+          Transformar impacto invisível em{" "}
+          <span className="text-gradient">valor reconhecido</span> é o primeiro passo para construir
+          as cadeias que o futuro exige.
+        </h2>
+
+        <p className="mt-8 max-w-[860px] text-[21px] leading-relaxed text-primary-foreground/75">
+          Os produtores, cooperativas e comunidades já fazem sua parte. O próximo passo depende de
+          organizações dispostas a investir na ponte que falta.
+        </p>
+
+        <div className="mt-8 inline-flex w-fit items-center gap-4 rounded-full bg-gradient-accent px-9 py-5 shadow-cta">
+          <Handshake className="size-7 text-accent-foreground" />
+          <span className="font-display text-[24px] font-black text-accent-foreground">
+            Vamos construir essa transformação juntos.
+          </span>
+          <ArrowRight className="size-6 text-accent-foreground" />
+        </div>
+
+        <div className="mt-auto flex items-center gap-8">
+          <a
+            href="mailto:valmir@myt-s.com"
+            className="flex items-center gap-3 text-[19px] font-semibold text-primary-foreground/85 hover:text-primary-foreground"
+          >
+            <Mail className="size-6 text-accent-glow" /> valmir@myt-s.com
+          </a>
+          <span className="h-6 w-px bg-primary-foreground/20" />
+          <a
+            href="https://myt-s.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 text-[19px] font-semibold text-primary-foreground/85 hover:text-primary-foreground"
+          >
+            <Globe className="size-6 text-accent-glow" /> myt-s.com
+          </a>
         </div>
       </div>
 
-      <h1 className="mt-12 font-display font-black text-7xl md:text-[120px] leading-[0.95] tracking-tight max-w-5xl">
-        Do território <br />
-        <span className="text-gradient">ao mercado</span>
-      </h1>
-
-      <p className="mt-10 text-2xl md:text-3xl text-primary-foreground/80 leading-relaxed max-w-3xl">
-        Uma jornada que transforma impacto socioambiental em reconhecimento, rastreabilidade e acesso a novas oportunidades.
-      </p>
-
-      <div className="mt-16 flex items-center gap-10 text-primary-foreground/60">
-        <div className="flex items-center gap-3">
-          <div className="size-10 rounded-full bg-primary-foreground/10 grid place-items-center">
-            <HandHeart className="size-5 text-accent-glow" />
+      <div className="flex w-[32%] shrink-0 flex-col gap-6">
+        <PhotoSlot
+          hint="Foto de comunidade · vertical"
+          light
+          className="flex-1"
+        />
+        <div className="rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06] p-7 backdrop-blur">
+          <span className="text-sm font-mono uppercase tracking-[0.2em] text-primary-foreground/50">
+            Consórcio
+          </span>
+          <div className="mt-5 flex items-center gap-7">
+            <img src={mytsLogo} alt="MyTS" className="h-7 [filter:brightness(0)_invert(1)]" />
+            <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-7" />
+            <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-7" />
           </div>
-          <span className="text-base font-medium">Pessoas</span>
         </div>
-        <div className="flex items-center gap-3">
-          <div className="size-10 rounded-full bg-primary-foreground/10 grid place-items-center">
-            <TreePine className="size-5 text-accent-glow" />
-          </div>
-          <span className="text-base font-medium">Territórios</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <div className="size-10 rounded-full bg-primary-foreground/10 grid place-items-center">
-            <Coins className="size-5 text-accent-glow" />
-          </div>
-          <span className="text-base font-medium">Cadeias</span>
-        </div>
-      </div>
-
-      <div className="mt-auto text-sm font-mono uppercase tracking-[0.25em] text-primary-foreground/40">
-        MyTS · Groundd · RAMO
-      </div>
-    </div>
-  </Slide>
-);
-
-/* 10 — Fechamento */
-const S10Fechamento = () => (
-  <Slide
-    bg="bg-hero"
-    className="text-primary-foreground"
-    pad="p-10 md:p-16"
-    decor={
-      <>
-        <div className="absolute inset-0 grid-pattern opacity-20" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-glow blur-3xl opacity-35" />
-        <MytsWatermark className="-right-20 -bottom-20 w-[520px]" />
-      </>
-    }
-  >
-    <div className="flex flex-col h-full items-center justify-center text-center">
-      <div className="inline-flex items-center gap-3 rounded-full border border-accent/30 bg-accent/10 px-6 py-2.5 text-sm font-semibold tracking-[0.18em] uppercase text-accent-glow backdrop-blur">
-        <ShieldCheck className="size-4" />
-        Pronto para começar
-      </div>
-
-      <h2 className="mt-10 font-display font-black text-6xl md:text-[100px] leading-[0.95] tracking-tight max-w-5xl">
-        O potencial existe. <br />
-        <span className="text-gradient">Vamos torná-lo visível.</span>
-      </h2>
-
-      <p className="mt-10 text-2xl md:text-3xl text-primary-foreground/80 leading-relaxed max-w-3xl">
-        Converse com a gente e descubra como levar o Passaporte Digital MyTS aos produtores e cadeias que você trabalha.
-      </p>
-
-      <div className="mt-14 grid grid-cols-2 gap-6 max-w-2xl w-full">
-        <a
-          href="mailto:valmir@myt-s.com"
-          className="group flex items-center justify-center gap-4 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 px-8 py-5 hover:bg-primary-foreground/10 transition-colors"
-        >
-          <Mail className="size-6 text-accent-glow" />
-          <div className="text-left">
-            <div className="text-xs font-mono uppercase tracking-[0.22em] text-primary-foreground/50">Email</div>
-            <div className="text-lg font-display font-bold text-primary-foreground">valmir@myt-s.com</div>
-          </div>
-        </a>
-        <a
-          href="https://myt-s.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center justify-center gap-4 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 px-8 py-5 hover:bg-primary-foreground/10 transition-colors"
-        >
-          <Globe className="size-6 text-accent-glow" />
-          <div className="text-left">
-            <div className="text-xs font-mono uppercase tracking-[0.22em] text-primary-foreground/50">Site</div>
-            <div className="text-lg font-display font-bold text-primary-foreground">myt-s.com</div>
-          </div>
-        </a>
-      </div>
-
-      <div className="mt-auto flex items-center gap-6 text-primary-foreground/50">
-        <img src={mytsLogo} alt="MyTS" className="h-7 [filter:brightness(0)_invert(1)] opacity-70" />
-        <span className="text-sm font-mono uppercase tracking-[0.22em]">Fortalecemos pessoas · conectamos territórios</span>
       </div>
     </div>
   </Slide>
@@ -1187,23 +824,18 @@ const MytsPassaporte = () => (
       .slide-inner{overflow:hidden}
     `}</style>
     <Helmet>
-      <title>MyTS — O potencial já existe. O reconhecimento ainda não.</title>
+      <title>MyTS — O impacto já existe. O reconhecimento ainda não.</title>
       <meta
         name="description"
-        content="MyTS: infraestrutura que fortalece produtores, organiza evidências socioambientais e conecta cadeias produtivas ao mercado — em uma única jornada contínua com Groundd e RAMO."
+        content="A infraestrutura que transforma o impacto de produtores, cooperativas e comunidades em reconhecimento, acesso ao mercado e geração de valor — MyTS, Groundd e RAMO."
       />
     </Helmet>
-    <S00Intro />
-    <S01Potencial />
-    <S02Desafio />
-    <S03Abordagem />
-    <S04ComoFunciona />
-    <S05Entregamos />
-    <S06AntesDepois />
-    <S07Diferencial />
-    <S08Impacto />
-    <S09QuemSomos />
-    <S10Fechamento />
+    <S01Abertura />
+    <S02Problema />
+    <S03Infraestrutura />
+    <S04Ciclo />
+    <S05Oportunidade />
+    <S06Convite />
   </main>
 );
 
