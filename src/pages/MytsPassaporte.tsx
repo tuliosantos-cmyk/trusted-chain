@@ -612,7 +612,7 @@ const S04Ciclo = () => (
           <CicloVirtuoso />
         </div>
 
-        <div className="flex w-[34%] min-h-0 shrink-0 flex-col justify-center gap-[4%]">
+        <div className="flex w-[34%] min-h-0 shrink-0 flex-col justify-between gap-[4%] py-[1%]">
           <h2 className="font-display text-[clamp(20px,2.2vw,38px)] font-black leading-[1.06] tracking-tight text-primary">
             Impacto social, conservação e desenvolvimento econômico{" "}
             <span className="text-gradient">deixam de competir e passam a crescer juntos.</span>
