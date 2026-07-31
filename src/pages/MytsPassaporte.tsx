@@ -877,7 +877,12 @@ const S03Infraestrutura = () => {
                 </li>
               ))}
             </ul>
-            <PhotoSlot hint="Foto de cooperativa" light style={{ height: 130, marginTop: 24, flexShrink: 0 }} />
+            <PhotoSlot
+              src={familiaAsset.url}
+              alt="Produtores e cooperativa"
+              light
+              style={{ height: 130, marginTop: 24, flexShrink: 0 }}
+            />
           </div>
         </div>
       </div>
