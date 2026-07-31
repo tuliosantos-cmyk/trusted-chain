@@ -697,7 +697,11 @@ const S02Problema = () => (
 
       {/* corpo — 396px */}
       <div className="flex items-stretch" style={{ gap: 24, height: 372, marginTop: 28 }}>
-        <PhotoSlot hint="Foto de produtor" style={{ width: 240, flexShrink: 0 }} />
+        <PhotoSlot
+          src={veraAsset.url}
+          alt="Produtora com ovo recém-colhido"
+          style={{ width: 240, flexShrink: 0 }}
+        />
 
         <div className="min-w-0 flex-1">
           <GapDiagram />
