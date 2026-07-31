@@ -663,8 +663,8 @@ const S02Problema = () => (
           className="font-display font-black tracking-tight text-primary"
           style={{ fontSize: T.title, lineHeight: 1.06, width: 780, flexShrink: 0 }}
         >
-          O mercado exige rastreabilidade, impacto comprovado e origem confiável.{" "}
-          <span className="text-gradient">Ainda falta enxergar quem realmente sustenta isso em pé.</span>
+          O mercado exige rastreabilidade, impacto e origem.{" "}
+          <span className="text-gradient">Mas ainda ignora quem sustenta tudo isso.</span>
         </h2>
         <div className="flex-1 text-muted-foreground" style={{ fontSize: T.small, lineHeight: 1.6 }}>
           <p>
