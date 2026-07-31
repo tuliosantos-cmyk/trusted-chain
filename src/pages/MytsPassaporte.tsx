@@ -1136,6 +1136,7 @@ const MytsPassaporte = () => (
         content="A infraestrutura que transforma o impacto de produtores, cooperativas e comunidades em reconhecimento, acesso ao mercado e geração de valor — MyTS, Groundd e RAMO."
       />
     </Helmet>
+    <S00Capa />
     <S01Abertura />
     <S02Problema />
     <S03Infraestrutura />
