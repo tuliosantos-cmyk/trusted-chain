@@ -100,6 +100,14 @@ const SectionLabel = ({ n, label, light = false }: { n: string; label: string; l
   </div>
 );
 
+const usePrintMode = () => {
+  const [print, setPrint] = useState(false);
+  useLayoutEffect(() => {
+    setPrint(new URLSearchParams(window.location.search).has("print"));
+  }, []);
+  return print;
+};
+
 const Slide = ({
   bg = "bg-background",
   children,
@@ -112,9 +120,11 @@ const Slide = ({
   pad?: number;
 }) => {
   const frameRef = useRef<HTMLDivElement>(null);
+  const printMode = usePrintMode();
   const [scale, setScale] = useState(0);
 
   useLayoutEffect(() => {
+    if (printMode) return;
     const el = frameRef.current;
     if (!el) return;
     const update = () => setScale(el.clientWidth / CANVAS_W);
@@ -122,39 +132,55 @@ const Slide = ({
     const ro = new ResizeObserver(update);
     ro.observe(el);
     return () => ro.disconnect();
-  }, []);
+  }, [printMode]);
 
   useEffect(() => {
+    if (printMode) return;
     const onResize = () => {
       const el = frameRef.current;
       if (el) setScale(el.clientWidth / CANVAS_W);
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, []);
+  }, [printMode]);
+
+  const effScale = printMode ? 1 : scale;
 
   return (
     <section
       ref={frameRef}
       className={`${bg} relative slide-frame`}
-      style={{
-        width: "min(100%, calc((100vh - 64px) * 16 / 9))",
-        aspectRatio: "16 / 9",
-        margin: "0 auto",
-        overflow: "hidden",
-        borderRadius: 16,
-        boxShadow: "0 30px 80px -20px rgba(0,0,0,0.55)",
-        scrollSnapAlign: "center",
-      }}
+      style={
+        printMode
+          ? {
+              width: CANVAS_W,
+              height: CANVAS_H,
+              margin: 0,
+              overflow: "hidden",
+              borderRadius: 0,
+              boxShadow: "none",
+              breakAfter: "page",
+              pageBreakAfter: "always",
+            }
+          : {
+              width: "min(100%, calc((100vh - 64px) * 16 / 9))",
+              aspectRatio: "16 / 9",
+              margin: "0 auto",
+              overflow: "hidden",
+              borderRadius: 16,
+              boxShadow: "0 30px 80px -20px rgba(0,0,0,0.55)",
+              scrollSnapAlign: "center",
+            }
+      }
     >
       <div
         className={`${bg} absolute left-0 top-0`}
         style={{
           width: CANVAS_W,
           height: CANVAS_H,
-          transform: `scale(${scale})`,
+          transform: `scale(${effScale})`,
           transformOrigin: "top left",
-          visibility: scale ? "visible" : "hidden",
+          visibility: effScale ? "visible" : "hidden",
           overflow: "hidden",
         }}
       >
@@ -166,6 +192,7 @@ const Slide = ({
     </section>
   );
 };
+
 
 const MytsWatermark = ({ style }: { style?: React.CSSProperties }) => (
   <img
@@ -1111,23 +1138,32 @@ const S06Convite = () => (
 /* ============================================================
    Página
    ============================================================ */
-const MytsPassaporte = () => (
+const MytsPassaporte = () => {
+  const printMode = usePrintMode();
+  return (
   <main
     className="bg-[#0a0e1a]"
     style={{
       margin: 0,
-      padding: "32px 0",
+      padding: printMode ? 0 : "32px 0",
       minHeight: "100vh",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      gap: 32,
+      gap: printMode ? 0 : 32,
       overflowX: "hidden",
     }}
   >
     <style>{`
       html,body,#root{margin:0;padding:0;background:#0a0e1a}
-      html{scroll-snap-type:y proximity}
+      ${printMode ? "" : "html{scroll-snap-type:y proximity}"}
+      *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      @page{size:1600px 900px landscape;margin:0}
+      @media print{
+        html,body,#root{background:#fff}
+        .no-print{display:none !important}
+        .slide-frame{box-shadow:none !important;border-radius:0 !important;break-after:page;page-break-after:always}
+      }
     `}</style>
     <Helmet>
       <title>MyTS — O impacto já existe. O reconhecimento ainda não.</title>
@@ -1136,7 +1172,17 @@ const MytsPassaporte = () => (
         content="A infraestrutura que transforma o impacto de produtores, cooperativas e comunidades em reconhecimento, acesso ao mercado e geração de valor — MyTS, Groundd e RAMO."
       />
     </Helmet>
+    {!printMode && (
+      <button
+        type="button"
+        onClick={() => window.open(`${window.location.pathname}?print`, "_blank")}
+        className="no-print fixed right-6 top-6 z-50 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-medium text-white backdrop-blur transition hover:bg-white/20"
+      >
+        Baixar PDF
+      </button>
+    )}
     <S00Capa />
+
     <S01Abertura />
     <S02Problema />
     <S03Infraestrutura />
@@ -1144,6 +1190,7 @@ const MytsPassaporte = () => (
     <S05Oportunidade />
     <S06Convite />
   </main>
-);
+  );
+};
 
 export default MytsPassaporte;
