@@ -285,25 +285,26 @@ const CicloVirtuoso = () => {
       </circle>
 
       {/* núcleo */}
-      <circle cx={cx} cy={cy} r="108" fill="hsl(222 65% 14%)" stroke="hsl(214 95% 54%)" strokeWidth="3" />
+      <circle cx={cx} cy={cy} r="120" fill="hsl(222 65% 14%)" stroke="hsl(214 95% 54%)" strokeWidth="3" />
       <text
         x={cx}
-        y={cy - 12}
+        y={cy - 18}
         textAnchor="middle"
         fill="hsl(199 95% 60%)"
-        fontSize="16"
+        fontSize="15"
         fontWeight="700"
         letterSpacing="3"
         fontFamily="Rubik, sans-serif"
       >
         CENTRO
       </text>
-      <text x={cx} y={cy + 20} textAnchor="middle" fill="#fff" fontSize="30" fontWeight="800" fontFamily="Rubik, sans-serif">
+      <text x={cx} y={cy + 14} textAnchor="middle" fill="#fff" fontSize="27" fontWeight="800" fontFamily="Rubik, sans-serif">
         Valor
       </text>
-      <text x={cx} y={cy + 54} textAnchor="middle" fill="#fff" fontSize="30" fontWeight="800" fontFamily="Rubik, sans-serif">
+      <text x={cx} y={cy + 46} textAnchor="middle" fill="#fff" fontSize="25" fontWeight="800" fontFamily="Rubik, sans-serif">
         compartilhado
       </text>
+
 
       {nos.map((n, i) => {
         const a = (i / nos.length) * 2 * Math.PI - Math.PI / 2;
