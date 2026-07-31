@@ -397,28 +397,34 @@ const CicloVirtuoso = ({ width = 740 }: { width?: number }) => {
           } else cur = `${cur} ${w}`;
         });
         if (cur.trim()) lines.push(cur.trim());
-        const below = Math.sin(a) > 0.35;
-        const baseY = below ? y + 38 : y - 26 - (lines.length - 1) * 22;
+        const cos = Math.cos(a);
+        const sin = Math.sin(a);
+        const side = Math.abs(cos) > 0.45;
+        const lx = cx + (r + (side ? 30 : 14)) * cos;
+        const ly = cy + (r + (side ? 8 : 34)) * sin;
+        const anchor = side ? (cos > 0 ? "start" : "end") : "middle";
+        const baseY = ly - ((lines.length - 1) * 23) / 2 + (side ? 7 : sin > 0 ? 16 : -14);
         return (
           <g key={n}>
             <circle cx={x} cy={y} r="15" fill="hsl(214 95% 54%)" stroke="#fff" strokeWidth="4" />
             <text
-              x={x}
+              x={lx}
               y={baseY}
-              textAnchor="middle"
+              textAnchor={anchor}
               fill="hsl(222 65% 14%)"
               fontSize="21"
               fontWeight="700"
               fontFamily="Rubik, sans-serif"
             >
               {lines.map((l, li) => (
-                <tspan key={l} x={x} dy={li === 0 ? 0 : 23}>
+                <tspan key={l} x={lx} dy={li === 0 ? 0 : 23}>
                   {l}
                 </tspan>
               ))}
             </text>
           </g>
         );
+
       })}
     </svg>
   );
