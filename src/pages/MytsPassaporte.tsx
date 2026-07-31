@@ -183,18 +183,19 @@ const PhotoSlot = ({
 
 /* Slide 02 — o gap estrutural entre quem produz e quem compra */
 const GapDiagram = () => (
-  <div className="relative flex h-full items-stretch gap-0">
+  <div className="relative flex h-full min-h-0 items-stretch gap-0">
     {/* margem esquerda */}
-    <div className="flex flex-1 flex-col justify-center rounded-3xl border border-border bg-card p-7 shadow-card">
-
+    <div className="flex min-w-0 flex-1 flex-col justify-center rounded-3xl border border-border bg-card p-[4%] shadow-card">
       <div className="flex items-center gap-3 text-accent">
-        <Sprout className="size-7" />
-        <span className="text-sm font-mono uppercase tracking-[0.2em]">Quem produz</span>
+        <Sprout className="size-[clamp(16px,1.5vw,26px)]" />
+        <span className="text-[clamp(10px,0.85vw,13px)] font-mono uppercase tracking-[0.2em]">
+          Quem produz
+        </span>
       </div>
-      <p className="mt-4 text-[19px] font-display font-bold leading-tight text-primary">
+      <p className="mt-3 text-[clamp(13px,1.2vw,19px)] font-display font-bold leading-tight text-primary">
         Produtores, cooperativas e associações
       </p>
-      <ul className="mt-4 space-y-2 text-[15px] leading-snug text-muted-foreground">
+      <ul className="mt-3 space-y-1.5 text-[clamp(11px,0.95vw,15px)] leading-snug text-muted-foreground">
         <li>· Boas práticas já existentes</li>
         <li>· Sem comprovação de origem</li>
         <li>· Sem histórico organizado</li>
@@ -202,26 +203,30 @@ const GapDiagram = () => (
     </div>
 
     {/* vão */}
-    <div className="relative w-40 shrink-0">
+    <div className="relative w-[14%] min-w-[84px] shrink-0">
       <div className="absolute inset-y-6 left-1/2 -translate-x-1/2 border-l-2 border-dashed border-destructive/40" />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-destructive/40 bg-destructive/10 px-4 py-2 text-center">
-        <span className="block text-[13px] font-mono uppercase tracking-[0.18em] text-destructive">
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border border-destructive/40 bg-destructive/10 px-3 py-1.5 text-center">
+        <span className="block text-[clamp(9px,0.8vw,12px)] font-mono uppercase tracking-[0.16em] text-destructive">
           Gap
         </span>
-        <span className="block text-[13px] font-semibold text-destructive/80">estrutural</span>
+        <span className="block text-[clamp(9px,0.8vw,12px)] font-semibold text-destructive/80">
+          estrutural
+        </span>
       </div>
     </div>
 
     {/* margem direita */}
-    <div className="flex flex-1 flex-col justify-center rounded-3xl border border-border bg-card p-7 shadow-card">
+    <div className="flex min-w-0 flex-1 flex-col justify-center rounded-3xl border border-border bg-card p-[4%] shadow-card">
       <div className="flex items-center gap-3 text-accent">
-        <Building2 className="size-7" />
-        <span className="text-sm font-mono uppercase tracking-[0.2em]">Quem compra</span>
+        <Building2 className="size-[clamp(16px,1.5vw,26px)]" />
+        <span className="text-[clamp(10px,0.85vw,13px)] font-mono uppercase tracking-[0.2em]">
+          Quem compra
+        </span>
       </div>
-      <p className="mt-4 text-[19px] font-display font-bold leading-tight text-primary">
+      <p className="mt-3 text-[clamp(13px,1.2vw,19px)] font-display font-bold leading-tight text-primary">
         Empresas, varejo e mercados exigentes
       </p>
-      <ul className="mt-4 space-y-2 text-[15px] leading-snug text-muted-foreground">
+      <ul className="mt-3 space-y-1.5 text-[clamp(11px,0.95vw,15px)] leading-snug text-muted-foreground">
         <li>· Pressão regulatória crescente</li>
         <li>· Precisam de rastreabilidade real</li>
         <li>· Não enxergam a base da cadeia</li>
@@ -229,6 +234,7 @@ const GapDiagram = () => (
     </div>
   </div>
 );
+
 
 /* Slide 04 — ciclo virtuoso */
 const CicloVirtuoso = () => {
