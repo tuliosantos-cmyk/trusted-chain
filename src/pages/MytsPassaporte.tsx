@@ -680,21 +680,22 @@ const S05Oportunidade = () => {
           {blocos.map((b) => (
             <div
               key={b.titulo}
-              className="flex flex-col rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06] p-7 backdrop-blur"
+              className="flex flex-col justify-center rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06] p-8 backdrop-blur"
             >
-              <div className="grid size-[68px] place-items-center rounded-2xl bg-gradient-accent shadow-glow">
-                <b.icon className="size-8 text-accent-foreground" />
+              <div className="grid size-[76px] place-items-center rounded-2xl bg-gradient-accent shadow-glow">
+                <b.icon className="size-9 text-accent-foreground" />
               </div>
-              <h3 className="mt-5 font-display text-[24px] font-black leading-tight text-primary-foreground">
+              <h3 className="mt-6 font-display text-[27px] font-black leading-tight text-primary-foreground">
                 {b.titulo}
               </h3>
-              <ul className="mt-4 space-y-3">
+              <ul className="mt-5 space-y-4">
                 {b.itens.map((i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <Check className="mt-1 size-5 shrink-0 text-accent-glow" />
-                    <span className="text-[17px] leading-snug text-primary-foreground/80">{i}</span>
+                    <Check className="mt-1 size-6 shrink-0 text-accent-glow" />
+                    <span className="text-[19px] leading-snug text-primary-foreground/80">{i}</span>
                   </li>
                 ))}
+
               </ul>
             </div>
           ))}
