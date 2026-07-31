@@ -1,55 +1,56 @@
-## Objetivo
+## O problema real
 
-Substituir o deck atual de `/myts-passaporte` (11 slides) por um deck enxuto de **6 slides**, com o copy novo, esquemas visuais fortes e espaços preparados para fotos reais de produtores.
+Hoje cada slide é montado com medidas fluidas (`clamp`, `%`, `vh`) dentro de um quadro que muda de tamanho conforme a tela. Isso significa que eu estou "adivinhando" o tamanho de cada texto e card em vez de trabalhar num espaço com medida fixa. Resultado: elemento grande demais, texto estourando a moldura, sobra branca aleatória — e eu só descubro depois que você vê.
 
-## Estrutura nova
+## A solução: canvas fixo + escala
 
-**S1 — Abertura** (fundo navy)
-Split 60/40: à esquerda o título "O impacto já existe. O reconhecimento ainda não.", parágrafo e a frase-assinatura em itálico com destaque em gradiente. À direita, **foto hero do produtor** em moldura vertical grande com overlay navy e legenda flutuante. Chips na base: Produtores · Cooperativas · Comunidades tradicionais.
+Trocar o modelo do componente `Slide` por um **palco de tamanho fixo 1600×900 px** que é reduzido/ampliado inteiro por `transform: scale()` para caber no espaço disponível da tela.
 
-**S2 — O problema** (fundo claro)
-Título grande + dois parágrafos curtos. Abaixo, faixa de 3 elementos:
-- Bloco de dado gigante **77%** com fonte IBGE
-- Diagrama de "gap estrutural": duas margens (Quem produz / Quem compra) separadas por um vão tracejado, mostrando o que falta em cada lado
-- **Slot de foto** (retrato de produtor, formato quadrado) ancorando a coluna
-Encerramento em faixa destacada: "É um gap estrutural dos dois lados…"
+```text
++---------------------- tela (qualquer tamanho) ----------------------+
+|      +------------- wrapper 16:9 (scale automático) -------------+  |
+|      |   CANVAS FIXO 1600 x 900 px  (tudo em px absolutos)       |  |
+|      |   título 72px, corpo 20px, card 380x220, gap 32px...      |  |
+|      +------------------------------------------------------------+ |
++---------------------------------------------------------------------+
+```
 
-**S3 — A infraestrutura invisível** (fundo navy)
-Linha de negação no topo ("Não é software / consultoria / auditoria" em chips riscados). Três cards em camadas empilhadas — Groundd (pessoas), RAMO (território/geoespacial), MyTS (infraestrutura digital) — cada um com ícone, logo e uma linha de descrição, conectados por um trilho vertical que converge para a frase "Juntas, essas capacidades transformam impacto local em oportunidades de mercado."
-À direita, o **box "O que sua organização viabiliza"** em card de destaque com os 4 itens em lista com check.
+O que isso muda na prática:
+- Eu passo a diagramar como se fosse um slide de PowerPoint: **um espaço de medida conhecida e imutável**. Se um bloco tem 1600px de largura e eu uso 3 cards de 480px + 2 gaps de 40px, eu sei matematicamente que cabe.
+- Nada mais de `clamp()`, `vh`, `min()` espalhado. Tipografia e espaçamento viram uma **escala fixa** (títulos 80/64/48, corpo 22/18, labels 14) usada em todo o deck.
+- Em qualquer resolução — seu notebook, o projetor, o celular — o slide fica **exatamente igual**, só menor ou maior. O que estiver certo uma vez fica certo para sempre.
 
-**S4 — O ciclo virtuoso** (fundo claro)
-Diagrama SVG circular ocupando ~65% da largura: 8 nós ao redor (Produtor fortalecido → Maior renda → Cooperativas mais fortes → Territórios preservados → Cadeias resilientes → Mercados confiáveis → Novos investimentos → Mais produtores fortalecidos), setas animadas fechando o ciclo, centro "Valor compartilhado".
-Coluna direita: frase-conclusão em tamanho grande + selo "Modelo já validado" com logos Korin e Carrefour (já existem no projeto).
+## Regras de diagramação que passo a seguir
 
-**S5 — Oportunidade estratégica** (fundo navy)
-Título + 4 cards em grid 2×2 (Para quem produz / Para o território / Para sua empresa / Para investidores), cada um com ícone, título e as três frases curtas em lista.
-Faixa inferior full-width com o dado **US$ 1,5 trilhão** em número gigante + fonte GIIN 2024, com **slot de foto** em faixa panorâmica de fundo (produtor/território) em baixa opacidade.
+1. Todo slide tem **padding fixo de 72px** e uma grade interna de 12 colunas.
+2. Altura útil = 900 − 144 = **756px**. Cada slide declara a altura de cada faixa (header / corpo / rodapé) e a soma tem que fechar 756.
+3. Texto nunca "cabe por sorte": cada bloco de texto tem largura máxima definida (ex.: 620px) e número de linhas previsto.
+4. Diagramas SVG com `viewBox` fixo e tamanho declarado em px — sem depender do contêiner.
+5. Nenhuma cor hardcoded (mantém os tokens do design system atuais).
 
-**S6 — Convite** (fundo navy)
-Frase-manifesto como herói tipográfico (~90-104px), parágrafo de apoio, CTA "Vamos construir essa transformação juntos.", contato `valmir@myt-s.com · myt-s.com` e logos MyTS + Groundd + RAMO no rodapé.
+## Verificação automática (o ponto que faltava)
 
-## Slots de foto (5 no total)
+Depois de cada slide eu rodo um script Playwright que:
+- abre o deck em 1920×1080,
+- percorre **todos os slides** e mede cada elemento contra as bordas do canvas,
+- lista qualquer elemento que **transborde** (scrollWidth/Height > contêiner) ou que deixe **mais de 15% de área vazia** no bloco,
+- tira print de cada slide.
 
-Todos apontam para arquivos em `src/assets/passaporte/` com placeholders visuais claros (moldura tracejada + label "foto a enviar") quando a imagem ainda não existe:
-1. `produtor-hero.jpg` — retrato vertical (S1)
-2. `produtor-retrato.jpg` — quadrado (S2)
-3. `cooperativa.jpg` — grupo/cooperativa (S4, opcional no selo de validação)
-4. `territorio.jpg` — panorâmica de território (S5, fundo da faixa)
-5. `comunidade.jpg` — cena de comunidade (S6, faixa lateral discreta)
+Só te entrego depois que esse relatório voltar limpo. É isso que evita o "olha, estourou de novo".
 
-Enquanto as fotos reais não chegarem, uso as imagens já existentes (`produtor.jpg`, `geolocalizacao.jpg`) nos slots compatíveis e placeholders nos demais — troca depois é só substituir o arquivo.
+## Execução
 
-## Detalhes técnicos
-
-- Trabalho concentrado em `src/pages/MytsPassaporte.tsx`; mantenho os componentes-base `Slide`, `SectionLabel`, `Chip` e os tokens do design system (nada de cor hardcoded).
-- Dois diagramas SVG novos: `GapDiagram` (S2) e `CicloVirtuoso` reescrito (S4, viewBox amplo para não cortar labels).
-- Escala de tipografia do deck: títulos 72-96px, corpo 18-20px, números-destaque 120px+, respeitando a densidade já calibrada nos slides atuais.
-- Componentes/diagramas dos slides removidos que não forem reaproveitados são apagados para não deixar código órfão.
-- Validação: build limpo + Playwright 1920×1080 capturando os 6 slides para conferir que nada estoura nem sobra vazio.
+1. Reescrever o componente `Slide` para o modelo canvas fixo + auto-scale (afeta os 6 slides de uma vez).
+2. Criar os tokens de escala do deck (tamanhos de fonte, gaps, alturas de faixa) num objeto único no topo do arquivo.
+3. Re-diagramar os 6 slides existentes nessa grade, mantendo o conteúdo e os visuais atuais (gap diagram, ciclo virtuoso, slots de foto).
+4. Rodar o auditor de overflow + prints dos 6 slides e corrigir o que aparecer.
 
 ## Não vou fazer
 
-- Não altero outras rotas (`/korin-360`, `/fssc-v7`, etc.).
-- Não invento dados novos além dos dois citados (IBGE 77%, GIIN US$ 1,5 tri).
-- Não gero fotos de produtor por IA — deixo os slots prontos para as suas imagens reais.
+- Não mudo o copy nem a estrutura narrativa dos 6 slides.
+- Não mexo em outras rotas (`/korin-360`, `/fssc-v7`, etc.).
+- Não troco a paleta nem as fontes.
+
+## Detalhes técnicos
+
+O `Slide` usa um wrapper com `aspect-ratio: 16/9` e `ResizeObserver` calculando `scale = larguraDisponível / 1600`, aplicado com `transform: scale(s); transform-origin: top left` sobre um filho de `width:1600px; height:900px`. Isso é o mesmo mecanismo que Figma/Canva usam para preview de slide, e garante fidelidade pixel-perfect em qualquer viewport.
