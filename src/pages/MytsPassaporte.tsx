@@ -604,21 +604,21 @@ const S03Infraestrutura = () => {
 /* ---------- 04 · Ciclo virtuoso ---------- */
 const S04Ciclo = () => (
   <Slide bg="bg-background" decor={<MytsWatermark className="-left-24 -top-16 w-[320px]" />}>
-    <div className="flex h-full flex-col">
+    <div className="flex h-full min-h-0 flex-col">
       <SectionLabel n="04" label="O CICLO VIRTUOSO" />
 
-      <div className="mt-4 flex flex-1 items-stretch gap-10">
-        <div className="flex-[1.4]">
+      <div className="mt-[2%] flex min-h-0 flex-1 items-stretch gap-[3%]">
+        <div className="flex min-h-0 flex-[1.4] items-center justify-center">
           <CicloVirtuoso />
         </div>
 
-        <div className="flex w-[34%] shrink-0 flex-col justify-center gap-8">
-          <h2 className="font-display text-[42px] font-black leading-[1.05] tracking-tight text-primary">
+        <div className="flex w-[34%] min-h-0 shrink-0 flex-col justify-center gap-[4%]">
+          <h2 className="font-display text-[clamp(20px,2.2vw,38px)] font-black leading-[1.06] tracking-tight text-primary">
             Impacto social, conservação e desenvolvimento econômico{" "}
             <span className="text-gradient">deixam de competir e passam a crescer juntos.</span>
           </h2>
 
-          <div className="space-y-3">
+          <div className="flex flex-col gap-[3%]">
             {[
               { icon: Sprout, t: "Produtor fortalecido gera mais renda" },
               { icon: TreePine, t: "Renda sustenta territórios preservados" },
@@ -626,21 +626,21 @@ const S04Ciclo = () => (
             ].map((i) => (
               <div
                 key={i.t}
-                className="flex items-center gap-4 rounded-2xl border border-border bg-card px-6 py-4 shadow-card"
+                className="flex items-center gap-[3%] rounded-2xl border border-border bg-card px-[5%] py-[3%] shadow-card"
               >
-                <i.icon className="size-7 shrink-0 text-accent" />
-                <span className="text-[17px] font-semibold leading-snug text-primary">{i.t}</span>
+                <i.icon className="size-[clamp(16px,1.6vw,28px)] shrink-0 text-accent" />
+                <span className="text-[clamp(11px,1.1vw,17px)] font-semibold leading-snug text-primary">{i.t}</span>
               </div>
             ))}
           </div>
 
-          <div className="rounded-3xl bg-primary p-7">
-            <span className="text-sm font-mono uppercase tracking-[0.2em] text-accent-glow">
+          <div className="rounded-3xl bg-primary p-[5%]">
+            <span className="text-[clamp(9px,0.8vw,13px)] font-mono uppercase tracking-[0.2em] text-accent-glow">
               Modelo já validado
             </span>
-            <div className="mt-5 flex items-center gap-8">
-              <PartnerLogo src={korinAsset.url} alt="Korin" className="h-9" />
-              <PartnerLogo src={carrefourAsset.url} alt="Carrefour" className="h-9" />
+            <div className="mt-[6%] flex items-center gap-[8%]">
+              <PartnerLogo src={korinAsset.url} alt="Korin" className="h-[clamp(20px,2vw,36px)]" />
+              <PartnerLogo src={carrefourAsset.url} alt="Carrefour" className="h-[clamp(20px,2vw,36px)]" />
             </div>
           </div>
         </div>
@@ -648,6 +648,7 @@ const S04Ciclo = () => (
     </div>
   </Slide>
 );
+
 
 /* ---------- 05 · Oportunidade estratégica ---------- */
 const S05Oportunidade = () => {
