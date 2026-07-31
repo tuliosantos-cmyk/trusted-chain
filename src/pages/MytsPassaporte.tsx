@@ -417,15 +417,15 @@ const S01Abertura = () => (
 /* ---------- 02 · O problema ---------- */
 const S02Problema = () => (
   <Slide bg="bg-background" decor={<MytsWatermark className="-left-20 -bottom-20 w-[320px]" />}>
-    <div className="flex h-full flex-col">
+    <div className="flex h-full min-h-0 flex-col gap-[2.2%]">
       <SectionLabel n="02" label="O PROBLEMA" />
 
-      <div className="mt-6 flex items-start gap-12">
-        <h2 className="max-w-[62%] font-display text-[46px] font-black leading-[1.02] tracking-tight text-primary">
+      <div className="flex items-start gap-8">
+        <h2 className="max-w-[60%] font-display text-[clamp(24px,2.6vw,42px)] font-black leading-[1.05] tracking-tight text-primary">
           O mercado já reconhece o valor da floresta.{" "}
           <span className="text-gradient">Ainda falta reconhecer o valor de quem a mantém em pé.</span>
         </h2>
-        <div className="flex-1 space-y-4 text-[17px] leading-relaxed text-muted-foreground">
+        <div className="flex-1 space-y-3 text-[clamp(12px,1.05vw,16px)] leading-relaxed text-muted-foreground">
           <p>
             Os produtores não precisam aprender a produzir melhor — eles já sabem. O que falta é a
             estrutura que permite ao mercado enxergar, comprovar e remunerar esse valor.
@@ -438,27 +438,28 @@ const S02Problema = () => (
         </div>
       </div>
 
-      <div className="mt-8 flex flex-1 items-stretch gap-8">
-        <PhotoSlot
-          hint="Foto de produtor · quadrada"
-          className="aspect-square w-[22%] shrink-0"
-        />
+      <div className="flex min-h-0 flex-1 items-stretch gap-6">
+        <PhotoSlot hint="Foto de produtor" className="w-[20%] shrink-0" />
 
-        <div className="flex-1">
+        <div className="min-w-0 flex-1">
           <GapDiagram />
         </div>
 
-        <div className="flex w-[20%] shrink-0 flex-col justify-center rounded-3xl bg-primary p-8 text-primary-foreground shadow-elegant">
-          <div className="font-display text-[80px] font-black leading-none text-accent-glow">77%</div>
-          <p className="mt-4 text-[17px] font-semibold leading-snug">
+        <div className="flex w-[19%] shrink-0 flex-col justify-center rounded-3xl bg-primary p-6 text-primary-foreground shadow-elegant">
+          <div className="font-display text-[clamp(40px,4.6vw,72px)] font-black leading-none text-accent-glow">
+            77%
+          </div>
+          <p className="mt-3 text-[clamp(12px,1.05vw,16px)] font-semibold leading-snug">
             dos estabelecimentos rurais brasileiros pertencem à agricultura familiar.
           </p>
-          <span className="mt-3 text-sm text-primary-foreground/50">Censo Agropecuário IBGE</span>
+          <span className="mt-2 text-[clamp(10px,0.85vw,13px)] text-primary-foreground/50">
+            Censo Agropecuário IBGE
+          </span>
         </div>
       </div>
 
-      <div className="mt-8 rounded-2xl border border-accent/25 bg-accent/5 px-8 py-6">
-        <p className="font-display text-[26px] font-bold leading-snug text-primary">
+      <div className="rounded-2xl border border-accent/25 bg-accent/5 px-7 py-[1.6%]">
+        <p className="font-display text-[clamp(15px,1.55vw,24px)] font-bold leading-snug text-primary">
           É um gap estrutural dos dois lados. E ele não se resolve com boa vontade —{" "}
           <span className="text-accent">se resolve com infraestrutura.</span>
         </p>
@@ -466,6 +467,7 @@ const S02Problema = () => (
     </div>
   </Slide>
 );
+
 
 /* ---------- 03 · A infraestrutura invisível ---------- */
 const S03Infraestrutura = () => {
