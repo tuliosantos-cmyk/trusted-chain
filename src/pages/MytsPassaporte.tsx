@@ -878,8 +878,8 @@ const S03Infraestrutura = () => {
               ))}
             </ul>
             <PhotoSlot
-              src={familiaAsset.url}
-              alt="Produtores e cooperativa"
+              src={packingAsset.url}
+              alt="Seleção de citros em packing house"
               light
               style={{ height: 130, marginTop: 24, flexShrink: 0 }}
             />
