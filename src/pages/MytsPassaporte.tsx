@@ -151,21 +151,24 @@ const PhotoSlot = ({
       </>
     ) : (
       <div
-        className={`h-full w-full grid place-items-center gap-3 border-2 border-dashed ${
+        className={`flex h-full w-full flex-col items-center justify-center gap-2 overflow-hidden rounded-3xl border-2 border-dashed p-3 ${
           light
             ? "border-primary-foreground/25 bg-primary-foreground/5"
             : "border-accent/30 bg-accent/5"
         }`}
       >
-        <Camera className={`size-10 ${light ? "text-primary-foreground/50" : "text-accent/60"}`} />
+        <Camera
+          className={`size-[clamp(18px,2vw,36px)] shrink-0 ${light ? "text-primary-foreground/50" : "text-accent/60"}`}
+        />
         <span
-          className={`px-6 text-center text-sm font-mono uppercase tracking-[0.18em] ${
+          className={`text-center text-[clamp(9px,0.8vw,13px)] font-mono uppercase leading-tight tracking-[0.16em] ${
             light ? "text-primary-foreground/50" : "text-accent/70"
           }`}
         >
           {hint ?? "Foto a enviar"}
         </span>
       </div>
+
     )}
     {src && caption && (
       <figcaption className="absolute inset-x-0 bottom-0 p-6">
