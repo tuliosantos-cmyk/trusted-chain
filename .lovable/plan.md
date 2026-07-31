@@ -1,79 +1,55 @@
-## Diagnóstico
+## Objetivo
 
-Cada `Slide` é 16:9 (~1600×900 no preview atual), mas eu estou dimensionando os elementos como se fossem uma seção de landing page normal. Resultado: títulos `text-5xl`, cards `p-6`, gaps `gap-5`, ícones `size-6`, corpo `text-[13-15px]` — tudo pequeno para uma tela inteira. O olho vê "componentes flutuando em vazio".
+Substituir o deck atual de `/myts-passaporte` (11 slides) por um deck enxuto de **6 slides**, com o copy novo, esquemas visuais fortes e espaços preparados para fotos reais de produtores.
 
-Raiz do problema:
-1. **Padding do Slide muito frouxo**: `p-12 md:p-16` come 128px de cada lado sem devolver densidade
-2. **Escalas tipográficas subdimensionadas**: títulos deveriam ser 72-96px, não 48px
-3. **Cards pequenos** com padding tímido (`p-5/6/7`) e ícones `size-6`
-4. **Gaps entre elementos** (`gap-3/4/5`) somados ao padding do slide criam "ilhas" isoladas
-5. **Diagramas SVG limitados** por `max-h-[380-560px]` — poderiam usar 100% do espaço vertical
-6. **Corpo de texto 13-15px** parece pequeno numa tela grande de apresentação
+## Estrutura nova
 
-## Estratégia
+**S1 — Abertura** (fundo navy)
+Split 60/40: à esquerda o título "O impacto já existe. O reconhecimento ainda não.", parágrafo e a frase-assinatura em itálico com destaque em gradiente. À direita, **foto hero do produtor** em moldura vertical grande com overlay navy e legenda flutuante. Chips na base: Produtores · Cooperativas · Comunidades tradicionais.
 
-Reescala global e proporcional em `src/pages/MytsPassaporte.tsx`, sem mudar copy, estrutura, cores, ordem dos slides nem tokens do design system.
+**S2 — O problema** (fundo claro)
+Título grande + dois parágrafos curtos. Abaixo, faixa de 3 elementos:
+- Bloco de dado gigante **77%** com fonte IBGE
+- Diagrama de "gap estrutural": duas margens (Quem produz / Quem compra) separadas por um vão tracejado, mostrando o que falta em cada lado
+- **Slot de foto** (retrato de produtor, formato quadrado) ancorando a coluna
+Encerramento em faixa destacada: "É um gap estrutural dos dois lados…"
 
-### 1. Padding do Slide
-- `pad` padrão: `p-12 md:p-16` → **`p-10 md:p-14`** (recupera ~30-50px de área útil por lado)
+**S3 — A infraestrutura invisível** (fundo navy)
+Linha de negação no topo ("Não é software / consultoria / auditoria" em chips riscados). Três cards em camadas empilhadas — Groundd (pessoas), RAMO (território/geoespacial), MyTS (infraestrutura digital) — cada um com ícone, logo e uma linha de descrição, conectados por um trilho vertical que converge para a frase "Juntas, essas capacidades transformam impacto local em oportunidades de mercado."
+À direita, o **box "O que sua organização viabiliza"** em card de destaque com os 4 itens em lista com check.
 
-### 2. Escala tipográfica (todos os slides)
+**S4 — O ciclo virtuoso** (fundo claro)
+Diagrama SVG circular ocupando ~65% da largura: 8 nós ao redor (Produtor fortalecido → Maior renda → Cooperativas mais fortes → Territórios preservados → Cadeias resilientes → Mercados confiáveis → Novos investimentos → Mais produtores fortalecidos), setas animadas fechando o ciclo, centro "Valor compartilhado".
+Coluna direita: frase-conclusão em tamanho grande + selo "Modelo já validado" com logos Korin e Carrefour (já existem no projeto).
 
-| Elemento | Antes | Depois |
-|---|---|---|
-| H1 capa (S01) | `text-6xl md:text-7xl` | `text-7xl md:text-8xl` |
-| H2 slides internos | `text-5xl md:text-6xl` | `text-6xl md:text-7xl` |
-| Assinatura S05 "jornada" | `text-[64px]` | `text-[88px] md:text-[104px]` (essa é a frase-assinatura do deck) |
-| Subtítulos/lead | `text-lg/xl` | `text-xl/2xl` |
-| Corpo em cards | `text-[13-15px]` | `text-[16-18px]` |
-| KPIs numéricos (S01) | `text-2xl` (compactos) | `text-4xl` (voltar ao formato grande) |
+**S5 — Oportunidade estratégica** (fundo navy)
+Título + 4 cards em grid 2×2 (Para quem produz / Para o território / Para sua empresa / Para investidores), cada um com ícone, título e as três frases curtas em lista.
+Faixa inferior full-width com o dado **US$ 1,5 trilhão** em número gigante + fonte GIIN 2024, com **slot de foto** em faixa panorâmica de fundo (produtor/território) em baixa opacidade.
 
-### 3. Cards, ícones e gaps
-- Ícones principais: `size-6` → `size-8/10`; ícone-container `size-11/12` → `size-14/16`
-- Padding cards: `p-6/7` → `p-8/10`
-- Gap entre cards: `gap-4/5` → `gap-6/8`
-- Radius: manter `rounded-2xl` (consistente)
+**S6 — Convite** (fundo navy)
+Frase-manifesto como herói tipográfico (~90-104px), parágrafo de apoio, CTA "Vamos construir essa transformação juntos.", contato `valmir@myt-s.com · myt-s.com` e logos MyTS + Groundd + RAMO no rodapé.
 
-### 4. Diagramas SVG
-- `InitiativeHub` (S03): remover `max-h-[380px]`, deixar preencher o container (flex-1)
-- `JourneySteps` (S04): aumentar círculos `size-24` → `size-32`; label `text-[22px]` → `text-[26px]`; pill parceiro `text-[10px]` → `text-[12px]`
-- `VirtuousCycle` (S08): remover `max-h-[560px]`; aumentar raio/nós; fonte dos labels 13→16
-- `ChallengeFlow` (S02): nós `size-20` → `size-28`; ícone `size-8` → `size-11`; label `text-[15px]` → `text-[17px]`
+## Slots de foto (5 no total)
 
-### 5. Ajustes por slide
+Todos apontam para arquivos em `src/assets/passaporte/` com placeholders visuais claros (moldura tracejada + label "foto a enviar") quando a imagem ainda não existe:
+1. `produtor-hero.jpg` — retrato vertical (S1)
+2. `produtor-retrato.jpg` — quadrado (S2)
+3. `cooperativa.jpg` — grupo/cooperativa (S4, opcional no selo de validação)
+4. `territorio.jpg` — panorâmica de território (S5, fundo da faixa)
+5. `comunidade.jpg` — cena de comunidade (S6, faixa lateral discreta)
 
-**S01 (Potencial)** — voltar KPIs para o formato "big number + descrição empilhada" (não linha compacta), foto do produtor maior; grid `12` mantido, mas col-span da foto puxa mais peso visual.
+Enquanto as fotos reais não chegarem, uso as imagens já existentes (`produtor.jpg`, `geolocalizacao.jpg`) nos slots compatíveis e placeholders nos demais — troca depois é só substituir o arquivo.
 
-**S02 (Desafio)** — flow com nós maiores; grid de dados `grid-cols-3` já bom, cada card com número gigante em destaque.
+## Detalhes técnicos
 
-**S03 (Abordagem)** — hub SVG preenchendo 100% do col-span; cards MyTS/Groundd/RAMO com padding maior, logo/ícone maior.
-
-**S04 (Jornada)** — timeline preenchendo a largura, círculos maiores; frase-âncora `text-2xl` → `text-3xl`.
-
-**S05 (Entregamos)** — a linha "Não vendemos software. Entregamos jornada." vira o herói tipográfico do slide (~96-104px). Cards de entrega maiores.
-
-**S06 (Antes → Depois)** — retrato do José maior (col-span 3 → coluna mais alta); listas Antes/Depois com texto 15→17px, spacing generoso.
-
-**S07 (Diferencial)** — manifesto 60→72px; cards diferencial e cases maiores.
-
-**S08 (Impacto)** — coluna esquerda ganha `text-3xl` na lista de propósito; ciclo virtuoso ocupa 100% do col-span 7.
-
-**S09 (Quem somos)** — fotos do time maiores (`size-16` → `size-24`), cards das 3 orgs com padding maior.
-
-### 6. Regra geral de densidade
-- Nenhum `flex-1` órfão gerando ar; usar `justify-between` ou `gap` proporcional
-- Substituir `mt-auto` "solto" por distribuição explícita
-- Onde há espaço vertical sobrando, aumentar tamanho do elemento visual dominante do slide (diagrama, foto, número)
+- Trabalho concentrado em `src/pages/MytsPassaporte.tsx`; mantenho os componentes-base `Slide`, `SectionLabel`, `Chip` e os tokens do design system (nada de cor hardcoded).
+- Dois diagramas SVG novos: `GapDiagram` (S2) e `CicloVirtuoso` reescrito (S4, viewBox amplo para não cortar labels).
+- Escala de tipografia do deck: títulos 72-96px, corpo 18-20px, números-destaque 120px+, respeitando a densidade já calibrada nos slides atuais.
+- Componentes/diagramas dos slides removidos que não forem reaproveitados são apagados para não deixar código órfão.
+- Validação: build limpo + Playwright 1920×1080 capturando os 6 slides para conferir que nada estoura nem sobra vazio.
 
 ## Não vou fazer
 
-- Não mudar copy, ordem de slides, cores, tokens ou fontes
-- Não trocar componentes (mesmo `Slide`, `SectionLabel`, `Chip`)
-- Não mexer em outras rotas
-- Não usar cores hardcoded
-
-## Validação
-
-- Build limpo (`bun run build`)
-- Playwright headless 1920×1080, screenshot dos 9 slides em `/tmp/browser/passaporte/`, revisão visual comparando "densidade antes/depois"
-- Checklist por slide: título domina ≥ 25% da altura útil ou o hero visual domina; nenhum card com mais de 40% de padding interno vazio; diagramas encostam nas bordas do container.
+- Não altero outras rotas (`/korin-360`, `/fssc-v7`, etc.).
+- Não invento dados novos além dos dois citados (IBGE 77%, GIIN US$ 1,5 tri).
+- Não gero fotos de produtor por IA — deixo os slots prontos para as suas imagens reais.
