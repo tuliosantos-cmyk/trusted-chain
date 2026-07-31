@@ -29,6 +29,8 @@ import territorioImg from "@/assets/passaporte/geolocalizacao.jpg";
 import rinaldoAsset from "@/assets/passaporte/produtor-rinaldo.jpg.asset.json";
 import veraAsset from "@/assets/passaporte/produtora-vera.jpg.asset.json";
 import familiaAsset from "@/assets/passaporte/familia-produtora.jpg.asset.json";
+import packingAsset from "@/assets/passaporte/packing-citros.png.asset.json";
+import estufaAsset from "@/assets/passaporte/estufa-tomate.png.asset.json";
 
 /* ============================================================
    CANVAS FIXO
