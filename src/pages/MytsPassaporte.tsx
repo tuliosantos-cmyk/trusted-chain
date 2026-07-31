@@ -542,8 +542,8 @@ const S00Capa = () => (
 
         {/* foto */}
         <PhotoSlot
-          src={produtorImg}
-          alt="Produtor em seu território"
+          src={familiaAsset.url}
+          alt="Família produtora em sua propriedade"
           caption="Quem sustenta as cadeias"
           light
           className="border border-primary-foreground/10"
