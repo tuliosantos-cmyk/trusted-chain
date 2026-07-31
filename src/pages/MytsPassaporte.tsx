@@ -851,11 +851,11 @@ const S05Oportunidade = () => {
               >
                 {b.titulo}
               </h3>
-              <ul className="flex flex-col" style={{ gap: 12, marginTop: 18 }}>
+              <ul className="flex flex-1 flex-col justify-evenly" style={{ gap: 12, marginTop: 18 }}>
                 {b.itens.map((i) => (
                   <li key={i} className="flex items-start" style={{ gap: 10 }}>
                     <Check style={{ width: 20, height: 20, flexShrink: 0, marginTop: 3 }} className="text-accent-glow" />
-                    <span className="text-primary-foreground/80" style={{ fontSize: T.small, lineHeight: 1.4 }}>
+                    <span className="text-primary-foreground/80" style={{ fontSize: T.body, lineHeight: 1.4 }}>
                       {i}
                     </span>
                   </li>
