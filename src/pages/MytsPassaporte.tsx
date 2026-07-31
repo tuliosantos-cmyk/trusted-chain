@@ -1,3 +1,4 @@
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import {
   Sprout,
@@ -27,101 +28,152 @@ import produtorImg from "@/assets/passaporte/produtor.jpg";
 import territorioImg from "@/assets/passaporte/geolocalizacao.jpg";
 
 /* ============================================================
+   CANVAS FIXO
+   Todo slide é desenhado num palco de 1600 x 900 px.
+   O palco inteiro é reduzido/ampliado por transform: scale().
+   Consequência: nada de clamp/vw — todas as medidas são px reais
+   e o que couber uma vez cabe em qualquer resolução.
+   ============================================================ */
+const CANVAS_W = 1600;
+const CANVAS_H = 900;
+const PAD = 64;
+/* área útil: 1472 x 772 */
+
+/* Escala tipográfica do deck (px) */
+const T = {
+  hero: 62,
+  title: 46,
+  subtitle: 32,
+  lead: 21,
+  body: 18,
+  small: 16,
+  label: 13,
+  mono: 12,
+} as const;
+
+/* ============================================================
    Primitivos
    ============================================================ */
 const PartnerLogo = ({
   src,
   alt,
-  className = "h-8",
+  height = 30,
   variant = "light",
 }: {
   src: string;
   alt: string;
-  className?: string;
+  height?: number;
   variant?: "light" | "dark";
-}) =>
-  variant === "light" ? (
-    <img
-      src={src}
-      alt={alt}
-      className={`${className} w-auto object-contain`}
-      style={{ filter: "brightness(0) invert(1)" }}
-    />
-  ) : (
-    <img src={src} alt={alt} className={`${className} w-auto object-contain`} />
-  );
+}) => (
+  <img
+    src={src}
+    alt={alt}
+    className="w-auto object-contain"
+    style={{
+      height,
+      filter: variant === "light" ? "brightness(0) invert(1)" : undefined,
+    }}
+  />
+);
 
 const Chip = ({ children, light = false }: { children: React.ReactNode; light?: boolean }) => (
   <span
-    className={`inline-flex items-center gap-3 rounded-full border px-6 py-2.5 text-base font-semibold tracking-[0.18em] uppercase ${
+    className={`inline-flex items-center rounded-full border font-semibold uppercase ${
       light
         ? "border-primary-foreground/15 bg-primary-foreground/5 text-primary-foreground/80 backdrop-blur"
         : "border-accent/25 bg-accent/5 text-accent"
     }`}
+    style={{ fontSize: T.label, letterSpacing: "0.18em", padding: "10px 22px", whiteSpace: "nowrap" }}
   >
     {children}
   </span>
 );
 
-const SectionLabel = ({
-  n,
-  label,
-  light = false,
-}: {
-  n: string;
-  label: string;
-  light?: boolean;
-}) => (
+const SectionLabel = ({ n, label, light = false }: { n: string; label: string; light?: boolean }) => (
   <div
-    className={`flex items-center gap-4 text-base font-semibold uppercase tracking-[0.22em] ${
-      light ? "text-accent-glow" : "text-accent"
-    }`}
+    className={`flex items-center gap-4 font-semibold uppercase ${light ? "text-accent-glow" : "text-accent"}`}
+    style={{ fontSize: T.label, letterSpacing: "0.22em", height: 24 }}
   >
     <span className="font-mono">{n}</span>
-    <span className={`h-px w-16 ${light ? "bg-accent-glow/60" : "bg-accent/50"}`} />
+    <span className={`h-px ${light ? "bg-accent-glow/60" : "bg-accent/50"}`} style={{ width: 56 }} />
     {label}
   </div>
 );
 
 const Slide = ({
   bg = "bg-background",
-  className = "",
   children,
   decor,
-  pad = "p-10 md:p-14",
+  pad = PAD,
 }: {
   bg?: string;
-  className?: string;
   children: React.ReactNode;
   decor?: React.ReactNode;
-  pad?: string;
-}) => (
-  <section
-    className={`${bg} relative ${className} slide-frame`}
-    style={{
-      width: "min(100%, calc((100vh - 64px) * 16 / 9))",
-      aspectRatio: "16 / 9",
-      margin: "0 auto",
-      padding: 0,
-      overflow: "hidden",
-      borderRadius: 16,
-      boxShadow: "0 30px 80px -20px rgba(0,0,0,0.55)",
-      scrollSnapAlign: "center",
-    }}
-  >
-    <div className="relative h-full w-full slide-inner">
-      {decor}
-      <div className={`relative h-full w-full flex flex-col ${pad}`}>{children}</div>
-    </div>
-  </section>
-);
+  pad?: number;
+}) => {
+  const frameRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(0);
 
-const MytsWatermark = ({ className = "" }: { className?: string }) => (
+  useLayoutEffect(() => {
+    const el = frameRef.current;
+    if (!el) return;
+    const update = () => setScale(el.clientWidth / CANVAS_W);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const onResize = () => {
+      const el = frameRef.current;
+      if (el) setScale(el.clientWidth / CANVAS_W);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  return (
+    <section
+      ref={frameRef}
+      className={`${bg} relative slide-frame`}
+      style={{
+        width: "min(100%, calc((100vh - 64px) * 16 / 9))",
+        aspectRatio: "16 / 9",
+        margin: "0 auto",
+        overflow: "hidden",
+        borderRadius: 16,
+        boxShadow: "0 30px 80px -20px rgba(0,0,0,0.55)",
+        scrollSnapAlign: "center",
+      }}
+    >
+      <div
+        className={`${bg} absolute left-0 top-0`}
+        style={{
+          width: CANVAS_W,
+          height: CANVAS_H,
+          transform: `scale(${scale})`,
+          transformOrigin: "top left",
+          visibility: scale ? "visible" : "hidden",
+          overflow: "hidden",
+        }}
+      >
+        {decor}
+        <div className="relative flex flex-col" style={{ width: CANVAS_W, height: CANVAS_H, padding: pad }}>
+          {children}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const MytsWatermark = ({ style }: { style?: React.CSSProperties }) => (
   <img
     src={mytsMark}
     alt=""
     aria-hidden
-    className={`pointer-events-none select-none absolute opacity-[0.06] ${className}`}
+    className="pointer-events-none absolute select-none opacity-[0.06]"
+    style={style}
   />
 );
 
@@ -131,48 +183,51 @@ const PhotoSlot = ({
   alt,
   caption,
   hint,
+  style,
   className = "",
-  imgClassName = "",
   light = false,
 }: {
   src?: string;
   alt?: string;
   caption?: string;
   hint?: string;
+  style?: React.CSSProperties;
   className?: string;
-  imgClassName?: string;
   light?: boolean;
 }) => (
-  <figure className={`relative overflow-hidden rounded-3xl ${className}`}>
+  <figure className={`relative overflow-hidden rounded-3xl ${className}`} style={style}>
     {src ? (
       <>
-        <img src={src} alt={alt ?? ""} className={`h-full w-full object-cover ${imgClassName}`} />
+        <img src={src} alt={alt ?? ""} className="h-full w-full object-cover" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent" />
       </>
     ) : (
       <div
-        className={`flex h-full w-full flex-col items-center justify-center gap-2 overflow-hidden rounded-3xl border-2 border-dashed p-3 ${
-          light
-            ? "border-primary-foreground/25 bg-primary-foreground/5"
-            : "border-accent/30 bg-accent/5"
+        className={`flex h-full w-full flex-col items-center justify-center gap-3 rounded-3xl border-2 border-dashed ${
+          light ? "border-primary-foreground/25 bg-primary-foreground/5" : "border-accent/30 bg-accent/5"
         }`}
+        style={{ padding: 16 }}
       >
         <Camera
-          className={`size-[clamp(18px,2vw,36px)] shrink-0 ${light ? "text-primary-foreground/50" : "text-accent/60"}`}
+          className={light ? "text-primary-foreground/50" : "text-accent/60"}
+          style={{ width: 34, height: 34, flexShrink: 0 }}
         />
         <span
-          className={`text-center text-[clamp(9px,0.8vw,13px)] font-mono uppercase leading-tight tracking-[0.16em] ${
+          className={`text-center font-mono uppercase leading-tight ${
             light ? "text-primary-foreground/50" : "text-accent/70"
           }`}
+          style={{ fontSize: T.mono, letterSpacing: "0.16em" }}
         >
           {hint ?? "Foto a enviar"}
         </span>
       </div>
-
     )}
     {src && caption && (
-      <figcaption className="absolute inset-x-0 bottom-0 p-6">
-        <span className="text-lg font-display font-bold text-primary-foreground drop-shadow">
+      <figcaption className="absolute inset-x-0 bottom-0" style={{ padding: 24 }}>
+        <span
+          className="font-display font-bold text-primary-foreground drop-shadow"
+          style={{ fontSize: T.lead }}
+        >
           {caption}
         </span>
       </figcaption>
@@ -185,62 +240,76 @@ const PhotoSlot = ({
    ============================================================ */
 
 /* Slide 02 — o gap estrutural entre quem produz e quem compra */
-const GapDiagram = () => (
-  <div className="relative flex h-full min-h-0 items-stretch gap-0">
-    {/* margem esquerda */}
-    <div className="flex min-w-0 flex-1 flex-col justify-center rounded-3xl border border-border bg-card p-[4%] shadow-card">
-      <div className="flex items-center gap-3 text-accent">
-        <Sprout className="size-[clamp(16px,1.5vw,26px)]" />
-        <span className="text-[clamp(10px,0.85vw,13px)] font-mono uppercase tracking-[0.2em]">
-          Quem produz
-        </span>
-      </div>
-      <p className="mt-3 text-[clamp(13px,1.2vw,19px)] font-display font-bold leading-tight text-primary">
-        Produtores, cooperativas e associações
-      </p>
-      <ul className="mt-3 space-y-1.5 text-[clamp(11px,0.95vw,15px)] leading-snug text-muted-foreground">
-        <li>· Boas práticas já existentes</li>
-        <li>· Sem comprovação de origem</li>
-        <li>· Sem histórico organizado</li>
-      </ul>
+const GapCard = ({
+  icon: Icon,
+  kicker,
+  titulo,
+  itens,
+}: {
+  icon: typeof Sprout;
+  kicker: string;
+  titulo: string;
+  itens: string[];
+}) => (
+  <div
+    className="flex flex-1 flex-col justify-center rounded-3xl border border-border bg-card shadow-card"
+    style={{ padding: 28 }}
+  >
+    <div className="flex items-center gap-3 text-accent">
+      <Icon style={{ width: 24, height: 24 }} />
+      <span className="font-mono uppercase" style={{ fontSize: T.mono, letterSpacing: "0.2em" }}>
+        {kicker}
+      </span>
     </div>
+    <p
+      className="font-display font-bold leading-tight text-primary"
+      style={{ fontSize: 22, marginTop: 14 }}
+    >
+      {titulo}
+    </p>
+    <ul className="text-muted-foreground" style={{ fontSize: T.small, marginTop: 14, lineHeight: 1.55 }}>
+      {itens.map((i) => (
+        <li key={i}>· {i}</li>
+      ))}
+    </ul>
+  </div>
+);
 
-    {/* vão */}
-    <div className="relative w-[14%] min-w-[84px] shrink-0">
-      <div className="absolute inset-y-6 left-1/2 -translate-x-1/2 border-l-2 border-dashed border-destructive/40" />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border border-destructive/40 bg-destructive/10 px-3 py-1.5 text-center">
-        <span className="block text-[clamp(9px,0.8vw,12px)] font-mono uppercase tracking-[0.16em] text-destructive">
+const GapDiagram = () => (
+  <div className="relative flex h-full items-stretch">
+    <GapCard
+      icon={Sprout}
+      kicker="Quem produz"
+      titulo="Produtores, cooperativas e associações"
+      itens={["Boas práticas já existentes", "Sem comprovação de origem", "Sem histórico organizado"]}
+    />
+
+    <div className="relative shrink-0" style={{ width: 104 }}>
+      <div className="absolute left-1/2 -translate-x-1/2 border-l-2 border-dashed border-destructive/40" style={{ top: 24, bottom: 24 }} />
+      <div
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-destructive/40 bg-destructive/10 text-center"
+        style={{ padding: "8px 14px", whiteSpace: "nowrap" }}
+      >
+        <span className="block font-mono uppercase text-destructive" style={{ fontSize: T.mono, letterSpacing: "0.16em" }}>
           Gap
         </span>
-        <span className="block text-[clamp(9px,0.8vw,12px)] font-semibold text-destructive/80">
+        <span className="block font-semibold text-destructive/80" style={{ fontSize: T.mono }}>
           estrutural
         </span>
       </div>
     </div>
 
-    {/* margem direita */}
-    <div className="flex min-w-0 flex-1 flex-col justify-center rounded-3xl border border-border bg-card p-[4%] shadow-card">
-      <div className="flex items-center gap-3 text-accent">
-        <Building2 className="size-[clamp(16px,1.5vw,26px)]" />
-        <span className="text-[clamp(10px,0.85vw,13px)] font-mono uppercase tracking-[0.2em]">
-          Quem compra
-        </span>
-      </div>
-      <p className="mt-3 text-[clamp(13px,1.2vw,19px)] font-display font-bold leading-tight text-primary">
-        Empresas, varejo e mercados exigentes
-      </p>
-      <ul className="mt-3 space-y-1.5 text-[clamp(11px,0.95vw,15px)] leading-snug text-muted-foreground">
-        <li>· Pressão regulatória crescente</li>
-        <li>· Precisam de rastreabilidade real</li>
-        <li>· Não enxergam a base da cadeia</li>
-      </ul>
-    </div>
+    <GapCard
+      icon={Building2}
+      kicker="Quem compra"
+      titulo="Empresas, varejo e mercados exigentes"
+      itens={["Pressão regulatória crescente", "Precisam de rastreabilidade real", "Não enxergam a base da cadeia"]}
+    />
   </div>
 );
 
-
-/* Slide 04 — ciclo virtuoso */
-const CicloVirtuoso = () => {
+/* Slide 04 — ciclo virtuoso (SVG de medida fixa) */
+const CicloVirtuoso = ({ width = 740 }: { width?: number }) => {
   const nos = [
     "Produtor fortalecido",
     "Maior renda",
@@ -251,13 +320,14 @@ const CicloVirtuoso = () => {
     "Novos investimentos",
     "Mais produtores fortalecidos",
   ];
-  const cx = 480;
-  const cy = 360;
-  const r = 250;
+  const cx = 450;
+  const cy = 330;
+  const r = 212;
   return (
     <svg
-      viewBox="0 0 960 720"
-      className="h-full w-full"
+      viewBox="0 0 900 660"
+      width={width}
+      height={(width * 660) / 900}
       role="img"
       aria-label="Ciclo virtuoso do valor compartilhado"
     >
@@ -272,7 +342,7 @@ const CicloVirtuoso = () => {
         </radialGradient>
       </defs>
 
-      <circle cx={cx} cy={cy} r={r + 60} fill="url(#coreGlow)" />
+      <circle cx={cx} cy={cy} r={r + 55} fill="url(#coreGlow)" />
       <circle
         cx={cx}
         cy={cy}
@@ -293,27 +363,25 @@ const CicloVirtuoso = () => {
         />
       </circle>
 
-      {/* núcleo */}
-      <circle cx={cx} cy={cy} r="120" fill="hsl(222 65% 14%)" stroke="hsl(214 95% 54%)" strokeWidth="3" />
+      <circle cx={cx} cy={cy} r="104" fill="hsl(222 65% 14%)" stroke="hsl(214 95% 54%)" strokeWidth="3" />
       <text
         x={cx}
         y={cy - 18}
         textAnchor="middle"
         fill="hsl(199 95% 60%)"
-        fontSize="15"
+        fontSize="14"
         fontWeight="700"
         letterSpacing="3"
         fontFamily="Rubik, sans-serif"
       >
         CENTRO
       </text>
-      <text x={cx} y={cy + 14} textAnchor="middle" fill="#fff" fontSize="27" fontWeight="800" fontFamily="Rubik, sans-serif">
+      <text x={cx} y={cy + 12} textAnchor="middle" fill="#fff" fontSize="26" fontWeight="800" fontFamily="Rubik, sans-serif">
         Valor
       </text>
-      <text x={cx} y={cy + 46} textAnchor="middle" fill="#fff" fontSize="25" fontWeight="800" fontFamily="Rubik, sans-serif">
+      <text x={cx} y={cy + 42} textAnchor="middle" fill="#fff" fontSize="24" fontWeight="800" fontFamily="Rubik, sans-serif">
         compartilhado
       </text>
-
 
       {nos.map((n, i) => {
         const a = (i / nos.length) * 2 * Math.PI - Math.PI / 2;
@@ -329,20 +397,22 @@ const CicloVirtuoso = () => {
           } else cur = `${cur} ${w}`;
         });
         if (cur.trim()) lines.push(cur.trim());
+        const below = Math.sin(a) > 0.35;
+        const baseY = below ? y + 38 : y - 26 - (lines.length - 1) * 22;
         return (
           <g key={n}>
-            <circle cx={x} cy={y} r="16" fill="hsl(214 95% 54%)" stroke="#fff" strokeWidth="4" />
+            <circle cx={x} cy={y} r="15" fill="hsl(214 95% 54%)" stroke="#fff" strokeWidth="4" />
             <text
               x={x}
-              y={y - 26 - (lines.length - 1) * 20}
+              y={baseY}
               textAnchor="middle"
               fill="hsl(222 65% 14%)"
-              fontSize="19"
+              fontSize="21"
               fontWeight="700"
               fontFamily="Rubik, sans-serif"
             >
               {lines.map((l, li) => (
-                <tspan key={l} x={x} dy={li === 0 ? 0 : 22}>
+                <tspan key={l} x={x} dy={li === 0 ? 0 : 23}>
                   {l}
                 </tspan>
               ))}
@@ -365,81 +435,100 @@ const S01Abertura = () => (
     decor={
       <>
         <div className="absolute inset-0 grid-pattern opacity-30" />
-        <MytsWatermark className="-right-24 -bottom-24 w-[420px]" />
+        <MytsWatermark style={{ right: -96, bottom: -96, width: 420 }} />
       </>
     }
   >
-    <div className="flex h-full min-h-0 items-stretch gap-10">
-      <div className="flex min-h-0 flex-[1.35] flex-col justify-between py-1">
-        <div className="flex items-center gap-6">
-          <img src={mytsLogo} alt="MyTS" className="h-10 [filter:brightness(0)_invert(1)]" />
-          <span className="h-7 w-px bg-primary-foreground/20" />
-          <span className="text-xs font-mono uppercase tracking-[0.24em] text-primary-foreground/60">
+    <div className="flex h-full items-stretch" style={{ gap: 56 }}>
+      {/* coluna texto — 908px */}
+      <div className="flex flex-col justify-between" style={{ width: 908 }}>
+        <div className="flex items-center gap-6" style={{ height: 40 }}>
+          <img src={mytsLogo} alt="MyTS" style={{ height: 34, filter: "brightness(0) invert(1)" }} />
+          <span className="bg-primary-foreground/20" style={{ width: 1, height: 26 }} />
+          <span
+            className="font-mono uppercase text-primary-foreground/60"
+            style={{ fontSize: T.mono, letterSpacing: "0.24em" }}
+          >
             Groundd · RAMO
           </span>
         </div>
 
-        <div className="flex flex-col gap-5">
-          <h1 className="font-display text-[clamp(38px,3.6vw,58px)] font-black leading-[1.02] tracking-tight text-primary-foreground">
+        <div>
+          <h1
+            className="font-display font-black tracking-tight text-primary-foreground"
+            style={{ fontSize: T.hero, lineHeight: 1.02 }}
+          >
             O impacto já existe.
             <br />
             <span className="text-gradient">O reconhecimento ainda não.</span>
           </h1>
 
-          <div className="flex flex-col gap-3">
-            <p className="max-w-[760px] text-[clamp(13px,1.15vw,17px)] leading-relaxed text-primary-foreground/75">
-              Existem milhares de produtores, cooperativas e comunidades tradicionais que já fazem o
-              trabalho certo. Preservam territórios. Produzem alimentos. Mantêm conhecimentos que
-              sustentam cadeias inteiras.
-            </p>
-            <p className="max-w-[760px] text-[clamp(13px,1.15vw,17px)] leading-relaxed text-primary-foreground/75">
-              O que falta não é capacidade. Falta uma{" "}
-              <strong className="font-bold text-primary-foreground">infraestrutura</strong> que
-              transforme esse impacto em reconhecimento, acesso ao mercado e geração de valor.
-            </p>
-          </div>
+          <p
+            className="text-primary-foreground/75"
+            style={{ fontSize: T.lead, lineHeight: 1.55, marginTop: 28, maxWidth: 860 }}
+          >
+            Existem milhares de produtores, cooperativas e comunidades tradicionais que já fazem o
+            trabalho certo. Preservam territórios. Produzem alimentos. Mantêm conhecimentos que
+            sustentam cadeias inteiras.
+          </p>
+          <p
+            className="text-primary-foreground/75"
+            style={{ fontSize: T.lead, lineHeight: 1.55, marginTop: 16, maxWidth: 860 }}
+          >
+            O que falta não é capacidade. Falta uma{" "}
+            <strong className="font-bold text-primary-foreground">infraestrutura</strong> que
+            transforme esse impacto em reconhecimento, acesso ao mercado e geração de valor.
+          </p>
 
-          <p className="border-l-4 border-accent-glow pl-5 font-display text-[clamp(15px,1.5vw,22px)] italic leading-snug text-accent-glow">
+          <p
+            className="border-l-4 border-accent-glow font-display italic text-accent-glow"
+            style={{ fontSize: 27, lineHeight: 1.3, paddingLeft: 22, marginTop: 30, maxWidth: 860 }}
+          >
             É essa infraestrutura que conecta quem produz valor a quem busca gerar impacto.
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap" style={{ gap: 12 }}>
           <Chip light>Produtores</Chip>
           <Chip light>Cooperativas</Chip>
           <Chip light>Comunidades tradicionais</Chip>
         </div>
       </div>
 
+      {/* foto — 508px */}
       <PhotoSlot
         src={produtorImg}
         alt="Produtor em seu território"
         caption="Quem sustenta as cadeias"
         light
-        className="h-full w-[32%] shrink-0 self-stretch border border-primary-foreground/10"
+        className="border border-primary-foreground/10"
+        style={{ width: 508, height: 772, flexShrink: 0 }}
       />
     </div>
-
   </Slide>
 );
 
 /* ---------- 02 · O problema ---------- */
 const S02Problema = () => (
-  <Slide bg="bg-background" decor={<MytsWatermark className="-left-20 -bottom-20 w-[320px]" />}>
-    <div className="flex h-full min-h-0 flex-col gap-[2.2%]">
+  <Slide bg="bg-background" decor={<MytsWatermark style={{ left: -80, bottom: -80, width: 320 }} />}>
+    <div className="flex h-full flex-col">
       <SectionLabel n="02" label="O PROBLEMA" />
 
-      <div className="flex items-start gap-8">
-        <h2 className="max-w-[60%] font-display text-[clamp(24px,2.6vw,42px)] font-black leading-[1.05] tracking-tight text-primary">
+      {/* cabeçalho — 168px */}
+      <div className="flex items-start" style={{ gap: 48, height: 168, marginTop: 24 }}>
+        <h2
+          className="font-display font-black tracking-tight text-primary"
+          style={{ fontSize: T.title, lineHeight: 1.06, width: 780, flexShrink: 0 }}
+        >
           O mercado já reconhece o valor da floresta.{" "}
           <span className="text-gradient">Ainda falta reconhecer o valor de quem a mantém em pé.</span>
         </h2>
-        <div className="flex-1 space-y-3 text-[clamp(12px,1.05vw,16px)] leading-relaxed text-muted-foreground">
+        <div className="flex-1 text-muted-foreground" style={{ fontSize: T.small, lineHeight: 1.6 }}>
           <p>
             Os produtores não precisam aprender a produzir melhor — eles já sabem. O que falta é a
             estrutura que permite ao mercado enxergar, comprovar e remunerar esse valor.
           </p>
-          <p>
+          <p style={{ marginTop: 12 }}>
             Sem comprovação de origem, sem documentação, sem histórico organizado, produtores,
             cooperativas e associações ficam fora das cadeias que mais pagam — enquanto empresas
             enfrentam pressão regulatória crescente por rastreabilidade real.
@@ -447,28 +536,36 @@ const S02Problema = () => (
         </div>
       </div>
 
-      <div className="flex min-h-0 flex-1 items-stretch gap-6">
-        <PhotoSlot hint="Foto de produtor" className="w-[20%] shrink-0" />
+      {/* corpo — 396px */}
+      <div className="flex items-stretch" style={{ gap: 24, height: 396, marginTop: 28 }}>
+        <PhotoSlot hint="Foto de produtor" style={{ width: 240, flexShrink: 0 }} />
 
         <div className="min-w-0 flex-1">
           <GapDiagram />
         </div>
 
-        <div className="flex w-[19%] shrink-0 flex-col justify-center rounded-3xl bg-primary p-6 text-primary-foreground shadow-elegant">
-          <div className="font-display text-[clamp(40px,4.6vw,72px)] font-black leading-none text-accent-glow">
+        <div
+          className="flex flex-col justify-center rounded-3xl bg-primary text-primary-foreground shadow-elegant"
+          style={{ width: 300, flexShrink: 0, padding: 32 }}
+        >
+          <div className="font-display font-black text-accent-glow" style={{ fontSize: 86, lineHeight: 1 }}>
             77%
           </div>
-          <p className="mt-3 text-[clamp(12px,1.05vw,16px)] font-semibold leading-snug">
+          <p className="font-semibold" style={{ fontSize: T.body, lineHeight: 1.4, marginTop: 18 }}>
             dos estabelecimentos rurais brasileiros pertencem à agricultura familiar.
           </p>
-          <span className="mt-2 text-[clamp(10px,0.85vw,13px)] text-primary-foreground/50">
+          <span className="text-primary-foreground/50" style={{ fontSize: T.mono, marginTop: 12 }}>
             Censo Agropecuário IBGE
           </span>
         </div>
       </div>
 
-      <div className="rounded-2xl border border-accent/25 bg-accent/5 px-7 py-[1.6%]">
-        <p className="font-display text-[clamp(15px,1.55vw,24px)] font-bold leading-snug text-primary">
+      {/* rodapé — 88px */}
+      <div
+        className="flex items-center rounded-2xl border border-accent/25 bg-accent/5"
+        style={{ height: 88, marginTop: 24, padding: "0 32px" }}
+      >
+        <p className="font-display font-bold text-primary" style={{ fontSize: 27, lineHeight: 1.25 }}>
           É um gap estrutural dos dois lados. E ele não se resolve com boa vontade —{" "}
           <span className="text-accent">se resolve com infraestrutura.</span>
         </p>
@@ -477,25 +574,21 @@ const S02Problema = () => (
   </Slide>
 );
 
-
 /* ---------- 03 · A infraestrutura invisível ---------- */
 const S03Infraestrutura = () => {
   const camadas = [
     {
       icon: Users,
-      logo: grounddAsset.url,
       nome: "Groundd",
       texto: "Mobiliza pessoas, fortalece comunidades e desenvolve capacidades no território.",
     },
     {
       icon: Satellite,
-      logo: ramoAsset.url,
       nome: "RAMO",
       texto: "Transforma o território em evidências verificáveis por meio de inteligência geoespacial.",
     },
     {
       icon: Network,
-      logo: null,
       nome: "MyTS",
       texto:
         "Conecta pessoas, evidências e mercado em uma infraestrutura digital de confiança, governança e rastreabilidade.",
@@ -513,112 +606,143 @@ const S03Infraestrutura = () => {
       decor={
         <>
           <div className="absolute inset-0 grid-pattern opacity-25" />
-          <MytsWatermark className="-right-20 top-10 w-[340px]" />
+          <MytsWatermark style={{ right: -80, top: 40, width: 340 }} />
         </>
       }
     >
-      <div className="flex h-full min-h-0 flex-col gap-[2.2%]">
+      <div className="flex h-full flex-col">
         <SectionLabel n="03" label="O QUE É" light />
 
-        <div className="flex items-start gap-8">
-          <h2 className="max-w-[52%] font-display text-[clamp(24px,2.6vw,42px)] font-black leading-[1.05] tracking-tight text-primary-foreground">
-            A infraestrutura <span className="text-gradient">invisível</span> das cadeias
-            sustentáveis
+        {/* cabeçalho — 160px */}
+        <div className="flex items-start" style={{ gap: 48, height: 160, marginTop: 24 }}>
+          <h2
+            className="font-display font-black tracking-tight text-primary-foreground"
+            style={{ fontSize: T.title, lineHeight: 1.06, width: 700, flexShrink: 0 }}
+          >
+            A infraestrutura <span className="text-gradient">invisível</span> das cadeias sustentáveis
           </h2>
           <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap" style={{ gap: 10 }}>
               {["Não é um software", "Não é uma consultoria", "Não é uma auditoria"].map((t) => (
                 <span
                   key={t}
-                  className="whitespace-nowrap rounded-full border border-primary-foreground/15 px-4 py-1.5 text-[clamp(11px,0.95vw,15px)] font-semibold text-primary-foreground/45 line-through decoration-destructive/70"
+                  className="rounded-full border border-primary-foreground/15 font-semibold text-primary-foreground/45 line-through decoration-destructive/70"
+                  style={{ fontSize: T.small, padding: "8px 18px", whiteSpace: "nowrap" }}
                 >
                   {t}
                 </span>
               ))}
             </div>
-            <p className="mt-3 text-[clamp(12px,1.05vw,17px)] leading-relaxed text-primary-foreground/75">
+            <p
+              className="text-primary-foreground/75"
+              style={{ fontSize: T.body, lineHeight: 1.55, marginTop: 16 }}
+            >
               É a infraestrutura que ninguém vê, mas que permite que produtores, cooperativas,
               empresas e investidores confiem nas mesmas informações — e gerem valor a partir delas.
             </p>
           </div>
         </div>
 
-        <div className="flex min-h-0 flex-1 items-stretch gap-6">
-          <div className="relative flex min-w-0 flex-[1.4] flex-col justify-between gap-[2%]">
-            <div className="absolute left-[5%] top-[8%] bottom-[26%] w-px bg-gradient-to-b from-accent-glow/60 to-accent/10" />
+        {/* corpo — 560px */}
+        <div className="flex items-stretch" style={{ gap: 28, height: 560, marginTop: 28 }}>
+          <div className="relative flex flex-1 flex-col" style={{ gap: 18 }}>
+            <div
+              className="absolute bg-gradient-to-b from-accent-glow/60 to-accent/10"
+              style={{ left: 46, top: 30, bottom: 130, width: 1 }}
+            />
             {camadas.map((c) => (
               <div
                 key={c.nome}
-                className="relative flex min-h-0 flex-1 items-center gap-5 rounded-2xl border border-primary-foreground/12 bg-primary-foreground/[0.06] px-5 py-[2%] backdrop-blur"
+                className="relative flex flex-1 items-center rounded-2xl border border-primary-foreground/12 bg-primary-foreground/[0.06] backdrop-blur"
+                style={{ gap: 22, padding: "0 26px" }}
               >
-                <div className="grid aspect-square w-[clamp(44px,4.4vw,72px)] shrink-0 place-items-center rounded-2xl bg-gradient-accent shadow-glow">
-                  <c.icon className="size-[clamp(20px,2vw,34px)] text-accent-foreground" />
+                <div
+                  className="grid shrink-0 place-items-center rounded-2xl bg-gradient-accent shadow-glow"
+                  style={{ width: 72, height: 72 }}
+                >
+                  <c.icon style={{ width: 34, height: 34 }} className="text-accent-foreground" />
                 </div>
                 <div className="min-w-0">
-                  <span className="font-display text-[clamp(17px,1.7vw,27px)] font-black text-primary-foreground">
+                  <span
+                    className="font-display font-black text-primary-foreground"
+                    style={{ fontSize: 28 }}
+                  >
                     {c.nome}
                   </span>
-                  <p className="mt-1 text-[clamp(11px,1vw,16px)] leading-snug text-primary-foreground/70">
+                  <p
+                    className="text-primary-foreground/70"
+                    style={{ fontSize: T.body, lineHeight: 1.45, marginTop: 6 }}
+                  >
                     {c.texto}
                   </p>
                 </div>
               </div>
             ))}
-            <p className="relative rounded-2xl bg-gradient-accent px-6 py-[1.8%] font-display text-[clamp(13px,1.35vw,21px)] font-bold leading-snug text-accent-foreground">
+            <p
+              className="relative flex items-center rounded-2xl bg-gradient-accent font-display font-bold text-accent-foreground"
+              style={{ fontSize: 23, lineHeight: 1.3, padding: "0 28px", height: 104, flexShrink: 0 }}
+            >
               Juntas, essas capacidades transformam impacto local em oportunidades de mercado.
             </p>
           </div>
 
-          <div className="flex w-[34%] shrink-0 flex-col rounded-3xl border border-accent-glow/30 bg-primary-foreground/[0.07] p-[3%] backdrop-blur">
+          <div
+            className="flex flex-col rounded-3xl border border-accent-glow/30 bg-primary-foreground/[0.07] backdrop-blur"
+            style={{ width: 470, flexShrink: 0, padding: 32 }}
+          >
             <div className="flex items-center gap-3 text-accent-glow">
-              <ShieldCheck className="size-[clamp(16px,1.5vw,26px)] shrink-0" />
-              <span className="text-[clamp(10px,0.85vw,13px)] font-mono uppercase tracking-[0.2em]">
+              <ShieldCheck style={{ width: 24, height: 24, flexShrink: 0 }} />
+              <span className="font-mono uppercase" style={{ fontSize: T.mono, letterSpacing: "0.18em" }}>
                 O que sua organização viabiliza
               </span>
             </div>
-            <ul className="mt-[4%] flex min-h-0 flex-1 flex-col justify-center gap-[4%]">
+            <ul className="flex flex-1 flex-col justify-center" style={{ gap: 22, marginTop: 24 }}>
               {viabiliza.map((v) => (
-                <li key={v} className="flex items-start gap-3">
-                  <span className="mt-0.5 grid size-[clamp(20px,1.9vw,30px)] shrink-0 place-items-center rounded-full bg-accent-glow/15">
-                    <Check className="size-[clamp(12px,1.1vw,18px)] text-accent-glow" />
+                <li key={v} className="flex items-start" style={{ gap: 14 }}>
+                  <span
+                    className="grid shrink-0 place-items-center rounded-full bg-accent-glow/15"
+                    style={{ width: 30, height: 30, marginTop: 2 }}
+                  >
+                    <Check style={{ width: 18, height: 18 }} className="text-accent-glow" />
                   </span>
-                  <span className="text-[clamp(12px,1.15vw,18px)] font-semibold leading-snug text-primary-foreground">
+                  <span
+                    className="font-semibold text-primary-foreground"
+                    style={{ fontSize: T.body, lineHeight: 1.4 }}
+                  >
                     {v}
                   </span>
                 </li>
               ))}
             </ul>
-            <PhotoSlot
-              hint="Foto de cooperativa"
-              light
-              className="mt-[4%] h-[18%] min-h-[64px] w-full shrink-0"
-            />
+            <PhotoSlot hint="Foto de cooperativa" light style={{ height: 130, marginTop: 24, flexShrink: 0 }} />
           </div>
         </div>
       </div>
-
     </Slide>
   );
 };
 
 /* ---------- 04 · Ciclo virtuoso ---------- */
 const S04Ciclo = () => (
-  <Slide bg="bg-background" decor={<MytsWatermark className="-left-24 -top-16 w-[320px]" />}>
-    <div className="flex h-full min-h-0 flex-col">
+  <Slide bg="bg-background" decor={<MytsWatermark style={{ left: -96, top: -64, width: 320 }} />}>
+    <div className="flex h-full flex-col">
       <SectionLabel n="04" label="O CICLO VIRTUOSO" />
 
-      <div className="mt-[2%] flex min-h-0 flex-1 items-stretch gap-[3%]">
-        <div className="flex min-h-0 flex-[1.4] items-center justify-center">
-          <CicloVirtuoso />
+      <div className="flex items-stretch" style={{ gap: 40, height: 724, marginTop: 24 }}>
+        <div className="flex flex-1 items-center justify-center">
+          <CicloVirtuoso width={740} />
         </div>
 
-        <div className="flex w-[34%] min-h-0 shrink-0 flex-col justify-between gap-[4%] py-[1%]">
-          <h2 className="font-display text-[clamp(20px,2.2vw,38px)] font-black leading-[1.06] tracking-tight text-primary">
+        <div className="flex flex-col justify-between" style={{ width: 500, flexShrink: 0 }}>
+          <h2
+            className="font-display font-black tracking-tight text-primary"
+            style={{ fontSize: 38, lineHeight: 1.08 }}
+          >
             Impacto social, conservação e desenvolvimento econômico{" "}
             <span className="text-gradient">deixam de competir e passam a crescer juntos.</span>
           </h2>
 
-          <div className="flex flex-col gap-[3%]">
+          <div className="flex flex-col" style={{ gap: 14 }}>
             {[
               { icon: Sprout, t: "Produtor fortalecido gera mais renda" },
               { icon: TreePine, t: "Renda sustenta territórios preservados" },
@@ -626,21 +750,27 @@ const S04Ciclo = () => (
             ].map((i) => (
               <div
                 key={i.t}
-                className="flex items-center gap-[3%] rounded-2xl border border-border bg-card px-[5%] py-[3%] shadow-card"
+                className="flex items-center rounded-2xl border border-border bg-card shadow-card"
+                style={{ gap: 16, padding: "20px 24px" }}
               >
-                <i.icon className="size-[clamp(16px,1.6vw,28px)] shrink-0 text-accent" />
-                <span className="text-[clamp(11px,1.1vw,17px)] font-semibold leading-snug text-primary">{i.t}</span>
+                <i.icon style={{ width: 28, height: 28, flexShrink: 0 }} className="text-accent" />
+                <span className="font-semibold text-primary" style={{ fontSize: T.body, lineHeight: 1.35 }}>
+                  {i.t}
+                </span>
               </div>
             ))}
           </div>
 
-          <div className="rounded-3xl bg-primary p-[5%]">
-            <span className="text-[clamp(9px,0.8vw,13px)] font-mono uppercase tracking-[0.2em] text-accent-glow">
+          <div className="rounded-3xl bg-primary" style={{ padding: 28 }}>
+            <span
+              className="font-mono uppercase text-accent-glow"
+              style={{ fontSize: T.mono, letterSpacing: "0.2em" }}
+            >
               Modelo já validado
             </span>
-            <div className="mt-[6%] flex items-center gap-[8%]">
-              <PartnerLogo src={korinAsset.url} alt="Korin" className="h-[clamp(20px,2vw,36px)]" />
-              <PartnerLogo src={carrefourAsset.url} alt="Carrefour" className="h-[clamp(20px,2vw,36px)]" />
+            <div className="flex items-center" style={{ gap: 36, marginTop: 18 }}>
+              <PartnerLogo src={korinAsset.url} alt="Korin" height={34} />
+              <PartnerLogo src={carrefourAsset.url} alt="Carrefour" height={34} />
             </div>
           </div>
         </div>
@@ -648,7 +778,6 @@ const S04Ciclo = () => (
     </div>
   </Slide>
 );
-
 
 /* ---------- 05 · Oportunidade estratégica ---------- */
 const S05Oportunidade = () => {
@@ -680,61 +809,81 @@ const S05Oportunidade = () => {
       decor={
         <>
           <div className="absolute inset-0 grid-pattern opacity-25" />
-          <MytsWatermark className="-right-24 -bottom-20 w-[380px]" />
+          <MytsWatermark style={{ right: -96, bottom: -80, width: 380 }} />
         </>
       }
     >
       <div className="flex h-full flex-col">
         <SectionLabel n="05" label="POR QUE É ESTRATÉGICO" light />
 
-        <h2 className="mt-6 max-w-[78%] font-display text-[44px] font-black leading-[1.04] tracking-tight text-primary-foreground">
+        {/* título — 104px */}
+        <h2
+          className="font-display font-black tracking-tight text-primary-foreground"
+          style={{ fontSize: T.title, lineHeight: 1.08, height: 104, maxWidth: 1180, marginTop: 22 }}
+        >
           Investir nessa infraestrutura significa{" "}
           <span className="text-gradient">fortalecer todos os elos da cadeia ao mesmo tempo.</span>
         </h2>
 
-        <div className="mt-8 grid flex-1 grid-cols-4 gap-5">
+        {/* cards — 384px */}
+        <div className="grid grid-cols-4" style={{ gap: 22, height: 384, marginTop: 8 }}>
           {blocos.map((b) => (
             <div
               key={b.titulo}
-              className="flex flex-col justify-center rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06] p-8 backdrop-blur"
+              className="flex flex-col rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06] backdrop-blur"
+              style={{ padding: 28 }}
             >
-              <div className="grid size-[76px] place-items-center rounded-2xl bg-gradient-accent shadow-glow">
-                <b.icon className="size-9 text-accent-foreground" />
+              <div
+                className="grid place-items-center rounded-2xl bg-gradient-accent shadow-glow"
+                style={{ width: 64, height: 64 }}
+              >
+                <b.icon style={{ width: 32, height: 32 }} className="text-accent-foreground" />
               </div>
-              <h3 className="mt-6 font-display text-[27px] font-black leading-tight text-primary-foreground">
+              <h3
+                className="font-display font-black leading-tight text-primary-foreground"
+                style={{ fontSize: 25, marginTop: 20 }}
+              >
                 {b.titulo}
               </h3>
-              <ul className="mt-5 space-y-4">
+              <ul className="flex flex-col" style={{ gap: 12, marginTop: 18 }}>
                 {b.itens.map((i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="mt-1 size-6 shrink-0 text-accent-glow" />
-                    <span className="text-[19px] leading-snug text-primary-foreground/80">{i}</span>
+                  <li key={i} className="flex items-start" style={{ gap: 10 }}>
+                    <Check style={{ width: 20, height: 20, flexShrink: 0, marginTop: 3 }} className="text-accent-glow" />
+                    <span className="text-primary-foreground/80" style={{ fontSize: T.small, lineHeight: 1.4 }}>
+                      {i}
+                    </span>
                   </li>
                 ))}
-
               </ul>
             </div>
           ))}
         </div>
 
-        <div className="relative mt-7 overflow-hidden rounded-3xl border border-accent-glow/25">
-          <img
-            src={territorioImg}
-            alt=""
-            aria-hidden
-            className="absolute inset-0 h-full w-full object-cover opacity-20"
-          />
+        {/* faixa do dado — 128px */}
+        <div
+          className="relative overflow-hidden rounded-3xl border border-accent-glow/25"
+          style={{ height: 128, marginTop: 28 }}
+        >
+          <img src={territorioImg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover opacity-20" />
           <div className="absolute inset-0 bg-primary/75" />
-          <div className="relative flex items-center gap-10 px-9 py-7">
-            <span className="font-display text-[62px] font-black leading-none text-accent-glow">
+          <div className="relative flex h-full items-center" style={{ gap: 36, padding: "0 36px" }}>
+            <span
+              className="font-display font-black text-accent-glow"
+              style={{ fontSize: 58, lineHeight: 1, whiteSpace: "nowrap" }}
+            >
               US$ 1,5 tri
             </span>
-            <div className="h-14 w-px bg-primary-foreground/20" />
-            <p className="max-w-[720px] text-[19px] font-semibold leading-snug text-primary-foreground">
+            <div className="bg-primary-foreground/20" style={{ width: 1, height: 56 }} />
+            <p
+              className="font-semibold text-primary-foreground"
+              style={{ fontSize: T.lead, lineHeight: 1.4, maxWidth: 780 }}
+            >
               em fundos de impacto já exigem evidências verificáveis para investir.
-              <span className="ml-3 font-normal text-primary-foreground/50">GIIN, 2024</span>
+              <span className="font-normal text-primary-foreground/50" style={{ marginLeft: 12 }}>
+                GIIN, 2024
+              </span>
             </p>
-            <TrendingUp className="ml-auto size-12 text-accent-glow/60" />
+            <TrendingUp style={{ width: 48, height: 48, marginLeft: "auto" }} className="text-accent-glow/60" />
           </div>
         </div>
       </div>
@@ -749,66 +898,80 @@ const S06Convite = () => (
     decor={
       <>
         <div className="absolute inset-0 bg-glow" />
-        <MytsWatermark className="-left-24 -bottom-24 w-[420px]" />
+        <MytsWatermark style={{ left: -96, bottom: -96, width: 420 }} />
       </>
     }
   >
-    <div className="flex h-full items-stretch gap-12">
-      <div className="flex flex-[1.5] flex-col">
+    <div className="flex h-full items-stretch" style={{ gap: 56 }}>
+      <div className="flex flex-col justify-between" style={{ width: 916 }}>
         <SectionLabel n="06" label="CONVITE" light />
 
-        <h2 className="mt-auto font-display text-[58px] font-black leading-[1.0] tracking-tight text-primary-foreground">
-          Transformar impacto invisível em{" "}
-          <span className="text-gradient">valor reconhecido</span> é o primeiro passo para construir
-          as cadeias que o futuro exige.
-        </h2>
+        <div>
+          <h2
+            className="font-display font-black tracking-tight text-primary-foreground"
+            style={{ fontSize: 54, lineHeight: 1.04 }}
+          >
+            Transformar impacto invisível em <span className="text-gradient">valor reconhecido</span> é
+            o primeiro passo para construir as cadeias que o futuro exige.
+          </h2>
 
-        <p className="mt-8 max-w-[860px] text-[21px] leading-relaxed text-primary-foreground/75">
-          Os produtores, cooperativas e comunidades já fazem sua parte. O próximo passo depende de
-          organizações dispostas a investir na ponte que falta.
-        </p>
+          <p
+            className="text-primary-foreground/75"
+            style={{ fontSize: T.lead, lineHeight: 1.55, marginTop: 28, maxWidth: 860 }}
+          >
+            Os produtores, cooperativas e comunidades já fazem sua parte. O próximo passo depende de
+            organizações dispostas a investir na ponte que falta.
+          </p>
 
-        <div className="mt-8 inline-flex w-fit items-center gap-4 rounded-full bg-gradient-accent px-9 py-5 shadow-cta">
-          <Handshake className="size-7 text-accent-foreground" />
-          <span className="font-display text-[24px] font-black text-accent-foreground">
-            Vamos construir essa transformação juntos.
-          </span>
-          <ArrowRight className="size-6 text-accent-foreground" />
+          <div
+            className="inline-flex w-fit items-center rounded-full bg-gradient-accent shadow-cta"
+            style={{ gap: 16, padding: "18px 34px", marginTop: 32 }}
+          >
+            <Handshake style={{ width: 28, height: 28 }} className="text-accent-foreground" />
+            <span className="font-display font-black text-accent-foreground" style={{ fontSize: 24 }}>
+              Vamos construir essa transformação juntos.
+            </span>
+            <ArrowRight style={{ width: 24, height: 24 }} className="text-accent-foreground" />
+          </div>
         </div>
 
-        <div className="mt-auto flex items-center gap-8">
+        <div className="flex items-center" style={{ gap: 32, height: 40 }}>
           <a
             href="mailto:valmir@myt-s.com"
-            className="flex items-center gap-3 text-[19px] font-semibold text-primary-foreground/85 hover:text-primary-foreground"
+            className="flex items-center gap-3 font-semibold text-primary-foreground/85 hover:text-primary-foreground"
+            style={{ fontSize: T.body }}
           >
-            <Mail className="size-6 text-accent-glow" /> valmir@myt-s.com
+            <Mail style={{ width: 24, height: 24 }} className="text-accent-glow" /> valmir@myt-s.com
           </a>
-          <span className="h-6 w-px bg-primary-foreground/20" />
+          <span className="bg-primary-foreground/20" style={{ width: 1, height: 24 }} />
           <a
             href="https://myt-s.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 text-[19px] font-semibold text-primary-foreground/85 hover:text-primary-foreground"
+            className="flex items-center gap-3 font-semibold text-primary-foreground/85 hover:text-primary-foreground"
+            style={{ fontSize: T.body }}
           >
-            <Globe className="size-6 text-accent-glow" /> myt-s.com
+            <Globe style={{ width: 24, height: 24 }} className="text-accent-glow" /> myt-s.com
           </a>
         </div>
       </div>
 
-      <div className="flex w-[32%] shrink-0 flex-col gap-6">
-        <PhotoSlot
-          hint="Foto de comunidade · vertical"
-          light
-          className="flex-1"
-        />
-        <div className="rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06] p-7 backdrop-blur">
-          <span className="text-sm font-mono uppercase tracking-[0.2em] text-primary-foreground/50">
+      <div className="flex flex-col" style={{ width: 500, flexShrink: 0, gap: 24 }}>
+        <PhotoSlot hint="Foto de comunidade · vertical" light style={{ height: 592 }} />
+        <div
+          className="rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06] backdrop-blur"
+          style={{ height: 156, padding: 28 }}
+        >
+          <span
+            className="font-mono uppercase text-primary-foreground/50"
+            style={{ fontSize: T.mono, letterSpacing: "0.2em" }}
+          >
             Consórcio
           </span>
-          <div className="mt-5 flex items-center gap-7">
-            <img src={mytsLogo} alt="MyTS" className="h-7 [filter:brightness(0)_invert(1)]" />
-            <PartnerLogo src={grounddAsset.url} alt="Groundd" className="h-7" />
-            <PartnerLogo src={ramoAsset.url} alt="RAMO" className="h-7" />
+          <div className="flex items-center" style={{ gap: 32, marginTop: 22 }}>
+            <img src={mytsLogo} alt="MyTS" style={{ height: 28, filter: "brightness(0) invert(1)" }} />
+            <PartnerLogo src={grounddAsset.url} alt="Groundd" height={28} />
+            <PartnerLogo src={ramoAsset.url} alt="RAMO" height={28} />
           </div>
         </div>
       </div>
@@ -836,8 +999,6 @@ const MytsPassaporte = () => (
     <style>{`
       html,body,#root{margin:0;padding:0;background:#0a0e1a}
       html{scroll-snap-type:y proximity}
-      .slide-frame{container-type:inline-size;container-name:slide}
-      .slide-inner{overflow:hidden}
     `}</style>
     <Helmet>
       <title>MyTS — O impacto já existe. O reconhecimento ainda não.</title>
