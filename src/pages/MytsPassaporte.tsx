@@ -1125,7 +1125,7 @@ const S06Convite = () => (
       </div>
 
       <div className="flex flex-col" style={{ width: 500, flexShrink: 0, gap: 24 }}>
-        <PhotoSlot hint="Foto de comunidade · vertical" light style={{ height: 592 }} />
+        <PhotoSlot src={veraAsset.url} alt="Produtora em seu território" light style={{ height: 592 }} />
         <div
           className="rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06] backdrop-blur"
           style={{ height: 156, padding: 28 }}
