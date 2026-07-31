@@ -537,7 +537,7 @@ const S02Problema = () => (
       </div>
 
       {/* corpo — 396px */}
-      <div className="flex items-stretch" style={{ gap: 24, height: 396, marginTop: 28 }}>
+      <div className="flex items-stretch" style={{ gap: 24, height: 372, marginTop: 28 }}>
         <PhotoSlot hint="Foto de produtor" style={{ width: 240, flexShrink: 0 }} />
 
         <div className="min-w-0 flex-1">
@@ -563,9 +563,9 @@ const S02Problema = () => (
       {/* rodapé — 88px */}
       <div
         className="flex items-center rounded-2xl border border-accent/25 bg-accent/5"
-        style={{ height: 88, marginTop: 24, padding: "0 32px" }}
+        style={{ height: 108, marginTop: 24, padding: "0 36px" }}
       >
-        <p className="font-display font-bold text-primary" style={{ fontSize: 27, lineHeight: 1.25 }}>
+        <p className="font-display font-bold text-primary" style={{ fontSize: 26, lineHeight: 1.3 }}>
           É um gap estrutural dos dois lados. E ele não se resolve com boa vontade —{" "}
           <span className="text-accent">se resolve com infraestrutura.</span>
         </p>
@@ -730,7 +730,7 @@ const S04Ciclo = () => (
 
       <div className="flex items-stretch" style={{ gap: 40, height: 724, marginTop: 24 }}>
         <div className="flex flex-1 items-center justify-center">
-          <CicloVirtuoso width={740} />
+          <CicloVirtuoso width={800} />
         </div>
 
         <div className="flex flex-col justify-between" style={{ width: 500, flexShrink: 0 }}>
@@ -819,14 +819,14 @@ const S05Oportunidade = () => {
         {/* título — 104px */}
         <h2
           className="font-display font-black tracking-tight text-primary-foreground"
-          style={{ fontSize: T.title, lineHeight: 1.08, height: 104, maxWidth: 1180, marginTop: 22 }}
+          style={{ fontSize: T.title, lineHeight: 1.08, height: 108, maxWidth: 1180, marginTop: 22 }}
         >
           Investir nessa infraestrutura significa{" "}
           <span className="text-gradient">fortalecer todos os elos da cadeia ao mesmo tempo.</span>
         </h2>
 
         {/* cards — 384px */}
-        <div className="grid grid-cols-4" style={{ gap: 22, height: 384, marginTop: 8 }}>
+        <div className="grid grid-cols-4" style={{ gap: 22, height: 430, marginTop: 24 }}>
           {blocos.map((b) => (
             <div
               key={b.titulo}
@@ -862,7 +862,7 @@ const S05Oportunidade = () => {
         {/* faixa do dado — 128px */}
         <div
           className="relative overflow-hidden rounded-3xl border border-accent-glow/25"
-          style={{ height: 128, marginTop: 28 }}
+          style={{ height: 132, marginTop: 32 }}
         >
           <img src={territorioImg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover opacity-20" />
           <div className="absolute inset-0 bg-primary/75" />
