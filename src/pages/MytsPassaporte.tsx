@@ -100,6 +100,14 @@ const SectionLabel = ({ n, label, light = false }: { n: string; label: string; l
   </div>
 );
 
+const usePrintMode = () => {
+  const [print, setPrint] = useState(false);
+  useLayoutEffect(() => {
+    setPrint(new URLSearchParams(window.location.search).has("print"));
+  }, []);
+  return print;
+};
+
 const Slide = ({
   bg = "bg-background",
   children,
@@ -112,9 +120,11 @@ const Slide = ({
   pad?: number;
 }) => {
   const frameRef = useRef<HTMLDivElement>(null);
+  const printMode = usePrintMode();
   const [scale, setScale] = useState(0);
 
   useLayoutEffect(() => {
+    if (printMode) return;
     const el = frameRef.current;
     if (!el) return;
     const update = () => setScale(el.clientWidth / CANVAS_W);
@@ -122,39 +132,55 @@ const Slide = ({
     const ro = new ResizeObserver(update);
     ro.observe(el);
     return () => ro.disconnect();
-  }, []);
+  }, [printMode]);
 
   useEffect(() => {
+    if (printMode) return;
     const onResize = () => {
       const el = frameRef.current;
       if (el) setScale(el.clientWidth / CANVAS_W);
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, []);
+  }, [printMode]);
+
+  const effScale = printMode ? 1 : scale;
 
   return (
     <section
       ref={frameRef}
       className={`${bg} relative slide-frame`}
-      style={{
-        width: "min(100%, calc((100vh - 64px) * 16 / 9))",
-        aspectRatio: "16 / 9",
-        margin: "0 auto",
-        overflow: "hidden",
-        borderRadius: 16,
-        boxShadow: "0 30px 80px -20px rgba(0,0,0,0.55)",
-        scrollSnapAlign: "center",
-      }}
+      style={
+        printMode
+          ? {
+              width: CANVAS_W,
+              height: CANVAS_H,
+              margin: 0,
+              overflow: "hidden",
+              borderRadius: 0,
+              boxShadow: "none",
+              breakAfter: "page",
+              pageBreakAfter: "always",
+            }
+          : {
+              width: "min(100%, calc((100vh - 64px) * 16 / 9))",
+              aspectRatio: "16 / 9",
+              margin: "0 auto",
+              overflow: "hidden",
+              borderRadius: 16,
+              boxShadow: "0 30px 80px -20px rgba(0,0,0,0.55)",
+              scrollSnapAlign: "center",
+            }
+      }
     >
       <div
         className={`${bg} absolute left-0 top-0`}
         style={{
           width: CANVAS_W,
           height: CANVAS_H,
-          transform: `scale(${scale})`,
+          transform: `scale(${effScale})`,
           transformOrigin: "top left",
-          visibility: scale ? "visible" : "hidden",
+          visibility: effScale ? "visible" : "hidden",
           overflow: "hidden",
         }}
       >
@@ -166,6 +192,7 @@ const Slide = ({
     </section>
   );
 };
+
 
 const MytsWatermark = ({ style }: { style?: React.CSSProperties }) => (
   <img
