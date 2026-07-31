@@ -1190,6 +1190,7 @@ const MytsPassaporte = () => {
     <S05Oportunidade />
     <S06Convite />
   </main>
-);
+  );
+};
 
 export default MytsPassaporte;
