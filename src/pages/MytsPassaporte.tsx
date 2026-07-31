@@ -29,6 +29,8 @@ import territorioImg from "@/assets/passaporte/geolocalizacao.jpg";
 import rinaldoAsset from "@/assets/passaporte/produtor-rinaldo.jpg.asset.json";
 import veraAsset from "@/assets/passaporte/produtora-vera.jpg.asset.json";
 import familiaAsset from "@/assets/passaporte/familia-produtora.jpg.asset.json";
+import packingAsset from "@/assets/passaporte/packing-citros.png.asset.json";
+import estufaAsset from "@/assets/passaporte/estufa-tomate.png.asset.json";
 
 /* ============================================================
    CANVAS FIXO
@@ -878,8 +880,8 @@ const S03Infraestrutura = () => {
               ))}
             </ul>
             <PhotoSlot
-              src={familiaAsset.url}
-              alt="Produtores e cooperativa"
+              src={packingAsset.url}
+              alt="Seleção de citros em packing house"
               light
               style={{ height: 130, marginTop: 24, flexShrink: 0 }}
             />
@@ -1125,7 +1127,7 @@ const S06Convite = () => (
       </div>
 
       <div className="flex flex-col" style={{ width: 500, flexShrink: 0, gap: 24 }}>
-        <PhotoSlot src={veraAsset.url} alt="Produtora em seu território" light style={{ height: 592 }} />
+        <PhotoSlot src={estufaAsset.url} alt="Estufa de tomate em produção" light style={{ height: 592 }} />
         <div
           className="rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06] backdrop-blur"
           style={{ height: 156, padding: 28 }}
