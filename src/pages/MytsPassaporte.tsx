@@ -185,7 +185,8 @@ const PhotoSlot = ({
 const GapDiagram = () => (
   <div className="relative flex h-full items-stretch gap-0">
     {/* margem esquerda */}
-    <div className="flex-1 rounded-3xl border border-border bg-card p-7 shadow-card">
+    <div className="flex flex-1 flex-col justify-center rounded-3xl border border-border bg-card p-7 shadow-card">
+
       <div className="flex items-center gap-3 text-accent">
         <Sprout className="size-7" />
         <span className="text-sm font-mono uppercase tracking-[0.2em]">Quem produz</span>
