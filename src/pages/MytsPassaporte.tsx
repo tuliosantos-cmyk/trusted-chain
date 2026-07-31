@@ -26,6 +26,9 @@ import korinAsset from "@/assets/logos/korin.png.asset.json";
 import carrefourAsset from "@/assets/logos/carrefour.png.asset.json";
 import produtorImg from "@/assets/passaporte/produtor.jpg";
 import territorioImg from "@/assets/passaporte/geolocalizacao.jpg";
+import rinaldoAsset from "@/assets/passaporte/produtor-rinaldo.jpg.asset.json";
+import veraAsset from "@/assets/passaporte/produtora-vera.jpg.asset.json";
+import familiaAsset from "@/assets/passaporte/familia-produtora.jpg.asset.json";
 
 /* ============================================================
    CANVAS FIXO
@@ -539,8 +542,8 @@ const S00Capa = () => (
 
         {/* foto */}
         <PhotoSlot
-          src={produtorImg}
-          alt="Produtor em seu território"
+          src={familiaAsset.url}
+          alt="Família produtora em sua propriedade"
           caption="Quem sustenta as cadeias"
           light
           className="border border-primary-foreground/10"
@@ -653,8 +656,8 @@ const S01Abertura = () => (
 
       {/* foto — 508px */}
       <PhotoSlot
-        src={produtorImg}
-        alt="Produtor em seu território"
+        src={rinaldoAsset.url}
+        alt="Produtor em seu aviário"
         caption="Quem sustenta as cadeias"
         light
         className="border border-primary-foreground/10"
@@ -694,7 +697,11 @@ const S02Problema = () => (
 
       {/* corpo — 396px */}
       <div className="flex items-stretch" style={{ gap: 24, height: 372, marginTop: 28 }}>
-        <PhotoSlot hint="Foto de produtor" style={{ width: 240, flexShrink: 0 }} />
+        <PhotoSlot
+          src={veraAsset.url}
+          alt="Produtora com ovo recém-colhido"
+          style={{ width: 240, flexShrink: 0 }}
+        />
 
         <div className="min-w-0 flex-1">
           <GapDiagram />
@@ -870,7 +877,12 @@ const S03Infraestrutura = () => {
                 </li>
               ))}
             </ul>
-            <PhotoSlot hint="Foto de cooperativa" light style={{ height: 130, marginTop: 24, flexShrink: 0 }} />
+            <PhotoSlot
+              src={familiaAsset.url}
+              alt="Produtores e cooperativa"
+              light
+              style={{ height: 130, marginTop: 24, flexShrink: 0 }}
+            />
           </div>
         </div>
       </div>
@@ -1113,7 +1125,7 @@ const S06Convite = () => (
       </div>
 
       <div className="flex flex-col" style={{ width: 500, flexShrink: 0, gap: 24 }}>
-        <PhotoSlot hint="Foto de comunidade · vertical" light style={{ height: 592 }} />
+        <PhotoSlot src={veraAsset.url} alt="Produtora em seu território" light style={{ height: 592 }} />
         <div
           className="rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06] backdrop-blur"
           style={{ height: 156, padding: 28 }}
