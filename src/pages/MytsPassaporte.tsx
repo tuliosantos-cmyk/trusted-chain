@@ -434,6 +434,129 @@ const CicloVirtuoso = ({ width = 740 }: { width?: number }) => {
    Slides
    ============================================================ */
 
+/* ---------- 00 · Capa ---------- */
+const S00Capa = () => (
+  <Slide
+    bg="bg-hero"
+    decor={
+      <>
+        <div className="absolute inset-0 grid-pattern opacity-30" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 20% 50%, hsl(214 95% 54% / 0.18), transparent 60%)",
+          }}
+        />
+        <MytsWatermark style={{ right: -120, bottom: -120, width: 520 }} />
+      </>
+    }
+  >
+    <div className="flex h-full flex-col" style={{ gap: 40 }}>
+      {/* topo — marca + parceiros */}
+      <div className="flex items-center justify-between" style={{ height: 44 }}>
+        <div className="flex items-center gap-5">
+          <img src={mytsLogo} alt="MyTS" style={{ height: 38, filter: "brightness(0) invert(1)" }} />
+          <span className="bg-primary-foreground/20" style={{ width: 1, height: 28 }} />
+          <span
+            className="font-mono uppercase text-primary-foreground/60"
+            style={{ fontSize: T.mono, letterSpacing: "0.24em" }}
+          >
+            Groundd · RAMO
+          </span>
+        </div>
+        <span
+          className="rounded-full border border-primary-foreground/15 bg-primary-foreground/[0.05] font-mono uppercase text-primary-foreground/55"
+          style={{ fontSize: T.mono, letterSpacing: "0.18em", padding: "10px 20px" }}
+        >
+          Apresentação para investidores
+        </span>
+      </div>
+
+      {/* corpo — texto + foto */}
+      <div className="flex flex-1 items-stretch" style={{ gap: 52, minHeight: 0 }}>
+        {/* coluna texto */}
+        <div className="flex flex-col justify-center" style={{ width: 820, flexShrink: 0 }}>
+          <h1
+            className="font-display font-black tracking-tight text-primary-foreground"
+            style={{ fontSize: 76, lineHeight: 1.02 }}
+          >
+            Do território
+            <br />
+            ao mercado.
+            <br />
+            <span className="text-gradient">Com o produtor no centro.</span>
+          </h1>
+
+          <p
+            className="text-primary-foreground/75"
+            style={{ fontSize: T.lead, lineHeight: 1.55, marginTop: 32, maxWidth: 720 }}
+          >
+            Uma infraestrutura de evidência, governança e rastreabilidade que transforma o impacto
+            de produtores, cooperativas e comunidades em valor reconhecido.
+          </p>
+
+          <div
+            className="inline-flex w-fit items-center rounded-full bg-gradient-accent shadow-cta"
+            style={{ gap: 14, padding: "18px 32px", marginTop: 40 }}
+          >
+            <Sprout style={{ width: 26, height: 26 }} className="text-accent-foreground" />
+            <span
+              className="font-display font-black text-accent-foreground"
+              style={{ fontSize: 22, letterSpacing: "0.01em" }}
+            >
+              MyTS Passaporte Digital
+            </span>
+          </div>
+        </div>
+
+        {/* foto */}
+        <PhotoSlot
+          src={produtorImg}
+          alt="Produtor em seu território"
+          caption="Quem sustenta as cadeias"
+          light
+          className="border border-primary-foreground/10"
+          style={{ flex: 1, minWidth: 0, height: "100%" }}
+        />
+      </div>
+
+      {/* base — pilares */}
+      <div className="grid grid-cols-3" style={{ gap: 20, height: 120 }}>
+        {[
+          { icon: Users, label: "Pessoas", desc: "Produtores e comunidades" },
+          { icon: TreePine, label: "Territórios", desc: "Floresta e sociobiodiversidade" },
+          { icon: Network, label: "Cadeias", desc: "Rastreabilidade e mercado" },
+        ].map((p) => (
+          <div
+            key={p.label}
+            className="flex items-center gap-5 rounded-2xl border border-primary-foreground/10 bg-primary-foreground/[0.05] backdrop-blur"
+            style={{ padding: "0 28px" }}
+          >
+            <div
+              className="grid shrink-0 place-items-center rounded-xl bg-gradient-accent shadow-glow"
+              style={{ width: 52, height: 52 }}
+            >
+              <p.icon style={{ width: 26, height: 26 }} className="text-accent-foreground" />
+            </div>
+            <div>
+              <div
+                className="font-display font-bold text-primary-foreground"
+                style={{ fontSize: 22, lineHeight: 1.2 }}
+              >
+                {p.label}
+              </div>
+              <div className="text-primary-foreground/55" style={{ fontSize: T.small, marginTop: 2 }}>
+                {p.desc}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Slide>
+);
+
 /* ---------- 01 · Abertura ---------- */
 const S01Abertura = () => (
   <Slide
@@ -1013,6 +1136,7 @@ const MytsPassaporte = () => (
         content="A infraestrutura que transforma o impacto de produtores, cooperativas e comunidades em reconhecimento, acesso ao mercado e geração de valor — MyTS, Groundd e RAMO."
       />
     </Helmet>
+    <S00Capa />
     <S01Abertura />
     <S02Problema />
     <S03Infraestrutura />
