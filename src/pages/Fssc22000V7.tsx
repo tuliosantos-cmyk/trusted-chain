@@ -53,28 +53,27 @@ const T = {
   label: 16,
 } as const;
 
-/* Identidade visual — Food Solution Consultoria e Treinamento
-   Verde profundo (indústria de alimentos) + verde folha da marca,
-   âmbar como sinalização e azul técnico como apoio. */
+/* Identidade visual — Anne Dezan
+   Verde esmeralda institucional + âmbar, sobre papel quente. */
 const C = {
-  ink: "#0B3B2E",
-  inkDeep: "#062419",
-  green: "#12805C",
-  greenSoft: "#D7F0E4",
-  leaf: "#7DB63A",
-  leafSoft: "#EBF5DC",
-  blue: "#2C6E8F",
-  blueSoft: "#E6EEF3",
-  yellow: "#D98A06",
-  yellowSoft: "#FCEFD5",
-  red: "#A2453A",
-  redSoft: "#F5E7E4",
-  paper: "#F7F6F1",
+  ink: "#064E3B",
+  inkDeep: "#022C22",
+  green: "#047857",
+  greenSoft: "#D1FAE5",
+  leaf: "#0F766E",
+  leafSoft: "#CCFBF1",
+  blue: "#33596B",
+  blueSoft: "#E9EFF2",
+  yellow: "#D97706",
+  yellowSoft: "#FEF3C7",
+  red: "#A0523E",
+  redSoft: "#F2E7E2",
+  paper: "#F7F5EF",
   white: "#FFFFFF",
-  line: "#E2DFD5",
-  text: "#0B3B2E",
-  mute: "#6B7A72",
-  sand: "#E9A93C",
+  line: "#E3DFD4",
+  text: "#064E3B",
+  mute: "#6C7A73",
+  sand: "#F59E0B",
 };
 
 const usePrintMode = () => {
