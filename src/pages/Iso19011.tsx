@@ -53,24 +53,27 @@ const T = {
   label: 13,
 } as const;
 
-/* Identidade visual — Anne Dezan */
+/* Identidade visual — Anne Dezan
+   Direção: verde institucional dominante sobre papel quente.
+   Latão, ardósia e terracota entram apenas como apoio dessaturado. */
 const C = {
-  ink: "#0B2A4A",
-  inkDeep: "#06172B",
-  blue: "#2D7DD2",
-  blueSoft: "#E8F1FB",
-  yellow: "#F7C325",
-  yellowSoft: "#FEF6DE",
-  green: "#17A673",
-  greenSoft: "#E4F6EF",
-  red: "#E2483D",
-  redSoft: "#FCEBE9",
-  paper: "#F6F8FB",
+  ink: "#173B31",
+  inkDeep: "#0E2A23",
+  blue: "#33596B",
+  blueSoft: "#E9EFF2",
+  yellow: "#B08535",
+  yellowSoft: "#F4EEE1",
+  green: "#1F6B52",
+  greenSoft: "#E6EEE9",
+  red: "#A0523E",
+  redSoft: "#F2E7E2",
+  paper: "#F7F5EF",
   white: "#FFFFFF",
-  line: "#DCE5EF",
-  text: "#12283F",
-  mute: "#5C7389",
+  line: "#E3DFD4",
+  text: "#1C2A25",
+  mute: "#6C7A73",
 };
+
 
 const usePrintMode = () => {
   const [print, setPrint] = useState(false);
