@@ -2270,9 +2270,6 @@ const S36Encerramento = () => (
         <div style={{ position: "absolute", right: 96, top: 150 }}>
           <ShieldOutline size={520} color={C.sand} opacity={0.2} strokeWidth={1.2} />
         </div>
-        <div style={{ position: "absolute", right: 152, top: 216 }}>
-          <Logo size={330} />
-        </div>
         <div style={{ position: "absolute", right: 40, bottom: -50 }}>
           <WheatCrest size={220} color={C.sand} opacity={0.13} />
         </div>
