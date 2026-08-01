@@ -2295,35 +2295,6 @@ const S36Encerramento = () => (
         Dúvidas, aprofundamento e aplicação prática na sua organização.
       </p>
 
-      <div style={{ marginTop: 42, display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 18, maxWidth: 980 }}>
-        {([
-          [MapPin, C.blue, "Endereço", "Av. Fagundes Filho, 145 — Conj. 31/32, São Paulo/SP"],
-          [Phone, C.green, "Telefone", "(11) 2771-8515 · (11) 2628-6095"],
-          [Mail, C.yellow, "E-mail", "contato@qmsbrasil.com.br"],
-          [Globe, C.red, "Site", "www.qmsbrasil.com.br"],
-        ] as [React.ElementType, string, string, string][]).map(([Icon, col, t, d]) => (
-          <div
-            key={t}
-            style={{
-              background: "rgba(255,255,255,.05)",
-              border: "1px solid rgba(255,255,255,.12)",
-              borderTop: `4px solid ${col}`,
-              borderRadius: 14,
-              padding: "22px 20px",
-              display: "flex",
-              flexDirection: "column",
-              gap: 10,
-            }}
-          >
-            <Icon size={30} color={col} strokeWidth={2.2} />
-            <div style={{ fontSize: T.label, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(255,255,255,.55)" }}>
-              {t}
-            </div>
-            <div style={{ fontSize: T.body, color: C.white, lineHeight: 1.35 }}>{d}</div>
-          </div>
-        ))}
-      </div>
-
       <div style={{ marginTop: 40, display: "flex", alignItems: "center", gap: 18 }}>
         <div style={{ width: 4, height: 52, background: C.yellow, borderRadius: 2 }} />
         <div>
