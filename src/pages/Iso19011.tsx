@@ -23,6 +23,7 @@ import {
   XCircle,
   ArrowRight,
   HelpCircle,
+  Globe,
   Building2,
   Award,
   BookOpen,
