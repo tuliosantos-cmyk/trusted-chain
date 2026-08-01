@@ -31,6 +31,7 @@ const App = () => (
             <Route path="/korin-360" element={<Korin360 />} />
             <Route path="/myts-360" element={<MyTS360 />} />
             <Route path="/myts-passaporte" element={<MytsPassaporte />} />
+            <Route path="/iso-19011" element={<Iso19011 />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
