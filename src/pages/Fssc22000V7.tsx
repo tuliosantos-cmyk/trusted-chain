@@ -762,26 +762,27 @@ const S00Capa = () => (
 const S01Quem = () => (
   <Slide bg={C.paper} decor={<ColorBar vertical />}>
     <Body>
-      <Head eyebrow="Quem sou eu" title="Anne Dezan — muito prazer!" sub="Mais de 13 anos dedicados à indústria de alimentos." />
+      <Head eyebrow="Quem sou eu" title="Anne Dezan — muito prazer!" sub="Uma vida dedicada à segurança de alimentos e aos sistemas de gestão." />
       <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "1fr 1fr", gap: 20 }}>
-        <Card color={C.green} title="Engenheira de Alimentos" icon={Award}>
-          Formada pela Universidade Federal de Goiás (UFG).
+        <Card color={C.green} title="Bióloga" icon={FlaskConical}>
+          Formação técnico-científica aplicada à cadeia de alimentos.
         </Card>
         <Card color={C.blue} title="Auditora Líder" icon={ShieldCheck}>
-          Auditora Líder FSSC 22000, atuando em toda a cadeia de alimentos.
+          Auditorias de sistemas de gestão da segurança de alimentos em toda a cadeia.
         </Card>
-        <Card color={C.yellow} title="Professora de MBA" icon={BookOpen}>
-          Docente acadêmica em programas de MBA do IPOG.
+        <Card color={C.yellow} title="Consultora" icon={Award}>
+          Implantação, diagnóstico de gap e preparação para certificação.
         </Card>
-        <Card color={C.leaf} title="Especialista" icon={FlaskConical}>
-          Controle de Qualidade e Gerenciamento da Produção de Alimentos — UFG.
+        <Card color={C.leaf} title="Perita técnica" icon={BookOpen}>
+          Perícia técnica em alimentos e apoio a decisões técnicas complexas.
         </Card>
-        <Card color={C.green} title="Propósito" icon={HandHeart}>
-          Deus em primeiro lugar na minha vida e na da minha família.
+        <Card color={C.green} title="Educação" icon={HandHeart}>
+          Treinamentos para indústrias de alimentos em todo o Brasil.
         </Card>
-        <Card color={C.blue} title="#FoodSafetyLover" icon={Sparkles} tint={C.greenSoft}>
+        <Card color={C.blue} title="#FoodSafetyCulture" icon={Sparkles} tint={C.greenSoft}>
           Segurança de alimentos é cultura — e cultura se constrói com gente.
         </Card>
+
       </div>
     </Body>
     <Foot n="01" />
