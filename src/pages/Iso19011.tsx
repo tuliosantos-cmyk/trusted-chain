@@ -368,7 +368,6 @@ const Foot = ({ n, dark = false }: { n: string; dark?: boolean }) => (
     }}
   >
     <span style={{ display: "flex", alignItems: "center", gap: 12 }}>
-      <Logo size={32} opacity={dark ? 0.9 : 1} />
       <span>Fundamentos da ISO 19011:2026 · Anne Dezan</span>
     </span>
     <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
