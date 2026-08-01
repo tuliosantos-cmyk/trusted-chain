@@ -55,25 +55,25 @@ const T = {
 } as const;
 
 /* Identidade visual — Anne Dezan
-   Direção: verde institucional dominante sobre papel quente.
-   Latão, ardósia e terracota entram apenas como apoio dessaturado. */
+   Direção: verde esmeralda vibrante sobre papel quente.
+   Âmbar e terracota entram como apoio energético, nunca infantil. */
 const C = {
-  ink: "#173B31",
-  inkDeep: "#0E2A23",
+  ink: "#064E3B",
+  inkDeep: "#022C22",
   blue: "#33596B",
   blueSoft: "#E9EFF2",
-  yellow: "#B08535",
-  yellowSoft: "#F4EEE1",
-  green: "#1F6B52",
-  greenSoft: "#E6EEE9",
+  yellow: "#D97706",
+  yellowSoft: "#FEF3C7",
+  green: "#047857",
+  greenSoft: "#D1FAE5",
   red: "#A0523E",
   redSoft: "#F2E7E2",
   paper: "#F7F5EF",
   white: "#FFFFFF",
   line: "#E3DFD4",
-  text: "#1C2A25",
+  text: "#064E3B",
   mute: "#6C7A73",
-  sand: "#D8BA80",
+  sand: "#F59E0B",
 };
 
 
