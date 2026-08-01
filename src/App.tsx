@@ -12,6 +12,7 @@ import Korin360 from "./pages/Korin360.tsx";
 import MyTS360 from "./pages/MyTS360.tsx";
 import MytsPassaporte from "./pages/MytsPassaporte.tsx";
 import Iso19011 from "./pages/Iso19011.tsx";
+import Fssc22000V7 from "./pages/Fssc22000V7.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
