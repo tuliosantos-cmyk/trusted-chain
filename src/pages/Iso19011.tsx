@@ -2267,14 +2267,23 @@ const S36Encerramento = () => (
               "radial-gradient(760px 460px at 20% 20%, rgba(45,125,210,.22), transparent 65%), radial-gradient(700px 460px at 85% 90%, rgba(23,166,115,.18), transparent 65%)",
           }}
         />
+        <div style={{ position: "absolute", right: 96, top: 150 }}>
+          <ShieldOutline size={520} color={C.sand} opacity={0.2} strokeWidth={1.2} />
+        </div>
+        <div style={{ position: "absolute", right: 152, top: 216 }}>
+          <Logo size={330} />
+        </div>
+        <div style={{ position: "absolute", right: 40, bottom: -50 }}>
+          <WheatCrest size={220} color={C.sand} opacity={0.13} />
+        </div>
       </>
     }
   >
     <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-      <div className="flex items-center" style={{ gap: 12 }}>
-        {[C.blue, C.green, C.yellow, C.red].map((c) => (
-          <span key={c} style={{ width: 40, height: 6, background: c, borderRadius: 3 }} />
-        ))}
+      <div className="flex items-center" style={{ gap: 16 }}>
+        <Monogram size={40} />
+        <span style={{ width: 74, height: 4, background: C.sand, borderRadius: 2 }} />
+        <span style={{ width: 30, height: 4, background: "rgba(255,255,255,.3)", borderRadius: 2 }} />
       </div>
       <h2 style={{ marginTop: 26, fontSize: 79, fontWeight: 800, color: C.white, letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: 1100 }}>
         Obrigada. <span style={{ color: C.yellow }}>Vamos auditar com critério.</span>
