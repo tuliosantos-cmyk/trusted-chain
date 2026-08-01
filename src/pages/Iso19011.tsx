@@ -72,6 +72,7 @@ const C = {
   line: "#E3DFD4",
   text: "#1C2A25",
   mute: "#6C7A73",
+  sand: "#D8BA80",
 };
 
 
@@ -186,8 +187,12 @@ const ColorBar = ({ vertical = false }: { vertical?: boolean }) => (
         : { left: 0, right: 0, top: 0, height: 10 }),
     }}
   >
-    {[C.blue, C.green, C.yellow, C.red].map((c) => (
-      <div key={c} style={{ flex: 1, background: c }} />
+    {[
+      { c: C.green, f: 5 },
+      { c: C.blue, f: 2 },
+      { c: C.yellow, f: 1 },
+    ].map(({ c, f }) => (
+      <div key={c} style={{ flex: f, background: c }} />
     ))}
   </div>
 );
@@ -216,7 +221,7 @@ const Head = ({
   sub?: string;
 }) => (
   <div style={{ marginBottom: 26 }}>
-    <Eyebrow label={eyebrow} color={dark ? C.yellow : accent} />
+    <Eyebrow label={eyebrow} color={dark ? C.sand : accent} />
     <h2
       style={{
         marginTop: 12,
@@ -255,7 +260,7 @@ const Foot = ({ n, dark = false }: { n: string; dark?: boolean }) => (
   >
     <span>Fundamentos da ISO 19011:2026 · Anne Dezan</span>
     <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
-      <span style={{ width: 26, height: 3, background: C.yellow, borderRadius: 2 }} />
+      <span style={{ width: 26, height: 3, background: dark ? C.sand : C.green, borderRadius: 2 }} />
       {n}
     </span>
   </div>
@@ -510,7 +515,7 @@ const S00Capa = () => (
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(900px 520px at 80% 15%, rgba(45,125,210,.28), transparent 65%), radial-gradient(700px 480px at 15% 95%, rgba(23,166,115,.20), transparent 65%)",
+              "radial-gradient(1000px 560px at 78% 12%, rgba(31,107,82,.45), transparent 68%), radial-gradient(760px 500px at 12% 96%, rgba(216,186,128,.12), transparent 66%)",
           }}
         />
         <div
@@ -533,7 +538,7 @@ const S00Capa = () => (
             width: 400,
             height: 400,
             borderRadius: 24,
-            border: `1px solid ${C.yellow}44`,
+            border: `1px solid ${C.sand}3A`,
             transform: "rotate(12deg)",
           }}
         />
@@ -542,8 +547,12 @@ const S00Capa = () => (
   >
     <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", maxWidth: 1050 }}>
       <div className="flex items-center" style={{ gap: 14 }}>
-        {[C.blue, C.green, C.yellow, C.red].map((c) => (
-          <span key={c} style={{ width: 46, height: 6, background: c, borderRadius: 3 }} />
+        {[
+          { c: C.sand, w: 74 },
+          { c: "rgba(255,255,255,.35)", w: 30 },
+          { c: "rgba(255,255,255,.18)", w: 16 },
+        ].map(({ c, w }) => (
+          <span key={c} style={{ width: w, height: 5, background: c, borderRadius: 3 }} />
         ))}
       </div>
       <div
@@ -570,7 +579,7 @@ const S00Capa = () => (
       >
         Fundamentos da
         <br />
-        <span style={{ color: C.yellow }}>ISO 19011</span>
+        <span style={{ color: C.sand }}>ISO 19011</span>
         <span style={{ color: "rgba(255,255,255,.45)" }}>:2026</span>
       </h1>
       <p style={{ marginTop: 22, fontSize: 26, color: "rgba(255,255,255,.78)", maxWidth: 760, lineHeight: 1.35 }}>
@@ -578,7 +587,7 @@ const S00Capa = () => (
       </p>
 
       <div style={{ marginTop: 46, display: "flex", alignItems: "center", gap: 22 }}>
-        <div style={{ width: 4, height: 66, background: C.green, borderRadius: 2 }} />
+        <div style={{ width: 3, height: 66, background: C.sand, borderRadius: 2 }} />
         <div>
           <div style={{ fontSize: 30, fontWeight: 800, color: C.white, letterSpacing: "-0.01em" }}>Anne Dezan</div>
           <div style={{ fontSize: T.body, color: "rgba(255,255,255,.65)", marginTop: 4 }}>
@@ -642,13 +651,13 @@ const S01Organizacao = () => (
           flexWrap: "wrap",
         }}
       >
-        <span style={{ fontSize: T.small, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase", color: C.yellow }}>
+        <span style={{ fontSize: T.small, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase", color: C.sand }}>
           Formato de cada bloco
         </span>
         {["Conceito", "Aplicação prática", "Documentos de suporte", "Exemplo comentado", "Erros comuns"].map((s, i, arr) => (
           <span key={s} style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <span style={{ fontSize: T.lead, color: C.white, fontWeight: 600 }}>{s}</span>
-            {i < arr.length - 1 && <ArrowRight size={18} color={C.green} />}
+            {i < arr.length - 1 && <ArrowRight size={18} color={C.sand} />}
           </span>
         ))}
       </div>
