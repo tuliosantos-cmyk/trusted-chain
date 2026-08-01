@@ -23,16 +23,12 @@ import {
   XCircle,
   ArrowRight,
   HelpCircle,
-  Globe,
   Building2,
   Award,
   BookOpen,
   Brain,
   Handshake,
   Gauge,
-  MapPin,
-  Phone,
-  Mail,
   Link2,
 } from "lucide-react";
 import anneLogo from "@/assets/anne-logo.png.asset.json";
