@@ -508,7 +508,7 @@ const Table = ({
         }}
       >
         {r.map((cell, ci) => (
-          <div key={ci} style={{ padding: "11px 16px", fontSize, lineHeight: 1.3, color: ci === 0 ? C.ink : C.text, fontWeight: ci === 0 ? 700 : 400 }}>
+          <div key={ci} style={{ padding: dense ? "6.5px 14px" : "11px 16px", fontSize, lineHeight: 1.25, color: ci === 0 ? C.ink : C.text, fontWeight: ci === 0 ? 700 : 400 }}>
             {cell}
           </div>
         ))}
