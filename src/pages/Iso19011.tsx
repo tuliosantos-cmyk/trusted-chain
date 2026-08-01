@@ -267,7 +267,7 @@ const Foot = ({ n, dark = false }: { n: string; dark?: boolean }) => (
 );
 
 const Body = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex-1 flex flex-col" style={{ paddingBottom: 30 }}>
+  <div className="flex-1 flex flex-col" style={{ paddingBottom: 44, gap: 20 }}>
     {children}
   </div>
 );
@@ -607,7 +607,7 @@ const S01Organizacao = () => (
         title="Como o curso está organizado"
         sub="Quatro blocos encadeados: da base conceitual à avaliação de competência."
       />
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "center" }}>
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "stretch" }}>
         {([
           [BookOpen, C.blue, "01", "Introdução, escopo e princípios", "Base conceitual e linguagem comum."],
           [ClipboardList, C.green, "02", "Gestão do programa", "Objetivos, riscos, métodos e registros."],
@@ -1158,7 +1158,7 @@ const S13Decisoes = () => (
   <Slide bg={C.paper} decor={<ColorBar vertical />}>
     <Body>
       <Head eyebrow="5.4" title="Estabelecendo o programa: 4 decisões críticas" accent={C.green} />
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "center" }}>
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "stretch" }}>
         {([
           [UserCheck, C.blue, "Responsável", "Quem gerencia o programa e protege sua integridade?"],
           [Brain, C.green, "Competência", "Que conhecimento é necessário para gerir riscos, métodos e registros?"],
@@ -1517,7 +1517,7 @@ const S21Iniciacao = () => (
   <Slide bg={C.paper} decor={<ColorBar vertical />}>
     <Body>
       <Head eyebrow="6.2" title="Iniciação e viabilidade: antes de abrir a auditoria" accent={C.blue} />
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "center" }}>
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "stretch" }}>
         {([
           [ShieldCheck, C.blue, "Autoridade", "Há autorização e canal de comunicação definido?"],
           [Target, C.green, "Escopo", "Objetivos, critérios e limites estão claros?"],
@@ -1826,7 +1826,7 @@ const S27Relatorio = () => (
   <Slide bg={C.paper} decor={<ColorBar vertical />}>
     <Body>
       <Head eyebrow="6.5 a 6.7" title="Relatório e follow-up" accent={C.blue} />
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "center" }}>
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "stretch" }}>
         {([
           [UserCheck, C.blue, "Identificação", "Auditado, equipe, datas, locais físicos e virtuais."],
           [Target, C.green, "Base da auditoria", "Objetivos, escopo, critérios e métodos."],
@@ -1919,7 +1919,7 @@ const S31QuemDefine = () => (
   <Slide bg={C.paper} decor={<ColorBar vertical />}>
     <Body>
       <Head eyebrow="Dúvida comum" title="Quem define os critérios de competência?" accent={C.yellow} />
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22, alignContent: "center" }}>
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22, alignContent: "stretch" }}>
         {([
           [Building2, C.blue, "1ª parte", "A própria organização, conforme processos, riscos, normas e objetivos internos."],
           [Handshake, C.green, "2ª parte", "O cliente da auditoria ou gestor do programa, considerando cadeia, contrato e criticidade."],
@@ -2121,7 +2121,7 @@ const S35Mensagens = () => (
   >
     <Body>
       <Head eyebrow="Mensagens finais" title="O que levar deste treinamento" dark />
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, alignContent: "center" }}>
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, alignContent: "stretch" }}>
         {([
           [C.blue, "A norma orienta decisões", "A ISO 19011 orienta decisões de auditoria — não apenas documentação."],
           [C.green, "Risco atravessa tudo", "Risco deve influenciar programa, plano, método, amostra, trilha e relatório."],
