@@ -1726,11 +1726,12 @@ const S24Impacto = () => (
 const S25DePara = () => (
   <Slide bg={C.paper} decor={<ColorBar vertical />}>
     <Body>
-      <Head eyebrow="De → para" title="ISO/TS 22002-1:2009 versus ISO 22002-1:2025 / 22002-100:2025" />
+      <Head eyebrow="De → para" title="ISO/TS 22002-1:2009 → ISO 22002-1 e 22002-100:2025" />
       <div style={{ flex: 1 }}>
         <Table
-          fontSize={16.5}
-          widths={["60px", "1fr", "60px", "1fr"]}
+          dense
+          fontSize={16}
+          widths={["58px", "1fr", "58px", "1fr"]}
           head={["Nº", "ISO/TS 22002-1:2009", "Nº", "ISO 22002-1:2025 e 22002-100:2025"]}
           rows={[
             ["4", "Construção e layout das edificações", "4", "Construção e layout de edifícios"],
