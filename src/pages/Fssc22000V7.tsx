@@ -368,7 +368,7 @@ const Foot = ({ n, dark = false }: { n: string; dark?: boolean }) => (
       fontWeight: 600,
     }}
   >
-    <span>Atualização FSSC 22000 · Versão 7 · Food Solution</span>
+    <span>Atualização FSSC 22000 · Versão 7 · Anne Dezan</span>
     <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
       <span style={{ width: 26, height: 3, background: dark ? C.sand : C.green, borderRadius: 2 }} />
       {n}
@@ -749,9 +749,9 @@ const S00Capa = () => (
       <div style={{ marginTop: 46, display: "flex", alignItems: "center", gap: 22 }}>
         <div style={{ width: 3, height: 66, background: C.sand, borderRadius: 2 }} />
         <div>
-          <div style={{ fontSize: 36, fontWeight: 800, color: C.white, letterSpacing: "-0.01em" }}>Lívia L. Rodrigues</div>
+          <div style={{ fontSize: 36, fontWeight: 800, color: C.white, letterSpacing: "-0.01em" }}>Anne Dezan</div>
           <div style={{ fontSize: T.body, color: "rgba(255,255,255,.65)", marginTop: 4 }}>
-            Food Solution · Consultoria e Treinamento · Auditora Líder FSSC 22000
+            Bióloga · Consultora · Auditora Líder · Perita técnica em alimentos
           </div>
         </div>
       </div>
@@ -762,7 +762,7 @@ const S00Capa = () => (
 const S01Quem = () => (
   <Slide bg={C.paper} decor={<ColorBar vertical />}>
     <Body>
-      <Head eyebrow="Quem sou eu" title="Lívia L. Rodrigues — muito prazer!" sub="Mais de 13 anos dedicados à indústria de alimentos." />
+      <Head eyebrow="Quem sou eu" title="Anne Dezan — muito prazer!" sub="Mais de 13 anos dedicados à indústria de alimentos." />
       <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "1fr 1fr", gap: 20 }}>
         <Card color={C.green} title="Engenheira de Alimentos" icon={Award}>
           Formada pela Universidade Federal de Goiás (UFG).
@@ -2297,9 +2297,9 @@ const S42Encerramento = () => (
       <div style={{ marginTop: 40, display: "flex", alignItems: "center", gap: 18 }}>
         <div style={{ width: 4, height: 58, background: C.leaf, borderRadius: 2 }} />
         <div>
-          <div style={{ fontSize: 31, fontWeight: 800, color: C.white }}>Food Solution · Consultoria e Treinamento</div>
+          <div style={{ fontSize: 31, fontWeight: 800, color: C.white }}>Anne Dezan</div>
           <div style={{ fontSize: T.small, color: "rgba(255,255,255,.6)", marginTop: 4 }}>
-            Lívia L. Rodrigues · Auditora Líder FSSC 22000 · (62) 98113-0665
+            Auditora Líder · Consultora em sistemas de gestão
           </div>
         </div>
       </div>
@@ -2339,7 +2339,7 @@ const Fssc22000V7 = () => {
         }
       `}</style>
       <Helmet>
-        <title>Atualização FSSC 22000 v7 | Treinamento Food Solution</title>
+        <title>Atualização FSSC 22000 v7 | Treinamento com Anne Dezan</title>
         <meta
           name="description"
           content="Treinamento de atualização FSSC 22000 Versão 7: contexto do esquema, decisões do BoS, transição, Requisitos Adicionais v7 e a nova série ISO 22002-X:2025 cláusula a cláusula."
