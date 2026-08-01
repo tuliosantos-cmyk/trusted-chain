@@ -635,30 +635,18 @@ const S00Capa = () => (
               "radial-gradient(1000px 560px at 78% 12%, rgba(31,107,82,.45), transparent 68%), radial-gradient(760px 500px at 12% 96%, rgba(216,186,128,.12), transparent 66%)",
           }}
         />
-        <div
-          style={{
-            position: "absolute",
-            right: 90,
-            top: 150,
-            width: 520,
-            height: 520,
-            borderRadius: 28,
-            border: `1px solid rgba(255,255,255,.10)`,
-            transform: "rotate(12deg)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            right: 150,
-            top: 210,
-            width: 400,
-            height: 400,
-            borderRadius: 24,
-            border: `1px solid ${C.sand}3A`,
-            transform: "rotate(12deg)",
-          }}
-        />
+        {/* halo do escudo */}
+        <div style={{ position: "absolute", right: 108, top: 128 }}>
+          <ShieldOutline size={660} color={C.sand} opacity={0.22} strokeWidth={1.2} />
+        </div>
+        {/* logo da marca */}
+        <div style={{ position: "absolute", right: 176, top: 232 }}>
+          <Logo size={430} />
+        </div>
+        {/* espigas cruzadas na base direita */}
+        <div style={{ position: "absolute", right: 60, bottom: -60 }}>
+          <WheatCrest size={260} color={C.sand} opacity={0.14} />
+        </div>
       </>
     }
   >
