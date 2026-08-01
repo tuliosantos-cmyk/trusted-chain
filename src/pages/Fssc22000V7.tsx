@@ -53,28 +53,27 @@ const T = {
   label: 16,
 } as const;
 
-/* Identidade visual — Food Solution Consultoria e Treinamento
-   Verde profundo (indústria de alimentos) + verde folha da marca,
-   âmbar como sinalização e azul técnico como apoio. */
+/* Identidade visual — Anne Dezan
+   Verde esmeralda institucional + âmbar, sobre papel quente. */
 const C = {
-  ink: "#0B3B2E",
-  inkDeep: "#062419",
-  green: "#12805C",
-  greenSoft: "#D7F0E4",
-  leaf: "#7DB63A",
-  leafSoft: "#EBF5DC",
-  blue: "#2C6E8F",
-  blueSoft: "#E6EEF3",
-  yellow: "#D98A06",
-  yellowSoft: "#FCEFD5",
-  red: "#A2453A",
-  redSoft: "#F5E7E4",
-  paper: "#F7F6F1",
+  ink: "#064E3B",
+  inkDeep: "#022C22",
+  green: "#047857",
+  greenSoft: "#D1FAE5",
+  leaf: "#0F766E",
+  leafSoft: "#CCFBF1",
+  blue: "#33596B",
+  blueSoft: "#E9EFF2",
+  yellow: "#D97706",
+  yellowSoft: "#FEF3C7",
+  red: "#A0523E",
+  redSoft: "#F2E7E2",
+  paper: "#F7F5EF",
   white: "#FFFFFF",
-  line: "#E2DFD5",
-  text: "#0B3B2E",
-  mute: "#6B7A72",
-  sand: "#E9A93C",
+  line: "#E3DFD4",
+  text: "#064E3B",
+  mute: "#6C7A73",
+  sand: "#F59E0B",
 };
 
 const usePrintMode = () => {
@@ -196,11 +195,11 @@ const ColorBar = ({ vertical = false }: { vertical?: boolean }) => (
 );
 
 /* ============================================================
-   Elementos de marca — hexágono (célula da cadeia) + monograma FS
+   Elementos de marca — escudo + espigas + monograma AD (Anne Dezan)
    ============================================================ */
 const HexOutline = ({
   size = 520,
-  color = C.leaf,
+  color = C.sand,
   opacity = 0.18,
   strokeWidth = 1.5,
 }: {
@@ -210,9 +209,15 @@ const HexOutline = ({
   strokeWidth?: number;
 }) => (
   <svg viewBox="0 0 100 112" width={size * (100 / 112)} height={size} style={{ opacity, display: "block" }} aria-hidden>
-    <path d="M50 2 96 29 96 83 50 110 4 83 4 29 Z" fill="none" stroke={color} strokeWidth={strokeWidth} strokeLinejoin="round" />
     <path
-      d="M50 12 87 34 87 78 50 100 13 78 13 34 Z"
+      d="M50 3 C68 12 82 15 96 16 V58 C96 86 76 102 50 109 C24 102 4 86 4 58 V16 C18 15 32 12 50 3 Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+      strokeLinejoin="round"
+    />
+    <path
+      d="M50 11 C66 19 78 22 90 23 V58 C90 82 72 96 50 102 C28 96 10 82 10 58 V23 C22 22 34 19 50 11 Z"
       fill="none"
       stroke={color}
       strokeWidth={strokeWidth * 0.7}
@@ -222,17 +227,42 @@ const HexOutline = ({
   </svg>
 );
 
-/* Folha da marca */
-const LeafMark = ({ size = 120, color = C.leaf, opacity = 1, flip = false }: { size?: number; color?: string; opacity?: number; flip?: boolean }) => (
+/* Espiga da marca */
+const Wheat = ({ size = 120, color = C.sand, opacity = 1, flip = false }: { size?: number; color?: string; opacity?: number; flip?: boolean }) => (
   <svg
-    viewBox="0 0 100 100"
-    width={size}
+    viewBox="0 0 60 160"
+    width={size * (60 / 160)}
     height={size}
     style={{ opacity, transform: flip ? "scaleX(-1)" : undefined, display: "block" }}
     aria-hidden
   >
-    <path d="M88 12C46 12 16 30 16 62c0 10 4 19 10 26C42 66 60 50 84 42 62 54 44 72 34 94c8 3 16 4 24 4 30 0 40-30 30-86Z" fill={color} />
+    <path d="M46 158 C34 122 26 78 30 8" fill="none" stroke={color} strokeWidth={3} strokeLinecap="round" />
+    {[0, 1, 2, 3, 4, 5].map((i) => {
+      const y = 26 + i * 21;
+      const x = 30 + i * 1.6;
+      return (
+        <g key={i}>
+          <ellipse cx={x - 12} cy={y} rx={7.5} ry={12} fill={color} transform={`rotate(-32 ${x - 12} ${y})`} />
+          <path
+            d={`M${x - 17} ${y - 12} C${x - 30} ${y - 22} ${x - 34} ${y - 30} ${x - 33} ${y - 40}`}
+            fill="none"
+            stroke={color}
+            strokeWidth={2}
+            strokeLinecap="round"
+            opacity={0.75}
+          />
+        </g>
+      );
+    })}
+    <ellipse cx={30} cy={10} rx={7} ry={12} fill={color} />
   </svg>
+);
+
+const WheatCrest = ({ size = 200, color = C.sand, opacity = 0.16 }: { size?: number; color?: string; opacity?: number }) => (
+  <div style={{ display: "flex", alignItems: "flex-end", gap: size * 0.12, opacity }}>
+    <Wheat size={size} color={color} />
+    <Wheat size={size} color={color} flip />
+  </div>
 );
 
 const Monogram = ({ size = 34, color = C.sand }: { size?: number; color?: string }) => (
@@ -246,11 +276,11 @@ const Monogram = ({ size = 34, color = C.sand }: { size?: number; color?: string
       lineHeight: 1,
     }}
   >
-    FS
+    AD
   </span>
 );
 
-const BrandDecor = ({ accent = C.leaf }: { accent?: string }) => (
+const BrandDecor = ({ accent = C.sand }: { accent?: string }) => (
   <>
     <ColorBar />
     <div style={{ position: "absolute", right: 60, top: 100 }}>
@@ -268,13 +298,14 @@ const BrandDecor = ({ accent = C.leaf }: { accent?: string }) => (
         lineHeight: 1,
       }}
     >
-      FS
+      AD
     </div>
-    <div style={{ position: "absolute", right: 120, bottom: -20, opacity: 0.22 }}>
-      <LeafMark size={210} color={accent} />
+    <div style={{ position: "absolute", right: 130, bottom: -30 }}>
+      <WheatCrest size={220} color={accent} opacity={0.26} />
     </div>
   </>
 );
+
 
 const Eyebrow = ({ label, color = C.blue }: { label: string; color?: string }) => (
   <div
@@ -337,7 +368,7 @@ const Foot = ({ n, dark = false }: { n: string; dark?: boolean }) => (
       fontWeight: 600,
     }}
   >
-    <span>Atualização FSSC 22000 · Versão 7 · Food Solution</span>
+    <span>Atualização FSSC 22000 · Versão 7 · Anne Dezan</span>
     <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
       <span style={{ width: 26, height: 3, background: dark ? C.sand : C.green, borderRadius: 2 }} />
       {n}
@@ -718,9 +749,9 @@ const S00Capa = () => (
       <div style={{ marginTop: 46, display: "flex", alignItems: "center", gap: 22 }}>
         <div style={{ width: 3, height: 66, background: C.sand, borderRadius: 2 }} />
         <div>
-          <div style={{ fontSize: 36, fontWeight: 800, color: C.white, letterSpacing: "-0.01em" }}>Lívia L. Rodrigues</div>
+          <div style={{ fontSize: 36, fontWeight: 800, color: C.white, letterSpacing: "-0.01em" }}>Anne Dezan</div>
           <div style={{ fontSize: T.body, color: "rgba(255,255,255,.65)", marginTop: 4 }}>
-            Food Solution · Consultoria e Treinamento · Auditora Líder FSSC 22000
+            Bióloga · Consultora · Auditora Líder · Perita técnica em alimentos
           </div>
         </div>
       </div>
@@ -731,26 +762,27 @@ const S00Capa = () => (
 const S01Quem = () => (
   <Slide bg={C.paper} decor={<ColorBar vertical />}>
     <Body>
-      <Head eyebrow="Quem sou eu" title="Lívia L. Rodrigues — muito prazer!" sub="Mais de 13 anos dedicados à indústria de alimentos." />
+      <Head eyebrow="Quem sou eu" title="Anne Dezan — muito prazer!" sub="Uma vida dedicada à segurança de alimentos e aos sistemas de gestão." />
       <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "1fr 1fr", gap: 20 }}>
-        <Card color={C.green} title="Engenheira de Alimentos" icon={Award}>
-          Formada pela Universidade Federal de Goiás (UFG).
+        <Card color={C.green} title="Bióloga" icon={FlaskConical}>
+          Formação técnico-científica aplicada à cadeia de alimentos.
         </Card>
         <Card color={C.blue} title="Auditora Líder" icon={ShieldCheck}>
-          Auditora Líder FSSC 22000, atuando em toda a cadeia de alimentos.
+          Auditorias de sistemas de gestão da segurança de alimentos em toda a cadeia.
         </Card>
-        <Card color={C.yellow} title="Professora de MBA" icon={BookOpen}>
-          Docente acadêmica em programas de MBA do IPOG.
+        <Card color={C.yellow} title="Consultora" icon={Award}>
+          Implantação, diagnóstico de gap e preparação para certificação.
         </Card>
-        <Card color={C.leaf} title="Especialista" icon={FlaskConical}>
-          Controle de Qualidade e Gerenciamento da Produção de Alimentos — UFG.
+        <Card color={C.leaf} title="Perita técnica" icon={BookOpen}>
+          Perícia técnica em alimentos e apoio a decisões técnicas complexas.
         </Card>
-        <Card color={C.green} title="Propósito" icon={HandHeart}>
-          Deus em primeiro lugar na minha vida e na da minha família.
+        <Card color={C.green} title="Educação" icon={HandHeart}>
+          Treinamentos para indústrias de alimentos em todo o Brasil.
         </Card>
-        <Card color={C.blue} title="#FoodSafetyLover" icon={Sparkles} tint={C.greenSoft}>
+        <Card color={C.blue} title="#FoodSafetyCulture" icon={Sparkles} tint={C.greenSoft}>
           Segurança de alimentos é cultura — e cultura se constrói com gente.
         </Card>
+
       </div>
     </Body>
     <Foot n="01" />
@@ -2266,9 +2298,9 @@ const S42Encerramento = () => (
       <div style={{ marginTop: 40, display: "flex", alignItems: "center", gap: 18 }}>
         <div style={{ width: 4, height: 58, background: C.leaf, borderRadius: 2 }} />
         <div>
-          <div style={{ fontSize: 31, fontWeight: 800, color: C.white }}>Food Solution · Consultoria e Treinamento</div>
+          <div style={{ fontSize: 31, fontWeight: 800, color: C.white }}>Anne Dezan</div>
           <div style={{ fontSize: T.small, color: "rgba(255,255,255,.6)", marginTop: 4 }}>
-            Lívia L. Rodrigues · Auditora Líder FSSC 22000 · (62) 98113-0665
+            Auditora Líder · Consultora em sistemas de gestão
           </div>
         </div>
       </div>
@@ -2308,7 +2340,7 @@ const Fssc22000V7 = () => {
         }
       `}</style>
       <Helmet>
-        <title>Atualização FSSC 22000 v7 | Treinamento Food Solution</title>
+        <title>Atualização FSSC 22000 v7 | Treinamento com Anne Dezan</title>
         <meta
           name="description"
           content="Treinamento de atualização FSSC 22000 Versão 7: contexto do esquema, decisões do BoS, transição, Requisitos Adicionais v7 e a nova série ISO 22002-X:2025 cláusula a cláusula."
