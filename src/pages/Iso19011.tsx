@@ -635,9 +635,18 @@ const S00Capa = () => (
               "radial-gradient(1000px 560px at 78% 12%, rgba(31,107,82,.45), transparent 68%), radial-gradient(760px 500px at 12% 96%, rgba(216,186,128,.12), transparent 66%)",
           }}
         />
-        {/* halo do escudo */}
-        <div style={{ position: "absolute", right: 108, top: 128 }}>
-          <ShieldOutline size={660} color={C.sand} opacity={0.22} strokeWidth={1.2} />
+        {/* monograma AD central */}
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+            opacity: 0.14,
+            pointerEvents: "none",
+          }}
+        >
+          <Monogram size={520} color={C.sand} />
         </div>
       </>
     }
