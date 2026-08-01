@@ -781,6 +781,7 @@ const S02Conteudo = () => (
                 display: "flex",
                 flexDirection: "column",
                 gap: 14,
+                justifyContent: "center",
               }}
             >
               <Icon size={44} color={col as string} strokeWidth={2} />
