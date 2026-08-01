@@ -595,7 +595,7 @@ const S01Organizacao = () => (
         title="Como o curso está organizado"
         sub="Quatro blocos encadeados: da base conceitual à avaliação de competência."
       />
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "start" }}>
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "center" }}>
         {([
           [BookOpen, C.blue, "01", "Introdução, escopo e princípios", "Base conceitual e linguagem comum."],
           [ClipboardList, C.green, "02", "Gestão do programa", "Objetivos, riscos, métodos e registros."],
