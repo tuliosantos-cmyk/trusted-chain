@@ -639,10 +639,6 @@ const S00Capa = () => (
         <div style={{ position: "absolute", right: 108, top: 128 }}>
           <ShieldOutline size={660} color={C.sand} opacity={0.22} strokeWidth={1.2} />
         </div>
-        {/* logo da marca */}
-        <div style={{ position: "absolute", right: 176, top: 232 }}>
-          <Logo size={430} />
-        </div>
       </>
     }
   >
