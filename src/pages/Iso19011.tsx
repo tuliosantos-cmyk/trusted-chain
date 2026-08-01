@@ -643,10 +643,6 @@ const S00Capa = () => (
         <div style={{ position: "absolute", right: 176, top: 232 }}>
           <Logo size={430} />
         </div>
-        {/* espigas cruzadas na base direita */}
-        <div style={{ position: "absolute", right: 60, bottom: -60 }}>
-          <WheatCrest size={260} color={C.sand} opacity={0.14} />
-        </div>
       </>
     }
   >
