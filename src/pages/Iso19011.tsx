@@ -627,26 +627,28 @@ const S00Capa = () => (
     decor={
       <>
         <ColorBar />
+        {/* escudo da marca como marca d'água */}
+        <div style={{ position: "absolute", right: 40, top: 90, opacity: 1 }}>
+          <ShieldOutline size={640} color={C.sand} opacity={0.16} strokeWidth={1.4} />
+        </div>
+        {/* monograma dentro do escudo */}
         <div
           style={{
             position: "absolute",
-            inset: 0,
-            background:
-              "radial-gradient(1000px 560px at 78% 12%, rgba(31,107,82,.45), transparent 68%), radial-gradient(760px 500px at 12% 96%, rgba(216,186,128,.12), transparent 66%)",
-          }}
-        />
-        {/* monograma AD central */}
-        <div
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%, -50%)",
-            opacity: 0.14,
-            pointerEvents: "none",
+            right: 190,
+            top: 330,
+            color: "rgba(255,255,255,.07)",
+            fontSize: 190,
+            fontWeight: 700,
+            fontFamily: "Georgia, 'Times New Roman', serif",
+            lineHeight: 1,
           }}
         >
-          <Monogram size={520} color={C.sand} />
+          AD
+        </div>
+        {/* espigas cruzadas na base */}
+        <div style={{ position: "absolute", right: 130, bottom: -34 }}>
+          <WheatCrest size={230} color={C.sand} opacity={0.28} />
         </div>
       </>
     }
