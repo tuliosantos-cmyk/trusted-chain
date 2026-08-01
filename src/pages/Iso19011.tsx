@@ -198,6 +198,117 @@ const ColorBar = ({ vertical = false }: { vertical?: boolean }) => (
   </div>
 );
 
+/* ============================================================
+   Elementos derivados da marca Anne Dezan
+   (escudo, espigas de trigo, monograma AD)
+   ============================================================ */
+
+const Logo = ({ size = 84, opacity = 1 }: { size?: number; opacity?: number }) => (
+  <img
+    src={anneLogo.url}
+    alt="Marca Anne Dezan"
+    style={{ width: size * (450 / 476), height: size, objectFit: "contain", opacity, display: "block" }}
+  />
+);
+
+/* Contorno do escudo da marca, usado como marca d'água / moldura */
+const ShieldOutline = ({
+  size = 520,
+  color = C.sand,
+  opacity = 0.18,
+  strokeWidth = 1.5,
+  fill = "none",
+}: {
+  size?: number;
+  color?: string;
+  opacity?: number;
+  strokeWidth?: number;
+  fill?: string;
+}) => (
+  <svg viewBox="0 0 100 112" width={size * (100 / 112)} height={size} style={{ opacity, display: "block" }} aria-hidden>
+    <path
+      d="M50 3 C68 12 82 15 96 16 V58 C96 86 76 102 50 109 C24 102 4 86 4 58 V16 C18 15 32 12 50 3 Z"
+      fill={fill}
+      stroke={color}
+      strokeWidth={strokeWidth}
+      strokeLinejoin="round"
+    />
+    <path
+      d="M50 11 C66 19 78 22 90 23 V58 C90 82 72 96 50 102 C28 96 10 82 10 58 V23 C22 22 34 19 50 11 Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth * 0.7}
+      opacity={0.6}
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+/* Espiga de trigo da marca */
+const Wheat = ({
+  size = 120,
+  color = C.sand,
+  opacity = 1,
+  flip = false,
+}: {
+  size?: number;
+  color?: string;
+  opacity?: number;
+  flip?: boolean;
+}) => (
+  <svg
+    viewBox="0 0 60 160"
+    width={size * (60 / 160)}
+    height={size}
+    style={{ opacity, transform: flip ? "scaleX(-1)" : undefined, display: "block" }}
+    aria-hidden
+  >
+    <path d="M46 158 C34 122 26 78 30 8" fill="none" stroke={color} strokeWidth={3} strokeLinecap="round" />
+    {[0, 1, 2, 3, 4, 5].map((i) => {
+      const y = 26 + i * 21;
+      const x = 30 + i * 1.6;
+      return (
+        <g key={i}>
+          <ellipse cx={x - 12} cy={y} rx={7.5} ry={12} fill={color} transform={`rotate(-32 ${x - 12} ${y})`} />
+          <path
+            d={`M${x - 17} ${y - 12} C${x - 30} ${y - 22} ${x - 34} ${y - 30} ${x - 33} ${y - 40}`}
+            fill="none"
+            stroke={color}
+            strokeWidth={2}
+            strokeLinecap="round"
+            opacity={0.75}
+          />
+        </g>
+      );
+    })}
+    <ellipse cx={30} cy={10} rx={7} ry={12} fill={color} />
+  </svg>
+);
+
+/* Par de espigas cruzadas — assinatura da marca */
+const WheatCrest = ({ size = 200, color = C.sand, opacity = 0.16 }: { size?: number; color?: string; opacity?: number }) => (
+  <div style={{ display: "flex", alignItems: "flex-end", gap: size * 0.12, opacity }}>
+    <Wheat size={size} color={color} />
+    <Wheat size={size} color={color} flip />
+  </div>
+);
+
+/* Régua dourada com monograma — separador editorial */
+const Monogram = ({ size = 34, color = C.sand }: { size?: number; color?: string }) => (
+  <span
+    style={{
+      fontSize: size,
+      fontWeight: 700,
+      letterSpacing: "0.04em",
+      color,
+      fontFamily: "Georgia, 'Times New Roman', serif",
+      lineHeight: 1,
+    }}
+  >
+    AD
+  </span>
+);
+
 const Eyebrow = ({ label, color = C.blue }: { label: string; color?: string }) => (
   <div
     className="flex items-center gap-4 font-semibold uppercase"
