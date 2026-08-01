@@ -35,6 +35,7 @@ import {
   Mail,
   Link2,
 } from "lucide-react";
+import anneLogo from "@/assets/anne-logo.png.asset.json";
 
 /* ============================================================
    CANVAS FIXO 1600 x 900 — tudo em px reais, escalado por transform
@@ -197,6 +198,117 @@ const ColorBar = ({ vertical = false }: { vertical?: boolean }) => (
   </div>
 );
 
+/* ============================================================
+   Elementos derivados da marca Anne Dezan
+   (escudo, espigas de trigo, monograma AD)
+   ============================================================ */
+
+const Logo = ({ size = 84, opacity = 1 }: { size?: number; opacity?: number }) => (
+  <img
+    src={anneLogo.url}
+    alt="Marca Anne Dezan"
+    style={{ width: size * (450 / 476), height: size, objectFit: "contain", opacity, display: "block" }}
+  />
+);
+
+/* Contorno do escudo da marca, usado como marca d'água / moldura */
+const ShieldOutline = ({
+  size = 520,
+  color = C.sand,
+  opacity = 0.18,
+  strokeWidth = 1.5,
+  fill = "none",
+}: {
+  size?: number;
+  color?: string;
+  opacity?: number;
+  strokeWidth?: number;
+  fill?: string;
+}) => (
+  <svg viewBox="0 0 100 112" width={size * (100 / 112)} height={size} style={{ opacity, display: "block" }} aria-hidden>
+    <path
+      d="M50 3 C68 12 82 15 96 16 V58 C96 86 76 102 50 109 C24 102 4 86 4 58 V16 C18 15 32 12 50 3 Z"
+      fill={fill}
+      stroke={color}
+      strokeWidth={strokeWidth}
+      strokeLinejoin="round"
+    />
+    <path
+      d="M50 11 C66 19 78 22 90 23 V58 C90 82 72 96 50 102 C28 96 10 82 10 58 V23 C22 22 34 19 50 11 Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth * 0.7}
+      opacity={0.6}
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+/* Espiga de trigo da marca */
+const Wheat = ({
+  size = 120,
+  color = C.sand,
+  opacity = 1,
+  flip = false,
+}: {
+  size?: number;
+  color?: string;
+  opacity?: number;
+  flip?: boolean;
+}) => (
+  <svg
+    viewBox="0 0 60 160"
+    width={size * (60 / 160)}
+    height={size}
+    style={{ opacity, transform: flip ? "scaleX(-1)" : undefined, display: "block" }}
+    aria-hidden
+  >
+    <path d="M46 158 C34 122 26 78 30 8" fill="none" stroke={color} strokeWidth={3} strokeLinecap="round" />
+    {[0, 1, 2, 3, 4, 5].map((i) => {
+      const y = 26 + i * 21;
+      const x = 30 + i * 1.6;
+      return (
+        <g key={i}>
+          <ellipse cx={x - 12} cy={y} rx={7.5} ry={12} fill={color} transform={`rotate(-32 ${x - 12} ${y})`} />
+          <path
+            d={`M${x - 17} ${y - 12} C${x - 30} ${y - 22} ${x - 34} ${y - 30} ${x - 33} ${y - 40}`}
+            fill="none"
+            stroke={color}
+            strokeWidth={2}
+            strokeLinecap="round"
+            opacity={0.75}
+          />
+        </g>
+      );
+    })}
+    <ellipse cx={30} cy={10} rx={7} ry={12} fill={color} />
+  </svg>
+);
+
+/* Par de espigas cruzadas — assinatura da marca */
+const WheatCrest = ({ size = 200, color = C.sand, opacity = 0.16 }: { size?: number; color?: string; opacity?: number }) => (
+  <div style={{ display: "flex", alignItems: "flex-end", gap: size * 0.12, opacity }}>
+    <Wheat size={size} color={color} />
+    <Wheat size={size} color={color} flip />
+  </div>
+);
+
+/* Régua dourada com monograma — separador editorial */
+const Monogram = ({ size = 34, color = C.sand }: { size?: number; color?: string }) => (
+  <span
+    style={{
+      fontSize: size,
+      fontWeight: 700,
+      letterSpacing: "0.04em",
+      color,
+      fontFamily: "Georgia, 'Times New Roman', serif",
+      lineHeight: 1,
+    }}
+  >
+    AD
+  </span>
+);
+
 const Eyebrow = ({ label, color = C.blue }: { label: string; color?: string }) => (
   <div
     className="flex items-center gap-4 font-semibold uppercase"
@@ -258,7 +370,10 @@ const Foot = ({ n, dark = false }: { n: string; dark?: boolean }) => (
       fontWeight: 600,
     }}
   >
-    <span>Fundamentos da ISO 19011:2026 · Anne Dezan</span>
+    <span style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <Logo size={32} opacity={dark ? 0.9 : 1} />
+      <span>Fundamentos da ISO 19011:2026 · Anne Dezan</span>
+    </span>
     <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
       <span style={{ width: 26, height: 3, background: dark ? C.sand : C.green, borderRadius: 2 }} />
       {n}
@@ -395,28 +510,29 @@ const Divider = ({
     decor={
       <>
         <ColorBar />
+        {/* escudo da marca como marca d'água */}
+        <div style={{ position: "absolute", right: 40, top: 90, opacity: 1 }}>
+          <ShieldOutline size={640} color={C.sand} opacity={0.16} strokeWidth={1.4} />
+        </div>
+        {/* monograma dentro do escudo */}
         <div
           style={{
             position: "absolute",
-            right: -140,
-            bottom: -160,
-            width: 620,
-            height: 620,
-            borderRadius: "50%",
-            border: `1px solid ${accent}33`,
+            right: 190,
+            top: 330,
+            color: "rgba(255,255,255,.07)",
+            fontSize: 190,
+            fontWeight: 700,
+            fontFamily: "Georgia, 'Times New Roman', serif",
+            lineHeight: 1,
           }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            right: -40,
-            bottom: -60,
-            width: 380,
-            height: 380,
-            borderRadius: "50%",
-            border: `1px solid ${accent}22`,
-          }}
-        />
+        >
+          AD
+        </div>
+        {/* espigas cruzadas na base */}
+        <div style={{ position: "absolute", right: 130, bottom: -34 }}>
+          <WheatCrest size={230} color={accent} opacity={0.28} />
+        </div>
       </>
     }
   >
@@ -519,30 +635,14 @@ const S00Capa = () => (
               "radial-gradient(1000px 560px at 78% 12%, rgba(31,107,82,.45), transparent 68%), radial-gradient(760px 500px at 12% 96%, rgba(216,186,128,.12), transparent 66%)",
           }}
         />
-        <div
-          style={{
-            position: "absolute",
-            right: 90,
-            top: 150,
-            width: 520,
-            height: 520,
-            borderRadius: 28,
-            border: `1px solid rgba(255,255,255,.10)`,
-            transform: "rotate(12deg)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            right: 150,
-            top: 210,
-            width: 400,
-            height: 400,
-            borderRadius: 24,
-            border: `1px solid ${C.sand}3A`,
-            transform: "rotate(12deg)",
-          }}
-        />
+        {/* halo do escudo */}
+        <div style={{ position: "absolute", right: 108, top: 128 }}>
+          <ShieldOutline size={660} color={C.sand} opacity={0.22} strokeWidth={1.2} />
+        </div>
+        {/* logo da marca */}
+        <div style={{ position: "absolute", right: 176, top: 232 }}>
+          <Logo size={430} />
+        </div>
       </>
     }
   >
@@ -2163,23 +2263,32 @@ const S36Encerramento = () => (
               "radial-gradient(760px 460px at 20% 20%, rgba(45,125,210,.22), transparent 65%), radial-gradient(700px 460px at 85% 90%, rgba(23,166,115,.18), transparent 65%)",
           }}
         />
+        <div style={{ position: "absolute", right: 96, top: 150 }}>
+          <ShieldOutline size={520} color={C.sand} opacity={0.2} strokeWidth={1.2} />
+        </div>
+        <div style={{ position: "absolute", right: 152, top: 216 }}>
+          <Logo size={330} />
+        </div>
+        <div style={{ position: "absolute", right: 40, bottom: -50 }}>
+          <WheatCrest size={220} color={C.sand} opacity={0.13} />
+        </div>
       </>
     }
   >
     <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-      <div className="flex items-center" style={{ gap: 12 }}>
-        {[C.blue, C.green, C.yellow, C.red].map((c) => (
-          <span key={c} style={{ width: 40, height: 6, background: c, borderRadius: 3 }} />
-        ))}
+      <div className="flex items-center" style={{ gap: 16 }}>
+        <Monogram size={40} />
+        <span style={{ width: 74, height: 4, background: C.sand, borderRadius: 2 }} />
+        <span style={{ width: 30, height: 4, background: "rgba(255,255,255,.3)", borderRadius: 2 }} />
       </div>
-      <h2 style={{ marginTop: 26, fontSize: 79, fontWeight: 800, color: C.white, letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: 1100 }}>
-        Obrigada. <span style={{ color: C.yellow }}>Vamos auditar com critério.</span>
+      <h2 style={{ marginTop: 26, fontSize: 74, fontWeight: 800, color: C.white, letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: 940 }}>
+        Obrigada. <span style={{ color: C.sand }}>Vamos auditar com critério.</span>
       </h2>
       <p style={{ marginTop: 18, fontSize: 28, color: "rgba(255,255,255,.72)", maxWidth: 820, lineHeight: 1.4 }}>
         Dúvidas, aprofundamento e aplicação prática na sua organização.
       </p>
 
-      <div style={{ marginTop: 46, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 18, maxWidth: 1330 }}>
+      <div style={{ marginTop: 42, display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 18, maxWidth: 980 }}>
         {([
           [MapPin, C.blue, "Endereço", "Av. Fagundes Filho, 145 — Conj. 31/32, São Paulo/SP"],
           [Phone, C.green, "Telefone", "(11) 2771-8515 · (11) 2628-6095"],
