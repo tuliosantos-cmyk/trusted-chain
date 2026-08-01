@@ -44,13 +44,13 @@ const CANVAS_H = 900;
 const PAD = 64;
 
 const T = {
-  hero: 64,
-  title: 44,
-  subtitle: 28,
-  lead: 21,
-  body: 17,
-  small: 15,
-  label: 13,
+  hero: 80,
+  title: 56,
+  subtitle: 36,
+  lead: 27,
+  body: 22,
+  small: 19,
+  label: 16,
 } as const;
 
 /* Identidade visual — Anne Dezan
@@ -267,7 +267,7 @@ const Foot = ({ n, dark = false }: { n: string; dark?: boolean }) => (
 );
 
 const Body = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex-1 flex flex-col" style={{ paddingBottom: 30 }}>
+  <div className="flex-1 flex flex-col" style={{ paddingBottom: 44, gap: 20 }}>
     {children}
   </div>
 );
@@ -293,10 +293,11 @@ const Card = ({
       border: `1px solid ${C.line}`,
       borderTop: `4px solid ${color}`,
       borderRadius: 14,
-      padding: compact ? "18px 20px" : "22px 24px",
+      padding: compact ? "22px 24px" : "28px 30px",
       display: "flex",
       flexDirection: "column",
-      gap: 10,
+      justifyContent: "center",
+      gap: 12,
       minWidth: 0,
     }}
   >
@@ -305,20 +306,20 @@ const Card = ({
         {Icon && (
           <span
             style={{
-              width: 40,
-              height: 40,
-              borderRadius: 10,
+              width: 50,
+              height: 50,
+              borderRadius: 12,
               background: `${color}1A`,
               display: "grid",
               placeItems: "center",
               flexShrink: 0,
             }}
           >
-            <Icon size={22} color={color} strokeWidth={2.2} />
+            <Icon size={28} color={color} strokeWidth={2.2} />
           </span>
         )}
         {title && (
-          <h3 style={{ fontSize: 21, fontWeight: 800, color: C.ink, lineHeight: 1.15, letterSpacing: "-0.01em" }}>
+          <h3 style={{ fontSize: 27, fontWeight: 800, color: C.ink, lineHeight: 1.15, letterSpacing: "-0.01em" }}>
             {title}
           </h3>
         )}
@@ -351,10 +352,10 @@ const Note = ({
       background: dark ? "rgba(255,255,255,.06)" : `${color}14`,
       border: `1px solid ${color}55`,
       borderRadius: 14,
-      padding: "18px 22px",
+      padding: "22px 26px",
     }}
   >
-    <Icon size={24} color={color} strokeWidth={2.2} style={{ flexShrink: 0, marginTop: 2 }} />
+    <Icon size={30} color={color} strokeWidth={2.2} style={{ flexShrink: 0, marginTop: 2 }} />
     <div>
       <div style={{ fontSize: T.small, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: dark ? C.white : C.ink }}>
         {title}
@@ -368,7 +369,7 @@ const Note = ({
 
 const Bullet = ({ color = C.green, children }: { color?: string; children: React.ReactNode }) => (
   <li className="flex items-start" style={{ gap: 14 }}>
-    <CheckCircle2 size={22} color={color} strokeWidth={2.4} style={{ flexShrink: 0, marginTop: 2 }} />
+    <CheckCircle2 size={28} color={color} strokeWidth={2.4} style={{ flexShrink: 0, marginTop: 2 }} />
     <span style={{ fontSize: T.lead, lineHeight: 1.4, color: C.text }}>{children}</span>
   </li>
 );
@@ -422,10 +423,10 @@ const Divider = ({
     <Body>
       <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", maxWidth: 1200 }}>
         <Eyebrow label={modulo} color={accent} />
-        <h2 style={{ marginTop: 16, fontSize: 58, fontWeight: 800, color: C.white, letterSpacing: "-0.025em", lineHeight: 1.05 }}>
+        <h2 style={{ marginTop: 16, fontSize: 74, fontWeight: 800, color: C.white, letterSpacing: "-0.025em", lineHeight: 1.05 }}>
           {title}
         </h2>
-        <p style={{ marginTop: 16, fontSize: 22, color: "rgba(255,255,255,.72)", maxWidth: 900, lineHeight: 1.4 }}>{sub}</p>
+        <p style={{ marginTop: 16, fontSize: 28, color: "rgba(255,255,255,.72)", maxWidth: 900, lineHeight: 1.4 }}>{sub}</p>
 
         <div style={{ marginTop: 44, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 18 }}>
           {items.map(([k, v], i) => {
@@ -440,7 +441,7 @@ const Divider = ({
                   padding: "18px 20px",
                 }}
               >
-                <div style={{ fontSize: 20, fontWeight: 800, color: cols[i % 4] }}>{k}</div>
+                <div style={{ fontSize: 26, fontWeight: 800, color: cols[i % 4] }}>{k}</div>
                 <div style={{ marginTop: 8, fontSize: T.body, lineHeight: 1.4, color: "rgba(255,255,255,.75)" }}>{v}</div>
               </div>
             );
@@ -570,7 +571,7 @@ const S00Capa = () => (
       <h1
         style={{
           marginTop: 20,
-          fontSize: 78,
+          fontSize: 100,
           lineHeight: 0.98,
           fontWeight: 800,
           letterSpacing: "-0.035em",
@@ -582,14 +583,14 @@ const S00Capa = () => (
         <span style={{ color: C.sand }}>ISO 19011</span>
         <span style={{ color: "rgba(255,255,255,.45)" }}>:2026</span>
       </h1>
-      <p style={{ marginTop: 22, fontSize: 26, color: "rgba(255,255,255,.78)", maxWidth: 760, lineHeight: 1.35 }}>
+      <p style={{ marginTop: 22, fontSize: 33, color: "rgba(255,255,255,.78)", maxWidth: 760, lineHeight: 1.35 }}>
         Diretrizes para auditorias de sistemas de gestão — do princípio à decisão.
       </p>
 
       <div style={{ marginTop: 46, display: "flex", alignItems: "center", gap: 22 }}>
         <div style={{ width: 3, height: 66, background: C.sand, borderRadius: 2 }} />
         <div>
-          <div style={{ fontSize: 30, fontWeight: 800, color: C.white, letterSpacing: "-0.01em" }}>Anne Dezan</div>
+          <div style={{ fontSize: 38, fontWeight: 800, color: C.white, letterSpacing: "-0.01em" }}>Anne Dezan</div>
           <div style={{ fontSize: T.body, color: "rgba(255,255,255,.65)", marginTop: 4 }}>
             Bióloga · Consultora · Auditora Líder · Perita técnica em alimentos
           </div>
@@ -607,7 +608,7 @@ const S01Organizacao = () => (
         title="Como o curso está organizado"
         sub="Quatro blocos encadeados: da base conceitual à avaliação de competência."
       />
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "center" }}>
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "stretch" }}>
         {([
           [BookOpen, C.blue, "01", "Introdução, escopo e princípios", "Base conceitual e linguagem comum."],
           [ClipboardList, C.green, "02", "Gestão do programa", "Objetivos, riscos, métodos e registros."],
@@ -629,11 +630,11 @@ const S01Organizacao = () => (
           >
             <div className="flex items-center justify-between">
               <span style={{ width: 46, height: 46, borderRadius: 12, background: `${col}1F`, display: "grid", placeItems: "center" }}>
-                <Icon size={24} color={col} strokeWidth={2.2} />
+                <Icon size={30} color={col} strokeWidth={2.2} />
               </span>
-              <span style={{ fontSize: 34, fontWeight: 800, color: `${col}55` }}>{num}</span>
+              <span style={{ fontSize: 44, fontWeight: 800, color: `${col}55` }}>{num}</span>
             </div>
-            <h3 style={{ fontSize: 22, fontWeight: 800, color: C.ink, lineHeight: 1.15 }}>{title}</h3>
+            <h3 style={{ fontSize: 28, fontWeight: 800, color: C.ink, lineHeight: 1.15 }}>{title}</h3>
             <p style={{ fontSize: T.body, color: C.mute, lineHeight: 1.45 }}>{desc}</p>
           </div>
         ))}
@@ -657,7 +658,7 @@ const S01Organizacao = () => (
         {["Conceito", "Aplicação prática", "Documentos de suporte", "Exemplo comentado", "Erros comuns"].map((s, i, arr) => (
           <span key={s} style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <span style={{ fontSize: T.lead, color: C.white, fontWeight: 600 }}>{s}</span>
-            {i < arr.length - 1 && <ArrowRight size={18} color={C.sand} />}
+            {i < arr.length - 1 && <ArrowRight size={22} color={C.sand} />}
           </span>
         ))}
       </div>
@@ -692,9 +693,9 @@ const S02Objetivos = () => (
         >
           <div className="flex items-center" style={{ gap: 12 }}>
             <span style={{ width: 42, height: 42, borderRadius: 11, background: `${C.yellow}22`, display: "grid", placeItems: "center" }}>
-              <ClipboardList size={22} color={C.yellow} strokeWidth={2.3} />
+              <ClipboardList size={28} color={C.yellow} strokeWidth={2.3} />
             </span>
-            <h3 style={{ fontSize: 24, fontWeight: 800, color: C.ink }}>Material de apoio</h3>
+            <h3 style={{ fontSize: 31, fontWeight: 800, color: C.ink }}>Material de apoio</h3>
           </div>
           <p style={{ fontSize: T.body, color: C.mute, lineHeight: 1.45 }}>
             Ao longo do curso serão indicados modelos prontos para uso:
@@ -756,7 +757,7 @@ const S04Contexto = () => (
               color: C.white,
             }}
           >
-            <div style={{ fontSize: 28, fontWeight: 800 }}>ISO 19011:2026</div>
+            <div style={{ fontSize: 36, fontWeight: 800 }}>ISO 19011:2026</div>
             <div style={{ fontSize: T.body, color: "rgba(255,255,255,.7)", marginTop: 6 }}>
               Diretrizes gerais para auditorias de sistemas de gestão
             </div>
@@ -782,8 +783,8 @@ const S04Contexto = () => (
                   textAlign: "center",
                 }}
               >
-                <Icon size={26} color={col} strokeWidth={2.2} style={{ margin: "0 auto" }} />
-                <div style={{ marginTop: 10, fontSize: 20, fontWeight: 800, color: C.ink }}>{t}</div>
+                <Icon size={32} color={col} strokeWidth={2.2} style={{ margin: "0 auto" }} />
+                <div style={{ marginTop: 10, fontSize: 26, fontWeight: 800, color: C.ink }}>{t}</div>
                 <div style={{ fontSize: T.small, color: C.mute, marginTop: 4 }}>{d}</div>
               </div>
             ))}
@@ -833,14 +834,14 @@ const S05Conceitos = () => (
                 }}
               >
                 <span style={{ width: 44, height: 44, borderRadius: 12, background: `${col}1C`, display: "grid", placeItems: "center" }}>
-                  <Icon size={23} color={col} strokeWidth={2.2} />
+                  <Icon size={29} color={col} strokeWidth={2.2} />
                 </span>
-                <div style={{ fontSize: 24, fontWeight: 800, color: C.ink }}>{t}</div>
+                <div style={{ fontSize: 31, fontWeight: 800, color: C.ink }}>{t}</div>
                 <div style={{ fontSize: T.body, color: C.mute, lineHeight: 1.45 }}>{d}</div>
               </div>
               {i < 3 && (
                 <div style={{ width: 44, display: "grid", placeItems: "center" }}>
-                  <ArrowRight size={26} color={C.ink} strokeWidth={2.4} />
+                  <ArrowRight size={32} color={C.ink} strokeWidth={2.4} />
                 </div>
               )}
             </div>
@@ -888,9 +889,9 @@ const S06Principios = () => {
                 }}
               >
                 <span style={{ width: 44, height: 44, borderRadius: 12, background: `${col}1C`, display: "grid", placeItems: "center", flexShrink: 0 }}>
-                  <Icon size={23} color={col} strokeWidth={2.2} />
+                  <Icon size={29} color={col} strokeWidth={2.2} />
                 </span>
-                <span style={{ fontSize: 19, fontWeight: 800, color: C.ink, lineHeight: 1.15 }}>{nome}</span>
+                <span style={{ fontSize: 24, fontWeight: 800, color: C.ink, lineHeight: 1.15 }}>{nome}</span>
               </div>
             ))}
             <div
@@ -903,7 +904,7 @@ const S06Principios = () => {
                 justifyContent: "center",
               }}
             >
-              <span style={{ fontSize: 40, fontWeight: 800, color: C.yellow, lineHeight: 1 }}>7</span>
+              <span style={{ fontSize: 51, fontWeight: 800, color: C.yellow, lineHeight: 1 }}>7</span>
               <span style={{ fontSize: T.small, color: "rgba(255,255,255,.7)", marginTop: 6 }}>
                 princípios · uma única base de julgamento
               </span>
@@ -961,7 +962,7 @@ const S07PrincipioDecisao = () => (
                 background: i % 2 ? C.paper : C.white,
               }}
             >
-              <span style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 20, fontWeight: 800, color: C.ink }}>
+              <span style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 26, fontWeight: 800, color: C.ink }}>
                 <span style={{ width: 10, height: 10, borderRadius: 3, background: col }} />
                 {p}
               </span>
@@ -1032,7 +1033,7 @@ const S10PDCA = () => (
                 gap: 10,
               }}
             >
-              <div style={{ fontSize: 34, fontWeight: 800, color: col, letterSpacing: "-0.02em" }}>{t}</div>
+              <div style={{ fontSize: 44, fontWeight: 800, color: col, letterSpacing: "-0.02em" }}>{t}</div>
               <div style={{ fontSize: T.small, fontWeight: 800, color: C.ink, letterSpacing: "0.1em" }}>{cl}</div>
               <div style={{ fontSize: T.body, color: C.mute, lineHeight: 1.45 }}>{d}</div>
             </div>
@@ -1087,7 +1088,7 @@ const S11Objetivos = () => (
 
         <div style={{ display: "grid", placeItems: "center" }}>
           <div style={{ width: 60, height: 60, borderRadius: "50%", background: C.yellow, display: "grid", placeItems: "center" }}>
-            <ArrowRight size={30} color={C.ink} strokeWidth={2.6} />
+            <ArrowRight size={38} color={C.ink} strokeWidth={2.6} />
           </div>
         </div>
 
@@ -1158,7 +1159,7 @@ const S13Decisoes = () => (
   <Slide bg={C.paper} decor={<ColorBar vertical />}>
     <Body>
       <Head eyebrow="5.4" title="Estabelecendo o programa: 4 decisões críticas" accent={C.green} />
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "center" }}>
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "stretch" }}>
         {([
           [UserCheck, C.blue, "Responsável", "Quem gerencia o programa e protege sua integridade?"],
           [Brain, C.green, "Competência", "Que conhecimento é necessário para gerir riscos, métodos e registros?"],
@@ -1182,11 +1183,11 @@ const S13Decisoes = () => (
             <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 6, background: col }} />
             <div className="flex items-center justify-between">
               <span style={{ width: 48, height: 48, borderRadius: 12, background: `${col}1C`, display: "grid", placeItems: "center" }}>
-                <Icon size={25} color={col} strokeWidth={2.2} />
+                <Icon size={31} color={col} strokeWidth={2.2} />
               </span>
-              <span style={{ fontSize: 30, fontWeight: 800, color: `${col}44` }}>0{i + 1}</span>
+              <span style={{ fontSize: 38, fontWeight: 800, color: `${col}44` }}>0{i + 1}</span>
             </div>
-            <h3 style={{ fontSize: 24, fontWeight: 800, color: C.ink }}>{t}</h3>
+            <h3 style={{ fontSize: 31, fontWeight: 800, color: C.ink }}>{t}</h3>
             <p style={{ fontSize: T.body, color: C.mute, lineHeight: 1.45 }}>{d}</p>
           </div>
         ))}
@@ -1245,7 +1246,7 @@ const S14Implementacao = () => (
                   </div>
                   {i < arr.length - 1 && (
                     <div style={{ width: 22, display: "grid", placeItems: "center" }}>
-                      <ArrowRight size={18} color={C.mute} strokeWidth={2.4} />
+                      <ArrowRight size={22} color={C.mute} strokeWidth={2.4} />
                     </div>
                   )}
                 </div>
@@ -1307,13 +1308,13 @@ const S15Metodos = () => {
           ))}
 
           <div style={{ background: `${C.blue}12`, border: `1px solid ${C.blue}55`, borderRadius: 10, padding: "16px", display: "grid", alignContent: "center" }}>
-            <span style={{ fontSize: 19, fontWeight: 800, color: C.ink, lineHeight: 1.2 }}>Com interação humana</span>
+            <span style={{ fontSize: 24, fontWeight: 800, color: C.ink, lineHeight: 1.2 }}>Com interação humana</span>
           </div>
           {cell(["Entrevistas", "Observação do trabalho realizado", "Checklists e questionários com o auditado", "Análise documental com o auditado", "Amostragem"], C.blue, C.white)}
           {cell(["Entrevistas por meio interativo", "Observação com guia remoto", "Checklists com participação do auditado", "Análise documental compartilhada", "Amostragem"], C.blue, C.white)}
 
           <div style={{ background: `${C.green}12`, border: `1px solid ${C.green}55`, borderRadius: 10, padding: "16px", display: "grid", alignContent: "center" }}>
-            <span style={{ fontSize: 19, fontWeight: 800, color: C.ink, lineHeight: 1.2 }}>Sem interação humana</span>
+            <span style={{ fontSize: 24, fontWeight: 800, color: C.ink, lineHeight: 1.2 }}>Sem interação humana</span>
           </div>
           {cell(["Análise de informação documentada", "Observação do trabalho realizado", "Visita ao local", "Preenchimento de checklists", "Amostragem"], C.green, C.white)}
           {cell(["Análise de informação documentada e dados", "Observação por meios de monitoramento", "Análise de dados", "Atenção a requisitos legais e sociais"], C.green, C.white)}
@@ -1352,8 +1353,8 @@ const S16Remoto = () => (
                 gap: 14,
               }}
             >
-              <HelpCircle size={30} color={col} strokeWidth={2.2} />
-              <span style={{ fontSize: 20, fontWeight: 700, color: C.ink, lineHeight: 1.25 }}>{q}</span>
+              <HelpCircle size={38} color={col} strokeWidth={2.2} />
+              <span style={{ fontSize: 26, fontWeight: 700, color: C.ink, lineHeight: 1.25 }}>{q}</span>
             </div>
           ))}
         </div>
@@ -1397,17 +1398,17 @@ const S17Monitorar = () => (
                 }}
               >
                 <div style={{ fontSize: T.label, fontWeight: 800, letterSpacing: "0.18em", color: col }}>{cl}</div>
-                <div style={{ fontSize: 23, fontWeight: 800, color: C.ink, marginTop: 8, lineHeight: 1.15 }}>{t}</div>
+                <div style={{ fontSize: 29, fontWeight: 800, color: C.ink, marginTop: 8, lineHeight: 1.15 }}>{t}</div>
               </div>
               {i < arr.length - 1 && (
                 <div style={{ width: 46, display: "grid", placeItems: "center" }}>
-                  <ArrowRight size={24} color={C.ink} strokeWidth={2.4} />
+                  <ArrowRight size={30} color={C.ink} strokeWidth={2.4} />
                 </div>
               )}
             </div>
           ))}
           <div style={{ width: 56, display: "grid", placeItems: "center" }}>
-            <Repeat size={28} color={C.mute} strokeWidth={2.2} />
+            <Repeat size={35} color={C.mute} strokeWidth={2.2} />
           </div>
         </div>
 
@@ -1517,7 +1518,7 @@ const S21Iniciacao = () => (
   <Slide bg={C.paper} decor={<ColorBar vertical />}>
     <Body>
       <Head eyebrow="6.2" title="Iniciação e viabilidade: antes de abrir a auditoria" accent={C.blue} />
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "center" }}>
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "stretch" }}>
         {([
           [ShieldCheck, C.blue, "Autoridade", "Há autorização e canal de comunicação definido?"],
           [Target, C.green, "Escopo", "Objetivos, critérios e limites estão claros?"],
@@ -1553,7 +1554,7 @@ const S22Plano = () => (
                 borderLeft: `5px solid ${[C.blue, C.green, C.yellow][i]}`,
                 borderRadius: 12,
                 padding: "18px 20px",
-                fontSize: 20,
+                fontSize: 26,
                 fontWeight: 700,
                 color: C.ink,
               }}
@@ -1571,8 +1572,8 @@ const S22Plano = () => (
             textAlign: "center",
           }}
         >
-          <ClipboardList size={38} color={C.yellow} strokeWidth={2.2} style={{ margin: "0 auto" }} />
-          <div style={{ marginTop: 14, fontSize: 28, fontWeight: 800, color: C.white, lineHeight: 1.15 }}>
+          <ClipboardList size={48} color={C.yellow} strokeWidth={2.2} style={{ margin: "0 auto" }} />
+          <div style={{ marginTop: 14, fontSize: 36, fontWeight: 800, color: C.white, lineHeight: 1.15 }}>
             Plano de auditoria
           </div>
           <div style={{ marginTop: 10, fontSize: T.body, color: "rgba(255,255,255,.7)", lineHeight: 1.4 }}>
@@ -1590,7 +1591,7 @@ const S22Plano = () => (
                 borderRight: `5px solid ${[C.red, C.blue, C.green][i]}`,
                 borderRadius: 12,
                 padding: "18px 20px",
-                fontSize: 20,
+                fontSize: 26,
                 fontWeight: 700,
                 color: C.ink,
                 textAlign: "right",
@@ -1637,8 +1638,8 @@ const S23Trilha = () => (
                 gap: 14,
               }}
             >
-              <Icon size={26} color={col} strokeWidth={2.2} style={{ flexShrink: 0 }} />
-              <span style={{ fontSize: 19, fontWeight: 700, color: C.ink, lineHeight: 1.2 }}>{t}</span>
+              <Icon size={32} color={col} strokeWidth={2.2} style={{ flexShrink: 0 }} />
+              <span style={{ fontSize: 24, fontWeight: 700, color: C.ink, lineHeight: 1.2 }}>{t}</span>
             </div>
           ))}
         </div>
@@ -1653,8 +1654,8 @@ const S23Trilha = () => (
             gap: 14,
           }}
         >
-          <Target size={36} color={C.yellow} strokeWidth={2.2} />
-          <div style={{ fontSize: 26, fontWeight: 800, color: C.white, lineHeight: 1.15 }}>
+          <Target size={45} color={C.yellow} strokeWidth={2.2} />
+          <div style={{ fontSize: 33, fontWeight: 800, color: C.white, lineHeight: 1.15 }}>
             Risco e objetivo da auditoria definem a trilha
           </div>
           <div style={{ fontSize: T.body, color: "rgba(255,255,255,.72)", lineHeight: 1.45 }}>
@@ -1700,7 +1701,7 @@ const S24Conducao = () => (
                   </div>
                   {i < arr.length - 1 && (
                     <div style={{ width: 20, display: "grid", placeItems: "center" }}>
-                      <ArrowRight size={16} color={C.mute} strokeWidth={2.4} />
+                      <ArrowRight size={20} color={C.mute} strokeWidth={2.4} />
                     </div>
                   )}
                 </div>
@@ -1796,12 +1797,12 @@ const S26Constatacao = () => (
                   padding: "26px 22px",
                 }}
               >
-                <div style={{ fontSize: 25, fontWeight: 800, color: C.ink }}>{t}</div>
+                <div style={{ fontSize: 32, fontWeight: 800, color: C.ink }}>{t}</div>
                 <div style={{ marginTop: 10, fontSize: T.body, color: C.mute, lineHeight: 1.45 }}>{d}</div>
               </div>
               {i < arr.length - 1 && (
                 <div style={{ width: 44, display: "grid", placeItems: "center" }}>
-                  <ArrowRight size={24} color={C.ink} strokeWidth={2.4} />
+                  <ArrowRight size={30} color={C.ink} strokeWidth={2.4} />
                 </div>
               )}
             </div>
@@ -1826,7 +1827,7 @@ const S27Relatorio = () => (
   <Slide bg={C.paper} decor={<ColorBar vertical />}>
     <Body>
       <Head eyebrow="6.5 a 6.7" title="Relatório e follow-up" accent={C.blue} />
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "center" }}>
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, alignContent: "stretch" }}>
         {([
           [UserCheck, C.blue, "Identificação", "Auditado, equipe, datas, locais físicos e virtuais."],
           [Target, C.green, "Base da auditoria", "Objetivos, escopo, critérios e métodos."],
@@ -1901,7 +1902,7 @@ const S30Camadas = () => (
               }}
             >
               <span style={{ width: 12, height: 12, borderRadius: 4, background: col === C.ink ? C.yellow : col }} />
-              <span style={{ fontSize: 21, fontWeight: 700, color: col === C.ink ? C.white : C.ink }}>{t}</span>
+              <span style={{ fontSize: 27, fontWeight: 700, color: col === C.ink ? C.white : C.ink }}>{t}</span>
             </div>
           </div>
         ))}
@@ -1919,7 +1920,7 @@ const S31QuemDefine = () => (
   <Slide bg={C.paper} decor={<ColorBar vertical />}>
     <Body>
       <Head eyebrow="Dúvida comum" title="Quem define os critérios de competência?" accent={C.yellow} />
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22, alignContent: "center" }}>
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22, alignContent: "stretch" }}>
         {([
           [Building2, C.blue, "1ª parte", "A própria organização, conforme processos, riscos, normas e objetivos internos."],
           [Handshake, C.green, "2ª parte", "O cliente da auditoria ou gestor do programa, considerando cadeia, contrato e criticidade."],
@@ -1939,9 +1940,9 @@ const S31QuemDefine = () => (
             }}
           >
             <span style={{ width: 52, height: 52, borderRadius: 13, background: `${col}1C`, display: "grid", placeItems: "center" }}>
-              <Icon size={27} color={col} strokeWidth={2.2} />
+              <Icon size={34} color={col} strokeWidth={2.2} />
             </span>
-            <h3 style={{ fontSize: 27, fontWeight: 800, color: C.ink }}>{t}</h3>
+            <h3 style={{ fontSize: 35, fontWeight: 800, color: C.ink }}>{t}</h3>
             <p style={{ fontSize: T.body, color: C.mute, lineHeight: 1.45 }}>{d}</p>
           </div>
         ))}
@@ -1983,9 +1984,9 @@ const S32Comportamentos = () => (
               }}
             >
               <span style={{ width: 46, height: 46, borderRadius: 12, background: `${col}1C`, display: "grid", placeItems: "center", flexShrink: 0 }}>
-                <Icon size={24} color={col} strokeWidth={2.2} />
+                <Icon size={30} color={col} strokeWidth={2.2} />
               </span>
-              <span style={{ fontSize: 20, fontWeight: 700, color: C.ink, lineHeight: 1.2 }}>{t}</span>
+              <span style={{ fontSize: 26, fontWeight: 700, color: C.ink, lineHeight: 1.2 }}>{t}</span>
             </div>
           ))}
         </div>
@@ -2029,12 +2030,12 @@ const S33Avaliacao = () => (
                   padding: "24px 22px",
                 }}
               >
-                <div style={{ fontSize: 24, fontWeight: 800, color: C.ink }}>{t}</div>
+                <div style={{ fontSize: 31, fontWeight: 800, color: C.ink }}>{t}</div>
                 <div style={{ marginTop: 10, fontSize: T.body, color: C.mute, lineHeight: 1.45 }}>{d}</div>
               </div>
               {i < arr.length - 1 && (
                 <div style={{ width: 40, display: "grid", placeItems: "center" }}>
-                  <ArrowRight size={22} color={C.ink} strokeWidth={2.4} />
+                  <ArrowRight size={28} color={C.ink} strokeWidth={2.4} />
                 </div>
               )}
             </div>
@@ -2078,15 +2079,15 @@ const S34Manutencao = () => (
                   textAlign: "center",
                 }}
               >
-                <div style={{ fontSize: 30, fontWeight: 800, color: C.ink }}>{t}</div>
+                <div style={{ fontSize: 38, fontWeight: 800, color: C.ink }}>{t}</div>
               </div>
               {i < arr.length - 1 ? (
                 <div style={{ width: 52, display: "grid", placeItems: "center" }}>
-                  <ArrowRight size={26} color={C.ink} strokeWidth={2.4} />
+                  <ArrowRight size={32} color={C.ink} strokeWidth={2.4} />
                 </div>
               ) : (
                 <div style={{ width: 52, display: "grid", placeItems: "center" }}>
-                  <Repeat size={26} color={C.mute} strokeWidth={2.2} />
+                  <Repeat size={32} color={C.mute} strokeWidth={2.2} />
                 </div>
               )}
             </div>
@@ -2121,7 +2122,7 @@ const S35Mensagens = () => (
   >
     <Body>
       <Head eyebrow="Mensagens finais" title="O que levar deste treinamento" dark />
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, alignContent: "center" }}>
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, alignContent: "stretch" }}>
         {([
           [C.blue, "A norma orienta decisões", "A ISO 19011 orienta decisões de auditoria — não apenas documentação."],
           [C.green, "Risco atravessa tudo", "Risco deve influenciar programa, plano, método, amostra, trilha e relatório."],
@@ -2138,7 +2139,7 @@ const S35Mensagens = () => (
               padding: "26px 26px",
             }}
           >
-            <div style={{ fontSize: 25, fontWeight: 800, color: C.white }}>{t}</div>
+            <div style={{ fontSize: 32, fontWeight: 800, color: C.white }}>{t}</div>
             <div style={{ marginTop: 10, fontSize: T.lead, color: "rgba(255,255,255,.72)", lineHeight: 1.4 }}>{d}</div>
           </div>
         ))}
@@ -2171,10 +2172,10 @@ const S36Encerramento = () => (
           <span key={c} style={{ width: 40, height: 6, background: c, borderRadius: 3 }} />
         ))}
       </div>
-      <h2 style={{ marginTop: 26, fontSize: 62, fontWeight: 800, color: C.white, letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: 1100 }}>
+      <h2 style={{ marginTop: 26, fontSize: 79, fontWeight: 800, color: C.white, letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: 1100 }}>
         Obrigada. <span style={{ color: C.yellow }}>Vamos auditar com critério.</span>
       </h2>
-      <p style={{ marginTop: 18, fontSize: 22, color: "rgba(255,255,255,.72)", maxWidth: 820, lineHeight: 1.4 }}>
+      <p style={{ marginTop: 18, fontSize: 28, color: "rgba(255,255,255,.72)", maxWidth: 820, lineHeight: 1.4 }}>
         Dúvidas, aprofundamento e aplicação prática na sua organização.
       </p>
 
@@ -2198,7 +2199,7 @@ const S36Encerramento = () => (
               gap: 10,
             }}
           >
-            <Icon size={24} color={col} strokeWidth={2.2} />
+            <Icon size={30} color={col} strokeWidth={2.2} />
             <div style={{ fontSize: T.label, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(255,255,255,.55)" }}>
               {t}
             </div>
@@ -2210,7 +2211,7 @@ const S36Encerramento = () => (
       <div style={{ marginTop: 40, display: "flex", alignItems: "center", gap: 18 }}>
         <div style={{ width: 4, height: 52, background: C.yellow, borderRadius: 2 }} />
         <div>
-          <div style={{ fontSize: 24, fontWeight: 800, color: C.white }}>Anne Dezan</div>
+          <div style={{ fontSize: 31, fontWeight: 800, color: C.white }}>Anne Dezan</div>
           <div style={{ fontSize: T.small, color: "rgba(255,255,255,.6)", marginTop: 2 }}>
             Auditora Líder · Consultora em sistemas de gestão
           </div>
