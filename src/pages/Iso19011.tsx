@@ -370,7 +370,10 @@ const Foot = ({ n, dark = false }: { n: string; dark?: boolean }) => (
       fontWeight: 600,
     }}
   >
-    <span>Fundamentos da ISO 19011:2026 · Anne Dezan</span>
+    <span style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <Logo size={32} opacity={dark ? 0.9 : 1} />
+      <span>Fundamentos da ISO 19011:2026 · Anne Dezan</span>
+    </span>
     <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
       <span style={{ width: 26, height: 3, background: dark ? C.sand : C.green, borderRadius: 2 }} />
       {n}
