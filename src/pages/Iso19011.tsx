@@ -2285,14 +2285,14 @@ const S36Encerramento = () => (
         <span style={{ width: 74, height: 4, background: C.sand, borderRadius: 2 }} />
         <span style={{ width: 30, height: 4, background: "rgba(255,255,255,.3)", borderRadius: 2 }} />
       </div>
-      <h2 style={{ marginTop: 26, fontSize: 79, fontWeight: 800, color: C.white, letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: 1100 }}>
-        Obrigada. <span style={{ color: C.yellow }}>Vamos auditar com critério.</span>
+      <h2 style={{ marginTop: 26, fontSize: 74, fontWeight: 800, color: C.white, letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: 940 }}>
+        Obrigada. <span style={{ color: C.sand }}>Vamos auditar com critério.</span>
       </h2>
       <p style={{ marginTop: 18, fontSize: 28, color: "rgba(255,255,255,.72)", maxWidth: 820, lineHeight: 1.4 }}>
         Dúvidas, aprofundamento e aplicação prática na sua organização.
       </p>
 
-      <div style={{ marginTop: 46, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 18, maxWidth: 1330 }}>
+      <div style={{ marginTop: 42, display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 18, maxWidth: 980 }}>
         {([
           [MapPin, C.blue, "Endereço", "Av. Fagundes Filho, 145 — Conj. 31/32, São Paulo/SP"],
           [Phone, C.green, "Telefone", "(11) 2771-8515 · (11) 2628-6095"],
