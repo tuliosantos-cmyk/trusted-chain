@@ -11,6 +11,7 @@ import FsscV7 from "./pages/FsscV7.tsx";
 import Korin360 from "./pages/Korin360.tsx";
 import MyTS360 from "./pages/MyTS360.tsx";
 import MytsPassaporte from "./pages/MytsPassaporte.tsx";
+import Iso19011 from "./pages/Iso19011.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
