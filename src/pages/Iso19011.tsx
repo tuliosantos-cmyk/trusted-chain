@@ -296,7 +296,8 @@ const Card = ({
       padding: compact ? "22px 24px" : "28px 30px",
       display: "flex",
       flexDirection: "column",
-      gap: 10,
+      justifyContent: "center",
+      gap: 12,
       minWidth: 0,
     }}
   >
