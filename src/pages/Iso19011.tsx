@@ -35,6 +35,7 @@ import {
   Mail,
   Link2,
 } from "lucide-react";
+import anneLogo from "@/assets/anne-logo.png.asset.json";
 
 /* ============================================================
    CANVAS FIXO 1600 x 900 — tudo em px reais, escalado por transform
