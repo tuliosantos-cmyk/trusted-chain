@@ -485,7 +485,7 @@ const Table = ({
         <div
           key={i}
           style={{
-            padding: "12px 16px",
+            padding: dense ? "8px 14px" : "12px 16px",
             color: C.white,
             fontSize: T.label,
             fontWeight: 800,
