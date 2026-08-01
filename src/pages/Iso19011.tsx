@@ -510,28 +510,29 @@ const Divider = ({
     decor={
       <>
         <ColorBar />
+        {/* escudo da marca como marca d'água */}
+        <div style={{ position: "absolute", right: 40, top: 90, opacity: 1 }}>
+          <ShieldOutline size={640} color={C.sand} opacity={0.16} strokeWidth={1.4} />
+        </div>
+        {/* monograma dentro do escudo */}
         <div
           style={{
             position: "absolute",
-            right: -140,
-            bottom: -160,
-            width: 620,
-            height: 620,
-            borderRadius: "50%",
-            border: `1px solid ${accent}33`,
+            right: 190,
+            top: 330,
+            color: "rgba(255,255,255,.07)",
+            fontSize: 190,
+            fontWeight: 700,
+            fontFamily: "Georgia, 'Times New Roman', serif",
+            lineHeight: 1,
           }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            right: -40,
-            bottom: -60,
-            width: 380,
-            height: 380,
-            borderRadius: "50%",
-            border: `1px solid ${accent}22`,
-          }}
-        />
+        >
+          AD
+        </div>
+        {/* espigas cruzadas na base */}
+        <div style={{ position: "absolute", right: 130, bottom: -34 }}>
+          <WheatCrest size={230} color={accent} opacity={0.28} />
+        </div>
       </>
     }
   >
