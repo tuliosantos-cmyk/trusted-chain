@@ -464,12 +464,14 @@ const Table = ({
   widths,
   fontSize = 19,
   accent = C.green,
+  dense = false,
 }: {
   head: string[];
   rows: React.ReactNode[][];
   widths?: string[];
   fontSize?: number;
   accent?: string;
+  dense?: boolean;
 }) => (
   <div style={{ border: `1px solid ${C.line}`, borderRadius: 14, overflow: "hidden", background: C.white }}>
     <div
