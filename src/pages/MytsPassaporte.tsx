@@ -914,13 +914,6 @@ const KorinRamp = () => {
 };
 
 const S05Resultados = () => {
-  const cadeias = [
-    ["Amazônia", "Açaí, guaraná e cupuaçu"],
-    ["Nordeste", "Ovos"],
-    ["Mato Grosso", "Castanha de baru"],
-    ["Bahia", "Cacau, licuri, umbu e acerola"],
-    ["Sudeste", "Ovos"],
-  ];
   return (
     <Slide
       bg="bg-hero"
