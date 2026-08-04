@@ -18,6 +18,12 @@ import {
   Network,
   QrCode,
   ClipboardCheck,
+  MapPin,
+  BookOpen,
+  LineChart,
+  Sparkles,
+  Leaf,
+  Trees,
 } from "lucide-react";
 import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
@@ -627,7 +633,8 @@ const S01Abertura = () => (
             className="border-l-4 border-accent-glow font-display italic text-accent-glow"
             style={{ fontSize: 27, lineHeight: 1.3, paddingLeft: 22, marginTop: 30, maxWidth: 860 }}
           >
-            É essa infraestrutura que conecta quem produz valor a quem busca gerar impacto.
+            Cadeias mais transparentes começam com informação que todo mundo pode usar — de quem
+            produz a quem compra, financia e consome.
           </p>
         </div>
 
@@ -913,7 +920,38 @@ const KorinRamp = () => {
   );
 };
 
-const S04Resultados = () => {
+/* ---------- 04 · Como trabalhamos ---------- */
+const S04ComoTrabalhamos = () => {
+  const passos = [
+    {
+      icon: MapPin,
+      titulo: "Mapear e avaliar",
+      texto:
+        "Mapeamos os produtores da cadeia e aplicamos autoavaliações na plataforma para entender o ponto de partida de cada um.",
+      saida: "Diagnóstico por produtor",
+    },
+    {
+      icon: BookOpen,
+      titulo: "Construir trilhas",
+      texto:
+        "Com especialistas de cada cadeia, criamos trilhas de qualidade, social e ambiental — com formação online e conteúdo em vídeo.",
+      saida: "Formação aplicada ao território",
+    },
+    {
+      icon: LineChart,
+      titulo: "Acompanhar com transparência",
+      texto:
+        "O avanço do produtor nas três trilhas é acompanhado e compartilhado automaticamente até o consumidor final.",
+      saida: "Evidência auditável de progresso",
+    },
+    {
+      icon: Handshake,
+      titulo: "Conectar ao mercado",
+      texto:
+        "Lemos a demanda do mercado, construímos parcerias e conectamos produtores a novas oportunidades comerciais.",
+      saida: "Acesso a mercados exigentes",
+    },
+  ];
   const cadeias = [
     ["Amazônia", "Açaí, guaraná e cupuaçu"],
     ["Nordeste", "Ovos"],
@@ -921,6 +959,123 @@ const S04Resultados = () => {
     ["Bahia", "Cacau, licuri, umbu e acerola"],
     ["Sudeste", "Ovos"],
   ];
+  const trilhas = [
+    { icon: ShieldCheck, t: "Qualidade" },
+    { icon: Users, t: "Social" },
+    { icon: TreePine, t: "Ambiental" },
+  ];
+  return (
+    <Slide bg="bg-background" decor={<MytsWatermark style={{ right: -80, top: -70, width: 320 }} />}>
+      <div className="flex h-full flex-col">
+        <SectionLabel n="04" label="COMO TRABALHAMOS" />
+
+        {/* cabeçalho — 104px */}
+        <div className="flex items-end justify-between" style={{ gap: 40, height: 104, marginTop: 20 }}>
+          <h2
+            className="font-display font-black tracking-tight text-primary"
+            style={{ fontSize: T.title, lineHeight: 1.08, maxWidth: 860 }}
+          >
+            Da origem ao mercado: <span className="text-gradient">uma jornada de desenvolvimento</span>
+          </h2>
+          <div className="flex flex-wrap justify-end" style={{ gap: 10, width: 540 }}>
+            {trilhas.map((tr) => (
+              <span
+                key={tr.t}
+                className="flex items-center rounded-full border border-accent/30 bg-accent/5 font-semibold text-primary"
+                style={{ gap: 10, padding: "10px 20px", fontSize: T.body, whiteSpace: "nowrap" }}
+              >
+                <tr.icon style={{ width: 20, height: 20 }} className="text-accent" /> {tr.t}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* trilho de 4 passos — 420px */}
+        <div className="relative" style={{ height: 420, marginTop: 26 }}>
+          <div
+            className="absolute bg-gradient-to-r from-accent/15 via-accent/50 to-accent/15"
+            style={{ left: 60, right: 60, top: 38, height: 2 }}
+          />
+          <div className="relative grid h-full grid-cols-4" style={{ gap: 24 }}>
+            {passos.map((p, i) => (
+              <div
+                key={p.titulo}
+                className="flex h-full flex-col rounded-3xl border border-border bg-card shadow-card"
+                style={{ padding: 28 }}
+              >
+                <div className="flex items-center" style={{ gap: 16 }}>
+                  <span
+                    className="grid shrink-0 place-items-center rounded-2xl bg-gradient-accent font-display font-black text-accent-foreground shadow-glow"
+                    style={{ width: 56, height: 56, fontSize: 26 }}
+                  >
+                    {i + 1}
+                  </span>
+                  <p.icon style={{ width: 30, height: 30 }} className="text-accent" />
+                </div>
+                <h3
+                  className="font-display font-black text-primary"
+                  style={{ fontSize: 26, lineHeight: 1.2, marginTop: 22 }}
+                >
+                  {p.titulo}
+                </h3>
+                <p
+                  className="text-muted-foreground"
+                  style={{ fontSize: 19, lineHeight: 1.5, marginTop: 14 }}
+                >
+                  {p.texto}
+                </p>
+                <div
+                  className="flex items-start border-t border-border"
+                  style={{ gap: 10, marginTop: "auto", paddingTop: 18 }}
+                >
+                  <Check style={{ width: 20, height: 20, flexShrink: 0, marginTop: 1 }} className="text-accent" />
+                  <span
+                    className="font-semibold text-primary"
+                    style={{ fontSize: T.small, lineHeight: 1.3 }}
+                  >
+                    {p.saida}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* faixa cadeias de valor — 108px */}
+        <div
+          className="flex items-center rounded-3xl border border-border bg-secondary/40"
+          style={{ height: 108, marginTop: 22, padding: "0 30px", gap: 26 }}
+        >
+          <span
+            className="font-mono uppercase text-accent"
+            style={{ fontSize: T.mono, letterSpacing: "0.18em", width: 116, lineHeight: 1.4, flexShrink: 0 }}
+          >
+            Cadeias em construção
+          </span>
+          <div className="bg-border" style={{ width: 1, height: 62 }} />
+          <div className="grid flex-1 grid-cols-5" style={{ gap: 18 }}>
+            {cadeias.map(([reg, prod]) => (
+              <div key={reg + prod}>
+                <div className="font-display font-bold text-primary" style={{ fontSize: 18, lineHeight: 1.2 }}>
+                  {reg}
+                </div>
+                <div
+                  className="text-muted-foreground"
+                  style={{ fontSize: T.small, lineHeight: 1.3, marginTop: 4 }}
+                >
+                  {prod}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Slide>
+  );
+};
+
+/* ---------- 05 · Resultados que já existem ---------- */
+const S05Resultados = () => {
   return (
     <Slide
       bg="bg-hero"
@@ -932,7 +1087,7 @@ const S04Resultados = () => {
       }
     >
       <div className="flex h-full flex-col">
-        <SectionLabel n="04" label="RESULTADOS QUE JÁ EXISTEM" light />
+        <SectionLabel n="05" label="RESULTADOS QUE JÁ EXISTEM" light />
 
         {/* cabeçalho */}
         <div className="flex items-end justify-between" style={{ gap: 40, height: 96, marginTop: 20 }}>
@@ -952,7 +1107,7 @@ const S04Resultados = () => {
         </div>
 
         {/* 3 painéis de prova */}
-        <div className="grid grid-cols-3" style={{ gap: 24, height: 452, marginTop: 24 }}>
+        <div className="grid grid-cols-3" style={{ gap: 24, height: 578, marginTop: 24 }}>
           {/* Korin */}
           <div
             className="flex flex-col rounded-3xl border border-accent-glow/30 bg-primary-foreground/[0.08]"
@@ -981,10 +1136,10 @@ const S04Resultados = () => {
             </p>
             <div style={{ marginTop: "auto" }}>
               <KorinRamp />
-              <div className="flex items-center" style={{ gap: 12, marginTop: 10 }}>
-                <QrCode style={{ width: 24, height: 24 }} className="text-accent-glow" />
-                <span className="font-semibold text-primary-foreground" style={{ fontSize: T.body }}>
-                  13.000 acessos à origem via QR code
+              <div className="flex items-start" style={{ gap: 12, marginTop: 10 }}>
+                <QrCode style={{ width: 24, height: 24, flexShrink: 0, marginTop: 2 }} className="text-accent-glow" />
+                <span className="font-semibold text-primary-foreground" style={{ fontSize: T.body, lineHeight: 1.35 }}>
+                  13.000 acessos de consumidores à origem — QR code lido na gôndola
                 </span>
               </div>
             </div>
@@ -1075,47 +1230,16 @@ const S04Resultados = () => {
           </div>
         </div>
 
-        {/* faixa cadeias de valor */}
-        <div
-          className="flex items-center rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.04]"
-          style={{ height: 108, marginTop: 22, padding: "0 30px", gap: 26 }}
-        >
-          <span
-            className="font-mono uppercase text-accent-glow"
-            style={{ fontSize: T.mono, letterSpacing: "0.18em", width: 116, lineHeight: 1.4, flexShrink: 0 }}
-          >
-            Cadeias em construção
-          </span>
-          <div className="bg-primary-foreground/15" style={{ width: 1, height: 62 }} />
-          <div className="grid flex-1 grid-cols-5" style={{ gap: 18 }}>
-            {cadeias.map(([reg, prod]) => (
-              <div key={reg + prod}>
-                <div
-                  className="font-display font-bold text-primary-foreground"
-                  style={{ fontSize: 18, lineHeight: 1.2 }}
-                >
-                  {reg}
-                </div>
-                <div
-                  className="text-primary-foreground/60"
-                  style={{ fontSize: T.small, lineHeight: 1.3, marginTop: 4 }}
-                >
-                  {prod}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </Slide>
   );
 };
 
 /* ---------- 05 · Ciclo virtuoso ---------- */
-const S05Ciclo = () => (
+const S06Ciclo = () => (
   <Slide bg="bg-background" decor={<MytsWatermark style={{ left: -96, top: -64, width: 320 }} />}>
     <div className="flex h-full flex-col">
-      <SectionLabel n="05" label="O CICLO VIRTUOSO" />
+      <SectionLabel n="06" label="O CICLO VIRTUOSO" />
 
       <div className="flex items-stretch" style={{ gap: 40, height: 724, marginTop: 24 }}>
         <div className="flex flex-1 items-center justify-center">
@@ -1179,7 +1303,7 @@ const S05Ciclo = () => (
 );
 
 /* ---------- 05 · Oportunidade estratégica ---------- */
-const S06Oportunidade = () => {
+const S07Oportunidade = () => {
   const blocos = [
     {
       icon: Sprout,
@@ -1213,7 +1337,7 @@ const S06Oportunidade = () => {
       }
     >
       <div className="flex h-full flex-col">
-        <SectionLabel n="06" label="POR QUE É ESTRATÉGICO" light />
+        <SectionLabel n="07" label="POR QUE É ESTRATÉGICO" light />
 
         {/* título — 104px */}
         <h2
@@ -1291,7 +1415,7 @@ const S06Oportunidade = () => {
 };
 
 /* ---------- 06 · Convite ---------- */
-const S07Convite = () => (
+const S08Convite = () => (
   <Slide
     bg="bg-hero"
     decor={
@@ -1303,34 +1427,87 @@ const S07Convite = () => (
   >
     <div className="flex h-full items-stretch" style={{ gap: 56 }}>
       <div className="flex flex-col justify-between" style={{ width: 916 }}>
-        <SectionLabel n="07" label="CONVITE" light />
+        <SectionLabel n="08" label="CONVITE" light />
 
         <div>
           <h2
             className="font-display font-black tracking-tight text-primary-foreground"
-            style={{ fontSize: 54, lineHeight: 1.04 }}
+            style={{ fontSize: 46, lineHeight: 1.06 }}
           >
-            Transformar impacto invisível em <span className="text-gradient">valor reconhecido</span> é
-            o primeiro passo para construir as cadeias que o futuro exige.
+            Vamos co-criar e financiar{" "}
+            <span className="text-gradient">o próximo projeto</span>.
           </h2>
 
           <p
             className="text-primary-foreground/75"
-            style={{ fontSize: T.lead, lineHeight: 1.55, marginTop: 28, maxWidth: 860 }}
+            style={{ fontSize: T.lead, lineHeight: 1.5, marginTop: 18, maxWidth: 880 }}
           >
-            Os produtores, cooperativas e comunidades já fazem sua parte. O próximo passo depende de
-            organizações dispostas a investir na ponte que falta.
+            Buscamos empresas, financiadores, cooperativas e parceiros técnicos para novos pilotos.
+            Se a sua organização tem um território, uma cadeia ou um desafio —{" "}
+            <strong className="font-bold text-primary-foreground">definimos juntos</strong>.
           </p>
+
+          <div className="grid grid-cols-2" style={{ gap: 16, marginTop: 24 }}>
+            {[
+              {
+                icon: Leaf,
+                t: "Cooperativas, agroecologia e SAFs",
+                d: "Fortalecer cooperativas valorizando o conhecimento ecológico tradicional passado entre gerações.",
+              },
+              {
+                icon: Sparkles,
+                t: "Visibilidade da sociobiodiversidade",
+                d: "Dar visibilidade às cadeias da sociobiodiversidade brasileira.",
+              },
+              {
+                icon: ShieldCheck,
+                t: "Produção responsável",
+                d: "Produção responsável e bem-estar animal ao longo de toda a cadeia.",
+              },
+              {
+                icon: Trees,
+                t: "Rastreabilidade e acesso a mercado",
+                d: "Cadeias livres de desmatamento e conexão com mercados exigentes.",
+              },
+            ].map((f) => (
+              <div
+                key={f.t}
+                className="flex rounded-2xl border border-primary-foreground/12 bg-primary-foreground/[0.06]"
+                style={{ gap: 16, padding: 20 }}
+              >
+                <span
+                  className="grid shrink-0 place-items-center rounded-xl bg-accent/15"
+                  style={{ width: 44, height: 44 }}
+                >
+                  <f.icon style={{ width: 24, height: 24 }} className="text-accent-glow" />
+                </span>
+                <div className="min-w-0">
+                  <div
+                    className="font-display font-bold text-primary-foreground"
+                    style={{ fontSize: 19, lineHeight: 1.2 }}
+                  >
+                    {f.t}
+                  </div>
+                  <p
+                    className="text-primary-foreground/65"
+                    style={{ fontSize: T.small, lineHeight: 1.4, marginTop: 6 }}
+                  >
+                    {f.d}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
 
           <div
             className="inline-flex w-fit items-center rounded-full bg-gradient-accent shadow-cta"
-            style={{ gap: 16, padding: "18px 34px", marginTop: 32 }}
+            style={{ gap: 16, padding: "16px 30px", marginTop: 24 }}
           >
-            <Handshake style={{ width: 28, height: 28 }} className="text-accent-foreground" />
-            <span className="font-display font-black text-accent-foreground" style={{ fontSize: 24 }}>
+            <Handshake style={{ width: 26, height: 26 }} className="text-accent-foreground" />
+            <span className="font-display font-black text-accent-foreground" style={{ fontSize: 22 }}>
               Vamos construir essa transformação juntos.
             </span>
-            <ArrowRight style={{ width: 24, height: 24 }} className="text-accent-foreground" />
+            <ArrowRight style={{ width: 22, height: 22 }} className="text-accent-foreground" />
           </div>
         </div>
 
@@ -1435,10 +1612,11 @@ const MytsPassaporte = () => {
     <S01Abertura />
     <S02Problema />
     <S03Infraestrutura />
-    <S04Resultados />
-    <S05Ciclo />
-    <S06Oportunidade />
-    <S07Convite />
+    <S04ComoTrabalhamos />
+    <S05Resultados />
+    <S06Ciclo />
+    <S07Oportunidade />
+    <S08Convite />
   </main>
   );
 };
