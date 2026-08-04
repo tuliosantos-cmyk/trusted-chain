@@ -729,18 +729,14 @@ const S03Infraestrutura = () => {
     {
       icon: Users,
       nome: "Groundd",
-      texto: "Mobiliza pessoas, fortalece comunidades e desenvolve capacidades no território.",
-    },
-    {
-      icon: Satellite,
-      nome: "RAMO",
-      texto: "Transforma o território em evidências verificáveis por meio de inteligência geoespacial.",
+      texto:
+        "Mobiliza pessoas, fortalece comunidades e desenvolve capacidades no território — do diagnóstico à formação técnica.",
     },
     {
       icon: Network,
       nome: "MyTS",
       texto:
-        "Conecta pessoas, evidências e mercado em uma infraestrutura digital de confiança, governança e rastreabilidade.",
+        "Conecta pessoas, evidências e mercado numa infraestrutura digital de confiança, governança e rastreabilidade — incluindo evidências de território levantadas com parceiros técnicos especializados.",
     },
   ];
   const viabiliza = [
