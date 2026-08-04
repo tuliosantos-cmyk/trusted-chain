@@ -18,7 +18,6 @@ import {
   Network,
   QrCode,
   ClipboardCheck,
-  Layers,
 } from "lucide-react";
 import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
