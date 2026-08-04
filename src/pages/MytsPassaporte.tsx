@@ -1075,37 +1075,6 @@ const S05Resultados = () => {
           </div>
         </div>
 
-        {/* faixa cadeias de valor */}
-        <div
-          className="flex items-center rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.04]"
-          style={{ height: 108, marginTop: 22, padding: "0 30px", gap: 26 }}
-        >
-          <span
-            className="font-mono uppercase text-accent-glow"
-            style={{ fontSize: T.mono, letterSpacing: "0.18em", width: 116, lineHeight: 1.4, flexShrink: 0 }}
-          >
-            Cadeias em construção
-          </span>
-          <div className="bg-primary-foreground/15" style={{ width: 1, height: 62 }} />
-          <div className="grid flex-1 grid-cols-5" style={{ gap: 18 }}>
-            {cadeias.map(([reg, prod]) => (
-              <div key={reg + prod}>
-                <div
-                  className="font-display font-bold text-primary-foreground"
-                  style={{ fontSize: 18, lineHeight: 1.2 }}
-                >
-                  {reg}
-                </div>
-                <div
-                  className="text-primary-foreground/60"
-                  style={{ fontSize: T.small, lineHeight: 1.3, marginTop: 4 }}
-                >
-                  {prod}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </Slide>
   );
