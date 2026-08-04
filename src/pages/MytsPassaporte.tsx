@@ -877,10 +877,10 @@ const S03Infraestrutura = () => {
 };
 
 /* ---------- 04 · Ciclo virtuoso ---------- */
-const S04Ciclo = () => (
+const S05Ciclo = () => (
   <Slide bg="bg-background" decor={<MytsWatermark style={{ left: -96, top: -64, width: 320 }} />}>
     <div className="flex h-full flex-col">
-      <SectionLabel n="04" label="O CICLO VIRTUOSO" />
+      <SectionLabel n="05" label="O CICLO VIRTUOSO" />
 
       <div className="flex items-stretch" style={{ gap: 40, height: 724, marginTop: 24 }}>
         <div className="flex flex-1 items-center justify-center">
@@ -934,7 +934,7 @@ const S04Ciclo = () => (
 );
 
 /* ---------- 05 · Oportunidade estratégica ---------- */
-const S05Oportunidade = () => {
+const S06Oportunidade = () => {
   const blocos = [
     {
       icon: Sprout,
@@ -968,7 +968,7 @@ const S05Oportunidade = () => {
       }
     >
       <div className="flex h-full flex-col">
-        <SectionLabel n="05" label="POR QUE É ESTRATÉGICO" light />
+        <SectionLabel n="06" label="POR QUE É ESTRATÉGICO" light />
 
         {/* título — 104px */}
         <h2
@@ -1046,7 +1046,7 @@ const S05Oportunidade = () => {
 };
 
 /* ---------- 06 · Convite ---------- */
-const S06Convite = () => (
+const S07Convite = () => (
   <Slide
     bg="bg-hero"
     decor={
@@ -1058,7 +1058,7 @@ const S06Convite = () => (
   >
     <div className="flex h-full items-stretch" style={{ gap: 56 }}>
       <div className="flex flex-col justify-between" style={{ width: 916 }}>
-        <SectionLabel n="06" label="CONVITE" light />
+        <SectionLabel n="07" label="CONVITE" light />
 
         <div>
           <h2
