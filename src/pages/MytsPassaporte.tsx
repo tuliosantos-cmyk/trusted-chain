@@ -15,13 +15,14 @@ import {
   ArrowRight,
   Handshake,
   Landmark,
-  Satellite,
   Network,
+  QrCode,
+  ClipboardCheck,
+  Layers,
 } from "lucide-react";
 import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
 import grounddAsset from "@/assets/logos/groundd.png.asset.json";
-import ramoAsset from "@/assets/logos/ramo.png.asset.json";
 import korinAsset from "@/assets/logos/korin.png.asset.json";
 import carrefourAsset from "@/assets/logos/carrefour.png.asset.json";
 import produtorImg from "@/assets/passaporte/produtor.jpg";
@@ -494,7 +495,7 @@ const S00Capa = () => (
             className="font-mono uppercase text-primary-foreground/60"
             style={{ fontSize: T.mono, letterSpacing: "0.24em" }}
           >
-            Groundd · RAMO
+            Com Groundd
           </span>
         </div>
       </div>
@@ -592,7 +593,7 @@ const S01Abertura = () => (
             className="font-mono uppercase text-primary-foreground/60"
             style={{ fontSize: T.mono, letterSpacing: "0.24em" }}
           >
-            Groundd · RAMO
+            Com Groundd
           </span>
         </div>
 
@@ -727,18 +728,15 @@ const S03Infraestrutura = () => {
     {
       icon: Users,
       nome: "Groundd",
-      texto: "Mobiliza pessoas, fortalece comunidades e desenvolve capacidades no território.",
-    },
-    {
-      icon: Satellite,
-      nome: "RAMO",
-      texto: "Transforma o território em evidências verificáveis por meio de inteligência geoespacial.",
+      // [GROUNDD — inserir números dos projetos na África quando disponíveis]
+      texto:
+        "Mobiliza pessoas, fortalece comunidades e desenvolve capacidades no território — do diagnóstico à formação técnica.",
     },
     {
       icon: Network,
       nome: "MyTS",
       texto:
-        "Conecta pessoas, evidências e mercado em uma infraestrutura digital de confiança, governança e rastreabilidade.",
+        "Conecta pessoas, evidências e mercado numa infraestrutura digital de confiança, governança e rastreabilidade — incluindo evidências de território levantadas com parceiros técnicos especializados.",
     },
   ];
   const viabiliza = [
@@ -874,11 +872,284 @@ const S03Infraestrutura = () => {
   );
 };
 
-/* ---------- 04 · Ciclo virtuoso ---------- */
-const S04Ciclo = () => (
+/* ---------- 04 · Resultados que já existem ---------- */
+const KorinRamp = () => {
+  const bars = [
+    { v: 8, label: "início" },
+    { v: 18, label: "" },
+    { v: 27, label: "" },
+    { v: 38, label: "hoje" },
+  ];
+  const max = 38;
+  return (
+    <svg viewBox="0 0 200 78" style={{ width: "100%", height: 78 }} aria-hidden>
+      <defs>
+        <linearGradient id="korinBar" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stopColor="hsl(214 95% 54%)" />
+          <stop offset="100%" stopColor="hsl(199 95% 60%)" />
+        </linearGradient>
+      </defs>
+      {bars.map((b, i) => {
+        const h = (b.v / max) * 58;
+        return (
+          <rect
+            key={i}
+            x={8 + i * 48}
+            y={62 - h}
+            width={30}
+            height={h}
+            rx={5}
+            fill="url(#korinBar)"
+            opacity={i === bars.length - 1 ? 1 : 0.4 + i * 0.12}
+          />
+        );
+      })}
+      <text x={23} y={74} fill="#94a3b8" fontSize="9" textAnchor="middle">
+        início
+      </text>
+      <text x={167} y={74} fill="#7dd3fc" fontSize="9" textAnchor="middle" fontWeight="700">
+        hoje
+      </text>
+    </svg>
+  );
+};
+
+const S04Resultados = () => {
+  const cadeias = [
+    ["Amazônia", "Açaí, guaraná e cupuaçu"],
+    ["Nordeste", "Ovos"],
+    ["Mato Grosso", "Castanha de baru"],
+    ["Bahia", "Cacau, licuri, umbu e acerola"],
+    ["Sudeste", "Ovos"],
+  ];
+  return (
+    <Slide
+      bg="bg-hero"
+      decor={
+        <>
+          <div className="absolute inset-0 grid-pattern opacity-25" />
+          <MytsWatermark style={{ right: -90, top: -60, width: 340 }} />
+        </>
+      }
+    >
+      <div className="flex h-full flex-col">
+        <SectionLabel n="04" label="RESULTADOS QUE JÁ EXISTEM" light />
+
+        {/* cabeçalho */}
+        <div className="flex items-end justify-between" style={{ gap: 40, height: 96, marginTop: 20 }}>
+          <h2
+            className="font-display font-black tracking-tight text-primary-foreground"
+            style={{ fontSize: T.title, lineHeight: 1.08, maxWidth: 960 }}
+          >
+            Isto não é conceito. <span className="text-gradient">Já está rodando.</span>
+          </h2>
+          <p
+            className="text-primary-foreground/60"
+            style={{ fontSize: T.small, lineHeight: 1.45, width: 380, textAlign: "right" }}
+          >
+            Programas ativos com indústria, varejo e associações — com produtores desenvolvidos e
+            origem verificável.
+          </p>
+        </div>
+
+        {/* 4 painéis de prova */}
+        <div className="grid grid-cols-4" style={{ gap: 20, height: 452, marginTop: 24 }}>
+          {/* Plataforma */}
+          <div
+            className="flex flex-col rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06]"
+            style={{ padding: 26 }}
+          >
+            <span
+              className="font-mono uppercase text-accent-glow"
+              style={{ fontSize: T.mono, letterSpacing: "0.18em" }}
+            >
+              Plataforma MyTS
+            </span>
+            <div className="flex flex-1 flex-col justify-center">
+              <div
+                className="font-display font-black text-gradient"
+                style={{ fontSize: 66, lineHeight: 1 }}
+              >
+                2.115
+              </div>
+              <p
+                className="font-semibold text-primary-foreground"
+                style={{ fontSize: T.body, lineHeight: 1.4, marginTop: 14 }}
+              >
+                empresas ativas na plataforma
+              </p>
+            </div>
+            <div className="flex items-center" style={{ gap: 12 }}>
+              <Layers style={{ width: 24, height: 24 }} className="text-accent-glow" />
+              <span className="text-primary-foreground/60" style={{ fontSize: T.small, lineHeight: 1.35 }}>
+                Base única de dados e evidências
+              </span>
+            </div>
+          </div>
+
+          {/* Korin */}
+          <div
+            className="flex flex-col rounded-3xl border border-accent-glow/30 bg-primary-foreground/[0.08]"
+            style={{ padding: 26 }}
+          >
+            <span
+              className="font-mono uppercase text-accent-glow"
+              style={{ fontSize: T.mono, letterSpacing: "0.18em" }}
+            >
+              Sustentabilidade 360
+            </span>
+            <div style={{ marginTop: 14 }}>
+              <PartnerLogo src={korinAsset.url} alt="Korin" height={40} />
+            </div>
+            <div className="flex items-baseline" style={{ gap: 10, marginTop: 16 }}>
+              <span className="font-display font-black text-primary-foreground/45" style={{ fontSize: 34 }}>
+                8
+              </span>
+              <ArrowRight style={{ width: 22, height: 22 }} className="text-accent-glow" />
+              <span className="font-display font-black text-gradient" style={{ fontSize: 52, lineHeight: 1 }}>
+                38
+              </span>
+            </div>
+            <p className="text-primary-foreground/75" style={{ fontSize: T.small, lineHeight: 1.4, marginTop: 6 }}>
+              fornecedores de ovos no programa
+            </p>
+            <div style={{ marginTop: "auto" }}>
+              <KorinRamp />
+              <div className="flex items-center" style={{ gap: 12, marginTop: 8 }}>
+                <QrCode style={{ width: 24, height: 24 }} className="text-accent-glow" />
+                <span className="font-semibold text-primary-foreground" style={{ fontSize: T.small }}>
+                  13.000 acessos à origem via QR code
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Carrefour */}
+          <div
+            className="flex flex-col rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06]"
+            style={{ padding: 26 }}
+          >
+            <span
+              className="font-mono uppercase text-accent-glow"
+              style={{ fontSize: T.mono, letterSpacing: "0.18em" }}
+            >
+              Jornada da Autonomia
+            </span>
+            <div style={{ marginTop: 14 }}>
+              <PartnerLogo src={carrefourAsset.url} alt="Carrefour Brasil" height={40} />
+            </div>
+            <div className="flex flex-col" style={{ gap: 10, marginTop: 20 }}>
+              {[
+                { icon: Users, t: "Trilha social" },
+                { icon: TreePine, t: "Trilha ambiental" },
+                { icon: ShieldCheck, t: "Trilha de qualidade" },
+              ].map((p) => (
+                <div
+                  key={p.t}
+                  className="flex items-center rounded-full border border-accent-glow/25 bg-accent/10"
+                  style={{ gap: 10, padding: "9px 16px" }}
+                >
+                  <p.icon style={{ width: 18, height: 18, flexShrink: 0 }} className="text-accent-glow" />
+                  <span className="font-semibold text-primary-foreground" style={{ fontSize: T.small }}>
+                    {p.t}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p
+              className="text-primary-foreground/65"
+              style={{ fontSize: T.small, lineHeight: 1.4, marginTop: "auto" }}
+            >
+              Mapeamento e desenvolvimento da cadeia de frutas e hortaliças além do fornecedor
+              direto.
+            </p>
+          </div>
+
+          {/* AVAL */}
+          <div
+            className="flex flex-col rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06]"
+            style={{ padding: 26 }}
+          >
+            <span
+              className="font-mono uppercase text-accent-glow"
+              style={{ fontSize: T.mono, letterSpacing: "0.18em" }}
+            >
+              Qualificação digital
+            </span>
+            <span
+              className="font-display font-black text-primary-foreground"
+              style={{ fontSize: 30, marginTop: 14 }}
+            >
+              AVAL Caipira
+            </span>
+            <div className="flex flex-1 flex-col justify-center" style={{ gap: 18 }}>
+              {[
+                { n: "16", t: "empresas associadas", icon: Building2 },
+                { n: "13", t: "autoavaliações concluídas", icon: ClipboardCheck },
+              ].map((s) => (
+                <div key={s.t} className="flex items-center" style={{ gap: 16 }}>
+                  <span
+                    className="font-display font-black text-gradient"
+                    style={{ fontSize: 46, lineHeight: 1, width: 78 }}
+                  >
+                    {s.n}
+                  </span>
+                  <span
+                    className="font-semibold text-primary-foreground/85"
+                    style={{ fontSize: T.small, lineHeight: 1.35 }}
+                  >
+                    {s.t}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <span className="text-primary-foreground/60" style={{ fontSize: T.small, lineHeight: 1.4 }}>
+              Monitoramento e qualificação na avicultura alternativa.
+            </span>
+          </div>
+        </div>
+
+        {/* faixa cadeias de valor */}
+        <div
+          className="flex items-center rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.04]"
+          style={{ height: 108, marginTop: 22, padding: "0 30px", gap: 26 }}
+        >
+          <span
+            className="font-mono uppercase text-accent-glow"
+            style={{ fontSize: T.mono, letterSpacing: "0.18em", width: 116, lineHeight: 1.4, flexShrink: 0 }}
+          >
+            Cadeias em construção
+          </span>
+          <div className="bg-primary-foreground/15" style={{ width: 1, height: 62 }} />
+          <div className="grid flex-1 grid-cols-5" style={{ gap: 18 }}>
+            {cadeias.map(([reg, prod]) => (
+              <div key={reg + prod}>
+                <div
+                  className="font-display font-bold text-primary-foreground"
+                  style={{ fontSize: 18, lineHeight: 1.2 }}
+                >
+                  {reg}
+                </div>
+                <div
+                  className="text-primary-foreground/60"
+                  style={{ fontSize: T.small, lineHeight: 1.3, marginTop: 4 }}
+                >
+                  {prod}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Slide>
+  );
+};
+
+/* ---------- 05 · Ciclo virtuoso ---------- */
+const S05Ciclo = () => (
   <Slide bg="bg-background" decor={<MytsWatermark style={{ left: -96, top: -64, width: 320 }} />}>
     <div className="flex h-full flex-col">
-      <SectionLabel n="04" label="O CICLO VIRTUOSO" />
+      <SectionLabel n="05" label="O CICLO VIRTUOSO" />
 
       <div className="flex items-stretch" style={{ gap: 40, height: 724, marginTop: 24 }}>
         <div className="flex flex-1 items-center justify-center">
@@ -920,9 +1191,28 @@ const S04Ciclo = () => (
             >
               Modelo já validado
             </span>
-            <div className="flex items-center" style={{ gap: 44, marginTop: 22 }}>
-              <PartnerLogo src={korinAsset.url} alt="Korin" height={52} />
-              <PartnerLogo src={carrefourAsset.url} alt="Carrefour" height={52} />
+            <div className="flex items-start" style={{ gap: 32, marginTop: 18 }}>
+              <div>
+                <div className="font-display font-black text-gradient" style={{ fontSize: 40, lineHeight: 1 }}>
+                  38
+                </div>
+                <div className="text-primary-foreground/70" style={{ fontSize: T.small, marginTop: 6 }}>
+                  fornecedores desenvolvidos
+                </div>
+              </div>
+              <div className="bg-primary-foreground/20" style={{ width: 1, height: 54 }} />
+              <div>
+                <div className="font-display font-black text-gradient" style={{ fontSize: 40, lineHeight: 1 }}>
+                  13 mil
+                </div>
+                <div className="text-primary-foreground/70" style={{ fontSize: T.small, marginTop: 6 }}>
+                  acessos à origem
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center" style={{ gap: 40, marginTop: 22 }}>
+              <PartnerLogo src={korinAsset.url} alt="Korin" height={44} />
+              <PartnerLogo src={carrefourAsset.url} alt="Carrefour" height={44} />
             </div>
           </div>
         </div>
@@ -932,7 +1222,7 @@ const S04Ciclo = () => (
 );
 
 /* ---------- 05 · Oportunidade estratégica ---------- */
-const S05Oportunidade = () => {
+const S06Oportunidade = () => {
   const blocos = [
     {
       icon: Sprout,
@@ -966,7 +1256,7 @@ const S05Oportunidade = () => {
       }
     >
       <div className="flex h-full flex-col">
-        <SectionLabel n="05" label="POR QUE É ESTRATÉGICO" light />
+        <SectionLabel n="06" label="POR QUE É ESTRATÉGICO" light />
 
         {/* título — 104px */}
         <h2
@@ -1044,7 +1334,7 @@ const S05Oportunidade = () => {
 };
 
 /* ---------- 06 · Convite ---------- */
-const S06Convite = () => (
+const S07Convite = () => (
   <Slide
     bg="bg-hero"
     decor={
@@ -1056,7 +1346,7 @@ const S06Convite = () => (
   >
     <div className="flex h-full items-stretch" style={{ gap: 56 }}>
       <div className="flex flex-col justify-between" style={{ width: 916 }}>
-        <SectionLabel n="06" label="CONVITE" light />
+        <SectionLabel n="07" label="CONVITE" light />
 
         <div>
           <h2
@@ -1120,10 +1410,9 @@ const S06Convite = () => (
           >
             Realização
           </span>
-          <div className="flex items-center" style={{ gap: 32, marginTop: 22 }}>
-            <img src={mytsLogo} alt="MyTS" style={{ height: 28, filter: "brightness(0) invert(1)" }} />
-            <PartnerLogo src={grounddAsset.url} alt="Groundd" height={28} />
-            <PartnerLogo src={ramoAsset.url} alt="RAMO" height={28} />
+          <div className="flex items-center" style={{ gap: 40, marginTop: 22 }}>
+            <img src={mytsLogo} alt="MyTS" style={{ height: 30, filter: "brightness(0) invert(1)" }} />
+            <PartnerLogo src={grounddAsset.url} alt="Groundd" height={30} />
           </div>
         </div>
       </div>
@@ -1172,7 +1461,7 @@ const MytsPassaporte = () => {
       <title>MyTS — O impacto já existe. O reconhecimento ainda não.</title>
       <meta
         name="description"
-        content="A infraestrutura que transforma o impacto de produtores, cooperativas e comunidades em reconhecimento, acesso ao mercado e geração de valor — MyTS, Groundd e RAMO."
+        content="A infraestrutura que transforma o impacto de produtores, cooperativas e comunidades em reconhecimento, acesso ao mercado e geração de valor — MyTS com Groundd."
       />
     </Helmet>
     {!printMode && (
@@ -1189,9 +1478,10 @@ const MytsPassaporte = () => {
     <S01Abertura />
     <S02Problema />
     <S03Infraestrutura />
-    <S04Ciclo />
-    <S05Oportunidade />
-    <S06Convite />
+    <S04Resultados />
+    <S05Ciclo />
+    <S06Oportunidade />
+    <S07Convite />
   </main>
   );
 };
