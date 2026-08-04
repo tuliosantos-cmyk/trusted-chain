@@ -913,7 +913,7 @@ const KorinRamp = () => {
   );
 };
 
-const S04Resultados = () => {
+const S05Resultados = () => {
   const cadeias = [
     ["Amazônia", "Açaí, guaraná e cupuaçu"],
     ["Nordeste", "Ovos"],
@@ -1112,7 +1112,7 @@ const S04Resultados = () => {
 };
 
 /* ---------- 05 · Ciclo virtuoso ---------- */
-const S05Ciclo = () => (
+const S06Ciclo = () => (
   <Slide bg="bg-background" decor={<MytsWatermark style={{ left: -96, top: -64, width: 320 }} />}>
     <div className="flex h-full flex-col">
       <SectionLabel n="05" label="O CICLO VIRTUOSO" />
@@ -1179,7 +1179,7 @@ const S05Ciclo = () => (
 );
 
 /* ---------- 05 · Oportunidade estratégica ---------- */
-const S06Oportunidade = () => {
+const S07Oportunidade = () => {
   const blocos = [
     {
       icon: Sprout,
@@ -1291,7 +1291,7 @@ const S06Oportunidade = () => {
 };
 
 /* ---------- 06 · Convite ---------- */
-const S07Convite = () => (
+const S08Convite = () => (
   <Slide
     bg="bg-hero"
     decor={
@@ -1435,10 +1435,10 @@ const MytsPassaporte = () => {
     <S01Abertura />
     <S02Problema />
     <S03Infraestrutura />
-    <S04Resultados />
-    <S05Ciclo />
-    <S06Oportunidade />
-    <S07Convite />
+    <S05Resultados />
+    <S06Ciclo />
+    <S07Oportunidade />
+    <S08Convite />
   </main>
   );
 };
