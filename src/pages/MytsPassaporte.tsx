@@ -932,7 +932,7 @@ const S05Resultados = () => {
       }
     >
       <div className="flex h-full flex-col">
-        <SectionLabel n="04" label="RESULTADOS QUE JÁ EXISTEM" light />
+        <SectionLabel n="05" label="RESULTADOS QUE JÁ EXISTEM" light />
 
         {/* cabeçalho */}
         <div className="flex items-end justify-between" style={{ gap: 40, height: 96, marginTop: 20 }}>
@@ -1115,7 +1115,7 @@ const S05Resultados = () => {
 const S06Ciclo = () => (
   <Slide bg="bg-background" decor={<MytsWatermark style={{ left: -96, top: -64, width: 320 }} />}>
     <div className="flex h-full flex-col">
-      <SectionLabel n="05" label="O CICLO VIRTUOSO" />
+      <SectionLabel n="06" label="O CICLO VIRTUOSO" />
 
       <div className="flex items-stretch" style={{ gap: 40, height: 724, marginTop: 24 }}>
         <div className="flex flex-1 items-center justify-center">
@@ -1213,7 +1213,7 @@ const S07Oportunidade = () => {
       }
     >
       <div className="flex h-full flex-col">
-        <SectionLabel n="06" label="POR QUE É ESTRATÉGICO" light />
+        <SectionLabel n="07" label="POR QUE É ESTRATÉGICO" light />
 
         {/* título — 104px */}
         <h2
@@ -1303,7 +1303,7 @@ const S08Convite = () => (
   >
     <div className="flex h-full items-stretch" style={{ gap: 56 }}>
       <div className="flex flex-col justify-between" style={{ width: 916 }}>
-        <SectionLabel n="07" label="CONVITE" light />
+        <SectionLabel n="08" label="CONVITE" light />
 
         <div>
           <h2
