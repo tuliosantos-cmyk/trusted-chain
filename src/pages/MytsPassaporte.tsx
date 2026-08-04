@@ -1415,29 +1415,82 @@ const S08Convite = () => (
         <div>
           <h2
             className="font-display font-black tracking-tight text-primary-foreground"
-            style={{ fontSize: 54, lineHeight: 1.04 }}
+            style={{ fontSize: 46, lineHeight: 1.06 }}
           >
-            Transformar impacto invisível em <span className="text-gradient">valor reconhecido</span> é
-            o primeiro passo para construir as cadeias que o futuro exige.
+            Vamos co-criar e financiar{" "}
+            <span className="text-gradient">o próximo projeto</span>.
           </h2>
 
           <p
             className="text-primary-foreground/75"
-            style={{ fontSize: T.lead, lineHeight: 1.55, marginTop: 28, maxWidth: 860 }}
+            style={{ fontSize: T.lead, lineHeight: 1.5, marginTop: 18, maxWidth: 880 }}
           >
-            Os produtores, cooperativas e comunidades já fazem sua parte. O próximo passo depende de
-            organizações dispostas a investir na ponte que falta.
+            Buscamos empresas, financiadores, cooperativas e parceiros técnicos para novos pilotos.
+            Se a sua organização tem um território, uma cadeia ou um desafio —{" "}
+            <strong className="font-bold text-primary-foreground">definimos juntos</strong>.
           </p>
+
+          <div className="grid grid-cols-2" style={{ gap: 16, marginTop: 24 }}>
+            {[
+              {
+                icon: Leaf,
+                t: "Cooperativas, agroecologia e SAFs",
+                d: "Fortalecer cooperativas valorizando o conhecimento ecológico tradicional passado entre gerações.",
+              },
+              {
+                icon: Sparkles,
+                t: "Visibilidade da sociobiodiversidade",
+                d: "Dar visibilidade às cadeias da sociobiodiversidade brasileira.",
+              },
+              {
+                icon: ShieldCheck,
+                t: "Produção responsável",
+                d: "Produção responsável e bem-estar animal ao longo de toda a cadeia.",
+              },
+              {
+                icon: Trees,
+                t: "Rastreabilidade e acesso a mercado",
+                d: "Cadeias livres de desmatamento e conexão com mercados exigentes.",
+              },
+            ].map((f) => (
+              <div
+                key={f.t}
+                className="flex rounded-2xl border border-primary-foreground/12 bg-primary-foreground/[0.06]"
+                style={{ gap: 16, padding: 20 }}
+              >
+                <span
+                  className="grid shrink-0 place-items-center rounded-xl bg-accent/15"
+                  style={{ width: 44, height: 44 }}
+                >
+                  <f.icon style={{ width: 24, height: 24 }} className="text-accent-glow" />
+                </span>
+                <div className="min-w-0">
+                  <div
+                    className="font-display font-bold text-primary-foreground"
+                    style={{ fontSize: 19, lineHeight: 1.2 }}
+                  >
+                    {f.t}
+                  </div>
+                  <p
+                    className="text-primary-foreground/65"
+                    style={{ fontSize: T.small, lineHeight: 1.4, marginTop: 6 }}
+                  >
+                    {f.d}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
 
           <div
             className="inline-flex w-fit items-center rounded-full bg-gradient-accent shadow-cta"
-            style={{ gap: 16, padding: "18px 34px", marginTop: 32 }}
+            style={{ gap: 16, padding: "16px 30px", marginTop: 24 }}
           >
-            <Handshake style={{ width: 28, height: 28 }} className="text-accent-foreground" />
-            <span className="font-display font-black text-accent-foreground" style={{ fontSize: 24 }}>
+            <Handshake style={{ width: 26, height: 26 }} className="text-accent-foreground" />
+            <span className="font-display font-black text-accent-foreground" style={{ fontSize: 22 }}>
               Vamos construir essa transformação juntos.
             </span>
-            <ArrowRight style={{ width: 24, height: 24 }} className="text-accent-foreground" />
+            <ArrowRight style={{ width: 22, height: 22 }} className="text-accent-foreground" />
           </div>
         </div>
 
