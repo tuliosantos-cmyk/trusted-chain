@@ -945,7 +945,7 @@ const S05Resultados = () => {
         </div>
 
         {/* 3 painéis de prova */}
-        <div className="grid grid-cols-3" style={{ gap: 24, height: 452, marginTop: 24 }}>
+        <div className="grid grid-cols-3" style={{ gap: 24, height: 578, marginTop: 24 }}>
           {/* Korin */}
           <div
             className="flex flex-col rounded-3xl border border-accent-glow/30 bg-primary-foreground/[0.08]"
