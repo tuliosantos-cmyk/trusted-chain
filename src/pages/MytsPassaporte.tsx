@@ -1014,16 +1014,28 @@ const S04ComoTrabalhamos = () => {
                 </div>
                 <h3
                   className="font-display font-black text-primary"
-                  style={{ fontSize: 25, lineHeight: 1.2, marginTop: 22 }}
+                  style={{ fontSize: 26, lineHeight: 1.2, marginTop: 22 }}
                 >
                   {p.titulo}
                 </h3>
                 <p
                   className="text-muted-foreground"
-                  style={{ fontSize: T.body, lineHeight: 1.5, marginTop: 14 }}
+                  style={{ fontSize: 19, lineHeight: 1.5, marginTop: 14 }}
                 >
                   {p.texto}
                 </p>
+                <div
+                  className="flex items-start border-t border-border"
+                  style={{ gap: 10, marginTop: "auto", paddingTop: 18 }}
+                >
+                  <Check style={{ width: 20, height: 20, flexShrink: 0, marginTop: 1 }} className="text-accent" />
+                  <span
+                    className="font-semibold text-primary"
+                    style={{ fontSize: T.small, lineHeight: 1.3 }}
+                  >
+                    {p.saida}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
