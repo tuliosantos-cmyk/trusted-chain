@@ -633,7 +633,8 @@ const S01Abertura = () => (
             className="border-l-4 border-accent-glow font-display italic text-accent-glow"
             style={{ fontSize: 27, lineHeight: 1.3, paddingLeft: 22, marginTop: 30, maxWidth: 860 }}
           >
-            É essa infraestrutura que conecta quem produz valor a quem busca gerar impacto.
+            Cadeias mais transparentes começam com informação que todo mundo pode usar — de quem
+            produz a quem compra, financia e consome.
           </p>
         </div>
 
