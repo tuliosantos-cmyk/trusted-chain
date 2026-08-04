@@ -15,7 +15,6 @@ import {
   ArrowRight,
   Handshake,
   Landmark,
-  Satellite,
   Network,
   QrCode,
   ClipboardCheck,
