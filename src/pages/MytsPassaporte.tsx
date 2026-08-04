@@ -1191,9 +1191,28 @@ const S05Ciclo = () => (
             >
               Modelo já validado
             </span>
-            <div className="flex items-center" style={{ gap: 44, marginTop: 22 }}>
-              <PartnerLogo src={korinAsset.url} alt="Korin" height={52} />
-              <PartnerLogo src={carrefourAsset.url} alt="Carrefour" height={52} />
+            <div className="flex items-start" style={{ gap: 32, marginTop: 18 }}>
+              <div>
+                <div className="font-display font-black text-gradient" style={{ fontSize: 40, lineHeight: 1 }}>
+                  38
+                </div>
+                <div className="text-primary-foreground/70" style={{ fontSize: T.small, marginTop: 6 }}>
+                  fornecedores desenvolvidos
+                </div>
+              </div>
+              <div className="bg-primary-foreground/20" style={{ width: 1, height: 54 }} />
+              <div>
+                <div className="font-display font-black text-gradient" style={{ fontSize: 40, lineHeight: 1 }}>
+                  13 mil
+                </div>
+                <div className="text-primary-foreground/70" style={{ fontSize: T.small, marginTop: 6 }}>
+                  acessos à origem
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center" style={{ gap: 40, marginTop: 22 }}>
+              <PartnerLogo src={korinAsset.url} alt="Korin" height={44} />
+              <PartnerLogo src={carrefourAsset.url} alt="Carrefour" height={44} />
             </div>
           </div>
         </div>
