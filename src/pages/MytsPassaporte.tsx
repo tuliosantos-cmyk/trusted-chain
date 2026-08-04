@@ -928,24 +928,28 @@ const S04ComoTrabalhamos = () => {
       titulo: "Mapear e avaliar",
       texto:
         "Mapeamos os produtores da cadeia e aplicamos autoavaliações na plataforma para entender o ponto de partida de cada um.",
+      saida: "Diagnóstico por produtor",
     },
     {
       icon: BookOpen,
       titulo: "Construir trilhas",
       texto:
         "Com especialistas de cada cadeia, criamos trilhas de qualidade, social e ambiental — com formação online e conteúdo em vídeo.",
+      saida: "Formação aplicada ao território",
     },
     {
       icon: LineChart,
       titulo: "Acompanhar com transparência",
       texto:
         "O avanço do produtor nas três trilhas é acompanhado e compartilhado automaticamente até o consumidor final.",
+      saida: "Evidência auditável de progresso",
     },
     {
       icon: Handshake,
       titulo: "Conectar ao mercado",
       texto:
         "Lemos a demanda do mercado, construímos parcerias e conectamos produtores a novas oportunidades comerciais.",
+      saida: "Acesso a mercados exigentes",
     },
   ];
   const cadeias = [
