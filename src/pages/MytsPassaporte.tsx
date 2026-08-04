@@ -913,6 +913,145 @@ const KorinRamp = () => {
   );
 };
 
+/* ---------- 04 · Como trabalhamos ---------- */
+const S04ComoTrabalhamos = () => {
+  const passos = [
+    {
+      icon: MapPin,
+      titulo: "Mapear e avaliar",
+      texto:
+        "Mapeamos os produtores da cadeia e aplicamos autoavaliações na plataforma para entender o ponto de partida de cada um.",
+    },
+    {
+      icon: BookOpen,
+      titulo: "Construir trilhas",
+      texto:
+        "Com especialistas de cada cadeia, criamos trilhas de qualidade, social e ambiental — com formação online e conteúdo em vídeo.",
+    },
+    {
+      icon: LineChart,
+      titulo: "Acompanhar com transparência",
+      texto:
+        "O avanço do produtor nas três trilhas é acompanhado e compartilhado automaticamente até o consumidor final.",
+    },
+    {
+      icon: Handshake,
+      titulo: "Conectar ao mercado",
+      texto:
+        "Lemos a demanda do mercado, construímos parcerias e conectamos produtores a novas oportunidades comerciais.",
+    },
+  ];
+  const cadeias = [
+    ["Amazônia", "Açaí, guaraná e cupuaçu"],
+    ["Nordeste", "Ovos"],
+    ["Mato Grosso", "Castanha de baru"],
+    ["Bahia", "Cacau, licuri, umbu e acerola"],
+    ["Sudeste", "Ovos"],
+  ];
+  const trilhas = [
+    { icon: ShieldCheck, t: "Qualidade" },
+    { icon: Users, t: "Social" },
+    { icon: TreePine, t: "Ambiental" },
+  ];
+  return (
+    <Slide bg="bg-background" decor={<MytsWatermark style={{ right: -80, top: -70, width: 320 }} />}>
+      <div className="flex h-full flex-col">
+        <SectionLabel n="04" label="COMO TRABALHAMOS" />
+
+        {/* cabeçalho — 104px */}
+        <div className="flex items-end justify-between" style={{ gap: 40, height: 104, marginTop: 20 }}>
+          <h2
+            className="font-display font-black tracking-tight text-primary"
+            style={{ fontSize: T.title, lineHeight: 1.08, maxWidth: 860 }}
+          >
+            Da origem ao mercado: <span className="text-gradient">uma jornada de desenvolvimento</span>
+          </h2>
+          <div className="flex flex-wrap justify-end" style={{ gap: 10, width: 540 }}>
+            {trilhas.map((tr) => (
+              <span
+                key={tr.t}
+                className="flex items-center rounded-full border border-accent/30 bg-accent/5 font-semibold text-primary"
+                style={{ gap: 10, padding: "10px 20px", fontSize: T.body, whiteSpace: "nowrap" }}
+              >
+                <tr.icon style={{ width: 20, height: 20 }} className="text-accent" /> {tr.t}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* trilho de 4 passos — 420px */}
+        <div className="relative" style={{ height: 420, marginTop: 26 }}>
+          <div
+            className="absolute bg-gradient-to-r from-accent/15 via-accent/50 to-accent/15"
+            style={{ left: 60, right: 60, top: 38, height: 2 }}
+          />
+          <div className="relative grid h-full grid-cols-4" style={{ gap: 24 }}>
+            {passos.map((p, i) => (
+              <div
+                key={p.titulo}
+                className="flex h-full flex-col rounded-3xl border border-border bg-card shadow-card"
+                style={{ padding: 28 }}
+              >
+                <div className="flex items-center" style={{ gap: 16 }}>
+                  <span
+                    className="grid shrink-0 place-items-center rounded-2xl bg-gradient-accent font-display font-black text-accent-foreground shadow-glow"
+                    style={{ width: 56, height: 56, fontSize: 26 }}
+                  >
+                    {i + 1}
+                  </span>
+                  <p.icon style={{ width: 30, height: 30 }} className="text-accent" />
+                </div>
+                <h3
+                  className="font-display font-black text-primary"
+                  style={{ fontSize: 25, lineHeight: 1.2, marginTop: 22 }}
+                >
+                  {p.titulo}
+                </h3>
+                <p
+                  className="text-muted-foreground"
+                  style={{ fontSize: T.body, lineHeight: 1.5, marginTop: 14 }}
+                >
+                  {p.texto}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* faixa cadeias de valor — 108px */}
+        <div
+          className="flex items-center rounded-3xl border border-border bg-secondary/40"
+          style={{ height: 108, marginTop: 22, padding: "0 30px", gap: 26 }}
+        >
+          <span
+            className="font-mono uppercase text-accent"
+            style={{ fontSize: T.mono, letterSpacing: "0.18em", width: 116, lineHeight: 1.4, flexShrink: 0 }}
+          >
+            Cadeias em construção
+          </span>
+          <div className="bg-border" style={{ width: 1, height: 62 }} />
+          <div className="grid flex-1 grid-cols-5" style={{ gap: 18 }}>
+            {cadeias.map(([reg, prod]) => (
+              <div key={reg + prod}>
+                <div className="font-display font-bold text-primary" style={{ fontSize: 18, lineHeight: 1.2 }}>
+                  {reg}
+                </div>
+                <div
+                  className="text-muted-foreground"
+                  style={{ fontSize: T.small, lineHeight: 1.3, marginTop: 4 }}
+                >
+                  {prod}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Slide>
+  );
+};
+
+/* ---------- 05 · Resultados que já existem ---------- */
 const S05Resultados = () => {
   return (
     <Slide
