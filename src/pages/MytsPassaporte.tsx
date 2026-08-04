@@ -974,10 +974,10 @@ const S05Resultados = () => {
             </p>
             <div style={{ marginTop: "auto" }}>
               <KorinRamp />
-              <div className="flex items-center" style={{ gap: 12, marginTop: 10 }}>
-                <QrCode style={{ width: 24, height: 24 }} className="text-accent-glow" />
-                <span className="font-semibold text-primary-foreground" style={{ fontSize: T.body }}>
-                  13.000 acessos à origem via QR code
+              <div className="flex items-start" style={{ gap: 12, marginTop: 10 }}>
+                <QrCode style={{ width: 24, height: 24, flexShrink: 0, marginTop: 2 }} className="text-accent-glow" />
+                <span className="font-semibold text-primary-foreground" style={{ fontSize: T.body, lineHeight: 1.35 }}>
+                  13.000 acessos de consumidores à origem — QR code lido na gôndola
                 </span>
               </div>
             </div>
