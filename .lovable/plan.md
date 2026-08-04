@@ -1,32 +1,51 @@
-## Objetivo
+## Resposta ao feedback
 
-Exportar os 7 slides do `/myts-passaporte` em um PDF idêntico ao que aparece na tela — mesmo layout, mesmas cores, mesma tipografia — sem redesenhar nada.
+Concordo com os dois pontos. O deck hoje sustenta o argumento no conceito (infraestrutura, ciclo virtuoso, oportunidade) e só mostra logo de Korin e Carrefour num quadradinho pequeno do slide 04 — sem um único número de resultado. E a RAMO aparece como uma das três camadas centrais do slide 03, com o mesmo peso da MyTS e da Groundd, o que dá evidência demais para ela.
 
-## Como funciona
-
-O deck já é desenhado num canvas fixo de 1600×900 px que é escalado por `transform: scale()`. Isso é exatamente o que precisa para um PDF fiel: basta renderizar cada slide no tamanho nativo, um por página, em páginas de 1600×900 (16:9, formato de apresentação).
+O anexo institucional resolve exatamente a primeira lacuna: a página 4 tem os números reais que faltavam.
 
 ## O que vou fazer
 
-1. **Modo impressão na própria página** — `/myts-passaporte?print`
-   - Cada slide renderiza em 1600×900 sem sombra, sem borda arredondada, sem espaçamento entre eles.
-   - CSS `@page { size: 1600px 900px landscape; margin: 0 }` e quebra de página após cada slide.
-   - Com isso você mesmo pode fazer `Cmd/Ctrl + P → Salvar como PDF` a qualquer momento e sai igual à tela.
+**1. Novo slide dedicado de resultados (entra como 04, deck passa a 8 slides)**
 
-2. **Botão "Baixar PDF"** discreto no topo do deck (some no modo impressão e na apresentação), que abre a rota de impressão e dispara a caixa de impressão.
+Título na linha de "Isto não é conceito. Já está rodando." Quatro painéis de prova, todos com dados do anexo:
 
-3. **PDF gerado agora** — rodo o deck em modo impressão via Chromium headless e entrego o arquivo pronto (`myts-passaporte.pdf`, 7 páginas 16:9) para você baixar aqui mesmo.
+- **Plataforma MyTS** — 2.115 empresas ativas na plataforma
+- **Korin · Sustentabilidade 360** — 8 → 38 fornecedores de ovos no programa; 13.000 acessos via QR code às páginas de origem
+- **Carrefour Brasil · Jornada da Autonomia** — trilhas social, ambiental e qualidade mapeando e desenvolvendo a cadeia de FLV além do fornecedor direto
+- **AVAL Caipira · Qualificação digital** — 16 empresas, 13 autoavaliações
 
-4. **QA visual obrigatório** — converto todas as páginas do PDF em imagem e confiro uma a uma: nada cortado, sem página em branco, fotos e SVGs presentes, fundos escuros renderizados, ordem correta. Corrijo e regero até passar limpo.
+Visual: o card da Korin ganha um mini-gráfico de barras 8→38 (SVG inline, mesmo padrão do deck); Carrefour ganha as três trilhas em pills; números grandes em `text-gradient` sobre fundo escuro, logos em cores originais como já fazemos.
+
+**2. Cadeias de valor como segunda prova**
+
+Faixa no rodapé do novo slide com as cadeias já em construção (Amazônia: açaí, guaraná, cupuaçu · Nordeste: ovos · Mato Grosso: baru · Bahia: cacau, licuri, umbu, acerola · Sudeste: ovos) — mostra alcance territorial real, não promessa.
+
+**3. Groundd sem números**
+
+Não temos dados dos projetos na África. A Groundd continua como camada de mobilização/território no slide 03, com o texto atual, sem inventar métrica. Deixo marcado no código onde entram os números quando você tiver (`[GROUNDD — inserir números África]`), pra ser só preencher.
+
+**4. Remoção total da RAMO**
+
+- Slide 03: a camada "RAMO · inteligência geoespacial" sai; o slide passa a ter duas camadas (Groundd e MyTS), com os cards maiores e mais respiro. A capacidade geoespacial vira uma linha dentro do card da MyTS ("evidências de território via parceiros técnicos"), sem citar nome.
+- Capa (slide 00) e abertura (01): o crédito "Groundd · RAMO" vira só "Groundd".
+- Fechamento: logo da RAMO removida do rodapé.
+- Meta description da página atualizada.
+
+**5. Reforço pontual de prova nos slides existentes**
+
+- Slide 04 (Ciclo virtuoso): o box "Modelo já validado" com logos pequenas é substituído por dois números fortes (38 fornecedores desenvolvidos · 13 mil acessos de origem) com as logos Korin e Carrefour maiores abaixo.
+- Slide 05 (Oportunidade): mantém o dado GIIN, sem mudança.
 
 ## Detalhes técnicos
 
-- No modo `print`, o componente `Slide` ignora o `ResizeObserver` e fixa `scale = 1`, com o `<section>` em 1600×900 exatos.
-- `print-color-adjust: exact` para os fundos escuros e gradientes não serem descartados na impressão.
-- O `ScrollSnap` e o padding do `<main>` são desativados nessa rota.
-- Geração do arquivo com Playwright `page.pdf({ width: 1600, height: 900, printBackground: true })`.
+- Tudo em `src/pages/MytsPassaporte.tsx`, dentro do canvas fixo 1600×900 já existente (`Slide` + `transform: scale`).
+- Novo componente `S04Resultados` + mini-gráfico SVG `KorinRamp`, seguindo os primitivos atuais (`SectionLabel`, `PartnerLogo`, `PhotoSlot`, escala tipográfica `T`).
+- Remoção do import de `ramoAsset` e do arquivo pointer `src/assets/logos/ramo.png.asset.json`.
+- Renumeração das seções (00 → 07) e do array de slides.
 
 ## Não vou fazer
 
-- Não mudo copy, cores, fontes nem posicionamento de nenhum slide.
-- Não mexo em outras rotas do projeto.
+- Não invento número nenhum: só uso o que está no PDF institucional anexo.
+- Não mexo em paleta, tipografia ou no sistema de canvas fixo.
+- Não traduzo o deck; segue em português.
