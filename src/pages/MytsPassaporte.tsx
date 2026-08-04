@@ -18,6 +18,12 @@ import {
   Network,
   QrCode,
   ClipboardCheck,
+  MapPin,
+  BookOpen,
+  LineChart,
+  Sparkles,
+  Leaf,
+  Trees,
 } from "lucide-react";
 import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
