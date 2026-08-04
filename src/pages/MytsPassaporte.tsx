@@ -728,6 +728,7 @@ const S03Infraestrutura = () => {
     {
       icon: Users,
       nome: "Groundd",
+      // [GROUNDD — inserir números dos projetos na África quando disponíveis]
       texto:
         "Mobiliza pessoas, fortalece comunidades e desenvolve capacidades no território — do diagnóstico à formação técnica.",
     },
