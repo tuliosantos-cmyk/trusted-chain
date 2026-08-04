@@ -17,11 +17,13 @@ import {
   Landmark,
   Satellite,
   Network,
+  QrCode,
+  ClipboardCheck,
+  Layers,
 } from "lucide-react";
 import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
 import grounddAsset from "@/assets/logos/groundd.png.asset.json";
-import ramoAsset from "@/assets/logos/ramo.png.asset.json";
 import korinAsset from "@/assets/logos/korin.png.asset.json";
 import carrefourAsset from "@/assets/logos/carrefour.png.asset.json";
 import produtorImg from "@/assets/passaporte/produtor.jpg";
@@ -494,7 +496,7 @@ const S00Capa = () => (
             className="font-mono uppercase text-primary-foreground/60"
             style={{ fontSize: T.mono, letterSpacing: "0.24em" }}
           >
-            Groundd · RAMO
+            Com Groundd
           </span>
         </div>
       </div>
@@ -592,7 +594,7 @@ const S01Abertura = () => (
             className="font-mono uppercase text-primary-foreground/60"
             style={{ fontSize: T.mono, letterSpacing: "0.24em" }}
           >
-            Groundd · RAMO
+            Com Groundd
           </span>
         </div>
 
@@ -1120,10 +1122,9 @@ const S06Convite = () => (
           >
             Realização
           </span>
-          <div className="flex items-center" style={{ gap: 32, marginTop: 22 }}>
-            <img src={mytsLogo} alt="MyTS" style={{ height: 28, filter: "brightness(0) invert(1)" }} />
-            <PartnerLogo src={grounddAsset.url} alt="Groundd" height={28} />
-            <PartnerLogo src={ramoAsset.url} alt="RAMO" height={28} />
+          <div className="flex items-center" style={{ gap: 40, marginTop: 22 }}>
+            <img src={mytsLogo} alt="MyTS" style={{ height: 30, filter: "brightness(0) invert(1)" }} />
+            <PartnerLogo src={grounddAsset.url} alt="Groundd" height={30} />
           </div>
         </div>
       </div>
@@ -1172,7 +1173,7 @@ const MytsPassaporte = () => {
       <title>MyTS — O impacto já existe. O reconhecimento ainda não.</title>
       <meta
         name="description"
-        content="A infraestrutura que transforma o impacto de produtores, cooperativas e comunidades em reconhecimento, acesso ao mercado e geração de valor — MyTS, Groundd e RAMO."
+        content="A infraestrutura que transforma o impacto de produtores, cooperativas e comunidades em reconhecimento, acesso ao mercado e geração de valor — MyTS com Groundd."
       />
     </Helmet>
     {!printMode && (
@@ -1189,9 +1190,10 @@ const MytsPassaporte = () => {
     <S01Abertura />
     <S02Problema />
     <S03Infraestrutura />
-    <S04Ciclo />
-    <S05Oportunidade />
-    <S06Convite />
+    <S04Resultados />
+    <S05Ciclo />
+    <S06Oportunidade />
+    <S07Convite />
   </main>
   );
 };
