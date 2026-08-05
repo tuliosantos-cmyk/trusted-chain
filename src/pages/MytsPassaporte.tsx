@@ -1444,7 +1444,7 @@ const S05bResultadosInfografico = () => (
       </div>
 
       {/* dois painéis inferiores */}
-      <div className="grid grid-cols-2" style={{ gap: 20, height: 240, marginTop: 18 }}>
+      <div className="grid grid-cols-2" style={{ gap: 20, height: 270, marginTop: 18 }}>
         {/* Carrefour */}
         <div
           className="flex flex-col justify-between rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06]"
