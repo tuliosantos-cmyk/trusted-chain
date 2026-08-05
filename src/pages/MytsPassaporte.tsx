@@ -879,11 +879,12 @@ const S03Infraestrutura = () => {
 };
 
 /* ---------- 04 · Resultados que já existem ---------- */
-const KorinRamp = () => {
+const KorinRamp = ({ en = false }: { en?: boolean }) => {
   const bars = [
-    { v: 1, label: "início" },
-    { v: 9, label: "hoje" },
+    { v: 1, label: en ? "start" : "início" },
+    { v: 9, label: en ? "today" : "hoje" },
   ];
+
   const projection = 39; // 9 atuais + 30 da 2ª fase (cadeia de aves)
   const max = 42;
   return (
