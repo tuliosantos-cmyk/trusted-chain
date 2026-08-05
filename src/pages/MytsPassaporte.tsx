@@ -1125,7 +1125,7 @@ const S05Resultados = () => {
           {/* Korin */}
           <div
             className="flex flex-col rounded-3xl border border-accent-glow/30 bg-primary-foreground/[0.08]"
-            style={{ padding: 30 }}
+            style={{ padding: 28 }}
           >
             <span
               className="font-mono uppercase text-accent-glow"
@@ -1133,36 +1133,44 @@ const S05Resultados = () => {
             >
               Sustentabilidade 360
             </span>
-            <div style={{ marginTop: 16 }}>
-              <PartnerLogo src={korinAsset.url} alt="Korin" height={44} />
+            <div style={{ marginTop: 14 }}>
+              <PartnerLogo src={korinAsset.url} alt="Korin" height={40} />
             </div>
-            <div className="flex items-baseline" style={{ gap: 12, marginTop: 18 }}>
-              <span className="font-display font-black text-primary-foreground/45" style={{ fontSize: 38 }}>
-                8
+
+            <div className="flex items-baseline" style={{ gap: 10, marginTop: 16 }}>
+              <span className="font-display font-black text-primary-foreground/50" style={{ fontSize: 32 }}>
+                1
               </span>
-              <ArrowRight style={{ width: 24, height: 24 }} className="text-accent-glow" />
-              <span className="font-display font-black text-gradient" style={{ fontSize: 58, lineHeight: 1 }}>
-                38
+              <ArrowRight style={{ width: 20, height: 20 }} className="text-accent-glow" />
+              <span className="font-display font-black text-gradient" style={{ fontSize: 48, lineHeight: 1 }}>
+                9
               </span>
             </div>
-            <p className="text-primary-foreground/75" style={{ fontSize: T.body, lineHeight: 1.4, marginTop: 8 }}>
-              fornecedores de ovos no programa
+            <p className="text-primary-foreground/75" style={{ fontSize: T.small, lineHeight: 1.4, marginTop: 6 }}>
+              avaliação inicial → produtores atuais no programa
             </p>
+
             <div style={{ marginTop: "auto" }}>
-              <KorinRamp />
-              <div className="flex items-start" style={{ gap: 12, marginTop: 10 }}>
-                <QrCode style={{ width: 24, height: 24, flexShrink: 0, marginTop: 2 }} className="text-accent-glow" />
-                <span className="font-semibold text-primary-foreground" style={{ fontSize: T.body, lineHeight: 1.35 }}>
-                  13.000 acessos de consumidores à origem — QR code lido na gôndola
+              <div className="flex items-start" style={{ gap: 10, marginBottom: 10 }}>
+                <TrendingUp style={{ width: 18, height: 18, flexShrink: 0, marginTop: 3 }} className="text-accent-glow" />
+                <span className="text-primary-foreground/85" style={{ fontSize: T.small, lineHeight: 1.4 }}>
+                  <strong>+30 produtores</strong> na 2ª fase, agora da cadeia de aves (não ovos)
                 </span>
               </div>
+              <div className="flex items-start" style={{ gap: 10, marginBottom: 14 }}>
+                <QrCode style={{ width: 18, height: 18, flexShrink: 0, marginTop: 3 }} className="text-accent-glow" />
+                <span className="text-primary-foreground/85" style={{ fontSize: T.small, lineHeight: 1.4 }}>
+                  <strong>13.000 acessos</strong> de consumidores à origem — QR lido na gôndola
+                </span>
+              </div>
+              <KorinRamp />
             </div>
           </div>
 
           {/* Carrefour */}
           <div
             className="flex flex-col rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06]"
-            style={{ padding: 30 }}
+            style={{ padding: 28 }}
           >
             <span
               className="font-mono uppercase text-accent-glow"
@@ -1170,40 +1178,61 @@ const S05Resultados = () => {
             >
               Jornada da Autonomia
             </span>
-            <div style={{ marginTop: 16 }}>
-              <PartnerLogo src={carrefourAsset.url} alt="Carrefour Brasil" height={44} />
+            <div style={{ marginTop: 14 }}>
+              <PartnerLogo src={carrefourAsset.url} alt="Carrefour Brasil" height={40} />
             </div>
-            <div className="flex flex-col" style={{ gap: 12, marginTop: 22 }}>
-              {[
-                { icon: Users, t: "Trilha social" },
-                { icon: TreePine, t: "Trilha ambiental" },
-                { icon: ShieldCheck, t: "Trilha de qualidade" },
-              ].map((p) => (
-                <div
-                  key={p.t}
-                  className="flex items-center rounded-full border border-accent-glow/25 bg-accent/10"
-                  style={{ gap: 12, padding: "10px 18px" }}
-                >
-                  <p.icon style={{ width: 20, height: 20, flexShrink: 0 }} className="text-accent-glow" />
-                  <span className="font-semibold text-primary-foreground" style={{ fontSize: T.body }}>
-                    {p.t}
-                  </span>
-                </div>
-              ))}
+
+            <div className="flex flex-col" style={{ gap: 14, marginTop: 18 }}>
+              <div className="flex items-center" style={{ gap: 12 }}>
+                <span className="font-display font-black text-gradient" style={{ fontSize: 42, lineHeight: 1, minWidth: 62 }}>
+                  97
+                </span>
+                <span className="text-primary-foreground/85" style={{ fontSize: T.small, lineHeight: 1.35 }}>
+                  empresas na 1ª fase do processo
+                </span>
+              </div>
+              <div className="flex items-center" style={{ gap: 12 }}>
+                <span className="font-display font-black text-gradient" style={{ fontSize: 42, lineHeight: 1, minWidth: 62 }}>
+                  +130
+                </span>
+                <span className="text-primary-foreground/85" style={{ fontSize: T.small, lineHeight: 1.35 }}>
+                  empresas na 2ª fase (Marcas Próprias e Sam's Club)
+                </span>
+              </div>
             </div>
-            <p
-              className="text-primary-foreground/65"
-              style={{ fontSize: T.body, lineHeight: 1.4, marginTop: "auto" }}
-            >
-              Mapeamento e desenvolvimento da cadeia de frutas e hortaliças além do fornecedor
-              direto.
-            </p>
+
+            <div style={{ marginTop: "auto" }}>
+              <div className="flex items-start" style={{ gap: 10, marginBottom: 14 }}>
+                <Network style={{ width: 18, height: 18, flexShrink: 0, marginTop: 3 }} className="text-accent-glow" />
+                <span className="text-primary-foreground/85" style={{ fontSize: T.small, lineHeight: 1.4 }}>
+                  Ao abrir os <em>tiers</em>, o total de empresas envolvidas deve <strong>pelo menos triplicar</strong>
+                </span>
+              </div>
+              <div className="flex flex-col" style={{ gap: 10 }}>
+                {[
+                  { icon: Users, t: "Trilha social" },
+                  { icon: TreePine, t: "Trilha ambiental" },
+                  { icon: ShieldCheck, t: "Trilha de qualidade" },
+                ].map((p) => (
+                  <div
+                    key={p.t}
+                    className="flex items-center rounded-full border border-accent-glow/25 bg-accent/10"
+                    style={{ gap: 10, padding: "8px 14px" }}
+                  >
+                    <p.icon style={{ width: 16, height: 16, flexShrink: 0 }} className="text-accent-glow" />
+                    <span className="font-semibold text-primary-foreground" style={{ fontSize: T.small }}>
+                      {p.t}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* AVAL */}
           <div
             className="flex flex-col rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06]"
-            style={{ padding: 30 }}
+            style={{ padding: 28 }}
           >
             <span
               className="font-mono uppercase text-accent-glow"
@@ -1213,34 +1242,44 @@ const S05Resultados = () => {
             </span>
             <span
               className="font-display font-black text-primary-foreground"
-              style={{ fontSize: 34, marginTop: 16 }}
+              style={{ fontSize: 30, marginTop: 14 }}
             >
               AVAL Caipira
             </span>
-            <div className="flex flex-1 flex-col justify-center" style={{ gap: 22 }}>
-              {[
-                { n: "16", t: "empresas associadas", icon: Building2 },
-                { n: "13", t: "autoavaliações concluídas", icon: ClipboardCheck },
-              ].map((s) => (
-                <div key={s.t} className="flex items-center" style={{ gap: 18 }}>
-                  <span
-                    className="font-display font-black text-gradient"
-                    style={{ fontSize: 52, lineHeight: 1, width: 86 }}
-                  >
-                    {s.n}
-                  </span>
-                  <span
-                    className="font-semibold text-primary-foreground/85"
-                    style={{ fontSize: T.body, lineHeight: 1.35 }}
-                  >
-                    {s.t}
-                  </span>
-                </div>
-              ))}
+
+            <div className="flex flex-col" style={{ gap: 16, marginTop: 18 }}>
+              <div className="flex items-center" style={{ gap: 12 }}>
+                <span className="font-display font-black text-gradient" style={{ fontSize: 42, lineHeight: 1, minWidth: 62 }}>
+                  3
+                </span>
+                <span className="text-primary-foreground/85" style={{ fontSize: T.small, lineHeight: 1.35 }}>
+                  empresas associadas ativas
+                </span>
+              </div>
+              <div className="flex items-center" style={{ gap: 12 }}>
+                <span className="font-display font-black text-gradient" style={{ fontSize: 42, lineHeight: 1, minWidth: 62 }}>
+                  +180
+                </span>
+                <span className="text-primary-foreground/85" style={{ fontSize: T.small, lineHeight: 1.35 }}>
+                  autoavaliações já concluídas
+                </span>
+              </div>
             </div>
-            <span className="text-primary-foreground/60" style={{ fontSize: T.body, lineHeight: 1.4 }}>
-              Monitoramento e qualificação na avicultura alternativa.
-            </span>
+
+            <div style={{ marginTop: "auto" }}>
+              <div className="flex items-start" style={{ gap: 10, marginBottom: 12 }}>
+                <Building2 style={{ width: 18, height: 18, flexShrink: 0, marginTop: 3 }} className="text-accent-glow" />
+                <span className="text-primary-foreground/85" style={{ fontSize: T.small, lineHeight: 1.4 }}>
+                  Abrangendo <strong>casas de produção, unidades operacionais e fábricas de ração</strong>
+                </span>
+              </div>
+              <div className="flex items-start" style={{ gap: 10 }}>
+                <ClipboardCheck style={{ width: 18, height: 18, flexShrink: 0, marginTop: 3 }} className="text-accent-glow" />
+                <span className="text-primary-foreground/85" style={{ fontSize: T.small, lineHeight: 1.4 }}>
+                  Monitoramento e qualificação na avicultura alternativa
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
