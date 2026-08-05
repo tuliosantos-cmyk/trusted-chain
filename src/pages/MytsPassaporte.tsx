@@ -1633,7 +1633,8 @@ const S05ResultsEN = () => {
                   <strong>13,000 visits</strong> from consumers to origin pages — QR scanned in store
                 </span>
               </div>
-              <KorinRamp />
+              <KorinRamp en />
+
             </div>
           </div>
 
