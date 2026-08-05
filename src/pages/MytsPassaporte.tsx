@@ -1258,7 +1258,7 @@ const S05Resultados = () => {
             <div className="flex flex-col" style={{ gap: 18 }}>
               <div>
                 <span className="font-display font-black text-gradient" style={{ fontSize: 56, lineHeight: 1 }}>
-                  3
+                  13
                 </span>
                 <p className="text-primary-foreground/85" style={{ fontSize: T.body, lineHeight: 1.35, marginTop: 4 }}>
                   empresas associadas ativas
