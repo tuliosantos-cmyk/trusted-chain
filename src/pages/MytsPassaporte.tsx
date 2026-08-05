@@ -1296,6 +1296,266 @@ const S05Resultados = () => {
   );
 };
 
+/* ---------- 05b · Resultados (versão infográfica, estética do institucional) ---------- */
+const GOLD = "hsl(38 92% 58%)";
+
+const DotArray = ({
+  filled,
+  ghost = 0,
+  perRow = 13,
+  size = 22,
+  dim = false,
+}: {
+  filled: number;
+  ghost?: number;
+  perRow?: number;
+  size?: number;
+  dim?: boolean;
+}) => {
+  const total = filled + ghost;
+  return (
+    <div
+      className="flex flex-wrap"
+      style={{ gap: 8, width: perRow * (size + 8), alignContent: "flex-start" }}
+    >
+      {Array.from({ length: total }).map((_, i) => (
+        <span
+          key={i}
+          style={{
+            width: size,
+            height: size * 1.18,
+            borderRadius: "50%",
+            background:
+              i < filled
+                ? dim
+                  ? "hsl(217 20% 55% / 0.7)"
+                  : "hsl(214 95% 62%)"
+                : "transparent",
+            border: i < filled ? "none" : "2px dashed hsl(214 95% 70% / 0.45)",
+            display: "block",
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+const S05bResultadosInfografico = () => (
+  <Slide
+    bg="bg-hero"
+    decor={
+      <>
+        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <MytsWatermark style={{ right: -90, bottom: -80, width: 320 }} />
+      </>
+    }
+  >
+    <div className="flex h-full flex-col">
+      <div className="flex items-center justify-between" style={{ height: 24 }}>
+        <SectionLabel n="05" label="RESULTADOS EM NÚMEROS" light />
+        <img src={mytsLogo} alt="MyTS" style={{ height: 26, filter: "brightness(0) invert(1)" }} />
+      </div>
+
+      {/* faixa-destaque */}
+      <div
+        className="flex items-center justify-between rounded-3xl"
+        style={{
+          height: 110,
+          marginTop: 18,
+          padding: "0 40px",
+          background: "linear-gradient(90deg, hsl(214 95% 54%), hsl(214 95% 60%))",
+        }}
+      >
+        <div className="flex items-center" style={{ gap: 30 }}>
+          <span className="font-display font-black text-primary-foreground" style={{ fontSize: 64, lineHeight: 1 }}>
+            13.000
+          </span>
+          <span className="bg-primary-foreground/40" style={{ width: 1, height: 60 }} />
+          <span
+            className="font-display font-bold text-primary-foreground"
+            style={{ fontSize: 26, lineHeight: 1.25 }}
+          >
+            visitas de consumidores
+            <br />
+            às páginas de origem
+          </span>
+        </div>
+        <QrCode style={{ width: 62, height: 62 }} className="text-primary-foreground/85" />
+      </div>
+
+      {/* painel Korin — pictograma */}
+      <div
+        className="flex items-center rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.07]"
+        style={{ height: 320, marginTop: 18, padding: 34, gap: 36 }}
+      >
+        <div style={{ width: 300, flexShrink: 0 }}>
+          <span
+            className="font-mono uppercase text-primary-foreground/60"
+            style={{ fontSize: T.mono, letterSpacing: "0.22em" }}
+          >
+            Sustentabilidade 360
+          </span>
+          <div className="font-display font-black" style={{ fontSize: 44, color: GOLD, marginTop: 8 }}>
+            Korin
+          </div>
+          <p className="text-primary-foreground/80" style={{ fontSize: T.body, lineHeight: 1.4, marginTop: 8 }}>
+            Produtores no programa
+          </p>
+          <div style={{ marginTop: 22 }}>
+            <PartnerLogo src={korinAsset.url} alt="Korin" height={46} />
+          </div>
+        </div>
+
+        <div className="flex flex-1 items-center" style={{ gap: 28 }}>
+          <div className="flex flex-col items-center" style={{ gap: 14 }}>
+            <DotArray filled={1} perRow={1} dim />
+            <span className="font-display font-black text-primary-foreground/60" style={{ fontSize: 56, lineHeight: 1 }}>
+              1
+            </span>
+            <span className="text-primary-foreground/60" style={{ fontSize: T.small }}>
+              avaliação inicial
+            </span>
+          </div>
+
+          <ArrowRight style={{ width: 46, height: 46, flexShrink: 0 }} className="text-accent-glow" />
+
+          <div className="flex flex-col items-center" style={{ gap: 14 }}>
+            <DotArray filled={9} perRow={9} />
+            <span className="font-display font-black text-gradient" style={{ fontSize: 56, lineHeight: 1 }}>
+              9
+            </span>
+            <span className="text-primary-foreground/85" style={{ fontSize: T.small }}>
+              produtores hoje
+            </span>
+          </div>
+
+          <div className="bg-primary-foreground/15" style={{ width: 1, height: 200 }} />
+
+          <div className="flex flex-col items-center" style={{ gap: 14 }}>
+            <DotArray filled={0} ghost={30} perRow={10} size={18} />
+            <span className="font-display font-black" style={{ fontSize: 44, lineHeight: 1, color: GOLD }}>
+              +30
+            </span>
+            <span className="text-center text-primary-foreground/75" style={{ fontSize: T.small, lineHeight: 1.3 }}>
+              na 2ª fase — cadeia de aves
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* dois painéis inferiores */}
+      <div className="grid grid-cols-2" style={{ gap: 20, height: 240, marginTop: 18 }}>
+        {/* Carrefour */}
+        <div
+          className="flex flex-col justify-between rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06]"
+          style={{ padding: 28 }}
+        >
+          <div className="flex items-start justify-between">
+            <div>
+              <span
+                className="font-mono uppercase text-primary-foreground/60"
+                style={{ fontSize: T.mono, letterSpacing: "0.22em" }}
+              >
+                Jornada da Autonomia
+              </span>
+              <div className="font-display font-black" style={{ fontSize: 34, color: GOLD, marginTop: 6 }}>
+                Carrefour Brasil
+              </div>
+            </div>
+            <PartnerLogo src={carrefourAsset.url} alt="Carrefour Brasil" height={40} />
+          </div>
+
+          <div className="flex items-end" style={{ gap: 34 }}>
+            <div>
+              <span className="font-display font-black text-gradient" style={{ fontSize: 46, lineHeight: 1 }}>
+                97
+              </span>
+              <p className="text-primary-foreground/80" style={{ fontSize: T.small, marginTop: 2 }}>
+                empresas na 1ª fase
+              </p>
+            </div>
+            <div>
+              <span className="font-display font-black text-gradient" style={{ fontSize: 46, lineHeight: 1 }}>
+                +130
+              </span>
+              <p className="text-primary-foreground/80" style={{ fontSize: T.small, marginTop: 2 }}>
+                Marcas Próprias e Sam's Club
+              </p>
+            </div>
+            <div>
+              <span className="font-display font-black" style={{ fontSize: 46, lineHeight: 1, color: GOLD }}>
+                3x
+              </span>
+              <p className="text-primary-foreground/80" style={{ fontSize: T.small, marginTop: 2 }}>
+                projeção ao abrir os tiers
+              </p>
+            </div>
+          </div>
+
+          <div className="flex" style={{ gap: 10 }}>
+            {["Social", "Ambiental", "Qualidade"].map((t) => (
+              <span
+                key={t}
+                className="rounded-full border border-primary-foreground/25 font-semibold text-primary-foreground"
+                style={{ fontSize: T.small, padding: "6px 16px" }}
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* AVAL */}
+        <div
+          className="flex flex-col justify-between rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06]"
+          style={{ padding: 28 }}
+        >
+          <div>
+            <span
+              className="font-mono uppercase text-primary-foreground/60"
+              style={{ fontSize: T.mono, letterSpacing: "0.22em" }}
+            >
+              Qualificação digital
+            </span>
+            <div className="font-display font-black" style={{ fontSize: 34, color: GOLD, marginTop: 6 }}>
+              AVAL Caipira
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2" style={{ gap: 16 }}>
+            {[
+              { n: "13", t: "empresas associadas" },
+              { n: "+180", t: "autoavaliações concluídas" },
+            ].map((s) => (
+              <div
+                key={s.t}
+                className="rounded-2xl bg-primary-foreground/[0.08]"
+                style={{ padding: "12px 18px" }}
+              >
+                <span className="font-display font-black text-gradient" style={{ fontSize: 42, lineHeight: 1 }}>
+                  {s.n}
+                </span>
+                <p className="text-primary-foreground/80" style={{ fontSize: T.small, marginTop: 2 }}>
+                  {s.t}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-start" style={{ gap: 10 }}>
+            <Building2 style={{ width: 20, height: 20, flexShrink: 0, marginTop: 2 }} className="text-accent-glow" />
+            <span className="text-primary-foreground/85" style={{ fontSize: T.small, lineHeight: 1.35 }}>
+              Casas de produção, unidades operacionais e fábricas de ração na avicultura alternativa
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Slide>
+);
+
+
+
 /* ---------- 05 · Ciclo virtuoso ---------- */
 const S06Ciclo = () => (
   <Slide bg="bg-background" decor={<MytsWatermark style={{ left: -96, top: -64, width: 320 }} />}>
