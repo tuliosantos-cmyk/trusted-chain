@@ -1935,6 +1935,7 @@ const MytsPassaporte = () => {
     <S03Infraestrutura />
     <S04ComoTrabalhamos />
     <S05Resultados />
+    <S05bResultadosInfografico />
     <S06Ciclo />
     <S07Oportunidade />
     <S08Convite />
