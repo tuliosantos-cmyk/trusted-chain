@@ -1386,7 +1386,7 @@ const S05bResultadosInfografico = () => (
       {/* painel Korin — pictograma */}
       <div
         className="flex items-center rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.07]"
-        style={{ height: 320, marginTop: 18, padding: 34, gap: 36 }}
+        style={{ height: 296, marginTop: 18, padding: 34, gap: 36 }}
       >
         <div style={{ width: 300, flexShrink: 0 }}>
           <span
