@@ -879,11 +879,12 @@ const S03Infraestrutura = () => {
 };
 
 /* ---------- 04 · Resultados que já existem ---------- */
-const KorinRamp = () => {
+const KorinRamp = ({ en = false }: { en?: boolean }) => {
   const bars = [
-    { v: 1, label: "início" },
-    { v: 9, label: "hoje" },
+    { v: 1, label: en ? "start" : "início" },
+    { v: 9, label: en ? "today" : "hoje" },
   ];
+
   const projection = 39; // 9 atuais + 30 da 2ª fase (cadeia de aves)
   const max = 42;
   return (
@@ -922,14 +923,15 @@ const KorinRamp = () => {
         strokeDasharray="6 4"
       />
       <text x={25} y={74} fill="#94a3b8" fontSize="9" textAnchor="middle">
-        início
+        {bars[0].label}
       </text>
       <text x={81} y={74} fill="#7dd3fc" fontSize="9" textAnchor="middle" fontWeight="700">
-        hoje
+        {bars[1].label}
       </text>
       <text x={137} y={74} fill="#94a3b8" fontSize="9" textAnchor="middle">
-        2ª fase
+        {en ? "phase 2" : "2ª fase"}
       </text>
+
     </svg>
   );
 };
@@ -1631,7 +1633,8 @@ const S05ResultsEN = () => {
                   <strong>13,000 visits</strong> from consumers to origin pages — QR scanned in store
                 </span>
               </div>
-              <KorinRamp />
+              <KorinRamp en />
+
             </div>
           </div>
 
