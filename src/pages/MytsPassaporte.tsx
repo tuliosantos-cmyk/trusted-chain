@@ -923,14 +923,15 @@ const KorinRamp = ({ en = false }: { en?: boolean }) => {
         strokeDasharray="6 4"
       />
       <text x={25} y={74} fill="#94a3b8" fontSize="9" textAnchor="middle">
-        início
+        {bars[0].label}
       </text>
       <text x={81} y={74} fill="#7dd3fc" fontSize="9" textAnchor="middle" fontWeight="700">
-        hoje
+        {bars[1].label}
       </text>
       <text x={137} y={74} fill="#94a3b8" fontSize="9" textAnchor="middle">
-        2ª fase
+        {en ? "phase 2" : "2ª fase"}
       </text>
+
     </svg>
   );
 };
