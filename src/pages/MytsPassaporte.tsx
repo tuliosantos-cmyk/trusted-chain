@@ -881,12 +881,11 @@ const S03Infraestrutura = () => {
 /* ---------- 04 · Resultados que já existem ---------- */
 const KorinRamp = () => {
   const bars = [
-    { v: 8, label: "início" },
-    { v: 18, label: "" },
-    { v: 27, label: "" },
-    { v: 38, label: "hoje" },
+    { v: 1, label: "início" },
+    { v: 9, label: "hoje" },
   ];
-  const max = 38;
+  const projection = 39; // 9 atuais + 30 da 2ª fase (cadeia de aves)
+  const max = 42;
   return (
     <svg viewBox="0 0 200 78" style={{ width: "100%", height: 78 }} aria-hidden>
       <defs>
@@ -900,21 +899,36 @@ const KorinRamp = () => {
         return (
           <rect
             key={i}
-            x={8 + i * 48}
+            x={8 + i * 56}
             y={62 - h}
-            width={30}
+            width={34}
             height={h}
             rx={5}
             fill="url(#korinBar)"
-            opacity={i === bars.length - 1 ? 1 : 0.4 + i * 0.12}
+            opacity={i === bars.length - 1 ? 1 : 0.55}
           />
         );
       })}
-      <text x={23} y={74} fill="#94a3b8" fontSize="9" textAnchor="middle">
+      {/* projeção 2ª fase */}
+      <rect
+        x={8 + 2 * 56}
+        y={62 - (projection / max) * 58}
+        width={34}
+        height={(projection / max) * 58}
+        rx={5}
+        fill="none"
+        stroke="url(#korinBar)"
+        strokeWidth={2}
+        strokeDasharray="6 4"
+      />
+      <text x={25} y={74} fill="#94a3b8" fontSize="9" textAnchor="middle">
         início
       </text>
-      <text x={167} y={74} fill="#7dd3fc" fontSize="9" textAnchor="middle" fontWeight="700">
+      <text x={81} y={74} fill="#7dd3fc" fontSize="9" textAnchor="middle" fontWeight="700">
         hoje
+      </text>
+      <text x={137} y={74} fill="#94a3b8" fontSize="9" textAnchor="middle">
+        2ª fase
       </text>
     </svg>
   );
