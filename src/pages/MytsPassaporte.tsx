@@ -2141,6 +2141,8 @@ const MytsPassaporte = () => {
     <S04ComoTrabalhamos />
     <S05Resultados />
     <S05bResultadosInfografico />
+    <S05ResultsEN />
+
     <S06Ciclo />
     <S07Oportunidade />
     <S08Convite />
