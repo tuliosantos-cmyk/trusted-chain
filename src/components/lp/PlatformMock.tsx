@@ -27,7 +27,7 @@ const PlatformMock = () => (
       {/* modules */}
       <div className="grid grid-cols-3 gap-3">
         {[
-          { icon: Users, t: "Meus Fornecedores", v: "128" },
+          { icon: Users, t: "Meus Fornecedores e Insumos", v: "128" },
           { icon: ClipboardCheck, t: "Meus Processos", v: "24" },
           { icon: FileText, t: "Meus Documentos", v: "1.043" },
         ].map(({ icon: Icon, t, v }) => (
