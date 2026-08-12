@@ -57,13 +57,23 @@ const LpDna = () => (
                 transform="rotate(-90 160 100)"
               />
               {[
-                { x: 160, y: 30, l: "Homologar" },
-                { x: 221, y: 135, l: "Monitorar" },
-                { x: 99, y: 135, l: "Desenvolver" },
+                { x: 160, y: 30, tx: 160, ty: 14, anchor: "middle", l: "Homologar" },
+                { x: 221, y: 135, tx: 238, ty: 158, anchor: "start", l: "Monitorar" },
+                { x: 99, y: 135, tx: 82, ty: 158, anchor: "end", l: "Desenvolver" },
               ].map((p) => (
                 <g key={p.l}>
                   <circle cx={p.x} cy={p.y} r="9" fill="hsl(var(--accent))" />
                   <circle cx={p.x} cy={p.y} r="4" fill="hsl(var(--accent-foreground))" />
+                  <text
+                    x={p.tx}
+                    y={p.ty}
+                    textAnchor={p.anchor}
+                    fill="hsl(var(--primary))"
+                    fontSize="13"
+                    fontWeight="600"
+                  >
+                    {p.l}
+                  </text>
                 </g>
               ))}
               <text x="160" y="95" textAnchor="middle" className="font-display" fill="hsl(var(--primary))" fontSize="16" fontWeight="700">
