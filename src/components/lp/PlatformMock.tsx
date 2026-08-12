@@ -27,7 +27,7 @@ const PlatformMock = () => (
       {/* modules */}
       <div className="grid grid-cols-3 gap-3">
         {[
-          { icon: Users, t: "Meus Fornecedores", v: "128" },
+          { icon: Users, t: "Meus Fornecedores e Insumos", v: "128" },
           { icon: ClipboardCheck, t: "Meus Processos", v: "24" },
           { icon: FileText, t: "Meus Documentos", v: "1.043" },
         ].map(({ icon: Icon, t, v }) => (
@@ -67,7 +67,7 @@ const PlatformMock = () => (
       <div className="mt-4 flex items-start gap-3 rounded-xl border border-accent/30 bg-accent/10 p-3">
         <AlertTriangle className="size-4 text-accent shrink-0 mt-0.5" />
         <div className="text-[11px] leading-snug text-primary">
-          <strong>Alerta automático enviado</strong> ao fornecedor Embalagens Prisma — laudo microbiológico vence em 12 dias.
+          <strong>Insumo:</strong> laudo microbiológico da Embalagens Prisma vence em 12 dias. Alerta automático enviado ao fornecedor.
         </div>
       </div>
 
