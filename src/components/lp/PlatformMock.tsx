@@ -67,7 +67,7 @@ const PlatformMock = () => (
       <div className="mt-4 flex items-start gap-3 rounded-xl border border-accent/30 bg-accent/10 p-3">
         <AlertTriangle className="size-4 text-accent shrink-0 mt-0.5" />
         <div className="text-[11px] leading-snug text-primary">
-          <strong>Alerta automático enviado</strong> ao fornecedor Embalagens Prisma — laudo microbiológico vence em 12 dias.
+          <strong>Insumo:</strong> laudo microbiológico da Embalagens Prisma vence em 12 dias. Alerta automático enviado ao fornecedor.
         </div>
       </div>
 
