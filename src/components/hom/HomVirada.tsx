@@ -4,8 +4,8 @@ const modulos = [
   {
     icon: Users,
     t: "Meus Fornecedores",
-    d: "O fornecedor acessa a própria conta, se cadastra, sobe os documentos e requisitos exigidos e acompanha o próprio status de homologação. Sua equipe valida — não persegue.",
-    tags: ["Autocadastro", "Status de homologação", "Insumos por fornecedor"],
+    d: "O fornecedor acessa a própria conta, se cadastra, sobe os documentos e requisitos exigidos e acompanha o próprio status de homologação. Dentro do cadastro dele, você organiza a documentação regulatória de cada matéria-prima ou ingrediente que ele fornece — ficha técnica, laudo, especificação. Sua equipe valida — não persegue.",
+    tags: ["Autocadastro", "Status de homologação", "Matéria-prima e ingrediente"],
   },
   {
     icon: ClipboardCheck,

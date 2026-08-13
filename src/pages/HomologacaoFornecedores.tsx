@@ -14,7 +14,7 @@ import HomTeste from "@/components/hom/HomTeste";
 import HomSobre from "@/components/hom/HomSobre";
 import Footer from "@/components/landing/Footer";
 
-const clusters: HomCluster[] = ["default", "homologacao", "risco", "kys", "vencimento", "esg"];
+const clusters: HomCluster[] = ["default", "homologacao", "risco", "kys", "vencimento", "esg", "materiaprima"];
 
 const jsonLd = {
   "@context": "https://schema.org",

@@ -1,7 +1,14 @@
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import HomMock from "./HomMock";
 
-export type HomCluster = "default" | "homologacao" | "risco" | "kys" | "vencimento" | "esg";
+export type HomCluster =
+  | "default"
+  | "homologacao"
+  | "risco"
+  | "kys"
+  | "vencimento"
+  | "esg"
+  | "materiaprima";
 
 const headlines: Record<HomCluster, { eyebrow: string; h1: React.ReactNode }> = {
   default: {
@@ -58,6 +65,15 @@ const headlines: Record<HomCluster, { eyebrow: string; h1: React.ReactNode }> = 
       </>
     ),
   },
+  materiaprima: {
+    eyebrow: "Homologação de matéria-prima e ingrediente",
+    h1: (
+      <>
+        Ficha técnica e laudo de cada ingrediente,{" "}
+        <span className="text-gradient">direto no cadastro do fornecedor.</span>
+      </>
+    ),
+  },
 };
 
 const HomHero = ({ cluster = "default" }: { cluster?: HomCluster }) => {
@@ -81,8 +97,8 @@ const HomHero = ({ cluster = "default" }: { cluster?: HomCluster }) => {
 
           <p className="mt-6 text-lg md:text-xl text-primary-foreground/70 max-w-2xl leading-relaxed">
             O mercado virou gestão de risco de terceiros — saúde financeira, documentação, desempenho ao longo do tempo.
-            A MyTS organiza o que sustenta essa homologação: cadastro, requisitos e indicadores por fornecedor, num
-            lugar só.
+            A MyTS organiza o que sustenta essa homologação: cadastro, requisitos e indicadores por fornecedor —
+            incluindo a documentação regulatória de cada matéria-prima ou ingrediente que ele fornece — num lugar só.
           </p>
 
           <div className="mt-9 flex flex-col sm:flex-row sm:items-center gap-4">
@@ -110,6 +126,7 @@ const HomHero = ({ cluster = "default" }: { cluster?: HomCluster }) => {
               "Cadastro do fornecedor",
               "Documentação",
               "Requisitos por norma",
+              "Ficha técnica de matéria-prima",
               "Indicadores de desempenho",
               "Alerta de vencimento",
             ].map((n) => (

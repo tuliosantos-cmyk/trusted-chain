@@ -1,7 +1,15 @@
 import { AlertTriangle, CheckCircle2, ClipboardCheck, FileText, Users } from "lucide-react";
 
-const rows = [
-  { name: "Laticínios Vale Norte", status: "ok", label: "Homologado" },
+const rows: { name: string; status: string; label: string; insumos?: { n: string; d: string }[] }[] = [
+  {
+    name: "Laticínios Vale Norte",
+    status: "ok",
+    label: "Homologado",
+    insumos: [
+      { n: "Leite em pó integral", d: "Ficha técnica" },
+      { n: "Soro de leite", d: "Laudo" },
+    ],
+  },
   { name: "Embalagens Prisma", status: "warn", label: "Alvará vence em 12 dias" },
   { name: "Aromas Sul", status: "self", label: "Autodeclaração enviada" },
   { name: "Transporte Frio BR", status: "pending", label: "Em homologação · 2 pendências" },
@@ -50,15 +58,27 @@ const HomMock = () => (
 
       <div className="mt-4 space-y-2">
         {rows.map((r) => (
-          <div
-            key={r.name}
-            className="flex items-center justify-between rounded-lg border border-border bg-background px-3 py-2.5"
-          >
-            <div className="flex items-center gap-2.5 min-w-0">
-              <span className={`size-2 rounded-full shrink-0 ${dot[r.status as keyof typeof dot]}`} />
-              <span className="text-xs font-medium text-primary truncate">{r.name}</span>
+          <div key={r.name} className="rounded-lg border border-border bg-background px-3 py-2.5">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <span className={`size-2 rounded-full shrink-0 ${dot[r.status as keyof typeof dot]}`} />
+                <span className="text-xs font-medium text-primary truncate">{r.name}</span>
+              </div>
+              <span className="text-[10px] text-muted-foreground whitespace-nowrap">{r.label}</span>
             </div>
-            <span className="text-[10px] text-muted-foreground whitespace-nowrap">{r.label}</span>
+
+            {r.insumos && (
+              <div className="mt-2 ml-4 border-l border-border pl-3 space-y-1">
+                {r.insumos.map((i) => (
+                  <div key={i.n} className="flex items-center justify-between gap-2">
+                    <span className="text-[10px] text-muted-foreground truncate">{i.n}</span>
+                    <span className="text-[9px] rounded-full bg-secondary px-2 py-0.5 text-primary/70 whitespace-nowrap">
+                      {i.d}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
