@@ -1,4 +1,4 @@
-import { Briefcase, LineChart, ShieldCheck } from "lucide-react";
+import { Briefcase, FlaskConical, LineChart, ShieldCheck } from "lucide-react";
 
 const areas = [
   {
