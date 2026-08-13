@@ -65,6 +65,15 @@ const headlines: Record<HomCluster, { eyebrow: string; h1: React.ReactNode }> = 
       </>
     ),
   },
+  materiaprima: {
+    eyebrow: "Homologação de matéria-prima e ingrediente",
+    h1: (
+      <>
+        Ficha técnica e laudo de cada ingrediente,{" "}
+        <span className="text-gradient">direto no cadastro do fornecedor.</span>
+      </>
+    ),
+  },
 };
 
 const HomHero = ({ cluster = "default" }: { cluster?: HomCluster }) => {
