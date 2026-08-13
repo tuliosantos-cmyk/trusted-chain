@@ -1,7 +1,15 @@
 import { AlertTriangle, CheckCircle2, ClipboardCheck, FileText, Users } from "lucide-react";
 
-const rows = [
-  { name: "Laticínios Vale Norte", status: "ok", label: "Homologado" },
+const rows: { name: string; status: string; label: string; insumos?: { n: string; d: string }[] }[] = [
+  {
+    name: "Laticínios Vale Norte",
+    status: "ok",
+    label: "Homologado",
+    insumos: [
+      { n: "Leite em pó integral", d: "Ficha técnica" },
+      { n: "Soro de leite", d: "Laudo" },
+    ],
+  },
   { name: "Embalagens Prisma", status: "warn", label: "Alvará vence em 12 dias" },
   { name: "Aromas Sul", status: "self", label: "Autodeclaração enviada" },
   { name: "Transporte Frio BR", status: "pending", label: "Em homologação · 2 pendências" },
