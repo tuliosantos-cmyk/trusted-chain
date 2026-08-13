@@ -28,6 +28,15 @@ const areas = [
       "Tempo de equipe que hoje vira cobrança manual, liberado — argumento direto pro investimento",
     ],
   },
+  {
+    icon: FlaskConical,
+    t: "P&D / Desenvolvimento",
+    items: [
+      "Ficha técnica e laudo de cada matéria-prima vinculados direto ao fornecedor — não perdidos numa pasta separada",
+      "Especificação acessível na hora de formular ou alterar um produto, sem pedir de novo pro fornecedor",
+      "Troca de fornecedor ou ingrediente rastreável, com histórico regulatório completo",
+    ],
+  },
 ];
 
 const HomPorArea = () => (
