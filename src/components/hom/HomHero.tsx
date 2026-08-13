@@ -1,7 +1,14 @@
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import HomMock from "./HomMock";
 
-export type HomCluster = "default" | "homologacao" | "risco" | "kys" | "vencimento" | "esg";
+export type HomCluster =
+  | "default"
+  | "homologacao"
+  | "risco"
+  | "kys"
+  | "vencimento"
+  | "esg"
+  | "materiaprima";
 
 const headlines: Record<HomCluster, { eyebrow: string; h1: React.ReactNode }> = {
   default: {
