@@ -97,8 +97,8 @@ const HomHero = ({ cluster = "default" }: { cluster?: HomCluster }) => {
 
           <p className="mt-6 text-lg md:text-xl text-primary-foreground/70 max-w-2xl leading-relaxed">
             O mercado virou gestão de risco de terceiros — saúde financeira, documentação, desempenho ao longo do tempo.
-            A MyTS organiza o que sustenta essa homologação: cadastro, requisitos e indicadores por fornecedor, num
-            lugar só.
+            A MyTS organiza o que sustenta essa homologação: cadastro, requisitos e indicadores por fornecedor —
+            incluindo a documentação regulatória de cada matéria-prima ou ingrediente que ele fornece — num lugar só.
           </p>
 
           <div className="mt-9 flex flex-col sm:flex-row sm:items-center gap-4">
