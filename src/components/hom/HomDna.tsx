@@ -47,7 +47,7 @@ const HomDna = () => (
               <div className="size-12 rounded-2xl bg-gradient-accent grid place-items-center shadow-cta">
                 <Icon className="size-5 text-accent-foreground" />
               </div>
-              <span className="font-display font-bold text-4xl text-primary-foreground/10">{n}</span>
+              <span className="font-display font-bold text-4xl text-primary-foreground/35">{n}</span>
             </div>
             <h3 className="mt-6 font-display font-semibold text-2xl">{t}</h3>
             <p className="mt-3 text-primary-foreground/65 leading-relaxed">{d}</p>
