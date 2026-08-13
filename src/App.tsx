@@ -14,6 +14,7 @@ import MytsPassaporte from "./pages/MytsPassaporte.tsx";
 import Iso19011 from "./pages/Iso19011.tsx";
 import Fssc22000V7 from "./pages/Fssc22000V7.tsx";
 import GestaoFornecedores from "./pages/GestaoFornecedores.tsx";
+import HomologacaoFornecedores from "./pages/HomologacaoFornecedores.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/iso-19011" element={<Iso19011 />} />
             <Route path="/fssc-22000-v7" element={<Fssc22000V7 />} />
             <Route path="/gestao-de-fornecedores" element={<GestaoFornecedores />} />
+            <Route path="/homologacao-de-fornecedores" element={<HomologacaoFornecedores />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
