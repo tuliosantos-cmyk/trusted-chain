@@ -49,18 +49,18 @@ const HomPorArea = () => (
         </h2>
       </div>
 
-      <div className="mt-14 grid md:grid-cols-3 gap-5">
+      <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {areas.map(({ icon: Icon, t, items }) => (
-          <div key={t} className="rounded-3xl bg-card border border-border p-8 shadow-card">
+          <div key={t} className="rounded-3xl bg-card border border-border p-7 shadow-card h-full">
             <div className="flex items-center gap-3">
               <div className="size-11 rounded-xl bg-accent/10 grid place-items-center">
                 <Icon className="size-5 text-accent" />
               </div>
-              <h3 className="font-display font-semibold text-xl text-primary">{t}</h3>
+              <h3 className="font-display font-semibold text-lg text-primary leading-snug">{t}</h3>
             </div>
-            <ul className="mt-6 space-y-4">
+            <ul className="mt-5 space-y-3.5">
               {items.map((i) => (
-                <li key={i} className="flex items-start gap-3 text-muted-foreground leading-relaxed">
+                <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed">
                   <span className="mt-2 size-1.5 rounded-full bg-accent shrink-0" />
                   {i}
                 </li>
