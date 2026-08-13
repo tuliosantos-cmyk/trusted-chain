@@ -126,6 +126,7 @@ const HomHero = ({ cluster = "default" }: { cluster?: HomCluster }) => {
               "Cadastro do fornecedor",
               "Documentação",
               "Requisitos por norma",
+              "Ficha técnica de matéria-prima",
               "Indicadores de desempenho",
               "Alerta de vencimento",
             ].map((n) => (
