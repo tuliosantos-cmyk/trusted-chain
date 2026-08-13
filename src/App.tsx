@@ -37,6 +37,7 @@ const App = () => (
             <Route path="/iso-19011" element={<Iso19011 />} />
             <Route path="/fssc-22000-v7" element={<Fssc22000V7 />} />
             <Route path="/gestao-de-fornecedores" element={<GestaoFornecedores />} />
+            <Route path="/homologacao-de-fornecedores" element={<HomologacaoFornecedores />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
