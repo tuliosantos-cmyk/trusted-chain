@@ -185,10 +185,10 @@ export default function VideosAds() {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Vídeos de Anúncio MyTS | 9 peças 9:16 e 16:9</title>
+        <title>Vídeos de Anúncio MyTS | 16 peças 9:16 e 16:9</title>
         <meta
           name="description"
-          content="Biblioteca de 9 vídeos de anúncio animados da MyTS, em 9:16 e 16:9, com preview e download em MP4 para LinkedIn e YouTube."
+          content="Biblioteca de 16 vídeos de anúncio animados da MyTS, em 9:16 e 16:9, com preview e download em MP4 para LinkedIn e YouTube."
         />
         <meta name="robots" content="noindex" />
       </Helmet>
@@ -200,7 +200,7 @@ export default function VideosAds() {
               Vídeos de Anúncio — MyTS
             </h1>
             <p className="text-sm text-muted-foreground">
-              9 peças de 30s, sem áudio, em vertical (1080×1920) e horizontal (1920×1080).
+              16 peças de 28–30s, sem áudio, em vertical (1080×1920) e horizontal (1920×1080).
             </p>
           </div>
           <nav className="flex flex-wrap gap-2">

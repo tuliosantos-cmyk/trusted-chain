@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
-import { VideoDef, renderVideo, totalDuration } from "@/lib/adsvideo/engine";
+import { VideoDef, preloadImages, renderVideo, totalDuration } from "@/lib/adsvideo/engine";
+import { ALL_LOGO_URLS } from "@/lib/adsvideo/brand";
 import { FORMATS, FormatId } from "@/lib/adsvideo/registry";
 
 type Props = {
@@ -54,8 +55,11 @@ export default function VideoCanvas({
       }
     };
 
-    if (document.fonts?.ready) document.fonts.ready.then(run).catch(run);
-    else run();
+    const ready = Promise.all([
+      document.fonts?.ready ?? Promise.resolve(),
+      preloadImages(ALL_LOGO_URLS),
+    ]);
+    ready.then(run).catch(run);
 
     return () => {
       cancelled = true;

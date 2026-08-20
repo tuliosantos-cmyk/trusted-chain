@@ -1,4 +1,5 @@
-import { VideoDef, renderVideo, totalDuration } from "./engine";
+import { VideoDef, preloadImages, renderVideo, totalDuration } from "./engine";
+import { ALL_LOGO_URLS } from "./brand";
 import { FORMATS, FormatId } from "./registry";
 
 export type RecordProgress = {
@@ -74,6 +75,7 @@ export async function recordVideo(
   canvas.height = h;
   const ctx = canvas.getContext("2d", { alpha: false });
   if (!ctx) throw new Error("Canvas indisponível");
+  await preloadImages(ALL_LOGO_URLS);
 
   const fps = 60;
   const stream = canvas.captureStream(fps);
