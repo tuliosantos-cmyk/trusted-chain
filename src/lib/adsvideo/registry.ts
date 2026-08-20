@@ -2,6 +2,8 @@ import { VideoDef } from "./engine";
 import { homologacaoVideos } from "./videos/homologacao";
 import { institucionalVideos } from "./videos/institucional";
 import { normasVideos } from "./videos/normas";
+import { modulosVideos } from "./videos/modulos";
+import { depoimentosVideos } from "./videos/depoimentos";
 
 export const CAMPAIGNS = [
   {
@@ -15,6 +17,8 @@ export const CAMPAIGNS = [
     label: "Institucional",
     videos: institucionalVideos,
   },
+  { id: "modulos" as const, label: "Módulos da Plataforma", videos: modulosVideos },
+  { id: "depoimentos" as const, label: "Depoimentos", videos: depoimentosVideos },
 ];
 
 export const ALL_VIDEOS: VideoDef[] = CAMPAIGNS.flatMap((c) => c.videos);
