@@ -320,27 +320,36 @@ const v2: VideoDef = {
           f.c.lineWidth = 2 * f.u;
           roundRect(f.c, m.bx + 40 * f.u, y, m.bw - 40 * f.u, ih, 22 * f.u);
           f.c.stroke();
-          icon(f, ICONS.flask, m.bx + 40 * f.u + ih * 0.45, y + ih / 2, ih * 0.4, C.blue, 1.8);
-          text(f, it.n, m.bx + 40 * f.u + ih * 0.85, y + ih * 0.24, {
+          const rowX = m.bx + 40 * f.u;
+          const rowW = m.bw - 40 * f.u;
+          const padIn = ih * 0.18;
+          const badge = Math.min(ih * 0.56, rowW * 0.16);
+          const icoS = Math.min(ih * 0.42, rowW * 0.12);
+          icon(f, ICONS.flask, rowX + padIn + icoS / 2, y + ih / 2, icoS, C.blue, 1.8);
+          const tx = rowX + padIn + icoS + padIn * 0.9;
+          const tw = rowW - (tx - rowX) - badge - padIn * 2.2;
+          text(f, it.n, tx, y + ih * 0.24, {
             size: 30 * f.u,
             weight: 800,
             color: C.navy,
+            maxWidth: tw,
           });
-          text(f, it.d, m.bx + 40 * f.u + ih * 0.85, y + ih * 0.58, {
+          text(f, it.d, tx, y + ih * 0.58, {
             size: 24 * f.u,
             weight: 600,
             color: "rgba(31,56,100,.55)",
+            maxWidth: tw,
           });
           const anexo = inAt(f.k, 3.4 + i * 0.4, 0.5, easeBack);
           if (anexo > 0) {
             f.c.save();
             f.c.globalAlpha *= clamp01(anexo);
-            const bx = m.bx + m.bw - 30 * f.u;
+            const bcx = rowX + rowW - padIn - badge / 2;
+            const bcy = y + ih / 2;
             f.c.fillStyle = "rgba(34,160,107,.16)";
-            const bw2 = ih * 0.9;
-            roundRect(f.c, bx - bw2, y + ih / 2 - bw2 / 2, bw2, bw2, bw2 * 0.32);
+            roundRect(f.c, bcx - badge / 2, bcy - badge / 2, badge, badge, badge * 0.3);
             f.c.fill();
-            icon(f, ICONS.doc, bx - bw2 / 2, y + ih / 2, bw2 * 0.5, C.greenInk, 1.8);
+            icon(f, ICONS.doc, bcx, bcy, badge * 0.52, C.greenInk, 1.8);
             f.c.restore();
           }
           f.c.restore();
