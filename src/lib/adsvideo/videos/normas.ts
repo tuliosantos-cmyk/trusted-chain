@@ -434,7 +434,7 @@ const v3: VideoDef = {
           color: C.navy,
           align: "center",
         });
-        text(f, "conformidade mapeada", cx, cy + r * 0.30, {
+        text(f, "conformidade mapeada", cx, cy + r * 0.14, {
           size: r * 0.13,
           weight: 700,
           color: "rgba(31,56,100,.55)",
