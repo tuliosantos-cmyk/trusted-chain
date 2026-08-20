@@ -75,6 +75,7 @@ export async function recordVideo(
   canvas.height = h;
   const ctx = canvas.getContext("2d", { alpha: false });
   if (!ctx) throw new Error("Canvas indisponível");
+  await preloadImages(ALL_LOGO_URLS);
 
   const fps = 60;
   const stream = canvas.captureStream(fps);
