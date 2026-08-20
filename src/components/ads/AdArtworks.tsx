@@ -1,3 +1,5 @@
+import MytsMark from "./MytsMark";
+
 // Artes para recursos de imagem do Google Ads.
 // Regras: SEM texto, número, palavra ou logo. Conteúdo centralizado ocupando ~80% do quadro.
 // Cada arte é desenhada num espaço de design quadrado de 1000x1000 e escalada/centralizada
@@ -522,17 +524,21 @@ export const AdFrame = ({
   art,
   width,
   height,
+  withLogo = false,
   svgRef,
 }: {
   art: AdArt;
   width: number;
   height: number;
+  withLogo?: boolean;
   svgRef?: (el: SVGSVGElement | null) => void;
 }) => {
   const square = height >= width * 0.95;
   const scale = square ? (Math.min(width, height) * 0.86) / D : (height * 0.94) / D;
   const tx = (width - D * scale) / 2;
   const ty = (height - D * scale) / 2;
+  const dark = art.bg === NAVY;
+  const markSize = height * 0.1;
   return (
     <svg
       ref={svgRef}
@@ -546,10 +552,16 @@ export const AdFrame = ({
       data-ad-asset="true"
       data-w={width}
       data-h={height}
-      data-name={`myts-${art.id}`}
+      data-name={`myts-${art.id}${withLogo ? "-logo" : ""}`}
     >
       <rect x={0} y={0} width={width} height={height} fill={art.bg} />
       <g transform={`translate(${tx} ${ty}) scale(${scale})`}>{art.render()}</g>
+      {withLogo && (
+        <g transform={`translate(${width - markSize - height * 0.045} ${height - markSize - height * 0.045})`}>
+          <MytsMark size={markSize} fill={dark ? WHITE : NAVY} opacity={0.92} />
+        </g>
+      )}
     </svg>
   );
 };
+
