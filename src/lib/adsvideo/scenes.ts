@@ -501,4 +501,4 @@ export function counter(
   text(f, str, x, y, { size, weight: 900, color, align: "center" });
 }
 
-export { bgDark, bgLight, card, icon, ICONS, text, textHeight, C, inAt, clamp01, pulse, easeOut, easeBack, font, roundRect, pill, accentBar, wordmark };
+export { bgDark, bgLight, card, icon, ICONS, text, textHeight, C, inAt, clamp01, pulse, easeOut, easeBack, font, roundRect, pill, accentBar, wordmark, logoLock, logoMark, drawImageFit };
