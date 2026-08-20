@@ -1,9 +1,11 @@
 import {
   C,
+  Frame,
   ICONS,
   font,
   VideoDef,
   bgLight,
+  logoMark,
   clamp01,
   easeBack,
   easeOut,
