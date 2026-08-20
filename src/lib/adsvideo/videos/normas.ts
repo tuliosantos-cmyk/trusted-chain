@@ -345,7 +345,7 @@ const v2: VideoDef = {
         const ry = s * 0.34;
         const pts = NORM_TAGS.map((_, i) => {
           const gx = cx + ((i % cols) - 1) * rx;
-          const gy = cy + (Math.floor(i / cols) - 0.5) * (ry * 1.35);
+          const gy = cy + (Math.floor(i / cols) - 0.5) * (ry * 1.55);
           const sx = L.mock.x + SCATTER[i].x * L.mock.w;
           const sy = L.mock.y + SCATTER[i].y * L.mock.h;
           return { x: sx + (gx - sx) * org, y: sy + (gy - sy) * org };
@@ -383,7 +383,7 @@ const v2: VideoDef = {
         const mp = inAt(f.k, 1.6, 0.7, easeBack);
         if (mp > 0) {
           const beat = 1 + 0.05 * Math.sin(f.k * 3.2);
-          const d = s * 0.2 * beat;
+          const d = s * 0.145 * beat;
           f.c.save();
           f.c.globalAlpha *= clamp01(mp);
           f.c.fillStyle = C.navy;
