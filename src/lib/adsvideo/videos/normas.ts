@@ -1,6 +1,7 @@
 import {
   C,
   ICONS,
+  font,
   VideoDef,
   bgLight,
   clamp01,
