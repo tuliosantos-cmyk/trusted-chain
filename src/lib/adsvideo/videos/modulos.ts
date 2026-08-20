@@ -179,7 +179,7 @@ const m1: VideoDef = {
           const rowH = Math.min(m.bh * 0.2, m.by + m.bh - rowY - 8 * f.u);
           supplierRow(f, cardX, rowY, cardW, rowH, {
             name: "Laticínios Vale",
-            sub: "Cadastro enviado pelo fornecedor",
+            sub: "Cadastro enviado",
             iconD: ICONS.building,
             fromLabel: "Em análise",
             fromBg: "rgba(240,180,40,.18)",
