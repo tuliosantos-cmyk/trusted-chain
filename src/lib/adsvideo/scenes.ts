@@ -217,6 +217,70 @@ export function caption(
   return h;
 }
 
+/** Endereço do site em destaque: cápsula contornada + brilho suave. */
+export function siteBadge(f: Frame, cx: number, cy: number, p = 1) {
+  if (p <= 0) return;
+  const size = f.v ? 52 * f.u : 44 * f.u;
+  f.c.save();
+  f.c.globalAlpha *= clamp01(p);
+  f.c.translate(0, (1 - clamp01(p)) * 26 * f.u);
+  f.c.font = font(size, 900);
+  const label = "myt-s.com";
+  const tw = f.c.measureText(label).width;
+  const bh = size * 2.1;
+  const bw = tw + bh * 1.5;
+  const glow = 0.5 + 0.5 * Math.sin(f.k * 2.4);
+  f.c.fillStyle = "rgba(159,192,245,.10)";
+  roundRect(f.c, cx - bw / 2, cy - bh / 2, bw, bh, bh / 2);
+  f.c.fill();
+  f.c.strokeStyle = `rgba(159,192,245,${0.45 + 0.35 * glow})`;
+  f.c.lineWidth = 3.5 * f.u;
+  roundRect(f.c, cx - bw / 2, cy - bh / 2, bw, bh, bh / 2);
+  f.c.stroke();
+  text(f, label, cx, cy - size * 0.56, {
+    size,
+    weight: 900,
+    color: C.white,
+    align: "center",
+    letterSpacing: `${0.04 * size}px`,
+  });
+  f.c.restore();
+}
+
+/**
+ * Logo de cliente sobre cartão branco — funciona em fundo claro ou escuro.
+ * Se a imagem ainda não carregou, desenha o nome como fallback.
+ */
+export function clientLogo(
+  f: Frame,
+  url: string | undefined,
+  name: string,
+  cx: number,
+  cy: number,
+  w: number,
+  h: number,
+  p = 1,
+) {
+  f.c.save();
+  f.c.globalAlpha *= clamp01(p);
+  f.c.fillStyle = C.white;
+  f.c.shadowColor = "rgba(10,25,55,.16)";
+  f.c.shadowBlur = 40 * f.u;
+  f.c.shadowOffsetY = 12 * f.u;
+  roundRect(f.c, cx - w / 2, cy - h / 2, w, h, h * 0.26);
+  f.c.fill();
+  f.c.shadowColor = "transparent";
+  const drawn = url ? drawImageFit(f, url, cx, cy, w * 0.72, h * 0.6) : false;
+  if (!drawn)
+    text(f, name, cx, cy - h * 0.12, {
+      size: h * 0.26,
+      weight: 900,
+      color: C.navy,
+      align: "center",
+    });
+  f.c.restore();
+}
+
 /** Cena de CTA padrão: assinatura MyTS + frase + pill pulsando + site em destaque. */
 export function ctaScene(o: { dur: number; label: string; line?: string }): Scene {
   return {
