@@ -16,7 +16,7 @@
     --amber:#E8A33D;
     --red:#D64545;
     --green:#22A06B;
-    --T:20s;
+    --T:24s;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{height:100%;background:#0b1526;overflow:hidden}
@@ -35,10 +35,10 @@
   .s3{background:var(--light);animation:sc3 var(--T) infinite}
   .s4{background:var(--navy);animation:sc4 var(--T) infinite}
 
-  @keyframes sc1{0%{opacity:0}3%{opacity:1}12%{opacity:1}15%{opacity:0}100%{opacity:0}}
-  @keyframes sc2{0%,13%{opacity:0}17%{opacity:1}38%{opacity:1}40%,100%{opacity:0}}
-  @keyframes sc3{0%,38%{opacity:0}42%{opacity:1}78%{opacity:1}80%,100%{opacity:0}}
-  @keyframes sc4{0%,78%{opacity:0}82%{opacity:1}100%{opacity:1}}
+  @keyframes sc1{0%{opacity:0}3%{opacity:1}14%{opacity:1}17%{opacity:0}100%{opacity:0}}
+  @keyframes sc2{0%,15%{opacity:0}19%{opacity:1}42%{opacity:1}45%,100%{opacity:0}}
+  @keyframes sc3{0%,43%{opacity:0}47%{opacity:1}82%{opacity:1}85%,100%{opacity:0}}
+  @keyframes sc4{0%,83%{opacity:0}87%{opacity:1}100%{opacity:1}}
 
   /* texturas de fundo (sem áreas chapadas vazias) */
   .glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:.55}
