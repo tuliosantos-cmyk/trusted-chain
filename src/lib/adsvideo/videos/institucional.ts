@@ -1,5 +1,6 @@
 import {
   C,
+  Frame,
   ICONS,
   VideoDef,
   bgDark,
@@ -13,7 +14,8 @@ import {
   text,
 } from "../engine";
 import { artLayout, splitLayout } from "../layout";
-import { caption, ctaScene, hookScene, kicker, pad } from "../scenes";
+import { caption, clientLogo, ctaScene, hookScene, kicker, pad } from "../scenes";
+import { CLIENT_LOGOS } from "../brand";
 
 /* =============================== VÍDEO 1 =============================== */
 const proofs = [
@@ -171,6 +173,19 @@ const v2: VideoDef = {
       kicker: "Case de cliente",
       title: "C.Vale trocou\ncobrança por análise.",
       highlight: "por análise.",
+      extra: (f) => {
+        const w = f.v ? f.w * 0.42 : f.w * 0.2;
+        clientLogo(
+          f,
+          CLIENT_LOGOS.cvale,
+          "C.Vale",
+          pad(f) + w / 2,
+          f.h * (f.v ? 0.2 : 0.18),
+          w,
+          w * 0.44,
+          inAt(f.k, 0, 0.6),
+        );
+      },
     }),
     {
       dur: 6,
