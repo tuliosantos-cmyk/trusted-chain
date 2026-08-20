@@ -360,9 +360,9 @@ const m2: VideoDef = {
         // versionamento: pilha v1 -> v2 -> v3
         const vShow = inAt(f.k, 4.6, 0.6);
         if (vShow > 0) {
-          const vy = m.by + m.bh * 0.68;
-          const vw = m.bw * 0.44;
-          const vh = m.bh * 0.3;
+          const vy = m.by + m.bh * 0.62;
+          const vw = m.bw * 0.72;
+          const vh = m.bh * 0.28;
           const vx = m.bx + m.bw * 0.06;
           const ver = Math.min(3, 1 + Math.floor(clamp01((f.k - 5.2) / 1.6) * 3));
           for (let i = 2; i >= 0; i--) {
@@ -382,13 +382,13 @@ const m2: VideoDef = {
           f.c.globalAlpha *= clamp01(vShow);
           icon(f, ICONS.doc, vx + vh * 0.5, vy + vh / 2, vh * 0.44, C.blue, 1.7);
           text(f, "Laudo microbiológico", vx + vh * 0.95, vy + vh * 0.26, {
-            size: Math.min(30 * f.u, vw * 0.11),
+            size: Math.min(32 * f.u, vh * 0.3),
             weight: 800,
             color: C.navy,
-            maxWidth: vw - vh * 1.2,
+            maxWidth: vw - vh * 1.1 - 24 * f.u,
           });
           text(f, `versão v${ver}`, vx + vh * 0.95, vy + vh * 0.58, {
-            size: Math.min(26 * f.u, vw * 0.095),
+            size: Math.min(28 * f.u, vh * 0.26),
             weight: 700,
             color: C.blue,
           });
