@@ -96,8 +96,8 @@ const m1: VideoDef = {
         const inv = clamp01((f.k - 0.6) / 1.1);
         const cardX = m.bx + m.bw * 0.08;
         const cardW = m.bw * 0.84;
-        const cardY = m.by + m.bh * 0.06;
-        const cardH = m.bh * 0.52;
+        const cardY = m.by + m.bh * 0.05;
+        const cardH = m.bh * 0.42;
         f.c.save();
         f.c.globalAlpha *= inAt(f.k, 0.5, 0.6);
         f.c.fillStyle = C.white;
@@ -141,8 +141,8 @@ const m1: VideoDef = {
         }
 
         // --- beat 2: documento arrastado até o slot de upload
-        const slotY = cardY + cardH + m.bh * 0.06;
-        const slotH = m.bh * 0.18;
+        const slotY = cardY + cardH + m.bh * 0.05;
+        const slotH = m.bh * 0.15;
         const drag = clamp01((f.k - 4.2) / 1.1);
         const dropped = f.k >= 5.3;
         f.c.save();
@@ -175,8 +175,8 @@ const m1: VideoDef = {
         const flip = 7.4;
         const bp = inAt(f.k, 6.4, 0.5);
         if (bp > 0) {
-          const rowY = slotY + slotH + m.bh * 0.06;
-          const rowH = Math.min(m.bh * 0.16, m.bh - (rowY - m.by) - 10 * f.u);
+          const rowY = slotY + slotH + m.bh * 0.05;
+          const rowH = Math.min(m.bh * 0.2, m.by + m.bh - rowY - 8 * f.u);
           supplierRow(f, cardX, rowY, cardW, rowH, {
             name: "Laticínios Vale",
             sub: "Cadastro enviado pelo fornecedor",
