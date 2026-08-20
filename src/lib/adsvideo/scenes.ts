@@ -214,20 +214,20 @@ export function caption(
   return h;
 }
 
-/** Cena de CTA padrão: wordmark + frase + pill pulsando. */
+/** Cena de CTA padrão: assinatura MyTS + frase + pill pulsando + site em destaque. */
 export function ctaScene(o: { dur: number; label: string; line?: string }): Scene {
   return {
     dur: o.dur,
     draw: (f) => {
       bgDark(f, f.k);
       const cx = f.w / 2;
-      const wmSize = f.v ? 190 * f.u : 150 * f.u;
-      const baseY = f.h * (f.v ? 0.36 : 0.34);
+      const wmSize = f.v ? 150 * f.u : 120 * f.u;
+      const baseY = f.h * (f.v ? 0.34 : 0.32);
       const pw = inAt(f.k, 0.1, 0.8, easeBack);
       f.c.save();
       f.c.globalAlpha *= clamp01(pw);
       f.c.translate(0, (1 - pw) * 40 * f.u);
-      wordmark(f, cx, baseY, wmSize);
+      logoLock(f, cx, baseY, wmSize, true);
       f.c.restore();
 
       const pt = inAt(f.k, 0.4, 0.7);
