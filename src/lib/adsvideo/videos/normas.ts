@@ -188,11 +188,67 @@ const v1: VideoDef = {
 };
 
 /* =============================== VÍDEO 2 =============================== */
+const NORM_TAGS = [
+  { n: "FSSC 22000", i: 0 },
+  { n: "BRCGS", i: 1 },
+  { n: "IFS", i: 2 },
+  { n: "ISO 9001", i: 3 },
+  { n: "APPCC", i: 4 },
+  { n: "ISO 22000", i: 5 },
+];
+const NORM_ICONS = [ICONS.shield, ICONS.seal, ICONS.clipboard, ICONS.chart, ICONS.radar, ICONS.doc];
+
+/** posições "bagunçadas" determinísticas dentro de um quadrado unitário */
+const SCATTER = NORM_TAGS.map((_, i) => {
+  const r = (k: number) => {
+    const x = Math.sin((i + 1) * k) * 43758.5453;
+    return x - Math.floor(x);
+  };
+  return { x: 0.16 + r(12.9898) * 0.68, y: 0.16 + r(78.233) * 0.68, rot: (r(37.71) - 0.5) * 0.5 };
+});
+
+function normChip(
+  f: Frame,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  label: string,
+  d: string,
+  rot: number,
+  p: number,
+  active = false,
+) {
+  f.c.save();
+  f.c.globalAlpha *= clamp01(p);
+  f.c.translate(x, y);
+  f.c.rotate(rot);
+  f.c.fillStyle = C.white;
+  f.c.shadowColor = "rgba(10,25,55,.12)";
+  f.c.shadowBlur = 30 * f.u;
+  f.c.shadowOffsetY = 10 * f.u;
+  roundRect(f.c, -w / 2, -h / 2, w, h, h * 0.28);
+  f.c.fill();
+  f.c.shadowColor = "transparent";
+  f.c.strokeStyle = active ? "rgba(46,91,170,.55)" : "rgba(31,56,100,.12)";
+  f.c.lineWidth = (active ? 4 : 3) * f.u;
+  roundRect(f.c, -w / 2, -h / 2, w, h, h * 0.28);
+  f.c.stroke();
+  icon(f, d, 0, -h * 0.14, Math.min(w, h) * 0.36, C.blue, 1.6);
+  text(f, label, 0, h * 0.2, {
+    size: Math.min(w * 0.17, 30 * f.u),
+    weight: 800,
+    color: C.navy,
+    align: "center",
+  });
+  f.c.restore();
+}
+
 const v2: VideoDef = {
   id: "nor-2",
   campaign: "normas",
-  title: "A auditoria não avisa",
-  subtitle: "Dor genérica · várias normas em um consultor só",
+  title: "A MyTS organiza tudo",
+  subtitle: "Todas as normas num lugar só",
   duration: 30,
   scenes: [
     {
@@ -201,148 +257,159 @@ const v2: VideoDef = {
         bgLight(f);
         const L = artLayout(f);
         const s = L.art.size;
-        const cx = f.v ? f.w / 2 : L.art.cx;
-        const cy = f.v ? f.h * 0.33 : L.art.cy;
-        const r = s * 0.24;
-        f.c.save();
-        f.c.globalAlpha *= inAt(f.k, 0, 0.5);
-        f.c.strokeStyle = C.navy;
-        f.c.lineWidth = 5 * f.u;
-        f.c.beginPath();
-        f.c.arc(cx, cy, r, 0, Math.PI * 2);
-        f.c.stroke();
-        for (let i = 0; i < 12; i++) {
-          const a = (i / 12) * Math.PI * 2;
-          f.c.beginPath();
-          f.c.moveTo(cx + Math.cos(a) * r * 0.86, cy + Math.sin(a) * r * 0.86);
-          f.c.lineTo(cx + Math.cos(a) * r * 0.94, cy + Math.sin(a) * r * 0.94);
-          f.c.stroke();
-        }
-        // ponteiros girando até parar em 22h
-        const spin = easeOut(clamp01(f.k / 2.2));
-        const hourTarget = -Math.PI / 2 + (10 / 12) * Math.PI * 2;
-        const minTarget = -Math.PI / 2;
-        const hourA = hourTarget + (1 - spin) * Math.PI * 10;
-        const minA = minTarget + (1 - spin) * Math.PI * 26;
-        f.c.lineCap = "round";
-        f.c.lineWidth = 9 * f.u;
-        f.c.beginPath();
-        f.c.moveTo(cx, cy);
-        f.c.lineTo(cx + Math.cos(hourA) * r * 0.5, cy + Math.sin(hourA) * r * 0.5);
-        f.c.stroke();
-        f.c.lineWidth = 6 * f.u;
-        f.c.strokeStyle = C.blue;
-        f.c.beginPath();
-        f.c.moveTo(cx, cy);
-        f.c.lineTo(cx + Math.cos(minA) * r * 0.78, cy + Math.sin(minA) * r * 0.78);
-        f.c.stroke();
-        f.c.restore();
-        const p = inAt(f.k, 1.6, 0.8);
+        const x0 = L.art.cx - s / 2;
+        const y0 = L.art.cy - s / 2;
+        const cw = s * 0.34;
+        const ch = cw * 0.72;
+        NORM_TAGS.forEach((t, i) => {
+          const p = inAt(f.k, 0.1 + i * 0.14, 0.6, easeBack);
+          if (p <= 0) return;
+          const wob = Math.sin(f.k * 1.6 + i) * 0.03;
+          normChip(
+            f,
+            x0 + SCATTER[i].x * s,
+            y0 + SCATTER[i].y * s,
+            cw,
+            ch,
+            t.n,
+            NORM_ICONS[i],
+            SCATTER[i].rot + wob,
+            p,
+          );
+        });
+        const p = inAt(f.k, 1.4, 0.8);
         f.c.save();
         f.c.globalAlpha *= p;
         text(
           f,
-          "22h.\nVéspera de auditoria.",
-          f.v ? f.w / 2 : L.cap.x,
-          (f.v ? f.h * 0.62 : L.cap.y) + (1 - p) * 40 * f.u,
+          "Uma norma.\nUm processo diferente.\nToda vez.",
+          f.v ? pad(f) : L.cap.x,
+          (f.v ? f.h * 0.68 : L.cap.y) + (1 - p) * 40 * f.u,
           {
-            size: f.v ? 92 * f.u : 78 * f.u,
+            size: f.v ? 78 * f.u : 66 * f.u,
             weight: 900,
             color: C.navy,
-            align: f.v ? "center" : "left",
             maxWidth: f.v ? f.w - pad(f) * 2 : L.cap.w,
-            lineHeight: (f.v ? 92 : 78) * f.u * 1.12,
+            lineHeight: (f.v ? 78 : 66) * f.u * 1.14,
           },
         );
         f.c.restore();
       },
     },
     {
-      dur: 7,
+      dur: 6,
       draw: (f) => {
         bgLight(f);
         const L = artLayout(f);
         const s = L.art.size;
-        for (let i = 0; i < 5; i++) {
-          const p = inAt(f.k, 0.2 + i * 0.45, 0.5, easeBack);
-          if (p <= 0) continue;
-          const bw = s * 0.5;
-          const bh = bw * 0.62;
-          const x = L.art.cx - bw / 2 + (i % 2 === 0 ? -1 : 1) * i * 9 * f.u;
-          const y = L.art.cy + s * 0.2 - i * bh * 0.42;
-          f.c.save();
-          f.c.globalAlpha *= clamp01(p);
-          f.c.translate(x + bw / 2, y + bh / 2 + (1 - p) * -50 * f.u);
-          f.c.rotate((i % 2 === 0 ? -1 : 1) * 0.03 * i);
-          f.c.fillStyle = C.white;
-          f.c.strokeStyle = "rgba(31,56,100,.16)";
-          f.c.lineWidth = 3 * f.u;
-          roundRect(f.c, -bw / 2, -bh / 2, bw, bh, 16 * f.u);
-          f.c.fill();
-          f.c.stroke();
-          icon(f, ICONS.envelope, 0, 0, bh * 0.6, C.navy, 1.5);
-          f.c.restore();
-        }
+        const x0 = L.art.cx - s / 2;
+        const y0 = L.art.cy - s / 2;
+        const cw = s * 0.34;
+        const ch = cw * 0.72;
+        const collapse = easeOut(clamp01(f.k / 2.4));
+        NORM_TAGS.forEach((t, i) => {
+          const jit = 0.006 * collapse * s;
+          const jx = Math.sin(f.k * 22 + i * 2.1) * jit;
+          const jy = Math.cos(f.k * 19 + i * 1.7) * jit;
+          const cx = x0 + (SCATTER[i].x + (0.5 - SCATTER[i].x) * collapse * 0.7) * s + jx;
+          const cy = y0 + (SCATTER[i].y + (0.5 - SCATTER[i].y) * collapse * 0.7) * s + jy;
+          normChip(f, cx, cy, cw, ch, t.n, NORM_ICONS[i], SCATTER[i].rot, 1);
+        });
         caption(
           f,
-          "Checklist fechado\nna correria. De novo.",
-          "Evidência dispersa, prazo curto, time exausto.",
+          "Cada norma isolada.\nNinguém vê o todo.",
+          "Escopos duplicados, evidências espalhadas, esforço repetido.",
           L.cap.x,
           L.cap.y,
           L.cap.w,
-          3.1,
+          2.4,
         );
       },
     },
     {
-      dur: 13,
+      dur: 14,
       draw: (f) => {
         bgLight(f);
         const L = splitLayout(f);
-        kicker(f, "Escopo de atuação", L.p, f.h * 0.08, C.blue, inAt(f.k, 0.05, 0.6));
-        const norms = ["FSSC 22000", "BRCGS", "IFS", "ISO 9001", "APPCC", "ISO 22000"];
-        const cols = f.v ? 2 : 3;
-        const rows = Math.ceil(norms.length / cols);
-        const gap = 22 * f.u;
-        const cw = (L.mock.w - gap * (cols - 1)) / cols;
-        const ch = (L.mock.h - gap * (rows - 1)) / rows;
-        const icons = [ICONS.shield, ICONS.seal, ICONS.clipboard, ICONS.chart, ICONS.radar, ICONS.doc];
-        norms.forEach((n, i) => {
-          const p = inAt(f.k, 0.6 + i * 0.85, 0.7, easeBack);
-          if (p <= 0) return;
-          const x = L.mock.x + (i % cols) * (cw + gap);
-          const y = L.mock.y + Math.floor(i / cols) * (ch + gap);
+        kicker(f, "Tudo num lugar só", L.p, f.h * 0.08, C.blue, inAt(f.k, 0.05, 0.6));
+        const s = Math.min(L.mock.w, L.mock.h);
+        const cx = L.mock.x + L.mock.w / 2;
+        const cy = L.mock.y + L.mock.h / 2;
+        const org = easeOut(clamp01((f.k - 0.4) / 1.8));
+        const cols = 3;
+        const cw = s * 0.29;
+        const ch = cw * 0.72;
+        const rx = s * 0.36;
+        const ry = s * 0.34;
+        const pts = NORM_TAGS.map((_, i) => {
+          const gx = cx + ((i % cols) - 1) * rx;
+          const gy = cy + (Math.floor(i / cols) - 0.5) * (ry * 1.35);
+          const sx = L.mock.x + SCATTER[i].x * L.mock.w;
+          const sy = L.mock.y + SCATTER[i].y * L.mock.h;
+          return { x: sx + (gx - sx) * org, y: sy + (gy - sy) * org };
+        });
+        // linhas conectando ao centro, acendendo uma a uma
+        pts.forEach((pt, i) => {
+          const lp = clamp01((f.k - (2.2 + i * 0.45)) / 0.6);
+          if (lp <= 0) return;
           f.c.save();
-          f.c.globalAlpha *= clamp01(p);
-          f.c.translate(x + cw / 2, y + ch / 2);
-          f.c.scale(0.9 + 0.1 * p, 0.9 + 0.1 * p);
-          f.c.fillStyle = C.white;
-          f.c.strokeStyle = "rgba(31,56,100,.12)";
-          f.c.lineWidth = 3 * f.u;
-          roundRect(f.c, -cw / 2, -ch / 2, cw, ch, 28 * f.u);
-          f.c.fill();
+          f.c.globalAlpha *= lp;
+          f.c.strokeStyle = "rgba(46,91,170,.45)";
+          f.c.lineWidth = 3.5 * f.u;
+          f.c.beginPath();
+          f.c.moveTo(cx, cy);
+          f.c.lineTo(cx + (pt.x - cx) * lp, cy + (pt.y - cy) * lp);
           f.c.stroke();
-          icon(f, icons[i], 0, -ch * 0.12, Math.min(cw, ch) * 0.34, C.blue, 1.6);
-          text(f, n, 0, ch * 0.22, {
-            size: Math.min(cw * 0.16, 34 * f.u),
-            weight: 800,
-            color: C.navy,
-            align: "center",
-          });
           f.c.restore();
         });
+        NORM_TAGS.forEach((t, i) => {
+          const on = f.k >= 2.2 + i * 0.45;
+          normChip(
+            f,
+            pts[i].x,
+            pts[i].y,
+            cw,
+            ch,
+            t.n,
+            NORM_ICONS[i],
+            SCATTER[i].rot * (1 - org),
+            1,
+            on,
+          );
+        });
+        // marca MyTS pulsando no centro
+        const mp = inAt(f.k, 1.6, 0.7, easeBack);
+        if (mp > 0) {
+          const beat = 1 + 0.05 * Math.sin(f.k * 3.2);
+          const d = s * 0.2 * beat;
+          f.c.save();
+          f.c.globalAlpha *= clamp01(mp);
+          f.c.fillStyle = C.navy;
+          f.c.shadowColor = "rgba(46,91,170,.4)";
+          f.c.shadowBlur = 60 * f.u;
+          f.c.beginPath();
+          f.c.arc(cx, cy, d, 0, Math.PI * 2);
+          f.c.fill();
+          f.c.shadowColor = "transparent";
+          logoMark(f, cx, cy, d * 1.0, C.white);
+          f.c.restore();
+        }
         caption(
           f,
-          "FSSC, BRCGS, IFS, ISO 9001, APPCC.\nNum consultor só.",
-          "Um time, várias normas — sem retrabalho entre fornecedores de serviço.",
+          "A MyTS organiza todas\nas suas normas, num lugar só.",
+          "Um escopo, uma base de evidências, uma visão da operação inteira.",
           L.cap.x,
           L.cap.y,
           L.cap.w,
-          8.4,
+          7.4,
         );
       },
     },
-    ctaScene({ dur: 6, label: "Falar com especialista", line: "Fale com um\nespecialista MyTS." }),
+    ctaScene({
+      dur: 6,
+      label: "Agendar Sessão Estratégica",
+      line: "Agende sua\nSessão Estratégica.",
+    }),
   ],
 };
 
