@@ -567,5 +567,38 @@ export function renderVideo(
     b.s.draw({ c, w, h, v: vertical, u, k: t - b.start });
     c.restore();
   }
+
+  // assinatura MyTS permanente (exceto na cena final, que já traz a marca grande)
+  const last = bounds[bounds.length - 1];
+  if (!last || t < last.start) {
+    const size = 46 * u;
+    const mx = w - (vertical ? 70 * u : 80 * u);
+    const my = vertical ? 96 * u : 80 * u;
+    let light = true;
+    try {
+      const px = c.getImageData(Math.round(mx), Math.round(my), 1, 1).data;
+      light = px[0] * 0.299 + px[1] * 0.587 + px[2] * 0.114 < 140;
+    } catch {
+      light = true;
+    }
+    const f: Frame = { c, w, h, v: vertical, u, k: t };
+    c.save();
+    c.globalAlpha = 0.85;
+    const my2 = my;
+    c.font = font(size, 900);
+    const tw = c.measureText("MyTS").width;
+    const markW = size * 1.1 * (172.4 / 178.5);
+    const total = markW + size * 0.3 + tw;
+    const left = mx - total;
+    logoMark(f, left + markW / 2, my2, size * 1.1, light ? C.white : C.navy);
+    c.textAlign = "left";
+    c.textBaseline = "middle";
+    const wMy = c.measureText("My").width;
+    c.fillStyle = light ? C.white : C.navy;
+    c.fillText("My", left + markW + size * 0.3, my2 + size * 0.02);
+    c.fillStyle = light ? C.blueSoft : C.blue;
+    c.fillText("TS", left + markW + size * 0.3 + wMy, my2 + size * 0.02);
+    c.restore();
+  }
 }
 
