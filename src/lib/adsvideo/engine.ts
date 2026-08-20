@@ -40,9 +40,16 @@ export type Scene = {
   draw: (f: Frame) => void;
 };
 
+export type CampaignId =
+  | "homologacao"
+  | "normas"
+  | "institucional"
+  | "modulos"
+  | "depoimentos";
+
 export type VideoDef = {
   id: string;
-  campaign: "homologacao" | "normas" | "institucional";
+  campaign: CampaignId;
   title: string;
   subtitle: string;
   duration: number;
