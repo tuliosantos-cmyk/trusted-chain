@@ -427,14 +427,14 @@ const v3: VideoDef = {
         f.c.beginPath();
         f.c.arc(cx, cy, r, Math.PI * 0.75, Math.PI * 0.75 + Math.PI * 1.5 * prog);
         f.c.stroke();
-        text(f, `${Math.round(prog * 100)}%`, cx, cy - r * 0.34, {
-          size: r * 0.5,
+        text(f, `${Math.round(prog * 100)}%`, cx, cy - r * 0.42, {
+          size: r * 0.46,
           weight: 900,
           color: C.navy,
           align: "center",
         });
-        text(f, "conformidade mapeada", cx, cy + r * 0.24, {
-          size: r * 0.14,
+        text(f, "conformidade mapeada", cx, cy + r * 0.30, {
+          size: r * 0.13,
           weight: 700,
           color: "rgba(31,56,100,.55)",
           align: "center",

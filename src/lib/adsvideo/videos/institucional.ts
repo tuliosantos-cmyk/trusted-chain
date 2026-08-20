@@ -192,7 +192,7 @@ const v2: VideoDef = {
           f.c.fill();
           f.c.stroke();
           const num = Math.round(it.v * easeOut(count));
-          const numSize = Math.min(cw * 0.42, ch * 0.42);
+          const numSize = Math.min(cw * 0.3, ch * 0.42);
           text(f, `−${num}%`, x + cw / 2, y + ch * (stacked ? 0.18 : 0.24), {
             size: numSize,
             weight: 900,
