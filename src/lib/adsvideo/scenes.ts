@@ -19,6 +19,9 @@ import {
   text,
   textHeight,
   wordmark,
+  logoLock,
+  logoMark,
+  drawImageFit,
 } from "./engine";
 
 /** Margem de segurança lateral. */
