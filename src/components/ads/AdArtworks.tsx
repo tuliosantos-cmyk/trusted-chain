@@ -437,12 +437,14 @@ export type AdArt = {
   name: string;
   group: string;
   note: string;
+  bg: string;
   render: () => JSX.Element;
 };
 
 export const adArts: AdArt[] = [
   {
     id: "dash-fornecedores",
+    bg: LIGHT,
     name: "Dashboard — lista de fornecedores",
     group: "Tipo 1 · Produto",
     note: "Status conforme / atenção / vencido. Labels apenas ilustrativos.",
@@ -450,6 +452,7 @@ export const adArts: AdArt[] = [
   },
   {
     id: "dash-alertas",
+    bg: NAVY,
     name: "Painel de alertas de vencimento",
     group: "Tipo 1 · Produto",
     note: "Urgência controlada, fundo navy, cards claros.",
@@ -457,6 +460,7 @@ export const adArts: AdArt[] = [
   },
   {
     id: "dash-conformidade",
+    bg: LIGHT,
     name: "Gráfico de conformidade",
     group: "Tipo 1 · Produto",
     note: "Anel de progresso + curva ascendente, sem números.",
@@ -464,6 +468,7 @@ export const adArts: AdArt[] = [
   },
   {
     id: "doc-selo",
+    bg: LIGHT,
     name: "Documento + selo de aprovação",
     group: "Tipo 2 · Normas",
     note: "Flat vetor, selo de check sem texto.",
@@ -471,6 +476,7 @@ export const adArts: AdArt[] = [
   },
   {
     id: "materia-prima",
+    bg: LIGHT,
     name: "Matéria-prima e análise",
     group: "Tipo 3 · Homologação / P&D",
     note: "Grãos, frascos e lupa de validação.",
@@ -478,6 +484,7 @@ export const adArts: AdArt[] = [
   },
   {
     id: "rede-global",
+    bg: NAVY,
     name: "Rede global de cadeia",
     group: "Tipo 4 · Institucional",
     note: "Globo vetorial e malha de nós, sem países nomeados.",
@@ -485,6 +492,7 @@ export const adArts: AdArt[] = [
   },
   {
     id: "pilar-homologar",
+    bg: NAVY,
     name: "Pilar — homologar",
     group: "Tipo 5 · Ícone",
     note: "Escudo com check, fundo navy.",
@@ -492,6 +500,7 @@ export const adArts: AdArt[] = [
   },
   {
     id: "pilar-monitorar",
+    bg: LIGHT,
     name: "Pilar — monitorar",
     group: "Tipo 5 · Ícone",
     note: "Radar em linha fina, fundo claro.",
@@ -499,6 +508,7 @@ export const adArts: AdArt[] = [
   },
   {
     id: "pilar-desenvolver",
+    bg: NAVY,
     name: "Pilar — desenvolver",
     group: "Tipo 5 · Ícone",
     note: "Barras + curva ascendente, fundo navy.",
@@ -519,7 +529,8 @@ export const AdFrame = ({
   height: number;
   svgRef?: (el: SVGSVGElement | null) => void;
 }) => {
-  const scale = (Math.min(width, height) * 0.8) / D;
+  const square = height >= width * 0.95;
+  const scale = square ? (Math.min(width, height) * 0.86) / D : (height * 0.94) / D;
   const tx = (width - D * scale) / 2;
   const ty = (height - D * scale) / 2;
   return (
@@ -533,7 +544,7 @@ export const AdFrame = ({
       role="img"
       aria-label={art.name}
     >
-      <rect x={0} y={0} width={width} height={height} fill={WHITE} />
+      <rect x={0} y={0} width={width} height={height} fill={art.bg} />
       <g transform={`translate(${tx} ${ty}) scale(${scale})`}>{art.render()}</g>
     </svg>
   );
