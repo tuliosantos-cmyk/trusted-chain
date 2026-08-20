@@ -445,19 +445,24 @@ const v3: VideoDef = {
         if (sp > 0) {
           f.c.save();
           f.c.globalAlpha *= clamp01(sp);
-          const sy = cy + r * 1.32;
+          const sy = cy + r * 1.42;
+          const label = "Pronto pra transição";
+          const fs = r * 0.17;
+          f.c.font = font(fs, 800);
+          const tw = f.c.measureText(label).width;
+          const bh = fs * 2.1;
+          const bw = tw + bh * 2.1;
           f.c.fillStyle = "rgba(34,160,107,.14)";
-          const bw = r * 1.25;
-          const bh = r * 0.42;
           roundRect(f.c, cx - bw / 2, sy - bh / 2, bw, bh, bh / 2);
           f.c.fill();
-          icon(f, ICONS.check, cx - bw * 0.3, sy, bh * 0.6, C.greenInk, 2.8);
-          text(f, "Pronto pra transição", cx + bw * 0.06, sy - bh * 0.22, {
-            size: bh * 0.42,
+          icon(f, ICONS.check, cx - bw / 2 + bh * 0.62, sy, bh * 0.5, C.greenInk, 2.8);
+          text(f, label, cx + bh * 0.55, sy - fs * 0.5, {
+            size: fs,
             weight: 800,
             color: C.greenInk,
             align: "center",
           });
+
           f.c.restore();
         }
         caption(
