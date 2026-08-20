@@ -1,3 +1,5 @@
+import MytsMark from "./MytsMark";
+
 // Artes para recursos de imagem do Google Ads.
 // Regras: SEM texto, número, palavra ou logo. Conteúdo centralizado ocupando ~80% do quadro.
 // Cada arte é desenhada num espaço de design quadrado de 1000x1000 e escalada/centralizada
