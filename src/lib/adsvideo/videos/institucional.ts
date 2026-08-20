@@ -16,18 +16,53 @@ import { artLayout, splitLayout } from "../layout";
 import { caption, ctaScene, hookScene, kicker, pad } from "../scenes";
 
 /* =============================== VÍDEO 1 =============================== */
-const stats = [
-  { v: 3000, prefix: "+", suffix: "", label: "empresas na plataforma", icon: ICONS.building },
-  { v: 50, prefix: "", suffix: "K", label: "documentos gerenciados", icon: ICONS.doc },
-  { v: 20, prefix: "+", suffix: "", label: "países alcançados", icon: ICONS.globe },
-  { v: 100, prefix: "+", suffix: "", label: "auditores na rede", icon: ICONS.users },
+const proofs = [
+  { v: 100, prefix: "+", suffix: "", label: "auditores certificados", icon: ICONS.users },
+  { v: 20, prefix: "+", suffix: "", label: "países com cobertura ativa", icon: ICONS.globe },
 ];
+
+/** pontos de uma malha global estilizada */
+const MAP_PTS = Array.from({ length: 26 }, (_, i) => {
+  const r = (k: number) => {
+    const x = Math.sin((i + 1) * k) * 43758.5453;
+    return x - Math.floor(x);
+  };
+  return { x: 0.06 + r(12.9898) * 0.88, y: 0.12 + r(78.233) * 0.76 };
+});
+
+function worldGrid(f: Frame, alpha: number) {
+  const t = f.k;
+  f.c.save();
+  f.c.globalAlpha *= alpha;
+  const pts = MAP_PTS.map((p) => ({ x: p.x * f.w, y: p.y * f.h }));
+  f.c.strokeStyle = "rgba(159,192,245,.22)";
+  f.c.lineWidth = 2 * f.u;
+  pts.forEach((p, i) => {
+    const q = pts[(i * 7 + 5) % pts.length];
+    const lp = clamp01((t - i * 0.12) / 0.8);
+    if (lp <= 0) return;
+    f.c.beginPath();
+    f.c.moveTo(p.x, p.y);
+    f.c.lineTo(p.x + (q.x - p.x) * lp, p.y + (q.y - p.y) * lp);
+    f.c.stroke();
+  });
+  pts.forEach((p, i) => {
+    const pp = clamp01((t - i * 0.08) / 0.5);
+    if (pp <= 0) return;
+    const glow = 0.5 + 0.5 * Math.sin(t * 2 + i);
+    f.c.fillStyle = `rgba(159,192,245,${0.35 + 0.35 * glow})`;
+    f.c.beginPath();
+    f.c.arc(p.x, p.y, 7 * f.u * pp, 0, Math.PI * 2);
+    f.c.fill();
+  });
+  f.c.restore();
+}
 
 const v1: VideoDef = {
   id: "ins-1",
   campaign: "institucional",
-  title: "Números que sustentam",
-  subtitle: "Marca e reputação · prova em vez de dor",
+  title: "20 anos, rede real",
+  subtitle: "Marca e reputação · auditores e cobertura",
   duration: 30,
   scenes: [
     {
@@ -59,46 +94,56 @@ const v1: VideoDef = {
       dur: 20,
       draw: (f) => {
         bgDark(f, f.k);
-        const slot = 4.8;
-        const idx = Math.min(stats.length - 1, Math.floor(f.k / slot));
+        worldGrid(f, 0.75);
+        const slot = 10;
+        const idx = Math.min(proofs.length - 1, Math.floor(f.k / slot));
         const local = f.k - idx * slot;
-        const s = stats[idx];
-        const inP = clamp01(local / 1.4);
-        const outP = 1 - clamp01((local - (slot - 0.45)) / 0.45);
+        const s = proofs[idx];
+        const inP = clamp01(local / 2);
+        const outP = 1 - clamp01((local - (slot - 0.5)) / 0.5);
         const cx = f.w / 2;
         f.c.save();
         f.c.globalAlpha *= clamp01(outP);
-        // ícone
+        // painel translúcido pra garantir leitura sobre o mapa
+        const panelW = f.w - pad(f) * 2;
+        const panelH = f.v ? f.h * 0.42 : f.h * 0.5;
+        const panelY = f.h * (f.v ? 0.3 : 0.25);
+        f.c.fillStyle = "rgba(12,28,58,.62)";
+        roundRect(f.c, cx - panelW / 2, panelY, panelW, panelH, 44 * f.u);
+        f.c.fill();
+
         f.c.save();
         f.c.globalAlpha *= inAt(local, 0, 0.6);
-        icon(f, s.icon, cx, f.h * (f.v ? 0.3 : 0.28), (f.v ? 170 : 140) * f.u, C.blueSoft, 1.4);
+        icon(f, s.icon, cx, panelY + panelH * 0.2, (f.v ? 150 : 130) * f.u, C.blueSoft, 1.4);
         f.c.restore();
-        const size = f.v ? 250 * f.u : 210 * f.u;
+
+        const size = f.v ? 230 * f.u : 200 * f.u;
         const shown = Math.round(s.v * easeOut(inP));
         text(
           f,
           `${s.prefix}${shown.toLocaleString("pt-BR")}${s.suffix}`,
           cx,
-          f.h * (f.v ? 0.42 : 0.4),
+          panelY + panelH * 0.4,
           { size, weight: 900, color: C.white, align: "center" },
         );
         f.c.save();
-        f.c.globalAlpha *= inAt(local, 0.5, 0.7);
-        text(f, s.label, cx, f.h * (f.v ? 0.42 : 0.4) + size * 1.05, {
-          size: f.v ? 56 * f.u : 46 * f.u,
+        f.c.globalAlpha *= inAt(local, 0.6, 0.7);
+        text(f, s.label, cx, panelY + panelH * 0.4 + size * 1.02, {
+          size: f.v ? 54 * f.u : 46 * f.u,
           weight: 700,
-          color: "rgba(255,255,255,.7)",
+          color: "rgba(255,255,255,.78)",
           align: "center",
-          maxWidth: f.w - pad(f) * 2,
+          maxWidth: panelW * 0.86,
+          lineHeight: (f.v ? 54 : 46) * f.u * 1.2,
         });
         f.c.restore();
         f.c.restore();
-        // indicadores de progresso
-        const dotY = f.h * (f.v ? 0.8 : 0.84);
-        stats.forEach((_, i) => {
-          const w = 90 * f.u;
+
+        const dotY = f.h * (f.v ? 0.8 : 0.86);
+        proofs.forEach((_, i) => {
+          const w = 110 * f.u;
           const gap = 18 * f.u;
-          const total = stats.length * w + (stats.length - 1) * gap;
+          const total = proofs.length * w + (proofs.length - 1) * gap;
           const x = cx - total / 2 + i * (w + gap);
           f.c.save();
           f.c.fillStyle = i <= idx ? C.blueSoft : "rgba(255,255,255,.22)";
