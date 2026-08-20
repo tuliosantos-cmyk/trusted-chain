@@ -12,7 +12,7 @@ import {
   text,
 } from "../engine";
 import { CLIENT_LOGOS } from "../brand";
-import { accentBar, caption, clientLogo, ctaScene, kicker, pad } from "../scenes";
+import { accentBar, clientLogo, ctaScene, kickerSize, pad } from "../scenes";
 
 type Testimonial = {
   id: string;
@@ -35,27 +35,30 @@ function openScene(t: Testimonial): Scene {
       t.dark ? bgDark(f, f.k) : bgLight(f);
       const cx = f.w / 2;
       const p = inAt(f.k, 0.05, 0.8, easeBack);
-      const cy = f.h * (t.logo ? 0.42 : 0.46);
+      const kickY = f.h * (f.v ? 0.3 : 0.26);
+
       if (t.logo) {
-        const w = f.v ? f.w * 0.56 : f.w * 0.26;
-        clientLogo(f, t.logo, t.company, cx, f.h * 0.3, w, w * 0.44, p);
+        const w = f.v ? f.w * 0.5 : f.w * 0.22;
+        clientLogo(f, t.logo, t.company, cx, f.h * (f.v ? 0.2 : 0.17), w, w * 0.44, p);
       }
+
       f.c.save();
       f.c.globalAlpha *= clamp01(p);
-      kicker(
-        f,
-        "Depoimento de cliente",
-        cx,
-        cy - (f.v ? 120 : 100) * f.u,
-        t.dark ? "#9FC0F5" : C.blue,
-        p,
-      );
+      const ks = kickerSize(f);
+      text(f, "DEPOIMENTO DE CLIENTE", cx, kickY, {
+        size: ks,
+        weight: 800,
+        color: t.dark ? "#9FC0F5" : C.blue,
+        align: "center",
+        letterSpacing: `${0.28 * ks}px`,
+      });
       f.c.restore();
-      // kicker centralizado precisa de align: redesenha centralizado
+
       const size = f.v ? 96 * f.u : 82 * f.u;
+      const nameY = kickY + (f.v ? 110 : 90) * f.u;
       f.c.save();
       f.c.globalAlpha *= clamp01(p);
-      text(f, t.company, cx, cy + (1 - p) * 40 * f.u, {
+      const nh = text(f, t.company, cx, nameY + (1 - p) * 40 * f.u, {
         size,
         weight: 900,
         color: t.dark ? C.white : C.navy,
@@ -67,7 +70,7 @@ function openScene(t: Testimonial): Scene {
       accentBar(
         f,
         cx - (f.v ? 100 : 120) * f.u,
-        cy + size * 1.4,
+        nameY + nh + 50 * f.u,
         inAt(f.k, 0.7, 0.8),
         C.blue,
         (f.v ? 200 : 240) * f.u,
