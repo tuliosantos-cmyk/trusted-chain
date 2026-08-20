@@ -286,16 +286,7 @@ export function ctaScene(o: { dur: number; label: string; line?: string }): Scen
         f.c.restore();
       }
 
-      const pf = inAt(f.k, 1.6, 0.8);
-      f.c.save();
-      f.c.globalAlpha *= pf;
-      text(f, "myt-s.com", cx, f.h - (f.v ? 170 : 120) * f.u, {
-        size: f.v ? 34 * f.u : 30 * f.u,
-        weight: 600,
-        color: "rgba(255,255,255,.55)",
-        align: "center",
-      });
-      f.c.restore();
+      siteBadge(f, cx, f.h - (f.v ? 230 : 140) * f.u, inAt(f.k, 1.6, 0.8));
     },
   };
 }
