@@ -543,6 +543,10 @@ export const AdFrame = ({
       className="block h-auto w-full"
       role="img"
       aria-label={art.name}
+      data-ad-asset="true"
+      data-w={width}
+      data-h={height}
+      data-name={`myts-${art.id}`}
     >
       <rect x={0} y={0} width={width} height={height} fill={art.bg} />
       <g transform={`translate(${tx} ${ty}) scale(${scale})`}>{art.render()}</g>
