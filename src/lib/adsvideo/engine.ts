@@ -390,7 +390,13 @@ export function pill(
 }
 
 /** Wordmark MyTS desenhado em texto. */
-export function wordmark(f: Frame, x: number, y: number, size: number) {
+export function wordmark(
+  f: Frame,
+  x: number,
+  y: number,
+  size: number,
+  light = true,
+) {
   const { c } = f;
   c.save();
   c.font = font(size, 900);
@@ -402,11 +408,121 @@ export function wordmark(f: Frame, x: number, y: number, size: number) {
   const wTs = c.measureText(ts).width;
   const total = wMy + wTs;
   c.textAlign = "left";
-  c.fillStyle = C.white;
+  c.fillStyle = light ? C.white : C.navy;
   c.fillText(my, x - total / 2, y);
-  c.fillStyle = C.blueSoft;
+  c.fillStyle = light ? C.blueSoft : C.blue;
   c.fillText(ts, x - total / 2 + wMy, y);
   c.restore();
+}
+
+/* ------------------------------------------------------------ marca MyTS */
+
+/** Paths oficiais do símbolo MyTS, em box 172.4 × 178.5. */
+const MARK_PATHS = [
+  "M101.9 98.2904L91.3 107.89C89.7 109.29 88.9 111.19 88.9 113.29V123.69C88.9 125.29 88.2 126.69 87.1 127.79L48.7 162.89C46.4 164.99 42.6 164.99 40.3 162.89L19.3 143.79C18.1 142.69 17.4 141.19 17.4 139.69V68.0904C17.4 66.4904 18.1 65.0904 19.3 63.9904L40.1 44.9904C42.5 42.8904 46.2 42.8904 48.5 44.9904L64.3 59.3904C66.7 61.4904 70.4 61.4904 72.8 59.3904C75.2 57.0904 75.2 53.3904 72.8 51.1904L52.7 32.8904C50.4 30.7904 47.4 29.6904 44.3 29.6904C41.2 29.6904 38.1 30.7904 35.9 32.8904L3.60001 62.3904C1.30001 64.4904 0 67.4904 0 70.5904V137.39C0 140.49 1.29998 143.49 3.69998 145.69L35.9 175.19C38.2 177.29 41.2 178.49 44.4 178.49C47.5 178.49 50.6 177.39 52.9 175.19L104.1 128.49C105.3 127.39 106.5 125.39 106.5 123.29V100.29C106.4 97.8904 103.6 96.7904 101.9 98.2904Z",
+  "M88.8999 38.4905V15.7905C88.8999 13.7905 89.7999 11.7905 91.2999 10.3905L101.8 0.690466C103.5 -0.809534 106.3 0.290484 106.3 2.49048V25.2905C106.3 27.3905 105.4 29.2905 103.9 30.6905C101.2 33.0905 96.6999 37.1905 93.3999 40.1905C91.6999 41.8905 88.8999 40.6905 88.8999 38.4905Z",
+  "M70.5 109.39L81 99.7902C82.6 98.3902 83.4 96.4902 83.4 94.3902V83.9902C83.4 82.3902 84.1 80.9902 85.2 79.8902L123.6 44.6902C125.9 42.5902 129.7 42.5902 132 44.6902L153 63.7902C154.2 64.8902 154.9 66.3902 154.9 67.8902V139.59C154.9 141.19 154.2 142.59 153 143.69L132.3 162.89C129.9 164.99 126.2 164.99 123.9 162.89L108.1 148.49C105.7 146.39 102 146.39 99.6 148.49C97.2 150.79 97.2 154.49 99.6 156.69L119.7 174.99C122 177.09 125 178.19 128.1 178.19C131.2 178.19 134.3 177.09 136.5 174.99L168.8 145.49C171.1 143.39 172.4 140.39 172.4 137.29V70.3902C172.4 67.2902 171.1 64.3902 168.8 62.1902L136.5 32.6902C134.2 30.5902 131.2 29.4902 128.1 29.4902H128C124.9 29.4902 121.8 30.5902 119.6 32.6902L68.1 79.6902C66.9 80.7902 66 83.2902 66 84.7902V107.69C66 109.89 68.8 110.99 70.5 109.39Z",
+];
+
+/** Símbolo MyTS. `size` é a altura desejada; centro em (x, y). */
+export function logoMark(
+  f: Frame,
+  x: number,
+  y: number,
+  size: number,
+  color = C.white,
+) {
+  const { c } = f;
+  const s = size / 178.5;
+  c.save();
+  c.translate(x - (172.4 * s) / 2, y - size / 2);
+  c.scale(s, s);
+  c.fillStyle = color;
+  for (const d of MARK_PATHS) c.fill(new Path2D(d));
+  c.restore();
+}
+
+/**
+ * Assinatura oficial: símbolo + wordmark, centralizada em (cx, cy).
+ * `dark = true` para fundos escuros (marca em branco).
+ */
+export function logoLock(
+  f: Frame,
+  cx: number,
+  cy: number,
+  size: number,
+  dark = true,
+) {
+  const markH = size * 1.18;
+  const gap = size * 0.36;
+  const { c } = f;
+  c.font = font(size, 900);
+  const total = markH * (172.4 / 178.5) + gap + c.measureText("MyTS").width;
+  const left = cx - total / 2;
+  logoMark(f, left + (markH * (172.4 / 178.5)) / 2, cy, markH, dark ? C.white : C.navy);
+  c.save();
+  c.font = font(size, 900);
+  c.textAlign = "left";
+  c.textBaseline = "middle";
+  const my = "My";
+  const wMy = c.measureText(my).width;
+  const tx = left + markH * (172.4 / 178.5) + gap;
+  c.fillStyle = dark ? C.white : C.navy;
+  c.fillText(my, tx, cy + size * 0.02);
+  c.fillStyle = dark ? C.blueSoft : C.blue;
+  c.fillText("TS", tx + wMy, cy + size * 0.02);
+  c.restore();
+  return { width: total, height: markH };
+}
+
+/* ------------------------------------------------------------- imagens */
+
+const imgCache = new Map<string, HTMLImageElement>();
+
+/** Carrega (com cache) uma imagem para uso no canvas. */
+export function loadImage(url: string): Promise<HTMLImageElement> {
+  const hit = imgCache.get(url);
+  if (hit && hit.complete && hit.naturalWidth) return Promise.resolve(hit);
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      imgCache.set(url, img);
+      resolve(img);
+    };
+    img.onerror = reject;
+    img.src = url;
+  });
+}
+
+export function preloadImages(urls: string[]) {
+  return Promise.all(urls.map((u) => loadImage(u).catch(() => null)));
+}
+
+/** Retorna a imagem já carregada, ou dispara o carregamento e devolve null. */
+export function img(url: string): HTMLImageElement | null {
+  const hit = imgCache.get(url);
+  if (hit && hit.complete && hit.naturalWidth) return hit;
+  if (!hit) void loadImage(url).catch(() => undefined);
+  return null;
+}
+
+/** Desenha a imagem contida numa caixa (contain), centrada em (cx, cy). */
+export function drawImageFit(
+  f: Frame,
+  url: string,
+  cx: number,
+  cy: number,
+  maxW: number,
+  maxH: number,
+) {
+  const im = img(url);
+  if (!im) return false;
+  const r = Math.min(maxW / im.naturalWidth, maxH / im.naturalHeight);
+  const w = im.naturalWidth * r;
+  const h = im.naturalHeight * r;
+  f.c.drawImage(im, cx - w / 2, cy - h / 2, w, h);
+  return true;
 }
 
 /* -------------------------------------------------------------- timeline */
