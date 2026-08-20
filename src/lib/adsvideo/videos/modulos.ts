@@ -535,8 +535,8 @@ const m3: VideoDef = {
           inAt(f.k, 0.1, 0.7),
         );
         const clone = easeOut(clamp01((f.k - 0.8) / 1.2));
-        const cw = m.bw * 0.82;
-        const chh = m.bh * 0.62;
+        const cw = m.bw * 0.78;
+        const chh = m.bh * 0.6;
         const bx = m.bx + m.bw * 0.04;
         const by = m.by + m.bh * 0.04;
         // template original (atrás)
@@ -550,7 +550,7 @@ const m3: VideoDef = {
         f.c.stroke();
         f.c.restore();
         // cópia que desliza
-        const ox = bx + m.bw * 0.12 * clone;
+        const ox = bx + m.bw * 0.1 * clone;
         const oy = by + m.bh * 0.06 * clone;
         f.c.save();
         f.c.globalAlpha *= inAt(f.k, 0.6, 0.5);
