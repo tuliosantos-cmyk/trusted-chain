@@ -16,6 +16,7 @@ import Fssc22000V7 from "./pages/Fssc22000V7.tsx";
 import GestaoFornecedores from "./pages/GestaoFornecedores.tsx";
 import HomologacaoFornecedores from "./pages/HomologacaoFornecedores.tsx";
 import AdsAssets from "./pages/AdsAssets.tsx";
+import VideosAds from "./pages/VideosAds.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/gestao-de-fornecedores" element={<GestaoFornecedores />} />
             <Route path="/homologacao-de-fornecedores" element={<HomologacaoFornecedores />} />
             <Route path="/ads-assets" element={<AdsAssets />} />
+            <Route path="/videos-ads" element={<VideosAds />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
