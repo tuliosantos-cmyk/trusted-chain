@@ -1,4 +1,5 @@
-import { VideoDef, renderVideo, totalDuration } from "./engine";
+import { VideoDef, preloadImages, renderVideo, totalDuration } from "./engine";
+import { ALL_LOGO_URLS } from "./brand";
 import { FORMATS, FormatId } from "./registry";
 
 export type RecordProgress = {
