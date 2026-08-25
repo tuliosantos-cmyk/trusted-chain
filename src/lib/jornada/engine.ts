@@ -32,7 +32,7 @@ export type JVideo = {
   scenes: JScene[];
 };
 
-export const CANVAS = { w: 1080, h: 1920 };
+export const CANVAS = { w: 1080, h: 1080 };
 
 export function jDuration(v: JVideo) {
   return v.scenes.reduce((a, s) => a + s.dur, 0);
