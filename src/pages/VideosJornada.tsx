@@ -220,31 +220,43 @@ export default function VideosJornada() {
       </header>
 
       <main className="mx-auto max-w-6xl px-6 py-8">
+        <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+          Os três vídeos
+        </h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {JORNADA_VIDEOS.map((v) => (
             <Card key={v.id} video={v} />
           ))}
         </div>
 
+        <h2 className="mb-4 mt-10 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+          Peças de apoio
+        </h2>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <Card video={GIF_REFORCO} actions={["gif"]} gifFps={10} staticAt={1.4} />
+          <Card video={CARD_ESTATICO} actions={["png"]} />
+        </div>
+
         <section className="mt-10 max-w-3xl space-y-3 text-xs leading-relaxed text-muted-foreground">
           <p className="flex items-start gap-2">
             <Film className="mt-0.5 h-4 w-4 shrink-0" />
             <span>
-              O MP4 é gravado no navegador em resolução real (1080×1080, 60 fps) e convertido
-              automaticamente quando necessário. Mantenha a aba aberta durante o processo.
+              Abertura-notificação idêntica nos três vídeos, carimbo nas mensagens de peso, tique
+              de entregue no contato, linha de leitura entre blocos e discador no telefone. MP4
+              gravado no navegador em 1080×1080, 60 fps — mantenha a aba aberta.
             </span>
           </p>
           <p className="flex items-start gap-2">
             <ImageIcon className="mt-0.5 h-4 w-4 shrink-0" />
             <span>
-              O GIF sai numa versão curta de propósito: só a tela de peso (“Participação
-              obrigatória”) e o contato, em 720×720 a 12 fps. GIF não tem compressão de vídeo e
-              fica pesado rápido — nessa configuração ele abre mesmo com sinal fraco. A sequência
-              completa fica no MP4.
+              O GIF de reforço é uma peça própria, não o vídeo convertido: carimbo, acesso e
+              contato em 720×720 a 10 fps, para abrir mesmo com sinal fraco. O card estático é o
+              fallback quando nem vídeo nem GIF carregam.
             </span>
           </p>
         </section>
       </main>
+
     </div>
   );
 }
