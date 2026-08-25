@@ -12,8 +12,9 @@ import {
   revealWords,
   stampText,
 } from "./engine";
-import jornadaAsset from "@/assets/jornada/jornada.png.asset.json";
-import jornadaWhiteAsset from "@/assets/jornada/jornada-white.png.asset.json";
+import jornadaAsset from "@/assets/jornada/jornada-v2.svg.asset.json";
+import jornadaWhiteAsset from "@/assets/jornada/jornada-v2-white.svg.asset.json";
+import jornadaIconAsset from "@/assets/jornada/jornada-icone.svg.asset.json";
 import carrefourAsset from "@/assets/jornada/carrefour-grupo.png.asset.json";
 import mytsDarkAsset from "@/assets/jornada/myts-dark.png.asset.json";
 
@@ -22,12 +23,13 @@ export const LOGOS = {
   jornadaWhite: jornadaWhiteAsset.url,
   carrefour: carrefourAsset.url,
   mytsDark: mytsDarkAsset.url,
+  icone: jornadaIconAsset.url,
 };
 
 export const ALL_JORNADA_LOGOS = Object.values(LOGOS);
 
 // ícone da notificação de abertura
-JORNADA_MARK.url = LOGOS.jornadaWhite;
+JORNADA_MARK.url = LOGOS.icone;
 
 /** A placa de assinatura é sempre clara: usar as marcas em cores originais. */
 const LOCKUP = {
@@ -71,7 +73,7 @@ function abertura(): JScene {
         c.save();
         c.globalAlpha = pl;
         const y = cy + (1 - pl) * 18 * u;
-        if (!drawImageFit(f, LOGOS.jornadaWhite, f.w / 2, y, 820 * u, 420 * u)) {
+        if (!drawImageFit(f, LOGOS.jornadaWhite, f.w / 2, y, 900 * u, 300 * u)) {
           c.font = font(104 * u, 900);
           c.textAlign = "center";
           c.textBaseline = "middle";
@@ -121,7 +123,7 @@ function obrigatoria(dur = 3.8): JScene {
         color: JC.light,
         at: 0.95,
       });
-      revealWords(f, "para fornecedores Carrefour", f.w / 2, cy + 110 * u, k, {
+      revealWords(f, "para fornecedores da rede", f.w / 2, cy + 110 * u, k, {
         size: 46 * u,
         weight: 700,
         color: "rgba(255,255,255,.82)",
@@ -144,13 +146,13 @@ function contato(dur = 4.2): JScene {
       const { c, u, k } = f;
       const cy = contentCenter(f);
 
-      revealWords(f, "Dúvidas?", f.w / 2, cy - 250 * u, k, {
-        size: 52 * u,
+      revealWords(f, "Dúvidas sobre o acesso à plataforma?", f.w / 2, cy - 268 * u, k, {
+        size: 46 * u,
         weight: 700,
         color: JC.dark,
         maxWidth: f.w - 160 * u,
-        lineHeight: 62 * u,
-        step: 0.1,
+        lineHeight: 56 * u,
+        step: 0.08,
       });
 
       const nameY = cy - 150 * u;
@@ -213,8 +215,8 @@ function contato(dur = 4.2): JScene {
 /** Tela de contexto (Vídeo B) — composição cumulativa com linha de leitura. */
 function contexto(): JScene {
   const blocos = [
-    { t: "CARREFOUR & MYTS", size: 68, weight: 900, color: JC.white },
-    { t: "acompanham e reconhecem", size: 54, weight: 700, color: JC.white },
+    { t: "A JORNADA", size: 68, weight: 900, color: JC.white },
+    { t: "acompanha e reconhece", size: 54, weight: 700, color: JC.white },
     { t: "o desenvolvimento", size: 54, weight: 700, color: JC.white },
     { t: "da sua empresa.", size: 68, weight: 900, color: JC.white },
   ];
@@ -298,7 +300,7 @@ function acesso(): JScene {
       c.font = font(58 * u, 700);
       c.textAlign = "center";
       c.textBaseline = "middle";
-      c.fillStyle = JC.dark;
+      c.fillStyle = JC.ink;
       c.fillText("O ACESSO", f.w / 2, cy - 190 * u);
       c.restore();
 
@@ -320,11 +322,11 @@ function acesso(): JScene {
         c.font = font(58 * u, 700);
         c.textAlign = "center";
         c.textBaseline = "middle";
-        c.fillStyle = JC.dark;
+        c.fillStyle = JC.ink;
         c.fillText("Falta só entrar.", f.w / 2, y);
         const tw = c.measureText("Falta só entrar.").width;
         c.restore();
-        readingLine(f, f.w / 2, y + 44 * u, tw, k, { at: 2.15, color: JC.dark, thickness: 5 });
+        readingLine(f, f.w / 2, y + 44 * u, tw, k, { at: 2.15, color: JC.ink, thickness: 5 });
       }
 
       drawLockup(f, k, { ...LOCKUP, onLight: true }, 2.5);
