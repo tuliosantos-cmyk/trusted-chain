@@ -186,8 +186,8 @@ export function drawLockup(f: Frame, k: number, l: Lockup, appear = 0.5) {
  */
 export function notificationOpen(f: Frame, k: number, previewText: string, bg = JC.dark) {
   const { c, u } = f;
-  const slide = easeOut(clamp01(k / 0.45));
-  const exp = easeInOut(clamp01((k - 1.05) / 0.75));
+  const enter = easeOut(clamp01(k / 0.42));
+  const exp = easeInOut(clamp01((k - 1.15) / 0.75));
   if (exp >= 1) return 1;
 
   c.save();
@@ -197,54 +197,67 @@ export function notificationOpen(f: Frame, k: number, previewText: string, bg = 
   c.restore();
 
   const bw0 = f.w - 96 * u;
-  const bh0 = 200 * u;
+  const bh0 = 232 * u;
   const bx0 = 48 * u;
-  const by0 = 72 * u;
-  const w = bw0 + (f.w - bw0) * exp;
-  const h = bh0 + (f.h - bh0) * exp;
-  const x = bx0 * (1 - exp);
-  const y = by0 * (1 - exp) - (1 - slide) * (by0 + bh0);
+  const by0 = f.h / 2 - bh0 / 2;
+  // entrada: cresce um pouco a partir do centro, sem deslizar do topo
+  const s = 0.9 + 0.1 * enter;
+  const w = (bw0 + (f.w - bw0) * exp) * (exp > 0 ? 1 : s);
+  const h = (bh0 + (f.h - bh0) * exp) * (exp > 0 ? 1 : s);
+  const x = f.w / 2 - w / 2 + (bx0 - (f.w / 2 - bw0 / 2)) * 0;
+  const y = f.h / 2 - h / 2;
   const r = 36 * u * (1 - exp);
 
   c.save();
+  c.globalAlpha = exp > 0 ? 1 : enter;
   roundRect(c, x, y, w, h, r);
   c.fillStyle = bg;
   c.fill();
   c.save();
   c.clip();
 
-  const ca = (1 - clamp01(exp / 0.4)) * slide;
+  const ca = (1 - clamp01(exp / 0.4)) * enter;
   if (ca > 0.001) {
     c.globalAlpha = ca;
     const ix = x + 34 * u;
-    const iy = y + bh0 / 2 - 42 * u;
+    const iy = y + h / 2 - 46 * u;
     c.fillStyle = "rgba(255,255,255,.14)";
-    roundRect(c, ix, iy, 84 * u, 84 * u, 22 * u);
+    roundRect(c, ix, iy, 92 * u, 92 * u, 24 * u);
     c.fill();
-    if (!drawImageFit(f, JORNADA_MARK.url, ix + 42 * u, iy + 42 * u, 60 * u, 60 * u)) {
+    if (!drawImageFit(f, JORNADA_MARK.url, ix + 46 * u, iy + 46 * u, 70 * u, 70 * u)) {
       c.fillStyle = JC.light;
-      c.font = font(44 * u, 900);
+      c.font = font(48 * u, 900);
       c.textAlign = "center";
       c.textBaseline = "middle";
-      c.fillText("J", ix + 42 * u, iy + 44 * u);
+      c.fillText("J", ix + 46 * u, iy + 48 * u);
     }
     c.textAlign = "left";
     c.textBaseline = "alphabetic";
     c.fillStyle = JC.white;
     c.font = font(38 * u, 800);
-    c.fillText("Jornada da Autonomia", ix + 112 * u, y + bh0 / 2 - 8 * u);
-    c.fillStyle = "rgba(255,255,255,.72)";
-    c.font = font(32 * u, 600);
-    c.fillText(previewText, ix + 112 * u, y + bh0 / 2 + 44 * u);
-    c.fillStyle = "rgba(255,255,255,.45)";
-    c.font = font(28 * u, 600);
+    c.fillText("Jornada da Autonomia", ix + 122 * u, y + h / 2 - 18 * u);
+    // linha de prévia com peso: é o recado urgente
+    c.fillStyle = JC.light;
+    c.font = font(40 * u, 900);
+    c.fillText(previewText.toUpperCase(), ix + 122 * u, y + h / 2 + 40 * u);
+    // ponto pulsante de "não lido"
+    const pulse = 0.55 + 0.45 * Math.abs(Math.sin(k * 4.2));
+    c.globalAlpha = ca * pulse;
+    c.fillStyle = JC.light;
+    c.beginPath();
+    c.arc(x + w - 44 * u, y + h / 2 - 26 * u, 11 * u, 0, Math.PI * 2);
+    c.fill();
+    c.globalAlpha = ca;
+    c.fillStyle = "rgba(255,255,255,.5)";
+    c.font = font(26 * u, 700);
     c.textAlign = "right";
-    c.fillText("agora", x + w - 34 * u, y + bh0 / 2 - 8 * u);
+    c.fillText("agora", x + w - 34 * u, y + h / 2 + 40 * u);
   }
   c.restore();
   c.restore();
   return exp;
 }
+
 
 /** Placeholder de marca usado no ícone da notificação (setado por videos.ts). */
 export const JORNADA_MARK = { url: "" };
