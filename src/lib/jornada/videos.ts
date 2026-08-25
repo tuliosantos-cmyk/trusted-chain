@@ -1,4 +1,4 @@
-import { Frame, clamp01, easeOut, font, roundRect } from "@/lib/adsvideo/engine";
+import { Frame, clamp01, drawImageFit, easeOut, font, roundRect } from "@/lib/adsvideo/engine";
 import { JC, JScene, JVideo, drawLockup, revealWords } from "./engine";
 import jornadaAsset from "@/assets/jornada/jornada.png.asset.json";
 import jornadaWhiteAsset from "@/assets/jornada/jornada-white.png.asset.json";
@@ -46,10 +46,7 @@ function abertura(): JScene {
         const h = 260 * u;
         const cx = f.w / 2;
         const cy = f.h * 0.3 + (1 - pl) * 18 * u;
-        const im = new Image();
-        void im;
-        // logo branca do programa, grande
-        const drawn = drawLogo(f, LOGOS.jornadaWhite, cx, cy, w, h);
+        const drawn = drawImageFit(f, LOGOS.jornadaWhite, cx, cy, w, h);
         if (!drawn) {
           c.font = font(96 * u, 900);
           c.textAlign = "center";
@@ -81,14 +78,6 @@ function abertura(): JScene {
     },
   };
 }
-
-function drawLogo(f: Frame, url: string, cx: number, cy: number, w: number, h: number) {
-  // reexporta o contain do engine base sem repetir lógica
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  return drawFit(f, url, cx, cy, w, h);
-}
-
-import { drawImageFit as drawFit } from "@/lib/adsvideo/engine";
 
 /** Tela de peso — "Participação obrigatória". */
 function obrigatoria(dur = 2.6): JScene {
