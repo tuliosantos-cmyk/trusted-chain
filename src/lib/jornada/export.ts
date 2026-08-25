@@ -137,6 +137,20 @@ export async function buildGif(
   return new Blob([buf.buffer as ArrayBuffer], { type: "image/gif" });
 }
 
+/** Renderiza um único frame em resolução real e devolve um PNG. */
+export async function renderPng(video: JVideo, t: number): Promise<Blob> {
+  await preloadImages(ALL_JORNADA_LOGOS);
+  const canvas = document.createElement("canvas");
+  canvas.width = CANVAS.w;
+  canvas.height = CANVAS.h;
+  const ctx = canvas.getContext("2d", { alpha: false });
+  if (!ctx) throw new Error("Canvas indisponível");
+  renderJ(video, ctx, CANVAS.w, CANVAS.h, t);
+  const blob = await new Promise<Blob | null>((r) => canvas.toBlob(r, "image/png"));
+  if (!blob) throw new Error("Não foi possível gerar a imagem");
+  return blob;
+}
+
 export function download(blob: Blob, filename: string) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -147,3 +161,4 @@ export function download(blob: Blob, filename: string) {
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 4000);
 }
+

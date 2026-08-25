@@ -6,6 +6,8 @@ import {
   Frame,
   clamp01,
   drawImageFit,
+  easeBack,
+  easeInOut,
   easeOut,
   font,
   roundRect,
@@ -173,6 +175,201 @@ export function drawLockup(f: Frame, k: number, l: Lockup, appear = 0.5) {
   c.restore();
 }
 
+/* ------------------------------------------------- dispositivos de movimento */
+
+/**
+ * A. Abertura-notificação. Banner desliza do topo, segura, e se expande até
+ * preencher a tela. Devolve o progresso de expansão (0..1) para o conteúdo
+ * da cena aparecer só depois.
+ */
+export function notificationOpen(f: Frame, k: number, previewText: string, bg = JC.dark) {
+  const { c, u } = f;
+  const slide = easeOut(clamp01(k / 0.45));
+  const exp = easeInOut(clamp01((k - 1.05) / 0.75));
+  if (exp >= 1) return 1;
+
+  c.save();
+  c.globalAlpha = 1 - exp;
+  c.fillStyle = "#171514";
+  c.fillRect(0, 0, f.w, f.h);
+  c.restore();
+
+  const bw0 = f.w - 96 * u;
+  const bh0 = 200 * u;
+  const bx0 = 48 * u;
+  const by0 = 72 * u;
+  const w = bw0 + (f.w - bw0) * exp;
+  const h = bh0 + (f.h - bh0) * exp;
+  const x = bx0 * (1 - exp);
+  const y = by0 * (1 - exp) - (1 - slide) * (by0 + bh0);
+  const r = 36 * u * (1 - exp);
+
+  c.save();
+  roundRect(c, x, y, w, h, r);
+  c.fillStyle = bg;
+  c.fill();
+  c.save();
+  c.clip();
+
+  const ca = (1 - clamp01(exp / 0.4)) * slide;
+  if (ca > 0.001) {
+    c.globalAlpha = ca;
+    const ix = x + 34 * u;
+    const iy = y + bh0 / 2 - 42 * u;
+    c.fillStyle = "rgba(255,255,255,.14)";
+    roundRect(c, ix, iy, 84 * u, 84 * u, 22 * u);
+    c.fill();
+    if (!drawImageFit(f, JORNADA_MARK.url, ix + 42 * u, iy + 42 * u, 60 * u, 60 * u)) {
+      c.fillStyle = JC.light;
+      c.font = font(44 * u, 900);
+      c.textAlign = "center";
+      c.textBaseline = "middle";
+      c.fillText("J", ix + 42 * u, iy + 44 * u);
+    }
+    c.textAlign = "left";
+    c.textBaseline = "alphabetic";
+    c.fillStyle = JC.white;
+    c.font = font(38 * u, 800);
+    c.fillText("Jornada da Autonomia", ix + 112 * u, y + bh0 / 2 - 8 * u);
+    c.fillStyle = "rgba(255,255,255,.72)";
+    c.font = font(32 * u, 600);
+    c.fillText(previewText, ix + 112 * u, y + bh0 / 2 + 44 * u);
+    c.fillStyle = "rgba(255,255,255,.45)";
+    c.font = font(28 * u, 600);
+    c.textAlign = "right";
+    c.fillText("agora", x + w - 34 * u, y + bh0 / 2 - 8 * u);
+  }
+  c.restore();
+  c.restore();
+  return exp;
+}
+
+/** Placeholder de marca usado no ícone da notificação (setado por videos.ts). */
+export const JORNADA_MARK = { url: "" };
+
+/**
+ * B. Carimbo de peso. O texto entra a ~140% e assenta em 100% com overshoot
+ * mínimo; um anel fino se expande uma única vez no impacto.
+ */
+export function stampText(
+  f: Frame,
+  str: string,
+  cx: number,
+  cy: number,
+  k: number,
+  o: { size: number; color?: string; at?: number; weight?: number | string; ring?: boolean },
+) {
+  const { c, u } = f;
+  const at = o.at ?? 0.2;
+  const t = clamp01((k - at) / 0.42);
+  if (t <= 0.001) return;
+  const s = 1.4 - 0.4 * easeBack(t);
+  const a = clamp01(t / 0.35);
+
+  c.save();
+  c.globalAlpha = a;
+  c.translate(cx, cy);
+  c.scale(s, s);
+  c.font = font(o.size, o.weight ?? 900);
+  c.textAlign = "center";
+  c.textBaseline = "middle";
+  c.fillStyle = o.color ?? JC.white;
+  c.fillText(str, 0, 0);
+  const tw = c.measureText(str).width;
+  c.restore();
+
+  if (o.ring !== false) {
+    const rp = clamp01((k - at - 0.3) / 0.5);
+    if (rp > 0.001 && rp < 1) {
+      c.save();
+      c.globalAlpha = (1 - rp) * 0.55;
+      c.strokeStyle = o.color ?? JC.white;
+      c.lineWidth = 3 * u;
+      const rw = tw * (1.02 + rp * 0.22);
+      const rh = o.size * (1.5 + rp * 0.5);
+      roundRect(c, cx - rw / 2, cy - rh / 2, rw, rh, rh / 2);
+      c.stroke();
+      c.restore();
+    }
+  }
+}
+
+/** C. Tique duplo de "mensagem entregue". */
+export function deliveredTicks(
+  f: Frame,
+  x: number,
+  y: number,
+  size: number,
+  p: number,
+  color: string,
+) {
+  if (p <= 0.001) return;
+  const { c } = f;
+  c.save();
+  c.globalAlpha = clamp01(p);
+  c.strokeStyle = color;
+  c.lineWidth = size * 0.14;
+  c.lineCap = "round";
+  c.lineJoin = "round";
+  for (const dx of [0, size * 0.42]) {
+    c.beginPath();
+    c.moveTo(x + dx, y);
+    c.lineTo(x + dx + size * 0.24, y + size * 0.26);
+    c.lineTo(x + dx + size * 0.62, y - size * 0.28);
+    c.stroke();
+  }
+  c.restore();
+}
+
+/** D. Linha de leitura: traço fino se desenhando da esquerda para a direita. */
+export function readingLine(
+  f: Frame,
+  cx: number,
+  y: number,
+  width: number,
+  k: number,
+  o: { at?: number; color?: string; thickness?: number } = {},
+) {
+  const p = easeOut(clamp01((k - (o.at ?? 0.2)) / 0.55));
+  if (p <= 0.001) return;
+  const { c, u } = f;
+  c.save();
+  c.globalAlpha = 0.9;
+  c.fillStyle = o.color ?? JC.light;
+  c.fillRect(cx - width / 2, y, width * p, (o.thickness ?? 6) * u);
+  c.restore();
+}
+
+/** E. Discador: dígitos entram em cascata rápida. */
+export function dialerDigits(
+  f: Frame,
+  str: string,
+  cx: number,
+  cy: number,
+  k: number,
+  o: { size: number; color?: string; at?: number },
+) {
+  const { c } = f;
+  const at = o.at ?? 0;
+  c.save();
+  c.font = font(o.size, 900);
+  c.textAlign = "left";
+  c.textBaseline = "middle";
+  const chars = [...str];
+  const widths = chars.map((ch) => c.measureText(ch).width);
+  const total = widths.reduce((a, b) => a + b, 0);
+  let x = cx - total / 2;
+  chars.forEach((ch, i) => {
+    const p = easeOut(clamp01((k - (at + i * 0.045)) / 0.22));
+    if (p > 0.001) {
+      c.globalAlpha = p;
+      c.fillStyle = o.color ?? JC.white;
+      c.fillText(ch, x, cy + (1 - p) * o.size * 0.42);
+    }
+    x += widths[i];
+  });
+  c.restore();
+}
 
 /* -------------------------------------------------------------- renderização */
 
