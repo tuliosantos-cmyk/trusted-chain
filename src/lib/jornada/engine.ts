@@ -1,6 +1,6 @@
 /**
  * Engine mínima de canvas para os vídeos da Jornada da Autonomia.
- * Vertical 9:16 (1080x1920), sem áudio, texto entrando palavra por palavra.
+ * Quadrado 1:1 (1080x1080), sem áudio, texto entrando palavra por palavra.
  */
 import {
   Frame,

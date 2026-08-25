@@ -95,7 +95,7 @@ export async function recordMp4(
 }
 
 /**
- * GIF leve para WhatsApp: 540x960, 12fps.
+ * GIF leve para WhatsApp: 720x720, 12fps.
  * Menos frames e menor resolução mantêm o arquivo abrindo mesmo com sinal fraco.
  */
 export async function buildGif(
@@ -103,8 +103,8 @@ export async function buildGif(
   onProgress: (p: ExportProgress) => void,
   opts: { w?: number; h?: number; fps?: number } = {},
 ): Promise<Blob> {
-  const w = opts.w ?? 540;
-  const h = opts.h ?? 960;
+  const w = opts.w ?? 720;
+  const h = opts.h ?? 720;
   const fps = opts.fps ?? 12;
   const { GIFEncoder, quantize, applyPalette } = await import("gifenc");
   await preloadImages(ALL_JORNADA_LOGOS);
