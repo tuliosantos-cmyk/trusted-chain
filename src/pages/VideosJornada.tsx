@@ -7,17 +7,32 @@ import { Progress } from "@/components/ui/progress";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import JCanvas from "@/components/jornada/JCanvas";
 import { JVideo, jDuration } from "@/lib/jornada/engine";
-import { JORNADA_VIDEOS, gifVersion } from "@/lib/jornada/videos";
-import { buildGif, download, recordMp4 } from "@/lib/jornada/export";
+import {
+  CARD_ESTATICO,
+  CARD_FREEZE,
+  GIF_REFORCO,
+  JORNADA_VIDEOS,
+} from "@/lib/jornada/videos";
+import { buildGif, download, recordMp4, renderPng } from "@/lib/jornada/export";
 
 const FONT_HREF =
   "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap";
 
-type Job = { kind: "mp4" | "gif"; phase: "render" | "convert" | "done"; pct: number };
+type Job = { kind: "mp4" | "gif" | "png"; phase: "render" | "convert" | "done"; pct: number };
 
-function Card({ video }: { video: JVideo }) {
+type CardProps = {
+  video: JVideo;
+  /** quais botões mostrar */
+  actions?: ("mp4" | "gif" | "png")[];
+  staticAt?: number;
+  /** GIF mais leve (peça 4) */
+  gifFps?: number;
+};
+
+function Card({ video, actions = ["mp4", "gif"], staticAt = 1.9, gifFps = 12 }: CardProps) {
   const [open, setOpen] = useState(false);
   const [job, setJob] = useState<Job | null>(null);
+  const isCard = actions.length === 1 && actions[0] === "png";
 
   const runMp4 = async () => {
     if (job) return;
@@ -45,15 +60,33 @@ function Card({ video }: { video: JVideo }) {
     if (job) return;
     setJob({ kind: "gif", phase: "render", pct: 0 });
     try {
-      const blob = await buildGif(gifVersion(video), (p) =>
-        setJob({ kind: "gif", phase: p.phase, pct: p.pct }),
+      const blob = await buildGif(
+        GIF_REFORCO,
+        (p) => setJob({ kind: "gif", phase: p.phase, pct: p.pct }),
+        { fps: gifFps },
       );
-      download(blob, `jornada-${video.id}-curto.gif`);
+      download(blob, `jornada-reforco.gif`);
       toast.success("GIF gerado", {
-        description: "Versão curta (720×720, 12 fps) para envio no WhatsApp.",
+        description: `Peça de reforço (720×720, ${gifFps} fps) para envio no WhatsApp.`,
       });
     } catch (e) {
       toast.error("Falha ao gerar o GIF", {
+        description: e instanceof Error ? e.message : "Tente novamente.",
+      });
+    } finally {
+      setJob(null);
+    }
+  };
+
+  const runPng = async () => {
+    if (job) return;
+    setJob({ kind: "png", phase: "render", pct: 0.5 });
+    try {
+      const blob = await renderPng(video, CARD_FREEZE);
+      download(blob, "jornada-card.png");
+      toast.success("Imagem gerada", { description: "1080×1080, frame do carimbo." });
+    } catch (e) {
+      toast.error("Falha ao gerar a imagem", {
         description: e instanceof Error ? e.message : "Tente novamente.",
       });
     } finally {
@@ -66,12 +99,17 @@ function Card({ video }: { video: JVideo }) {
       <div className="flex justify-center bg-muted/40 p-4">
         <button
           type="button"
-          onClick={() => setOpen(true)}
-          aria-label={`Assistir ${video.title}`}
-          className="w-full max-w-[320px] overflow-hidden rounded-xl bg-[#577550] transition-opacity hover:opacity-90"
-          style={{ aspectRatio: "1 / 1" }}
+          onClick={() => !isCard && setOpen(true)}
+          aria-label={isCard ? video.title : `Assistir ${video.title}`}
+          className="w-full max-w-[320px] overflow-hidden rounded-xl bg-[#231f20] transition-opacity hover:opacity-90"
+          style={{ aspectRatio: "1 / 1", cursor: isCard ? "default" : "pointer" }}
         >
-          <JCanvas video={video} staticAt={1.7} scale={0.36} className="h-full w-full" />
+          <JCanvas
+            video={video}
+            staticAt={isCard ? CARD_FREEZE : staticAt}
+            scale={0.36}
+            className="h-full w-full"
+          />
         </button>
       </div>
 
@@ -81,7 +119,9 @@ function Card({ video }: { video: JVideo }) {
           <p className="mt-1 text-sm text-muted-foreground">{video.subtitle}</p>
         </div>
         <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          1:1 · 1080×1080 · {jDuration(video).toFixed(1)}s · mudo
+          {isCard
+            ? "1:1 · 1080×1080 · imagem"
+            : `1:1 · 1080×1080 · ${jDuration(video).toFixed(1)}s · mudo`}
         </p>
 
         {job ? (
@@ -89,22 +129,37 @@ function Card({ video }: { video: JVideo }) {
             <Progress value={Math.round(job.pct * 100)} />
             <p className="flex items-center gap-2 text-xs text-muted-foreground">
               <Loader2 className="h-3 w-3 animate-spin" />
-              {job.kind === "gif"
-                ? "Montando GIF quadro a quadro…"
-                : job.phase === "render"
-                  ? "Gravando em 1080×1080…"
-                  : "Convertendo para MP4…"}{" "}
+              {job.kind === "png"
+                ? "Renderizando imagem…"
+                : job.kind === "gif"
+                  ? "Montando GIF quadro a quadro…"
+                  : job.phase === "render"
+                    ? "Gravando em 1080×1080…"
+                    : "Convertendo para MP4…"}{" "}
               {Math.round(job.pct * 100)}%
             </p>
           </div>
         ) : (
           <div className="mt-auto flex gap-2 pt-1">
-            <Button className="flex-1" onClick={runMp4}>
-              <Download className="mr-2 h-4 w-4" /> Baixar MP4
-            </Button>
-            <Button variant="outline" className="flex-1" onClick={runGif}>
-              <ImageIcon className="mr-2 h-4 w-4" /> Baixar GIF
-            </Button>
+            {actions.includes("mp4") && (
+              <Button className="flex-1" onClick={runMp4}>
+                <Download className="mr-2 h-4 w-4" /> Baixar MP4
+              </Button>
+            )}
+            {actions.includes("gif") && (
+              <Button
+                variant={actions.includes("mp4") ? "outline" : "default"}
+                className="flex-1"
+                onClick={runGif}
+              >
+                <ImageIcon className="mr-2 h-4 w-4" /> Baixar GIF
+              </Button>
+            )}
+            {actions.includes("png") && (
+              <Button className="flex-1" onClick={runPng}>
+                <ImageIcon className="mr-2 h-4 w-4" /> Baixar imagem
+              </Button>
+            )}
           </div>
         )}
       </div>
@@ -127,6 +182,7 @@ function Card({ video }: { video: JVideo }) {
     </article>
   );
 }
+
 
 export default function VideosJornada() {
   useEffect(() => {
