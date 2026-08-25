@@ -6,6 +6,8 @@ import {
   Frame,
   clamp01,
   drawImageFit,
+  easeBack,
+  easeInOut,
   easeOut,
   font,
   roundRect,
