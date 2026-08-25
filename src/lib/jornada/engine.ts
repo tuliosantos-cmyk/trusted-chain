@@ -146,7 +146,8 @@ export function drawLockup(f: Frame, k: number, l: Lockup, appear = 0.5) {
 
   const padX = 40 * u;
   const cellW = (plateW - padX * 2) / slots;
-  const boxH = plateH - 52 * u;
+  const boxH = plateH - 48 * u;
+
   const boxW = cellW - 34 * u;
   const cy = plateY + plateH / 2;
 
