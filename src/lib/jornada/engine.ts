@@ -1,6 +1,6 @@
 /**
  * Engine mínima de canvas para os vídeos da Jornada da Autonomia.
- * Vertical 9:16 (1080x1920), sem áudio, texto entrando palavra por palavra.
+ * Quadrado 1:1 (1080x1080), sem áudio, texto entrando palavra por palavra.
  */
 import {
   Frame,
@@ -8,6 +8,7 @@ import {
   drawImageFit,
   easeOut,
   font,
+  roundRect,
   wrapLines,
 } from "@/lib/adsvideo/engine";
 
@@ -32,7 +33,7 @@ export type JVideo = {
   scenes: JScene[];
 };
 
-export const CANVAS = { w: 1080, h: 1920 };
+export const CANVAS = { w: 1080, h: 1080 };
 
 export function jDuration(v: JVideo) {
   return v.scenes.reduce((a, s) => a + s.dur, 0);
@@ -114,41 +115,64 @@ export type Lockup = {
   onLight: boolean;
 };
 
-/** Assinatura discreta na base da tela. */
+/** Assinatura na base da tela: placa clara com as logos em cores originais. */
 export function drawLockup(f: Frame, k: number, l: Lockup, appear = 0.5) {
   const { c, u } = f;
   const p = easeOut(clamp01((k - appear) / 0.6));
   if (p <= 0.001) return;
-  const y = f.h - 170 * u;
-  const ink = l.onLight ? "rgba(35,31,32,.75)" : "rgba(255,255,255,.85)";
+
+  const slots = l.carrefour ? 3 : 2;
+  const plateH = 150 * u;
+  const plateW = Math.min(f.w - 96 * u, (slots === 3 ? 860 : 640) * u);
+  const plateX = f.w / 2 - plateW / 2;
+  const plateY = f.h - plateH - 64 * u;
+
   c.save();
   c.globalAlpha = p;
 
-  const boxH = 88 * u;
-  const slots = l.carrefour ? 3 : 2;
-  const gap = 54 * u;
-  const boxW = Math.min(230 * u, (f.w - 160 * u - gap * (slots - 1)) / slots);
-  const totalW = boxW * slots + gap * (slots - 1);
-  let x = f.w / 2 - totalW / 2 + boxW / 2;
-
-  const urls = l.carrefour
-    ? [l.jornada, l.carrefour, l.myts]
-    : [l.jornada, l.myts];
-  let allOk = true;
-  for (const url of urls) {
-    if (!drawImageFit(f, url, x, y, boxW, boxH)) allOk = false;
-    x += boxW + gap;
+  // placa: sempre clara, garante contraste das marcas coloridas
+  c.fillStyle = l.onLight ? "rgba(35,31,32,.05)" : "rgba(255,255,255,.96)";
+  roundRect(c, plateX, plateY, plateW, plateH, 26 * u);
+  c.fill();
+  if (l.onLight) {
+    c.strokeStyle = "rgba(35,31,32,.12)";
+    c.lineWidth = 2 * u;
+    roundRect(c, plateX, plateY, plateW, plateH, 26 * u);
+    c.stroke();
   }
 
-  if (!allOk) {
-    c.font = font(30 * u, 700);
+  const padX = 40 * u;
+  const cellW = (plateW - padX * 2) / slots;
+  const boxH = plateH - 52 * u;
+  const boxW = cellW - 34 * u;
+  const cy = plateY + plateH / 2;
+
+  const urls = l.carrefour ? [l.jornada, l.carrefour, l.myts] : [l.jornada, l.myts];
+  let allOk = true;
+  urls.forEach((url, i) => {
+    const cx = plateX + padX + cellW * i + cellW / 2;
+    if (!drawImageFit(f, url, cx, cy, boxW, boxH)) allOk = false;
+  });
+
+  if (allOk) {
+    for (let i = 1; i < slots; i++) {
+      c.fillStyle = "rgba(35,31,32,.14)";
+      c.fillRect(plateX + padX + cellW * i - 1 * u, cy - 34 * u, 2 * u, 68 * u);
+    }
+  } else {
+    c.fillStyle = l.onLight ? "rgba(35,31,32,.05)" : "rgba(255,255,255,.96)";
+    roundRect(c, plateX, plateY, plateW, plateH, 26 * u);
+    c.fill();
+    c.font = font(28 * u, 700);
     c.textAlign = "center";
     c.textBaseline = "middle";
-    c.fillStyle = ink;
-    c.fillText("Uma iniciativa Carrefour · Em parceria com MyTS", f.w / 2, y);
+    c.fillStyle = "rgba(35,31,32,.8)";
+    c.fillText("Uma iniciativa Carrefour · Em parceria com MyTS", f.w / 2, cy);
   }
+
   c.restore();
 }
+
 
 /* -------------------------------------------------------------- renderização */
 
