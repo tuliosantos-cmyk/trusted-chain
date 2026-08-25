@@ -253,7 +253,7 @@ export const JORNADA_VIDEOS: JVideo[] = [
     id: "c-reforco",
     title: "Vídeo C — Reforço",
     subtitle: "Lembrete para quem recebeu e ainda não entrou.",
-    scenes: [abertura(), staccato(), acesso(), contato(2.5)],
+    scenes: [abertura(), staccato(), acesso(), contato(3)],
   },
 ];
 
