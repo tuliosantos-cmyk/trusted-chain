@@ -131,7 +131,10 @@ export async function buildGif(
   }
   enc.finish();
   onProgress({ phase: "done", pct: 1 });
-  return new Blob([enc.bytesView() as unknown as ArrayBufferView], { type: "image/gif" });
+  const bytes = enc.bytesView();
+  const buf = new Uint8Array(bytes.length);
+  buf.set(bytes);
+  return new Blob([buf.buffer as ArrayBuffer], { type: "image/gif" });
 }
 
 export function download(blob: Blob, filename: string) {
