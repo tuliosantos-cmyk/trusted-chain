@@ -124,10 +124,11 @@ export function drawLockup(f: Frame, k: number, l: Lockup, appear = 0.5) {
   if (p <= 0.001) return;
 
   const slots = l.carrefour ? 3 : 2;
-  const plateH = 150 * u;
-  const plateW = Math.min(f.w - 96 * u, (slots === 3 ? 860 : 640) * u);
+  const plateH = 172 * u;
+  const plateW = Math.min(f.w - 96 * u, (slots === 3 ? 900 : 660) * u);
   const plateX = f.w / 2 - plateW / 2;
-  const plateY = f.h - plateH - 64 * u;
+  const plateY = f.h - plateH - 68 * u;
+
 
   c.save();
   c.globalAlpha = p;
