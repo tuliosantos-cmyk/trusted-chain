@@ -123,7 +123,7 @@ function obrigatoria(dur = 3.8): JScene {
         color: JC.light,
         at: 0.95,
       });
-      revealWords(f, "para fornecedores da rede", f.w / 2, cy + 110 * u, k, {
+      revealWords(f, "para todos os fornecedores da rede do Grupo Carrefour", f.w / 2, cy + 110 * u, k, {
         size: 46 * u,
         weight: 700,
         color: "rgba(255,255,255,.82)",
