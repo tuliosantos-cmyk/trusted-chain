@@ -29,7 +29,7 @@ type CardProps = {
   gifFps?: number;
 };
 
-function Card({ video, actions = ["mp4", "gif"], staticAt = 1.9, gifFps = 12 }: CardProps) {
+function Card({ video, actions = ["mp4", "gif"], staticAt = 2.9, gifFps = 12 }: CardProps) {
   const [open, setOpen] = useState(false);
   const [job, setJob] = useState<Job | null>(null);
   const isCard = actions.length === 1 && actions[0] === "png";
