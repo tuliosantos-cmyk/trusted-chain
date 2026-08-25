@@ -152,19 +152,24 @@ export function drawLockup(f: Frame, k: number, l: Lockup, appear = 0.5) {
   urls.forEach((url, i) => {
     const cx = plateX + padX + cellW * i + cellW / 2;
     if (!drawImageFit(f, url, cx, cy, boxW, boxH)) allOk = false;
-    if (i < slots - 1) {
-      c.fillStyle = "rgba(35,31,32,.14)";
-      c.fillRect(plateX + padX + cellW * (i + 1) - 1 * u, cy - 34 * u, 2 * u, 68 * u);
-    }
   });
 
-  if (!allOk) {
+  if (allOk) {
+    for (let i = 1; i < slots; i++) {
+      c.fillStyle = "rgba(35,31,32,.14)";
+      c.fillRect(plateX + padX + cellW * i - 1 * u, cy - 34 * u, 2 * u, 68 * u);
+    }
+  } else {
+    c.fillStyle = l.onLight ? "rgba(35,31,32,.05)" : "rgba(255,255,255,.96)";
+    roundRect(c, plateX, plateY, plateW, plateH, 26 * u);
+    c.fill();
     c.font = font(28 * u, 700);
     c.textAlign = "center";
     c.textBaseline = "middle";
     c.fillStyle = "rgba(35,31,32,.8)";
     c.fillText("Uma iniciativa Carrefour · Em parceria com MyTS", f.w / 2, cy);
   }
+
   c.restore();
 }
 
