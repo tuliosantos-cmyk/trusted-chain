@@ -8,10 +8,9 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import JCanvas from "@/components/jornada/JCanvas";
 import { JVideo, jDuration } from "@/lib/jornada/engine";
 import {
-  CARD_ESTATICO,
   CARD_FREEZE,
-  GIF_REFORCO,
-  JORNADA_VIDEOS,
+  SET_ATACADAO,
+  SET_CARREFOUR,
 } from "@/lib/jornada/videos";
 import { buildGif, download, recordMp4, renderPng } from "@/lib/jornada/export";
 
@@ -27,9 +26,13 @@ type CardProps = {
   staticAt?: number;
   /** GIF mais leve (peça 4) */
   gifFps?: number;
+  /** peça de GIF que o botão "Baixar GIF" gera */
+  gifVideo: JVideo;
+  /** sufixo dos arquivos baixados */
+  slug: string;
 };
 
-function Card({ video, actions = ["mp4", "gif"], staticAt = 2.9, gifFps = 12 }: CardProps) {
+function Card({ video, actions = ["mp4", "gif"], staticAt = 2.9, gifFps = 12, gifVideo, slug }: CardProps) {
   const [open, setOpen] = useState(false);
   const [job, setJob] = useState<Job | null>(null);
   const isCard = actions.length === 1 && actions[0] === "png";
@@ -61,11 +64,11 @@ function Card({ video, actions = ["mp4", "gif"], staticAt = 2.9, gifFps = 12 }: 
     setJob({ kind: "gif", phase: "render", pct: 0 });
     try {
       const blob = await buildGif(
-        GIF_REFORCO,
+        gifVideo,
         (p) => setJob({ kind: "gif", phase: p.phase, pct: p.pct }),
         { fps: gifFps },
       );
-      download(blob, `jornada-reforco.gif`);
+      download(blob, `jornada-${slug}-reforco.gif`);
       toast.success("GIF gerado", {
         description: `Peça de reforço (720×720, ${gifFps} fps) para envio no WhatsApp.`,
       });
@@ -83,7 +86,7 @@ function Card({ video, actions = ["mp4", "gif"], staticAt = 2.9, gifFps = 12 }: 
     setJob({ kind: "png", phase: "render", pct: 0.5 });
     try {
       const blob = await renderPng(video, CARD_FREEZE);
-      download(blob, "jornada-card.png");
+      download(blob, `jornada-${slug}-card.png`);
       toast.success("Imagem gerada", { description: "1080×1080, frame do carimbo." });
     } catch (e) {
       toast.error("Falha ao gerar a imagem", {
