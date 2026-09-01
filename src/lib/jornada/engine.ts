@@ -171,7 +171,7 @@ export function drawLockup(f: Frame, k: number, l: Lockup, appear = 0.5) {
     c.textAlign = "center";
     c.textBaseline = "middle";
     c.fillStyle = "rgba(35,31,32,.8)";
-    c.fillText("Uma iniciativa Carrefour · Em parceria com MyTS", f.w / 2, cy);
+    c.fillText("Jornada da Autonomia · Em parceria com MyTS", f.w / 2, cy);
   }
 
   c.restore();
