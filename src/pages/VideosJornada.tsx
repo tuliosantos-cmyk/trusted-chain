@@ -187,7 +187,16 @@ function Card({ video, actions = ["mp4", "gif"], staticAt = 2.9, gifFps = 12, gi
 }
 
 
+const SETS = [
+  { key: "carrefour", label: "Grupo Carrefour", set: SET_CARREFOUR, header: "#577550", eyebrow: "Carrefour · MyTS" },
+  { key: "atacadao", label: "Atacadão", set: SET_ATACADAO, header: "#123A24", eyebrow: "Atacadão · MyTS" },
+] as const;
+
 export default function VideosJornada() {
+  const [redeKey, setRedeKey] = useState<(typeof SETS)[number]["key"]>("carrefour");
+  const active = SETS.find((s) => s.key === redeKey)!;
+  const { set } = active;
+
   useEffect(() => {
     if (document.querySelector(`link[href="${FONT_HREF}"]`)) return;
     const link = document.createElement("link");
@@ -199,18 +208,18 @@ export default function VideosJornada() {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Vídeos Jornada da Autonomia | Carrefour x MyTS</title>
+        <title>Vídeos Jornada da Autonomia | Carrefour e Atacadão x MyTS</title>
         <meta
           name="description"
-          content="Três vídeos quadrados 1:1 da Jornada da Autonomia para envio por WhatsApp aos fornecedores Carrefour, com download em MP4 e GIF."
+          content="Vídeos quadrados 1:1 da Jornada da Autonomia para envio por WhatsApp aos fornecedores Carrefour e Atacadão, com download em MP4 e GIF."
         />
         <meta name="robots" content="noindex" />
       </Helmet>
 
-      <header className="border-b border-border bg-[#577550] text-white">
+      <header className="border-b border-border text-white" style={{ background: active.header }}>
         <div className="mx-auto max-w-6xl px-6 py-8">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
-            Carrefour · MyTS
+            {active.eyebrow}
           </p>
           <h1 className="mt-2 text-3xl font-extrabold tracking-tight">
             Jornada da Autonomia — vídeos de aviso
@@ -219,16 +228,30 @@ export default function VideosJornada() {
             Comunicação obrigatória para fornecedores, feita para leitura rápida no celular.
             Quadrado 1080×1080, sem áudio, texto entrando palavra por palavra.
           </p>
+          <div className="mt-5 inline-flex rounded-full bg-white/12 p-1">
+            {SETS.map((s) => (
+              <button
+                key={s.key}
+                type="button"
+                onClick={() => setRedeKey(s.key)}
+                className={`rounded-full px-4 py-1.5 text-sm font-semibold transition-colors ${
+                  s.key === redeKey ? "bg-white text-[#231f20]" : "text-white/80 hover:text-white"
+                }`}
+              >
+                {s.label}
+              </button>
+            ))}
+          </div>
         </div>
       </header>
 
       <main className="mx-auto max-w-6xl px-6 py-8">
         <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-          Os três vídeos
+          Os três vídeos — {active.label}
         </h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {JORNADA_VIDEOS.map((v) => (
-            <Card key={v.id} video={v} />
+          {set.videos.map((v) => (
+            <Card key={v.id} video={v} gifVideo={set.gif} slug={active.key} />
           ))}
         </div>
 
@@ -236,9 +259,17 @@ export default function VideosJornada() {
           Peças de apoio
         </h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <Card video={GIF_REFORCO} actions={["gif"]} gifFps={10} staticAt={1.4} />
-          <Card video={CARD_ESTATICO} actions={["png"]} />
+          <Card
+            video={set.gif}
+            gifVideo={set.gif}
+            slug={active.key}
+            actions={["gif"]}
+            gifFps={10}
+            staticAt={1.4}
+          />
+          <Card video={set.card} gifVideo={set.gif} slug={active.key} actions={["png"]} />
         </div>
+
 
         <section className="mt-10 max-w-3xl space-y-3 text-xs leading-relaxed text-muted-foreground">
           <p className="flex items-start gap-2">
