@@ -16,12 +16,14 @@ import jornadaAsset from "@/assets/jornada/jornada-v2.svg.asset.json";
 import jornadaWhiteAsset from "@/assets/jornada/jornada-v2-white.svg.asset.json";
 import jornadaIconAsset from "@/assets/jornada/jornada-icone.svg.asset.json";
 import carrefourAsset from "@/assets/jornada/carrefour-grupo.png.asset.json";
+import atacadaoAsset from "@/assets/jornada/atacadao.png.asset.json";
 import mytsDarkAsset from "@/assets/jornada/myts-dark.png.asset.json";
 
 export const LOGOS = {
   jornada: jornadaAsset.url,
   jornadaWhite: jornadaWhiteAsset.url,
   carrefour: carrefourAsset.url,
+  atacadao: atacadaoAsset.url,
   mytsDark: mytsDarkAsset.url,
   icone: jornadaIconAsset.url,
 };
@@ -30,14 +32,6 @@ export const ALL_JORNADA_LOGOS = Object.values(LOGOS);
 
 // ícone da notificação de abertura
 JORNADA_MARK.url = LOGOS.icone;
-
-/** A placa de assinatura é sempre clara: usar as marcas em cores originais. */
-const LOCKUP = {
-  jornada: LOGOS.jornada,
-  carrefour: LOGOS.carrefour,
-  myts: LOGOS.mytsDark,
-  onLight: false,
-};
 
 const CONTACT = {
   name: "Ricardo Machado · MyTS",
@@ -49,15 +43,62 @@ const CONTACT = {
 const MOTE = "O caminho para fornecer com autonomia.";
 
 /**
+ * Cada rede tem sua marca na placa de assinatura e sua cor de destaque.
+ * A base cromática da Jornada (verdes + quase preto) é sempre mantida;
+ * a cor da rede entra só nos pontos de ênfase (carimbo, linhas de leitura).
+ */
+export type Rede = {
+  key: string;
+  /** complemento da frase "para todos os fornecedores da rede ..." */
+  rede: string;
+  logo: string;
+  /** destaque sobre fundo escuro */
+  accent: string;
+  /** destaque sobre fundo claro */
+  accentInk: string;
+  /** fundo escuro característico da variação */
+  deep: string;
+};
+
+export const REDE_CARREFOUR: Rede = {
+  key: "carrefour",
+  rede: "do Grupo Carrefour",
+  logo: LOGOS.carrefour,
+  accent: JC.light,
+  accentInk: JC.mid,
+  deep: JC.ink,
+};
+
+export const REDE_ATACADAO: Rede = {
+  key: "atacadao",
+  // laranja e verde da marca Atacadão, sobre a base verde da Jornada
+  rede: "Atacadão",
+  logo: LOGOS.atacadao,
+  accent: "#F5911E",
+  accentInk: "#E07100",
+  deep: "#123A24",
+};
+
+/**
  * Área útil: acima da placa de assinatura (que ocupa a base) e abaixo da zona
  * segura superior. Todo conteúdo das telas é centrado dentro dela.
  */
 const contentCenter = (f: Frame) => f.h * 0.41;
 
+function makeLockup(r: Rede) {
+  return {
+    jornada: LOGOS.jornada,
+    carrefour: r.logo,
+    myts: LOGOS.mytsDark,
+    onLight: false,
+  };
+}
+
 /* ------------------------------------------------------------------- telas */
 
 /** Tela 1 — abertura-notificação + nome do programa. Idêntica nos 3 vídeos. */
-function abertura(): JScene {
+function abertura(r: Rede): JScene {
+  const LOCKUP = makeLockup(r);
   return {
     dur: 3.8,
     bg: JC.dark,
@@ -84,7 +125,7 @@ function abertura(): JScene {
       }
 
       const lineY = cy + 226 * u;
-      readingLine(f, f.w / 2, lineY, 300 * u, kk, { at: 0.55, color: JC.light });
+      readingLine(f, f.w / 2, lineY, 300 * u, kk, { at: 0.55, color: r.accent });
 
       revealWords(f, MOTE, f.w / 2, lineY + 46 * u, kk, {
         size: 54 * u,
@@ -102,10 +143,11 @@ function abertura(): JScene {
 }
 
 /** Tela de peso — carimbo em "OBRIGATÓRIA". */
-function obrigatoria(dur = 3.8): JScene {
+function obrigatoria(r: Rede, dur = 3.8): JScene {
+  const LOCKUP = makeLockup(r);
   return {
     dur,
-    bg: JC.ink,
+    bg: r.deep,
     draw: (f) => {
       const { u, k } = f;
       const cy = contentCenter(f);
@@ -120,10 +162,10 @@ function obrigatoria(dur = 3.8): JScene {
       });
       stampText(f, "OBRIGATÓRIA", f.w / 2, cy, k, {
         size: 116 * u,
-        color: JC.light,
+        color: r.accent,
         at: 0.95,
       });
-      revealWords(f, "para todos os fornecedores da rede do Grupo Carrefour", f.w / 2, cy + 110 * u, k, {
+      revealWords(f, `para todos os fornecedores da rede ${r.rede}`, f.w / 2, cy + 110 * u, k, {
         size: 46 * u,
         weight: 700,
         color: "rgba(255,255,255,.82)",
@@ -138,7 +180,8 @@ function obrigatoria(dur = 3.8): JScene {
 }
 
 /** Tela de contato final, fundo branco. */
-function contato(dur = 4.2): JScene {
+function contato(r: Rede, dur = 4.2): JScene {
+  const LOCKUP = makeLockup(r);
   return {
     dur,
     bg: JC.white,
@@ -172,7 +215,7 @@ function contato(dur = 4.2): JScene {
 
       readingLine(f, f.w / 2, nameY + 58 * u, 240 * u, k, {
         at: 0.8,
-        color: JC.mid,
+        color: r.accentInk,
         thickness: 5,
       });
 
@@ -213,7 +256,8 @@ function contato(dur = 4.2): JScene {
 }
 
 /** Tela de contexto (Vídeo B) — composição cumulativa com linha de leitura. */
-function contexto(): JScene {
+function contexto(r: Rede): JScene {
+  const LOCKUP = makeLockup(r);
   const blocos = [
     { t: "A JORNADA", size: 68, weight: 900, color: JC.white },
     { t: "acompanha e reconhece", size: 54, weight: 700, color: JC.white },
@@ -243,7 +287,7 @@ function contexto(): JScene {
         c.restore();
         readingLine(f, f.w / 2, y + b.size * u * 0.7, Math.min(tw, f.w - 200 * u), k, {
           at: at + 0.1,
-          color: JC.white,
+          color: i % 2 === 1 ? r.accent : JC.white,
           thickness: 4,
         });
       });
@@ -253,7 +297,8 @@ function contexto(): JScene {
 }
 
 /** Tela staccato (Vídeo C) — frases permanecem, a última com carimbo. */
-function staccato(): JScene {
+function staccato(r: Rede): JScene {
+  const LOCKUP = makeLockup(r);
   return {
     dur: 4.8,
     bg: JC.dark,
@@ -278,7 +323,7 @@ function staccato(): JScene {
       });
       stampText(f, "É OBRIGATÓRIO.", f.w / 2, cy + 110 * u, k, {
         size: 98 * u,
-        color: JC.light,
+        color: r.accent,
         at: 2.4,
       });
       drawLockup(f, k, LOCKUP, 3.2);
@@ -287,7 +332,8 @@ function staccato(): JScene {
 }
 
 /** Tela "acesso liberado" (Vídeo C). */
-function acesso(): JScene {
+function acesso(r: Rede): JScene {
+  const LOCKUP = makeLockup(r);
   return {
     dur: 4.0,
     bg: JC.light,
@@ -326,7 +372,7 @@ function acesso(): JScene {
         c.fillText("Falta só entrar.", f.w / 2, y);
         const tw = c.measureText("Falta só entrar.").width;
         c.restore();
-        readingLine(f, f.w / 2, y + 44 * u, tw, k, { at: 2.15, color: JC.ink, thickness: 5 });
+        readingLine(f, f.w / 2, y + 44 * u, tw, k, { at: 2.15, color: r.accentInk, thickness: 5 });
       }
 
       drawLockup(f, k, { ...LOCKUP, onLight: true }, 2.5);
@@ -335,7 +381,8 @@ function acesso(): JScene {
 }
 
 /** Tela curta de acesso, usada só no GIF de reforço. */
-function acesseGif(): JScene {
+function acesseGif(r: Rede): JScene {
+  const LOCKUP = makeLockup(r);
   return {
     dur: 2.2,
     bg: JC.mid,
@@ -355,91 +402,108 @@ function acesseGif(): JScene {
   };
 }
 
-/* ------------------------------------------------------------------ vídeos */
+function cardEstatico(r: Rede): JVideo {
+  const LOCKUP = makeLockup(r);
+  return {
+    id: `card-${r.key}`,
+    title: "Card estático",
+    subtitle: "Fallback para quando vídeo ou GIF não carregam.",
+    scenes: [
+      {
+        dur: 3,
+        bg: r.deep,
+        draw: (f) => {
+          const { c, u, k } = f;
+          const pl = easeOut(clamp01(k / 0.4));
+          c.save();
+          c.globalAlpha = pl;
+          drawImageFit(f, LOGOS.jornadaWhite, f.w / 2, f.h * 0.2, 700 * u, 300 * u);
+          c.restore();
 
-export const JORNADA_VIDEOS: JVideo[] = [
-  {
-    id: "a-curta",
-    title: "Vídeo A — Curta",
-    subtitle: "Primeiro disparo. Nome do programa, obrigatoriedade e contato.",
-    scenes: [abertura(), obrigatoria(), contato()],
-  },
-  {
-    id: "b-porque",
-    title: "Vídeo B — Com o porquê",
-    subtitle: "Para quem ainda não sabe o que é o programa.",
-    scenes: [abertura(), contexto(), obrigatoria(), contato()],
-  },
-  {
-    id: "c-reforco",
-    title: "Vídeo C — Reforço",
-    subtitle: "Lembrete para quem recebeu e ainda não entrou.",
-    scenes: [abertura(), staccato(), acesso(), contato()],
-  },
-];
+          revealWords(f, "PARTICIPAÇÃO", f.w / 2, f.h * 0.37, k, {
+            size: 92 * u,
+            weight: 700,
+            color: JC.white,
+            maxWidth: f.w - 140 * u,
+            lineHeight: 104 * u,
+            start: 0.1,
+            step: 0.2,
+          });
+          stampText(f, "OBRIGATÓRIA", f.w / 2, f.h * 0.54, k, {
+            size: 104 * u,
+            color: r.accent,
+            at: 0.8,
+          });
 
-/** Peça 4 — GIF de reforço: carimbo + acesso + contato resumido. */
-export const GIF_REFORCO: JVideo = {
-  id: "reforco",
-  title: "GIF de reforço",
-  subtitle: "Só o carimbo, o acesso e o contato. Leve o bastante para sinal fraco.",
-  scenes: [obrigatoria(3.0), acesseGif(), contato(2.8)],
-};
+          const p = easeOut(clamp01((k - 1.3) / 0.4));
+          c.save();
+          c.globalAlpha = p;
+          c.textAlign = "center";
+          c.textBaseline = "middle";
+          c.font = font(44 * u, 800);
+          c.fillStyle = JC.white;
+          c.fillText(`${CONTACT.name} · ${CONTACT.phone}`, f.w / 2, f.h * 0.655);
+          c.restore();
 
-/** Peça 5 — card estático: frame do impacto do carimbo. */
-export const CARD_ESTATICO: JVideo = {
-  id: "card",
-  title: "Card estático",
-  subtitle: "Fallback para quando vídeo ou GIF não carregam.",
-  scenes: [
-    {
-      dur: 3,
-      bg: JC.ink,
-      draw: (f) => {
-        const { c, u, k } = f;
-        const pl = easeOut(clamp01(k / 0.4));
-        c.save();
-        c.globalAlpha = pl;
-        drawImageFit(f, LOGOS.jornadaWhite, f.w / 2, f.h * 0.2, 700 * u, 300 * u);
-        c.restore();
-
-        revealWords(f, "PARTICIPAÇÃO", f.w / 2, f.h * 0.37, k, {
-          size: 92 * u,
-          weight: 700,
-          color: JC.white,
-          maxWidth: f.w - 140 * u,
-          lineHeight: 104 * u,
-          start: 0.1,
-          step: 0.2,
-        });
-        stampText(f, "OBRIGATÓRIA", f.w / 2, f.h * 0.54, k, {
-          size: 104 * u,
-          color: JC.light,
-          at: 0.8,
-        });
-
-        const p = easeOut(clamp01((k - 1.3) / 0.4));
-        c.save();
-        c.globalAlpha = p;
-        c.textAlign = "center";
-        c.textBaseline = "middle";
-        c.font = font(44 * u, 800);
-        c.fillStyle = JC.white;
-        c.fillText(`${CONTACT.name} · ${CONTACT.phone}`, f.w / 2, f.h * 0.655);
-        c.restore();
-
-        drawLockup(f, k, LOCKUP, 1.4);
+          drawLockup(f, k, LOCKUP, 1.4);
+        },
       },
-    },
-  ],
+    ],
+  };
+}
+
+/* ------------------------------------------------------------------ conjuntos */
+
+export type JornadaSet = {
+  rede: Rede;
+  videos: JVideo[];
+  gif: JVideo;
+  card: JVideo;
 };
+
+export function buildSet(r: Rede): JornadaSet {
+  const suffix = r.key === "carrefour" ? "" : `-${r.key}`;
+  return {
+    rede: r,
+    videos: [
+      {
+        id: `a-curta${suffix}`,
+        title: "Vídeo A — Curta",
+        subtitle: "Primeiro disparo. Nome do programa, obrigatoriedade e contato.",
+        scenes: [abertura(r), obrigatoria(r), contato(r)],
+      },
+      {
+        id: `b-porque${suffix}`,
+        title: "Vídeo B — Com o porquê",
+        subtitle: "Para quem ainda não sabe o que é o programa.",
+        scenes: [abertura(r), contexto(r), obrigatoria(r), contato(r)],
+      },
+      {
+        id: `c-reforco${suffix}`,
+        title: "Vídeo C — Reforço",
+        subtitle: "Lembrete para quem recebeu e ainda não entrou.",
+        scenes: [abertura(r), staccato(r), acesso(r), contato(r)],
+      },
+    ],
+    gif: {
+      id: `reforco${suffix}`,
+      title: "GIF de reforço",
+      subtitle: "Só o carimbo, o acesso e o contato. Leve o bastante para sinal fraco.",
+      scenes: [obrigatoria(r, 3.0), acesseGif(r), contato(r, 2.8)],
+    },
+    card: cardEstatico(r),
+  };
+}
+
+export const SET_CARREFOUR = buildSet(REDE_CARREFOUR);
+export const SET_ATACADAO = buildSet(REDE_ATACADAO);
+
+/* Compatibilidade com o que já existia. */
+export const JORNADA_VIDEOS = SET_CARREFOUR.videos;
+export const GIF_REFORCO = SET_CARREFOUR.gif;
+export const CARD_ESTATICO = SET_CARREFOUR.card;
 
 /** Momento (s) em que o card estático é congelado — frame do impacto. */
 export const CARD_FREEZE = 2.2;
-
-/** Compatibilidade: versão curta usada pelo botão "Baixar GIF" dos vídeos. */
-export function gifVersion(_v: JVideo): JVideo {
-  return GIF_REFORCO;
-}
 
 export type { Frame };
