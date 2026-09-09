@@ -39,14 +39,14 @@ const CANVAS_H = 900;
 const PAD = 64;
 
 const T = {
-  hero: 64,
-  title: 46,
-  subtitle: 30,
-  lead: 21,
-  body: 18,
-  small: 16,
-  label: 13,
-  mono: 12,
+  hero: 68,
+  title: 48,
+  subtitle: 32,
+  lead: 24,
+  body: 21,
+  small: 18,
+  label: 15,
+  mono: 14,
 } as const;
 
 const usePrintMode = () => {
@@ -214,7 +214,7 @@ const S01Abertura = () => (
         <br />
         de <span className="text-accent-glow">fornecedores</span>.
       </h1>
-      <p className="text-primary-foreground/75" style={{ fontSize: T.subtitle, marginTop: 34, maxWidth: 980, lineHeight: 1.3 }}>
+      <p className="text-primary-foreground/85" style={{ fontSize: T.subtitle, marginTop: 34, maxWidth: 980, lineHeight: 1.3 }}>
         Transforme a gestão de fornecedores em uma jornada contínua de conformidade, desenvolvimento e performance.
       </p>
       <div className="h-1.5 rounded-full bg-accent" style={{ width: 200, marginTop: 44 }} />
@@ -239,10 +239,10 @@ const DorCard = ({ icon: Icon, titulo, texto }: { icon: typeof Search; titulo: s
     <div className="grid place-items-center rounded-2xl bg-destructive/10 text-destructive" style={{ width: 60, height: 60 }}>
       <Icon style={{ width: 30, height: 30 }} />
     </div>
-    <h3 className="font-display font-bold text-foreground" style={{ fontSize: 26, marginTop: 24, lineHeight: 1.2 }}>
+    <h3 className="font-display font-bold text-foreground" style={{ fontSize: 28, marginTop: 24, lineHeight: 1.2 }}>
       {titulo}
     </h3>
-    <p className="text-muted-foreground" style={{ fontSize: T.body, marginTop: 12, lineHeight: 1.5 }}>
+    <p className="text-foreground/80" style={{ fontSize: 22, marginTop: 12, lineHeight: 1.5 }}>
       {texto}
     </p>
   </div>
@@ -266,7 +266,7 @@ const S02Problema = () => (
       style={{ gap: 26, marginTop: 30, padding: "30px 38px" }}
     >
       <span className="h-full w-1.5 rounded-full bg-accent" style={{ minHeight: 56 }} />
-      <p className="font-display font-bold text-primary-foreground" style={{ fontSize: 28, lineHeight: 1.25 }}>
+      <p className="font-display font-bold text-primary-foreground" style={{ fontSize: 30, lineHeight: 1.25 }}>
         O problema não é ter dados dos fornecedores. É conseguir transformar esses dados em gestão.
       </p>
     </div>
@@ -280,10 +280,10 @@ const Etapa = ({ label, tone }: { label: string; tone: "old" | "new" }) => (
   <div
     className={`flex items-center justify-center rounded-2xl border font-semibold ${
       tone === "old"
-        ? "border-border bg-muted text-muted-foreground"
+        ? "border-border bg-muted text-foreground/70"
         : "border-accent/30 bg-accent/10 text-accent"
     }`}
-    style={{ fontSize: T.body, padding: "18px 10px", flex: 1, textAlign: "center" }}
+    style={{ fontSize: 21, padding: "20px 10px", flex: 1, textAlign: "center" }}
   >
     {label}
   </div>
@@ -330,7 +330,7 @@ const S03Paradigma = () => (
             <Fragment key={e}>
               <div
                 className="flex items-center justify-center rounded-2xl border border-accent/40 bg-accent/15 font-semibold text-primary-foreground"
-                style={{ fontSize: T.body, padding: "18px 10px", flex: 1, textAlign: "center" }}
+                style={{ fontSize: 21, padding: "20px 10px", flex: 1, textAlign: "center" }}
               >
                 {e}
               </div>
@@ -383,7 +383,7 @@ const S04Pilares = () => (
             <h3 className="font-display font-bold uppercase text-primary-foreground" style={{ fontSize: 27, marginTop: 26, letterSpacing: "0.04em" }}>
               {k}
             </h3>
-            <p className="text-primary-foreground/70" style={{ fontSize: T.body, marginTop: 14, lineHeight: 1.55 }}>
+            <p className="text-primary-foreground/85" style={{ fontSize: 21, marginTop: 14, lineHeight: 1.55 }}>
               {d}
             </p>
           </div>
@@ -409,11 +409,11 @@ const MockCol = ({ titulo, linhas, destaque }: { titulo: string; linhas: string[
     </span>
     <div className="flex flex-col" style={{ gap: 8, marginTop: 14 }}>
       {linhas.map((l) => (
-        <div key={l} className="flex items-center justify-between rounded-xl border border-border/70 bg-card" style={{ padding: "13px 14px" }}>
-          <span className="text-foreground" style={{ fontSize: T.body }}>
+        <div key={l} className="flex items-center justify-between rounded-xl border border-border/70 bg-card" style={{ padding: "14px 16px" }}>
+          <span className="font-medium text-foreground" style={{ fontSize: 20 }}>
             {l}
           </span>
-          <span className="rounded-full bg-accent/15 text-accent" style={{ fontSize: 11, padding: "3px 10px", fontWeight: 700 }}>
+          <span className="rounded-full bg-accent/15 text-accent" style={{ fontSize: 14, padding: "4px 12px", fontWeight: 700 }}>
             OK
           </span>
         </div>
@@ -454,7 +454,7 @@ const S05Comofunciona = () => (
               </h3>
             </div>
           </div>
-          <p className="text-muted-foreground" style={{ fontSize: T.body, marginTop: 14, lineHeight: 1.5, minHeight: 78 }}>
+          <p className="text-foreground/80" style={{ fontSize: 21, marginTop: 14, lineHeight: 1.5, minHeight: 90 }}>
             {d}
           </p>
           <div className="flex flex-1" style={{ marginTop: 6 }}>
@@ -481,7 +481,7 @@ const ModCard = ({ icon: Icon, nome, itens }: { icon: typeof Search; nome: strin
     </div>
     <ul className="flex flex-col" style={{ gap: 7, marginTop: 16 }}>
       {itens.map((i) => (
-        <li key={i} className="flex items-center gap-2 text-muted-foreground" style={{ fontSize: T.small }}>
+        <li key={i} className="flex items-center gap-2.5 text-foreground/80" style={{ fontSize: 19 }}>
           <span className="rounded-full bg-accent" style={{ width: 6, height: 6, flexShrink: 0 }} />
           {i}
         </li>
@@ -545,7 +545,7 @@ const S07Ganhos = () => (
             <h3 className="font-display font-bold text-primary-foreground" style={{ fontSize: 26 }}>
               {k}
             </h3>
-            <p className="text-primary-foreground/70" style={{ fontSize: T.body, marginTop: 8, lineHeight: 1.5 }}>
+            <p className="text-primary-foreground/85" style={{ fontSize: 21, marginTop: 8, lineHeight: 1.5 }}>
               {d}
             </p>
           </div>
@@ -570,8 +570,8 @@ const S08Fornecedor = () => (
         <span className="font-mono uppercase text-muted-foreground" style={{ fontSize: T.mono, letterSpacing: "0.2em" }}>
           Hoje
         </span>
-        <MessageSquare className="text-muted-foreground/50" style={{ width: 34, height: 34, marginTop: 20 }} />
-        <p className="font-display font-semibold text-muted-foreground" style={{ fontSize: 28, marginTop: 18, lineHeight: 1.3 }}>
+        <MessageSquare className="text-muted-foreground" style={{ width: 38, height: 38, marginTop: 20 }} />
+        <p className="font-display font-semibold text-foreground/75" style={{ fontSize: 30, marginTop: 18, lineHeight: 1.3 }}>
           “A empresa está sempre me cobrando documentos.”
         </p>
       </div>
@@ -582,8 +582,8 @@ const S08Fornecedor = () => (
         <span className="font-mono uppercase text-accent-glow" style={{ fontSize: T.mono, letterSpacing: "0.2em" }}>
           Com MyTS
         </span>
-        <MessageSquare className="text-accent-glow" style={{ width: 34, height: 34, marginTop: 20 }} />
-        <p className="font-display font-semibold text-primary-foreground" style={{ fontSize: 28, marginTop: 18, lineHeight: 1.3 }}>
+        <MessageSquare className="text-accent-glow" style={{ width: 38, height: 38, marginTop: 20 }} />
+        <p className="font-display font-semibold text-primary-foreground" style={{ fontSize: 30, marginTop: 18, lineHeight: 1.3 }}>
           “Eu sei o que preciso fazer, qual é o meu status e como posso evoluir.”
         </p>
       </div>
@@ -631,7 +631,7 @@ const CaseCard = ({
         {titulo}
       </h3>
     )}
-    <p className="text-muted-foreground" style={{ fontSize: T.small, marginTop: 10, lineHeight: 1.5 }}>
+    <p className="text-foreground/80" style={{ fontSize: 19, marginTop: 10, lineHeight: 1.5 }}>
       {desc}
     </p>
     <div className="mt-auto flex flex-col" style={{ gap: 10, paddingTop: 20 }}>
@@ -640,7 +640,7 @@ const CaseCard = ({
           <span className="font-display font-bold text-accent" style={{ fontSize: 28, lineHeight: 1 }}>
             {m.v}
           </span>
-          <span className="text-muted-foreground" style={{ fontSize: T.small }}>
+          <span className="text-foreground/70" style={{ fontSize: 18 }}>
             {m.l}
           </span>
         </div>
@@ -737,7 +737,7 @@ const S10Numeros = () => (
             <span className="font-display font-bold text-primary-foreground" style={{ fontSize: 54, marginTop: 16, lineHeight: 1 }}>
               {v}
             </span>
-            <span className="text-primary-foreground/65" style={{ fontSize: T.body, marginTop: 8 }}>
+            <span className="text-primary-foreground/80" style={{ fontSize: 20, marginTop: 8 }}>
               {l}
             </span>
           </div>
@@ -810,13 +810,13 @@ const S12Fechamento = () => (
       </h2>
       <div className="h-1.5 rounded-full bg-accent" style={{ width: 160, marginTop: 40 }} />
       <Logo src={mytsLogo} alt="MyTS" height={44} invert />
-      <p className="text-primary-foreground/70" style={{ fontSize: T.lead, marginTop: 14 }}>
+      <p className="text-primary-foreground/85" style={{ fontSize: T.lead, marginTop: 14 }}>
         Gestão inteligente de fornecedores.
       </p>
     </div>
 
     <div className="flex items-center justify-between border-t border-primary-foreground/12" style={{ paddingTop: 24 }}>
-      <span className="text-primary-foreground/60" style={{ fontSize: T.small }}>
+      <span className="text-primary-foreground/80" style={{ fontSize: T.small }}>
         myt-s.com
       </span>
       <span className="font-display font-semibold text-primary-foreground" style={{ fontSize: T.lead }}>
