@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import {
   Search,
@@ -308,10 +308,10 @@ const S03Paradigma = () => (
         </div>
         <div className="flex items-center" style={{ gap: 12, marginTop: 22 }}>
           {["Homologa", "Arquiva", "Cobra", "Reage"].map((e, i, a) => (
-            <>
-              <Etapa key={e} label={e} tone="old" />
-              {i < a.length - 1 && <ArrowRight key={`${e}-a`} className="text-muted-foreground/50" style={{ width: 22, height: 22, flexShrink: 0 }} />}
-            </>
+            <Fragment key={e}>
+              <Etapa label={e} tone="old" />
+              {i < a.length - 1 && <ArrowRight className="text-muted-foreground/50" style={{ width: 22, height: 22, flexShrink: 0 }} />}
+            </Fragment>
           ))}
         </div>
       </div>
@@ -327,16 +327,15 @@ const S03Paradigma = () => (
         </div>
         <div className="flex items-center" style={{ gap: 12, marginTop: 22 }}>
           {["Conhece", "Homologa", "Monitora", "Desenvolve", "Evolui"].map((e, i, a) => (
-            <>
+            <Fragment key={e}>
               <div
-                key={e}
                 className="flex items-center justify-center rounded-2xl border border-accent/40 bg-accent/15 font-semibold text-primary-foreground"
                 style={{ fontSize: T.body, padding: "18px 10px", flex: 1, textAlign: "center" }}
               >
                 {e}
               </div>
-              {i < a.length - 1 && <ArrowRight key={`${e}-a`} className="text-accent-glow" style={{ width: 22, height: 22, flexShrink: 0 }} />}
-            </>
+              {i < a.length - 1 && <ArrowRight className="text-accent-glow" style={{ width: 22, height: 22, flexShrink: 0 }} />}
+            </Fragment>
           ))}
         </div>
       </div>
