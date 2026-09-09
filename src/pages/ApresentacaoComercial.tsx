@@ -409,8 +409,8 @@ const MockCol = ({ titulo, linhas, destaque }: { titulo: string; linhas: string[
     </span>
     <div className="flex flex-col" style={{ gap: 8, marginTop: 14 }}>
       {linhas.map((l) => (
-        <div key={l} className="flex items-center justify-between rounded-xl border border-border/70 bg-card" style={{ padding: "10px 12px" }}>
-          <span className="text-foreground" style={{ fontSize: T.small }}>
+        <div key={l} className="flex items-center justify-between rounded-xl border border-border/70 bg-card" style={{ padding: "13px 14px" }}>
+          <span className="text-foreground" style={{ fontSize: T.body }}>
             {l}
           </span>
           <span className="rounded-full bg-accent/15 text-accent" style={{ fontSize: 11, padding: "3px 10px", fontWeight: 700 }}>
@@ -436,9 +436,9 @@ const S05Comofunciona = () => (
 
     <div className="flex flex-1" style={{ gap: 24, marginTop: 28 }}>
       {[
-        { icon: Search, k: "Find", d: "Entenda quem são seus fornecedores e tenha uma visão estruturada da cadeia.", linhas: ["Laticínios Vale", "Embalagens Prisma", "Aromas Sul"] },
-        { icon: RouteIcon, k: "Journey", d: "Crie jornadas de avaliação, homologação e desenvolvimento.", linhas: ["Autoavaliação", "Documentos", "Plano de ação"] },
-        { icon: Activity, k: "Monitoramento", d: "Acompanhe documentos, requisitos, processos e indicadores continuamente.", linhas: ["Certificados", "Requisitos", "Não conformidades"] },
+        { icon: Search, k: "Find", d: "Entenda quem são seus fornecedores e tenha uma visão estruturada da cadeia.", linhas: ["Laticínios Vale", "Embalagens Prisma", "Aromas Sul", "Insumos Bela Vista", "Grãos Ipê"] },
+        { icon: RouteIcon, k: "Journey", d: "Crie jornadas de avaliação, homologação e desenvolvimento.", linhas: ["Autoavaliação", "Documentos", "Plano de ação", "Auditoria remota", "Reavaliação"] },
+        { icon: Activity, k: "Monitoramento", d: "Acompanhe documentos, requisitos, processos e indicadores continuamente.", linhas: ["Certificados", "Requisitos", "Não conformidades", "Vencimentos", "Indicadores"] },
       ].map(({ icon: Icon, k, d, linhas }, i) => (
         <div key={k} className="flex flex-1 flex-col rounded-3xl border border-border bg-card shadow-card" style={{ padding: 26 }}>
           <div className="flex items-center gap-3">
@@ -454,7 +454,7 @@ const S05Comofunciona = () => (
               </h3>
             </div>
           </div>
-          <p className="text-muted-foreground" style={{ fontSize: T.small, marginTop: 14, lineHeight: 1.5, minHeight: 72 }}>
+          <p className="text-muted-foreground" style={{ fontSize: T.body, marginTop: 14, lineHeight: 1.5, minHeight: 78 }}>
             {d}
           </p>
           <div className="flex flex-1" style={{ marginTop: 6 }}>
@@ -757,7 +757,7 @@ const S11Juntos = () => (
       Onde a MyTS pode gerar valor na sua operação?
     </h2>
 
-    <div className="grid flex-1 grid-cols-4 content-center" style={{ gap: 18, marginTop: 26 }}>
+    <div className="grid flex-1 grid-cols-4 grid-rows-2" style={{ gap: 18, marginTop: 26 }}>
       {[
         "Mapear sua cadeia",
         "Estruturar homologação",
@@ -767,17 +767,17 @@ const S11Juntos = () => (
         "Desenvolver fornecedores",
         "Gerar indicadores para decisão",
       ].map((t, i) => (
-        <div key={t} className="flex flex-col rounded-2xl border border-border bg-card shadow-card" style={{ padding: 24, minHeight: 150 }}>
-          <span className="font-display font-bold text-accent" style={{ fontSize: 30, lineHeight: 1 }}>
+        <div key={t} className="flex flex-col rounded-2xl border border-border bg-card shadow-card" style={{ padding: 28 }}>
+          <span className="font-display font-bold text-accent" style={{ fontSize: 38, lineHeight: 1 }}>
             {String(i + 1).padStart(2, "0")}
           </span>
-          <span className="mt-auto font-display font-semibold text-foreground" style={{ fontSize: 21, lineHeight: 1.25 }}>
+          <span className="mt-auto font-display font-semibold text-foreground" style={{ fontSize: 24, lineHeight: 1.25 }}>
             {t}
           </span>
         </div>
       ))}
-      <div className="flex flex-col justify-center rounded-2xl border border-accent/30 bg-accent/8" style={{ padding: 24, minHeight: 150 }}>
-        <p className="text-foreground" style={{ fontSize: T.small, lineHeight: 1.5 }}>
+      <div className="flex flex-col justify-center rounded-2xl border border-accent/30 bg-accent/8" style={{ padding: 28 }}>
+        <p className="text-foreground" style={{ fontSize: T.lead, lineHeight: 1.45 }}>
           Escolhemos juntos por onde começar — e desenhamos a jornada a partir da sua realidade.
         </p>
       </div>
