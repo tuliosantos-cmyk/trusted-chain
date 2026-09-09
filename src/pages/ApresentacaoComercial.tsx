@@ -631,7 +631,7 @@ const CaseCard = ({
         {titulo}
       </h3>
     )}
-    <p className="text-muted-foreground" style={{ fontSize: T.small, marginTop: 10, lineHeight: 1.5 }}>
+    <p className="text-foreground/80" style={{ fontSize: 19, marginTop: 10, lineHeight: 1.5 }}>
       {desc}
     </p>
     <div className="mt-auto flex flex-col" style={{ gap: 10, paddingTop: 20 }}>
@@ -640,7 +640,7 @@ const CaseCard = ({
           <span className="font-display font-bold text-accent" style={{ fontSize: 28, lineHeight: 1 }}>
             {m.v}
           </span>
-          <span className="text-muted-foreground" style={{ fontSize: T.small }}>
+          <span className="text-foreground/70" style={{ fontSize: 18 }}>
             {m.l}
           </span>
         </div>
@@ -737,7 +737,7 @@ const S10Numeros = () => (
             <span className="font-display font-bold text-primary-foreground" style={{ fontSize: 54, marginTop: 16, lineHeight: 1 }}>
               {v}
             </span>
-            <span className="text-primary-foreground/65" style={{ fontSize: T.body, marginTop: 8 }}>
+            <span className="text-primary-foreground/80" style={{ fontSize: 20, marginTop: 8 }}>
               {l}
             </span>
           </div>
@@ -810,13 +810,13 @@ const S12Fechamento = () => (
       </h2>
       <div className="h-1.5 rounded-full bg-accent" style={{ width: 160, marginTop: 40 }} />
       <Logo src={mytsLogo} alt="MyTS" height={44} invert />
-      <p className="text-primary-foreground/70" style={{ fontSize: T.lead, marginTop: 14 }}>
+      <p className="text-primary-foreground/85" style={{ fontSize: T.lead, marginTop: 14 }}>
         Gestão inteligente de fornecedores.
       </p>
     </div>
 
     <div className="flex items-center justify-between border-t border-primary-foreground/12" style={{ paddingTop: 24 }}>
-      <span className="text-primary-foreground/60" style={{ fontSize: T.small }}>
+      <span className="text-primary-foreground/80" style={{ fontSize: T.small }}>
         myt-s.com
       </span>
       <span className="font-display font-semibold text-primary-foreground" style={{ fontSize: T.lead }}>
