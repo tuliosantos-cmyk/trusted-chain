@@ -214,7 +214,7 @@ const S01Abertura = () => (
         <br />
         de <span className="text-accent-glow">fornecedores</span>.
       </h1>
-      <p className="text-primary-foreground/75" style={{ fontSize: T.subtitle, marginTop: 34, maxWidth: 980, lineHeight: 1.3 }}>
+      <p className="text-primary-foreground/85" style={{ fontSize: T.subtitle, marginTop: 34, maxWidth: 980, lineHeight: 1.3 }}>
         Transforme a gestão de fornecedores em uma jornada contínua de conformidade, desenvolvimento e performance.
       </p>
       <div className="h-1.5 rounded-full bg-accent" style={{ width: 200, marginTop: 44 }} />
