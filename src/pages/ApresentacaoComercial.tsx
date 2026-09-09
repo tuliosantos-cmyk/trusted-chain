@@ -409,11 +409,11 @@ const MockCol = ({ titulo, linhas, destaque }: { titulo: string; linhas: string[
     </span>
     <div className="flex flex-col" style={{ gap: 8, marginTop: 14 }}>
       {linhas.map((l) => (
-        <div key={l} className="flex items-center justify-between rounded-xl border border-border/70 bg-card" style={{ padding: "13px 14px" }}>
-          <span className="text-foreground" style={{ fontSize: T.body }}>
+        <div key={l} className="flex items-center justify-between rounded-xl border border-border/70 bg-card" style={{ padding: "14px 16px" }}>
+          <span className="font-medium text-foreground" style={{ fontSize: 20 }}>
             {l}
           </span>
-          <span className="rounded-full bg-accent/15 text-accent" style={{ fontSize: 11, padding: "3px 10px", fontWeight: 700 }}>
+          <span className="rounded-full bg-accent/15 text-accent" style={{ fontSize: 14, padding: "4px 12px", fontWeight: 700 }}>
             OK
           </span>
         </div>
@@ -454,7 +454,7 @@ const S05Comofunciona = () => (
               </h3>
             </div>
           </div>
-          <p className="text-muted-foreground" style={{ fontSize: T.body, marginTop: 14, lineHeight: 1.5, minHeight: 78 }}>
+          <p className="text-foreground/80" style={{ fontSize: 21, marginTop: 14, lineHeight: 1.5, minHeight: 90 }}>
             {d}
           </p>
           <div className="flex flex-1" style={{ marginTop: 6 }}>
@@ -481,7 +481,7 @@ const ModCard = ({ icon: Icon, nome, itens }: { icon: typeof Search; nome: strin
     </div>
     <ul className="flex flex-col" style={{ gap: 7, marginTop: 16 }}>
       {itens.map((i) => (
-        <li key={i} className="flex items-center gap-2 text-muted-foreground" style={{ fontSize: T.small }}>
+        <li key={i} className="flex items-center gap-2.5 text-foreground/80" style={{ fontSize: 19 }}>
           <span className="rounded-full bg-accent" style={{ width: 6, height: 6, flexShrink: 0 }} />
           {i}
         </li>
@@ -545,7 +545,7 @@ const S07Ganhos = () => (
             <h3 className="font-display font-bold text-primary-foreground" style={{ fontSize: 26 }}>
               {k}
             </h3>
-            <p className="text-primary-foreground/70" style={{ fontSize: T.body, marginTop: 8, lineHeight: 1.5 }}>
+            <p className="text-primary-foreground/85" style={{ fontSize: 21, marginTop: 8, lineHeight: 1.5 }}>
               {d}
             </p>
           </div>
@@ -570,8 +570,8 @@ const S08Fornecedor = () => (
         <span className="font-mono uppercase text-muted-foreground" style={{ fontSize: T.mono, letterSpacing: "0.2em" }}>
           Hoje
         </span>
-        <MessageSquare className="text-muted-foreground/50" style={{ width: 34, height: 34, marginTop: 20 }} />
-        <p className="font-display font-semibold text-muted-foreground" style={{ fontSize: 28, marginTop: 18, lineHeight: 1.3 }}>
+        <MessageSquare className="text-muted-foreground" style={{ width: 38, height: 38, marginTop: 20 }} />
+        <p className="font-display font-semibold text-foreground/75" style={{ fontSize: 30, marginTop: 18, lineHeight: 1.3 }}>
           “A empresa está sempre me cobrando documentos.”
         </p>
       </div>
@@ -582,8 +582,8 @@ const S08Fornecedor = () => (
         <span className="font-mono uppercase text-accent-glow" style={{ fontSize: T.mono, letterSpacing: "0.2em" }}>
           Com MyTS
         </span>
-        <MessageSquare className="text-accent-glow" style={{ width: 34, height: 34, marginTop: 20 }} />
-        <p className="font-display font-semibold text-primary-foreground" style={{ fontSize: 28, marginTop: 18, lineHeight: 1.3 }}>
+        <MessageSquare className="text-accent-glow" style={{ width: 38, height: 38, marginTop: 20 }} />
+        <p className="font-display font-semibold text-primary-foreground" style={{ fontSize: 30, marginTop: 18, lineHeight: 1.3 }}>
           “Eu sei o que preciso fazer, qual é o meu status e como posso evoluir.”
         </p>
       </div>
