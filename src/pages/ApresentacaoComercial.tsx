@@ -565,8 +565,8 @@ const S08Fornecedor = () => (
       Uma plataforma que também melhora a experiência de quem fornece.
     </h2>
 
-    <div className="flex flex-1 items-center" style={{ gap: 28, marginTop: 26 }}>
-      <div className="flex flex-1 flex-col justify-center rounded-3xl border border-border bg-muted" style={{ padding: 38, minHeight: 300 }}>
+    <div className="flex flex-1 items-stretch" style={{ gap: 28, marginTop: 26 }}>
+      <div className="flex flex-1 flex-col justify-center rounded-3xl border border-border bg-muted" style={{ padding: 44 }}>
         <span className="font-mono uppercase text-muted-foreground" style={{ fontSize: T.mono, letterSpacing: "0.2em" }}>
           Hoje
         </span>
@@ -578,7 +578,7 @@ const S08Fornecedor = () => (
 
       <ArrowRight className="text-accent" style={{ width: 42, height: 42, flexShrink: 0 }} />
 
-      <div className="flex flex-1 flex-col justify-center rounded-3xl border border-accent/30 bg-primary shadow-elegant" style={{ padding: 38, minHeight: 300 }}>
+      <div className="flex flex-1 flex-col justify-center rounded-3xl border border-accent/30 bg-primary shadow-elegant" style={{ padding: 44 }}>
         <span className="font-mono uppercase text-accent-glow" style={{ fontSize: T.mono, letterSpacing: "0.2em" }}>
           Com MyTS
         </span>
@@ -771,7 +771,7 @@ const S11Juntos = () => (
           <span className="font-display font-bold text-accent" style={{ fontSize: 38, lineHeight: 1 }}>
             {String(i + 1).padStart(2, "0")}
           </span>
-          <span className="mt-auto font-display font-semibold text-foreground" style={{ fontSize: 24, lineHeight: 1.25 }}>
+          <span className="font-display font-semibold text-foreground" style={{ marginTop: 16, fontSize: 24, lineHeight: 1.25 }}>
             {t}
           </span>
         </div>
