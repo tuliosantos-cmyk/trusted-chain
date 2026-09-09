@@ -39,14 +39,14 @@ const CANVAS_H = 900;
 const PAD = 64;
 
 const T = {
-  hero: 64,
-  title: 46,
-  subtitle: 30,
-  lead: 21,
-  body: 18,
-  small: 16,
-  label: 13,
-  mono: 12,
+  hero: 68,
+  title: 48,
+  subtitle: 32,
+  lead: 24,
+  body: 21,
+  small: 18,
+  label: 15,
+  mono: 14,
 } as const;
 
 const usePrintMode = () => {
@@ -239,10 +239,10 @@ const DorCard = ({ icon: Icon, titulo, texto }: { icon: typeof Search; titulo: s
     <div className="grid place-items-center rounded-2xl bg-destructive/10 text-destructive" style={{ width: 60, height: 60 }}>
       <Icon style={{ width: 30, height: 30 }} />
     </div>
-    <h3 className="font-display font-bold text-foreground" style={{ fontSize: 26, marginTop: 24, lineHeight: 1.2 }}>
+    <h3 className="font-display font-bold text-foreground" style={{ fontSize: 28, marginTop: 24, lineHeight: 1.2 }}>
       {titulo}
     </h3>
-    <p className="text-muted-foreground" style={{ fontSize: T.body, marginTop: 12, lineHeight: 1.5 }}>
+    <p className="text-foreground/80" style={{ fontSize: 22, marginTop: 12, lineHeight: 1.5 }}>
       {texto}
     </p>
   </div>
@@ -266,7 +266,7 @@ const S02Problema = () => (
       style={{ gap: 26, marginTop: 30, padding: "30px 38px" }}
     >
       <span className="h-full w-1.5 rounded-full bg-accent" style={{ minHeight: 56 }} />
-      <p className="font-display font-bold text-primary-foreground" style={{ fontSize: 28, lineHeight: 1.25 }}>
+      <p className="font-display font-bold text-primary-foreground" style={{ fontSize: 30, lineHeight: 1.25 }}>
         O problema não é ter dados dos fornecedores. É conseguir transformar esses dados em gestão.
       </p>
     </div>
@@ -280,10 +280,10 @@ const Etapa = ({ label, tone }: { label: string; tone: "old" | "new" }) => (
   <div
     className={`flex items-center justify-center rounded-2xl border font-semibold ${
       tone === "old"
-        ? "border-border bg-muted text-muted-foreground"
+        ? "border-border bg-muted text-foreground/70"
         : "border-accent/30 bg-accent/10 text-accent"
     }`}
-    style={{ fontSize: T.body, padding: "18px 10px", flex: 1, textAlign: "center" }}
+    style={{ fontSize: 21, padding: "20px 10px", flex: 1, textAlign: "center" }}
   >
     {label}
   </div>
@@ -330,7 +330,7 @@ const S03Paradigma = () => (
             <Fragment key={e}>
               <div
                 className="flex items-center justify-center rounded-2xl border border-accent/40 bg-accent/15 font-semibold text-primary-foreground"
-                style={{ fontSize: T.body, padding: "18px 10px", flex: 1, textAlign: "center" }}
+                style={{ fontSize: 21, padding: "20px 10px", flex: 1, textAlign: "center" }}
               >
                 {e}
               </div>
@@ -383,7 +383,7 @@ const S04Pilares = () => (
             <h3 className="font-display font-bold uppercase text-primary-foreground" style={{ fontSize: 27, marginTop: 26, letterSpacing: "0.04em" }}>
               {k}
             </h3>
-            <p className="text-primary-foreground/70" style={{ fontSize: T.body, marginTop: 14, lineHeight: 1.55 }}>
+            <p className="text-primary-foreground/85" style={{ fontSize: 21, marginTop: 14, lineHeight: 1.55 }}>
               {d}
             </p>
           </div>
