@@ -1,9 +1,6 @@
 import { Fragment, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import {
-  Search,
-  Route as RouteIcon,
-  Activity,
   FileStack,
   Building2,
   ListChecks,
@@ -19,7 +16,6 @@ import {
   Users,
   Globe,
   FileText,
-  Layers,
   MessageSquare,
 } from "lucide-react";
 import mytsLogo from "@/assets/myts-logo.svg";
@@ -234,7 +230,7 @@ const S01Abertura = () => (
 /* ============================================================
    02 — O problema
    ============================================================ */
-const DorCard = ({ icon: Icon, titulo, texto }: { icon: typeof Search; titulo: string; texto: string }) => (
+const DorCard = ({ icon: Icon, titulo, texto }: { icon: typeof FileStack; titulo: string; texto: string }) => (
   <div className="flex flex-1 flex-col justify-center rounded-3xl border border-border bg-card shadow-card" style={{ padding: 34 }}>
     <div className="grid place-items-center rounded-2xl bg-destructive/10 text-destructive" style={{ width: 60, height: 60 }}>
       <Icon style={{ width: 30, height: 30 }} />
@@ -348,170 +344,9 @@ const S03Paradigma = () => (
 );
 
 /* ============================================================
-   04 — O que é a MyTS (3 pilares)
+   04 — O ganho para a empresa
    ============================================================ */
-const S04Pilares = () => (
-  <Slide
-    bg="bg-primary"
-    decor={
-      <>
-        <Grade />
-        <Watermark style={{ width: 520, left: -120, bottom: -140 }} />
-      </>
-    }
-  >
-    <SectionLabel n="04" label="O que é a MyTS" light />
-    <h2 className="font-display font-bold text-primary-foreground" style={{ fontSize: T.title, marginTop: 22, maxWidth: 1150, lineHeight: 1.1 }}>
-      Uma plataforma para centralizar e conectar a gestão da sua cadeia.
-    </h2>
-
-    <div className="relative flex flex-1 items-center justify-center" style={{ marginTop: 20 }}>
-      <div className="flex w-full items-stretch" style={{ gap: 22 }}>
-        {[
-          { icon: Search, k: "Homologação", d: "Conheça e qualifique seus fornecedores com critérios próprios e evidências verificadas." },
-          { icon: Activity, k: "Monitoramento", d: "Acompanhe documentos, requisitos, não conformidades e processos em tempo real." },
-          { icon: TrendingUp, k: "Desenvolvimento", d: "Identifique oportunidades e conduza seus fornecedores à evolução contínua." },
-        ].map(({ icon: Icon, k, d }) => (
-          <div
-            key={k}
-            className="flex flex-1 flex-col rounded-3xl border border-primary-foreground/12 bg-primary-foreground/[0.06] backdrop-blur"
-            style={{ padding: 36 }}
-          >
-            <span className="grid place-items-center rounded-2xl bg-accent/20 text-accent-glow" style={{ width: 64, height: 64 }}>
-              <Icon style={{ width: 32, height: 32 }} />
-            </span>
-            <h3 className="font-display font-bold uppercase text-primary-foreground" style={{ fontSize: 27, marginTop: 26, letterSpacing: "0.04em" }}>
-              {k}
-            </h3>
-            <p className="text-primary-foreground/85" style={{ fontSize: 21, marginTop: 14, lineHeight: 1.55 }}>
-              {d}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    <div className="flex items-center justify-center" style={{ gap: 18, marginTop: 24 }}>
-      <span className="h-px flex-1 bg-primary-foreground/15" />
-      <Logo src={mytsLogo} alt="MyTS" height={30} invert />
-      <span className="h-px flex-1 bg-primary-foreground/15" />
-    </div>
-  </Slide>
-);
-
-/* ============================================================
-   05 — Como funciona: MyTS 360
-   ============================================================ */
-const MockCol = ({ titulo, linhas, destaque }: { titulo: string; linhas: string[]; destaque?: string }) => (
-  <div className="flex flex-1 flex-col rounded-2xl border border-border bg-background" style={{ padding: 18 }}>
-    <span className="font-mono uppercase text-muted-foreground" style={{ fontSize: T.mono, letterSpacing: "0.18em" }}>
-      {titulo}
-    </span>
-    <div className="flex flex-col" style={{ gap: 8, marginTop: 14 }}>
-      {linhas.map((l) => (
-        <div key={l} className="flex items-center justify-between rounded-xl border border-border/70 bg-card" style={{ padding: "14px 16px" }}>
-          <span className="font-medium text-foreground" style={{ fontSize: 20 }}>
-            {l}
-          </span>
-          <span className="rounded-full bg-accent/15 text-accent" style={{ fontSize: 14, padding: "4px 12px", fontWeight: 700 }}>
-            OK
-          </span>
-        </div>
-      ))}
-    </div>
-    {destaque && (
-      <span className="mt-auto text-muted-foreground" style={{ fontSize: T.small, paddingTop: 14 }}>
-        {destaque}
-      </span>
-    )}
-  </div>
-);
-
-const S05Comofunciona = () => (
-  <Slide>
-    <SectionLabel n="05" label="Como funciona — MyTS 360" />
-    <h2 className="font-display font-bold text-foreground" style={{ fontSize: T.title, marginTop: 20, maxWidth: 1150, lineHeight: 1.1 }}>
-      Find <span className="text-accent">→</span> Journey <span className="text-accent">→</span> Monitoramento
-    </h2>
-
-    <div className="flex flex-1" style={{ gap: 24, marginTop: 28 }}>
-      {[
-        { icon: Search, k: "Find", d: "Entenda quem são seus fornecedores e tenha uma visão estruturada da cadeia.", linhas: ["Laticínios Vale", "Embalagens Prisma", "Aromas Sul", "Insumos Bela Vista", "Grãos Ipê"] },
-        { icon: RouteIcon, k: "Journey", d: "Crie jornadas de avaliação, homologação e desenvolvimento.", linhas: ["Autoavaliação", "Documentos", "Plano de ação", "Auditoria remota", "Reavaliação"] },
-        { icon: Activity, k: "Monitoramento", d: "Acompanhe documentos, requisitos, processos e indicadores continuamente.", linhas: ["Certificados", "Requisitos", "Não conformidades", "Vencimentos", "Indicadores"] },
-      ].map(({ icon: Icon, k, d, linhas }, i) => (
-        <div key={k} className="flex flex-1 flex-col rounded-3xl border border-border bg-card shadow-card" style={{ padding: 26 }}>
-          <div className="flex items-center gap-3">
-            <span className="grid place-items-center rounded-xl bg-accent/12 text-accent" style={{ width: 46, height: 46 }}>
-              <Icon style={{ width: 24, height: 24 }} />
-            </span>
-            <div>
-              <span className="font-mono uppercase text-accent" style={{ fontSize: T.mono, letterSpacing: "0.2em" }}>
-                Etapa {i + 1}
-              </span>
-              <h3 className="font-display font-bold uppercase text-foreground" style={{ fontSize: 24, lineHeight: 1.1 }}>
-                {k}
-              </h3>
-            </div>
-          </div>
-          <p className="text-foreground/80" style={{ fontSize: 21, marginTop: 14, lineHeight: 1.5, minHeight: 90 }}>
-            {d}
-          </p>
-          <div className="flex flex-1" style={{ marginTop: 6 }}>
-            <MockCol titulo={k} linhas={linhas} />
-          </div>
-        </div>
-      ))}
-    </div>
-  </Slide>
-);
-
-/* ============================================================
-   06 — Ecossistema
-   ============================================================ */
-const ModCard = ({ icon: Icon, nome, itens }: { icon: typeof Search; nome: string; itens: string[] }) => (
-  <div className="flex flex-col rounded-2xl border border-border bg-card shadow-card" style={{ padding: 24 }}>
-    <div className="flex items-center gap-3">
-      <span className="grid place-items-center rounded-xl bg-accent/12 text-accent" style={{ width: 44, height: 44 }}>
-        <Icon style={{ width: 23, height: 23 }} />
-      </span>
-      <h3 className="font-display font-bold text-foreground" style={{ fontSize: 22 }}>
-        {nome}
-      </h3>
-    </div>
-    <ul className="flex flex-col" style={{ gap: 7, marginTop: 16 }}>
-      {itens.map((i) => (
-        <li key={i} className="flex items-center gap-2.5 text-foreground/80" style={{ fontSize: 19 }}>
-          <span className="rounded-full bg-accent" style={{ width: 6, height: 6, flexShrink: 0 }} />
-          {i}
-        </li>
-      ))}
-    </ul>
-  </div>
-);
-
-const S06Ecossistema = () => (
-  <Slide>
-    <SectionLabel n="06" label="Ecossistema MyTS" />
-    <h2 className="font-display font-bold text-foreground" style={{ fontSize: T.title, marginTop: 18, maxWidth: 1150, lineHeight: 1.1 }}>
-      Módulos que trabalham sobre a mesma base de dados.
-    </h2>
-
-    <div className="grid flex-1 grid-cols-3" style={{ gap: 20, marginTop: 26 }}>
-      <ModCard icon={Layers} nome="MyTS 360" itens={["Find", "Journey", "Monitoramento"]} />
-      <ModCard icon={ShieldCheck} nome="MyQMS" itens={["Gestão da qualidade", "RNCs", "Tratativas"]} />
-      <ModCard icon={FileText} nome="Meus Documentos" itens={["Centralização", "OCR", "Controle documental"]} />
-      <ModCard icon={Building2} nome="Meus Fornecedores" itens={["Cadastro", "Perfil", "Gestão da base"]} />
-      <ModCard icon={ListChecks} nome="Meus Requisitos" itens={["Requisitos", "Conformidade", "Pendências"]} />
-      <ModCard icon={Workflow} nome="Meus Processos" itens={["Fluxos", "Aprovações", "Gestão operacional"]} />
-    </div>
-  </Slide>
-);
-
-/* ============================================================
-   07 — Ganho para a empresa
-   ============================================================ */
-const S07Ganhos = () => (
+const S04Ganhos = () => (
   <Slide
     bg="bg-primary"
     decor={
@@ -521,7 +356,7 @@ const S07Ganhos = () => (
       </>
     }
   >
-    <SectionLabel n="07" label="O ganho para a empresa" light />
+    <SectionLabel n="04" label="O ganho para a empresa" light />
     <h2 className="font-display font-bold text-primary-foreground" style={{ fontSize: T.title, marginTop: 22, maxWidth: 1150, lineHeight: 1.1 }}>
       Mais do que organizar fornecedores. Gerar inteligência para decisão.
     </h2>
@@ -556,11 +391,11 @@ const S07Ganhos = () => (
 );
 
 /* ============================================================
-   08 — E para o fornecedor?
+   05 — E para o fornecedor?
    ============================================================ */
-const S08Fornecedor = () => (
+const S05Fornecedor = () => (
   <Slide>
-    <SectionLabel n="08" label="E para o fornecedor?" />
+    <SectionLabel n="05" label="E para o fornecedor?" />
     <h2 className="font-display font-bold text-foreground" style={{ fontSize: T.title, marginTop: 22, maxWidth: 1150, lineHeight: 1.1 }}>
       Uma plataforma que também melhora a experiência de quem fornece.
     </h2>
@@ -601,7 +436,7 @@ const S08Fornecedor = () => (
 );
 
 /* ============================================================
-   09 — Cases
+   06 — Cases
    ============================================================ */
 const CaseCard = ({
   logo,
@@ -649,9 +484,9 @@ const CaseCard = ({
   </div>
 );
 
-const S09Cases = () => (
+const S06Cases = () => (
   <Slide>
-    <SectionLabel n="09" label="Cases" />
+    <SectionLabel n="06" label="Cases" />
     <h2 className="font-display font-bold text-foreground" style={{ fontSize: T.title, marginTop: 18, maxWidth: 1150, lineHeight: 1.1 }}>
       Já está rodando em cadeias reais.
     </h2>
@@ -698,9 +533,9 @@ const S09Cases = () => (
 );
 
 /* ============================================================
-   10 — MyTS em números
+   07 — MyTS em números
    ============================================================ */
-const S10Numeros = () => (
+const S07Numeros = () => (
   <Slide
     bg="bg-primary"
     decor={
@@ -713,7 +548,7 @@ const S10Numeros = () => (
       </>
     }
   >
-    <SectionLabel n="10" label="MyTS em números" light />
+    <SectionLabel n="07" label="MyTS em números" light />
     <h2 className="font-display font-bold text-primary-foreground" style={{ fontSize: T.title, marginTop: 22, maxWidth: 1000, lineHeight: 1.1 }}>
       Isso já está rodando em escala.
     </h2>
@@ -723,7 +558,7 @@ const S10Numeros = () => (
         {[
           { icon: Users, v: "2.148+", l: "usuários" },
           { icon: Building2, v: "1.700+", l: "empresas" },
-          { icon: FileText, v: "50 mil+", l: "documentos" },
+          { icon: FileText, v: "mais de cem mil", l: "documentos" },
           { icon: Workflow, v: "200+", l: "processos ativos" },
           { icon: Globe, v: "20+", l: "países" },
           { icon: ShieldCheck, v: "100%", l: "evidências rastreáveis" },
@@ -748,47 +583,9 @@ const S10Numeros = () => (
 );
 
 /* ============================================================
-   11 — O que podemos construir juntos
+   08 — Fechamento
    ============================================================ */
-const S11Juntos = () => (
-  <Slide>
-    <SectionLabel n="11" label="Próximos passos" />
-    <h2 className="font-display font-bold text-foreground" style={{ fontSize: T.title, marginTop: 20, maxWidth: 1150, lineHeight: 1.1 }}>
-      Onde a MyTS pode gerar valor na sua operação?
-    </h2>
-
-    <div className="grid flex-1 grid-cols-4 grid-rows-2" style={{ gap: 18, marginTop: 26 }}>
-      {[
-        "Mapear sua cadeia",
-        "Estruturar homologação",
-        "Digitalizar avaliações",
-        "Centralizar documentos",
-        "Monitorar conformidade",
-        "Desenvolver fornecedores",
-        "Gerar indicadores para decisão",
-      ].map((t, i) => (
-        <div key={t} className="flex flex-col rounded-2xl border border-border bg-card shadow-card" style={{ padding: 28 }}>
-          <span className="font-display font-bold text-accent" style={{ fontSize: 38, lineHeight: 1 }}>
-            {String(i + 1).padStart(2, "0")}
-          </span>
-          <span className="font-display font-semibold text-foreground" style={{ marginTop: 16, fontSize: 24, lineHeight: 1.25 }}>
-            {t}
-          </span>
-        </div>
-      ))}
-      <div className="flex flex-col justify-center rounded-2xl border border-accent/30 bg-accent/8" style={{ padding: 28 }}>
-        <p className="text-foreground" style={{ fontSize: T.lead, lineHeight: 1.45 }}>
-          Escolhemos juntos por onde começar — e desenhamos a jornada a partir da sua realidade.
-        </p>
-      </div>
-    </div>
-  </Slide>
-);
-
-/* ============================================================
-   12 — Fechamento
-   ============================================================ */
-const S12Fechamento = () => (
+const S08Fechamento = () => (
   <Slide
     bg="bg-primary"
     decor={
@@ -882,15 +679,11 @@ const ApresentacaoComercial = () => {
       <S01Abertura />
       <S02Problema />
       <S03Paradigma />
-      <S04Pilares />
-      <S05Comofunciona />
-      <S06Ecossistema />
-      <S07Ganhos />
-      <S08Fornecedor />
-      <S09Cases />
-      <S10Numeros />
-      <S11Juntos />
-      <S12Fechamento />
+      <S04Ganhos />
+      <S05Fornecedor />
+      <S06Cases />
+      <S07Numeros />
+      <S08Fechamento />
     </main>
   );
 };
