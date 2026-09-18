@@ -1,10 +1,9 @@
 import { Fragment, useLayoutEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import {
-  AlertTriangle, ArrowRight, BellRing, Building2, Check, CheckCircle2, ClipboardCheck,
-  Clock3, Download, FileCheck2, FileSpreadsheet, FileText, FolderOpen, Globe2, Leaf,
-  Mail, MapPin, MessageCircle, PackageCheck, RefreshCw, Search, ShieldAlert, ShieldCheck,
-  Sparkles, TrendingUp, UploadCloud, UserCheck, Users, Workflow, XCircle,
+  ArrowRight, Building2, Check, CheckCircle2, ClipboardCheck, Download, FileCheck2,
+  FileText, Globe2, Leaf, Mail, MapPin, MessageCircle, Search, ShieldCheck, Sparkles,
+  TrendingUp, UploadCloud, Users, Workflow,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import mytsLogo from "@/assets/myts-logo.svg";
@@ -57,18 +56,18 @@ const BrandName = ({ children, dark = false, size = 25 }: { children: React.Reac
 );
 
 const Header = ({ n, label, dark = false }: { n: string; label: string; dark?: boolean }) => (
-  <div className={`flex items-center gap-4 text-[15px] font-bold uppercase ${dark ? "text-accent-glow" : "text-accent"}`} style={{ letterSpacing: "0.16em" }}>
+  <div className={`flex items-center gap-4 text-[17px] font-bold uppercase ${dark ? "text-accent-glow" : "text-accent"}`} style={{ letterSpacing: "0.16em" }}>
     <span>{n}</span><span className={`h-px w-14 ${dark ? "bg-accent-glow/60" : "bg-accent/50"}`} />{label}
   </div>
 );
-const Title = ({ children, dark = false, size = 48 }: { children: React.ReactNode; dark?: boolean; size?: number }) => <h2 className={`font-display font-bold leading-[1.08] ${dark ? "text-primary-foreground" : "text-foreground"}`} style={{ fontSize: size, marginTop: 20, maxWidth: 1240 }}>{children}</h2>;
-const Pill = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => <span className={`inline-flex items-center rounded-full border px-4 py-2 text-[15px] font-semibold ${dark ? "border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground" : "border-accent/25 bg-accent/10 text-accent"}`}>{children}</span>;
+const Title = ({ children, dark = false, size = 54 }: { children: React.ReactNode; dark?: boolean; size?: number }) => <h2 className={`font-display font-bold leading-[1.08] ${dark ? "text-primary-foreground" : "text-foreground"}`} style={{ fontSize: size, marginTop: 22, maxWidth: 1340 }}>{children}</h2>;
+const Pill = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => <span className={`inline-flex items-center rounded-full border px-5 py-2.5 text-[17px] font-semibold ${dark ? "border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground" : "border-accent/25 bg-accent/10 text-accent"}`}>{children}</span>;
 
 const Window = ({ children, title }: { children: React.ReactNode; title: string }) => (
   <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-elegant">
     <div className="flex h-12 items-center gap-2 border-b border-border bg-secondary px-5">
       <i className="size-2.5 rounded-full bg-destructive/70" /><i className="size-2.5 rounded-full bg-accent/70" /><i className="size-2.5 rounded-full bg-success/70" />
-      <span className="ml-3 text-[14px] text-muted-foreground">{title}</span>
+      <span className="ml-3 text-[16px] text-muted-foreground">{title}</span>
     </div>
     {children}
   </div>
@@ -86,36 +85,17 @@ const S01 = () => <Slide dark decor={<><Grid dark /><Mark className="-bottom-48 
   <div className="flex items-center justify-between border-t border-primary-foreground/15 pt-5 text-[17px] text-primary-foreground/75"><span>Gestão de fornecedores • processos • documentos</span><span>myt-s.com</span></div>
 </Slide>;
 
-const S02 = () => {
-  const flow = [{ icon: FileSpreadsheet, t: "Planilha" }, { icon: Mail, t: "Cobrança" }, { icon: FolderOpen, t: "Pasta" }, { icon: AlertTriangle, t: "Vencimento" }];
-  return <Slide decor={<Grid />}><Header n="02" label="O modelo atual" /><Title>Como a gestão de fornecedores costuma funcionar.</Title>
-    <div className="mt-8 grid flex-1 grid-cols-[0.92fr_1.08fr] gap-10">
-      <div className="flex flex-col justify-center"><p className="text-[25px] leading-[1.55] text-foreground/80">A rotina de qualidade ainda se apoia em planilhas, e-mails e pastas de rede. A equipe cobra cada fornecedor, sobe arquivos manualmente e descobre vencimentos quando já é tarde.</p><div className="mt-8 rounded-2xl bg-primary p-7"><p className="font-display text-[30px] font-bold text-primary-foreground">Isso não é falha da equipe.<br /><span className="text-accent-glow">É o modelo.</span></p></div></div>
-      <div className="flex items-center justify-center rounded-3xl border border-border bg-card p-8 shadow-card"><div className="grid w-full grid-cols-2 gap-5">{flow.map(({ icon: Icon, t }, i) => <Fragment key={t}><div className="relative flex min-h-[170px] flex-col justify-between rounded-2xl border border-border bg-secondary p-6"><span className="grid size-14 place-items-center rounded-xl bg-background text-accent"><Icon size={28} /></span><div><span className="text-[15px] font-bold text-muted-foreground">0{i + 1}</span><p className="mt-1 text-[25px] font-bold text-foreground">{t}</p></div>{i === 3 && <span className="absolute right-5 top-5 size-3 animate-pulse rounded-full bg-destructive" />}</div></Fragment>)}</div></div>
-    </div>
-  </Slide>;
-};
-
-const S03 = () => <Slide dark decor={<><Grid dark /><Mark className="-right-36 top-8 w-[520px]" /></>}><Header n="03" label="O custo invisível" dark /><Title dark>Quando a operação cobra, a estratégia espera.</Title>
-  <div className="mt-9 grid flex-1 grid-cols-2 gap-5">{[
-    [Clock3, "Auditoria vira corrida", "Documentos que já deveriam estar prontos precisam ser perseguidos às pressas."],
-    [ShieldAlert, "Risco passa despercebido", "Uma pendência parada pode virar não conformidade sem que a empresa perceba."],
-    [BellRing, "Vencimentos chegam tarde", "O alerta acontece depois do prazo, não antes da decisão."],
-    [RefreshCw, "Talento gasto em cobrança", "A equipe de qualidade opera anexos quando deveria analisar risco."],
-  ].map(([I, t, d]) => { const Icon = I as typeof Clock3; return <div key={String(t)} className="flex items-center gap-6 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-7"><span className="grid size-16 shrink-0 place-items-center rounded-2xl bg-destructive/15 text-destructive"><Icon size={30} /></span><div><h3 className="text-[27px] font-bold text-primary-foreground">{String(t)}</h3><p className="mt-2 text-[20px] leading-[1.45] text-primary-foreground/80">{String(d)}</p></div></div> })}</div>
+const S04 = () => <Slide decor={<><Grid /><Mark className="-bottom-32 -right-20 w-[520px]" /></>}><Header n="02" label="Quem é a MyTS" /><Title>Nascemos dentro da indústria para resolver o que planilha e e-mail nunca deram conta.</Title>
+  <div className="mt-9 grid flex-1 grid-cols-[1.15fr_0.85fr] gap-8"><div className="flex flex-col justify-center rounded-3xl bg-primary p-11"><Logo src={mytsLogo} alt="MyTS" h={52} invert /><p className="mt-8 text-[28px] leading-[1.5] text-primary-foreground/85">A MyTS combina tecnologia com consultoria especializada para centralizar dados, integrar fluxos e acelerar decisões na cadeia de fornecedores.</p><div className="mt-9 flex flex-wrap gap-3"><Pill dark>Alimentos</Pill><Pill dark>Bebidas</Pill><Pill dark>Cosméticos</Pill><Pill dark>Bens de consumo</Pill></div></div>
+  <div className="grid grid-cols-2 gap-5">{[[MapPin,"Botucatu","Brasil"],[Globe2,"Charlotte","Estados Unidos"],[Globe2,"20+","países atendidos"],[Users,"4 áreas","Compras • Qualidade • P&D • Marca própria"]].map(([I,v,l])=>{const Icon=I as typeof MapPin;return <div key={String(l)} className="flex flex-col justify-between rounded-2xl border border-border bg-card p-8 shadow-card"><Icon className="text-accent" size={36}/><div><strong className="block text-[37px] text-foreground">{String(v)}</strong><span className="mt-2 block text-[20px] leading-snug text-muted-foreground">{String(l)}</span></div></div>})}</div></div>
 </Slide>;
 
-const S04 = () => <Slide decor={<><Grid /><Mark className="-bottom-32 -right-20 w-[520px]" /></>}><Header n="04" label="Quem é a MyTS" /><Title>Nascemos dentro da indústria para resolver o que planilha e e-mail nunca deram conta.</Title>
-  <div className="mt-8 grid flex-1 grid-cols-[1.15fr_0.85fr] gap-8"><div className="flex flex-col justify-center rounded-3xl bg-primary p-10"><Logo src={mytsLogo} alt="MyTS" h={44} invert /><p className="mt-8 text-[25px] leading-[1.55] text-primary-foreground/85">A MyTS combina tecnologia com consultoria especializada para centralizar dados, integrar fluxos e acelerar decisões na cadeia de fornecedores.</p><div className="mt-8 flex gap-3"><Pill dark>Alimentos</Pill><Pill dark>Bebidas</Pill><Pill dark>Cosméticos</Pill><Pill dark>Bens de consumo</Pill></div></div>
-  <div className="grid grid-cols-2 gap-5">{[[MapPin,"Botucatu","Brasil"],[Globe2,"Charlotte","Estados Unidos"],[Globe2,"20+","países atendidos"],[Users,"4 áreas","Compras • Qualidade • P&D • Marca própria"]].map(([I,v,l])=>{const Icon=I as typeof MapPin;return <div key={String(l)} className="flex flex-col justify-between rounded-2xl border border-border bg-card p-7 shadow-card"><Icon className="text-accent" size={30}/><div><strong className="block text-[32px] text-foreground">{String(v)}</strong><span className="mt-1 block text-[18px] leading-snug text-muted-foreground">{String(l)}</span></div></div>})}</div></div>
-</Slide>;
-
-const S05 = () => <Slide dark decor={<Grid dark />}><Header n="05" label="O diferencial" dark /><Title dark>O fornecedor não precisa ser cobrado.</Title>
-  <p className="mt-4 max-w-[1150px] text-[23px] leading-[1.5] text-primary-foreground/80">Ele tem acesso próprio e gratuito, acompanha pendências, envia evidências e demonstra conformidade direto para o comprador.</p>
-  <div className="mt-8 flex flex-1 items-center gap-5">{[
+const S05 = () => <Slide dark decor={<Grid dark />}><Header n="03" label="O diferencial" dark /><Title dark>O fornecedor não precisa ser cobrado.</Title>
+  <p className="mt-5 max-w-[1280px] text-[26px] leading-[1.45] text-primary-foreground/80">Ele tem acesso próprio e gratuito, acompanha pendências, envia evidências e demonstra conformidade direto para o comprador.</p>
+  <div className="mt-9 flex flex-1 items-center gap-5">{[
     [Building2,"Comprador","Define requisitos"],[Workflow,"MyTS","Orienta e avisa"],[Users,"Fornecedor","Resolve pendências"],[ShieldCheck,"Qualidade","Valida e decide"],
-  ].map(([I,t,d],i,a)=>{const Icon=I as typeof Building2;return <Fragment key={String(t)}><div className={`flex h-[300px] flex-1 flex-col justify-between rounded-3xl border p-8 ${i===1?"border-accent/50 bg-accent/15":"border-primary-foreground/15 bg-primary-foreground/[0.06]"}`}><span className="grid size-16 place-items-center rounded-2xl bg-accent/15 text-accent-glow"><Icon size={32}/></span><div><span className="text-[15px] font-bold uppercase text-accent-glow" style={{letterSpacing:"0.12em"}}>0{i+1}</span><h3 className="mt-2 text-[28px] font-bold text-primary-foreground">{String(t)}</h3><p className="mt-2 text-[19px] text-primary-foreground/75">{String(d)}</p></div></div>{i<a.length-1&&<ArrowRight className="shrink-0 text-accent-glow" size={28}/>}</Fragment>})}</div>
-  <div className="flex justify-center gap-8 border-t border-primary-foreground/15 pt-5 text-[20px] text-primary-foreground"><span>✓ A equipe valida, não opera</span><span>✓ A MyTS avisa antes</span><span>✓ Na auditoria, a equipe confirma</span></div>
+  ].map(([I,t,d],i,a)=>{const Icon=I as typeof Building2;return <Fragment key={String(t)}><div className={`flex h-[320px] flex-1 flex-col justify-between rounded-3xl border p-8 ${i===1?"border-accent/50 bg-accent/15":"border-primary-foreground/15 bg-primary-foreground/[0.06]"}`}><span className="grid size-18 place-items-center rounded-2xl bg-accent/15 text-accent-glow"><Icon size={36}/></span><div><span className="text-[17px] font-bold uppercase text-accent-glow" style={{letterSpacing:"0.12em"}}>0{i+1}</span><h3 className="mt-2 text-[31px] font-bold text-primary-foreground">{String(t)}</h3><p className="mt-2 text-[21px] text-primary-foreground/75">{String(d)}</p></div></div>{i<a.length-1&&<ArrowRight className="shrink-0 text-accent-glow" size={32}/>}</Fragment>})}</div>
+  <div className="flex justify-center gap-10 border-t border-primary-foreground/15 pt-6 text-[22px] text-primary-foreground"><span>✓ A equipe valida, não opera</span><span>✓ A MyTS avisa antes</span><span>✓ Na auditoria, a equipe confirma</span></div>
 </Slide>;
 
 const SupplierMock = () => <Window title="Meus Fornecedores"><div className="grid grid-cols-[220px_1fr] min-h-[480px]"><aside className="border-r border-border bg-secondary p-5"><p className="text-[15px] font-bold text-foreground">Visão da cadeia</p>{["Todos", "Em conformidade", "Atenção", "Pendentes"].map((x,i)=><div key={x} className={`mt-3 rounded-lg px-3 py-3 text-[15px] ${i===0?"bg-accent text-accent-foreground":"text-muted-foreground"}`}>{x}</div>)}</aside><div className="p-6"><div className="flex justify-between"><div><p className="text-[14px] text-muted-foreground">Conformidade geral</p><strong className="text-[38px] text-foreground">92%</strong></div><span className="grid size-14 place-items-center rounded-xl bg-success/10 text-success"><TrendingUp/></span></div><div className="mt-5 h-3 overflow-hidden rounded-full bg-secondary"><div className="h-full w-[92%] bg-success"/></div><div className="mt-6 space-y-3">{[["Cooperativa Vale Verde","Completo","ok"],["Embalagens Prisma","Vence em 12 dias","warn"],["Aromas Sul","Completo","ok"],["Transporte Frio BR","Aguardando envio","pending"]].map(([n,s,k])=><div key={n} className="flex items-center justify-between rounded-xl border border-border p-4"><div className="flex items-center gap-3"><i className={`size-3 rounded-full ${k==="ok"?"bg-success":k==="warn"?"bg-accent":"bg-muted-foreground"}`}/><span className="text-[17px] font-semibold text-foreground">{n}</span></div><span className="text-[14px] text-muted-foreground">{s}</span></div>)}</div></div></div></Window>;
