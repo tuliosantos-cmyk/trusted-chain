@@ -82,12 +82,12 @@ const Window = ({ children, title }: { children: React.ReactNode; title: string 
 );
 
 const CLIENT_LOGOS = [
-  { name: "Augusta Alimentos", src: augustaLogo.url },
-  { name: "C. Vale", src: cvaleLogo.url },
-  { name: "Carbex", src: carbexLogo.url },
-  { name: "Carrefour", src: carrefourClienteLogo.url },
-  { name: "CFS", src: cfsLogo.url },
-  { name: "Icofort", src: icofortLogo.url },
+  { name: "Augusta Alimentos", src: augustaLogo },
+  { name: "C. Vale", src: cvaleLogo },
+  { name: "Carbex", src: carbexLogo },
+  { name: "Carrefour", src: carrefourClienteLogo },
+  { name: "CFS", src: cfsLogo },
+  { name: "Icofort", src: icofortLogo },
 ];
 
 const S01 = () => <Slide dark decor={<><Grid dark /><Mark className="-bottom-48 -right-24 w-[700px]" /></>}>
