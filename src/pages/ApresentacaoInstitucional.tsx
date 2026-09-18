@@ -124,47 +124,7 @@ const S08 = () => <Slide><Header n="06" label="Módulo 03" /><div className="mt-
 
 const S09 = () => <Slide dark decor={<><Grid dark /><Mark className="-bottom-40 -left-20 w-[560px]" /></>}><Header n="07" label="Além do software" dark /><Title dark>Tecnologia com suporte técnico para fazer acontecer.</Title><p className="mt-5 text-[25px] text-primary-foreground/80">Quando a empresa precisa de mais do que uma ferramenta, nosso time entra na operação.</p><div className="mt-9 grid flex-1 grid-cols-2 gap-6">{[[Users,"Outsourcing de qualidade","Apoio técnico contínuo para sustentar a operação."],[ShieldCheck,"Auditoria de 2ª parte","Avaliação direta do fornecedor segundo o padrão da empresa."],[ClipboardCheck,"Validação técnica","Autoavaliação respondida pelo fornecedor e validada por especialista."],[Sparkles,"Implementação guiada","Parametrização e adoção assistidas desde o primeiro dia."]].map(([I,t,d])=>{const Icon=I as typeof Users;return <div key={String(t)} className="flex items-center gap-7 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-8"><span className="grid size-18 shrink-0 place-items-center rounded-2xl bg-accent/15 text-accent-glow"><Icon size={35}/></span><div><h3 className="text-[30px] font-bold text-primary-foreground">{String(t)}</h3><p className="mt-3 text-[22px] leading-[1.42] text-primary-foreground/80">{String(d)}</p></div></div>})}</div></Slide>;
 
-const S10 = () => (
-  <Slide>
-    <Header n="08" label="Case • Jornada da Autonomia" />
-    <div className="mt-5 flex flex-1 flex-col gap-5">
-      <div className="grid flex-1 grid-cols-[0.88fr_1.12fr] gap-8">
-        <div className="flex flex-col justify-center">
-          <div className="flex w-fit items-center gap-7 rounded-2xl border border-border bg-card px-8 py-6 shadow-card">
-            <Logo src={carrefourLogo.url} alt="Grupo Carrefour Brasil" h={76} />
-            <div className="h-14 w-px bg-border" />
-            <div>
-              <span className="block text-[16px] font-bold uppercase text-success" style={{ letterSpacing: "0.12em" }}>Programa nacional</span>
-              <BrandName size={30}>Jornada da Autonomia</BrandName>
-            </div>
-          </div>
-          <h2 className="mt-5 font-display text-[48px] font-bold leading-[1.08] text-foreground">Uma nova base de desenvolvimento para o varejo brasileiro.</h2>
-          <p className="mt-4 text-[22px] leading-[1.45] text-foreground/75">Pensado para o Grupo Carrefour Brasil, o programa conecta fornecedores e fornecedores dos fornecedores em uma jornada contínua de desenvolvimento, monitoramento e avaliação.</p>
-          <p className="mt-3 text-[19px] font-semibold leading-[1.4] text-success">Uma base compartilhada de dados e evidências com potencial para elevar o padrão de toda a cadeia varejista.</p>
-        </div>
-        <div className="flex flex-col justify-center rounded-3xl bg-primary p-9">
-          <p className="text-[17px] font-bold uppercase text-accent-glow" style={{ letterSpacing: "0.14em" }}>Visão completa da cadeia</p>
-          <div className="mt-5 grid grid-cols-2 gap-4">
-            {[[Users, "Desenvolvimento", "Evolução orientada de toda a rede"], [TrendingUp, "Monitoramento", "Indicadores e pendências em tempo real"], [ClipboardCheck, "Avaliação", "Critérios comuns e evidências rastreáveis"], [Workflow, "Dados integrados", "Uma base para decisões do varejo"]].map(([I, t, d]) => {
-              const Icon = I as typeof Users;
-              return <div key={String(t)} className="min-h-[152px] rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-5"><Icon className="text-accent-glow" size={34} /><strong className="mt-4 block text-[23px] text-primary-foreground">{String(t)}</strong><span className="mt-2 block text-[16px] leading-snug text-primary-foreground/75">{String(d)}</span></div>;
-            })}
-          </div>
-        </div>
-      </div>
-      <div className="rounded-2xl border border-border bg-card p-5 shadow-card">
-        <p className="text-center text-[15px] font-bold uppercase text-muted-foreground" style={{ letterSpacing: "0.12em" }}>Empresas que confiam na MyTS</p>
-        <div className="mt-3 grid grid-cols-6 items-center gap-4">
-          {CLIENT_LOGOS.map(({ name, src }) => (
-            <div key={name} className="flex min-h-[82px] items-center justify-center rounded-xl border border-border bg-secondary px-3">
-              <Logo src={src} alt={name} h={46} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </Slide>
-);
+const S10 = () => <Slide><Header n="08" label="Case • Jornada da Autonomia" /><div className="mt-6 grid flex-1 grid-cols-[0.88fr_1.12fr] gap-10"><div className="flex flex-col justify-center"><div className="flex w-fit items-center gap-7 rounded-2xl border border-border bg-card px-8 py-6 shadow-card"><Logo src={carrefourLogo.url} alt="Grupo Carrefour Brasil" h={76}/><div className="h-14 w-px bg-border"/><div><span className="block text-[16px] font-bold uppercase text-success" style={{letterSpacing:"0.12em"}}>Programa nacional</span><BrandName size={30}>Jornada da Autonomia</BrandName></div></div><h2 className="mt-8 font-display text-[48px] font-bold leading-[1.08] text-foreground">Uma nova base de desenvolvimento para o varejo brasileiro.</h2><p className="mt-6 text-[23px] leading-[1.45] text-foreground/75">Pensado para o Grupo Carrefour Brasil, o programa conecta fornecedores e fornecedores dos fornecedores em uma jornada contínua de desenvolvimento, monitoramento e avaliação.</p><p className="mt-5 text-[20px] font-semibold leading-[1.4] text-success">Uma base compartilhada de dados e evidências com potencial para elevar o padrão de toda a cadeia varejista.</p></div><div className="flex flex-col justify-center rounded-3xl bg-primary p-10"><p className="text-[17px] font-bold uppercase text-accent-glow" style={{letterSpacing:"0.14em"}}>Visão completa da cadeia</p><div className="mt-7 grid grid-cols-2 gap-5">{[[Users,"Desenvolvimento","Evolução orientada de toda a rede"],[TrendingUp,"Monitoramento","Indicadores e pendências em tempo real"],[ClipboardCheck,"Avaliação","Critérios comuns e evidências rastreáveis"],[Workflow,"Dados integrados","Uma base para decisões do varejo"]].map(([I,t,d])=>{const Icon=I as typeof Users;return <div key={String(t)} className="min-h-[180px] rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-6"><Icon className="text-accent-glow" size={34}/><strong className="mt-5 block text-[24px] text-primary-foreground">{String(t)}</strong><span className="mt-2 block text-[17px] leading-snug text-primary-foreground/75">{String(d)}</span></div>})}</div></div></div></Slide>;
 
 const S11 = () => <Slide dark decor={<Grid dark />}><Header n="09" label="Case • Korin / MyTS 360°" dark /><div className="mt-7 grid flex-1 grid-cols-[0.9fr_1.1fr] gap-11"><div className="overflow-hidden rounded-3xl"><img src={korinScene} alt="Embalagem Korin com QR code e experiência digital" className="h-full w-full object-cover"/></div><div className="flex flex-col justify-center"><div className="flex w-fit items-center rounded-2xl bg-primary-foreground px-7 py-4"><Logo src={korinLogo.url} alt="Korin" h={66}/></div><h2 className="mt-7 font-display text-[51px] font-bold leading-[1.08] text-primary-foreground">Do campo à prateleira, com o produtor em evidência.</h2><p className="mt-6 text-[24px] leading-[1.48] text-primary-foreground/80">O QR code da embalagem conecta o consumidor à origem do produto, com vídeo, informação e depoimento real.</p><div className="mt-8 grid grid-cols-2 gap-5">{[["38","produtores rurais"],["116","pessoas no campo"],["13%","produção orgânica"],["47%","origem familiar"]].map(([v,l])=><div key={l} className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-6"><strong className="text-[39px] text-accent-glow">{v}</strong><span className="ml-3 text-[19px] text-primary-foreground/80">{l}</span></div>)}</div></div></div></Slide>;
 
