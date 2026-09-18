@@ -81,6 +81,15 @@ const Window = ({ children, title }: { children: React.ReactNode; title: string 
   </div>
 );
 
+const CLIENT_LOGOS = [
+  { name: "Augusta Alimentos", src: augustaLogo.url },
+  { name: "C. Vale", src: cvaleLogo.url },
+  { name: "Carbex", src: carbexLogo.url },
+  { name: "Carrefour", src: carrefourClienteLogo.url },
+  { name: "CFS", src: cfsLogo.url },
+  { name: "Icofort", src: icofortLogo.url },
+];
+
 const S01 = () => <Slide dark decor={<><Grid dark /><Mark className="-bottom-48 -right-24 w-[700px]" /></>}>
   <div className="flex items-center justify-between"><Logo src={mytsLogo} alt="MyTS" h={44} invert /><Pill dark>Apresentação institucional</Pill></div>
   <div className="flex flex-1 items-center">
