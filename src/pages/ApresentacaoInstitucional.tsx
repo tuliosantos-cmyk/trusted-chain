@@ -11,12 +11,12 @@ import mytsMark from "@/assets/myts-mark.svg";
 import korinScene from "@/assets/korin/mockup-qr-embalagem.jpg";
 import carrefourLogo from "@/assets/logos/carrefour.png.asset.json";
 import korinLogo from "@/assets/logos/korin.png.asset.json";
-import augustaLogo from "@/assets/clientes/Augusta_Alimentos_logo.png.asset.json";
-import cvaleLogo from "@/assets/clientes/C._Vale_logo.png.asset.json";
-import carbexLogo from "@/assets/clientes/Carbex_logo.png.asset.json";
-import carrefourClienteLogo from "@/assets/clientes/Carrefour_logo.png.asset.json";
-import cfsLogo from "@/assets/clientes/CFS_logo.png.asset.json";
-import icofortLogo from "@/assets/clientes/Icofort_logo.png.asset.json";
+import augustaLogo from "@/assets/clientes/Augusta_Alimentos_logo.png";
+import cvaleLogo from "@/assets/clientes/C._Vale_logo.png";
+import carbexLogo from "@/assets/clientes/Carbex_logo.png";
+import carrefourClienteLogo from "@/assets/clientes/Carrefour_logo.png";
+import cfsLogo from "@/assets/clientes/CFS_logo.png";
+import icofortLogo from "@/assets/clientes/Icofort_logo.png";
 
 const W = 1600;
 const H = 900;
