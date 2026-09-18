@@ -93,9 +93,19 @@ const CLIENT_LOGOS = [
   { name: "Augusta Alimentos", src: augustaLogo },
   { name: "C. Vale", src: cvaleLogo },
   { name: "Carbex", src: carbexLogo },
-  { name: "Carrefour", src: carrefourClienteLogo },
+  { name: "Carrefour", src: carrefourLogo },
   { name: "CFS", src: cfsLogo },
   { name: "Icofort", src: icofortLogo },
+  { name: "Korin", src: korinLogo },
+  { name: "Laticínios Silvianópolis", src: laticiniosSilvanopolisLogo },
+  { name: "Viskase", src: viskaseLogo },
+  { name: "Casa do Pão de Queijo", src: casaPaoDeQueijoLogo },
+  { name: "Especiali Alimentos", src: especialiLogo },
+  { name: "Frumar", src: frumarLogo },
+  { name: "Herboflora", src: herbofloraLogo },
+  { name: "JL Alimentos", src: jlAlimentosLogo },
+  { name: "Proregi", src: proregiLogo },
+  { name: "Takasago", src: takasagoLogo },
 ];
 
 const S01 = () => <Slide dark decor={<><Grid dark /><Mark className="-bottom-48 -right-24 w-[700px]" /></>}>
