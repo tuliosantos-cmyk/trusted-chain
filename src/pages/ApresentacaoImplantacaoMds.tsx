@@ -122,7 +122,7 @@ const S07 = () => <Slide n={6} label="Decisões da MDS" dark><Title dark>A MDS d
     [Building2,"Duas unidades, uma visão só","As duas unidades compartilham as informações necessárias na mesma estrutura."],
     [Languages,"Cada fornecedor no seu idioma","Fornecedores de outros países recebem orientação na língua deles."],
     [GraduationCap,"Treinamento presencial","A equipe aprende com a MyTS já configurada para a realidade da MDS."],
-  ].map(([I,t,d])=>{const Icon=I as typeof UploadCloud;return <div key={String(t)} className="flex items-start gap-6 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-7"><IconBox dark><Icon size={31}/></IconBox><div><h3 className="text-[25px] font-bold text-primary-foreground">{String(t)}</h3><p className="mt-3 text-[19px] leading-[1.42] text-primary-foreground">{String(d)}</p></div></div>})}</div>
+  ].map(([I,t,d])=>{const Icon=I as typeof UploadCloud;return <div key={String(t)} className="flex h-full items-center gap-6 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-7"><IconBox dark><Icon size={31}/></IconBox><div className="flex-1"><h3 className="text-[25px] font-bold leading-tight text-primary-foreground">{String(t)}</h3><p className="mt-3 text-[19px] leading-[1.42] text-primary-foreground">{String(d)}</p></div></div>})}</div>
 </Slide>;
 
 const S08 = () => <Slide n={7} label="Etapas da implantação"><Title>A implantação acontece em etapas, começando pelo que mais importa agora</Title><Support>Começamos pelo que a operação mais precisa. As próximas etapas entram conforme a rotina se consolida.</Support>
