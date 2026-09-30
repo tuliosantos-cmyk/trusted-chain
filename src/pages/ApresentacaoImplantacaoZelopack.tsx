@@ -3,10 +3,11 @@ import { Helmet } from "react-helmet-async";
 import { ArrowRight, BellRing, Boxes, Building2, CalendarClock, Check, CheckCircle2, ChevronLeft, ChevronRight, ClipboardCheck, Download, FileCheck2, FileText, FolderSearch, Gauge, GraduationCap, LayoutDashboard, Mail, PackageCheck, Send, ShieldCheck, Sparkles, Target, Truck, UploadCloud, Users, Workflow } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import mytsLogo from "@/assets/myts-logo.svg";
+import zelopackLogoAsset from "@/assets/zelopack/zelopack-logo.png.asset.json";
 
 const W=1600,H=900,P=64,TOTAL=15;
 const usePrintMode=()=>{const[p,setP]=useState(false);useLayoutEffect(()=>setP(new URLSearchParams(location.search).has("print")),[]);return p};
-const Zelopack=({dark=false,compact=false}:{dark?:boolean;compact?:boolean})=><div className={`flex items-center justify-center rounded-md border-2 px-5 font-display font-black ${dark?"border-primary-foreground/35 bg-primary-foreground text-primary":"border-primary/20 bg-card text-primary"}`} style={{height:compact?36:68,fontSize:compact?18:30}}>ZELOPACK</div>;
+const Zelopack=({dark=false,compact=false}:{dark?:boolean;compact?:boolean})=><div className={`flex items-center justify-center rounded-md border px-4 ${dark?"border-primary-foreground/25 bg-primary-foreground":"border-border bg-card"}`} style={{height:compact?36:68}}><img src={zelopackLogoAsset.url} alt="Zelopack" className="w-auto object-contain" style={{height:compact?22:41}}/></div>;
 const Logo=({h=40}:{h?:number})=><img src={mytsLogo} alt="MyTS" className="w-auto object-contain" style={{height:h}}/>;
 const Lockup=({dark=false,compact=false}:{dark?:boolean;compact?:boolean})=><div className="flex items-center gap-4"><Zelopack dark={dark} compact={compact}/><span className={dark?"text-primary-foreground":"text-muted-foreground"}>+</span><div className="rounded-md bg-primary px-4 py-3"><Logo h={compact?21:40}/></div></div>;
 const Grid=({dark=false}:{dark?:boolean})=><div aria-hidden className={`grid-pattern absolute inset-0 ${dark?"opacity-20":"opacity-40"}`}/>;
