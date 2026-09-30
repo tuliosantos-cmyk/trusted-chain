@@ -57,22 +57,22 @@ const Header = ({ n, label, dark = false }: { n: number; label: string; dark?: b
   </div>
 );
 const Footer = ({ n, dark = false }: { n: number; dark?: boolean }) => (
-  <div className={`mt-auto flex items-end justify-between border-t pt-4 text-[15px] ${dark ? "border-primary-foreground/15 text-primary-foreground/60" : "border-border text-muted-foreground"}`}>
+  <div className={`mt-auto flex items-end justify-between border-t pt-4 text-[15px] ${dark ? "border-primary-foreground/15 text-primary-foreground" : "border-border text-muted-foreground"}`}>
     <div className="flex items-center gap-4"><BrandLockup dark={dark} compact /></div><span>{String(n).padStart(2, "0")} / {TOTAL}</span>
   </div>
 );
 const Title = ({ children, dark = false, size = 52 }: { children: React.ReactNode; dark?: boolean; size?: number }) => <h2 className={`mt-5 max-w-[1400px] font-display font-bold leading-[1.08] ${dark ? "text-primary-foreground" : "text-foreground"}`} style={{ fontSize: size }}>{children}</h2>;
-const Support = ({ children, dark = false, width = 1260 }: { children: React.ReactNode; dark?: boolean; width?: number }) => <p className={`mt-4 text-[23px] leading-[1.45] ${dark ? "text-primary-foreground/80" : "text-foreground/70"}`} style={{ maxWidth: width }}>{children}</p>;
+const Support = ({ children, dark = false, width = 1260 }: { children: React.ReactNode; dark?: boolean; width?: number }) => <p className={`mt-4 text-[23px] leading-[1.45] ${dark ? "text-primary-foreground" : "text-foreground/70"}`} style={{ maxWidth: width }}>{children}</p>;
 const Logo = ({ src, alt, h = 48, invert = false }: { src: string; alt: string; h?: number; invert?: boolean }) => <img src={src} alt={alt} className="w-auto object-contain" style={{ height: h, filter: invert ? "brightness(0) invert(1)" : undefined }} />;
 const BrandLockup = ({ dark = false, compact = false }: { dark?: boolean; compact?: boolean }) => (
   <div className="flex items-center gap-4">
     <div className={`flex items-center justify-center rounded-md px-3 py-1.5 ${dark ? "bg-primary-foreground" : "bg-card border border-border"}`}><Logo src={mdsLogo} alt="MDS" h={compact ? 24 : 56} /></div>
-    <span className={dark ? "text-primary-foreground/35" : "text-muted-foreground"}>+</span>
+    <span className={dark ? "text-primary-foreground" : "text-muted-foreground"}>+</span>
     <Logo src={mytsLogo} alt="MyTS" h={compact ? 22 : 48} invert={dark} />
   </div>
 );
 const IconBox = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => <span className={`grid size-16 shrink-0 place-items-center rounded-xl ${dark ? "bg-accent/20 text-accent-glow" : "bg-accent/10 text-accent"}`}>{children}</span>;
-const CheckLine = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => <div className={`flex items-start gap-3 text-[20px] leading-[1.4] ${dark ? "text-primary-foreground/85" : "text-foreground/80"}`}><CheckCircle2 className={`mt-0.5 shrink-0 ${dark ? "text-accent-glow" : "text-success"}`} size={23}/><span>{children}</span></div>;
+const CheckLine = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => <div className={`flex items-start gap-3 text-[20px] leading-[1.4] ${dark ? "text-primary-foreground" : "text-foreground/80"}`}><CheckCircle2 className={`mt-0.5 shrink-0 ${dark ? "text-accent-glow" : "text-success"}`} size={23}/><span>{children}</span></div>;
 
 const S01 = () => <Slide n={1} label="Plano de implantação" dark>
   <div className="mt-7"><BrandLockup dark /></div>
@@ -80,7 +80,7 @@ const S01 = () => <Slide n={1} label="Plano de implantação" dark>
     <div className="max-w-[1260px]">
       <span className="inline-flex rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-5 py-2.5 text-[18px] font-semibold text-primary-foreground">Plano de implantação</span>
       <h1 className="mt-7 font-display text-[72px] font-bold leading-[1.04] text-primary-foreground">MDS + MyTS: uma nova etapa na gestão da <span className="text-accent-glow">Qualidade</span></h1>
-      <p className="mt-7 max-w-[1060px] text-[28px] leading-[1.42] text-primary-foreground/80">Fornecedores, processos e documentos em uma mesma rotina de gestão.</p>
+      <p className="mt-7 max-w-[1060px] text-[28px] leading-[1.42] text-primary-foreground">Fornecedores, processos e documentos em uma mesma rotina de gestão.</p>
     </div>
   </div>
 </Slide>;
@@ -95,7 +95,7 @@ const S02 = () => {
   return <Slide n={2} label="Resumo executivo"><Title>Em resumo: o projeto em uma página</Title>
     <div className="mt-7 grid flex-1 grid-cols-[1.08fr_0.92fr] gap-7">
       <div className="space-y-3">{rows.map(([k,v])=><div key={k} className="grid min-h-[95px] grid-cols-[230px_1fr] items-center rounded-xl border border-border bg-card px-6 shadow-card"><strong className="text-[19px] text-accent">{k}</strong><p className="text-[19px] leading-[1.4] text-foreground/75">{v}</p></div>)}</div>
-      <div className="flex flex-col justify-between rounded-2xl bg-primary p-8"><div><p className="text-[17px] font-bold uppercase text-accent-glow">O que acontece agora</p><div className="mt-7 space-y-4">{["MDS envia as informações","MyTS configura","MDS valida","Equipe é treinada","A rotina começa"].map((x,i)=><div key={x} className="flex items-center gap-4"><span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent text-[18px] font-bold text-accent-foreground">{i+1}</span><strong className="text-[21px] text-primary-foreground">{x}</strong></div>)}</div></div><div className="rounded-xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-5 text-[18px] text-primary-foreground/80">Dúvidas sobre a ferramenta<br/><strong className="text-primary-foreground">suporte@myt-s.com</strong></div></div>
+      <div className="flex flex-col justify-between rounded-2xl bg-primary p-8"><div><p className="text-[17px] font-bold uppercase text-accent-glow">O que acontece agora</p><div className="mt-7 space-y-4">{["MDS envia as informações","MyTS configura","MDS valida","Equipe é treinada","A rotina começa"].map((x,i)=><div key={x} className="flex items-center gap-4"><span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent text-[18px] font-bold text-accent-foreground">{i+1}</span><strong className="text-[21px] text-primary-foreground">{x}</strong></div>)}</div></div><div className="rounded-xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-5 text-[18px] text-primary-foreground">Dúvidas sobre a ferramenta<br/><strong className="text-primary-foreground">suporte@myt-s.com</strong></div></div>
     </div>
   </Slide>;
 };
@@ -137,7 +137,7 @@ const S07 = () => <Slide n={7} label="Decisões da MDS" dark><Title dark>A MDS d
     [Building2,"Duas unidades, uma visão só","As duas unidades compartilham as informações necessárias na mesma estrutura."],
     [Languages,"Cada fornecedor no seu idioma","Fornecedores de outros países recebem orientação na língua deles."],
     [GraduationCap,"Treinamento presencial","A equipe aprende com a MyTS já configurada para a realidade da MDS."],
-  ].map(([I,t,d])=>{const Icon=I as typeof UploadCloud;return <div key={String(t)} className="flex items-start gap-6 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-7"><IconBox dark><Icon size={31}/></IconBox><div><h3 className="text-[25px] font-bold text-primary-foreground">{String(t)}</h3><p className="mt-3 text-[19px] leading-[1.42] text-primary-foreground/75">{String(d)}</p></div></div>})}</div>
+  ].map(([I,t,d])=>{const Icon=I as typeof UploadCloud;return <div key={String(t)} className="flex items-start gap-6 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-7"><IconBox dark><Icon size={31}/></IconBox><div><h3 className="text-[25px] font-bold text-primary-foreground">{String(t)}</h3><p className="mt-3 text-[19px] leading-[1.42] text-primary-foreground">{String(d)}</p></div></div>})}</div>
 </Slide>;
 
 const S08 = () => <Slide n={8} label="Etapas da implantação"><Title>A implantação acontece em etapas, começando pelo que mais importa agora</Title><Support>Começamos pelo que a operação mais precisa. As próximas etapas entram conforme a rotina se consolida.</Support>
@@ -164,7 +164,7 @@ const S10 = () => <Slide n={10} label="Além da Qualidade" dark><Title dark>A in
     ["right-0 top-5",Box,"Produção","Recebe matéria-prima de fornecedores com documentação em dia."],
     ["bottom-6 left-0",ClipboardCheck,"Comercial","Encontra os comprovantes quando um cliente audita a MDS."],
     ["bottom-6 right-0",Gauge,"Diretoria","Vê a situação dos fornecedores sem pedir relatório."],
-  ].map(([pos,I,t,d])=>{const Icon=I as typeof PackageCheck;return <div key={String(t)} className={`absolute ${String(pos)} flex h-[190px] w-[500px] items-start gap-6 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-7`}><IconBox dark><Icon size={31}/></IconBox><div><h3 className="text-[25px] font-bold text-primary-foreground">{String(t)}</h3><p className="mt-3 text-[18px] leading-[1.42] text-primary-foreground/75">{String(d)}</p></div></div>})}<div className="absolute left-[500px] top-[185px] h-px w-[175px] bg-accent/50"/><div className="absolute right-[500px] top-[185px] h-px w-[175px] bg-accent/50"/><div className="absolute bottom-[185px] left-[500px] h-px w-[175px] bg-accent/50"/><div className="absolute bottom-[185px] right-[500px] h-px w-[175px] bg-accent/50"/></div>
+  ].map(([pos,I,t,d])=>{const Icon=I as typeof PackageCheck;return <div key={String(t)} className={`absolute ${String(pos)} flex h-[190px] w-[500px] items-start gap-6 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-7`}><IconBox dark><Icon size={31}/></IconBox><div><h3 className="text-[25px] font-bold text-primary-foreground">{String(t)}</h3><p className="mt-3 text-[18px] leading-[1.42] text-primary-foreground">{String(d)}</p></div></div>})}<div className="absolute left-[500px] top-[185px] h-px w-[175px] bg-accent/50"/><div className="absolute right-[500px] top-[185px] h-px w-[175px] bg-accent/50"/><div className="absolute bottom-[185px] left-[500px] h-px w-[175px] bg-accent/50"/><div className="absolute bottom-[185px] right-[500px] h-px w-[175px] bg-accent/50"/></div>
 </Slide>;
 
 const S11 = () => <Slide n={11} label="Indicadores"><Title>Vamos acompanhar a evolução com quatro números</Title><Support>Primeiro acompanhamos a adoção. Com a rotina rodando, passamos a medir os resultados da operação.</Support>
@@ -181,7 +181,7 @@ const S12 = () => <Slide n={12} label="Cronograma"><Title>Em outubro, preparamos
     [LayoutDashboard,"Configuração","Regras e fornecedores da MDS na MyTS."],
     [UploadCloud,"Carga inicial","Documentos que a MDS já possui."],
     [ClipboardCheck,"Validação","Processo de recebimento revisado pela equipe."],
-  ].map(([I,t,d],i)=>{const Icon=I as typeof LayoutDashboard;return <div key={String(t)} className="flex min-h-[330px] flex-1 flex-col rounded-2xl border border-border bg-card p-7 shadow-card"><div className="flex items-center justify-between"><IconBox><Icon size={31}/></IconBox><span className="text-[16px] font-bold text-accent">OUTUBRO • 0{i+1}</span></div><h3 className="mt-auto text-[27px] font-bold text-foreground">{String(t)}</h3><p className="mt-4 text-[19px] leading-[1.42] text-foreground/68">{String(d)}</p></div>})}</div><ArrowRight className="mx-6 shrink-0 text-accent" size={36}/><div className="flex min-h-[330px] w-[310px] flex-col rounded-2xl bg-primary p-7"><IconBox dark><GraduationCap size={31}/></IconBox><span className="mt-6 text-[16px] font-bold text-accent-glow">APÓS A VALIDAÇÃO</span><h3 className="mt-auto text-[27px] font-bold text-primary-foreground">Treinar e liberar</h3><p className="mt-4 text-[19px] leading-[1.42] text-primary-foreground/72">Treinamento presencial e acesso liberado aos fornecedores.</p></div></div>
+  ].map(([I,t,d],i)=>{const Icon=I as typeof LayoutDashboard;return <div key={String(t)} className="flex min-h-[330px] flex-1 flex-col rounded-2xl border border-border bg-card p-7 shadow-card"><div className="flex items-center justify-between"><IconBox><Icon size={31}/></IconBox><span className="text-[16px] font-bold text-accent">OUTUBRO • 0{i+1}</span></div><h3 className="mt-auto text-[27px] font-bold text-foreground">{String(t)}</h3><p className="mt-4 text-[19px] leading-[1.42] text-foreground/68">{String(d)}</p></div>})}</div><ArrowRight className="mx-6 shrink-0 text-accent" size={36}/><div className="flex min-h-[330px] w-[310px] flex-col rounded-2xl bg-primary p-7"><IconBox dark><GraduationCap size={31}/></IconBox><span className="mt-6 text-[16px] font-bold text-accent-glow">APÓS A VALIDAÇÃO</span><h3 className="mt-auto text-[27px] font-bold text-primary-foreground">Treinar e liberar</h3><p className="mt-4 text-[19px] leading-[1.42] text-primary-foreground">Treinamento presencial e acesso liberado aos fornecedores.</p></div></div>
 </Slide>;
 
 const S13 = () => <Slide n={13} label="Próximos passos" dark><Title dark>Para avançar, precisamos de três informações da MDS</Title><Support dark>Com elas, o time da MyTS segue com a preparação da ferramenta para a nossa realidade.</Support>
@@ -198,7 +198,7 @@ const S14 = () => <Slide n={14} label="E na sua área?"><Title>A MyTS também po
 
 const S15 = () => <Slide n={15} label="Uma nova rotina" dark>
   <div className="mt-7"><BrandLockup dark /></div>
-  <div className="flex flex-1 flex-col items-center justify-center text-center"><h2 className="max-w-[1250px] font-display text-[72px] font-bold leading-[1.05] text-primary-foreground">Qualidade não é uma área.<br/><span className="text-accent-glow">É como a MDS trabalha.</span></h2><p className="mt-7 max-w-[980px] text-[27px] leading-[1.45] text-primary-foreground/80">A MyTS é a ferramenta. Quem faz o projeto acontecer é a equipe da MDS, de todas as áreas.</p><div className="mt-10 flex gap-4">{["A metodologia é da MDS","A MyTS ajuda a colocar em prática","O resultado é de todos"].map((x,i)=><div key={x} className={`rounded-xl border px-6 py-4 text-[20px] font-semibold ${i===2?"border-accent bg-accent text-accent-foreground":"border-primary-foreground/20 bg-primary-foreground/[0.07] text-primary-foreground"}`}>{x}</div>)}</div></div>
+  <div className="flex flex-1 flex-col items-center justify-center text-center"><h2 className="max-w-[1250px] font-display text-[72px] font-bold leading-[1.05] text-primary-foreground">Qualidade não é uma área.<br/><span className="text-accent-glow">É como a MDS trabalha.</span></h2><p className="mt-7 max-w-[980px] text-[27px] leading-[1.45] text-primary-foreground">A MyTS é a ferramenta. Quem faz o projeto acontecer é a equipe da MDS, de todas as áreas.</p><div className="mt-10 flex gap-4">{["A metodologia é da MDS","A MyTS ajuda a colocar em prática","O resultado é de todos"].map((x,i)=><div key={x} className={`rounded-xl border px-6 py-4 text-[20px] font-semibold ${i===2?"border-accent bg-accent text-accent-foreground":"border-primary-foreground/20 bg-primary-foreground/[0.07] text-primary-foreground"}`}>{x}</div>)}</div></div>
 </Slide>;
 
 const SLIDES = [S01,S02,S03,S04,S05,S06,S07,S08,S09,S10,S11,S12,S13,S14,S15];
