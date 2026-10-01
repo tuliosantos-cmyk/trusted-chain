@@ -20,6 +20,7 @@ import ApresentacaoInstitucional from "./pages/ApresentacaoInstitucional.tsx";
 import ApresentacaoInstitucionalPt from "./pages/ApresentacaoInstitucionalPt.tsx";
 import ApresentacaoImplantacaoMds from "./pages/ApresentacaoImplantacaoMds.tsx";
 import ApresentacaoImplantacaoZelopack from "./pages/ApresentacaoImplantacaoZelopack.tsx";
+import TreinamentoSdr from "./pages/TreinamentoSdr.tsx";
 import AdsAssets from "./pages/AdsAssets.tsx";
 import VideosAds from "./pages/VideosAds.tsx";
 import VideosJornada from "./pages/VideosJornada.tsx";
@@ -51,6 +52,7 @@ const App = () => (
             <Route path="/apresentacao-institucional-pt" element={<ApresentacaoInstitucionalPt />} />
             <Route path="/apresentacao-implantacao-mds" element={<ApresentacaoImplantacaoMds />} />
             <Route path="/apresentacao-implantacao-zelopack" element={<ApresentacaoImplantacaoZelopack />} />
+            <Route path="/treinamento-sdr" element={<TreinamentoSdr />} />
             <Route path="/ads-assets" element={<AdsAssets />} />
             <Route path="/videos-ads" element={<VideosAds />} />
             <Route path="/videos-jornada" element={<VideosJornada />} />

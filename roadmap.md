@@ -5,3 +5,4 @@
 
 - [x] Criar apresentação de implantação Zelopack + MyTS com 15 slides, mockups e exportação PDF
 - [x] Refinar deck Zelopack: conteúdo dos slides 4–6, remover slides 7/11/13 e adicionar contato do Túlio
+- [x] Criar treinamento SDR MyTS com 9 slides visuais e exportação para PDF
