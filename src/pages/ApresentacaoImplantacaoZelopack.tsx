@@ -84,8 +84,9 @@ const Title = ({ children, dark = false, size = 46 }: { children: React.ReactNod
 const Support = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => <p className={`mt-3 max-w-[1380px] text-[19px] leading-[1.4] ${dark ? "text-primary-foreground/75" : "text-foreground/70"}`}>{children}</p>;
 const IconBox = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => <span className={`grid size-12 shrink-0 place-items-center rounded-lg ${dark ? "bg-accent/20 text-accent-glow" : "bg-accent/10 text-accent"}`}>{children}</span>;
 const CheckLine = ({ children, dark = false, warning = false }: { children: React.ReactNode; dark?: boolean; warning?: boolean }) => <div className={`flex items-start gap-3 text-[16px] leading-[1.3] ${dark ? "text-primary-foreground" : "text-foreground/80"}`}>{warning ? <AlertTriangle className="mt-0.5 shrink-0 text-accent" size={19} /> : <CheckCircle2 className={`mt-0.5 shrink-0 ${dark ? "text-accent-glow" : "text-success"}`} size={19} />}<span>{children}</span></div>;
-const CompareColumn = ({ title, items, accent = false, badge }: { title: string; items: CompareItem[]; accent?: boolean; badge?: IconType }) => {
+const CompareColumn = ({ title, items, accent = false, badge, height = 490 }: { title: string; items: CompareItem[]; accent?: boolean; badge?: IconType; height?: number }) => {
   const Badge = badge ?? (accent ? Check : undefined);
+  const itemMinHeight = Math.min(118, Math.max(70, Math.round((height - 120) / items.length - 12)));
   return (
     <div className={`flex h-full flex-col rounded-xl border p-6 ${accent ? "border-accent bg-accent/10" : "border-border bg-card"}`}>
       <div className="flex items-center gap-3">
@@ -93,7 +94,7 @@ const CompareColumn = ({ title, items, accent = false, badge }: { title: string;
         <h3 className="text-[19px] font-bold uppercase text-foreground">{title}</h3>
       </div>
       <div className="mt-5 grid flex-1 content-center gap-3">
-        {items.map(({ icon: Icon, title: itemTitle, text }) => <div key={itemTitle} className="flex items-center gap-4 rounded-lg border border-border/80 bg-background px-4 py-3.5"><Icon className={accent ? "text-accent" : "text-muted-foreground"} size={21} /><div><strong className="block text-[15px] leading-tight">{itemTitle}</strong><span className="text-[13px] leading-tight text-muted-foreground">{text}</span></div></div>)}
+        {items.map(({ icon: Icon, title: itemTitle, text }) => <div key={itemTitle} style={{ minHeight: itemMinHeight }} className="flex items-center gap-4 rounded-lg border border-border/80 bg-background px-4 py-3.5"><Icon className={accent ? "text-accent" : "text-muted-foreground"} size={21} /><div><strong className="block text-[15px] leading-tight">{itemTitle}</strong><span className="text-[13px] leading-tight text-muted-foreground">{text}</span></div></div>)}
       </div>
     </div>
   );
