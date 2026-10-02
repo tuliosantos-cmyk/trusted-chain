@@ -7,3 +7,4 @@
 - [x] Refinar deck Zelopack: conteúdo dos slides 4–6, remover slides 7/11/13 e adicionar contato do Túlio
 - [x] Criar treinamento SDR MyTS com 9 slides visuais e exportação para PDF
 - [x] Reestruturar deck Zelopack para reunião com 12 slides conforme a proposta de parametrização
+- [x] Simplificar deck Zelopack: remover mockups e o slide final, e alinhar os slides 9 e 10 ao padrão dos demais
