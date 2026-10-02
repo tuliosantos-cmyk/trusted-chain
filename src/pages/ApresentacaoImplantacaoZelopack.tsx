@@ -91,7 +91,7 @@ const CompareColumn = ({ title, items, accent = false, badge, height = 490 }: { 
         <span className={`grid size-10 shrink-0 place-items-center rounded-full text-[15px] font-bold ${accent ? "bg-accent text-accent-foreground" : badge ? "bg-secondary text-accent" : "bg-secondary text-muted-foreground"}`}>{Badge ? <Badge size={19} /> : "Z"}</span>
         <h3 className="text-[19px] font-bold uppercase text-foreground">{title}</h3>
       </div>
-      <div className="mt-5 grid flex-1 content-center gap-3">
+      <div className="mt-5 grid flex-1 gap-3" style={{ gridAutoRows: "1fr" }}>
         {items.map(({ icon: Icon, title: itemTitle, text }) => <div key={itemTitle} style={{ minHeight: itemMinHeight }} className="flex items-center gap-4 rounded-lg border border-border/80 bg-background px-4 py-3.5"><Icon className={accent ? "text-accent" : "text-muted-foreground"} size={21} /><div><strong className="block text-[15px] leading-tight">{itemTitle}</strong><span className="text-[13px] leading-tight text-muted-foreground">{text}</span></div></div>)}
       </div>
     </div>
