@@ -5,7 +5,7 @@ import {
   CheckCircle2, ChevronLeft, ChevronRight, ClipboardCheck, Download, FileCheck2,
   FileText, Filter, GraduationCap, Image, Layers3, Mail, MapPin, PackageCheck,
   RefreshCw, Scale, Search, Send, ShieldCheck, Sparkles, UploadCloud, Users,
-  Workflow, XCircle,
+  Workflow, XCircle, Truck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import mytsLogo from "@/assets/myts-logo.svg";
