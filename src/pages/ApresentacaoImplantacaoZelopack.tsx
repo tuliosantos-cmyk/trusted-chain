@@ -1,11 +1,11 @@
 // ============= Full file contents =============
 
-import { Fragment, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import {
   AlertTriangle, ArrowRight, BellRing, Boxes, Building2, CalendarClock, Check,
   CheckCircle2, ChevronLeft, ChevronRight, ClipboardCheck, Download, FileCheck2,
-  FileText, Filter, GraduationCap, Image, Layers3, MapPin, PackageCheck,
+  FileText, Filter, Image, Layers3, MapPin, PackageCheck,
   RefreshCw, Scale, Send, ShieldCheck, UploadCloud, Users,
   Workflow, XCircle, Truck,
 } from "lucide-react";
@@ -16,7 +16,7 @@ import zelopackLogo from "@/assets/zelopack/zelopack-logo.png";
 const W = 1600;
 const H = 900;
 const P = 58;
-const TOTAL = 11;
+const TOTAL = 10;
 
 type IconType = typeof Building2;
 type CompareItem = { icon: IconType; title: string; text: string };
@@ -82,8 +82,6 @@ const Slide = ({ children, n, label, dark = false, reference }: { children: Reac
 };
 const Title = ({ children, dark = false, size = 46 }: { children: React.ReactNode; dark?: boolean; size?: number }) => <h2 className={`mt-4 max-w-[1460px] font-display font-bold leading-[1.07] ${dark ? "text-primary-foreground" : "text-foreground"}`} style={{ fontSize: size }}>{children}</h2>;
 const Support = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => <p className={`mt-3 max-w-[1380px] text-[19px] leading-[1.4] ${dark ? "text-primary-foreground/75" : "text-foreground/70"}`}>{children}</p>;
-const IconBox = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => <span className={`grid size-12 shrink-0 place-items-center rounded-lg ${dark ? "bg-accent/20 text-accent-glow" : "bg-accent/10 text-accent"}`}>{children}</span>;
-const CheckLine = ({ children, dark = false, warning = false }: { children: React.ReactNode; dark?: boolean; warning?: boolean }) => <div className={`flex items-start gap-3 text-[16px] leading-[1.3] ${dark ? "text-primary-foreground" : "text-foreground/80"}`}>{warning ? <AlertTriangle className="mt-0.5 shrink-0 text-accent" size={19} /> : <CheckCircle2 className={`mt-0.5 shrink-0 ${dark ? "text-accent-glow" : "text-success"}`} size={19} />}<span>{children}</span></div>;
 const CompareColumn = ({ title, items, accent = false, badge, height = 490 }: { title: string; items: CompareItem[]; accent?: boolean; badge?: IconType; height?: number }) => {
   const Badge = badge ?? (accent ? Check : undefined);
   const itemMinHeight = Math.min(118, Math.max(70, Math.round((height - 120) / items.length - 12)));
