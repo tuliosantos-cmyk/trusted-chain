@@ -8,3 +8,4 @@
 - [x] Criar treinamento SDR MyTS com 9 slides visuais e exportação para PDF
 - [x] Reestruturar deck Zelopack para reunião com 12 slides conforme a proposta de parametrização
 - [x] Simplificar deck Zelopack: remover mockups e o slide final, e alinhar os slides 9 e 10 ao padrão dos demais
+- [x] Enxugar deck Zelopack: remover o fluxo do slide 6 e o slide de análise técnica (agora 10 slides)
