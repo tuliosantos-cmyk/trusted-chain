@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] Ampliar 12A, 12B e 12C com conteúdo completo; 12B dividido em duas lâminas; novo PDF de 50 páginas gerado e revisado visualmente
+
 - [x] Revisar onboarding SDR: remover Feedback e carreira, retirar cosméticos, incluir três lâminas de perspectiva de mercado e expandir canais, ligações, objeções e contexto MyTS conforme roteiro; 49 lâminas verificadas
 
 - [x] Ampliar onboarding SDR com 34 lâminas nos quatro blocos do roteiro e consolidar o guia do CRM em quatro lâminas
