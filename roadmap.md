@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] Revisar onboarding SDR: remover Feedback e carreira, retirar cosméticos, incluir perspectiva de mercado e expandir canais, ligações, objeções e contexto MyTS conforme roteiro
+- [x] Revisar onboarding SDR: remover Feedback e carreira, retirar cosméticos, incluir três lâminas de perspectiva de mercado e expandir canais, ligações, objeções e contexto MyTS conforme roteiro; 49 lâminas verificadas
 
 - [x] Ampliar onboarding SDR com 34 lâminas nos quatro blocos do roteiro e consolidar o guia do CRM em quatro lâminas
 
