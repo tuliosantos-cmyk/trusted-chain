@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] Ampliar onboarding SDR com os quatro blocos do roteiro e consolidar o guia do CRM em quatro lâminas
+- [x] Ampliar onboarding SDR com 34 lâminas nos quatro blocos do roteiro e consolidar o guia do CRM em quatro lâminas
 
 - [x] Criar apresentação de implantação MDS + MyTS com 15 slides e logo oficial MDS
 - [x] Refinar o deck MDS para 12 slides, com mockups, progresso da implantação e contato do Túlio
