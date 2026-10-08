@@ -1,0 +1,25 @@
+export const ralstonStory = {
+  period: 'Agosto a outubro de 2026', participants: 3, days: 30, cost: 0,
+  estimatedSuppliers: 80, averageDocuments: 15, manualSteps: 7,
+  estimatedDocuments: 1200, estimatedTasks: 8400,
+  steps: ['Pedir por e-mail', 'Esperar', 'Cobrar', 'Baixar o anexo', 'Conferir', 'Salvar na pasta', 'Anotar o vencimento'],
+  videos: [
+    { title: 'Autoavaliação', url: 'https://youtu.be/e9d-h3cglgw', type: 'checklist' },
+    { title: 'Monitoramento', url: 'https://youtu.be/kewe36T1_ok', type: 'monitor' },
+    { title: 'Processo de homologação', url: 'https://youtu.be/-gHMhJPqvUw', type: 'flow' },
+  ],
+  notes: [
+    'Vou mostrar como foi o nosso piloto, de agosto a outubro: o trabalho que tínhamos, o que testamos e o que já aconteceu na prática.',
+    'A MyTS nasceu na indústria de alimentos. Ela reúne documentos, fornecedores e processos em um só lugar, com tecnologia e apoio técnico.',
+    'Estas são algumas empresas que já utilizam a MyTS. Trouxe essas referências para contextualizar a solução que escolhemos testar.',
+    'Esse era o nosso dia a dia. Não é falha da equipe. É o tamanho do trabalho. Os números são uma estimativa: 80 fornecedores, com uma média de 15 documentos cada.',
+    'Antes de mudar, a gente testou. Foram 30 dias sem custo, com três pessoas da Ralston e oito fornecedores de tipos diferentes.',
+    'O fornecedor entra com o próprio acesso, vê o que falta e envia. Nós analisamos e aprovamos. O sistema guarda o histórico e ajuda a acompanhar os vencimentos.',
+    'Já temos 44 requisitos documentais aceitos. A Adel Coco completou os 18 em cerca de oito dias. A Parnaplast completou os 12. A Grespan tem 11 de 12 aceitos. Ainda há fornecedores sem resposta: o piloto não terminou para todos.',
+    'Também enviamos a autoavaliação para quatro fornecedores e a primeira resposta já chegou. Agora precisamos analisá-la. A nota e as não conformidades vêm depois da validação: ainda não temos avaliação aprovada.',
+    'Este é o cenário que queremos ampliar: fornecedores, processos e documentos internos no mesmo lugar. O piloto mostrou o caminho; não significa que toda a base já esteja implantada.',
+    'Separei três vídeos para quem quiser ver funcionando. Podemos abrir um deles agora ou assistir depois pelos links e códigos QR.',
+    'Mesmo sem certificação, recebemos verificações. A ideia é localizar o documento certo e conferir sua validade sem procurar em e-mails e pastas.',
+    'O piloto já trouxe resultados. O próximo passo é ouvir as áreas, concluir as pendências e decidir como ampliar para os demais fornecedores. O retorno das áreas ainda precisa ser registrado.',
+  ],
+};
