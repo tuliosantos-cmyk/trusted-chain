@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] Revisar layout das nove telas premium: contraste do ecossistema, ícones, separação entre textos e mockups e legibilidade da matriz de risco
+
 - [x] Criar apresentação visual premium a partir do PDF enviado, com mockups, esquemas, fluxos e versão completa em PDF
 
 - [x] Ampliar 12A, 12B e 12C com conteúdo completo; 12B dividido em duas lâminas; novo PDF de 50 páginas gerado e revisado visualmente
