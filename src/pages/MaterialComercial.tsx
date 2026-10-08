@@ -240,7 +240,7 @@ const S04 = () => (
   </Slide>
 );
 
-const S04 = () => (
+const S05 = () => (
   <Slide n={5} decor={<LightEcho />}>
     <Header n="03" label="Soluções integradas" />
     <Title>Uma plataforma, seis frentes de trabalho.</Title>
@@ -266,7 +266,7 @@ const DocsMock = () => (
   </Window>
 );
 
-const S05 = () => (
+const S06 = () => (
   <Slide n={6} decor={<LightEcho side="left" />}>
     <div className="grid flex-1 grid-cols-[0.8fr_1.2fr] items-center gap-12">
       <div>
@@ -298,7 +298,7 @@ const SupMock = () => (
   </Window>
 );
 
-const S06 = () => (
+const S07 = () => (
   <Slide n={7} decor={<LightEcho />}>
     <div className="grid flex-1 grid-cols-[1.15fr_0.85fr] items-center gap-12">
       <SupMock />
@@ -313,7 +313,7 @@ const S06 = () => (
   </Slide>
 );
 
-const S07 = () => (
+const S08 = () => (
   <Slide n={8} dark decor={<DarkEcho pos="-top-24 -right-32" size={560} />}>
     <Header n="06" label="Processos e autoavaliação" dark />
     <Title dark>Do checklist ao plano de ação, sem perder nenhuma etapa.</Title>
@@ -335,7 +335,7 @@ const S07 = () => (
   </Slide>
 );
 
-const S08 = () => (
+const S09 = () => (
   <Slide n={9} decor={<LightEcho side="left" />}>
     <div className="flex flex-1 flex-col">
       <Header n="07" label="Além do software" />
