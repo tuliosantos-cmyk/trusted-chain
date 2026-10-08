@@ -1,7 +1,7 @@
 import { Fragment, useLayoutEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import {
-  AlertTriangle, ArrowRight, ExternalLink, BarChart3, BellRing, Check, CheckCircle2, ClipboardCheck, Download,
+  AlertTriangle, ExternalLink, BarChart3, BellRing, Check, CheckCircle2, ClipboardCheck, Download,
   Eye, Factory, FileStack, FileText, Gauge, Globe2, Handshake, ListChecks, Mail, MapPin,
   MessageCircle, Network, Search, ShieldCheck, Users, Workflow,
 } from "lucide-react";
@@ -17,7 +17,7 @@ import auditoriaImg from "@/assets/material/auditoria-campo.jpg";
 const W = 1600;
 const H = 900;
 const P = 64;
-const TOTAL = 11;
+const TOTAL = 9;
 
 const usePrintMode = () => {
   const [print, setPrint] = useState(false);
@@ -154,89 +154,40 @@ const S02 = () => (
   </Slide>
 );
 
-const ClientSlide = () => (
-  <Slide n={3} decor={<LightEcho />}>
-    <Header n="02" label="Clientes MyTS" />
-    <Title size={50}>Confiança construída com quem faz a cadeia acontecer.</Title>
-    <p className="mt-4 text-[22px] text-muted-foreground">Indústria, varejo e agroindústria. Empresas que já confiam na MyTS.</p>
-    <div className="my-auto grid grid-cols-4 gap-3">
-      {commercialClients.map((client) => <div key={client.name} className="flex h-[82px] items-center gap-5 rounded-lg border border-border bg-card px-5">
-        <div className="flex h-[62px] w-[130px] shrink-0 items-center justify-center"><img src={client.src} alt={client.name} loading="eager" className="max-h-[58px] max-w-full object-contain" /></div>
-        <span className="text-[17px] font-semibold leading-[1.3] text-foreground">{client.name}</span>
-      </div>)}
-    </div>
-  </Slide>
-);
-
 const ProofSlide = () => (
-  <Slide n={4} decor={<LightEcho />}>
-    <Header n="03" label="Projetos e presença na imprensa" />
-    <Title size={50}>Projetos reais. Repercussão além da plataforma.</Title>
-    <div className="mt-6 grid min-h-0 flex-1 grid-cols-[0.95fr_1.05fr] gap-12">
-      <div className="flex flex-col justify-center gap-8">
-        <div className="border-l-4 border-accent pl-7">
-          <img src={commercialClients[0].src} alt="Carrefour" className="h-[54px] max-w-[190px] object-contain object-left" />
-          <h3 className="mt-4 font-display text-[29px] font-bold text-foreground">Jornada da Autonomia</h3>
-          <p className="mt-3 text-[21px] leading-[1.45] text-muted-foreground">Monitoramento e desenvolvimento da cadeia de frutas, legumes e verduras, com visibilidade dos fornecedores diretos e indiretos.</p>
-          <div className="mt-5 flex items-center gap-3 text-[17px] font-bold text-accent"><span>Mapear</span><ArrowRight size={19} /><span>Monitorar</span><ArrowRight size={19} /><span>Desenvolver</span></div>
+  <Slide n={3} decor={<LightEcho />}>
+    <Header n="02" label="Clientes e reconhecimento" />
+    <Title size={50}>Marcas que confiam. Imprensa que confirma.</Title>
+    <div className="mt-8 grid min-h-0 flex-1 grid-cols-[1.05fr_1fr] gap-12">
+      <div className="flex flex-col">
+        <p className="text-[16px] font-bold uppercase text-accent" style={{ letterSpacing: "0.14em" }}>Quem confia na MyTS</p>
+        <div className="mt-5 grid flex-1 grid-cols-3 gap-4">
+          {commercialClients.slice(0, 6).map((client) => (
+            <div key={client.name} className="flex items-center justify-center rounded-lg border border-border bg-card px-4">
+              <img src={client.src} alt={client.name} loading="eager" className="max-h-[64px] max-w-full object-contain" />
+            </div>
+          ))}
         </div>
-        <div className="border-l-4 border-success pl-7">
-          <img src={commercialClients[1].src} alt="Korin" className="h-[54px] max-w-[170px] object-contain object-left" />
-          <h3 className="mt-4 font-display text-[29px] font-bold text-foreground">Korin 360 · Tecnologia MyTS 360</h3>
-          <p className="mt-3 text-[21px] leading-[1.45] text-muted-foreground">Dados de origem, boas práticas e sustentabilidade transformados em informação acessível para o consumidor.</p>
-          <div className="mt-5 flex items-center gap-3 text-[17px] font-bold text-success"><span>Coletar</span><ArrowRight size={19} /><span>Validar</span><ArrowRight size={19} /><span>Comunicar</span></div>
-        </div>
+        <p className="mt-5 text-[18px] text-muted-foreground">E dezenas de indústrias, distribuidores e varejistas atendidos no Brasil e no exterior.</p>
       </div>
-      <div className="flex flex-col justify-center">
-        <p className="mb-3 text-[16px] font-bold uppercase text-accent">Na imprensa</p>
-        <div className="space-y-3">{commercialNews.map((news) => <article key={news.url} className="rounded-lg border border-border bg-card px-5 py-4 shadow-card">
-          <div className="flex items-center justify-between gap-4"><span className="text-[21px] font-bold text-accent">{news.publisher}</span><span className="text-[15px] text-muted-foreground">{news.date}</span></div>
-          <h3 className="mt-2 text-[19px] font-bold leading-[1.25] text-foreground">{news.title}</h3>
-          <p className="mt-2 text-[16px] leading-[1.35] text-muted-foreground">{news.summary}</p>
-          <Button asChild variant="link" className="mt-1 h-auto justify-start p-0 text-[15px] font-bold text-accent"><a href={news.url} target="_blank" rel="noopener noreferrer">Ler matéria<ExternalLink size={15} /></a></Button>
+      <div className="flex flex-col">
+        <p className="text-[16px] font-bold uppercase text-accent" style={{ letterSpacing: "0.14em" }}>Na imprensa</p>
+        <div className="mt-5 flex-1 space-y-4">{commercialNews.map((news) => <article key={news.url} className="rounded-lg border border-border bg-card px-5 py-4 shadow-card">
+          <div className="flex items-center justify-between gap-4"><span className="text-[20px] font-bold text-accent">{news.publisher}</span><span className="text-[15px] text-muted-foreground">{news.date}</span></div>
+          <h3 className="mt-2 text-[18px] font-bold leading-[1.25] text-foreground">{news.title}</h3>
+          <p className="mt-2 text-[15px] leading-[1.35] text-muted-foreground">{news.summary}</p>
+          <Button asChild variant="link" className="mt-1 h-auto justify-start p-0 text-[14px] font-bold text-accent"><a href={news.url} target="_blank" rel="noopener noreferrer">Ler matéria<ExternalLink size={14} /></a></Button>
         </article>)}</div>
-        <p className="mt-2 text-[13px] text-muted-foreground">Fontes: Valor Econômico, TI Inside e Inforchannel.</p>
+        <p className="mt-3 text-[13px] text-muted-foreground">Fontes: Valor Econômico, TI Inside e Inforchannel.</p>
       </div>
     </div>
   </Slide>
 );
 
-const MiniRow = ({ name, tag, ok }: { name: string; tag: string; ok: boolean }) => (
-  <div className="flex items-center gap-3 rounded-xl border border-primary-foreground/10 bg-primary-foreground/[0.06] px-4 py-2.5">
-    <span className="size-8 shrink-0 rounded-full bg-accent/25" />
-    <span className="flex-1 text-[16px] font-semibold text-primary-foreground">{name}</span>
-    <span className={`rounded-full px-3 py-1 text-[12px] font-bold ${ok ? "bg-success/20 text-success" : "bg-accent/20 text-accent-glow"}`}>{tag}</span>
-  </div>
-);
-
-const S03 = () => (
-  <Slide n={5} dark decor={<DarkEcho size={460} />}>
-    <Header n="04" label="Metodologia MyTS" dark />
-    <Title dark size={50}>Uma jornada completa. Uma base confiável.</Title>
-    <p className="mt-4 text-[22px] text-primary-foreground/75">Da conexão com o parceiro ao acompanhamento contínuo da sua cadeia.</p>
-    <div className="my-auto grid grid-cols-3 gap-8">
-      {[
-        { icon: Search, title: "Prospecção", description: "Encontre fornecedores e especialistas para as necessidades da sua operação." },
-        { icon: Workflow, title: "Homologação", description: "Defina requisitos, envolva as áreas e registre cada análise até a aprovação." },
-        { icon: BellRing, title: "Monitoramento", description: "Acompanhe validades, novas evidências e pendências depois da homologação." },
-      ].map((step, i) => { const Icon = step.icon; return <div key={step.title}>
-        <div className="flex items-center gap-4 border-t border-accent-glow/40 pt-5"><span className="grid size-12 place-items-center rounded-lg bg-accent/20 text-accent-glow"><Icon size={26} /></span><span className="text-[19px] font-bold text-accent-glow">0{i + 1}</span>{i < 2 && <ArrowRight className="ml-auto text-accent-glow" size={26} />}</div>
-        <h3 className="mt-5 text-[30px] font-bold text-primary-foreground">{step.title}</h3>
-        <p className="mt-3 h-[90px] text-[20px] leading-[1.45] text-primary-foreground/75">{step.description}</p>
-        <div className="mt-6 overflow-hidden rounded-lg border border-border bg-card text-foreground">
-          <div className="border-b border-border bg-secondary px-4 py-3 text-[15px] text-muted-foreground">MyTS · {step.title}</div>
-          <div className="h-[192px] p-5">
-            {i === 0 ? <><p className="flex items-center gap-2 rounded-lg bg-secondary p-3 text-[16px] text-muted-foreground"><Search size={18} />Ingredientes e embalagens</p>{["Alimentos Litoral", "Embalagens Prisma"].map(x => <p key={x} className="mt-4 flex items-center justify-between text-[17px] font-semibold">{x}<Handshake size={19} className="text-accent" /></p>)}</> : i === 1 ? <><p className="text-[18px] font-bold">12 de 16 requisitos concluídos</p><div className="my-5 h-3 rounded-full bg-secondary"><div className="h-full w-3/4 rounded-full bg-accent" /></div><p className="text-[16px] text-muted-foreground">Documentos → Análise → Aprovação</p><p className="mt-4 flex items-center gap-2 text-[16px] text-success"><CheckCircle2 size={19} />Análise técnica registrada</p></> : <><p className="text-[18px] font-bold">Evidências e alertas em dia</p><p className="mt-5 flex items-center gap-3 text-[16px]"><BellRing size={20} className="text-destructive" />Certificado vence em 12 dias</p><p className="mt-4 flex items-center gap-3 text-[16px]"><CheckCircle2 size={20} className="text-success" />Novo laudo recebido</p><p className="mt-4 text-[15px] text-muted-foreground">Histórico pronto para auditoria</p></>}
-          </div>
-        </div>
-      </div>; })}
-    </div>
-  </Slide>
-);
 
 const S05 = () => (
-  <Slide n={6} decor={<LightEcho />}>
-    <Header n="05" label="Estrutura de contratação · SaaS" />
+  <Slide n={4} decor={<LightEcho />}>
+    <Header n="03" label="Estrutura de contratação · SaaS" />
     <Title>Uma plataforma. Três módulos para contratar.</Title>
     <p className="mt-5 text-[23px] text-muted-foreground">Cada módulo organiza uma frente da operação. Juntos, conectam documentos, parceiros e processos.</p>
     <div className="my-auto grid grid-cols-3 gap-7">
@@ -269,10 +220,10 @@ const DocsMock = () => (
 );
 
 const S06 = () => (
-  <Slide n={7} decor={<LightEcho side="left" />}>
+  <Slide n={5} decor={<LightEcho side="left" />}>
     <div className="grid flex-1 grid-cols-[0.8fr_1.2fr] items-center gap-12">
       <div>
-        <Header n="06" label="Módulo 1 de 3" />
+        <Header n="04" label="Módulo 1 de 3" />
         <div className="mt-6"><Pill>Meus Documentos</Pill></div>
         <Title size={50}>Gestão documental e lista mestra, sempre prontas para auditoria.</Title>
         <p className="mt-5 text-[21px] leading-[1.45] text-foreground/75">POPs, políticas, certificados e laudos centralizados, atendendo à exigência de lista mestra das normas.</p>
@@ -296,8 +247,8 @@ const SupMock = () => (
 );
 
 const S07 = () => (
-  <Slide n={8} decor={<LightEcho />}>
-    <Header n="07" label="Módulo 2 de 3 · Meus Fornecedores" />
+  <Slide n={6} decor={<LightEcho />}>
+    <Header n="05" label="Módulo 2 de 3 · Meus Fornecedores" />
     <div className="grid flex-1 grid-cols-[0.85fr_1.15fr] items-center gap-14">
       <div>
         <Title size={48}>Solicite. Acompanhe.<br /><span className="text-accent">Preserve o histórico.</span></Title>
@@ -310,8 +261,8 @@ const S07 = () => (
 );
 
 const S08 = () => (
-  <Slide n={9} dark decor={<DarkEcho pos="-bottom-48 -right-32" size={480} />}>
-    <Header n="08" label="Módulo 3 de 3 · Processos e Autoavaliação" dark />
+  <Slide n={7} dark decor={<DarkEcho pos="-bottom-48 -right-32" size={480} />}>
+    <Header n="06" label="Módulo 3 de 3 · Processos e Autoavaliação" dark />
     <div className="grid flex-1 grid-cols-[0.75fr_1.25fr] items-center gap-12">
       <div>
         <Title dark size={46}>Sua rotina.<br />Seu fluxo.<br /><span className="text-accent-glow">Tudo acompanhado.</span></Title>
@@ -332,9 +283,9 @@ const S08 = () => (
 );
 
 const S09 = () => (
-  <Slide n={10} decor={<LightEcho side="left" />}>
+  <Slide n={8} decor={<LightEcho side="left" />}>
     <div className="flex flex-1 flex-col">
-      <Header n="09" label="Além do SaaS · Serviços MyTS" />
+      <Header n="07" label="Além do SaaS · Serviços MyTS" />
       <Title size={50}>Software para gerir. Especialistas para agir.</Title>
       <p className="mt-4 text-[22px] text-muted-foreground">Além dos três módulos, a MyTS oferece serviços técnicos para apoiar sua operação e desenvolver sua cadeia.</p>
       <div className="my-auto grid grid-cols-[440px_1fr] items-center gap-8">
@@ -362,7 +313,7 @@ const S09 = () => (
 );
 
 const S10 = () => (
-  <Slide n={11} dark decor={<><Grid dark /><Glyph size={760} tone="light" opacity={0.05} className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" /></>}>
+  <Slide n={9} dark decor={<><Grid dark /><Glyph size={760} tone="light" opacity={0.05} className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" /></>}>
     <div className="flex items-center justify-between"><img src={mytsLogo} alt="MyTS" className="h-[44px] w-auto" style={{ filter: "brightness(0) invert(1)" }} /><Pill dark>Vamos conversar</Pill></div>
     <div className="flex flex-1 flex-col items-center justify-center text-center">
       <h2 className="mt-12 max-w-[1200px] font-display text-[56px] font-bold leading-[1.08] text-primary-foreground">Visibilidade total e controle completo<br /><span className="text-accent-glow">da sua cadeia de suprimentos.</span></h2>
@@ -382,7 +333,7 @@ const MaterialComercial = () => {
       <Helmet><title>MyTS — Material Comercial</title><meta name="description" content="Conheça a MyTS: plataforma para gestão de fornecedores, documentos e processos da cadeia de suprimentos." /></Helmet>
       <style>{`html,body,#root{margin:0;padding:0;background:hsl(var(--primary))}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:1600px 900px landscape;margin:0}@media print{.no-print{display:none!important}.slide-frame{border-radius:0!important;break-after:page;page-break-after:always}}`}</style>
       {!print && <Button onClick={() => window.open(`${window.location.pathname}?print`, "_blank")} className="no-print fixed right-6 top-6 z-50 h-12 rounded-full bg-accent px-6 text-accent-foreground shadow-cta"><Download />Baixar PDF</Button>}
-      {[S01, S02, ClientSlide, ProofSlide, S03, S05, S06, S07, S08, S09, S10].map((C, i) => <C key={i} />)}
+      {[S01, S02, ProofSlide, S05, S06, S07, S08, S09, S10].map((C, i) => <C key={i} />)}
     </main>
   );
 };
