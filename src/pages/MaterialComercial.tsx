@@ -351,9 +351,9 @@ const S09 = () => (
           </div>
         </div>
         <div className="grid grid-cols-2 gap-5">
-          {[[Users, "Rede de auditores", "Atendimento rápido, com presença regional."], [Factory, "Visitas técnicas", "Verificação em campo de instalações e BPF."], [ShieldCheck, "Auditorias de 2ª parte", "Seus fornecedores avaliados pelo seu padrão."], [FileText, "Autoavaliação sob medida", "Questionários técnicos para cada público."]].map(([I, t, d]) => {
+          {[[Users, "Outsourcing de Qualidade", "Suporte técnico contínuo às rotinas da sua operação."], [ShieldCheck, "Auditorias de 2ª parte", "Avaliação presencial ou remota de fornecedores conforme os seus critérios."], [ClipboardCheck, "Validação técnica", "Especialistas analisam evidências e respostas das autoavaliações."], [FileStack, "Carga inicial de acervo", "Organização e migração de documentos e dados para iniciar a operação."]].map(([I, t, d]) => {
             const Icon = I as typeof Users;
-            return <div key={String(t)} className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-card"><span className="grid size-12 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent"><Icon size={24} /></span><div><h3 className="text-[21px] font-bold text-foreground">{String(t)}</h3><p className="mt-1 text-[17px] leading-[1.4] text-muted-foreground">{String(d)}</p></div></div>;
+            return <div key={String(t)} className="flex items-start gap-4 rounded-lg border border-border bg-card p-6 shadow-card"><span className="grid size-12 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent"><Icon size={24} /></span><div><h3 className="text-[23px] font-bold text-foreground">{String(t)}</h3><p className="mt-2 text-[20px] leading-[1.4] text-muted-foreground">{String(d)}</p></div></div>;
           })}
         </div>
       </div>
