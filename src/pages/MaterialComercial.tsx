@@ -74,8 +74,7 @@ const LightEcho = ({ side = "right" }: { side?: "right" | "left" }) => (
   <>
     <Grid />
     <div aria-hidden className={`absolute top-0 h-full w-[120px] bg-primary ${side === "right" ? "right-0" : "left-0"}`} />
-    <Glyph size={240} tone="gradient" className={side === "right" ? "-right-[90px] bottom-[70px]" : "-left-[90px] bottom-[70px]"} />
-    <Glyph size={520} tone="accent" opacity={0.05} className={side === "right" ? "-bottom-[180px] right-[60px]" : "-bottom-[180px] left-[60px]"} />
+    <Glyph size={300} tone="gradient" className={side === "right" ? "-right-[110px] bottom-[60px]" : "-left-[110px] bottom-[60px]"} />
   </>
 );
 const DarkEcho = ({ pos = "-bottom-48 -right-24", size = 680 }: { pos?: string; size?: number }) => (
@@ -114,7 +113,7 @@ const CLIENTS = [
 
 /* ---------- Slides ---------- */
 const S01 = () => (
-  <Slide n={1} dark decor={<><Grid dark /><div aria-hidden className="absolute -left-40 -top-40 size-[560px] rounded-full bg-accent/25 blur-[130px]" /><Glyph size={620} tone="gradient" opacity={0.9} className="-right-[90px] top-[120px]" /><Glyph size={620} tone="light" opacity={0.05} className="-right-[150px] top-[60px]" /></>}>
+  <Slide n={1} dark decor={<><Grid dark /><div aria-hidden className="absolute -left-40 -top-40 size-[560px] rounded-full bg-accent/25 blur-[130px]" /><Glyph size={620} tone="gradient" opacity={0.9} className="-right-[90px] top-[120px]" /></>}>
     <div className="flex items-center justify-between"><img src={mytsLogo} alt="MyTS" className="h-[44px] w-auto" style={{ filter: "brightness(0) invert(1)" }} /><Pill dark>Material para você conhecer a MyTS</Pill></div>
     <div className="flex flex-1 flex-col justify-center">
       <p className="text-[22px] font-semibold uppercase text-accent-glow" style={{ letterSpacing: "0.16em" }}>My Trusted Source</p>
