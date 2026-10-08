@@ -27,7 +27,7 @@ import mytsLogo from "@/assets/myts-logo.svg";
 
 const W = 1600;
 const H = 900;
-const TOTAL = 9;
+const TOTAL = 10;
 
 type SlideProps = { number: number; dark?: boolean; children: React.ReactNode };
 
@@ -82,6 +82,42 @@ const S01 = () => (
 
 const S02 = () => (
   <Slide number={2}>
+    <div className="about-layout">
+      <div className="about-copy">
+        <span className="premium-eyebrow">Sobre a MyTS</span>
+        <h2>My Trusted Source.<br /><em>O nome já diz o que somos.</em></h2>
+        <p className="about-lead">Uma plataforma que nasceu dentro da indústria de alimentos para resolver o que planilha e e-mail nunca deram conta: reunir empresas, fornecedores e processos em uma única base confiável.</p>
+        <div className="about-proof">
+          {[
+            [<ShieldCheck />, "Base única de verdade", "Documentos, fornecedores e processos no mesmo lugar."],
+            [<ClipboardCheck />, "Fluxos auditáveis", "Cada aprovação, nota e plano de ação com histórico."],
+            [<Network />, "Rede de campo", "100+ auditores e visitas técnicas no Brasil e exterior."],
+            [<Users />, "Acesso livre do fornecedor", "Cada parceiro acompanha pendências e envia evidências direto na plataforma."],
+          ].map(([icon, title, text]) => (
+            <div key={title as string}><IconBox>{icon}</IconBox><div><strong>{title}</strong><span>{text}</span></div></div>
+          ))}
+        </div>
+      </div>
+      <aside className="about-panel">
+        <div className="panel-head"><Brand dark /><span>MY TRUSTED SOURCE</span></div>
+        <p className="panel-def">Tecnologia e conhecimento técnico trabalhando juntos para centralizar dados, integrar fluxos e acelerar decisões em toda a cadeia de suprimentos.</p>
+        <div className="panel-block">
+          <small>ONDE ESTAMOS</small>
+          <div className="panel-hub"><MapPin /><div><b>Botucatu</b><span>SP · Brasil</span></div></div>
+          <div className="panel-hub"><MapPin /><div><b>Charlotte</b><span>NC · EUA</span></div></div>
+          <div className="panel-reach"><Globe2 /><b>+20</b><span>países alcançados pela rede</span></div>
+        </div>
+        <div className="panel-block">
+          <small>ATUAÇÃO</small>
+          <div className="panel-pills"><span>Compras</span><span>Qualidade</span><span>P&amp;D</span><span>ESG</span><span>Compliance</span></div>
+        </div>
+      </aside>
+    </div>
+  </Slide>
+);
+
+const S03 = () => (
+  <Slide number={3}>
     <Header eyebrow="Metodologia de gestão" title={<>Uma jornada contínua.<br /><em>Não uma checagem pontual.</em></>} lead="A MyTS conecta descoberta, qualificação e acompanhamento em um mesmo ciclo de confiança." />
     <div className="journey-flow">
       {[
@@ -101,8 +137,8 @@ const S02 = () => (
   </Slide>
 );
 
-const S03 = () => (
-  <Slide number={3} dark>
+const S04 = () => (
+  <Slide number={4} dark>
     <Header eyebrow="Ecossistema integrado" title={<>Tudo se conecta ao redor<br />de uma <em>base única.</em></>} />
     <div className="ecosystem">
       <div className="ecosystem-core"><Brand dark /><strong>Uma fonte<br />confiável</strong><span>Dados • evidências • decisões</span></div>
@@ -128,8 +164,8 @@ const MiniNav = ({ active }: { active: number }) => (
   </aside>
 );
 
-const S04 = () => (
-  <Slide number={4}>
+const S05 = () => (
+  <Slide number={5}>
     <Header eyebrow="Módulo 01 · Meus documentos" title={<>Do arquivo disperso<br />à <em>lista mestra viva.</em></>} lead="Procedimentos, políticas e evidências centralizados com responsáveis, versões, aprovações e vencimentos." />
     <div className="mock-window documents-mock">
       <MiniNav active={1} />
@@ -147,8 +183,8 @@ const S04 = () => (
   </Slide>
 );
 
-const S05 = () => (
-  <Slide number={5} dark>
+const S06 = () => (
+  <Slide number={6} dark>
     <Header eyebrow="Módulo 02 · Meus fornecedores" title={<>Cada fornecedor com<br />uma <em>visão 360°.</em></>} lead="Qualificação, documentos, risco e histórico em um único painel para Compras e Qualidade." />
     <div className="supplier-stage">
       <div className="mock-window supplier-mock">
@@ -165,8 +201,8 @@ const S05 = () => (
   </Slide>
 );
 
-const S06 = () => (
-  <Slide number={6}>
+const S07 = () => (
+  <Slide number={7}>
     <Header eyebrow="Módulo 03 · Processos e autoavaliação" title={<>Da pergunta ao plano de ação.<br /><em>Todo o fluxo rastreável.</em></>} />
     <div className="process-flow">
       {[
@@ -185,8 +221,8 @@ const S06 = () => (
   </Slide>
 );
 
-const S07 = () => (
-  <Slide number={7} dark>
+const S08 = () => (
+  <Slide number={8} dark>
     <Header eyebrow="Prontidão para auditorias" title={<>A evidência certa.<br />No momento em que <em>ela é pedida.</em></>} lead="A plataforma organiza requisitos, documentos, responsáveis e status para auditorias de 2ª parte, FSSC 22000, ISO e conformidade sanitária." />
     <div className="audit-visual">
       <div className="audit-ring"><ShieldCheck /><strong>PRONTO</strong><span>para auditoria</span></div>
@@ -198,8 +234,8 @@ const S07 = () => (
   </Slide>
 );
 
-const S08 = () => (
-  <Slide number={8}>
+const S09 = () => (
+  <Slide number={9}>
     <Header eyebrow="Serviços especializados" title={<>Tecnologia conectada<br />a uma <em>rede de campo.</em></>} lead="Quando a decisão exige presença física, a MyTS coordena especialistas, avaliações e evidências na mesma jornada." />
     <div className="world-network">
       <Globe2 className="world-icon" />
@@ -212,8 +248,8 @@ const S08 = () => (
   </Slide>
 );
 
-const S09 = () => (
-  <Slide number={9} dark>
+const S10 = () => (
+  <Slide number={10} dark>
     <div className="closing-copy">
       <span className="premium-eyebrow">Próximo passo</span>
       <h2>Transforme sua cadeia<br />em uma <em>fonte confiável.</em></h2>
@@ -231,7 +267,7 @@ const S09 = () => (
   </Slide>
 );
 
-const slides = [S01, S02, S03, S04, S05, S06, S07, S08, S09];
+const slides = [S01, S02, S03, S04, S05, S06, S07, S08, S09, S10];
 
 const ApresentacaoMytsPremium = () => {
   const location = useLocation();
@@ -291,6 +327,17 @@ const premiumCss = `
   .closing-copy{position:absolute;left:0;top:105px;width:770px}.closing-copy h2{font-size:64px;margin:23px 0}.closing-copy p{font-size:21px;line-height:1.45;color:hsl(var(--primary-foreground)/.64);width:620px}.closing-copy .premium-logo{width:160px;margin-top:72px}.closing-contact{position:absolute;right:0;top:115px;width:505px;height:470px;border:1px solid hsl(var(--primary-foreground)/.17);background:hsl(var(--primary-foreground)/.055);border-radius:9px;padding:42px}.closing-contact>span{font-size:15px;font-weight:800;letter-spacing:.16em;color:var(--premium-cyan)}.closing-contact a{height:70px;color:hsl(var(--primary-foreground));text-decoration:none;border-bottom:1px solid hsl(var(--primary-foreground)/.12);display:flex;align-items:center;gap:17px;font-size:18px}.closing-contact a svg,.closing-contact>div svg{color:var(--premium-cyan)}.closing-contact>div{display:flex;align-items:center;gap:13px;font-size:14px;color:hsl(var(--primary-foreground)/.62);margin-top:30px}.closing-contact>div i{width:4px;height:4px;background:var(--premium-cyan);border-radius:50%}.closing-orbit{position:absolute;left:860px;top:165px;width:120px;height:440px;border-left:1px solid hsl(var(--accent-glow)/.3)}.closing-orbit span{position:absolute;left:-6px;width:11px;height:11px;background:var(--premium-cyan);border-radius:50%}.closing-orbit span:nth-child(1){top:0}.closing-orbit span:nth-child(2){top:50%}.closing-orbit span:nth-child(3){bottom:0}
   .premium-controls{position:fixed;z-index:20;left:50%;bottom:22px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:8px;background:hsl(var(--card)/.96);border:1px solid var(--premium-line);box-shadow:var(--shadow-elegant);border-radius:8px}.premium-controls>span{font-size:13px;font-weight:700;color:var(--premium-muted);padding:0 8px}.premium-controls button{border-radius:6px}.is-print{overflow:visible;background:var(--premium-paper)}.is-print .premium-slide{break-after:page;page-break-after:always}
   @page{size:1600px 900px landscape;margin:0}@media print{html,body,#root{margin:0;padding:0;background:var(--premium-paper)}.premium-slide{break-after:page;page-break-after:always}.premium-slide:last-child{break-after:auto;page-break-after:auto}}
+  .about-layout{position:absolute;left:0;right:0;top:8px;height:700px;display:grid;grid-template-columns:minmax(0,1fr) 560px;gap:58px;align-items:stretch}
+  .about-copy{display:flex;flex-direction:column;min-width:0}.about-copy h2{font-family:var(--font-display,Sora,sans-serif);font-size:58px;line-height:1.05;letter-spacing:0;margin:18px 0 16px;font-weight:750}.about-copy h2 em{font-style:normal;color:var(--premium-blue)}
+  .about-lead{font-size:22px;line-height:1.52;color:var(--premium-muted);max-width:780px;margin:0}
+  .about-proof{margin-top:auto;padding-top:36px;display:flex;flex-direction:column;gap:14px}.about-proof>div{display:flex;align-items:center;gap:18px;border-left:3px solid hsl(var(--accent)/.3);padding:12px 0 12px 20px}.about-proof strong{display:block;font-size:20px}.about-proof span{display:block;font-size:16px;color:var(--premium-muted);margin-top:5px}
+  .about-panel{height:700px;background:var(--premium-navy);color:hsl(var(--primary-foreground));border-radius:10px;padding:36px 38px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow-elegant)}
+  .panel-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid hsl(var(--primary-foreground)/.16)}.panel-head .premium-logo{width:100px}.panel-head span{font-size:12px;font-weight:800;letter-spacing:.2em;color:var(--premium-cyan)}
+  .panel-def{font-size:18px;line-height:1.55;color:hsl(var(--primary-foreground)/.8);margin:0}
+  .panel-block{margin-top:0}.panel-block>small{display:block;font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--premium-cyan);margin-bottom:12px}
+  .panel-hub{display:flex;align-items:center;gap:14px;padding:11px 0;border-top:1px solid hsl(var(--primary-foreground)/.1)}.panel-hub:first-of-type{border-top:0}.panel-hub svg{color:var(--premium-cyan)}.panel-hub b{display:block;font-size:18px}.panel-hub span{display:block;font-size:13px;color:hsl(var(--primary-foreground)/.6);margin-top:2px}
+  .panel-reach{display:flex;align-items:center;gap:12px;margin-top:14px;padding:13px 16px;border:1px solid hsl(var(--accent-glow)/.32);background:hsl(var(--accent)/.14);border-radius:8px}.panel-reach svg{color:var(--premium-cyan)}.panel-reach b{font-size:21px;color:var(--premium-cyan)}.panel-reach span{font-size:13px;color:hsl(var(--primary-foreground)/.7)}
+  .panel-pills{display:flex;flex-wrap:wrap;gap:9px}.panel-pills span{font-size:14px;font-weight:700;padding:9px 14px;border:1px solid hsl(var(--primary-foreground)/.2);border-radius:20px;color:hsl(var(--primary-foreground)/.85)}
   @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 `;
 
