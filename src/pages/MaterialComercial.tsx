@@ -242,14 +242,22 @@ const S04 = () => (
 
 const S05 = () => (
   <Slide n={5} decor={<LightEcho />}>
-    <Header n="03" label="Soluções integradas" />
-    <Title>Uma plataforma, seis frentes de trabalho.</Title>
-    <div className="my-auto grid grid-cols-3 gap-6">
-      {[[Handshake, "Homologação de fornecedores", "Critérios sanitários, técnicos e regulatórios em um fluxo rápido e seguro."], [FileStack, "Gestão documental e lista mestra", "Arquivos internos e externos com validades, versões e aprovações."], [Gauge, "Monitoramento B2B", "Matriz de risco personalizada, certidões, laudos e status em tempo real."], [ListChecks, "Autoavaliação e checklists", "Diagnósticos remotos de qualidade, BPF, segurança dos alimentos e ESG."], [AlertTriangle, "RNC e processos", "Não conformidades, planos de ação e histórico de desempenho."], [ShieldCheck, "Prontidão para auditorias", "Painéis prontos para 2ª parte, FSSC 22000, ISO e conformidade sanitária."]].map(([I, t, d]) => {
-        const Icon = I as typeof Handshake;
-        return <div key={String(t)} className="rounded-2xl border border-border bg-card p-6 shadow-card">
-          <div className="flex items-center gap-4"><span className="grid size-12 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent"><Icon size={24} /></span><h3 className="text-[22px] font-bold leading-tight text-foreground">{String(t)}</h3></div>
-          <p className="mt-3 text-[18px] leading-[1.42] text-muted-foreground">{String(d)}</p>
+    <Header n="03" label="Estrutura de contratação · SaaS" />
+    <Title>Uma plataforma. Três módulos para contratar.</Title>
+    <p className="mt-5 text-[23px] text-muted-foreground">Cada módulo organiza uma frente da operação. Juntos, conectam documentos, parceiros e processos.</p>
+    <div className="my-auto grid grid-cols-3 gap-7">
+      {[
+        { icon: FileStack, name: "Meus Documentos", subtitle: "Gestão documental & Lista Mestra", description: "Arquivos internos, POPs e políticas centralizados para atender normas e certificações.", items: ["Lista Mestra de documentos", "Versões, validades e aprovações", "Evidências organizadas"] },
+        { icon: Handshake, name: "Meus Fornecedores", subtitle: "Gestão e desenvolvimento B2B", description: "Solicitações e acompanhamento dos parceiros, com acesso do fornecedor e histórico centralizado.", items: ["Requisitos por produto e fornecedor", "Solicitações e notificações", "Informações e anexos no histórico"] },
+        { icon: Workflow, name: "Processos e Autoavaliação", subtitle: "Workflows inteligentes & RNC", description: "Procedimentos transformados em etapas, prazos e responsabilidades dentro do sistema.", items: ["Validação, aceite e aprovação", "Checklists com notas e RNC", "Formulários e planos de ação"] },
+      ].map((m, i) => {
+        const Icon = m.icon;
+        return <div key={m.name} className="rounded-lg border border-border bg-card p-7 shadow-card">
+          <div className="flex items-center justify-between"><span className="grid size-14 place-items-center rounded-lg bg-accent/10 text-accent"><Icon size={28} /></span><span className="text-[17px] font-bold text-muted-foreground">MÓDULO 0{i + 1}</span></div>
+          <h3 className="mt-6 min-h-[64px] text-[28px] font-bold leading-[1.15] text-foreground">{m.name}</h3>
+          <p className="mt-2 text-[18px] font-bold text-accent">{m.subtitle}</p>
+          <p className="mt-4 min-h-[84px] text-[20px] leading-[1.4] text-muted-foreground">{m.description}</p>
+          <div className="mt-5 space-y-3 border-t border-border pt-5">{m.items.map(item => <p key={item} className="flex items-start gap-3 text-[18px] text-foreground"><CheckCircle2 size={20} className="mt-0.5 shrink-0 text-success" />{item}</p>)}</div>
         </div>;
       })}
     </div>
@@ -270,7 +278,7 @@ const S06 = () => (
   <Slide n={6} decor={<LightEcho side="left" />}>
     <div className="grid flex-1 grid-cols-[0.8fr_1.2fr] items-center gap-12">
       <div>
-        <Header n="04" label="Módulo" />
+        <Header n="04" label="Módulo 1 de 3" />
         <div className="mt-6"><Pill>Meus Documentos</Pill></div>
         <Title size={50}>Gestão documental e lista mestra, sempre prontas para auditoria.</Title>
         <p className="mt-5 text-[21px] leading-[1.45] text-foreground/75">POPs, políticas, certificados e laudos centralizados, atendendo à exigência de lista mestra das normas.</p>
@@ -283,63 +291,51 @@ const S06 = () => (
 
 const SupMock = () => (
   <Window title="MyTS · Meus Fornecedores">
-    <div className="p-7">
-      <div className="flex items-center justify-between">
-        <div><strong className="block text-[26px] text-foreground">Alimentos Litoral Ltda.</strong><span className="text-[16px] text-muted-foreground">Homologado · Ingredientes</span></div>
-        <div className="grid size-[84px] place-items-center rounded-full border-[6px] border-success bg-success/10 text-center"><div><strong className="block text-[28px] leading-none text-foreground">92</strong><span className="text-[12px] font-bold text-success">IQF</span></div></div>
-      </div>
-      <div className="mt-5 grid grid-cols-4 gap-3">{[["Certidões", "12/12"], ["Laudos", "8/8"], ["Autoavaliação", "84/100"], ["RNC abertas", "0"]].map(([k, v]) => <div key={k} className="rounded-xl bg-secondary px-4 py-3"><span className="block text-[14px] text-muted-foreground">{k}</span><strong className="flex items-center gap-2 text-[22px] text-foreground">{v}<Check size={16} className="text-success" /></strong></div>)}</div>
-      <p className="mt-6 text-[15px] font-bold uppercase text-muted-foreground" style={{ letterSpacing: "0.12em" }}>Matriz de risco</p>
-      <div className="mt-3 grid grid-cols-3 gap-2">
-        {["Médio", "Alto", "Alto", "Baixo", "Médio", "Alto", "Baixo", "Baixo", "Médio"].map((r, i) => <div key={i} className={`relative flex h-[46px] items-center justify-center rounded-lg text-[14px] font-bold ${r === "Baixo" ? "bg-success/20 text-success" : r === "Médio" ? "bg-accent/15 text-accent" : "bg-destructive/15 text-destructive"}`}>{r}{i === 6 && <span className="absolute -right-1 -top-1 size-5 rounded-full border-[3px] border-card bg-primary" />}</div>)}
-      </div>
-      <p className="mt-3 text-[15px] text-muted-foreground">● Fornecedor posicionado em <strong className="text-success">risco baixo</strong></p>
+    <div className="p-6">
+      <div className="flex items-center gap-3"><span className="grid size-11 place-items-center rounded-lg bg-accent/10 text-accent"><Factory size={23} /></span><div><strong className="block text-[22px] text-foreground">Alimentos Litoral</strong><span className="text-[15px] text-muted-foreground">Produto: farinha de trigo · Requisitos técnicos</span></div></div>
+      <div className="mt-5 flex items-center gap-2 border-b border-border pb-3 text-[16px] font-bold"><span className="text-accent">Solicitações</span><span className="mx-3 text-muted-foreground">Documentos</span><span className="text-muted-foreground">Histórico</span></div>
+      <div className="mt-4 space-y-3">{[["Laudo microbiológico", "Recebido", true], ["Ficha técnica do produto", "Em análise", false], ["Certidão atualizada", "Solicitado", false]].map(([name, status, ok]) => <div key={String(name)} className="flex items-center justify-between gap-3 rounded-lg border border-border px-4 py-3"><div className="flex items-center gap-3 text-[17px] font-semibold text-foreground"><FileText size={19} className="shrink-0 text-accent" />{String(name)}</div><span className={`shrink-0 text-[14px] font-bold ${ok ? "text-success" : "text-accent"}`}>{String(status)}</span></div>)}</div>
+      <div className="mt-5 flex items-start gap-3 rounded-lg bg-accent/10 p-4"><BellRing size={22} className="shrink-0 text-accent" /><div><strong className="text-[17px] text-foreground">Fornecedor notificado</strong><p className="mt-1 text-[15px] text-muted-foreground">Acessa a solicitação e envia informações e anexos.</p></div></div>
+      <div className="mt-5 border-l-2 border-success pl-4"><p className="text-[15px] font-bold text-foreground">Histórico da solicitação</p><p className="mt-2 text-[15px] leading-[1.6] text-muted-foreground">Solicitado por Compras → anexo enviado pelo fornecedor → análise registrada por Qualidade.</p></div>
     </div>
   </Window>
 );
 
 const S07 = () => (
   <Slide n={7} decor={<LightEcho />}>
-    <div className="grid flex-1 grid-cols-[1.15fr_0.85fr] items-center gap-12">
-      <SupMock />
+    <Header n="05" label="Módulo 2 de 3 · Meus Fornecedores" />
+    <Title size={48}>Você solicita. O fornecedor participa.<br /><span className="text-accent">O histórico fica com a sua empresa.</span></Title>
+    <div className="my-auto grid grid-cols-[0.95fr_1.05fr] items-center gap-12">
       <div>
-        <Header n="05" label="Módulo" />
-        <div className="mt-6"><Pill>Meus Fornecedores</Pill></div>
-        <Title size={50}>Cada fornecedor com nota, risco e status em tempo real.</Title>
-        <p className="mt-5 text-[21px] leading-[1.45] text-foreground/75">Qualifique, solicite certidões e acompanhe parceiros com requisitos e histórico centralizados.</p>
-        <Checks items={["Nota IQF calculada automaticamente", "Matriz de risco personalizada", "Fornecedor envia tudo sozinho"]} />
+        <p className="text-[23px] leading-[1.45] text-foreground/75">Da homologação ao acompanhamento contínuo: organize o que pedir, a quem pedir e para qual produto.</p>
+        <div className="mt-7 space-y-5">{[[ListChecks, "Controle por produto, requisito e fornecedor", "Certidões, laudos e dados técnicos vinculados ao contexto certo."], [Users, "Acesso direto do fornecedor", "Notificações levam o parceiro às solicitações para responder e anexar documentos."], [FileStack, "Informações que não se perdem", "Solicitações, respostas, documentos anexados e análises preservados no histórico."]].map(([I, title, text]) => { const Icon = I as typeof ListChecks; return <div key={String(title)} className="flex items-start gap-4"><span className="grid size-11 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent"><Icon size={23} /></span><div><h3 className="text-[20px] font-bold leading-[1.3] text-foreground">{String(title)}</h3><p className="mt-1 text-[18px] leading-[1.4] text-muted-foreground">{String(text)}</p></div></div>; })}</div>
       </div>
+      <SupMock />
     </div>
   </Slide>
 );
 
 const S08 = () => (
   <Slide n={8} dark decor={<DarkEcho pos="-top-24 -right-32" size={560} />}>
-    <Header n="06" label="Processos e autoavaliação" dark />
-    <Title dark>Do checklist ao plano de ação, sem perder nenhuma etapa.</Title>
-    <div className="relative my-auto">
-      <div aria-hidden className="absolute left-[8%] right-[8%] top-[36px] h-[3px] bg-gradient-to-r from-accent-glow/20 via-accent-glow to-accent-glow/20" />
-      <div className="relative grid grid-cols-4 gap-6">
-        {[[ListChecks, "Checklist", "Formulários técnicos aplicados remotamente."], [BarChart3, "Nota (IQF)", "Pontuação objetiva e comparável no tempo."], [AlertTriangle, "Registro de RNC", "Não conformidade com evidência e responsável."], [ClipboardCheck, "Plano de ação", "Tratativa acompanhada até o fechamento."]].map(([I, t, d], i) => {
-          const Icon = I as typeof ListChecks;
-          return <div key={String(t)} className="flex flex-col items-center text-center">
-            <span className="grid size-[74px] place-items-center rounded-full border-4 border-primary bg-accent text-accent-foreground shadow-elegant"><Icon size={32} /></span>
-            <span className="mt-4 text-[15px] font-bold text-accent-glow">ETAPA 0{i + 1}</span>
-            <h3 className="mt-1 text-[26px] font-bold text-primary-foreground">{String(t)}</h3>
-            <p className="mt-2 max-w-[290px] text-[18px] leading-[1.4] text-primary-foreground/75">{String(d)}</p>
-          </div>;
-        })}
+    <Header n="06" label="Módulo 3 de 3 · Processos e Autoavaliação" dark />
+    <Title dark size={48}>Seu procedimento vira um processo vivo.</Title>
+    <p className="mt-4 text-[22px] text-primary-foreground/75">Da rotina no papel à execução com etapas, prazos e pessoas responsáveis.</p>
+    <div className="my-auto">
+      <div className="grid grid-cols-4 gap-5">{[[FileText, "1. Modelar", "Traga qualquer processo ou procedimento."], [Workflow, "2. Organizar", "Defina etapas, prazos e envolvidos."], [Users, "3. Executar", "Valide, aceite e aprove cada entrega."], [ClipboardCheck, "4. Registrar e tratar", "Formulários, notas, RNC e planos de ação."]].map(([I, title, description], i) => { const Icon = I as typeof FileText; return <div key={String(title)} className="relative border-t-2 border-accent-glow/50 pt-4"><div className="flex items-center gap-3"><Icon size={25} className="text-accent-glow" /><h3 className="text-[23px] font-bold text-primary-foreground">{String(title)}</h3>{i < 3 && <ArrowRight size={22} className="ml-auto text-accent-glow/60" />}</div><p className="mt-3 text-[18px] leading-[1.4] text-primary-foreground/75">{String(description)}</p></div>; })}</div>
+      <div className="mt-8 grid grid-cols-[1.15fr_0.85fr] gap-8">
+        <Window title="MyTS · Meus Processos · Liberação de produção"><div className="p-5"><div className="flex items-center justify-between"><strong className="text-[20px] text-foreground">Checklist operacional</strong><span className="text-[15px] font-bold text-accent">Responsável: Qualidade</span></div><div className="mt-4 space-y-2">{[["Registrar formulário de inspeção", "Operação", "Concluído"], ["Validar evidências e checklist", "Qualidade", "Em validação"], ["Aprovar liberação da linha", "Gestão", "Próxima etapa"]].map(([task, person, status]) => <div key={task} className="grid grid-cols-[1fr_90px_115px] gap-3 border-b border-border py-2.5 text-[15px]"><span className="font-semibold text-foreground">{task}</span><span className="text-muted-foreground">{person}</span><span className="text-accent">{status}</span></div>)}<div className="mt-4 flex items-center gap-3 rounded-lg bg-destructive/10 p-3 text-[16px] font-semibold text-destructive"><AlertTriangle size={21} />Desvio no checklist → RNC automática → plano de ação</div></div></Window>
+        <div className="flex flex-col justify-center"><h3 className="text-[22px] font-bold text-primary-foreground">A metodologia se adapta à sua rotina</h3><p className="mt-3 text-[19px] leading-[1.5] text-primary-foreground/75">Checklists com cálculo de notas (incluindo IQF), registros de formulários operacionais e tratamento de não conformidades no mesmo fluxo.</p><div className="mt-5 flex flex-wrap gap-2">{["Homologação", "Inspeções de BPF", "Liberação de produção", "Autoavaliações"].map(x => <span key={x} className="rounded-lg border border-primary-foreground/20 px-3 py-2 text-[16px] text-primary-foreground">{x}</span>)}</div></div>
       </div>
     </div>
-    <div className="mx-auto mb-6 flex w-fit items-center gap-3 rounded-2xl border border-accent/30 bg-accent/15 px-7 py-4 text-[20px] font-semibold text-primary-foreground"><BellRing size={22} className="text-accent-glow" />Alertas e relatórios automáticos mantêm a base em dia sem trabalho manual.</div>
   </Slide>
 );
 
 const S09 = () => (
   <Slide n={9} decor={<LightEcho side="left" />}>
     <div className="flex flex-1 flex-col">
-      <Header n="07" label="Além do software" />
-      <Title>Tecnologia com gente de verdade em campo.</Title>
+      <Header n="07" label="Além do SaaS · Serviços MyTS" />
+      <Title size={50}>Software para gerir. Especialistas para agir.</Title>
+      <p className="mt-4 text-[22px] text-muted-foreground">Além dos três módulos, a MyTS oferece serviços técnicos para apoiar sua operação e desenvolver sua cadeia.</p>
       <div className="my-auto grid grid-cols-[440px_1fr] items-center gap-8">
         <div className="relative h-[430px] overflow-hidden rounded-3xl">
           <img src={auditoriaImg} alt="Auditora em visita técnica na indústria" loading="lazy" width={1024} height={768} className="h-full w-full object-cover" />
