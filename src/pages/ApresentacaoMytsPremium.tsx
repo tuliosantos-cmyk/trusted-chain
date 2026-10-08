@@ -250,7 +250,7 @@ const ApresentacaoMytsPremium = () => {
 
   useEffect(() => {
     if (printMode) return;
-    const resize = () => setScale(Math.min(window.innerWidth / W, window.innerHeight / H));
+    const resize = () => setScale(Math.min(window.innerWidth / W, (window.innerHeight - 84) / H));
     resize(); window.addEventListener("resize", resize); return () => window.removeEventListener("resize", resize);
   }, [printMode]);
 
