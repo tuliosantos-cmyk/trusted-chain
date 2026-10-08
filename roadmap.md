@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] Recriar apresentação Ralston com o roteiro enviado, introdução MyTS/clientes, visuais legíveis e apoio de fala para Gisele; conferir navegação e impressão.
+
 - [x] Trocar Atakarejo por Takasago nos seis clientes em destaque do material comercial; nove telas conferidas e PDF atualizado exportado.
 
 - [x] Incluir clientes e logos após Sobre a MyTS no material comercial; apresentar projetos e notícias verificadas com fontes; onze telas e impressão conferidas sem cortes ou imagens quebradas.
