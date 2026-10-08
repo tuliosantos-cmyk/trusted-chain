@@ -16,12 +16,14 @@ import carbexLogo from "@/assets/clientes/Carbex_logo.png";
 import viskaseLogo from "@/assets/clientes/Viskase_logo.png";
 import augustaLogo from "@/assets/clientes/Augusta_Alimentos_logo.png";
 import takasagoLogo from "@/assets/clientes/Takasago_Logo.png";
+import industriaImg from "@/assets/material/industria-alimentos.jpg";
+import auditoriaImg from "@/assets/material/auditoria-campo.jpg";
 
 /* Material comercial MyTS — follow-up do SDR. Mesmo sistema visual da apresentação institucional. */
 const W = 1600;
 const H = 900;
 const P = 64;
-const TOTAL = 9;
+const TOTAL = 10;
 
 const usePrintMode = () => {
   const [print, setPrint] = useState(false);
@@ -69,12 +71,11 @@ const Glyph = ({ size, tone = "accent", opacity = 1, className = "", style }: { 
 };
 const Grid = ({ dark = false }: { dark?: boolean }) => <div aria-hidden className={`absolute inset-0 ${dark ? "opacity-20" : "opacity-40"} grid-pattern`} />;
 
-/** Composição para slides claros: faixa navy à direita com o símbolo em gradiente "saindo" do slide. */
+/** Composição para slides claros: grade sutil + símbolo MyTS como marca d'água discreta no canto. */
 const LightEcho = ({ side = "right" }: { side?: "right" | "left" }) => (
   <>
     <Grid />
-    <div aria-hidden className={`absolute top-0 h-full w-[120px] bg-primary ${side === "right" ? "right-0" : "left-0"}`} />
-    <Glyph size={300} tone="gradient" className={side === "right" ? "-right-[110px] bottom-[60px]" : "-left-[110px] bottom-[60px]"} />
+    <Glyph size={320} tone="accent" opacity={0.05} className={side === "right" ? "-bottom-[70px] -right-[90px]" : "-bottom-[70px] -left-[90px]"} />
   </>
 );
 const DarkEcho = ({ pos = "-bottom-48 -right-24", size = 680 }: { pos?: string; size?: number }) => (
@@ -113,7 +114,7 @@ const CLIENTS = [
 
 /* ---------- Slides ---------- */
 const S01 = () => (
-  <Slide n={1} dark decor={<><Grid dark /><div aria-hidden className="absolute -left-40 -top-40 size-[560px] rounded-full bg-accent/25 blur-[130px]" /><Glyph size={620} tone="gradient" opacity={0.9} className="-right-[90px] top-[120px]" /></>}>
+  <Slide n={1} dark decor={<><Grid dark /><div aria-hidden className="absolute -left-40 -top-40 size-[560px] rounded-full bg-accent/25 blur-[130px]" /><Glyph size={560} tone="gradient" opacity={0.5} className="-right-[90px] top-[140px]" /></>}>
     <div className="flex items-center justify-between"><img src={mytsLogo} alt="MyTS" className="h-[44px] w-auto" style={{ filter: "brightness(0) invert(1)" }} /><Pill dark>Material para você conhecer a MyTS</Pill></div>
     <div className="flex flex-1 flex-col justify-center">
       <p className="text-[22px] font-semibold uppercase text-accent-glow" style={{ letterSpacing: "0.16em" }}>My Trusted Source</p>
@@ -134,7 +135,7 @@ const S01 = () => (
 const S02 = () => (
   <Slide n={2} decor={<LightEcho />}>
     <Header n="01" label="Sobre a MyTS" />
-    <div className="mt-4 grid flex-1 grid-cols-[1fr_520px] items-center gap-14 pr-[110px]">
+    <div className="mt-4 grid flex-1 grid-cols-[1fr_520px] items-center gap-14">
       <div>
         <Title size={56}>My Trusted Source.<br /><span className="text-accent">O nome já diz o que somos.</span></Title>
         <p className="mt-6 max-w-[760px] text-[23px] leading-[1.45] text-foreground/75">Nascemos dentro da indústria de alimentos para resolver o que planilha e e-mail nunca deram conta: reunir empresas, fornecedores e processos em uma única base confiável.</p>
@@ -145,48 +146,105 @@ const S02 = () => (
           })}
         </div>
       </div>
-      <div className="relative overflow-hidden rounded-3xl bg-primary p-9">
-        <img src={mytsLogo} alt="MyTS" className="h-[40px] w-auto" style={{ filter: "brightness(0) invert(1)" }} />
-        <p className="mt-6 text-[21px] leading-[1.45] text-primary-foreground/85">Tecnologia e conhecimento técnico juntos para centralizar dados, integrar fluxos e acelerar decisões em toda a cadeia.</p>
-        <p className="mt-7 text-[14px] font-bold uppercase text-accent-glow" style={{ letterSpacing: "0.14em" }}>Onde estamos</p>
-        <div className="mt-3 space-y-2 text-[19px] text-primary-foreground">
-          <p className="flex items-center gap-3"><MapPin size={18} className="text-accent-glow" />Botucatu · SP · Brasil</p>
-          <p className="flex items-center gap-3"><MapPin size={18} className="text-accent-glow" />Charlotte · NC · EUA</p>
-          <p className="flex items-center gap-3"><Globe2 size={18} className="text-accent-glow" />Operação em +20 países</p>
+      <div className="relative overflow-hidden rounded-3xl bg-primary">
+        <img src={industriaImg} alt="Linha de produção na indústria de alimentos" loading="lazy" width={1024} height={768} className="h-[180px] w-full object-cover" />
+        <div className="p-8">
+          <img src={mytsLogo} alt="MyTS" className="h-[36px] w-auto" style={{ filter: "brightness(0) invert(1)" }} />
+          <p className="mt-5 text-[20px] leading-[1.45] text-primary-foreground/85">Tecnologia e conhecimento técnico juntos para centralizar dados, integrar fluxos e acelerar decisões em toda a cadeia.</p>
+          <p className="mt-6 text-[14px] font-bold uppercase text-accent-glow" style={{ letterSpacing: "0.14em" }}>Onde estamos</p>
+          <div className="mt-3 space-y-2 text-[18px] text-primary-foreground">
+            <p className="flex items-center gap-3"><MapPin size={18} className="text-accent-glow" />Botucatu · SP · Brasil</p>
+            <p className="flex items-center gap-3"><MapPin size={18} className="text-accent-glow" />Charlotte · NC · EUA</p>
+            <p className="flex items-center gap-3"><Globe2 size={18} className="text-accent-glow" />Operação em +20 países</p>
+          </div>
+          <p className="mt-6 text-[14px] font-bold uppercase text-accent-glow" style={{ letterSpacing: "0.14em" }}>Atuação</p>
+          <div className="mt-3 flex flex-wrap gap-2">{["Compras", "Qualidade", "P&D", "ESG", "Compliance"].map((p) => <Pill key={p} dark>{p}</Pill>)}</div>
         </div>
-        <p className="mt-7 text-[14px] font-bold uppercase text-accent-glow" style={{ letterSpacing: "0.14em" }}>Atuação</p>
-        <div className="mt-3 flex flex-wrap gap-2">{["Compras", "Qualidade", "P&D", "ESG", "Compliance"].map((p) => <Pill key={p} dark>{p}</Pill>)}</div>
       </div>
     </div>
   </Slide>
 );
 
+const MiniRow = ({ name, tag, ok }: { name: string; tag: string; ok: boolean }) => (
+  <div className="flex items-center gap-3 rounded-xl border border-primary-foreground/10 bg-primary-foreground/[0.06] px-4 py-2.5">
+    <span className="size-8 shrink-0 rounded-full bg-accent/25" />
+    <span className="flex-1 text-[16px] font-semibold text-primary-foreground">{name}</span>
+    <span className={`rounded-full px-3 py-1 text-[12px] font-bold ${ok ? "bg-success/20 text-success" : "bg-accent/20 text-accent-glow"}`}>{tag}</span>
+  </div>
+);
+
 const S03 = () => (
   <Slide n={3} dark decor={<DarkEcho />}>
-    <Header n="02" label="Metodologia" dark />
-    <Title dark>Uma jornada completa, da prospecção ao monitoramento.</Title>
-    <div className="my-auto flex items-start gap-5">
-      {[[Search, "Prospecção inteligente", "Conectamos empresas a fornecedores e especialistas qualificados para fortalecer a cadeia."], [Workflow, "Homologação personalizada", "Fluxos por área (Qualidade, Compras, P&D) com critérios técnicos, sanitários e etapas auditáveis."], [Eye, "Monitoramento contínuo", "Alertas de vencimento, evidências organizadas e relatórios prontos para auditoria."]].map(([I, t, d], i, a) => {
-        const Icon = I as typeof Search;
-        return <Fragment key={String(t)}>
-          <div className="flex-1 rounded-3xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-8">
-            <div className="flex items-center justify-between"><span className="grid size-16 place-items-center rounded-2xl bg-accent/15 text-accent-glow"><Icon size={32} /></span><span className="font-display text-[44px] font-bold text-primary-foreground/15">0{i + 1}</span></div>
-            <h3 className="mt-6 text-[28px] font-bold text-primary-foreground">{String(t)}</h3>
-            <p className="mt-3 text-[19px] leading-[1.45] text-primary-foreground/75">{String(d)}</p>
-          </div>
-          {i < a.length - 1 && <ArrowRight className="mt-24 shrink-0 text-accent-glow" size={30} />}
-        </Fragment>;
-      })}
+    <Header n="02" label="Metodologia · 1 de 2" dark />
+    <Title dark size={48}>Tudo começa com a conexão certa.</Title>
+    <div className="my-auto grid grid-cols-2 gap-8">
+      <div className="rounded-3xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-7">
+        <div className="flex items-center justify-between">
+          <span className="grid size-14 place-items-center rounded-2xl bg-accent/15 text-accent-glow"><Search size={28} /></span>
+          <span className="font-display text-[40px] font-bold text-primary-foreground/15">01</span>
+        </div>
+        <h3 className="mt-4 text-[26px] font-bold text-primary-foreground">Prospecção inteligente</h3>
+        <p className="mt-2 text-[17px] leading-[1.4] text-primary-foreground/75">Conectamos empresas a fornecedores e especialistas qualificados para fortalecer a cadeia.</p>
+        <div className="mt-5 space-y-2.5">
+          <div className="flex items-center gap-3 rounded-xl border border-primary-foreground/10 bg-primary/40 px-4 py-2.5 text-[15px] text-primary-foreground/60"><Search size={17} />Buscar fornecedor de ingredientes…</div>
+          <MiniRow name="Alimentos Litoral" tag="Homologado" ok />
+          <MiniRow name="Grãos do Vale" tag="Em análise" ok={false} />
+          <MiniRow name="Embalagens Prisma" tag="Homologado" ok />
+        </div>
+      </div>
+      <div className="rounded-3xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-7">
+        <div className="flex items-center justify-between">
+          <span className="grid size-14 place-items-center rounded-2xl bg-accent/15 text-accent-glow"><Workflow size={28} /></span>
+          <span className="font-display text-[40px] font-bold text-primary-foreground/15">02</span>
+        </div>
+        <h3 className="mt-4 text-[26px] font-bold text-primary-foreground">Homologação personalizada</h3>
+        <p className="mt-2 text-[17px] leading-[1.4] text-primary-foreground/75">Fluxos por área — Qualidade, Compras, P&amp;D — com critérios técnicos, sanitários e etapas auditáveis.</p>
+        <div className="mt-5 rounded-xl border border-primary-foreground/10 bg-primary/40 p-4">
+          <div className="flex items-center justify-between text-[13px] font-bold text-primary-foreground/70"><span>Documentos</span><span>Análise técnica</span><span>Visita</span><span>Aprovado</span></div>
+          <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-primary-foreground/10"><div className="h-full w-3/4 rounded-full bg-gradient-to-r from-accent-glow to-accent" /></div>
+          <div className="mt-3 flex items-center gap-2 text-[14px] text-primary-foreground/70"><CheckCircle2 size={16} className="text-success" />12 de 16 requisitos concluídos</div>
+        </div>
+        <div className="mt-2.5 flex gap-2">{["Qualidade", "Compras", "P&D"].map((p) => <span key={p} className="rounded-full border border-primary-foreground/15 bg-primary-foreground/[0.08] px-3.5 py-1.5 text-[13px] font-semibold text-primary-foreground/80">{p}</span>)}</div>
+      </div>
     </div>
-    <div className="mb-6 w-fit rounded-2xl border border-accent/30 bg-accent/15 px-7 py-4 text-[21px] font-semibold text-primary-foreground">Cada etapa alimenta a próxima — dados, responsáveis e evidências sempre conectados.</div>
   </Slide>
+);
+
+const MonMock = () => (
+  <Window title="MyTS · Monitoramento">
+    <div className="p-6">
+      <div className="grid grid-cols-3 gap-3">
+        {[["98%", "base em dia"], ["14", "alertas do mês"], ["0", "RNC críticas"]].map(([v, l]) => <div key={l} className="rounded-xl bg-secondary px-4 py-3"><strong className="block text-[26px] leading-none text-foreground">{v}</strong><span className="mt-1.5 block text-[13px] text-muted-foreground">{l}</span></div>)}
+      </div>
+      <div className="mt-4 space-y-2.5">
+        {[[BellRing, "Certificado FSSC do fornecedor Litoral vence em 12 dias", false], [BellRing, "Laudo microbiológico recebido e aprovado", true], [BellRing, "Autoavaliação trimestral enviada a 38 fornecedores", true]].map(([I, t, ok]) => { const Icon = I as typeof BellRing; return <div key={String(t)} className="flex items-center gap-3 rounded-xl border border-border px-4 py-2.5"><Icon size={18} className={ok ? "text-accent" : "text-destructive"} /><span className="text-[15px] font-medium text-foreground">{String(t)}</span></div>; })}
+      </div>
+      <div className="mt-4 flex h-[92px] items-end gap-2 rounded-xl bg-secondary p-4">
+        {[40, 55, 48, 62, 70, 66, 78, 84, 80, 92].map((h, i) => <div key={i} className="w-full rounded-t bg-accent/70" style={{ height: h }} />)}
+      </div>
+    </div>
+  </Window>
 );
 
 const S04 = () => (
   <Slide n={4} decor={<LightEcho />}>
+    <Header n="02" label="Metodologia · 2 de 2" />
+    <div className="grid flex-1 grid-cols-[0.9fr_1.1fr] items-center gap-12">
+      <div>
+        <Title size={48}>Monitoramento contínuo: a cadeia viva, todos os dias.</Title>
+        <p className="mt-5 text-[20px] leading-[1.45] text-foreground/75">Depois da homologação, a MyTS vigia vencimentos, evidências e desempenho — sem trabalho manual.</p>
+        <Checks items={["Alertas automáticos de vencimento", "Evidências e relatórios prontos para auditoria", "Cada etapa alimenta a próxima"]} />
+      </div>
+      <MonMock />
+    </div>
+  </Slide>
+);
+
+const S04 = () => (
+  <Slide n={5} decor={<LightEcho />}>
     <Header n="03" label="Soluções integradas" />
     <Title>Uma plataforma, seis frentes de trabalho.</Title>
-    <div className="my-auto grid grid-cols-3 gap-6 pr-[110px]">
+    <div className="my-auto grid grid-cols-3 gap-6">
       {[[Handshake, "Homologação de fornecedores", "Critérios sanitários, técnicos e regulatórios em um fluxo rápido e seguro."], [FileStack, "Gestão documental e lista mestra", "Arquivos internos e externos com validades, versões e aprovações."], [Gauge, "Monitoramento B2B", "Matriz de risco personalizada, certidões, laudos e status em tempo real."], [ListChecks, "Autoavaliação e checklists", "Diagnósticos remotos de qualidade, BPF, segurança dos alimentos e ESG."], [AlertTriangle, "RNC e processos", "Não conformidades, planos de ação e histórico de desempenho."], [ShieldCheck, "Prontidão para auditorias", "Painéis prontos para 2ª parte, FSSC 22000, ISO e conformidade sanitária."]].map(([I, t, d]) => {
         const Icon = I as typeof Handshake;
         return <div key={String(t)} className="rounded-2xl border border-border bg-card p-6 shadow-card">
@@ -209,8 +267,8 @@ const DocsMock = () => (
 );
 
 const S05 = () => (
-  <Slide n={5} decor={<LightEcho side="left" />}>
-    <div className="grid flex-1 grid-cols-[0.8fr_1.2fr] items-center gap-12 pl-[110px]">
+  <Slide n={6} decor={<LightEcho side="left" />}>
+    <div className="grid flex-1 grid-cols-[0.8fr_1.2fr] items-center gap-12">
       <div>
         <Header n="04" label="Módulo" />
         <div className="mt-6"><Pill>Meus Documentos</Pill></div>
@@ -241,8 +299,8 @@ const SupMock = () => (
 );
 
 const S06 = () => (
-  <Slide n={6} decor={<LightEcho />}>
-    <div className="grid flex-1 grid-cols-[1.15fr_0.85fr] items-center gap-12 pr-[110px]">
+  <Slide n={7} decor={<LightEcho />}>
+    <div className="grid flex-1 grid-cols-[1.15fr_0.85fr] items-center gap-12">
       <SupMock />
       <div>
         <Header n="05" label="Módulo" />
@@ -256,7 +314,7 @@ const S06 = () => (
 );
 
 const S07 = () => (
-  <Slide n={7} dark decor={<DarkEcho pos="-top-24 -right-32" size={560} />}>
+  <Slide n={8} dark decor={<DarkEcho pos="-top-24 -right-32" size={560} />}>
     <Header n="06" label="Processos e autoavaliação" dark />
     <Title dark>Do checklist ao plano de ação, sem perder nenhuma etapa.</Title>
     <div className="relative my-auto">
@@ -278,18 +336,22 @@ const S07 = () => (
 );
 
 const S08 = () => (
-  <Slide n={8} decor={<LightEcho side="left" />}>
-    <div className="flex flex-1 flex-col pl-[110px]">
+  <Slide n={9} decor={<LightEcho side="left" />}>
+    <div className="flex flex-1 flex-col">
       <Header n="07" label="Além do software" />
       <Title>Tecnologia com gente de verdade em campo.</Title>
       <div className="my-auto grid grid-cols-[440px_1fr] items-center gap-8">
-        <div className="relative overflow-hidden rounded-3xl bg-primary p-8">
-          <strong className="block font-display text-[88px] leading-none text-accent-glow">100+</strong>
-          <p className="mt-3 text-[21px] leading-[1.4] text-primary-foreground/85">auditores e especialistas no Brasil e no exterior.</p>
-          <div className="mt-7 flex items-center gap-3 text-[17px] font-semibold text-primary-foreground">
-            <span className="flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-2"><MapPin size={16} className="text-accent-glow" />Botucatu</span>
-            <span className="h-px flex-1 border-t-2 border-dashed border-accent-glow/60" />
-            <span className="flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-2"><MapPin size={16} className="text-accent-glow" />Charlotte</span>
+        <div className="relative h-[430px] overflow-hidden rounded-3xl">
+          <img src={auditoriaImg} alt="Auditora em visita técnica na indústria" loading="lazy" width={1024} height={768} className="h-full w-full object-cover" />
+          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-primary via-primary/35 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 p-7">
+            <strong className="block font-display text-[64px] leading-none text-accent-glow">100+</strong>
+            <p className="mt-2 text-[18px] leading-[1.35] text-primary-foreground/90">auditores e especialistas no Brasil e no exterior.</p>
+            <div className="mt-4 flex items-center gap-3 text-[15px] font-semibold text-primary-foreground">
+              <span className="flex items-center gap-2 rounded-full bg-primary-foreground/15 px-4 py-2 backdrop-blur"><MapPin size={15} className="text-accent-glow" />Botucatu</span>
+              <span className="h-px flex-1 border-t-2 border-dashed border-accent-glow/60" />
+              <span className="flex items-center gap-2 rounded-full bg-primary-foreground/15 px-4 py-2 backdrop-blur"><MapPin size={15} className="text-accent-glow" />Charlotte</span>
+            </div>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-5">
@@ -304,7 +366,7 @@ const S08 = () => (
 );
 
 const S09 = () => (
-  <Slide n={9} dark decor={<><Grid dark /><Glyph size={760} tone="light" opacity={0.05} className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" /></>}>
+  <Slide n={10} dark decor={<><Grid dark /><Glyph size={760} tone="light" opacity={0.05} className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" /></>}>
     <div className="flex items-center justify-between"><img src={mytsLogo} alt="MyTS" className="h-[44px] w-auto" style={{ filter: "brightness(0) invert(1)" }} /><Pill dark>Vamos conversar</Pill></div>
     <div className="flex flex-1 flex-col items-center justify-center text-center">
       <p className="text-[15px] font-bold uppercase text-accent-glow" style={{ letterSpacing: "0.16em" }}>Empresas que já confiam na MyTS</p>
@@ -326,7 +388,7 @@ const MaterialComercial = () => {
       <Helmet><title>MyTS — Material Comercial</title><meta name="description" content="Conheça a MyTS: plataforma para gestão de fornecedores, documentos e processos da cadeia de suprimentos." /></Helmet>
       <style>{`html,body,#root{margin:0;padding:0;background:hsl(var(--primary))}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:1600px 900px landscape;margin:0}@media print{.no-print{display:none!important}.slide-frame{border-radius:0!important;break-after:page;page-break-after:always}}`}</style>
       {!print && <Button onClick={() => window.open(`${window.location.pathname}?print`, "_blank")} className="no-print fixed right-6 top-6 z-50 h-12 rounded-full bg-accent px-6 text-accent-foreground shadow-cta"><Download />Baixar PDF</Button>}
-      {[S01, S02, S03, S04, S05, S06, S07, S08, S09].map((C, i) => <C key={i} />)}
+      {[S01, S02, S03, S04, S05, S06, S07, S08, S09, S10].map((C, i) => <C key={i} />)}
     </main>
   );
 };
