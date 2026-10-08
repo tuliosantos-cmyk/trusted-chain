@@ -172,7 +172,7 @@ const ProofSlide = () => (
   <Slide n={4} decor={<LightEcho />}>
     <Header n="03" label="Projetos e presença na imprensa" />
     <Title size={50}>Projetos reais. Repercussão além da plataforma.</Title>
-    <div className="mt-8 grid flex-1 grid-cols-[0.95fr_1.05fr] gap-12">
+    <div className="mt-6 grid min-h-0 flex-1 grid-cols-[0.95fr_1.05fr] gap-12">
       <div className="flex flex-col justify-center gap-8">
         <div className="border-l-4 border-accent pl-7">
           <img src={commercialClients[0].src} alt="Carrefour" className="h-[54px] max-w-[190px] object-contain object-left" />
@@ -188,14 +188,14 @@ const ProofSlide = () => (
         </div>
       </div>
       <div className="flex flex-col justify-center">
-        <p className="mb-4 text-[16px] font-bold uppercase text-accent">Na imprensa</p>
-        <div className="space-y-4">{commercialNews.map((news) => <article key={news.url} className="rounded-lg border border-border bg-card p-5 shadow-card">
+        <p className="mb-3 text-[16px] font-bold uppercase text-accent">Na imprensa</p>
+        <div className="space-y-3">{commercialNews.map((news) => <article key={news.url} className="rounded-lg border border-border bg-card px-5 py-4 shadow-card">
           <div className="flex items-center justify-between gap-4"><span className="text-[21px] font-bold text-accent">{news.publisher}</span><span className="text-[15px] text-muted-foreground">{news.date}</span></div>
-          <h3 className="mt-2 text-[20px] font-bold leading-[1.3] text-foreground">{news.title}</h3>
-          <p className="mt-2 text-[17px] leading-[1.4] text-muted-foreground">{news.summary}</p>
-          <Button asChild variant="link" className="mt-2 h-auto justify-start p-0 text-[15px] font-bold text-accent"><a href={news.url} target="_blank" rel="noopener noreferrer">Ler matéria<ExternalLink size={15} /></a></Button>
+          <h3 className="mt-2 text-[19px] font-bold leading-[1.25] text-foreground">{news.title}</h3>
+          <p className="mt-2 text-[16px] leading-[1.35] text-muted-foreground">{news.summary}</p>
+          <Button asChild variant="link" className="mt-1 h-auto justify-start p-0 text-[15px] font-bold text-accent"><a href={news.url} target="_blank" rel="noopener noreferrer">Ler matéria<ExternalLink size={15} /></a></Button>
         </article>)}</div>
-        <p className="mt-3 text-[13px] text-muted-foreground">Fontes: matérias publicadas nos portais indicados. Links clicáveis na apresentação e no PDF.</p>
+        <p className="mt-2 text-[13px] text-muted-foreground">Fontes: Valor Econômico, TI Inside e Inforchannel.</p>
       </div>
     </div>
   </Slide>
