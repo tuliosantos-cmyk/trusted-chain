@@ -267,7 +267,7 @@ const ApresentacaoMytsPremium = () => {
 
   return (
     <main className={`premium-deck ${printMode ? "is-print" : ""}`} onTouchStart={(e) => { touchStart.current = e.touches[0]?.clientX ?? null; }} onTouchEnd={(e) => { const end = e.changedTouches[0]?.clientX; if (touchStart.current !== null && end !== undefined && Math.abs(end - touchStart.current) > 50) go(current + (end < touchStart.current ? 1 : -1)); }}>
-      <Helmet><title>{current}/{TOTAL} — MyTS · Uma fonte confiável</title><meta name="description" content="Apresentação visual da plataforma MyTS, sua metodologia, módulos e serviços especializados." /></Helmet>
+      <Helmet><title>{`${current}/${TOTAL} — MyTS · Uma fonte confiável`}</title><meta name="description" content="Apresentação visual da plataforma MyTS, sua metodologia, módulos e serviços especializados." /></Helmet>
       <style>{premiumCss}</style>
       {printMode ? slides.map((Component, index) => <Component key={index} />) : (
         <div className="premium-viewport"><div className="premium-stage" style={{ transform: `scale(${scale})` }}><CurrentSlide /></div></div>
