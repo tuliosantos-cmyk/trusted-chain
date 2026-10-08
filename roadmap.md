@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] Unir metodologia e atualizar indicadores; reorganizar fornecedores e processos sem IQF e verificar as nove telas.
+
 - [x] Atualizar material comercial: três módulos contratáveis, solicitações e histórico de fornecedores, metodologia de processos e apresentação visual dos serviços; dez páginas revisadas e PDF atualizado.
 
 - [x] Ampliar 12A, 12B e 12C com conteúdo completo; 12B dividido em duas lâminas; novo PDF de 50 páginas gerado e revisado visualmente
