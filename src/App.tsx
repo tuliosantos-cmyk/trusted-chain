@@ -17,6 +17,7 @@ import GestaoFornecedores from "./pages/GestaoFornecedores.tsx";
 import HomologacaoFornecedores from "./pages/HomologacaoFornecedores.tsx";
 import ApresentacaoComercial from "./pages/ApresentacaoComercial.tsx";
 import MaterialComercial from "./pages/MaterialComercial.tsx";
+import ApresentacaoImplantacaoRalston from "./pages/ApresentacaoImplantacaoRalston.tsx";
 import ApresentacaoInstitucional from "./pages/ApresentacaoInstitucional.tsx";
 import ApresentacaoInstitucionalPt from "./pages/ApresentacaoInstitucionalPt.tsx";
 import ApresentacaoImplantacaoMds from "./pages/ApresentacaoImplantacaoMds.tsx";
@@ -50,6 +51,7 @@ const App = () => (
             <Route path="/homologacao-de-fornecedores" element={<HomologacaoFornecedores />} />
             <Route path="/apresentacao-comercial" element={<ApresentacaoComercial />} />
             <Route path="/material-comercial" element={<MaterialComercial />} />
+            <Route path="/apresentacao-implantacao-ralston" element={<ApresentacaoImplantacaoRalston />} />
             <Route path="/apresentacao-institucional" element={<ApresentacaoInstitucional />} />
             <Route path="/apresentacao-institucional-pt" element={<ApresentacaoInstitucionalPt />} />
             <Route path="/apresentacao-implantacao-mds" element={<ApresentacaoImplantacaoMds />} />
