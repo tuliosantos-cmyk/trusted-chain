@@ -7,4 +7,3 @@
 - Keep the SDR training deck at `/treinamento-sdr` as an independent 1600×900 presentation with print-ready slides.
 - Define SDR onboarding content separately from its visual layouts so grouped demonstration guides and full training slides share the same navigation and print frame.
 - Use dedicated SDR visual layouts for channel guides, cadence grids, spoken scripts, detailed call steps, objection responses and client references to keep dense training content inside the fixed print canvas; split detailed explanations across slides rather than omitting content.
-- Keep the premium MyTS overview at `/apresentacao-myts-premium` as an independent 1600×900 visual presentation with URL-driven navigation and print-ready slides.
