@@ -1,6 +1,7 @@
 # Architecture decisions
 
 - Keep commercial presentation metrics in a shared data module with concrete-value tests so commercial figures remain consistent and verifiable.
+- Keep the commercial customer roster and dated press references in a dedicated evidence module; distinguish verified customers from pilots, proposals and partners to avoid misleading social proof.
 - Render decorative MyTS marks as inline SVG from the trusted local asset, not URL masks, to preserve the silhouette in preview and print.
 - Keep the Ralston pilot deck at `/apresentacao-implantacao-ralston` with a fixed 1600×900 print canvas and separately tested client figures so the dated report remains independently shareable.
 
