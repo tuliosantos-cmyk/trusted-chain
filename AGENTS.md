@@ -1,6 +1,8 @@
 # Architecture decisions
 
 - Keep commercial presentation metrics in a shared data module with concrete-value tests so commercial figures remain consistent and verifiable.
+- Render decorative MyTS marks as inline SVG from the trusted local asset, not URL masks, to preserve the silhouette in preview and print.
+- Keep the Ralston pilot deck at `/apresentacao-implantacao-ralston` with a fixed 1600×900 print canvas and separately tested client figures so the dated report remains independently shareable.
 
 - Keep the English institutional deck at `/apresentacao-institucional` and the Portuguese duplicate at `/apresentacao-institucional-pt` so both language versions remain independently shareable.
 - Keep the MDS implementation deck at `/apresentacao-implantacao-mds` as an independent 1600×900 presentation with print-ready slides.

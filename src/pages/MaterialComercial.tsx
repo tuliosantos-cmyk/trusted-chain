@@ -8,7 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { commercialMetrics } from "@/lib/commercial-metrics";
 import mytsLogo from "@/assets/myts-logo.svg";
-import mytsMark from "@/assets/myts-mark.svg";
+import mytsMark from "@/assets/myts-mark.svg?raw";
 import carrefourLogo from "@/assets/clientes/Carrefour_logo.png";
 import korinLogo from "@/assets/clientes/Korin_logo.png";
 import cvaleLogo from "@/assets/clientes/C._Vale_logo.png";
@@ -64,11 +64,11 @@ const Slide = ({ children, dark = false, decor, n }: { children: React.ReactNode
 };
 
 /* ---------- Logo como elemento gráfico ---------- */
-const markMask: React.CSSProperties = { WebkitMaskImage: `url(${mytsMark})`, maskImage: `url(${mytsMark})`, WebkitMaskRepeat: "no-repeat", maskRepeat: "no-repeat", WebkitMaskSize: "contain", maskSize: "contain", WebkitMaskPosition: "center", maskPosition: "center" };
+const markSvg = mytsMark.replace(/fill="white"/g, 'fill="currentColor"').replace('width="173" height="179"', 'width="100%" height="100%"');
 /** Símbolo MyTS pintado com um token (sólido ou gradiente). */
 const Glyph = ({ size, tone = "accent", opacity = 1, className = "", style }: { size: number; tone?: "accent" | "glow" | "light" | "navy" | "gradient"; opacity?: number; className?: string; style?: React.CSSProperties }) => {
-  const bg = { accent: "hsl(var(--accent))", glow: "hsl(var(--accent-glow))", light: "hsl(var(--primary-foreground))", navy: "hsl(var(--primary))", gradient: "linear-gradient(135deg, hsl(var(--accent-glow)), hsl(var(--accent)) 55%, hsl(var(--primary)))" }[tone];
-  return <div aria-hidden className={`pointer-events-none absolute ${className}`} style={{ width: size, height: size * 179 / 173, background: bg, opacity, ...markMask, ...style }} />;
+  const color = { accent: "hsl(var(--accent))", glow: "hsl(var(--accent-glow))", light: "hsl(var(--primary-foreground))", navy: "hsl(var(--primary))", gradient: "hsl(var(--accent-glow))" }[tone];
+  return <div aria-hidden className={`pointer-events-none absolute ${className}`} style={{ width: size, height: size * 179 / 173, color, opacity, ...style }} dangerouslySetInnerHTML={{ __html: markSvg }} />;
 };
 const Grid = ({ dark = false }: { dark?: boolean }) => <div aria-hidden className={`absolute inset-0 ${dark ? "opacity-20" : "opacity-40"} grid-pattern`} />;
 
