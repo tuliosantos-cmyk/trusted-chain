@@ -6,6 +6,7 @@ import {
   MessageCircle, Network, Search, ShieldCheck, Users, Workflow,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { commercialMetrics } from "@/lib/commercial-metrics";
 import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg";
 import carrefourLogo from "@/assets/clientes/Carrefour_logo.png";
@@ -23,7 +24,7 @@ import auditoriaImg from "@/assets/material/auditoria-campo.jpg";
 const W = 1600;
 const H = 900;
 const P = 64;
-const TOTAL = 10;
+const TOTAL = 9;
 
 const usePrintMode = () => {
   const [print, setPrint] = useState(false);
@@ -121,7 +122,7 @@ const S01 = () => (
       <h1 className="mt-6 max-w-[980px] font-display text-[70px] font-bold leading-[1.03] text-primary-foreground">Empresas, fornecedores e processos conectados em uma <span className="text-accent-glow">cadeia confiável.</span></h1>
       <p className="mt-7 max-w-[820px] text-[26px] leading-[1.4] text-primary-foreground/80">Plataforma inteligente para Compras, Qualidade, P&amp;D, ESG e Compliance.</p>
       <div className="mt-11 flex gap-4">
-        {[["+1.500", "empresas ativas"], ["50K+", "documentos"], ["+200", "processos"], ["+20", "países"]].map(([v, l]) => (
+        {commercialMetrics.map(({ value, label }) => [value, label]).map(([v, l]) => (
           <div key={l} className="w-fit rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.07] px-6 py-4">
             <strong className="block font-display text-[36px] leading-none text-primary-foreground">{v}</strong>
             <span className="mt-2 block text-[16px] text-primary-foreground/70">{l}</span>
@@ -174,74 +175,32 @@ const MiniRow = ({ name, tag, ok }: { name: string; tag: string; ok: boolean }) 
 );
 
 const S03 = () => (
-  <Slide n={3} dark decor={<DarkEcho />}>
-    <Header n="02" label="Metodologia · 1 de 2" dark />
-    <Title dark size={48}>Tudo começa com a conexão certa.</Title>
-    <div className="my-auto grid grid-cols-2 gap-8">
-      <div className="rounded-3xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-7">
-        <div className="flex items-center justify-between">
-          <span className="grid size-14 place-items-center rounded-2xl bg-accent/15 text-accent-glow"><Search size={28} /></span>
-          <span className="font-display text-[40px] font-bold text-primary-foreground/15">01</span>
+  <Slide n={3} dark decor={<DarkEcho size={460} />}>
+    <Header n="02" label="Metodologia MyTS" dark />
+    <Title dark size={50}>Uma jornada completa. Uma base confiável.</Title>
+    <p className="mt-4 text-[22px] text-primary-foreground/75">Da conexão com o parceiro ao acompanhamento contínuo da sua cadeia.</p>
+    <div className="my-auto grid grid-cols-3 gap-8">
+      {[
+        { icon: Search, title: "Prospecção", description: "Encontre fornecedores e especialistas para as necessidades da sua operação." },
+        { icon: Workflow, title: "Homologação", description: "Defina requisitos, envolva as áreas e registre cada análise até a aprovação." },
+        { icon: BellRing, title: "Monitoramento", description: "Acompanhe validades, novas evidências e pendências depois da homologação." },
+      ].map((step, i) => { const Icon = step.icon; return <div key={step.title}>
+        <div className="flex items-center gap-4 border-t border-accent-glow/40 pt-5"><span className="grid size-12 place-items-center rounded-lg bg-accent/20 text-accent-glow"><Icon size={26} /></span><span className="text-[19px] font-bold text-accent-glow">0{i + 1}</span>{i < 2 && <ArrowRight className="ml-auto text-accent-glow" size={26} />}</div>
+        <h3 className="mt-5 text-[30px] font-bold text-primary-foreground">{step.title}</h3>
+        <p className="mt-3 h-[90px] text-[20px] leading-[1.45] text-primary-foreground/75">{step.description}</p>
+        <div className="mt-6 overflow-hidden rounded-lg border border-border bg-card text-foreground">
+          <div className="border-b border-border bg-secondary px-4 py-3 text-[15px] text-muted-foreground">MyTS · {step.title}</div>
+          <div className="h-[192px] p-5">
+            {i === 0 ? <><p className="flex items-center gap-2 rounded-lg bg-secondary p-3 text-[16px] text-muted-foreground"><Search size={18} />Ingredientes e embalagens</p>{["Alimentos Litoral", "Embalagens Prisma"].map(x => <p key={x} className="mt-4 flex items-center justify-between text-[17px] font-semibold">{x}<Handshake size={19} className="text-accent" /></p>)}</> : i === 1 ? <><p className="text-[18px] font-bold">12 de 16 requisitos concluídos</p><div className="my-5 h-3 rounded-full bg-secondary"><div className="h-full w-3/4 rounded-full bg-accent" /></div><p className="text-[16px] text-muted-foreground">Documentos → Análise → Aprovação</p><p className="mt-4 flex items-center gap-2 text-[16px] text-success"><CheckCircle2 size={19} />Análise técnica registrada</p></> : <><p className="text-[18px] font-bold">Evidências e alertas em dia</p><p className="mt-5 flex items-center gap-3 text-[16px]"><BellRing size={20} className="text-destructive" />Certificado vence em 12 dias</p><p className="mt-4 flex items-center gap-3 text-[16px]"><CheckCircle2 size={20} className="text-success" />Novo laudo recebido</p><p className="mt-4 text-[15px] text-muted-foreground">Histórico pronto para auditoria</p></>}
+          </div>
         </div>
-        <h3 className="mt-4 text-[26px] font-bold text-primary-foreground">Prospecção inteligente</h3>
-        <p className="mt-2 text-[17px] leading-[1.4] text-primary-foreground/75">Conectamos empresas a fornecedores e especialistas qualificados para fortalecer a cadeia.</p>
-        <div className="mt-5 space-y-2.5">
-          <div className="flex items-center gap-3 rounded-xl border border-primary-foreground/10 bg-primary/40 px-4 py-2.5 text-[15px] text-primary-foreground/60"><Search size={17} />Buscar fornecedor de ingredientes…</div>
-          <MiniRow name="Alimentos Litoral" tag="Homologado" ok />
-          <MiniRow name="Grãos do Vale" tag="Em análise" ok={false} />
-          <MiniRow name="Embalagens Prisma" tag="Homologado" ok />
-        </div>
-      </div>
-      <div className="rounded-3xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-7">
-        <div className="flex items-center justify-between">
-          <span className="grid size-14 place-items-center rounded-2xl bg-accent/15 text-accent-glow"><Workflow size={28} /></span>
-          <span className="font-display text-[40px] font-bold text-primary-foreground/15">02</span>
-        </div>
-        <h3 className="mt-4 text-[26px] font-bold text-primary-foreground">Homologação personalizada</h3>
-        <p className="mt-2 text-[17px] leading-[1.4] text-primary-foreground/75">Fluxos por área — Qualidade, Compras, P&amp;D — com critérios técnicos, sanitários e etapas auditáveis.</p>
-        <div className="mt-5 rounded-xl border border-primary-foreground/10 bg-primary/40 p-4">
-          <div className="flex items-center justify-between text-[13px] font-bold text-primary-foreground/70"><span>Documentos</span><span>Análise técnica</span><span>Visita</span><span>Aprovado</span></div>
-          <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-primary-foreground/10"><div className="h-full w-3/4 rounded-full bg-gradient-to-r from-accent-glow to-accent" /></div>
-          <div className="mt-3 flex items-center gap-2 text-[14px] text-primary-foreground/70"><CheckCircle2 size={16} className="text-success" />12 de 16 requisitos concluídos</div>
-        </div>
-        <div className="mt-2.5 flex gap-2">{["Qualidade", "Compras", "P&D"].map((p) => <span key={p} className="rounded-full border border-primary-foreground/15 bg-primary-foreground/[0.08] px-3.5 py-1.5 text-[13px] font-semibold text-primary-foreground/80">{p}</span>)}</div>
-      </div>
-    </div>
-  </Slide>
-);
-
-const MonMock = () => (
-  <Window title="MyTS · Monitoramento">
-    <div className="p-6">
-      <div className="grid grid-cols-3 gap-3">
-        {[["98%", "base em dia"], ["14", "alertas do mês"], ["0", "RNC críticas"]].map(([v, l]) => <div key={l} className="rounded-xl bg-secondary px-4 py-3"><strong className="block text-[26px] leading-none text-foreground">{v}</strong><span className="mt-1.5 block text-[13px] text-muted-foreground">{l}</span></div>)}
-      </div>
-      <div className="mt-4 space-y-2.5">
-        {[[BellRing, "Certificado FSSC do fornecedor Litoral vence em 12 dias", false], [BellRing, "Laudo microbiológico recebido e aprovado", true], [BellRing, "Autoavaliação trimestral enviada a 38 fornecedores", true]].map(([I, t, ok]) => { const Icon = I as typeof BellRing; return <div key={String(t)} className="flex items-center gap-3 rounded-xl border border-border px-4 py-2.5"><Icon size={18} className={ok ? "text-accent" : "text-destructive"} /><span className="text-[15px] font-medium text-foreground">{String(t)}</span></div>; })}
-      </div>
-      <div className="mt-4 flex h-[92px] items-end gap-2 rounded-xl bg-secondary p-4">
-        {[40, 55, 48, 62, 70, 66, 78, 84, 80, 92].map((h, i) => <div key={i} className="w-full rounded-t bg-accent/70" style={{ height: h }} />)}
-      </div>
-    </div>
-  </Window>
-);
-
-const S04 = () => (
-  <Slide n={4} decor={<LightEcho />}>
-    <Header n="02" label="Metodologia · 2 de 2" />
-    <div className="grid flex-1 grid-cols-[0.9fr_1.1fr] items-center gap-12">
-      <div>
-        <Title size={48}>Monitoramento contínuo: a cadeia viva, todos os dias.</Title>
-        <p className="mt-5 text-[20px] leading-[1.45] text-foreground/75">Depois da homologação, a MyTS vigia vencimentos, evidências e desempenho — sem trabalho manual.</p>
-        <Checks items={["Alertas automáticos de vencimento", "Evidências e relatórios prontos para auditoria", "Cada etapa alimenta a próxima"]} />
-      </div>
-      <MonMock />
+      </div>; })}
     </div>
   </Slide>
 );
 
 const S05 = () => (
-  <Slide n={5} decor={<LightEcho />}>
+  <Slide n={4} decor={<LightEcho />}>
     <Header n="03" label="Estrutura de contratação · SaaS" />
     <Title>Uma plataforma. Três módulos para contratar.</Title>
     <p className="mt-5 text-[23px] text-muted-foreground">Cada módulo organiza uma frente da operação. Juntos, conectam documentos, parceiros e processos.</p>
@@ -275,7 +234,7 @@ const DocsMock = () => (
 );
 
 const S06 = () => (
-  <Slide n={6} decor={<LightEcho side="left" />}>
+  <Slide n={5} decor={<LightEcho side="left" />}>
     <div className="grid flex-1 grid-cols-[0.8fr_1.2fr] items-center gap-12">
       <div>
         <Header n="04" label="Módulo 1 de 3" />
@@ -302,13 +261,13 @@ const SupMock = () => (
 );
 
 const S07 = () => (
-  <Slide n={7} decor={<LightEcho />}>
+  <Slide n={6} decor={<LightEcho />}>
     <Header n="05" label="Módulo 2 de 3 · Meus Fornecedores" />
-    <Title size={48}>Você solicita. O fornecedor participa.<br /><span className="text-accent">O histórico fica com a sua empresa.</span></Title>
-    <div className="my-auto grid grid-cols-[0.95fr_1.05fr] items-center gap-12">
+    <div className="grid flex-1 grid-cols-[0.85fr_1.15fr] items-center gap-14">
       <div>
-        <p className="text-[23px] leading-[1.45] text-foreground/75">Da homologação ao acompanhamento contínuo: organize o que pedir, a quem pedir e para qual produto.</p>
-        <div className="mt-7 space-y-5">{[[ListChecks, "Controle por produto, requisito e fornecedor", "Certidões, laudos e dados técnicos vinculados ao contexto certo."], [Users, "Acesso direto do fornecedor", "Notificações levam o parceiro às solicitações para responder e anexar documentos."], [FileStack, "Informações que não se perdem", "Solicitações, respostas, documentos anexados e análises preservados no histórico."]].map(([I, title, text]) => { const Icon = I as typeof ListChecks; return <div key={String(title)} className="flex items-start gap-4"><span className="grid size-11 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent"><Icon size={23} /></span><div><h3 className="text-[20px] font-bold leading-[1.3] text-foreground">{String(title)}</h3><p className="mt-1 text-[18px] leading-[1.4] text-muted-foreground">{String(text)}</p></div></div>; })}</div>
+        <Title size={48}>Solicite. Acompanhe.<br /><span className="text-accent">Preserve o histórico.</span></Title>
+        <p className="mt-6 text-[22px] leading-[1.45] text-foreground/75">Seu fornecedor participa diretamente, enquanto sua empresa mantém o controle de cada informação.</p>
+        <div className="mt-8 space-y-6">{[[ListChecks, "Produto, requisito e fornecedor", "Certidões, laudos e dados técnicos no contexto certo."], [Users, "Acesso e notificações", "O parceiro recebe a solicitação, responde e anexa documentos."], [FileStack, "Histórico centralizado", "Solicitações, respostas, anexos e análises preservados."]].map(([I, title, text]) => { const Icon = I as typeof ListChecks; return <div key={String(title)} className="flex items-start gap-4"><Icon size={26} className="mt-1 shrink-0 text-accent" /><div><h3 className="text-[22px] font-bold text-foreground">{String(title)}</h3><p className="mt-2 text-[19px] leading-[1.4] text-muted-foreground">{String(text)}</p></div></div>; })}</div>
       </div>
       <SupMock />
     </div>
@@ -316,22 +275,29 @@ const S07 = () => (
 );
 
 const S08 = () => (
-  <Slide n={8} dark decor={<DarkEcho pos="-top-24 -right-32" size={560} />}>
+  <Slide n={7} dark decor={<DarkEcho pos="-bottom-48 -right-32" size={480} />}>
     <Header n="06" label="Módulo 3 de 3 · Processos e Autoavaliação" dark />
-    <Title dark size={48}>Seu procedimento vira um processo vivo.</Title>
-    <p className="mt-4 text-[22px] text-primary-foreground/75">Da rotina no papel à execução com etapas, prazos e pessoas responsáveis.</p>
-    <div className="my-auto">
-      <div className="grid grid-cols-4 gap-5">{[[FileText, "1. Modelar", "Traga qualquer processo ou procedimento."], [Workflow, "2. Organizar", "Defina etapas, prazos e envolvidos."], [Users, "3. Executar", "Valide, aceite e aprove cada entrega."], [ClipboardCheck, "4. Registrar e tratar", "Formulários, notas, RNC e planos de ação."]].map(([I, title, description], i) => { const Icon = I as typeof FileText; return <div key={String(title)} className="relative border-t-2 border-accent-glow/50 pt-4"><div className="flex items-center gap-3"><Icon size={25} className="text-accent-glow" /><h3 className="text-[23px] font-bold text-primary-foreground">{String(title)}</h3>{i < 3 && <ArrowRight size={22} className="ml-auto text-accent-glow/60" />}</div><p className="mt-3 text-[18px] leading-[1.4] text-primary-foreground/75">{String(description)}</p></div>; })}</div>
-      <div className="mt-8 grid grid-cols-[1.15fr_0.85fr] gap-8">
-        <Window title="MyTS · Meus Processos · Liberação de produção"><div className="p-5"><div className="flex items-center justify-between"><strong className="text-[20px] text-foreground">Checklist operacional</strong><span className="text-[15px] font-bold text-accent">Responsável: Qualidade</span></div><div className="mt-4 space-y-2">{[["Registrar formulário de inspeção", "Operação", "Concluído"], ["Validar evidências e checklist", "Qualidade", "Em validação"], ["Aprovar liberação da linha", "Gestão", "Próxima etapa"]].map(([task, person, status]) => <div key={task} className="grid grid-cols-[1fr_90px_115px] gap-3 border-b border-border py-2.5 text-[15px]"><span className="font-semibold text-foreground">{task}</span><span className="text-muted-foreground">{person}</span><span className="text-accent">{status}</span></div>)}<div className="mt-4 flex items-center gap-3 rounded-lg bg-destructive/10 p-3 text-[16px] font-semibold text-destructive"><AlertTriangle size={21} />Desvio no checklist → RNC automática → plano de ação</div></div></div></Window>
-        <div className="flex flex-col justify-center"><h3 className="text-[22px] font-bold text-primary-foreground">A metodologia se adapta à sua rotina</h3><p className="mt-3 text-[19px] leading-[1.5] text-primary-foreground/75">Checklists com cálculo de notas (incluindo IQF), registros de formulários operacionais e tratamento de não conformidades no mesmo fluxo.</p><div className="mt-5 flex flex-wrap gap-2">{["Homologação", "Inspeções de BPF", "Liberação de produção", "Autoavaliações"].map(x => <span key={x} className="rounded-lg border border-primary-foreground/20 px-3 py-2 text-[16px] text-primary-foreground">{x}</span>)}</div></div>
+    <div className="grid flex-1 grid-cols-[0.75fr_1.25fr] items-center gap-12">
+      <div>
+        <Title dark size={46}>Sua rotina.<br />Seu fluxo.<br /><span className="text-accent-glow">Tudo acompanhado.</span></Title>
+        <p className="mt-6 text-[21px] leading-[1.5] text-primary-foreground/75">Transforme qualquer procedimento em etapas com prazos e responsáveis para validar, aceitar e aprovar.</p>
+        <div className="mt-8 space-y-5">{[[Workflow, "Etapas e pessoas", "Cada entrega segue o fluxo definido pela sua empresa."], [ClipboardCheck, "Checklists e formulários", "Notas, registros operacionais e evidências no mesmo lugar."], [AlertTriangle, "Desvios com tratativa", "RNC automática e acompanhamento dos planos de ação."]].map(([I,t,d])=>{const Icon=I as typeof Workflow;return <div key={String(t)} className="flex gap-3"><Icon className="mt-1 shrink-0 text-accent-glow" size={25}/><div><h3 className="text-[21px] font-bold text-primary-foreground">{String(t)}</h3><p className="mt-1 text-[18px] leading-[1.4] text-primary-foreground/75">{String(d)}</p></div></div>;})}</div>
       </div>
+      <Window title="MyTS · Meus Processos · Visão geral">
+        <div className="p-6">
+          <div className="flex items-center justify-between"><h3 className="text-[24px] font-bold text-foreground">Processos da operação</h3><span className="text-[14px] text-muted-foreground">Exemplo ilustrativo</span></div>
+          <div className="mt-5 grid grid-cols-3 gap-3">{[["6", "tipos de processo"], ["248", "envios realizados"], ["19", "em andamento"]].map(([v,l])=><div key={l} className="rounded-lg bg-secondary p-4"><strong className="block text-[30px] text-foreground">{v}</strong><span className="text-[14px] text-muted-foreground">{l}</span></div>)}</div>
+          <div className="mt-6 grid grid-cols-[1fr_65px_115px] gap-3 border-b border-border pb-3 text-[14px] font-bold text-muted-foreground"><span>Processo / categoria</span><span>Envios</span><span>Acompanhamento</span></div>
+          {[["Autoavaliação · Ingredientes", "84", "72 concluídos"], ["Autoavaliação · Embalagens", "56", "51 concluídos"], ["Autoavaliação · Serviços", "32", "28 concluídos"], ["Inspeção de BPF", "40", "40 concluídos"], ["Liberação de produção", "24", "22 concluídos"], ["Recebimento de materiais", "12", "12 concluídos"]].map(([t,n,status])=><div key={t} className="grid grid-cols-[1fr_65px_115px] items-center gap-3 border-b border-border py-4"><span className="text-[17px] font-semibold text-foreground">{t}</span><span className="text-[18px] font-bold text-accent">{n}</span><span className="text-[14px] text-muted-foreground">{status}</span></div>)}
+          <p className="mt-5 flex items-center gap-2 text-[15px] font-semibold text-accent"><Workflow size={19}/>Preencher → Validar → Aceitar → Aprovar</p>
+        </div>
+      </Window>
     </div>
   </Slide>
 );
 
 const S09 = () => (
-  <Slide n={9} decor={<LightEcho side="left" />}>
+  <Slide n={8} decor={<LightEcho side="left" />}>
     <div className="flex flex-1 flex-col">
       <Header n="07" label="Além do SaaS · Serviços MyTS" />
       <Title size={50}>Software para gerir. Especialistas para agir.</Title>
@@ -362,7 +328,7 @@ const S09 = () => (
 );
 
 const S10 = () => (
-  <Slide n={10} dark decor={<><Grid dark /><Glyph size={760} tone="light" opacity={0.05} className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" /></>}>
+  <Slide n={9} dark decor={<><Grid dark /><Glyph size={760} tone="light" opacity={0.05} className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" /></>}>
     <div className="flex items-center justify-between"><img src={mytsLogo} alt="MyTS" className="h-[44px] w-auto" style={{ filter: "brightness(0) invert(1)" }} /><Pill dark>Vamos conversar</Pill></div>
     <div className="flex flex-1 flex-col items-center justify-center text-center">
       <p className="text-[15px] font-bold uppercase text-accent-glow" style={{ letterSpacing: "0.16em" }}>Empresas que já confiam na MyTS</p>
@@ -384,7 +350,7 @@ const MaterialComercial = () => {
       <Helmet><title>MyTS — Material Comercial</title><meta name="description" content="Conheça a MyTS: plataforma para gestão de fornecedores, documentos e processos da cadeia de suprimentos." /></Helmet>
       <style>{`html,body,#root{margin:0;padding:0;background:hsl(var(--primary))}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:1600px 900px landscape;margin:0}@media print{.no-print{display:none!important}.slide-frame{border-radius:0!important;break-after:page;page-break-after:always}}`}</style>
       {!print && <Button onClick={() => window.open(`${window.location.pathname}?print`, "_blank")} className="no-print fixed right-6 top-6 z-50 h-12 rounded-full bg-accent px-6 text-accent-foreground shadow-cta"><Download />Baixar PDF</Button>}
-      {[S01, S02, S03, S04, S05, S06, S07, S08, S09, S10].map((C, i) => <C key={i} />)}
+      {[S01, S02, S03, S05, S06, S07, S08, S09, S10].map((C, i) => <C key={i} />)}
     </main>
   );
 };
