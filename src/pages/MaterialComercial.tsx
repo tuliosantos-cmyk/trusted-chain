@@ -28,12 +28,12 @@ import {
   BarChart3,
 } from "lucide-react";
 import mytsLogo from "@/assets/myts-logo.svg";
-import carrefourAsset from "@/assets/logos/carrefour.png.asset.json";
-import korinAsset from "@/assets/logos/korin.png.asset.json";
-import cvaleAsset from "@/assets/logos/cvale.webp.asset.json";
-import atakarejoAsset from "@/assets/logos/atakarejo.webp.asset.json";
-import martinsAsset from "@/assets/logos/martins.jpg.asset.json";
-import avalAsset from "@/assets/logos/aval.png.asset.json";
+import carrefourLogo from "@/assets/clientes/Carrefour_logo.png";
+import korinLogo from "@/assets/clientes/Korin_logo.png";
+import cvaleLogo from "@/assets/clientes/C._Vale_logo.png";
+import cfsLogo from "@/assets/clientes/CFS_logo.png";
+import carbexLogo from "@/assets/clientes/Carbex_logo.png";
+import viskaseLogo from "@/assets/clientes/Viskase_logo.png";
 
 /* ============================================================
    MATERIAL COMERCIAL MYTS — follow-up do SDR
@@ -45,12 +45,12 @@ const PAD = 64;
 const TOTAL = 9;
 
 const clientLogos = [
-  { name: "Carrefour", url: (carrefourAsset as { url: string }).url },
-  { name: "Korin", url: (korinAsset as { url: string }).url },
-  { name: "C.Vale", url: (cvaleAsset as { url: string }).url },
-  { name: "Atakarejo", url: (atakarejoAsset as { url: string }).url },
-  { name: "Redes Martins", url: (martinsAsset as { url: string }).url },
-  { name: "AVAL", url: (avalAsset as { url: string }).url },
+  { name: "Carrefour", url: carrefourLogo },
+  { name: "Korin", url: korinLogo },
+  { name: "C.Vale", url: cvaleLogo },
+  { name: "CFS", url: cfsLogo },
+  { name: "Carbex", url: carbexLogo },
+  { name: "Viskase", url: viskaseLogo },
 ];
 
 const usePrintMode = () => {
