@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] Recriar apresentação Ralston com o roteiro enviado, introdução MyTS/clientes, visuais legíveis e apoio de fala para Gisele; conferir navegação e impressão.
+- [x] Recriar apresentação Ralston em 12 telas com o roteiro enviado, introdução MyTS/clientes, visuais legíveis e apoio de fala para Gisele; navegação, logos e impressão conferidas, 12 testes aprovados.
 
 - [x] Trocar Atakarejo por Takasago nos seis clientes em destaque do material comercial; nove telas conferidas e PDF atualizado exportado.
 
