@@ -1,864 +1,336 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { Fragment, useLayoutEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import {
-  Building2,
-  FileStack,
-  Workflow,
-  ShieldCheck,
-  ListChecks,
-  Gauge,
-  Users,
-  Globe2,
-  MapPin,
-  Phone,
-  Mail,
-  ArrowRight,
-  ArrowLeft,
-  Check,
-  Search,
-  ClipboardCheck,
-  Network,
-  FileText,
-  AlertTriangle,
-  Download,
-  Factory,
-  Handshake,
-  Eye,
-  BellRing,
-  BarChart3,
+  AlertTriangle, ArrowRight, BarChart3, BellRing, Check, CheckCircle2, ClipboardCheck, Download,
+  Eye, Factory, FileStack, FileText, Gauge, Globe2, Handshake, ListChecks, Mail, MapPin,
+  MessageCircle, Network, Search, ShieldCheck, Users, Workflow,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import mytsLogo from "@/assets/myts-logo.svg";
+import mytsMark from "@/assets/myts-mark.svg";
 import carrefourLogo from "@/assets/clientes/Carrefour_logo.png";
 import korinLogo from "@/assets/clientes/Korin_logo.png";
 import cvaleLogo from "@/assets/clientes/C._Vale_logo.png";
 import cfsLogo from "@/assets/clientes/CFS_logo.png";
 import carbexLogo from "@/assets/clientes/Carbex_logo.png";
 import viskaseLogo from "@/assets/clientes/Viskase_logo.png";
+import augustaLogo from "@/assets/clientes/Augusta_Alimentos_logo.png";
+import takasagoLogo from "@/assets/clientes/Takasago_Logo.png";
 
-/* ============================================================
-   MATERIAL COMERCIAL MYTS — follow-up do SDR
-   Canvas fixo 1600x900, mesmo sistema dos decks anteriores
-   ============================================================ */
-const CANVAS_W = 1600;
-const CANVAS_H = 900;
-const PAD = 64;
+/* Material comercial MyTS — follow-up do SDR. Mesmo sistema visual da apresentação institucional. */
+const W = 1600;
+const H = 900;
+const P = 64;
 const TOTAL = 9;
-
-const clientLogos = [
-  { name: "Carrefour", url: carrefourLogo },
-  { name: "Korin", url: korinLogo },
-  { name: "C.Vale", url: cvaleLogo },
-  { name: "CFS", url: cfsLogo },
-  { name: "Carbex", url: carbexLogo },
-  { name: "Viskase", url: viskaseLogo },
-];
 
 const usePrintMode = () => {
   const [print, setPrint] = useState(false);
-  useLayoutEffect(() => {
-    setPrint(new URLSearchParams(window.location.search).has("print"));
-  }, []);
+  useLayoutEffect(() => setPrint(new URLSearchParams(window.location.search).has("print")), []);
   return print;
 };
 
-const Slide = ({
-  tone = "light",
-  children,
-  decor,
-}: {
-  tone?: "light" | "dark";
-  children: React.ReactNode;
-  decor?: React.ReactNode;
-}) => {
-  const frameRef = useRef<HTMLDivElement>(null);
-  const printMode = usePrintMode();
+const Slide = ({ children, dark = false, decor, n }: { children: React.ReactNode; dark?: boolean; decor?: React.ReactNode; n: number }) => {
+  const ref = useRef<HTMLElement>(null);
+  const print = usePrintMode();
   const [scale, setScale] = useState(0);
-
   useLayoutEffect(() => {
-    if (printMode) return;
-    const el = frameRef.current;
-    if (!el) return;
-    const update = () => setScale(el.clientWidth / CANVAS_W);
+    if (print || !ref.current) return;
+    const el = ref.current;
+    const update = () => setScale(el.clientWidth / W);
     update();
     const ro = new ResizeObserver(update);
     ro.observe(el);
     return () => ro.disconnect();
-  }, [printMode]);
-
+  }, [print]);
+  const s = print ? 1 : scale;
   return (
-    <section className={`mc-slide-frame ${printMode ? "mc-print-frame" : ""}`}>
-      <div
-        ref={frameRef}
-        className="mc-slide-viewport"
-        style={printMode ? { width: CANVAS_W, height: CANVAS_H } : undefined}
-      >
-        <div
-          className={`mc-slide mc-${tone}`}
-          style={
-            printMode
-              ? undefined
-              : { transform: `scale(${scale})`, opacity: scale ? 1 : 0 }
-          }
-        >
-          {decor}
-          <div className="mc-content">{children}</div>
+    <section ref={ref} className={`${dark ? "bg-primary" : "bg-background"} relative slide-frame`}
+      style={print ? { width: W, height: H, overflow: "hidden", breakAfter: "page" } : { width: "min(100%, calc((100vh - 64px) * 16 / 9))", aspectRatio: "16 / 9", overflow: "hidden", borderRadius: 16 }}>
+      <div className={`${dark ? "bg-primary" : "bg-background"} absolute left-0 top-0 overflow-hidden`} style={{ width: W, height: H, transform: `scale(${s})`, transformOrigin: "top left", visibility: s ? "visible" : "hidden" }}>
+        {decor}
+        <div className="relative flex h-full w-full flex-col" style={{ padding: P, paddingBottom: 40 }}>
+          {children}
+          <div className={`mt-auto flex items-center justify-between pt-4 text-[15px] font-semibold ${dark ? "text-primary-foreground/60" : "text-muted-foreground"}`}>
+            <img src={mytsLogo} alt="MyTS" className="h-[22px] w-auto" style={dark ? { filter: "brightness(0) invert(1)", opacity: 0.8 } : undefined} />
+            <span>{String(n).padStart(2, "0")} / {String(TOTAL).padStart(2, "0")}</span>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-const Eyebrow = ({ children }: { children: React.ReactNode }) => (
-  <p className="mc-eyebrow">{children}</p>
+/* ---------- Logo como elemento gráfico ---------- */
+const markMask: React.CSSProperties = { WebkitMaskImage: `url(${mytsMark})`, maskImage: `url(${mytsMark})`, WebkitMaskRepeat: "no-repeat", maskRepeat: "no-repeat", WebkitMaskSize: "contain", maskSize: "contain", WebkitMaskPosition: "center", maskPosition: "center" };
+/** Símbolo MyTS pintado com um token (sólido ou gradiente). */
+const Glyph = ({ size, tone = "accent", opacity = 1, className = "", style }: { size: number; tone?: "accent" | "glow" | "light" | "navy" | "gradient"; opacity?: number; className?: string; style?: React.CSSProperties }) => {
+  const bg = { accent: "hsl(var(--accent))", glow: "hsl(var(--accent-glow))", light: "hsl(var(--primary-foreground))", navy: "hsl(var(--primary))", gradient: "linear-gradient(135deg, hsl(var(--accent-glow)), hsl(var(--accent)) 55%, hsl(var(--primary)))" }[tone];
+  return <div aria-hidden className={`pointer-events-none absolute ${className}`} style={{ width: size, height: size * 179 / 173, background: bg, opacity, ...markMask, ...style }} />;
+};
+const Grid = ({ dark = false }: { dark?: boolean }) => <div aria-hidden className={`absolute inset-0 ${dark ? "opacity-20" : "opacity-40"} grid-pattern`} />;
+
+/** Composição para slides claros: faixa navy à direita com o símbolo em gradiente "saindo" do slide. */
+const LightEcho = ({ side = "right" }: { side?: "right" | "left" }) => (
+  <>
+    <Grid />
+    <div aria-hidden className={`absolute top-0 h-full w-[120px] bg-primary ${side === "right" ? "right-0" : "left-0"}`} />
+    <Glyph size={240} tone="gradient" className={side === "right" ? "-right-[90px] bottom-[70px]" : "-left-[90px] bottom-[70px]"} />
+    <Glyph size={520} tone="accent" opacity={0.05} className={side === "right" ? "-bottom-[180px] right-[60px]" : "-bottom-[180px] left-[60px]"} />
+  </>
+);
+const DarkEcho = ({ pos = "-bottom-48 -right-24", size = 680 }: { pos?: string; size?: number }) => (
+  <><Grid dark /><Glyph size={size} tone="light" opacity={0.06} className={pos} /><div aria-hidden className="absolute -left-40 -top-40 size-[520px] rounded-full bg-accent/20 blur-[120px]" /></>
 );
 
-const Footer = ({ n, dark }: { n: number; dark?: boolean }) => (
-  <div className={`mc-footer ${dark ? "mc-footer-dark" : ""}`}>
-    <img src={mytsLogo} alt="MyTS" className="mc-footer-logo" />
-    <span>
-      {String(n).padStart(2, "0")} / {String(TOTAL).padStart(2, "0")}
-    </span>
+/* ---------- Primitivas (padrão institucional) ---------- */
+const Header = ({ n, label, dark = false }: { n: string; label: string; dark?: boolean }) => (
+  <div className={`flex items-center gap-4 text-[17px] font-bold uppercase ${dark ? "text-accent-glow" : "text-accent"}`} style={{ letterSpacing: "0.16em" }}>
+    <span>{n}</span><span className={`h-px w-14 ${dark ? "bg-accent-glow/60" : "bg-accent/50"}`} />{label}
   </div>
 );
-
-/* ---------------- Mockups da plataforma ---------------- */
-
-const MockWindow = ({
-  title,
-  children,
-  className = "",
-}: {
-  title: string;
-  children: React.ReactNode;
-  className?: string;
-}) => (
-  <div className={`mc-mock ${className}`}>
-    <div className="mc-mock-bar">
-      <span />
-      <span />
-      <span />
-      <em>{title}</em>
+const Title = ({ children, dark = false, size = 54, max = 1240 }: { children: React.ReactNode; dark?: boolean; size?: number; max?: number }) => (
+  <h2 className={`font-display font-bold leading-[1.08] ${dark ? "text-primary-foreground" : "text-foreground"}`} style={{ fontSize: size, marginTop: 20, maxWidth: max }}>{children}</h2>
+);
+const Pill = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => (
+  <span className={`inline-flex w-fit items-center rounded-full border px-5 py-2 text-[17px] font-semibold ${dark ? "border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground" : "border-accent/25 bg-accent/10 text-accent"}`}>{children}</span>
+);
+const Window = ({ children, title }: { children: React.ReactNode; title: string }) => (
+  <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-elegant">
+    <div className="flex h-12 items-center gap-2 border-b border-border bg-secondary px-5">
+      <i className="size-2.5 rounded-full bg-destructive/70" /><i className="size-2.5 rounded-full bg-accent/70" /><i className="size-2.5 rounded-full bg-success/70" />
+      <span className="ml-3 text-[16px] text-muted-foreground">{title}</span>
     </div>
-    <div className="mc-mock-body">{children}</div>
+    {children}
   </div>
 );
-
-const DocumentsMock = () => (
-  <MockWindow title="MyTS · Meus Documentos" className="mc-mock-docs">
-    <div className="mc-mock-kpis">
-      <div>
-        <strong>128</strong>
-        <span>documentos ativos</span>
-      </div>
-      <div>
-        <strong>07</strong>
-        <span>vencem em 30 dias</span>
-      </div>
-      <div>
-        <strong>96%</strong>
-        <span>lista mestra em dia</span>
-      </div>
-    </div>
-    <div className="mc-mock-rows">
-      {[
-        ["POP — Higienização de linha", "vigente", true],
-        ["Certificado FSSC 22000", "vence em 12 dias", false],
-        ["Laudo microbiológico", "vigente", true],
-        ["Política de qualidade", "vigente", true],
-      ].map(([label, status, ok]) => (
-        <div className="mc-mock-row" key={label as string}>
-          <FileText size={18} />
-          <span className="mc-mock-row-label">{label}</span>
-          <span className={`mc-pill ${ok ? "mc-pill-ok" : "mc-pill-warn"}`}>
-            {status}
-          </span>
-        </div>
-      ))}
-    </div>
-  </MockWindow>
+const Checks = ({ items }: { items: string[] }) => (
+  <div className="mt-7 space-y-3">{items.map((x) => <p key={x} className="flex items-center gap-3 text-[21px] text-foreground"><CheckCircle2 className="shrink-0 text-success" size={24} />{x}</p>)}</div>
 );
 
-const SuppliersMock = () => (
-  <MockWindow title="MyTS · Meus Fornecedores" className="mc-mock-sup">
-    <div className="mc-mock-sup-head">
-      <div>
-        <strong>Alimentos Litoral Ltda.</strong>
-        <span>Homologado · Categoria: ingredientes</span>
-      </div>
-      <div className="mc-iqf">
-        <strong>92</strong>
-        <span>IQF</span>
-      </div>
-    </div>
-    <div className="mc-mock-sup-grid">
-      {[
-        ["Certidões", "12/12", true],
-        ["Laudos", "8/8", true],
-        ["Autoavaliação", "concluída", true],
-        ["RNC abertas", "0", true],
-      ].map(([k, v, ok]) => (
-        <div className="mc-mock-sup-cell" key={k as string}>
-          <span>{k}</span>
-          <strong>{v}</strong>
-          {ok ? <Check size={16} /> : null}
-        </div>
-      ))}
-    </div>
-    <div className="mc-mock-sup-bar">
-      <span>Matriz de risco</span>
-      <div className="mc-risk-bar">
-        <i style={{ width: "18%" }} />
-      </div>
-      <em>baixo</em>
-    </div>
-  </MockWindow>
-);
+const CLIENTS = [
+  { name: "Carrefour", src: carrefourLogo }, { name: "Korin", src: korinLogo }, { name: "C.Vale", src: cvaleLogo }, { name: "Augusta Alimentos", src: augustaLogo },
+  { name: "CFS", src: cfsLogo }, { name: "Carbex", src: carbexLogo }, { name: "Viskase", src: viskaseLogo }, { name: "Takasago", src: takasagoLogo },
+];
 
-/* ---------------- Slides ---------------- */
-
+/* ---------- Slides ---------- */
 const S01 = () => (
-  <Slide
-    tone="dark"
-    decor={
-      <>
-        <div className="mc-glow mc-glow-a" />
-        <div className="mc-glow mc-glow-b" />
-        <div className="mc-grid-bg" />
-      </>
-    }
-  >
-    <div className="mc-cover">
-      <img src={mytsLogo} alt="MyTS" className="mc-cover-logo" />
-      <p className="mc-cover-tag">MY TRUSTED SOURCE</p>
-      <h1>
-        Conectando empresas, fornecedores e processos para uma cadeia de
-        suprimentos <em>confiável</em>
-      </h1>
-      <p className="mc-cover-sub">
-        Plataforma inteligente para Compras, Qualidade, P&amp;D, ESG e
-        Compliance
-      </p>
-      <div className="mc-cover-stats">
-        {[
-          ["+ 1.500", "empresas ativas na rede"],
-          ["50K +", "documentos gerenciados"],
-          ["+ 200", "processos ativos"],
-          ["+ 20", "países alcançados"],
-        ].map(([v, l]) => (
-          <div key={l}>
-            <strong>{v}</strong>
-            <span>{l}</span>
+  <Slide n={1} dark decor={<><Grid dark /><div aria-hidden className="absolute -left-40 -top-40 size-[560px] rounded-full bg-accent/25 blur-[130px]" /><Glyph size={620} tone="gradient" opacity={0.9} className="-right-[90px] top-[120px]" /><Glyph size={620} tone="light" opacity={0.05} className="-right-[150px] top-[60px]" /></>}>
+    <div className="flex items-center justify-between"><img src={mytsLogo} alt="MyTS" className="h-[44px] w-auto" style={{ filter: "brightness(0) invert(1)" }} /><Pill dark>Material para você conhecer a MyTS</Pill></div>
+    <div className="flex flex-1 flex-col justify-center">
+      <p className="text-[22px] font-semibold uppercase text-accent-glow" style={{ letterSpacing: "0.16em" }}>My Trusted Source</p>
+      <h1 className="mt-6 max-w-[980px] font-display text-[70px] font-bold leading-[1.03] text-primary-foreground">Empresas, fornecedores e processos conectados em uma <span className="text-accent-glow">cadeia confiável.</span></h1>
+      <p className="mt-7 max-w-[820px] text-[26px] leading-[1.4] text-primary-foreground/80">Plataforma inteligente para Compras, Qualidade, P&amp;D, ESG e Compliance.</p>
+      <div className="mt-11 flex gap-4">
+        {[["+1.500", "empresas ativas"], ["50K+", "documentos"], ["+200", "processos"], ["+20", "países"]].map(([v, l]) => (
+          <div key={l} className="w-fit rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.07] px-6 py-4">
+            <strong className="block font-display text-[36px] leading-none text-primary-foreground">{v}</strong>
+            <span className="mt-2 block text-[16px] text-primary-foreground/70">{l}</span>
           </div>
         ))}
       </div>
     </div>
-    <Footer n={1} dark />
   </Slide>
 );
 
 const S02 = () => (
-  <Slide tone="light">
-    <div className="mc-about">
-      <div className="mc-about-copy">
-        <Eyebrow>Sobre a MyTS</Eyebrow>
-        <h2>
-          My Trusted Source.
-          <br />
-          <em>O nome já diz o que somos.</em>
-        </h2>
-        <p className="mc-lead">
-          Uma plataforma que nasceu dentro da indústria de alimentos para
-          resolver o que planilha e e-mail nunca deram conta: reunir empresas,
-          fornecedores e processos em uma única base confiável.
-        </p>
-        <div className="mc-about-proofs">
-          {[
-            {
-              icon: ShieldCheck,
-              t: "Base única de verdade",
-              d: "Documentos, certidões e histórico de fornecedores centralizados e auditáveis.",
-            },
-            {
-              icon: ClipboardCheck,
-              t: "Fluxos auditáveis",
-              d: "Homologação, autoavaliação e RNC com etapas, responsáveis e evidências.",
-            },
-            {
-              icon: Network,
-              t: "Rede de campo",
-              d: "Mais de 100 auditores e especialistas no Brasil e no exterior.",
-            },
-          ].map(({ icon: Icon, t, d }) => (
-            <div className="mc-proof" key={t}>
-              <div className="mc-icon">
-                <Icon size={26} />
-              </div>
-              <div>
-                <strong>{t}</strong>
-                <span>{d}</span>
-              </div>
-            </div>
-          ))}
+  <Slide n={2} decor={<LightEcho />}>
+    <Header n="01" label="Sobre a MyTS" />
+    <div className="mt-4 grid flex-1 grid-cols-[1fr_520px] items-center gap-14 pr-[110px]">
+      <div>
+        <Title size={56}>My Trusted Source.<br /><span className="text-accent">O nome já diz o que somos.</span></Title>
+        <p className="mt-6 max-w-[760px] text-[23px] leading-[1.45] text-foreground/75">Nascemos dentro da indústria de alimentos para resolver o que planilha e e-mail nunca deram conta: reunir empresas, fornecedores e processos em uma única base confiável.</p>
+        <div className="mt-8 space-y-4">
+          {[[ShieldCheck, "Base única de verdade", "Documentos, certidões e histórico centralizados e auditáveis."], [ClipboardCheck, "Fluxos auditáveis", "Homologação, autoavaliação e RNC com etapas e evidências."], [Network, "Rede de campo", "Mais de 100 auditores e especialistas no Brasil e no exterior."]].map(([I, t, d]) => {
+            const Icon = I as typeof ShieldCheck;
+            return <div key={String(t)} className="flex items-center gap-5"><span className="grid size-14 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent"><Icon size={27} /></span><div><strong className="block text-[22px] text-foreground">{String(t)}</strong><span className="text-[18px] text-muted-foreground">{String(d)}</span></div></div>;
+          })}
         </div>
       </div>
-      <aside className="mc-about-panel">
-        <img src={mytsLogo} alt="MyTS" />
-        <p className="mc-panel-def">
-          Tecnologia e conhecimento técnico trabalhando juntos para centralizar
-          dados, integrar fluxos e acelerar decisões em toda a cadeia de
-          suprimentos.
-        </p>
-        <div className="mc-panel-block">
-          <span>ONDE ESTAMOS</span>
-          <p>
-            <MapPin size={16} /> Botucatu · SP · Brasil
-          </p>
-          <p>
-            <MapPin size={16} /> Charlotte · NC · EUA
-          </p>
-          <p>
-            <Globe2 size={16} /> Operação em +20 países
-          </p>
+      <div className="relative overflow-hidden rounded-3xl bg-primary p-9">
+        <Glyph size={260} tone="light" opacity={0.07} className="-bottom-16 -right-12" />
+        <img src={mytsLogo} alt="MyTS" className="h-[40px] w-auto" style={{ filter: "brightness(0) invert(1)" }} />
+        <p className="mt-6 text-[21px] leading-[1.45] text-primary-foreground/85">Tecnologia e conhecimento técnico juntos para centralizar dados, integrar fluxos e acelerar decisões em toda a cadeia.</p>
+        <p className="mt-7 text-[14px] font-bold uppercase text-accent-glow" style={{ letterSpacing: "0.14em" }}>Onde estamos</p>
+        <div className="mt-3 space-y-2 text-[19px] text-primary-foreground">
+          <p className="flex items-center gap-3"><MapPin size={18} className="text-accent-glow" />Botucatu · SP · Brasil</p>
+          <p className="flex items-center gap-3"><MapPin size={18} className="text-accent-glow" />Charlotte · NC · EUA</p>
+          <p className="flex items-center gap-3"><Globe2 size={18} className="text-accent-glow" />Operação em +20 países</p>
         </div>
-        <div className="mc-panel-block">
-          <span>ATUAÇÃO</span>
-          <div className="mc-panel-pills">
-            {["Compras", "Qualidade", "P&D", "ESG", "Compliance"].map((p) => (
-              <em key={p}>{p}</em>
-            ))}
-          </div>
-        </div>
-      </aside>
+        <p className="mt-7 text-[14px] font-bold uppercase text-accent-glow" style={{ letterSpacing: "0.14em" }}>Atuação</p>
+        <div className="mt-3 flex flex-wrap gap-2">{["Compras", "Qualidade", "P&D", "ESG", "Compliance"].map((p) => <Pill key={p} dark>{p}</Pill>)}</div>
+      </div>
     </div>
-    <Footer n={2} />
   </Slide>
 );
 
 const S03 = () => (
-  <Slide tone="dark" decor={<div className="mc-grid-bg" />}>
-    <Eyebrow>Metodologia de gestão</Eyebrow>
-    <h2 className="mc-h2-dark">
-      Uma jornada completa, da prospecção ao monitoramento
-    </h2>
-    <div className="mc-journey">
-      {[
-        {
-          n: "01",
-          icon: Search,
-          t: "Prospecção inteligente",
-          s: "Desenvolvimento da cadeia",
-          d: "Conectamos empresas a fornecedores e especialistas qualificados para expandir e fortalecer a cadeia de suprimentos de forma segura e sustentável.",
-        },
-        {
-          n: "02",
-          icon: Workflow,
-          t: "Homologação personalizada",
-          s: "Critérios técnicos & regulatórios",
-          d: "Fluxos customizados por área (Qualidade, Compras, P&D) com etapas auditáveis, critérios sanitários e gestão centralizada de dados.",
-        },
-        {
-          n: "03",
-          icon: Eye,
-          t: "Monitoramento contínuo",
-          s: "Visibilidade & mitigação de risco",
-          d: "Acompanhamento ativo da base com alertas automáticos de vencimento, evidências organizadas e relatórios prontos para auditorias.",
-        },
-      ].map(({ n, icon: Icon, t, s, d }, i) => (
-        <div className="mc-journey-step" key={n}>
-          <span className="mc-journey-n">{n}</span>
-          <div className="mc-icon mc-icon-dark">
-            <Icon size={28} />
+  <Slide n={3} dark decor={<DarkEcho />}>
+    <Header n="02" label="Metodologia" dark />
+    <Title dark>Uma jornada completa, da prospecção ao monitoramento.</Title>
+    <div className="my-auto flex items-start gap-5">
+      {[[Search, "Prospecção inteligente", "Conectamos empresas a fornecedores e especialistas qualificados para fortalecer a cadeia."], [Workflow, "Homologação personalizada", "Fluxos por área (Qualidade, Compras, P&D) com critérios técnicos, sanitários e etapas auditáveis."], [Eye, "Monitoramento contínuo", "Alertas de vencimento, evidências organizadas e relatórios prontos para auditoria."]].map(([I, t, d], i, a) => {
+        const Icon = I as typeof Search;
+        return <Fragment key={String(t)}>
+          <div className="flex-1 rounded-3xl border border-primary-foreground/15 bg-primary-foreground/[0.07] p-8">
+            <div className="flex items-center justify-between"><span className="grid size-16 place-items-center rounded-2xl bg-accent/15 text-accent-glow"><Icon size={32} /></span><span className="font-display text-[44px] font-bold text-primary-foreground/15">0{i + 1}</span></div>
+            <h3 className="mt-6 text-[28px] font-bold text-primary-foreground">{String(t)}</h3>
+            <p className="mt-3 text-[19px] leading-[1.45] text-primary-foreground/75">{String(d)}</p>
           </div>
-          <strong>{t}</strong>
-          <em>{s}</em>
-          <p>{d}</p>
-          {i < 2 && <ArrowRight className="mc-journey-arrow" size={30} />}
-        </div>
-      ))}
+          {i < a.length - 1 && <ArrowRight className="mt-24 shrink-0 text-accent-glow" size={30} />}
+        </Fragment>;
+      })}
     </div>
-    <Footer n={3} dark />
+    <div className="mb-6 w-fit rounded-2xl border border-accent/30 bg-accent/15 px-7 py-4 text-[21px] font-semibold text-primary-foreground">Cada etapa alimenta a próxima — dados, responsáveis e evidências sempre conectados.</div>
   </Slide>
 );
 
 const S04 = () => (
-  <Slide tone="light">
-    <Eyebrow>Aplicações e soluções integradas</Eyebrow>
-    <h2>Uma plataforma, seis frentes de trabalho</h2>
-    <div className="mc-sol-grid">
-      {[
-        {
-          icon: Handshake,
-          t: "Homologação de fornecedores",
-          d: "Workflow customizado com critérios sanitários, técnicos e regulatórios para qualificação rápida e segura de parceiros.",
-        },
-        {
-          icon: FileStack,
-          t: "Gestão documental & lista mestra",
-          d: "Centralização de arquivos internos e externos com suporte completo à Lista Mestra para certificações, validades e aprovações.",
-        },
-        {
-          icon: Gauge,
-          t: "Monitoramento contínuo B2B",
-          d: "Acompanhamento em tempo real com matriz de risco personalizada, gestão de certidões, laudos e status de parceiros.",
-        },
-        {
-          icon: ListChecks,
-          t: "Autoavaliação & checklists",
-          d: "Formulários interativos (Self-Assessment) para diagnósticos remotos de qualidade, segurança dos alimentos, BPF e critérios ESG.",
-        },
-        {
-          icon: AlertTriangle,
-          t: "Gestão de RNC & processos",
-          d: "Registro e controle estruturado de Relatórios de Não Conformidade, planos de ação e histórico de desempenho de fornecedores.",
-        },
-        {
-          icon: ShieldCheck,
-          t: "Prontidão para auditorias",
-          d: "Visibilidade total e painéis intuitivos preparados para auditorias de 2ª parte, FSSC 22000, ISO e conformidade sanitária.",
-        },
-      ].map(({ icon: Icon, t, d }) => (
-        <div className="mc-sol-card" key={t}>
-          <div className="mc-icon">
-            <Icon size={26} />
-          </div>
-          <strong>{t}</strong>
-          <p>{d}</p>
-        </div>
-      ))}
+  <Slide n={4} decor={<LightEcho />}>
+    <Header n="03" label="Soluções integradas" />
+    <Title>Uma plataforma, seis frentes de trabalho.</Title>
+    <div className="my-auto grid grid-cols-3 gap-6 pr-[110px]">
+      {[[Handshake, "Homologação de fornecedores", "Critérios sanitários, técnicos e regulatórios em um fluxo rápido e seguro."], [FileStack, "Gestão documental e lista mestra", "Arquivos internos e externos com validades, versões e aprovações."], [Gauge, "Monitoramento B2B", "Matriz de risco personalizada, certidões, laudos e status em tempo real."], [ListChecks, "Autoavaliação e checklists", "Diagnósticos remotos de qualidade, BPF, segurança dos alimentos e ESG."], [AlertTriangle, "RNC e processos", "Não conformidades, planos de ação e histórico de desempenho."], [ShieldCheck, "Prontidão para auditorias", "Painéis prontos para 2ª parte, FSSC 22000, ISO e conformidade sanitária."]].map(([I, t, d]) => {
+        const Icon = I as typeof Handshake;
+        return <div key={String(t)} className="rounded-2xl border border-border bg-card p-6 shadow-card">
+          <div className="flex items-center gap-4"><span className="grid size-12 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent"><Icon size={24} /></span><h3 className="text-[22px] font-bold leading-tight text-foreground">{String(t)}</h3></div>
+          <p className="mt-3 text-[18px] leading-[1.42] text-muted-foreground">{String(d)}</p>
+        </div>;
+      })}
     </div>
-    <Footer n={4} />
   </Slide>
+);
+
+const DocsMock = () => (
+  <Window title="MyTS · Meus Documentos">
+    <div className="p-7">
+      <div className="flex items-center gap-3 rounded-xl border border-border bg-secondary px-5 py-3 text-[17px] text-muted-foreground"><Search size={20} />Buscar documento, norma ou responsável</div>
+      <div className="mt-5 grid grid-cols-3 gap-4">{[["128", "documentos ativos"], ["07", "vencem em 30 dias"], ["96%", "lista mestra em dia"]].map(([v, l], i) => <div key={l} className={`rounded-xl px-5 py-4 ${i === 1 ? "bg-accent/10" : "bg-secondary"}`}><strong className="block text-[32px] leading-none text-foreground">{v}</strong><span className="mt-2 block text-[15px] text-muted-foreground">{l}</span></div>)}</div>
+      <div className="mt-5 space-y-3">{[["POP — Higienização de linha", "vigente", true], ["Certificado FSSC 22000", "vence em 12 dias", false], ["Laudo microbiológico", "vigente", true], ["Política de qualidade", "vigente", true]].map(([a, b, ok]) => <div key={String(a)} className="flex items-center gap-4 rounded-xl border border-border px-5 py-3"><FileText size={20} className="text-accent" /><span className="flex-1 text-[18px] font-semibold text-foreground">{String(a)}</span><span className={`rounded-full px-3 py-1 text-[14px] font-bold ${ok ? "bg-success/10 text-success" : "bg-destructive/10 text-destructive"}`}>{String(b)}</span></div>)}</div>
+    </div>
+  </Window>
 );
 
 const S05 = () => (
-  <Slide tone="light">
-    <div className="mc-mock-layout">
-      <div className="mc-mock-copy">
-        <Eyebrow>Módulo · Meus Documentos</Eyebrow>
-        <h2>Gestão documental &amp; lista mestra</h2>
-        <p className="mc-lead">
-          Centralização de arquivos internos, procedimentos operacionais
-          (POPs), políticas e atendimento à exigência de Lista Mestra de
-          documentos para normas e certificações.
-        </p>
-        <ul className="mc-check-list">
-          <li>
-            <Check size={20} /> Alertas automáticos de vencimento
-          </li>
-          <li>
-            <Check size={20} /> Versionamento e aprovações registradas
-          </li>
-          <li>
-            <Check size={20} /> Evidências organizadas para auditoria
-          </li>
-        </ul>
+  <Slide n={5} decor={<LightEcho side="left" />}>
+    <div className="grid flex-1 grid-cols-[0.8fr_1.2fr] items-center gap-12 pl-[110px]">
+      <div>
+        <Header n="04" label="Módulo" />
+        <div className="mt-6"><Pill>Meus Documentos</Pill></div>
+        <Title size={50}>Gestão documental e lista mestra, sempre prontas para auditoria.</Title>
+        <p className="mt-5 text-[21px] leading-[1.45] text-foreground/75">POPs, políticas, certificados e laudos centralizados, atendendo à exigência de lista mestra das normas.</p>
+        <Checks items={["Alertas automáticos de vencimento", "Versões e aprovações registradas", "Evidências organizadas"]} />
       </div>
-      <DocumentsMock />
+      <DocsMock />
     </div>
-    <Footer n={5} />
   </Slide>
 );
 
+const SupMock = () => (
+  <Window title="MyTS · Meus Fornecedores">
+    <div className="p-7">
+      <div className="flex items-center justify-between">
+        <div><strong className="block text-[26px] text-foreground">Alimentos Litoral Ltda.</strong><span className="text-[16px] text-muted-foreground">Homologado · Ingredientes</span></div>
+        <div className="grid size-[84px] place-items-center rounded-full border-[6px] border-success bg-success/10 text-center"><div><strong className="block text-[28px] leading-none text-foreground">92</strong><span className="text-[12px] font-bold text-success">IQF</span></div></div>
+      </div>
+      <div className="mt-5 grid grid-cols-4 gap-3">{[["Certidões", "12/12"], ["Laudos", "8/8"], ["Autoavaliação", "84/100"], ["RNC abertas", "0"]].map(([k, v]) => <div key={k} className="rounded-xl bg-secondary px-4 py-3"><span className="block text-[14px] text-muted-foreground">{k}</span><strong className="flex items-center gap-2 text-[22px] text-foreground">{v}<Check size={16} className="text-success" /></strong></div>)}</div>
+      <p className="mt-6 text-[15px] font-bold uppercase text-muted-foreground" style={{ letterSpacing: "0.12em" }}>Matriz de risco</p>
+      <div className="mt-3 grid grid-cols-3 gap-2">
+        {["Médio", "Alto", "Alto", "Baixo", "Médio", "Alto", "Baixo", "Baixo", "Médio"].map((r, i) => <div key={i} className={`relative flex h-[46px] items-center justify-center rounded-lg text-[14px] font-bold ${r === "Baixo" ? "bg-success/20 text-success" : r === "Médio" ? "bg-accent/15 text-accent" : "bg-destructive/15 text-destructive"}`}>{r}{i === 6 && <span className="absolute -right-1 -top-1 size-5 rounded-full border-[3px] border-card bg-primary" />}</div>)}
+      </div>
+      <p className="mt-3 text-[15px] text-muted-foreground">● Fornecedor posicionado em <strong className="text-success">risco baixo</strong></p>
+    </div>
+  </Window>
+);
+
 const S06 = () => (
-  <Slide tone="light">
-    <div className="mc-mock-layout mc-mock-layout-rev">
-      <SuppliersMock />
-      <div className="mc-mock-copy">
-        <Eyebrow>Módulo · Meus Fornecedores</Eyebrow>
-        <h2>Gestão e desenvolvimento B2B</h2>
-        <p className="mc-lead">
-          Painel completo para qualificar, solicitar certidões e acompanhar
-          fornecedores em tempo real, com controle de requisitos e histórico
-          centralizado.
-        </p>
-        <ul className="mc-check-list">
-          <li>
-            <Check size={20} /> Nota IQF calculada automaticamente
-          </li>
-          <li>
-            <Check size={20} /> Matriz de risco personalizada
-          </li>
-          <li>
-            <Check size={20} /> Status de cada parceiro em tempo real
-          </li>
-        </ul>
+  <Slide n={6} decor={<LightEcho />}>
+    <div className="grid flex-1 grid-cols-[1.15fr_0.85fr] items-center gap-12 pr-[110px]">
+      <SupMock />
+      <div>
+        <Header n="05" label="Módulo" />
+        <div className="mt-6"><Pill>Meus Fornecedores</Pill></div>
+        <Title size={50}>Cada fornecedor com nota, risco e status em tempo real.</Title>
+        <p className="mt-5 text-[21px] leading-[1.45] text-foreground/75">Qualifique, solicite certidões e acompanhe parceiros com requisitos e histórico centralizados.</p>
+        <Checks items={["Nota IQF calculada automaticamente", "Matriz de risco personalizada", "Fornecedor envia tudo sozinho"]} />
       </div>
     </div>
-    <Footer n={6} />
   </Slide>
 );
 
 const S07 = () => (
-  <Slide tone="dark" decor={<div className="mc-grid-bg" />}>
-    <Eyebrow>Módulo · Processos e Autoavaliação</Eyebrow>
-    <h2 className="mc-h2-dark">
-      Workflows inteligentes, do checklist ao plano de ação
-    </h2>
-    <div className="mc-flow">
-      {[
-        {
-          icon: ListChecks,
-          t: "Checklist de autoavaliação",
-          d: "Formulários técnicos aplicados remotamente, internos ou em parceiros.",
-        },
-        {
-          icon: BarChart3,
-          t: "Nota calculada (IQF)",
-          d: "Pontuação objetiva do fornecedor, comparável ao longo do tempo.",
-        },
-        {
-          icon: AlertTriangle,
-          t: "Registro de RNC",
-          d: "Não conformidades registradas com evidência e responsável.",
-        },
-        {
-          icon: ClipboardCheck,
-          t: "Plano de ação",
-          d: "Tratativa acompanhada até o fechamento, com histórico completo.",
-        },
-      ].map(({ icon: Icon, t, d }, i, arr) => (
-        <div className="mc-flow-step" key={t}>
-          <div className="mc-icon mc-icon-dark">
-            <Icon size={26} />
-          </div>
-          <strong>{t}</strong>
-          <p>{d}</p>
-          {i < arr.length - 1 && (
-            <ArrowRight className="mc-flow-arrow" size={26} />
-          )}
-        </div>
-      ))}
+  <Slide n={7} dark decor={<DarkEcho pos="-top-24 -right-32" size={560} />}>
+    <Header n="06" label="Processos e autoavaliação" dark />
+    <Title dark>Do checklist ao plano de ação, sem perder nenhuma etapa.</Title>
+    <div className="relative my-auto">
+      <div aria-hidden className="absolute left-[8%] right-[8%] top-[36px] h-[3px] bg-gradient-to-r from-accent-glow/20 via-accent-glow to-accent-glow/20" />
+      <div className="relative grid grid-cols-4 gap-6">
+        {[[ListChecks, "Checklist", "Formulários técnicos aplicados remotamente."], [BarChart3, "Nota (IQF)", "Pontuação objetiva e comparável no tempo."], [AlertTriangle, "Registro de RNC", "Não conformidade com evidência e responsável."], [ClipboardCheck, "Plano de ação", "Tratativa acompanhada até o fechamento."]].map(([I, t, d], i) => {
+          const Icon = I as typeof ListChecks;
+          return <div key={String(t)} className="flex flex-col items-center text-center">
+            <span className="grid size-[74px] place-items-center rounded-full border-4 border-primary bg-accent text-accent-foreground shadow-elegant"><Icon size={32} /></span>
+            <span className="mt-4 text-[15px] font-bold text-accent-glow">ETAPA 0{i + 1}</span>
+            <h3 className="mt-1 text-[26px] font-bold text-primary-foreground">{String(t)}</h3>
+            <p className="mt-2 max-w-[290px] text-[18px] leading-[1.4] text-primary-foreground/75">{String(d)}</p>
+          </div>;
+        })}
+      </div>
     </div>
-    <div className="mc-flow-note">
-      <BellRing size={22} />
-      <span>
-        Alertas automáticos e relatórios prontos mantêm a base em dia sem
-        trabalho manual.
-      </span>
-    </div>
-    <Footer n={7} dark />
+    <div className="mx-auto mb-6 flex w-fit items-center gap-3 rounded-2xl border border-accent/30 bg-accent/15 px-7 py-4 text-[20px] font-semibold text-primary-foreground"><BellRing size={22} className="text-accent-glow" />Alertas e relatórios automáticos mantêm a base em dia sem trabalho manual.</div>
   </Slide>
 );
 
 const S08 = () => (
-  <Slide tone="light">
-    <Eyebrow>Serviços especializados &amp; suporte global</Eyebrow>
-    <h2>Tecnologia com gente de verdade em campo</h2>
-    <div className="mc-serv-layout">
-      <div className="mc-serv-hero">
-        <strong>100+</strong>
-        <span>
-          auditores e especialistas no Brasil e no exterior, com presença
-          regional e atendimento qualificado
-        </span>
-        <div className="mc-serv-map">
-          <div className="mc-serv-dot mc-serv-dot-a">
-            <MapPin size={20} />
-            <em>Botucatu · BR</em>
+  <Slide n={8} decor={<LightEcho side="left" />}>
+    <div className="flex flex-1 flex-col pl-[110px]">
+      <Header n="07" label="Além do software" />
+      <Title>Tecnologia com gente de verdade em campo.</Title>
+      <div className="my-auto grid grid-cols-[440px_1fr] items-center gap-8">
+        <div className="relative overflow-hidden rounded-3xl bg-primary p-8">
+          <Glyph size={220} tone="glow" opacity={0.18} className="-bottom-10 -right-10" />
+          <strong className="block font-display text-[88px] leading-none text-accent-glow">100+</strong>
+          <p className="mt-3 text-[21px] leading-[1.4] text-primary-foreground/85">auditores e especialistas no Brasil e no exterior.</p>
+          <div className="mt-7 flex items-center gap-3 text-[17px] font-semibold text-primary-foreground">
+            <span className="flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-2"><MapPin size={16} className="text-accent-glow" />Botucatu</span>
+            <span className="h-px flex-1 border-t-2 border-dashed border-accent-glow/60" />
+            <span className="flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-2"><MapPin size={16} className="text-accent-glow" />Charlotte</span>
           </div>
-          <div className="mc-serv-dot mc-serv-dot-b">
-            <MapPin size={20} />
-            <em>Charlotte · EUA</em>
-          </div>
-          <div className="mc-serv-line" />
+        </div>
+        <div className="grid grid-cols-2 gap-5">
+          {[[Users, "Rede de auditores", "Atendimento rápido, com presença regional."], [Factory, "Visitas técnicas", "Verificação em campo de instalações e BPF."], [ShieldCheck, "Auditorias de 2ª parte", "Seus fornecedores avaliados pelo seu padrão."], [FileText, "Autoavaliação sob medida", "Questionários técnicos para cada público."]].map(([I, t, d]) => {
+            const Icon = I as typeof Users;
+            return <div key={String(t)} className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-card"><span className="grid size-12 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent"><Icon size={24} /></span><div><h3 className="text-[21px] font-bold text-foreground">{String(t)}</h3><p className="mt-1 text-[17px] leading-[1.4] text-muted-foreground">{String(d)}</p></div></div>;
+          })}
         </div>
       </div>
-      <div className="mc-serv-grid">
-        {[
-          {
-            icon: Users,
-            t: "Rede internacional de auditores",
-            d: "Atendimento rápido e qualificado, com presença regional.",
-          },
-          {
-            icon: Factory,
-            t: "Visitas técnicas in loco",
-            d: "Verificação em campo de instalações, BPF e operações.",
-          },
-          {
-            icon: ShieldCheck,
-            t: "Auditorias de 2ª parte",
-            d: "Avaliação independente de fornecedores segundo os critérios da sua empresa.",
-          },
-          {
-            icon: FileText,
-            t: "Autoavaliação customizada",
-            d: "Questionários técnicos e diagnósticos aplicados em públicos internos e parceiros.",
-          },
-        ].map(({ icon: Icon, t, d }) => (
-          <div className="mc-serv-card" key={t}>
-            <div className="mc-icon">
-              <Icon size={24} />
-            </div>
-            <strong>{t}</strong>
-            <p>{d}</p>
-          </div>
-        ))}
-      </div>
     </div>
-    <Footer n={8} />
   </Slide>
 );
 
 const S09 = () => (
-  <Slide
-    tone="dark"
-    decor={
-      <>
-        <div className="mc-glow mc-glow-a" />
-        <div className="mc-grid-bg" />
-      </>
-    }
-  >
-    <div className="mc-closing">
-      <Eyebrow>Quem já confia</Eyebrow>
-      <div className="mc-clients">
-        {clientLogos.map((c) => (
-          <div className="mc-client" key={c.name}>
-            <img src={c.url} alt={c.name} />
-          </div>
-        ))}
-      </div>
-      <h2>
-        Visibilidade total, controle completo e conformidade garantida para a
-        sua empresa.
-      </h2>
-      <div className="mc-contact">
-        <div>
-          <Phone size={22} />
-          <span>+55 14 9 9682-3691</span>
-        </div>
-        <div>
-          <Mail size={22} />
-          <span>ricardo.machado@myt-s.com</span>
-        </div>
-        <div>
-          <Globe2 size={22} />
-          <span>myt-s.com</span>
-        </div>
-        <div>
-          <Building2 size={22} />
-          <span>Botucatu · SP · Brasil &nbsp;|&nbsp; Charlotte · NC · EUA</span>
-        </div>
+  <Slide n={9} dark decor={<><Grid dark /><Glyph size={760} tone="light" opacity={0.05} className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" /></>}>
+    <div className="flex items-center justify-between"><img src={mytsLogo} alt="MyTS" className="h-[44px] w-auto" style={{ filter: "brightness(0) invert(1)" }} /><Pill dark>Vamos conversar</Pill></div>
+    <div className="flex flex-1 flex-col items-center justify-center text-center">
+      <p className="text-[15px] font-bold uppercase text-accent-glow" style={{ letterSpacing: "0.16em" }}>Empresas que já confiam na MyTS</p>
+      <div className="mt-5 grid grid-cols-8 gap-3">{CLIENTS.map((c) => <div key={c.name} className="flex h-[70px] w-[140px] items-center justify-center rounded-xl bg-primary-foreground px-3"><img src={c.src} alt={c.name} className="max-h-[42px] max-w-full object-contain" /></div>)}</div>
+      <h2 className="mt-12 max-w-[1200px] font-display text-[56px] font-bold leading-[1.08] text-primary-foreground">Visibilidade total e controle completo<br /><span className="text-accent-glow">da sua cadeia de suprimentos.</span></h2>
+      <div className="mt-10 flex gap-4">
+        <a href="mailto:ricardo.machado@myt-s.com" className="flex items-center gap-3 rounded-xl bg-accent px-6 py-4 text-[21px] font-bold text-accent-foreground"><Mail size={23} />ricardo.machado@myt-s.com</a>
+        <a href="https://wa.me/5514996823691" className="flex items-center gap-3 rounded-xl border border-primary-foreground/20 bg-primary-foreground/10 px-6 py-4 text-[21px] font-bold text-primary-foreground"><MessageCircle size={23} />+55 14 9 9682-3691</a>
+        <a href="https://myt-s.com" className="flex items-center gap-3 rounded-xl border border-primary-foreground/20 bg-primary-foreground/10 px-6 py-4 text-[21px] font-bold text-primary-foreground"><Globe2 size={23} />myt-s.com</a>
       </div>
     </div>
-    <Footer n={9} dark />
   </Slide>
 );
 
-const slides = [S01, S02, S03, S04, S05, S06, S07, S08, S09];
-
-/* ---------------- Página ---------------- */
-
-const css = `
-.mc-slide-frame{position:relative;width:100%;height:100%;}
-.mc-print-frame{page-break-after:always;break-after:page;}
-.mc-slide-viewport{position:relative;width:100%;height:100%;overflow:hidden;}
-.mc-slide{position:absolute;left:0;top:0;width:${CANVAS_W}px;height:${CANVAS_H}px;transform-origin:top left;overflow:hidden;font-family:Manrope,system-ui,sans-serif;}
-.mc-light{background:hsl(220 30% 98%);color:hsl(222 47% 11%);}
-.mc-dark{background:hsl(222 47% 8%);color:hsl(210 40% 96%);}
-.mc-content{position:relative;z-index:2;padding:${PAD}px;height:100%;display:flex;flex-direction:column;}
-.mc-grid-bg{position:absolute;inset:0;background-image:linear-gradient(hsl(217 91% 60% / .06) 1px,transparent 1px),linear-gradient(90deg,hsl(217 91% 60% / .06) 1px,transparent 1px);background-size:64px 64px;}
-.mc-glow{position:absolute;border-radius:50%;filter:blur(120px);}
-.mc-glow-a{width:700px;height:700px;right:-200px;top:-250px;background:hsl(217 91% 60% / .22);}
-.mc-glow-b{width:500px;height:500px;left:-150px;bottom:-200px;background:hsl(190 95% 55% / .12);}
-.mc-eyebrow{font-size:15px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:hsl(217 91% 60%);margin:0 0 14px;}
-.mc-light h2,.mc-dark h2{font-family:Sora,Manrope,sans-serif;font-size:52px;line-height:1.08;letter-spacing:-.02em;margin:0 0 18px;font-weight:700;}
-.mc-light h2 em,.mc-dark h2 em{font-style:normal;color:hsl(217 91% 60%);}
-.mc-h2-dark{color:hsl(210 40% 96%);}
-.mc-lead{font-size:24px;line-height:1.45;color:hsl(222 20% 32%);margin:0 0 22px;}
-.mc-dark .mc-lead{color:hsl(214 30% 80%);}
-.mc-footer{position:absolute;left:${PAD}px;right:${PAD}px;bottom:34px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:15px;color:hsl(222 20% 45%);}
-.mc-footer-logo{height:26px;width:auto;}
-.mc-footer-dark{color:hsl(214 30% 65%);}
-.mc-footer-dark .mc-footer-logo{filter:brightness(0) invert(1);}
-.mc-icon{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:hsl(217 91% 60% / .12);color:hsl(217 91% 55%);flex:none;}
-.mc-icon-dark{background:hsl(217 91% 60% / .18);color:hsl(190 95% 65%);}
-/* capa */
-.mc-cover{display:flex;flex-direction:column;justify-content:center;height:100%;}
-.mc-cover-logo{height:64px;width:auto;margin-bottom:26px;filter:brightness(0) invert(1);}
-.mc-cover-tag{font-size:16px;letter-spacing:.32em;font-weight:700;color:hsl(190 95% 65%);margin:0 0 22px;}
-.mc-cover h1{font-family:Sora,Manrope,sans-serif;font-size:64px;line-height:1.06;letter-spacing:-.025em;font-weight:700;max-width:1150px;margin:0 0 22px;}
-.mc-cover h1 em{font-style:normal;color:hsl(190 95% 65%);}
-.mc-cover-sub{font-size:26px;color:hsl(214 30% 78%);margin:0 0 46px;}
-.mc-cover-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;max-width:1250px;}
-.mc-cover-stats div{background:hsl(222 40% 14% / .8);border:1px solid hsl(217 91% 60% / .25);border-radius:20px;padding:26px 28px;}
-.mc-cover-stats strong{display:block;font-family:Sora,sans-serif;font-size:44px;color:hsl(190 95% 65%);letter-spacing:-.02em;}
-.mc-cover-stats span{font-size:18px;color:hsl(214 30% 75%);}
-/* sobre */
-.mc-about{display:grid;grid-template-columns:minmax(0,1fr) 560px;gap:58px;margin-top:24px;flex:1;}
-.mc-about-proofs{display:flex;flex-direction:column;gap:18px;margin-top:8px;}
-.mc-proof{display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid hsl(220 20% 90%);border-radius:18px;padding:20px 22px;}
-.mc-proof strong{display:block;font-size:21px;margin-bottom:4px;}
-.mc-proof span{font-size:18px;color:hsl(222 20% 40%);line-height:1.4;}
-.mc-about-panel{background:hsl(222 47% 10%);border-radius:28px;padding:44px 42px;color:hsl(210 40% 94%);display:flex;flex-direction:column;gap:26px;}
-.mc-about-panel img{height:44px;width:auto;filter:brightness(0) invert(1);align-self:flex-start;}
-.mc-panel-def{font-size:20px;line-height:1.5;color:hsl(214 30% 80%);margin:0;}
-.mc-panel-block span{font-size:14px;letter-spacing:.16em;font-weight:700;color:hsl(190 95% 65%);}
-.mc-panel-block p{display:flex;align-items:center;gap:10px;font-size:19px;margin:10px 0 0;}
-.mc-panel-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
-.mc-panel-pills em{font-style:normal;font-size:16px;font-weight:600;padding:8px 16px;border-radius:999px;background:hsl(217 91% 60% / .16);border:1px solid hsl(217 91% 60% / .35);}
-/* jornada */
-.mc-journey{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px;flex:1;}
-.mc-journey-step{position:relative;background:hsl(222 40% 13%);border:1px solid hsl(217 91% 60% / .22);border-radius:24px;padding:38px 34px;}
-.mc-journey-n{position:absolute;top:26px;right:30px;font-family:Sora,sans-serif;font-size:40px;font-weight:700;color:hsl(217 91% 60% / .35);}
-.mc-journey-step strong{display:block;font-family:Sora,sans-serif;font-size:27px;margin:22px 0 6px;}
-.mc-journey-step em{display:block;font-style:normal;font-size:17px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:hsl(190 95% 65%);margin-bottom:14px;}
-.mc-journey-step p{font-size:19px;line-height:1.5;color:hsl(214 30% 78%);margin:0;}
-.mc-journey-arrow{position:absolute;right:-27px;top:50%;transform:translateY(-50%);color:hsl(190 95% 65%);z-index:4;}
-/* soluções */
-.mc-sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px;flex:1;}
-.mc-sol-card{background:#fff;border:1px solid hsl(220 20% 90%);border-radius:22px;padding:28px 26px;display:flex;flex-direction:column;gap:14px;}
-.mc-sol-card strong{font-family:Sora,sans-serif;font-size:22px;line-height:1.2;}
-.mc-sol-card p{font-size:17.5px;line-height:1.45;color:hsl(222 20% 38%);margin:0;}
-/* mockups */
-.mc-mock-layout{display:grid;grid-template-columns:minmax(0,1fr) 640px;gap:60px;align-items:center;flex:1;margin-top:8px;}
-.mc-mock-layout-rev{grid-template-columns:640px minmax(0,1fr);}
-.mc-check-list{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;}
-.mc-check-list li{display:flex;align-items:center;gap:12px;font-size:21px;font-weight:600;color:hsl(222 30% 25%);}
-.mc-check-list svg{color:hsl(160 84% 39%);flex:none;}
-.mc-mock{background:#fff;border:1px solid hsl(220 20% 88%);border-radius:22px;box-shadow:0 30px 60px -30px hsl(222 47% 11% / .25);overflow:hidden;}
-.mc-mock-bar{display:flex;align-items:center;gap:8px;padding:14px 18px;background:hsl(222 47% 10%);color:hsl(214 30% 80%);}
-.mc-mock-bar span{width:12px;height:12px;border-radius:50%;background:hsl(217 91% 60% / .5);}
-.mc-mock-bar em{font-style:normal;font-size:15px;margin-left:10px;letter-spacing:.04em;}
-.mc-mock-body{padding:26px 28px;}
-.mc-mock-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;}
-.mc-mock-kpis div{background:hsl(220 30% 96%);border-radius:14px;padding:16px 18px;}
-.mc-mock-kpis strong{display:block;font-family:Sora,sans-serif;font-size:32px;color:hsl(217 91% 55%);}
-.mc-mock-kpis span{font-size:14.5px;color:hsl(222 15% 45%);}
-.mc-mock-rows{display:flex;flex-direction:column;gap:10px;}
-.mc-mock-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border:1px solid hsl(220 20% 91%);border-radius:12px;font-size:17px;}
-.mc-mock-row svg{color:hsl(217 91% 55%);flex:none;}
-.mc-mock-row-label{flex:1;font-weight:600;}
-.mc-pill{font-size:13.5px;font-weight:700;padding:5px 12px;border-radius:999px;white-space:nowrap;}
-.mc-pill-ok{background:hsl(160 84% 39% / .12);color:hsl(160 84% 30%);}
-.mc-pill-warn{background:hsl(38 92% 50% / .15);color:hsl(32 95% 38%);}
-.mc-mock-sup-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
-.mc-mock-sup-head strong{display:block;font-family:Sora,sans-serif;font-size:24px;}
-.mc-mock-sup-head span{font-size:15.5px;color:hsl(222 15% 45%);}
-.mc-iqf{width:92px;height:92px;border-radius:50%;background:hsl(217 91% 55%);color:#fff;display:grid;place-items:center;text-align:center;flex:none;}
-.mc-iqf strong{display:block;font-family:Sora,sans-serif;font-size:34px;line-height:1;}
-.mc-iqf span{font-size:13px;font-weight:700;letter-spacing:.1em;}
-.mc-mock-sup-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px;}
-.mc-mock-sup-cell{display:flex;align-items:center;gap:10px;background:hsl(220 30% 96%);border-radius:12px;padding:14px 16px;font-size:16.5px;}
-.mc-mock-sup-cell span{flex:1;color:hsl(222 15% 40%);}
-.mc-mock-sup-cell strong{font-weight:700;}
-.mc-mock-sup-cell svg{color:hsl(160 84% 39%);}
-.mc-mock-sup-bar{display:flex;align-items:center;gap:14px;font-size:15.5px;color:hsl(222 15% 40%);}
-.mc-risk-bar{flex:1;height:12px;border-radius:999px;background:linear-gradient(90deg,hsl(160 84% 45%),hsl(38 92% 55%),hsl(0 84% 60%));position:relative;opacity:.35;}
-.mc-risk-bar i{position:absolute;top:-4px;bottom:-4px;width:6px;border-radius:4px;background:hsl(222 47% 11%);}
-.mc-mock-sup-bar em{font-style:normal;font-weight:700;color:hsl(160 84% 30%);}
-/* fluxo */
-.mc-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px;}
-.mc-flow-step{position:relative;background:hsl(222 40% 13%);border:1px solid hsl(217 91% 60% / .22);border-radius:22px;padding:30px 26px;}
-.mc-flow-step strong{display:block;font-family:Sora,sans-serif;font-size:21px;margin:18px 0 8px;}
-.mc-flow-step p{font-size:16.5px;line-height:1.45;color:hsl(214 30% 78%);margin:0;}
-.mc-flow-arrow{position:absolute;right:-25px;top:50%;transform:translateY(-50%);color:hsl(190 95% 65%);z-index:4;}
-.mc-flow-note{display:flex;align-items:center;gap:14px;margin-top:36px;background:hsl(217 91% 60% / .12);border:1px solid hsl(217 91% 60% / .3);border-radius:16px;padding:20px 26px;font-size:19px;color:hsl(214 30% 85%);}
-.mc-flow-note svg{color:hsl(190 95% 65%);flex:none;}
-/* serviços */
-.mc-serv-layout{display:grid;grid-template-columns:480px minmax(0,1fr);gap:40px;margin-top:32px;flex:1;}
-.mc-serv-hero{background:hsl(222 47% 10%);border-radius:26px;padding:40px 38px;color:hsl(210 40% 94%);display:flex;flex-direction:column;}
-.mc-serv-hero strong{font-family:Sora,sans-serif;font-size:88px;line-height:1;color:hsl(190 95% 65%);letter-spacing:-.03em;}
-.mc-serv-hero>span{font-size:19px;line-height:1.5;color:hsl(214 30% 80%);margin-top:14px;}
-.mc-serv-map{position:relative;flex:1;min-height:180px;margin-top:24px;}
-.mc-serv-line{position:absolute;left:60px;right:60px;top:50%;border-top:2px dashed hsl(190 95% 65% / .5);}
-.mc-serv-dot{position:absolute;display:flex;flex-direction:column;align-items:center;gap:6px;color:hsl(190 95% 65%);}
-.mc-serv-dot em{font-style:normal;font-size:15px;font-weight:700;color:hsl(210 40% 90%);}
-.mc-serv-dot-a{left:20px;top:30%;}
-.mc-serv-dot-b{right:20px;top:52%;}
-.mc-serv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
-.mc-serv-card{background:#fff;border:1px solid hsl(220 20% 90%);border-radius:20px;padding:24px 24px;display:flex;flex-direction:column;gap:12px;}
-.mc-serv-card strong{font-family:Sora,sans-serif;font-size:20.5px;line-height:1.2;}
-.mc-serv-card p{font-size:16.5px;line-height:1.45;color:hsl(222 20% 38%);margin:0;}
-/* encerramento */
-.mc-closing{display:flex;flex-direction:column;justify-content:center;height:100%;}
-.mc-clients{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin:8px 0 44px;max-width:1250px;}
-.mc-client{background:#fff;border-radius:16px;height:92px;display:grid;place-items:center;padding:14px;}
-.mc-client img{max-width:100%;max-height:64px;object-fit:contain;}
-.mc-closing h2{font-size:46px;max-width:1150px;}
-.mc-contact{display:grid;grid-template-columns:repeat(2,minmax(0,auto));gap:18px 56px;margin-top:36px;}
-.mc-contact div{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:600;color:hsl(210 40% 92%);}
-.mc-contact svg{color:hsl(190 95% 65%);flex:none;}
-/* navegação */
-.mc-nav{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:12px;background:hsl(222 47% 10% / .92);border:1px solid hsl(217 91% 60% / .3);border-radius:999px;padding:8px 14px;color:#fff;}
-.mc-nav button{display:flex;align-items:center;gap:6px;background:transparent;border:none;color:#fff;font-size:14px;font-weight:600;cursor:pointer;padding:6px 10px;border-radius:999px;}
-.mc-nav button:hover{background:hsl(217 91% 60% / .25);}
-.mc-nav span{font-size:14px;color:hsl(214 30% 75%);min-width:64px;text-align:center;}
-@media print{
-  @page{size:${CANVAS_W}px ${CANVAS_H}px;margin:0;}
-  html,body{margin:0;padding:0;background:#fff;}
-  .mc-nav{display:none!important;}
-  .mc-slide{position:relative!important;transform:none!important;opacity:1!important;}
-  .mc-slide-viewport{width:${CANVAS_W}px!important;height:${CANVAS_H}px!important;}
-}
-`;
-
 const MaterialComercial = () => {
-  const printMode = usePrintMode();
-  const [current, setCurrent] = useState(() => {
-    const s = Number(new URLSearchParams(window.location.search).get("slide"));
-    return s >= 1 && s <= TOTAL ? s - 1 : 0;
-  });
-
-  useEffect(() => {
-    if (printMode) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight")
-        setCurrent((c) => Math.min(c + 1, TOTAL - 1));
-      if (e.key === "ArrowLeft") setCurrent((c) => Math.max(c - 1, 0));
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [printMode]);
-
-  useEffect(() => {
-    document.title = `Material Comercial MyTS — ${current + 1}/${TOTAL}`;
-  }, [current]);
-
-  const Active = slides[current];
-
+  const print = usePrintMode();
   return (
-    <div
-      className={printMode ? "" : "fixed inset-0"}
-      style={printMode ? undefined : { background: "hsl(222 47% 6%)" }}
-    >
-      <Helmet>
-        <title>Material Comercial MyTS</title>
-        <meta
-          name="description"
-          content="MyTS — Conectando empresas, fornecedores e processos para uma cadeia de suprimentos confiável."
-        />
-      </Helmet>
-      <style>{css}</style>
-      {printMode ? (
-        slides.map((S, i) => <S key={i} />)
-      ) : (
-        <>
-          <Active />
-          <div className="mc-nav">
-            <button
-              onClick={() => setCurrent((c) => Math.max(c - 1, 0))}
-              aria-label="Anterior"
-            >
-              <ArrowLeft size={16} /> Anterior
-            </button>
-            <span>
-              {current + 1} / {TOTAL}
-            </span>
-            <button
-              onClick={() => setCurrent((c) => Math.min(c + 1, TOTAL - 1))}
-              aria-label="Próximo"
-            >
-              Próximo <ArrowRight size={16} />
-            </button>
-            <button onClick={() => window.print()} aria-label="Baixar PDF">
-              <Download size={16} /> Baixar PDF
-            </button>
-          </div>
-        </>
-      )}
-    </div>
+    <main className="flex min-h-screen flex-col items-center bg-primary" style={{ padding: print ? 0 : "32px 0", gap: print ? 0 : 32, overflowX: "hidden" }}>
+      <Helmet><title>MyTS — Material Comercial</title><meta name="description" content="Conheça a MyTS: plataforma para gestão de fornecedores, documentos e processos da cadeia de suprimentos." /></Helmet>
+      <style>{`html,body,#root{margin:0;padding:0;background:hsl(var(--primary))}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:1600px 900px landscape;margin:0}@media print{.no-print{display:none!important}.slide-frame{border-radius:0!important;break-after:page;page-break-after:always}}`}</style>
+      {!print && <Button onClick={() => window.open(`${window.location.pathname}?print`, "_blank")} className="no-print fixed right-6 top-6 z-50 h-12 rounded-full bg-accent px-6 text-accent-foreground shadow-cta"><Download />Baixar PDF</Button>}
+      {[S01, S02, S03, S04, S05, S06, S07, S08, S09].map((C, i) => <C key={i} />)}
+    </main>
   );
 };
 
