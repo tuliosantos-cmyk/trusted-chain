@@ -92,6 +92,7 @@ const S02 = () => (
             [<ShieldCheck />, "Base única de verdade", "Documentos, fornecedores e processos no mesmo lugar."],
             [<ClipboardCheck />, "Fluxos auditáveis", "Cada aprovação, nota e plano de ação com histórico."],
             [<Network />, "Rede de campo", "100+ auditores e visitas técnicas no Brasil e exterior."],
+            [<Users />, "Acesso livre do fornecedor", "Cada parceiro acompanha pendências e envia evidências direto na plataforma."],
           ].map(([icon, title, text]) => (
             <div key={title as string}><IconBox>{icon}</IconBox><div><strong>{title}</strong><span>{text}</span></div></div>
           ))}
