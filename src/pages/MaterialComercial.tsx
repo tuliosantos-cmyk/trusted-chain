@@ -74,7 +74,7 @@ const LightEcho = ({ side = "right" }: { side?: "right" | "left" }) => (
   <>
     <Grid />
     <div aria-hidden className={`absolute top-0 h-full w-[120px] bg-primary ${side === "right" ? "right-0" : "left-0"}`} />
-    <Glyph size={300} tone="gradient" className={side === "right" ? "-right-[70px] top-[70px]" : "-left-[70px] top-[70px]"} />
+    <Glyph size={240} tone="gradient" className={side === "right" ? "-right-[90px] bottom-[70px]" : "-left-[90px] bottom-[70px]"} />
     <Glyph size={520} tone="accent" opacity={0.05} className={side === "right" ? "-bottom-[180px] right-[60px]" : "-bottom-[180px] left-[60px]"} />
   </>
 );
@@ -167,7 +167,7 @@ const S03 = () => (
   <Slide n={3} dark decor={<DarkEcho />}>
     <Header n="02" label="Metodologia" dark />
     <Title dark>Uma jornada completa, da prospecção ao monitoramento.</Title>
-    <div className="mt-12 flex items-start gap-5">
+    <div className="my-auto flex items-start gap-5">
       {[[Search, "Prospecção inteligente", "Conectamos empresas a fornecedores e especialistas qualificados para fortalecer a cadeia."], [Workflow, "Homologação personalizada", "Fluxos por área (Qualidade, Compras, P&D) com critérios técnicos, sanitários e etapas auditáveis."], [Eye, "Monitoramento contínuo", "Alertas de vencimento, evidências organizadas e relatórios prontos para auditoria."]].map(([I, t, d], i, a) => {
         const Icon = I as typeof Search;
         return <Fragment key={String(t)}>
@@ -180,7 +180,7 @@ const S03 = () => (
         </Fragment>;
       })}
     </div>
-    <div className="mt-8 w-fit rounded-2xl border border-accent/30 bg-accent/15 px-7 py-4 text-[21px] font-semibold text-primary-foreground">Cada etapa alimenta a próxima — dados, responsáveis e evidências sempre conectados.</div>
+    <div className="mb-6 w-fit rounded-2xl border border-accent/30 bg-accent/15 px-7 py-4 text-[21px] font-semibold text-primary-foreground">Cada etapa alimenta a próxima — dados, responsáveis e evidências sempre conectados.</div>
   </Slide>
 );
 
@@ -188,7 +188,7 @@ const S04 = () => (
   <Slide n={4} decor={<LightEcho />}>
     <Header n="03" label="Soluções integradas" />
     <Title>Uma plataforma, seis frentes de trabalho.</Title>
-    <div className="mt-9 grid grid-cols-3 gap-5 pr-[110px]">
+    <div className="my-auto grid grid-cols-3 gap-6 pr-[110px]">
       {[[Handshake, "Homologação de fornecedores", "Critérios sanitários, técnicos e regulatórios em um fluxo rápido e seguro."], [FileStack, "Gestão documental e lista mestra", "Arquivos internos e externos com validades, versões e aprovações."], [Gauge, "Monitoramento B2B", "Matriz de risco personalizada, certidões, laudos e status em tempo real."], [ListChecks, "Autoavaliação e checklists", "Diagnósticos remotos de qualidade, BPF, segurança dos alimentos e ESG."], [AlertTriangle, "RNC e processos", "Não conformidades, planos de ação e histórico de desempenho."], [ShieldCheck, "Prontidão para auditorias", "Painéis prontos para 2ª parte, FSSC 22000, ISO e conformidade sanitária."]].map(([I, t, d]) => {
         const Icon = I as typeof Handshake;
         return <div key={String(t)} className="rounded-2xl border border-border bg-card p-6 shadow-card">
@@ -261,7 +261,7 @@ const S07 = () => (
   <Slide n={7} dark decor={<DarkEcho pos="-top-24 -right-32" size={560} />}>
     <Header n="06" label="Processos e autoavaliação" dark />
     <Title dark>Do checklist ao plano de ação, sem perder nenhuma etapa.</Title>
-    <div className="relative mt-14">
+    <div className="relative my-auto">
       <div aria-hidden className="absolute left-[8%] right-[8%] top-[36px] h-[3px] bg-gradient-to-r from-accent-glow/20 via-accent-glow to-accent-glow/20" />
       <div className="relative grid grid-cols-4 gap-6">
         {[[ListChecks, "Checklist", "Formulários técnicos aplicados remotamente."], [BarChart3, "Nota (IQF)", "Pontuação objetiva e comparável no tempo."], [AlertTriangle, "Registro de RNC", "Não conformidade com evidência e responsável."], [ClipboardCheck, "Plano de ação", "Tratativa acompanhada até o fechamento."]].map(([I, t, d], i) => {
@@ -275,7 +275,7 @@ const S07 = () => (
         })}
       </div>
     </div>
-    <div className="mx-auto mt-12 flex w-fit items-center gap-3 rounded-2xl border border-accent/30 bg-accent/15 px-7 py-4 text-[20px] font-semibold text-primary-foreground"><BellRing size={22} className="text-accent-glow" />Alertas e relatórios automáticos mantêm a base em dia sem trabalho manual.</div>
+    <div className="mx-auto mb-6 flex w-fit items-center gap-3 rounded-2xl border border-accent/30 bg-accent/15 px-7 py-4 text-[20px] font-semibold text-primary-foreground"><BellRing size={22} className="text-accent-glow" />Alertas e relatórios automáticos mantêm a base em dia sem trabalho manual.</div>
   </Slide>
 );
 
@@ -284,7 +284,7 @@ const S08 = () => (
     <div className="flex flex-1 flex-col pl-[110px]">
       <Header n="07" label="Além do software" />
       <Title>Tecnologia com gente de verdade em campo.</Title>
-      <div className="mt-9 grid grid-cols-[440px_1fr] items-start gap-8">
+      <div className="my-auto grid grid-cols-[440px_1fr] items-center gap-8">
         <div className="relative overflow-hidden rounded-3xl bg-primary p-8">
           <Glyph size={220} tone="glow" opacity={0.18} className="-bottom-10 -right-10" />
           <strong className="block font-display text-[88px] leading-none text-accent-glow">100+</strong>
