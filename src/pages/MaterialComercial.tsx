@@ -1,7 +1,7 @@
 import { Fragment, useLayoutEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import {
-  AlertTriangle, ArrowRight, ExternalLink, BarChart3, BellRing, Check, CheckCircle2, ClipboardCheck, Download,
+  AlertTriangle, ExternalLink, BarChart3, BellRing, Check, CheckCircle2, ClipboardCheck, Download,
   Eye, Factory, FileStack, FileText, Gauge, Globe2, Handshake, ListChecks, Mail, MapPin,
   MessageCircle, Network, Search, ShieldCheck, Users, Workflow,
 } from "lucide-react";
@@ -17,7 +17,7 @@ import auditoriaImg from "@/assets/material/auditoria-campo.jpg";
 const W = 1600;
 const H = 900;
 const P = 64;
-const TOTAL = 11;
+const TOTAL = 9;
 
 const usePrintMode = () => {
   const [print, setPrint] = useState(false);
@@ -154,16 +154,32 @@ const S02 = () => (
   </Slide>
 );
 
-const ClientSlide = () => (
+const ProofSlide = () => (
   <Slide n={3} decor={<LightEcho />}>
-    <Header n="02" label="Clientes MyTS" />
-    <Title size={50}>Confiança construída com quem faz a cadeia acontecer.</Title>
-    <p className="mt-4 text-[22px] text-muted-foreground">Indústria, varejo e agroindústria. Empresas que já confiam na MyTS.</p>
-    <div className="my-auto grid grid-cols-4 gap-3">
-      {commercialClients.map((client) => <div key={client.name} className="flex h-[82px] items-center gap-5 rounded-lg border border-border bg-card px-5">
-        <div className="flex h-[62px] w-[130px] shrink-0 items-center justify-center"><img src={client.src} alt={client.name} loading="eager" className="max-h-[58px] max-w-full object-contain" /></div>
-        <span className="text-[17px] font-semibold leading-[1.3] text-foreground">{client.name}</span>
-      </div>)}
+    <Header n="02" label="Clientes e reconhecimento" />
+    <Title size={50}>Marcas que confiam. Imprensa que confirma.</Title>
+    <div className="mt-8 grid min-h-0 flex-1 grid-cols-[1.05fr_1fr] gap-12">
+      <div className="flex flex-col">
+        <p className="text-[16px] font-bold uppercase text-accent" style={{ letterSpacing: "0.14em" }}>Quem confia na MyTS</p>
+        <div className="mt-5 grid flex-1 grid-cols-3 gap-4">
+          {commercialClients.slice(0, 6).map((client) => (
+            <div key={client.name} className="flex items-center justify-center rounded-lg border border-border bg-card px-4">
+              <img src={client.src} alt={client.name} loading="eager" className="max-h-[64px] max-w-full object-contain" />
+            </div>
+          ))}
+        </div>
+        <p className="mt-5 text-[18px] text-muted-foreground">E dezenas de indústrias, distribuidores e varejistas atendidos no Brasil e no exterior.</p>
+      </div>
+      <div className="flex flex-col">
+        <p className="text-[16px] font-bold uppercase text-accent" style={{ letterSpacing: "0.14em" }}>Na imprensa</p>
+        <div className="mt-5 flex-1 space-y-4">{commercialNews.map((news) => <article key={news.url} className="rounded-lg border border-border bg-card px-5 py-4 shadow-card">
+          <div className="flex items-center justify-between gap-4"><span className="text-[20px] font-bold text-accent">{news.publisher}</span><span className="text-[15px] text-muted-foreground">{news.date}</span></div>
+          <h3 className="mt-2 text-[18px] font-bold leading-[1.25] text-foreground">{news.title}</h3>
+          <p className="mt-2 text-[15px] leading-[1.35] text-muted-foreground">{news.summary}</p>
+          <Button asChild variant="link" className="mt-1 h-auto justify-start p-0 text-[14px] font-bold text-accent"><a href={news.url} target="_blank" rel="noopener noreferrer">Ler matéria<ExternalLink size={14} /></a></Button>
+        </article>)}</div>
+        <p className="mt-3 text-[13px] text-muted-foreground">Fontes: Valor Econômico, TI Inside e Inforchannel.</p>
+      </div>
     </div>
   </Slide>
 );
