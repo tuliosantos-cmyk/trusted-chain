@@ -365,7 +365,7 @@ const S08 = () => (
   </Slide>
 );
 
-const S09 = () => (
+const S10 = () => (
   <Slide n={10} dark decor={<><Grid dark /><Glyph size={760} tone="light" opacity={0.05} className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" /></>}>
     <div className="flex items-center justify-between"><img src={mytsLogo} alt="MyTS" className="h-[44px] w-auto" style={{ filter: "brightness(0) invert(1)" }} /><Pill dark>Vamos conversar</Pill></div>
     <div className="flex flex-1 flex-col items-center justify-center text-center">
