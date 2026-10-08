@@ -4,6 +4,7 @@
 - Keep the commercial customer roster and dated press references in a dedicated evidence module; distinguish verified customers from pilots, proposals and partners to avoid misleading social proof.
 - Render decorative MyTS marks as inline SVG from the trusted local asset, not URL masks, to preserve the silhouette in preview and print.
 - Keep the Ralston pilot deck at `/apresentacao-implantacao-ralston` with a fixed 1600×900 print canvas and separately tested client figures so the dated report remains independently shareable.
+- Keep Ralston presentation notes, video links and workload estimates in a separate story module; display presenter notes outside the slide canvas and exclude them from print to support a client-led presentation.
 
 - Keep the English institutional deck at `/apresentacao-institucional` and the Portuguese duplicate at `/apresentacao-institucional-pt` so both language versions remain independently shareable.
 - Keep the MDS implementation deck at `/apresentacao-implantacao-mds` as an independent 1600×900 presentation with print-ready slides.
