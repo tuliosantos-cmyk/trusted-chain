@@ -27,7 +27,7 @@ import mytsLogo from "@/assets/myts-logo.svg";
 
 const W = 1600;
 const H = 900;
-const TOTAL = 9;
+const TOTAL = 10;
 
 type SlideProps = { number: number; dark?: boolean; children: React.ReactNode };
 
@@ -80,8 +80,8 @@ const S01 = () => (
   </Slide>
 );
 
-const S02 = () => (
-  <Slide number={2}>
+const S03 = () => (
+  <Slide number={3}>
     <Header eyebrow="Metodologia de gestão" title={<>Uma jornada contínua.<br /><em>Não uma checagem pontual.</em></>} lead="A MyTS conecta descoberta, qualificação e acompanhamento em um mesmo ciclo de confiança." />
     <div className="journey-flow">
       {[
@@ -101,8 +101,8 @@ const S02 = () => (
   </Slide>
 );
 
-const S03 = () => (
-  <Slide number={3} dark>
+const S04 = () => (
+  <Slide number={4} dark>
     <Header eyebrow="Ecossistema integrado" title={<>Tudo se conecta ao redor<br />de uma <em>base única.</em></>} />
     <div className="ecosystem">
       <div className="ecosystem-core"><Brand dark /><strong>Uma fonte<br />confiável</strong><span>Dados • evidências • decisões</span></div>
@@ -128,8 +128,8 @@ const MiniNav = ({ active }: { active: number }) => (
   </aside>
 );
 
-const S04 = () => (
-  <Slide number={4}>
+const S05 = () => (
+  <Slide number={5}>
     <Header eyebrow="Módulo 01 · Meus documentos" title={<>Do arquivo disperso<br />à <em>lista mestra viva.</em></>} lead="Procedimentos, políticas e evidências centralizados com responsáveis, versões, aprovações e vencimentos." />
     <div className="mock-window documents-mock">
       <MiniNav active={1} />
@@ -147,8 +147,8 @@ const S04 = () => (
   </Slide>
 );
 
-const S05 = () => (
-  <Slide number={5} dark>
+const S06 = () => (
+  <Slide number={6} dark>
     <Header eyebrow="Módulo 02 · Meus fornecedores" title={<>Cada fornecedor com<br />uma <em>visão 360°.</em></>} lead="Qualificação, documentos, risco e histórico em um único painel para Compras e Qualidade." />
     <div className="supplier-stage">
       <div className="mock-window supplier-mock">
@@ -165,8 +165,8 @@ const S05 = () => (
   </Slide>
 );
 
-const S06 = () => (
-  <Slide number={6}>
+const S07 = () => (
+  <Slide number={7}>
     <Header eyebrow="Módulo 03 · Processos e autoavaliação" title={<>Da pergunta ao plano de ação.<br /><em>Todo o fluxo rastreável.</em></>} />
     <div className="process-flow">
       {[
@@ -185,8 +185,8 @@ const S06 = () => (
   </Slide>
 );
 
-const S07 = () => (
-  <Slide number={7} dark>
+const S08 = () => (
+  <Slide number={8} dark>
     <Header eyebrow="Prontidão para auditorias" title={<>A evidência certa.<br />No momento em que <em>ela é pedida.</em></>} lead="A plataforma organiza requisitos, documentos, responsáveis e status para auditorias de 2ª parte, FSSC 22000, ISO e conformidade sanitária." />
     <div className="audit-visual">
       <div className="audit-ring"><ShieldCheck /><strong>PRONTO</strong><span>para auditoria</span></div>
@@ -198,8 +198,8 @@ const S07 = () => (
   </Slide>
 );
 
-const S08 = () => (
-  <Slide number={8}>
+const S09 = () => (
+  <Slide number={9}>
     <Header eyebrow="Serviços especializados" title={<>Tecnologia conectada<br />a uma <em>rede de campo.</em></>} lead="Quando a decisão exige presença física, a MyTS coordena especialistas, avaliações e evidências na mesma jornada." />
     <div className="world-network">
       <Globe2 className="world-icon" />
@@ -212,8 +212,8 @@ const S08 = () => (
   </Slide>
 );
 
-const S09 = () => (
-  <Slide number={9} dark>
+const S10 = () => (
+  <Slide number={10} dark>
     <div className="closing-copy">
       <span className="premium-eyebrow">Próximo passo</span>
       <h2>Transforme sua cadeia<br />em uma <em>fonte confiável.</em></h2>
@@ -231,7 +231,7 @@ const S09 = () => (
   </Slide>
 );
 
-const slides = [S01, S02, S03, S04, S05, S06, S07, S08, S09];
+const slides = [S01, S02, S03, S04, S05, S06, S07, S08, S09, S10];
 
 const ApresentacaoMytsPremium = () => {
   const location = useLocation();
