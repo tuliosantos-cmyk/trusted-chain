@@ -74,8 +74,7 @@ const LightEcho = ({ side = "right" }: { side?: "right" | "left" }) => (
   <>
     <Grid />
     <div aria-hidden className={`absolute top-0 h-full w-[120px] bg-primary ${side === "right" ? "right-0" : "left-0"}`} />
-    <Glyph size={240} tone="gradient" className={side === "right" ? "-right-[90px] bottom-[70px]" : "-left-[90px] bottom-[70px]"} />
-    <Glyph size={520} tone="accent" opacity={0.05} className={side === "right" ? "-bottom-[180px] right-[60px]" : "-bottom-[180px] left-[60px]"} />
+    <Glyph size={300} tone="gradient" className={side === "right" ? "-right-[110px] bottom-[60px]" : "-left-[110px] bottom-[60px]"} />
   </>
 );
 const DarkEcho = ({ pos = "-bottom-48 -right-24", size = 680 }: { pos?: string; size?: number }) => (
@@ -114,7 +113,7 @@ const CLIENTS = [
 
 /* ---------- Slides ---------- */
 const S01 = () => (
-  <Slide n={1} dark decor={<><Grid dark /><div aria-hidden className="absolute -left-40 -top-40 size-[560px] rounded-full bg-accent/25 blur-[130px]" /><Glyph size={620} tone="gradient" opacity={0.9} className="-right-[90px] top-[120px]" /><Glyph size={620} tone="light" opacity={0.05} className="-right-[150px] top-[60px]" /></>}>
+  <Slide n={1} dark decor={<><Grid dark /><div aria-hidden className="absolute -left-40 -top-40 size-[560px] rounded-full bg-accent/25 blur-[130px]" /><Glyph size={620} tone="gradient" opacity={0.9} className="-right-[90px] top-[120px]" /></>}>
     <div className="flex items-center justify-between"><img src={mytsLogo} alt="MyTS" className="h-[44px] w-auto" style={{ filter: "brightness(0) invert(1)" }} /><Pill dark>Material para você conhecer a MyTS</Pill></div>
     <div className="flex flex-1 flex-col justify-center">
       <p className="text-[22px] font-semibold uppercase text-accent-glow" style={{ letterSpacing: "0.16em" }}>My Trusted Source</p>
@@ -147,7 +146,6 @@ const S02 = () => (
         </div>
       </div>
       <div className="relative overflow-hidden rounded-3xl bg-primary p-9">
-        <Glyph size={260} tone="light" opacity={0.07} className="-bottom-16 -right-12" />
         <img src={mytsLogo} alt="MyTS" className="h-[40px] w-auto" style={{ filter: "brightness(0) invert(1)" }} />
         <p className="mt-6 text-[21px] leading-[1.45] text-primary-foreground/85">Tecnologia e conhecimento técnico juntos para centralizar dados, integrar fluxos e acelerar decisões em toda a cadeia.</p>
         <p className="mt-7 text-[14px] font-bold uppercase text-accent-glow" style={{ letterSpacing: "0.14em" }}>Onde estamos</p>
@@ -286,7 +284,6 @@ const S08 = () => (
       <Title>Tecnologia com gente de verdade em campo.</Title>
       <div className="my-auto grid grid-cols-[440px_1fr] items-center gap-8">
         <div className="relative overflow-hidden rounded-3xl bg-primary p-8">
-          <Glyph size={220} tone="glow" opacity={0.18} className="-bottom-10 -right-10" />
           <strong className="block font-display text-[88px] leading-none text-accent-glow">100+</strong>
           <p className="mt-3 text-[21px] leading-[1.4] text-primary-foreground/85">auditores e especialistas no Brasil e no exterior.</p>
           <div className="mt-7 flex items-center gap-3 text-[17px] font-semibold text-primary-foreground">
