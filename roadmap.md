@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] Criar panorama Ralston em quatro slides; ajustar documentos para +100 mil e corrigir símbolo decorativo no material comercial; verificar as telas.
+- [x] Criar panorama Ralston em quatro slides; ajustar documentos para +100 mil e corrigir símbolo decorativo; quatro telas sem cortes, logos conferidas e sete testes aprovados.
 
 - [x] Unir metodologia e atualizar indicadores; reorganizar fornecedores e processos sem IQF; nove telas verificadas e três testes dos indicadores aprovados.
 
