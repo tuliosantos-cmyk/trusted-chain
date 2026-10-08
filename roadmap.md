@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] Trocar Atakarejo por Takasago nos seis clientes em destaque do material comercial; nove telas conferidas e PDF atualizado exportado.
+
 - [x] Incluir clientes e logos após Sobre a MyTS no material comercial; apresentar projetos e notícias verificadas com fontes; onze telas e impressão conferidas sem cortes ou imagens quebradas.
 
 - [x] Criar panorama Ralston em quatro slides; ajustar documentos para +100 mil e corrigir símbolo decorativo; quatro telas sem cortes, logos conferidas e sete testes aprovados.
