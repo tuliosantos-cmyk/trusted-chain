@@ -146,7 +146,6 @@ const S02 = () => (
         </div>
       </div>
       <div className="relative overflow-hidden rounded-3xl bg-primary p-9">
-        <Glyph size={260} tone="light" opacity={0.07} className="-bottom-16 -right-12" />
         <img src={mytsLogo} alt="MyTS" className="h-[40px] w-auto" style={{ filter: "brightness(0) invert(1)" }} />
         <p className="mt-6 text-[21px] leading-[1.45] text-primary-foreground/85">Tecnologia e conhecimento técnico juntos para centralizar dados, integrar fluxos e acelerar decisões em toda a cadeia.</p>
         <p className="mt-7 text-[14px] font-bold uppercase text-accent-glow" style={{ letterSpacing: "0.14em" }}>Onde estamos</p>
@@ -285,7 +284,6 @@ const S08 = () => (
       <Title>Tecnologia com gente de verdade em campo.</Title>
       <div className="my-auto grid grid-cols-[440px_1fr] items-center gap-8">
         <div className="relative overflow-hidden rounded-3xl bg-primary p-8">
-          <Glyph size={220} tone="glow" opacity={0.18} className="-bottom-10 -right-10" />
           <strong className="block font-display text-[88px] leading-none text-accent-glow">100+</strong>
           <p className="mt-3 text-[21px] leading-[1.4] text-primary-foreground/85">auditores e especialistas no Brasil e no exterior.</p>
           <div className="mt-7 flex items-center gap-3 text-[17px] font-semibold text-primary-foreground">
