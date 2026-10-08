@@ -27,10 +27,10 @@ const assetUrl = (url: string) => new URL(url, 'https://id-preview--f991cff1-300
 export const commercialClients = [
   { name: 'Carrefour', src: carrefour }, { name: 'Korin', src: korin },
   { name: 'C.Vale', src: cvale }, { name: 'Redes Martins', src: assetUrl(martins.url) },
-  { name: 'Atakarejo', src: assetUrl(atakarejo.url) }, { name: 'AVAL', src: assetUrl(aval.url) },
+  { name: 'Takasago', src: takasago }, { name: 'AVAL', src: assetUrl(aval.url) },
   { name: 'Augusta Alimentos', src: augusta }, { name: 'CFS', src: cfs },
   { name: 'Carbex', src: carbex }, { name: 'Icofort', src: icofort },
-  { name: 'Viskase', src: viskase }, { name: 'Takasago', src: takasago },
+  { name: 'Viskase', src: viskase }, { name: 'Atakarejo', src: assetUrl(atakarejo.url) },
   { name: 'Especiali Alimentos', src: especiali }, { name: 'Frumar', src: frumar },
   { name: 'Herboflora', src: herboflora }, { name: 'JL Alimentos', src: jl },
   { name: 'Proregi', src: proregi }, { name: 'Casa do Pão de Queijo', src: casa },
