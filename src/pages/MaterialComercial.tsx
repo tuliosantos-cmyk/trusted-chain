@@ -304,15 +304,14 @@ const S09 = () => (
       <p className="mt-4 text-[22px] text-muted-foreground">Além dos três módulos, a MyTS oferece serviços técnicos para apoiar sua operação e desenvolver sua cadeia.</p>
       <div className="my-auto grid grid-cols-[440px_1fr] items-center gap-8">
         <div className="relative h-[430px] overflow-hidden rounded-3xl">
-          <img src={auditoriaImg} alt="Auditora em visita técnica na indústria" loading="lazy" width={1024} height={768} className="h-full w-full object-cover" />
-          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-primary via-primary/35 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 p-7">
+          <img src={auditoriaImg} alt="Auditora em visita técnica na indústria" loading="eager" width={1024} height={768} className="h-[240px] w-full object-cover object-top" />
+          <div className="absolute inset-x-0 bottom-0 bg-primary p-7">
             <strong className="block font-display text-[64px] leading-none text-accent-glow">100+</strong>
             <p className="mt-2 text-[18px] leading-[1.35] text-primary-foreground/90">auditores e especialistas no Brasil e no exterior.</p>
             <div className="mt-4 flex items-center gap-3 text-[15px] font-semibold text-primary-foreground">
-              <span className="flex items-center gap-2 rounded-full bg-primary-foreground/15 px-4 py-2 backdrop-blur"><MapPin size={15} className="text-accent-glow" />Botucatu</span>
+              <span className="flex items-center gap-2 rounded-full bg-primary-foreground/15 px-4 py-2"><MapPin size={15} className="text-accent-glow" />Botucatu</span>
               <span className="h-px flex-1 border-t-2 border-dashed border-accent-glow/60" />
-              <span className="flex items-center gap-2 rounded-full bg-primary-foreground/15 px-4 py-2 backdrop-blur"><MapPin size={15} className="text-accent-glow" />Charlotte</span>
+              <span className="flex items-center gap-2 rounded-full bg-primary-foreground/15 px-4 py-2"><MapPin size={15} className="text-accent-glow" />Charlotte</span>
             </div>
           </div>
         </div>
