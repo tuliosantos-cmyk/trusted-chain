@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] Criar panorama Ralston em quatro slides; ajustar documentos para +100 mil e corrigir símbolo decorativo no material comercial; verificar as telas.
+
 - [x] Unir metodologia e atualizar indicadores; reorganizar fornecedores e processos sem IQF; nove telas verificadas e três testes dos indicadores aprovados.
 
 - [x] Atualizar material comercial: três módulos contratáveis, solicitações e histórico de fornecedores, metodologia de processos e apresentação visual dos serviços; dez páginas revisadas e PDF atualizado.
