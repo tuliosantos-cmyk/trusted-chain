@@ -1,5 +1,7 @@
 # Architecture decisions
 
+- Keep commercial presentation metrics in a shared data module with concrete-value tests so commercial figures remain consistent and verifiable.
+
 - Keep the English institutional deck at `/apresentacao-institucional` and the Portuguese duplicate at `/apresentacao-institucional-pt` so both language versions remain independently shareable.
 - Keep the MDS implementation deck at `/apresentacao-implantacao-mds` as an independent 1600×900 presentation with print-ready slides.
 
