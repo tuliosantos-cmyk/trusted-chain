@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] Revisar layout das nove telas premium: contraste do ecossistema, ícones, separação entre textos e mockups e legibilidade da matriz de risco
+- [x] Revisar layout das nove telas premium: contraste do ecossistema, ícones, separação entre textos e mockups e legibilidade da matriz de risco
 
 - [x] Criar apresentação visual premium a partir do PDF enviado, com mockups, esquemas, fluxos e versão completa em PDF
 
