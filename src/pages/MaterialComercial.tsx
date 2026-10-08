@@ -286,7 +286,7 @@ const S09 = () => (
   <Slide n={8} decor={<LightEcho side="left" />}>
     <div className="flex flex-1 flex-col">
       <Header n="07" label="Além do SaaS · Serviços MyTS" />
-      <Title size={50}>Software para gerir. Especialistas para agir.</Title>
+      <Title size={50}>Solução para gerir. Especialistas para agir.</Title>
       <p className="mt-4 text-[22px] text-muted-foreground">Além dos três módulos, a MyTS oferece serviços técnicos para apoiar sua operação e desenvolver sua cadeia.</p>
       <div className="my-auto grid grid-cols-[440px_1fr] items-center gap-8">
         <div className="relative h-[430px] overflow-hidden rounded-3xl">
