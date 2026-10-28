@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,6 +17,7 @@ import GestaoFornecedores from "./pages/GestaoFornecedores.tsx";
 import HomologacaoFornecedores from "./pages/HomologacaoFornecedores.tsx";
 import ApresentacaoComercial from "./pages/ApresentacaoComercial.tsx";
 import MaterialComercial from "./pages/MaterialComercial.tsx";
+import LancamentoMyts2 from "./pages/LancamentoMyts2.tsx";
 import ApresentacaoImplantacaoRalston from "./pages/ApresentacaoImplantacaoRalston.tsx";
 import ApresentacaoInstitucional from "./pages/ApresentacaoInstitucional.tsx";
 import ApresentacaoInstitucionalPt from "./pages/ApresentacaoInstitucionalPt.tsx";
@@ -33,6 +34,7 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
+      <Helmet><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Lato:wght@300;400;700;900&display=swap" /></Helmet>
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -51,6 +53,7 @@ const App = () => (
             <Route path="/homologacao-de-fornecedores" element={<HomologacaoFornecedores />} />
             <Route path="/apresentacao-comercial" element={<ApresentacaoComercial />} />
             <Route path="/material-comercial" element={<MaterialComercial />} />
+            <Route path="/lancamento-myts-2" element={<LancamentoMyts2 />} />
             <Route path="/apresentacao-implantacao-ralston" element={<ApresentacaoImplantacaoRalston />} />
             <Route path="/apresentacao-institucional" element={<ApresentacaoInstitucional />} />
             <Route path="/apresentacao-institucional-pt" element={<ApresentacaoInstitucionalPt />} />
