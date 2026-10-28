@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] Aproximar o lançamento MyTS 2.0 do roteiro original: restaurar definições, critérios, passos e exemplos nas próprias telas, mantendo legibilidade e conferindo a navegação e a impressão.
+- [x] Aproximar o lançamento MyTS 2.0 do roteiro original: fundamentos completos, conceitos e exemplos ampliados, duas continuações para demo/ABM; 38 telas e impressão conferidas, preenchimento e download/reabertura verificados, 11 testes aprovados.
 
 - [x] Criar Lançamento MyTS 2.0 em 36 telas: imagens geradas, marca oficial, mockup com simulação, esquemas, notas e roteiro completo; navegação, preenchimento, download/reabertura, gesto no celular e impressão de 36 páginas conferidos, 14 testes aprovados.
 

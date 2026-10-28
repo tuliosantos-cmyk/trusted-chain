@@ -270,6 +270,7 @@
 .launch-frame[data-slide="15"] .launch-step { padding:11px 0; }
 .launch-frame[data-slide="20"] .launch-visual,.launch-frame[data-slide="24"] .launch-visual,.launch-frame[data-slide="33"] .launch-visual { gap:10px; }
 .launch-frame[data-slide="20"] .launch-definition-table td,.launch-frame[data-slide="24"] .launch-definition-table td,.launch-frame[data-slide="33"] .launch-definition-table td { padding:7px 13px; }
+.launch-frame[data-slide="24"] .launch-definition-table td { padding:5px 13px; }
 .launch-frame[data-slide="20"] .launch-decision-question,.launch-frame[data-slide="24"] .launch-decision-question,.launch-frame[data-slide="33"] .launch-decision-question { margin-top:10px; }
 .launch-frame[data-slide="23.5"] .launch-window-top { height:44px; }
 .launch-frame[data-slide="23.5"] .launch-window-body { padding:15px 22px; }
