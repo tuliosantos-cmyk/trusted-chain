@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] Criar Lançamento MyTS 2.0 em 36 telas a partir do roteiro: identidade ousada, imagens, mockups ilustrativos, esquemas, notas de fala e quadro de definições; verificar navegação, preenchimento e impressão.
+
 - [x] Recriar apresentação Ralston em 12 telas com o roteiro enviado, introdução MyTS/clientes, visuais legíveis e apoio de fala para Gisele; navegação, logos e impressão conferidas, 12 testes aprovados.
 
 - [x] Trocar Atakarejo por Takasago nos seis clientes em destaque do material comercial; nove telas conferidas e PDF atualizado exportado.
