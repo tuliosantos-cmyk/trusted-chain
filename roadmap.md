@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] Aproximar o lançamento MyTS 2.0 do roteiro original: fundamentos completos, conceitos e exemplos ampliados, duas continuações para demo/ABM; 38 telas e impressão conferidas, preenchimento e download/reabertura verificados, 11 testes aprovados.
+
 - [x] Criar Lançamento MyTS 2.0 em 36 telas: imagens geradas, marca oficial, mockup com simulação, esquemas, notas e roteiro completo; navegação, preenchimento, download/reabertura, gesto no celular e impressão de 36 páginas conferidos, 14 testes aprovados.
 
 - [x] Recriar apresentação Ralston em 12 telas com o roteiro enviado, introdução MyTS/clientes, visuais legíveis e apoio de fala para Gisele; navegação, logos e impressão conferidas, 12 testes aprovados.
