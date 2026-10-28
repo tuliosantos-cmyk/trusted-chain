@@ -25,7 +25,7 @@ function SlideFrame({ id, children, print = false }: { id: number; children: Rea
   const dark = darkLaunchSlides.has(id);
   const phase = [...launchPhases].reverse().find(p => id >= p.start);
   const label = id < 8 ? 'Leitura do lançamento' : id > 33 ? 'Fechamento' : `Fase ${phase?.number ?? 0} · ${phase?.title ?? ''}`;
-  return <section ref={ref} className="launch-frame" data-slide={id} aria-label={`Slide ${id}: ${visualTitles[id]}`}><div className={`launch-canvas ${dark ? 'is-dark' : ''}`} style={{ transform: `scale(${print ? 1 : scale})` }}>
+  return <section ref={ref} className="launch-frame" data-slide={id} aria-label={`Slide ${id}: ${visualTitles[id]}`}><div className={`launch-canvas ${id > 1 ? 'launch-content-rich' : ''} ${dark ? 'is-dark' : ''}`} style={{ transform: `scale(${print ? 1 : scale})` }}>
     <header className="launch-chrome"><p className="launch-kicker">{label}</p><div className="launch-phase-dots" aria-label={phase ? `Fase ${phase.number + 1} de 6` : 'Introdução'}>{launchPhases.map(p => <span key={p.number} className={id <= 33 && id >= 8 && phase?.number === p.number ? 'active' : ''}/>)}</div></header>
     <div className="launch-body">{id !== 1 && <h2 className="launch-title">{visualTitles[id]}</h2>}<div className="launch-visual">{children}</div></div>
     <footer className="launch-footer"><span className="flex items-center gap-5"><img src={logo} alt="MyTS" className={dark ? '' : 'on-light'}/> Lançamento MyTS 2.0 · Da novidade à adoção</span><span>{String(id).padStart(2, '0')} / {TOTAL}</span></footer>
