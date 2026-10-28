@@ -1,5 +1,11 @@
 import { launchSlides } from './content';
 
+/** Keep original slide IDs for notes and phases while numbering continuation pages independently. */
+export const launchPresentationSlides = launchSlides.flatMap(slide => {
+  const title = slide.id === 23 ? 'Demo interativa: explorar e compartilhar' : slide.id === 27 ? 'ABM: escolher contas e personalizar a abordagem' : null;
+  return title ? [slide, { ...slide, id: slide.id + .5, title }] : [slide];
+});
+
 function plainText(text: string): string {
   return text.replace(/\*\*/g, '').replace(/\*/g, '').trim();
 }
