@@ -46,8 +46,18 @@ const foundations: Record<number, { what: string; why: string; clarity: string; 
 };
 function Foundation({ id }: { id: number }) {
   const f = foundations[id]; if (!f) return null;
-  return <dl className="launch-foundation"><dt>O que é</dt><dd>{f.what}</dd><dt>Por que importa</dt><dd>{f.why}</dd><dt>Ter clareza sobre</dt><dd>{f.clarity}</dd><dt>Concluída quando</dt><dd>{f.done}</dd></dl>;
+  const phase = launchPhases.find(p => p.start === id);
+  const visuals: Record<number, ReactNode> = {
+    8: <><div className="launch-foundation-signal"><Mail/><ArrowRight/><Workflow/></div><h3>Não é uma tela nova.<br/>É um novo contexto.</h3><p>Planilha e e-mail → fornecedor ativo → histórico confiável.</p><div className="launch-foundation-proof"><CheckCircle2/> Uma mensagem em 30 segundos.</div></>,
+    13: <><div className="launch-foundation-big">3–5</div><h3>clientes fundadores</h3><div className="launch-foundation-signal"><Users/><ArrowRight/><MessageSquare/><ArrowRight/><CheckCheck/></div><p>Teste → feedback → prova aprovada.</p><div className="launch-foundation-proof">2 conversas por cliente.</div></>,
+    17: <><div className="launch-foundation-signal"><Users/><ArrowRight/><PresentationIcon/></div><h3>Um discurso.<br/>Todo o time.</h3><div className="launch-foundation-proof"><Check/> Pitch de 2 minutos</div><div className="launch-foundation-proof"><Check/> Demo ensaiada</div><div className="launch-foundation-proof"><Check/> 5 objeções respondidas</div></>,
+    21: <><div className="launch-foundation-signal"><MousePointer2/><Play/><FileText/></div><h3>O material vai<br/>onde não estamos.</h3><p>Demo · vídeo · resumo.<br/>A mesma mensagem, em cada formato.</p><div className="launch-foundation-proof"><ArrowRight/> Nas reuniões internas do cliente.</div></>,
+    25: <><div className="launch-foundation-big">5 / 95</div><h3>Conversão agora.<br/>Memória para depois.</h3><div className="launch-foundation-signal"><Target/><ArrowLeftRight/><Megaphone/></div><p>ABM + conteúdo.<br/>Uma semana de atenção.</p></>,
+    30: <><div className="launch-foundation-signal"><Handshake/><ArrowRight/><TrendingUp/></div><h3>O contrato não<br/>é o ponto final.</h3><p>Usar → perceber valor → ampliar.</p><div className="launch-foundation-proof"><Clock3/> 30 min com cada cliente ativo.</div></>,
+  };
+  return <div className="launch-foundation-layout"><dl className="launch-foundation"><dt>O que é</dt><dd>{f.what}</dd><dt>Por que importa</dt><dd>{f.why}</dd><dt>Ter clareza sobre</dt><dd>{f.clarity}</dd><dt>Concluída quando</dt><dd>{f.done}</dd></dl><aside className="launch-foundation-aside"><p className="launch-label">{phase?.timing}</p>{visuals[id]}<p className="launch-foundation-output">Entrega · {phase?.output}</p></aside></div>;
 }
+function PresentationIcon() { return <LayoutDashboard/>; }
 
 interface DefinitionSpec { id: number; key: string; heads: string[]; rows: string[][]; editable: number[]; outcome: string; question?: string; }
 const definitionSpecs: Record<number, DefinitionSpec> = {

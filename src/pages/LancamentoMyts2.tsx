@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useSearchParams } from 'react-router-dom';
-import { BookOpen, ChevronLeft, ChevronRight, Download, FileInput, FileText, Grid2X2, Maximize, Minimize, Presentation, Printer, X } from 'lucide-react';
+import { BookOpen, ChevronLeft, ChevronRight, Download, FileInput, FileText, Grid2X2, Maximize, Minimize, Printer } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -94,8 +94,10 @@ export default function LancamentoMyts2() {
   };
   useEffect(() => {
     if (!print || !location.hash) return;
-    const parsed = parseWorkshopDecisions(decodeURIComponent(location.hash.slice(1)));
-    if (parsed) setDecisions(parsed);
+    try {
+      const parsed = parseWorkshopDecisions(decodeURIComponent(location.hash.slice(1)));
+      if (parsed) setDecisions(parsed);
+    } catch { toast.error('Não foi possível ler o quadro para impressão.'); }
     history.replaceState(null, '', `${location.pathname}${location.search}`);
   }, [print]);
   const active = launchSlides[current - 1];
@@ -104,14 +106,17 @@ export default function LancamentoMyts2() {
     <Helmet><title>{print ? 'Lançamento MyTS 2.0 — Impressão' : `${current}/${TOTAL} — ${visualTitles[current]} | MyTS 2.0`}</title><meta name="description" content="Lançamento MyTS 2.0: da novidade à adoção. Sessão de trabalho com fundamentos, casos, planejamento e seis definições."/><meta property="og:title" content="Lançamento MyTS 2.0 — Da novidade à adoção"/><meta property="og:description" content="Uma sessão de trabalho visual para preparar, anunciar e fazer a MyTS 2.0 virar uso e receita."/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"/></Helmet>
     {!print && <header className="launch-toolbar launch-no-print"><div className="flex items-center gap-4"><img className="launch-toolbar-logo" src={logo} alt="MyTS"/><span className="launch-toolbar-title">2.0 · Da novidade à adoção</span></div><div className="launch-toolbar-actions"><Button variant="ghost" size="icon" title="Visão geral" aria-label="Visão geral" aria-pressed={grid} onClick={() => setGrid(g => !g)}><Grid2X2/></Button><Button variant="ghost" size="icon" title="Notas de fala" aria-label="Notas de fala" aria-pressed={notes} onClick={() => setNotes(n => !n)}><FileText/></Button><Button variant="ghost" size="icon" title="Roteiro e fontes" aria-label="Roteiro e fontes" onClick={() => setSources(true)}><BookOpen/></Button><Button variant="ghost" size="icon" title="Baixar definições" aria-label="Baixar definições" onClick={exportDecisions}><Download/></Button><Button variant="ghost" size="icon" title="Abrir definições" aria-label="Abrir definições" onClick={() => importRef.current?.click()}><FileInput/></Button><Button variant="ghost" size="icon" title="Tela cheia" aria-label="Tela cheia" onClick={() => { if (document.fullscreenElement) void document.exitFullscreen(); else void rootRef.current?.requestFullscreen().catch(() => toast.error('Tela cheia não disponível neste navegador.')); }}>{fullscreen ? <Minimize/> : <Maximize/>}</Button><Button variant="outline" size="icon" title="Imprimir ou salvar PDF" aria-label="Imprimir ou salvar PDF" onClick={openPrint}><Printer/></Button></div></header>}
     <input ref={importRef} type="file" accept=".json,application/json" hidden onChange={async event => {
-      const file = event.target.files?.[0]; if (!file) return;
-      if (file.size > 500000) { toast.error('Arquivo grande demais para um quadro de definições.'); return; }
-      const parsed = parseWorkshopDecisions(await file.text());
-      if (!parsed) toast.error('Este arquivo não contém um quadro válido.');
-      else { setDecisions(parsed); toast.success('Definições reabertas.'); }
-      event.target.value = '';
+      const input = event.currentTarget;
+      const file = input.files?.[0]; if (!file) return;
+      if (file.size > 500000) { toast.error('Arquivo grande demais para um quadro de definições.'); input.value = ''; return; }
+      try {
+        const parsed = parseWorkshopDecisions(await file.text());
+        if (!parsed) toast.error('Este arquivo não contém um quadro válido.');
+        else { setDecisions(parsed); toast.success('Definições reabertas.'); }
+      } catch { toast.error('Não foi possível abrir este arquivo.'); }
+      input.value = '';
     }}/>
-    {print ? launchSlides.map(s => <div key={s.id}>{renderSlide(s.id)}</div>) : grid ? <div className="launch-grid">{launchSlides.map(s => <div className="launch-grid-item" key={s.id}><div className="relative">{renderSlide(s.id, true)}<Button variant="ghost" className="launch-grid-hit" aria-label={`Abrir slide ${s.id}`} onClick={() => goTo(s.id)}/></div><Button variant="ghost" className="launch-grid-open" onClick={() => goTo(s.id)}>{String(s.id).padStart(2, '0')} · {visualTitles[s.id]}</Button></div>)}</div> : <div className="launch-stage" onTouchStart={event => { const t = event.touches[0]; if (t) touchStart.current = { x: t.clientX, y: t.clientY }; }} onTouchEnd={event => {
+    {print ? launchSlides.map(s => <div className="launch-print-page" key={s.id}>{renderSlide(s.id)}</div>) : grid ? <div className="launch-grid">{launchSlides.map(s => <div className="launch-grid-item" key={s.id}><div className="relative">{renderSlide(s.id, true)}<Button variant="ghost" className="launch-grid-hit" aria-label={`Abrir slide ${s.id}`} onClick={() => goTo(s.id)}/></div><Button variant="ghost" className="launch-grid-open" onClick={() => goTo(s.id)}>{String(s.id).padStart(2, '0')} · {visualTitles[s.id]}</Button></div>)}</div> : <div className="launch-stage" onTouchStart={event => { const t = event.touches[0]; if (t) touchStart.current = { x: t.clientX, y: t.clientY }; }} onTouchEnd={event => {
       const start = touchStart.current; const end = event.changedTouches[0]; touchStart.current = null;
       if (!start || !end || event.target instanceof HTMLElement && event.target.closest('input,button,textarea')) return;
       const dx = end.clientX - start.x; const dy = end.clientY - start.y;
