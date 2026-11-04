@@ -159,7 +159,7 @@ const S03 = () => (
 );
 
 const S04 = () => (
-  <Slide n={4} decor={<LightEcho side="left" />}>
+  <Slide n={4} decor={<LightEcho />}>
     <Header n="01" label="O que entendemos da Catupiry" />
     <Title>Hoje, a conformidade dos fornecedores <span className="text-accent">pesa na sua equipe.</span></Title>
     <div className="grid flex-1 grid-cols-[1fr_540px] items-center gap-12">
@@ -209,7 +209,7 @@ const S05 = () => (
 );
 
 const S06 = () => (
-  <Slide n={6} decor={<LightEcho side="left" />}>
+  <Slide n={6} decor={<LightEcho />}>
     <Header n="03" label="Escopo desta proposta" />
     <Title>O que está incluso.</Title>
     <div className="grid flex-1 grid-cols-2 items-center gap-10">
@@ -273,7 +273,7 @@ const S07 = () => (
 const S08 = () => {
   const rows = [["Monitoramento de Fornecedores (121 a 240)", "R$ 1.140,00"], ["Homologação de Fornecedores", "R$ 570,00"], ["RNC de Fornecedores", "R$ 570,00"], ["3 usuários extras", "R$ 90,00"]];
   return (
-    <Slide n={8} decor={<LightEcho side="left" />}>
+    <Slide n={8} decor={<LightEcho />}>
       <Header n="05" label="Investimento" />
       <Title>Investimento.</Title>
       <div className="grid flex-1 grid-cols-[1fr_460px] items-center gap-8">
