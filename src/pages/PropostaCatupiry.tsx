@@ -357,6 +357,7 @@ const S10 = () => (
             <p className="mt-3 rounded-lg border border-primary-foreground/10 bg-primary-foreground/[0.06] px-4 py-3 text-[17px] leading-[1.45] text-primary-foreground/75">{d}</p>
           </div>
         ))}
+        </div>
       </div>
     </div>
   </Slide>
