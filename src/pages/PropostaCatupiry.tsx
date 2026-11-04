@@ -308,8 +308,8 @@ const S08 = () => (
       <div className="relative">
         <img src={labImg} alt="Especialista avaliando queijo em laboratório de qualidade" loading="eager" width={1280} height={960} className="h-[400px] w-full rounded-3xl object-cover" />
         <div className="absolute -bottom-12 -left-10 right-10 rounded-lg border-l-4 border-accent bg-card px-6 py-5 shadow-elegant">
-          <p className="font-display text-[20px] font-semibold leading-[1.35] text-foreground">“<Tbc>frase exata da Larissa</Tbc>”</p>
-          <p className="mt-2 text-[15px] text-muted-foreground"><b className="text-foreground">Larissa Garcia</b> · Qualidade, Augusta Alimentos</p>
+          <p className="font-display text-[19px] font-semibold leading-[1.35] text-foreground">“Em duas semanas, já tínhamos todos os fornecedores cadastrados e as solicitações em andamento. O preço não foi uma questão, porque consegui mostrar para a diretoria o controle funcionando em poucos dias.”</p>
+          <p className="mt-2 text-[15px] text-muted-foreground"><b className="text-foreground">Daiane</b> · Gerente de Compras, MMFoods</p>
         </div>
       </div>
     </div>
