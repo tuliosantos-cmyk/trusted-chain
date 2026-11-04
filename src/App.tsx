@@ -19,6 +19,7 @@ import ApresentacaoComercial from "./pages/ApresentacaoComercial.tsx";
 import MaterialComercial from "./pages/MaterialComercial.tsx";
 import LancamentoMyts2 from "./pages/LancamentoMyts2.tsx";
 import ApresentacaoImplantacaoRalston from "./pages/ApresentacaoImplantacaoRalston.tsx";
+import PropostaCatupiry from "./pages/PropostaCatupiry.tsx";
 import ApresentacaoInstitucional from "./pages/ApresentacaoInstitucional.tsx";
 import ApresentacaoInstitucionalPt from "./pages/ApresentacaoInstitucionalPt.tsx";
 import ApresentacaoImplantacaoMds from "./pages/ApresentacaoImplantacaoMds.tsx";
@@ -54,6 +55,7 @@ const App = () => (
             <Route path="/apresentacao-comercial" element={<ApresentacaoComercial />} />
             <Route path="/material-comercial" element={<MaterialComercial />} />
             <Route path="/lancamento-myts-2" element={<LancamentoMyts2 />} />
+            <Route path="/proposta-catupiry" element={<PropostaCatupiry />} />
             <Route path="/apresentacao-implantacao-ralston" element={<ApresentacaoImplantacaoRalston />} />
             <Route path="/apresentacao-institucional" element={<ApresentacaoInstitucional />} />
             <Route path="/apresentacao-institucional-pt" element={<ApresentacaoInstitucionalPt />} />
