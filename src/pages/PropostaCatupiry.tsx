@@ -259,7 +259,7 @@ const S07 = () => (
       <div className="space-y-4">
         <div className="rounded-lg border border-border bg-card p-6 shadow-card">
           <Pill>Meus Fornecedores</Pill>
-          {([[BellRing, "Monitoramento", "Pendências, prazos e alertas por requisito, para até 240 fornecedores."], [ClipboardCheck, "Homologação", "Critérios e etapas padronizados para cada novo fornecedor."], [Workflow, "RNC de Fornecedores", "Abertura, tratativa e encerramento com o próprio fornecedor."]] as const).map(([Icon, t, d]) => (
+          {([[BellRing, "Monitoramento", "Pendências, prazos e alertas por requisito, para os 240 fornecedores das 5 unidades, em um painel só."], [ClipboardCheck, "Homologação", "Critérios e etapas padronizados para cada novo fornecedor, iguais em qualquer unidade."], [Workflow, "RNC de Fornecedores", "Abertura, tratativa e encerramento com o próprio fornecedor."]] as const).map(([Icon, t, d]) => (
             <p key={t} className="mt-4 flex items-start gap-3 text-[18px]"><Icon size={22} className="mt-0.5 shrink-0 text-accent" /><span><b className="text-foreground">{t}.</b> <span className="text-muted-foreground">{d}</span></span></p>
           ))}
         </div>
