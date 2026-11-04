@@ -16,7 +16,7 @@ import labImg from "@/assets/catupiry/laticinio-qualidade.jpg";
 const W = 1600;
 const H = 900;
 const P = 64;
-const TOTAL = 11;
+const TOTAL = 12;
 
 const usePrintMode = () => {
   const [print, setPrint] = useState(false);
@@ -111,8 +111,39 @@ const S01 = () => (
 );
 
 const S02 = () => (
-  <Slide n={2} decor={<LightEcho />}>
-    <Header n="00" label="Para a equipe da Catupiry" />
+  <Slide n={2} decor={<LightEcho side="left" />}>
+    <Header n="00" label="A proposta em 1 minuto" />
+    <div className="grid flex-1 grid-cols-[540px_1fr] items-center gap-14">
+      <div>
+        <Title size={50}>A proposta inteira, <span className="text-accent">em um minuto.</span></Title>
+        <p className="mt-6 max-w-[480px] text-[21px] leading-[1.5] text-foreground/75">Se a diretoria ler apenas uma página, é esta. Os detalhes de cada ponto vêm nos próximos slides.</p>
+      </div>
+      <div className="space-y-4">
+        {([
+          [Layers, "O quê", "Homologação, monitoramento e não conformidades de fornecedores em um lugar só.", null],
+          [Users, "Para quem", "Até 240 fornecedores da Catupiry — que acessam de graça.", null],
+          [Sparkles, "Investimento", "R$ 2.370,00/mês", "+ R$ 4.740,00 de implantação (pagamento único)"],
+          [CalendarCheck, "Quando começa", <>Implantação em <Tbc>[mês]</Tbc>.</>, <>Primeiro faturamento só em <b className="text-foreground">05/01/2027</b>.</>],
+          [ShieldCheck, "Piloto", "60 dias sem custo para RNC Internas.", null],
+        ] as const).map(([Icon, label, main, sub]) => (
+          <div key={label} className="flex items-center gap-5 rounded-lg border border-border bg-card px-6 py-4 shadow-card">
+            <span className="grid size-12 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent"><Icon size={24} /></span>
+            <div className="min-w-0 flex-1">
+              <p className="text-[13px] font-bold uppercase text-accent" style={{ letterSpacing: "0.14em" }}>{label}</p>
+              <p className="mt-0.5 text-[21px] font-semibold leading-[1.3] text-foreground">{main}</p>
+              {sub && <p className="mt-1 text-[17px] leading-[1.35] text-muted-foreground">{sub}</p>}
+            </div>
+            <CheckCircle2 size={24} className="shrink-0 text-success" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </Slide>
+);
+
+const S03 = () => (
+  <Slide n={3} decor={<LightEcho />}>
+    <Header n="—" label="Para a equipe da Catupiry" />
     <div className="mt-2 grid flex-1 grid-cols-[1fr_470px] items-center gap-14">
       <div>
         <Title size={44}>Uma marca como a Catupiry não pode depender de <span className="text-accent">planilha, e-mail e memória</span> para saber se os fornecedores estão em dia.</Title>
