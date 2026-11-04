@@ -65,7 +65,7 @@ const Slide = ({ n, dark, decor, children }: { n: number; dark?: boolean; decor?
       {children}
       <div className="cp-foot">
         <span className="lk">
-          <img src={mytsLogo} alt="MyTS" style={{ height: 20, filter: dark ? "brightness(0) invert(1)" : undefined, opacity: dark ? .85 : 1 }} />
+          <img src={mytsLogo} alt="MyTS" style={{ height: 20, filter: dark ? "brightness(0) invert(1)" : "brightness(0)", opacity: dark ? .85 : 1 }} />
           <span style={{ opacity: .4 }}>×</span>
           <img src={catupiryLogo} alt="Catupiry" style={{ height: 26 }} />
         </span>
@@ -191,7 +191,7 @@ const S4 = () => {
               </div>
             ))}
           </div>
-          <div style={{ position: "absolute", left: -30, bottom: -60, background: "var(--navy)", color: "#fff", borderRadius: 18, padding: "20px 26px", maxWidth: 400, boxShadow: "0 20px 40px -20px rgba(0,0,0,.5)" }}>
+          <div style={{ position: "absolute", left: -30, bottom: -110, background: "var(--navy)", color: "#fff", borderRadius: 18, padding: "20px 26px", maxWidth: 400, boxShadow: "0 20px 40px -20px rgba(0,0,0,.5)" }}>
             <p className="disp" style={{ fontSize: 24, fontWeight: 700, lineHeight: 1.25 }}>Isso não é falha da equipe. <span style={{ color: "var(--gold)" }}>É o modelo.</span></p>
           </div>
         </div>
@@ -223,7 +223,7 @@ const S5 = () => {
         ))}
       </div>
       <div className="flex items-center gap-6" style={{ background: "var(--blue)", color: "#fff", borderRadius: 20, padding: "20px 28px", marginTop: 8 }}>
-        <span style={{ background: "#fff", borderRadius: 14, padding: "10px 14px", display: "flex", gap: 10, alignItems: "center", color: "var(--ink)", fontSize: 15, boxShadow: "0 10px 20px -10px rgba(0,0,0,.4)" }}>
+        <span style={{ background: "#fff", borderRadius: 14, padding: "10px 14px", display: "flex", gap: 10, alignItems: "center", color: "var(--ink)", fontSize: 15, whiteSpace: "nowrap", flexShrink: 0, boxShadow: "0 10px 20px -10px rgba(0,0,0,.4)" }}>
           <BellRing size={18} color="var(--red)" /><b>MyTS</b> · Laudo microbiológico vence em 15 dias. <u style={{ color: "var(--blue)" }}>Enviar agora</u>
         </span>
         <p className="disp" style={{ fontSize: 24, fontWeight: 700 }}>Seu fornecedor não precisa que você cobre. <span style={{ color: "#FFD27A" }}>Ele já sabe o que está pendente.</span></p>
