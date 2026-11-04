@@ -202,7 +202,7 @@ const S05 = () => (
           </div>
         ))}
       </div>
-      <div className="relative">
+      <div className="flex flex-col justify-center">
         <Window title="Caixa de entrada · Qualidade">
           {[["Fornecedor A", "RE: RE: Laudo leite cru — vencido?", true], ["Unidade Franca", "Cobrança: alvará sanitário (de novo)", true], ["Compras", "FW: planilha_fornecedores_v12.xlsx", false], ["Unidade Belém", "Certidão atualizada (versão final 3)", false], ["Auditoria", "Onde está a aprovação de março?", true]].map(([f, s, u]) => (
             <div key={String(s)} className="flex items-center gap-3 border-b border-border px-5 py-3.5 text-[16px]">
@@ -211,7 +211,7 @@ const S05 = () => (
             </div>
           ))}
         </Window>
-        <div className="absolute -bottom-24 -left-8 max-w-[420px] rounded-lg bg-primary px-6 py-5 shadow-elegant">
+        <div className="mt-6 rounded-lg bg-primary px-6 py-5 shadow-elegant">
           <p className="font-display text-[23px] font-bold leading-[1.25] text-primary-foreground">Isso não é falha da equipe. <span className="text-accent-glow">É o modelo.</span></p>
           <p className="mt-2 text-[15px] leading-[1.4] text-primary-foreground/70">Cada unidade com a própria caixa de entrada e a própria planilha.</p>
         </div>
