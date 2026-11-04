@@ -402,7 +402,7 @@ const PropostaCatupiry = () => {
       <Helmet><title>Proposta Catupiry · MyTS</title><meta name="description" content="Proposta comercial e técnica MyTS para a Catupiry." /></Helmet>
       <style>{`html,body,#root{margin:0;padding:0;background:hsl(var(--primary))}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:1600px 900px landscape;margin:0}@media print{.no-print{display:none!important}.slide-frame{border-radius:0!important;break-after:page;page-break-after:always}}`}</style>
       {!print && <Button onClick={() => window.open(`${window.location.pathname}?print`, "_blank")} className="no-print fixed right-6 top-6 z-50 h-12 rounded-full bg-accent px-6 text-accent-foreground shadow-cta"><Download />Baixar PDF</Button>}
-      {[S01, S02, S03, S04, S05, S06, S07, S08, S09?, S10, S11, S12].map((C, i) => <C key={i} />)}
+      {[S01, S02, S03, S04, S05, S06, S07, S08, S09, S10, S11, S12].map((C, i) => <C key={i} />)}
     </main>
   );
 };
