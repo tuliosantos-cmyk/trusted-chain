@@ -172,8 +172,8 @@ const S03 = () => (
   </Slide>
 );
 
-const S03 = () => (
-  <Slide n={3} dark decor={<DarkEcho />}>
+const S04 = () => (
+  <Slide n={4} dark decor={<DarkEcho />}>
     <Header n="—" label="Sumário" dark />
     <div className="grid flex-1 grid-cols-[500px_1fr] items-center gap-16">
       <Title dark size={62}>Uma proposta,<br /><span className="text-accent-glow">sete passos.</span></Title>
@@ -189,8 +189,8 @@ const S03 = () => (
   </Slide>
 );
 
-const S04 = () => (
-  <Slide n={4} decor={<LightEcho />}>
+const S05 = () => (
+  <Slide n={5} decor={<LightEcho />}>
     <Header n="01" label="O que entendemos da Catupiry" />
     <Title>Hoje, a conformidade dos fornecedores <span className="text-accent">pesa na sua equipe.</span></Title>
     <div className="grid flex-1 grid-cols-[1fr_540px] items-center gap-12">
@@ -219,8 +219,8 @@ const S04 = () => (
   </Slide>
 );
 
-const S05 = () => (
-  <Slide n={5} decor={<LightEcho />}>
+const S06 = () => (
+  <Slide n={6} decor={<LightEcho />}>
     <Header n="02" label="O que muda com a MyTS" />
     <Title>O que esta proposta resolve.</Title>
     <div className="grid flex-1 grid-cols-3 content-center gap-5">
@@ -239,8 +239,8 @@ const S05 = () => (
   </Slide>
 );
 
-const S06 = () => (
-  <Slide n={6} decor={<LightEcho />}>
+const S07 = () => (
+  <Slide n={7} decor={<LightEcho />}>
     <Header n="03" label="Escopo desta proposta" />
     <Title>O que está incluso.</Title>
     <div className="grid flex-1 grid-cols-2 items-center gap-10">
@@ -279,8 +279,8 @@ const S06 = () => (
   </Slide>
 );
 
-const S07 = () => (
-  <Slide n={7} decor={<LightEcho />}>
+const S08 = () => (
+  <Slide n={8} decor={<LightEcho />}>
     <Header n="04" label="Quem é a MyTS" />
     <div className="mt-2 grid flex-1 grid-cols-[1fr_540px] items-center gap-14">
       <div>
@@ -330,8 +330,8 @@ const S08 = () => {
   );
 };
 
-const S09 = () => (
-  <Slide n={9} dark decor={<DarkEcho pos="-bottom-56 -right-32" size={520} />}>
+const S10 = () => (
+  <Slide n={10} dark decor={<DarkEcho pos="-bottom-56 -right-32" size={520} />}>
     <Header n="06" label="Implantação" dark />
     <Title dark>Do aceite à operação, <span className="text-accent-glow">em 5 etapas.</span></Title>
     <div className="relative mt-14 flex-1">
