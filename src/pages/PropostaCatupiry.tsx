@@ -350,8 +350,8 @@ const S10 = () => (
   </Slide>
 );
 
-const S10 = () => (
-  <Slide n={10} decor={<LightEcho />}>
+const S11 = () => (
+  <Slide n={11} decor={<LightEcho />}>
     <Header n="07" label="Condições gerais" />
     <Title>Condições gerais.</Title>
     <div className="grid flex-1 grid-cols-[560px_1fr] items-center gap-10">
@@ -379,8 +379,8 @@ const S10 = () => (
   </Slide>
 );
 
-const S11 = () => (
-  <Slide n={11} dark decor={<><Grid dark /><Glyph size={760} tone="light" opacity={0.05} className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" /></>}>
+const S12 = () => (
+  <Slide n={12} dark decor={<><Grid dark /><Glyph size={760} tone="light" opacity={0.05} className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" /></>}>
     <div className="flex items-center justify-between"><img src={mytsLogo} alt="MyTS" className="h-[44px] w-auto" style={{ filter: "brightness(0) invert(1)" }} /><Pill dark><Handshake size={18} className="mr-2" />Próximo passo</Pill></div>
     <div className="flex flex-1 flex-col items-center justify-center text-center">
       <ClientSeal size={96} />
@@ -402,7 +402,7 @@ const PropostaCatupiry = () => {
       <Helmet><title>Proposta Catupiry · MyTS</title><meta name="description" content="Proposta comercial e técnica MyTS para a Catupiry." /></Helmet>
       <style>{`html,body,#root{margin:0;padding:0;background:hsl(var(--primary))}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:1600px 900px landscape;margin:0}@media print{.no-print{display:none!important}.slide-frame{border-radius:0!important;break-after:page;page-break-after:always}}`}</style>
       {!print && <Button onClick={() => window.open(`${window.location.pathname}?print`, "_blank")} className="no-print fixed right-6 top-6 z-50 h-12 rounded-full bg-accent px-6 text-accent-foreground shadow-cta"><Download />Baixar PDF</Button>}
-      {[S01, S02, S03, S04, S05, S06, S07, S08, S09, S10, S11].map((C, i) => <C key={i} />)}
+      {[S01, S02, S03, S04, S05, S06, S07, S08, S09?, S10, S11, S12].map((C, i) => <C key={i} />)}
     </main>
   );
 };
