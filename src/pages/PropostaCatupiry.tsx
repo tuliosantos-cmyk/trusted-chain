@@ -301,10 +301,10 @@ const S08 = () => (
   </Slide>
 );
 
-const S08 = () => {
+const S09 = () => {
   const rows = [["Monitoramento de Fornecedores (121 a 240)", "R$ 1.140,00"], ["Homologação de Fornecedores", "R$ 570,00"], ["RNC de Fornecedores", "R$ 570,00"], ["3 usuários extras", "R$ 90,00"]];
   return (
-    <Slide n={8} decor={<LightEcho />}>
+    <Slide n={9} decor={<LightEcho />}>
       <Header n="05" label="Investimento" />
       <Title>Investimento.</Title>
       <div className="grid flex-1 grid-cols-[1fr_460px] items-center gap-8">
