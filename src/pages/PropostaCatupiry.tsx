@@ -224,6 +224,12 @@ const S06 = () => (
   <Slide n={6} decor={<LightEcho side="left" />}>
     <Header n="02" label="O que muda com a MyTS" />
     <Title size={48} max={1300}>5 unidades. Uma única visão da <span className="text-accent">Qualidade Corporativa.</span></Title>
+    <div className="mt-5 flex flex-wrap items-center gap-2.5">
+      <span className="text-[15px] font-bold uppercase text-muted-foreground" style={{ letterSpacing: "0.12em" }}>As 5 fábricas:</span>
+      {["Bebedouro · SP", "Santa Fé do Sul · SP", "Doverlândia · GO", "Santa Vitória · MG", "Tapejara · PR"].map((u) => (
+        <span key={u} className="flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-[16px] font-semibold text-foreground shadow-card"><MapPin size={15} className="text-accent" />{u}</span>
+      ))}
+    </div>
     <div className="flex flex-1 flex-col justify-center gap-4">
       <div className="flex items-center gap-6 rounded-lg bg-primary px-7 py-6">
         <span className="grid size-14 shrink-0 place-items-center rounded-lg bg-primary-foreground/10 text-accent-glow"><Layers size={28} /></span>
