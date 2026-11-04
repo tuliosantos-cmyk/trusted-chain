@@ -202,17 +202,18 @@ const S05 = () => (
           </div>
         ))}
       </div>
-      <div className="relative">
+      <div className="flex flex-col justify-center">
         <Window title="Caixa de entrada · Qualidade">
-          {[["Fornecedor A", "RE: RE: Laudo leite cru — vencido?", true], ["Fornecedor B", "Certidão atualizada (versão final 3)", false], ["Você", "Cobrança: alvará sanitário", true], ["Compras", "FW: planilha_fornecedores_v12.xlsx", false], ["Auditoria", "Onde está a aprovação de março?", true]].map(([f, s, u]) => (
+          {[["Fornecedor A", "RE: RE: Laudo leite cru — vencido?", true], ["Unidade Franca", "Cobrança: alvará sanitário (de novo)", true], ["Compras", "FW: planilha_fornecedores_v12.xlsx", false], ["Unidade Belém", "Certidão atualizada (versão final 3)", false], ["Auditoria", "Onde está a aprovação de março?", true]].map(([f, s, u]) => (
             <div key={String(s)} className="flex items-center gap-3 border-b border-border px-5 py-3.5 text-[16px]">
-              <Mail size={17} className="shrink-0 text-muted-foreground" /><b className="w-[110px] shrink-0 text-foreground">{String(f)}</b>
+              <Mail size={17} className="shrink-0 text-muted-foreground" /><b className="w-[132px] shrink-0 text-foreground">{String(f)}</b>
               <span className="flex-1 truncate text-muted-foreground">{String(s)}</span>{u && <AlertTriangle size={17} className="shrink-0 text-destructive" />}
             </div>
           ))}
         </Window>
-        <div className="absolute -bottom-24 -left-8 max-w-[400px] rounded-lg bg-primary px-6 py-5 shadow-elegant">
+        <div className="mt-6 rounded-lg bg-primary px-6 py-5 shadow-elegant">
           <p className="font-display text-[23px] font-bold leading-[1.25] text-primary-foreground">Isso não é falha da equipe. <span className="text-accent-glow">É o modelo.</span></p>
+          <p className="mt-2 text-[15px] leading-[1.4] text-primary-foreground/70">Cada unidade com a própria caixa de entrada e a própria planilha.</p>
         </div>
       </div>
     </div>
@@ -258,7 +259,7 @@ const S07 = () => (
       <div className="space-y-4">
         <div className="rounded-lg border border-border bg-card p-6 shadow-card">
           <Pill>Meus Fornecedores</Pill>
-          {([[BellRing, "Monitoramento", "Pendências, prazos e alertas por requisito, para até 240 fornecedores."], [ClipboardCheck, "Homologação", "Critérios e etapas padronizados para cada novo fornecedor."], [Workflow, "RNC de Fornecedores", "Abertura, tratativa e encerramento com o próprio fornecedor."]] as const).map(([Icon, t, d]) => (
+          {([[BellRing, "Monitoramento", "Pendências, prazos e alertas por requisito, para os 240 fornecedores das 5 unidades, em um painel só."], [ClipboardCheck, "Homologação", "Critérios e etapas padronizados para cada novo fornecedor, iguais em qualquer unidade."], [Workflow, "RNC de Fornecedores", "Abertura, tratativa e encerramento com o próprio fornecedor."]] as const).map(([Icon, t, d]) => (
             <p key={t} className="mt-4 flex items-start gap-3 text-[18px]"><Icon size={22} className="mt-0.5 shrink-0 text-accent" /><span><b className="text-foreground">{t}.</b> <span className="text-muted-foreground">{d}</span></span></p>
           ))}
         </div>
@@ -272,10 +273,13 @@ const S07 = () => (
         </div>
       </div>
       <Window title="MyTS · Meus Fornecedores">
+        <div className="border-b border-border bg-secondary/60 px-6 py-3">
+          <span className="flex w-fit items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-4 py-1.5 text-[14px] font-bold text-accent"><Layers size={15} />Unidade: todas (5)<i className="ml-1 text-[11px]">▾</i></span>
+        </div>
         <div className="p-6">
-          <div className="grid grid-cols-3 gap-3">{[["240", "fornecedores"], ["18", "vencem em 30 dias"], ["3", "RNC abertas"]].map(([v, l], i) => <div key={l} className={`rounded-lg px-4 py-3 ${i === 1 ? "bg-accent/10" : "bg-secondary"}`}><strong className="block text-[30px] leading-none text-foreground">{v}</strong><span className="mt-2 block text-[14px] text-muted-foreground">{l}</span></div>)}</div>
+          <div className="grid grid-cols-3 gap-3">{[["240", "fornecedores"], ["5", "unidades no mesmo painel"], ["18", "vencem em 30 dias"]].map(([v, l], i) => <div key={l} className={`rounded-lg px-4 py-3 ${i === 1 ? "bg-accent/10" : "bg-secondary"}`}><strong className="block text-[30px] leading-none text-foreground">{v}</strong><span className="mt-2 block text-[14px] text-muted-foreground">{l}</span></div>)}</div>
           <div className="mt-4">
-            {([["Laticínio Vale Verde", "Leite cru", 100, "Em dia", "success"], ["Embalagens Paulista", "Bisnaga", 78, "Pendente", "accent"], ["Amido Brasil", "Ingrediente", 92, "Homologando", "accent"], ["Transportes Serra", "Logística", 55, "RNC aberta", "destructive"]] as const).map(([n, c, v, s, tone]) => (
+            {([["Laticínio Vale Verde", "Leite cru · 3 unidades", 100, "Em dia", "success"], ["Embalagens Paulista", "Bisnaga · 2 unidades", 78, "Pendente", "accent"], ["Amido Brasil", "Ingrediente · 1 unidade", 92, "Homologando", "accent"], ["Transportes Serra", "Logística · 4 unidades", 55, "RNC aberta", "destructive"]] as const).map(([n, c, v, s, tone]) => (
               <div key={n} className="grid grid-cols-[1fr_130px_120px] items-center gap-3 border-b border-border py-3">
                 <div><p className="text-[16px] font-bold text-foreground">{n}</p><p className="text-[13px] text-muted-foreground">{c}</p></div>
                 <div className="h-2 overflow-hidden rounded-full bg-secondary"><div className={`h-full ${tone === "success" ? "bg-success" : tone === "destructive" ? "bg-destructive" : "bg-accent"}`} style={{ width: `${v}%` }} /></div>
