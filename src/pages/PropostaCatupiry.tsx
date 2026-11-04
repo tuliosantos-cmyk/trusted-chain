@@ -180,7 +180,7 @@ const S04 = () => (
             </div>
           ))}
         </Window>
-        <div className="absolute -bottom-16 -left-8 max-w-[400px] rounded-lg bg-primary px-6 py-5 shadow-elegant">
+        <div className="absolute -bottom-24 -left-8 max-w-[400px] rounded-lg bg-primary px-6 py-5 shadow-elegant">
           <p className="font-display text-[23px] font-bold leading-[1.25] text-primary-foreground">Isso não é falha da equipe. <span className="text-accent-glow">É o modelo.</span></p>
         </div>
       </div>
@@ -281,7 +281,7 @@ const S08 = () => {
           <div className="grid grid-cols-[1fr_220px] bg-primary px-7 py-3.5 text-[14px] font-bold uppercase text-primary-foreground" style={{ letterSpacing: "0.14em" }}><span>Item</span><span className="text-right">Valor mensal</span></div>
           {rows.map(([i, v]) => <div key={i} className="grid grid-cols-[1fr_220px] border-b border-border px-7 py-4 text-[20px] text-foreground"><span>{i}</span><span className="text-right font-bold">{v}</span></div>)}
           <div className="grid grid-cols-[1fr_220px] items-center bg-accent/10 px-7 py-4"><b className="font-display text-[22px] text-foreground">Mensalidade</b><b className="text-right font-display text-[30px] text-accent">R$ 2.370,00</b></div>
-          <div className="grid grid-cols-[1fr_280px] items-center px-7 py-4 text-[18px]">
+          <div className="grid grid-cols-[1fr_340px] items-center px-7 py-4 text-[18px]">
             <span className="flex items-center gap-3 text-foreground"><Sparkles size={20} className="text-accent" /><b>RNC Internas:</b> piloto de 60 dias sem custo</span>
             <span className="text-right text-muted-foreground">após o piloto: R$ 570,00 <Tbc>a confirmar</Tbc></span>
           </div>
