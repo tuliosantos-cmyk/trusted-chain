@@ -220,21 +220,32 @@ const S05 = () => (
 );
 
 const S06 = () => (
-  <Slide n={6} decor={<LightEcho />}>
+  <Slide n={6} decor={<LightEcho side="left" />}>
     <Header n="02" label="O que muda com a MyTS" />
-    <Title>O que esta proposta resolve.</Title>
-    <div className="grid flex-1 grid-cols-3 content-center gap-5">
-      {([[ShieldCheck, "Proteger a marca", "Nenhum fornecedor entra ou continua sem o que foi combinado."], [Layers, "Tudo em um lugar só", "Fornecedores, documentos e evidências."], [ClipboardCheck, "Entrada com critério", "Homologação padronizada por categoria."], [BellRing, "Manutenção sem correria", "A MyTS avisa antes de vencer."], [Workflow, "Desvio com tratativa", "RNC registrada, com plano de ação e histórico auditável."], [Users, "Fornecedor com apoio", "Suporte da MyTS aos fornecedores durante a jornada."]] as const).map(([Icon, t, d]) => (
-        <div key={t} className="rounded-lg border border-border bg-card p-6 shadow-card">
-          <span className="grid size-12 place-items-center rounded-lg bg-accent/10 text-accent"><Icon size={24} /></span>
-          <h3 className="mt-4 text-[22px] font-bold text-foreground">{t}</h3>
-          <p className="mt-2 text-[18px] leading-[1.4] text-muted-foreground">{d}</p>
+    <Title size={48} max={1300}>5 unidades. Uma única visão da <span className="text-accent">Qualidade Corporativa.</span></Title>
+    <div className="flex flex-1 flex-col justify-center gap-4">
+      <div className="flex items-center gap-6 rounded-lg bg-primary px-7 py-6">
+        <span className="grid size-14 shrink-0 place-items-center rounded-lg bg-primary-foreground/10 text-accent-glow"><Layers size={28} /></span>
+        <div>
+          <h3 className="font-display text-[25px] font-bold text-primary-foreground">Visão corporativa.</h3>
+          <p className="mt-1 text-[20px] leading-[1.4] text-primary-foreground/80">As 5 unidades da Catupiry na mesma MyTS, com os mesmos critérios e um painel único.</p>
         </div>
-      ))}
-    </div>
-    <div className="flex items-center gap-6 rounded-lg bg-primary px-7 py-5">
-      <span className="flex shrink-0 items-center gap-3 rounded-lg bg-card px-4 py-3 text-[15px] text-foreground shadow-card"><BellRing size={18} className="text-accent" /><b>MyTS</b> · Laudo microbiológico vence em 15 dias. <u className="font-bold text-accent">Enviar agora</u></span>
-      <p className="font-display text-[23px] font-bold text-primary-foreground">Seu fornecedor não precisa que você cobre. <span className="text-accent-glow">Ele já sabe o que está pendente.</span></p>
+      </div>
+      <div className="grid grid-cols-2 gap-4">
+        {([[Clock, "Cada unidade no seu ritmo", "Cada uma opera a própria rotina, e a Qualidade Corporativa acompanha tudo de cima."], [Users, "Um fornecedor, um cadastro", "Quem atende mais de uma unidade envia o documento uma vez só."], [ShieldCheck, "Proteger a marca", "Nenhum fornecedor entra ou continua sem o que foi combinado, em nenhuma unidade."], [Workflow, "Desvio com tratativa", "Toda não conformidade com plano de ação e histórico auditável."]] as const).map(([Icon, t, d]) => (
+          <div key={t} className="flex items-start gap-4 rounded-lg border border-border bg-card p-5 shadow-card">
+            <span className="grid size-12 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent"><Icon size={24} /></span>
+            <div>
+              <h3 className="text-[21px] font-bold text-foreground">{t}</h3>
+              <p className="mt-1 text-[17px] leading-[1.4] text-muted-foreground">{d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="flex items-center gap-6 rounded-lg border border-accent/25 bg-accent/10 px-7 py-4">
+        <span className="flex shrink-0 items-center gap-3 rounded-lg bg-card px-4 py-2.5 text-[15px] text-foreground shadow-card"><BellRing size={18} className="text-accent" /><b>MyTS</b> · Laudo microbiológico vence em 15 dias. <u className="font-bold text-accent">Enviar agora</u></span>
+        <p className="font-display text-[21px] font-bold text-foreground">Seu fornecedor não precisa que você cobre. <span className="text-accent">Ele já sabe o que está pendente.</span></p>
+      </div>
     </div>
   </Slide>
 );
@@ -285,7 +296,7 @@ const S08 = () => (
     <div className="mt-2 grid flex-1 grid-cols-[1fr_540px] items-center gap-14">
       <div>
         <Title size={52}>My Trusted Source.<br /><span className="text-accent">Nascemos na indústria de alimentos.</span></Title>
-        <p className="mt-5 max-w-[760px] text-[21px] leading-[1.5] text-foreground/75">Gestão de fornecedores, processos e documentos para alimentos, bebidas, cosméticos e bens de consumo — <b className="text-foreground">tecnologia</b> e <b className="text-foreground">um time técnico que acompanha a implantação.</b></p>
+        <p className="mt-5 max-w-[760px] text-[21px] leading-[1.5] text-foreground/75">A MyTS nasceu para resolver o que planilha e e-mail nunca deram conta: <b className="text-foreground">provar, todos os dias, que cada fornecedor está em dia.</b></p>
         <div className="mt-6 flex flex-wrap gap-3">{([[MapPin, "Botucatu (BR) e Charlotte (EUA)"], [Globe2, "Presença em +20 países"], [GraduationCap, "Implantação guiada por especialistas"]] as const).map(([Icon, t]) => <span key={t} className="flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-[16px] font-semibold text-foreground"><Icon size={18} className="text-accent" />{t}</span>)}</div>
         <p className="mt-8 text-[15px] font-bold uppercase text-accent" style={{ letterSpacing: "0.14em" }}>Quem confia na MyTS</p>
         <div className="mt-4 grid grid-cols-6 gap-3">{commercialClients.slice(0, 6).map((c) => <div key={c.name} className="flex h-[72px] items-center justify-center rounded-lg border border-border bg-card px-3"><img src={c.src} alt={c.name} loading="eager" className="max-h-[44px] max-w-full object-contain" /></div>)}</div>
@@ -334,9 +345,10 @@ const S10 = () => (
   <Slide n={10} dark decor={<DarkEcho pos="-bottom-56 -right-32" size={520} />}>
     <Header n="06" label="Implantação" dark />
     <Title dark>Do aceite à operação, <span className="text-accent-glow">em 5 etapas.</span></Title>
-    <div className="relative mt-14 flex-1">
-      <div aria-hidden className="absolute left-[120px] right-[120px] top-[44px] h-1 rounded-full bg-gradient-accent" />
-      <div className="grid grid-cols-5 gap-5">
+    <div className="flex flex-1 items-center">
+      <div className="relative w-full">
+        <div aria-hidden className="absolute left-[120px] right-[120px] top-[44px] h-1 rounded-full bg-gradient-accent" />
+        <div className="grid grid-cols-5 gap-5">
         {([[Rocket, "Kickoff", "Objetivo, escopo, quem decide o quê e a cadência."], [Layers, "Setup", "Requisitos, critérios e fluxos de homologação, monitoramento e RNC."], [GraduationCap, "Treinamento", "A equipe Catupiry aprende a solicitar, revisar e aprovar."], [Send, "Ativação", "Fornecedores são convidados, entram e começam a enviar documentos."], [TrendingUp, "Operação assistida", "Ajustamos a jornada com base no uso real."]] as const).map(([Icon, t, d], i) => (
           <div key={t} className="flex flex-col items-center text-center">
             <span className={`relative grid size-[92px] place-items-center rounded-full ring-8 ring-primary ${i === 4 ? "bg-accent text-accent-foreground" : "bg-card text-accent"}`}><Icon size={36} /></span>
