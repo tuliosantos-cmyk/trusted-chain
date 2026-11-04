@@ -16,7 +16,7 @@ import labImg from "@/assets/catupiry/laticinio-qualidade.jpg";
 const W = 1600;
 const H = 900;
 const P = 64;
-const TOTAL = 11;
+const TOTAL = 12;
 
 const usePrintMode = () => {
   const [print, setPrint] = useState(false);
@@ -111,8 +111,39 @@ const S01 = () => (
 );
 
 const S02 = () => (
-  <Slide n={2} decor={<LightEcho />}>
-    <Header n="00" label="Para a equipe da Catupiry" />
+  <Slide n={2} decor={<LightEcho side="left" />}>
+    <Header n="00" label="A proposta em 1 minuto" />
+    <div className="grid flex-1 grid-cols-[540px_1fr] items-center gap-14">
+      <div>
+        <Title size={50}>A proposta inteira, <span className="text-accent">em um minuto.</span></Title>
+        <p className="mt-6 max-w-[480px] text-[21px] leading-[1.5] text-foreground/75">Se a diretoria ler apenas uma página, é esta. Os detalhes de cada ponto vêm nos próximos slides.</p>
+      </div>
+      <div className="space-y-4">
+        {([
+          [Layers, "O quê", "Homologação, monitoramento e não conformidades de fornecedores em um lugar só.", null],
+          [Users, "Para quem", "Até 240 fornecedores da Catupiry — que acessam de graça.", null],
+          [Sparkles, "Investimento", "R$ 2.370,00/mês", "+ R$ 4.740,00 de implantação (pagamento único)"],
+          [CalendarCheck, "Quando começa", <>Implantação em <Tbc>[mês]</Tbc>.</>, <>Primeiro faturamento só em <b className="text-foreground">05/01/2027</b>.</>],
+          [ShieldCheck, "Piloto", "60 dias sem custo para RNC Internas.", null],
+        ] as const).map(([Icon, label, main, sub]) => (
+          <div key={label} className="flex items-center gap-5 rounded-lg border border-border bg-card px-6 py-4 shadow-card">
+            <span className="grid size-12 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent"><Icon size={24} /></span>
+            <div className="min-w-0 flex-1">
+              <p className="text-[13px] font-bold uppercase text-accent" style={{ letterSpacing: "0.14em" }}>{label}</p>
+              <p className="mt-0.5 text-[21px] font-semibold leading-[1.3] text-foreground">{main}</p>
+              {sub && <p className="mt-1 text-[17px] leading-[1.35] text-muted-foreground">{sub}</p>}
+            </div>
+            <CheckCircle2 size={24} className="shrink-0 text-success" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </Slide>
+);
+
+const S03 = () => (
+  <Slide n={3} decor={<LightEcho />}>
+    <Header n="—" label="Para a equipe da Catupiry" />
     <div className="mt-2 grid flex-1 grid-cols-[1fr_470px] items-center gap-14">
       <div>
         <Title size={44}>Uma marca como a Catupiry não pode depender de <span className="text-accent">planilha, e-mail e memória</span> para saber se os fornecedores estão em dia.</Title>
@@ -141,8 +172,8 @@ const S02 = () => (
   </Slide>
 );
 
-const S03 = () => (
-  <Slide n={3} dark decor={<DarkEcho />}>
+const S04 = () => (
+  <Slide n={4} dark decor={<DarkEcho />}>
     <Header n="—" label="Sumário" dark />
     <div className="grid flex-1 grid-cols-[500px_1fr] items-center gap-16">
       <Title dark size={62}>Uma proposta,<br /><span className="text-accent-glow">sete passos.</span></Title>
@@ -158,8 +189,8 @@ const S03 = () => (
   </Slide>
 );
 
-const S04 = () => (
-  <Slide n={4} decor={<LightEcho />}>
+const S05 = () => (
+  <Slide n={5} decor={<LightEcho />}>
     <Header n="01" label="O que entendemos da Catupiry" />
     <Title>Hoje, a conformidade dos fornecedores <span className="text-accent">pesa na sua equipe.</span></Title>
     <div className="grid flex-1 grid-cols-[1fr_540px] items-center gap-12">
@@ -188,8 +219,8 @@ const S04 = () => (
   </Slide>
 );
 
-const S05 = () => (
-  <Slide n={5} decor={<LightEcho />}>
+const S06 = () => (
+  <Slide n={6} decor={<LightEcho />}>
     <Header n="02" label="O que muda com a MyTS" />
     <Title>O que esta proposta resolve.</Title>
     <div className="grid flex-1 grid-cols-3 content-center gap-5">
@@ -208,8 +239,8 @@ const S05 = () => (
   </Slide>
 );
 
-const S06 = () => (
-  <Slide n={6} decor={<LightEcho />}>
+const S07 = () => (
+  <Slide n={7} decor={<LightEcho />}>
     <Header n="03" label="Escopo desta proposta" />
     <Title>O que está incluso.</Title>
     <div className="grid flex-1 grid-cols-2 items-center gap-10">
@@ -248,8 +279,8 @@ const S06 = () => (
   </Slide>
 );
 
-const S07 = () => (
-  <Slide n={7} decor={<LightEcho />}>
+const S08 = () => (
+  <Slide n={8} decor={<LightEcho />}>
     <Header n="04" label="Quem é a MyTS" />
     <div className="mt-2 grid flex-1 grid-cols-[1fr_540px] items-center gap-14">
       <div>
@@ -270,10 +301,10 @@ const S07 = () => (
   </Slide>
 );
 
-const S08 = () => {
+const S09 = () => {
   const rows = [["Monitoramento de Fornecedores (121 a 240)", "R$ 1.140,00"], ["Homologação de Fornecedores", "R$ 570,00"], ["RNC de Fornecedores", "R$ 570,00"], ["3 usuários extras", "R$ 90,00"]];
   return (
-    <Slide n={8} decor={<LightEcho />}>
+    <Slide n={9} decor={<LightEcho />}>
       <Header n="05" label="Investimento" />
       <Title>Investimento.</Title>
       <div className="grid flex-1 grid-cols-[1fr_460px] items-center gap-8">
@@ -299,8 +330,8 @@ const S08 = () => {
   );
 };
 
-const S09 = () => (
-  <Slide n={9} dark decor={<DarkEcho pos="-bottom-56 -right-32" size={520} />}>
+const S10 = () => (
+  <Slide n={10} dark decor={<DarkEcho pos="-bottom-56 -right-32" size={520} />}>
     <Header n="06" label="Implantação" dark />
     <Title dark>Do aceite à operação, <span className="text-accent-glow">em 5 etapas.</span></Title>
     <div className="relative mt-14 flex-1">
@@ -319,8 +350,8 @@ const S09 = () => (
   </Slide>
 );
 
-const S10 = () => (
-  <Slide n={10} decor={<LightEcho />}>
+const S11 = () => (
+  <Slide n={11} decor={<LightEcho />}>
     <Header n="07" label="Condições gerais" />
     <Title>Condições gerais.</Title>
     <div className="grid flex-1 grid-cols-[560px_1fr] items-center gap-10">
@@ -348,8 +379,8 @@ const S10 = () => (
   </Slide>
 );
 
-const S11 = () => (
-  <Slide n={11} dark decor={<><Grid dark /><Glyph size={760} tone="light" opacity={0.05} className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" /></>}>
+const S12 = () => (
+  <Slide n={12} dark decor={<><Grid dark /><Glyph size={760} tone="light" opacity={0.05} className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" /></>}>
     <div className="flex items-center justify-between"><img src={mytsLogo} alt="MyTS" className="h-[44px] w-auto" style={{ filter: "brightness(0) invert(1)" }} /><Pill dark><Handshake size={18} className="mr-2" />Próximo passo</Pill></div>
     <div className="flex flex-1 flex-col items-center justify-center text-center">
       <ClientSeal size={96} />
@@ -371,7 +402,7 @@ const PropostaCatupiry = () => {
       <Helmet><title>Proposta Catupiry · MyTS</title><meta name="description" content="Proposta comercial e técnica MyTS para a Catupiry." /></Helmet>
       <style>{`html,body,#root{margin:0;padding:0;background:hsl(var(--primary))}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:1600px 900px landscape;margin:0}@media print{.no-print{display:none!important}.slide-frame{border-radius:0!important;break-after:page;page-break-after:always}}`}</style>
       {!print && <Button onClick={() => window.open(`${window.location.pathname}?print`, "_blank")} className="no-print fixed right-6 top-6 z-50 h-12 rounded-full bg-accent px-6 text-accent-foreground shadow-cta"><Download />Baixar PDF</Button>}
-      {[S01, S02, S03, S04, S05, S06, S07, S08, S09, S10, S11].map((C, i) => <C key={i} />)}
+      {[S01, S02, S03, S04, S05, S06, S07, S08, S09, S10, S11, S12].map((C, i) => <C key={i} />)}
     </main>
   );
 };
