@@ -328,17 +328,11 @@ const S09 = () => (
     <Header n="05" label="Quem é a MyTS" />
     <div className="mt-2 grid flex-1 grid-cols-[1fr_540px] items-center gap-14">
       <div>
-        <Title size={48}>Feita para quem precisa provar, todos os dias, que <span className="text-accent">cada fornecedor está em dia.</span></Title>
-        <div className="mt-6 space-y-3">
-          {([[Handshake, "Grupo Carrefour", "Criamos a Jornada da Autonomia, o programa multivarejo de desenvolvimento de fornecedores do grupo."], [Users, "Tecnologia + time técnico", "Auditores e especialistas em qualidade junto da sua equipe."], [Globe2, "Brasil e EUA", "Botucatu e Charlotte, com atuação em mais de 20 países."]] as const).map(([Icon, t, d]) => (
-            <div key={t} className="flex items-start gap-4 rounded-lg border border-border bg-card p-4 shadow-card">
-              <span className="grid size-11 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent"><Icon size={22} /></span>
-              <p className="text-[17px] leading-[1.4]"><b className="text-foreground">{t}.</b> <span className="text-muted-foreground">{d}</span></p>
-            </div>
-          ))}
-        </div>
-        <p className="mt-6 text-[15px] font-bold uppercase text-accent" style={{ letterSpacing: "0.14em" }}>Quem confia na MyTS</p>
-        <div className="mt-3 grid grid-cols-6 gap-3">{commercialClients.slice(0, 6).map((c) => <div key={c.name} className="flex h-[64px] items-center justify-center rounded-lg border border-border bg-card px-3"><img src={c.src} alt={c.name} loading="eager" className="max-h-[40px] max-w-full object-contain" /></div>)}</div>
+        <Title size={52}>My Trusted Source.<br /><span className="text-accent">Nascemos na indústria de alimentos.</span></Title>
+        <p className="mt-5 max-w-[760px] text-[21px] leading-[1.5] text-foreground/75">A MyTS nasceu para resolver o que planilha e e-mail nunca deram conta: <b className="text-foreground">provar, todos os dias, que cada fornecedor está em dia.</b></p>
+        <div className="mt-6 flex flex-wrap gap-3">{([[MapPin, "Botucatu (BR) e Charlotte (EUA)"], [Globe2, "Presença em +20 países"], [GraduationCap, "Implantação guiada por especialistas"]] as const).map(([Icon, t]) => <span key={t} className="flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-[16px] font-semibold text-foreground"><Icon size={18} className="text-accent" />{t}</span>)}</div>
+        <p className="mt-8 text-[15px] font-bold uppercase text-accent" style={{ letterSpacing: "0.14em" }}>Quem confia na MyTS</p>
+        <div className="mt-4 grid grid-cols-6 gap-3">{commercialClients.slice(0, 6).map((c) => <div key={c.name} className="flex h-[72px] items-center justify-center rounded-lg border border-border bg-card px-3"><img src={c.src} alt={c.name} loading="eager" className="max-h-[44px] max-w-full object-contain" /></div>)}</div>
       </div>
       <div className="relative">
         <img src={labImg} alt="Especialista avaliando alimento em laboratório de qualidade" loading="eager" width={1280} height={960} className="h-[400px] w-full rounded-3xl object-cover" />
