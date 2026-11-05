@@ -159,7 +159,7 @@ const S03 = () => (
         <p className="text-[15px] font-bold uppercase text-accent" style={{ letterSpacing: "0.14em" }}>Seus contatos na MyTS</p>
         {[
           ["Comercial", "André Tanzi", "Diretor Comercial", "andre.tanzi@myt-s.com", "(14) 99637-0596", false],
-          ["Implantação e suporte", "Felipe Dantas ou Guilherme Aliaga", "", "e-mail a confirmar", "(14) 99671-7173", true],
+          ["Implantação e suporte", "Felipe Dantas ou Guilherme Aliaga", "", "suporte@myt-s.com", "(14) 99671-7173", false],
         ].map(([a, n, r, e, p, tbc]) => (
           <div key={String(a)} className="mt-6 border-t border-border pt-5">
             <Pill>{a}</Pill>
@@ -255,43 +255,29 @@ const S06 = () => (
 const S07 = () => (
   <Slide n={7} decor={<LightEcho />}>
     <Header n="03" label="Escopo desta proposta" />
-    <Title size={46}>Tudo o que a MyTS faz. <span className="text-accent">Em destaque, o que a Newsul está contratando.</span></Title>
+    <Title size={46}>O que a Newsul <span className="text-accent">está contratando.</span></Title>
     <div className="grid flex-1 grid-cols-2 items-center gap-10">
       <div className="space-y-4">
         <div className="rounded-lg border border-border bg-card p-6 shadow-card">
           <Pill>Meus Fornecedores</Pill>
-          <p className="mt-4 flex items-start gap-3 text-[18px]"><CheckCircle2 size={22} className="mt-0.5 shrink-0 text-success" /><span><b className="text-foreground">Monitoramento de fornecedores tier 1.</b> <span className="text-muted-foreground">Até 70 fornecedores, com acesso a todas as funcionalidades de gestão: pendências, prazos e alertas por requisito.</span></span></p>
-          {[["Homologação de fornecedores"], ["Avaliação e desenvolvimento de fornecedores"], ["Fornecedores tier 2 e 3"]].map(([t]) => (
-            <p key={t} className="mt-2.5 flex items-start gap-3 text-[17px]"><span className="mt-0.5 grid size-[22px] shrink-0 place-items-center rounded-full border border-border text-[12px] font-bold text-muted-foreground">○</span><span className="text-muted-foreground">{t}</span></p>
-          ))}
+          <p className="mt-4 flex items-start gap-3 text-[19px]"><CheckCircle2 size={22} className="mt-0.5 shrink-0 text-success" /><span><b className="text-foreground">Monitoramento de fornecedores tier 1.</b> <span className="text-muted-foreground">Até 70 fornecedores, com acesso a todas as funcionalidades de gestão: pendências, prazos e alertas por requisito.</span></span></p>
         </div>
         <div className="rounded-lg border border-border bg-card p-6 shadow-card">
           <Pill>Meus Processos</Pill>
-          <p className="mt-4 flex items-start gap-3 text-[18px]"><CheckCircle2 size={22} className="mt-0.5 shrink-0 text-success" /><span><b className="text-foreground">Processo de RNC.</b> <span className="text-muted-foreground">Abertura, tratativa, plano de ação e encerramento, com histórico auditável.</span></span></p>
-          <p className="mt-2.5 flex items-start gap-3 text-[18px]"><CheckCircle2 size={22} className="mt-0.5 shrink-0 text-success" /><span><b className="text-foreground">Automação de processos e avaliações.</b></span></p>
-          {[["Gestão de auditorias"], ["Checklists personalizados"]].map(([t]) => (
-            <p key={t} className="mt-2.5 flex items-start gap-3 text-[17px]"><span className="mt-0.5 grid size-[22px] shrink-0 place-items-center rounded-full border border-border text-[12px] font-bold text-muted-foreground">○</span><span className="text-muted-foreground">{t}</span></p>
-          ))}
+          <p className="mt-4 flex items-start gap-3 text-[19px]"><CheckCircle2 size={22} className="mt-0.5 shrink-0 text-success" /><span><b className="text-foreground">Processo de RNC.</b> <span className="text-muted-foreground">Abertura, tratativa, plano de ação e encerramento, com histórico auditável.</span></span></p>
+          <p className="mt-3 flex items-start gap-3 text-[19px]"><CheckCircle2 size={22} className="mt-0.5 shrink-0 text-success" /><span><b className="text-foreground">Automação de processos e avaliações.</b></span></p>
         </div>
-        <p className="text-[15px] font-semibold text-muted-foreground">Tudo nasce integrado. Quando a Newsul quiser ampliar, é só ativar.</p>
       </div>
       <div className="space-y-4">
         <div className="rounded-lg border border-border bg-card p-6 shadow-card">
-          <Pill>Meus Documentos</Pill>
-          <p className="mt-4 flex items-start gap-3 text-[17px]"><span className="mt-0.5 grid size-[22px] shrink-0 place-items-center rounded-full border border-border text-[12px] font-bold text-muted-foreground">○</span><span className="text-muted-foreground">Gestão documental interna: versões, aprovações e vencimentos.</span></p>
-        </div>
-        <div className="rounded-lg border border-border bg-card p-6 shadow-card">
           <Pill>Serviços especializados</Pill>
-          <p className="mt-4 flex items-start gap-3 text-[18px]"><CheckCircle2 size={22} className="mt-0.5 shrink-0 text-success" /><span><b className="text-foreground">Implantação guiada</b></span></p>
-          <p className="mt-2.5 flex items-start gap-3 text-[18px]"><CheckCircle2 size={22} className="mt-0.5 shrink-0 text-success" /><span><b className="text-foreground">Suporte aos fornecedores</b></span></p>
-          {[["Outsourcing de qualidade"], ["Auditoria de 2ª parte"]].map(([t]) => (
-            <p key={t} className="mt-2.5 flex items-start gap-3 text-[17px]"><span className="mt-0.5 grid size-[22px] shrink-0 place-items-center rounded-full border border-border text-[12px] font-bold text-muted-foreground">○</span><span className="text-muted-foreground">{t}</span></p>
-          ))}
+          <p className="mt-4 flex items-start gap-3 text-[19px]"><CheckCircle2 size={22} className="mt-0.5 shrink-0 text-success" /><span><b className="text-foreground">Implantação guiada</b></span></p>
+          <p className="mt-3 flex items-start gap-3 text-[19px]"><CheckCircle2 size={22} className="mt-0.5 shrink-0 text-success" /><span><b className="text-foreground">Suporte aos fornecedores</b></span></p>
         </div>
         <div className="rounded-lg bg-primary p-6">
           <Pill dark>Acessos</Pill>
-          <p className="mt-4 flex gap-2 text-[17px] text-primary-foreground"><CheckCircle2 size={20} className="shrink-0 text-accent-glow" />5 usuários da equipe Newsul, sendo 1 incluso</p>
-          <p className="mt-2 flex gap-2 text-[17px] text-primary-foreground"><CheckCircle2 size={20} className="shrink-0 text-accent-glow" />Acesso gratuito para os 70 fornecedores</p>
+          <p className="mt-4 flex gap-2 text-[18px] text-primary-foreground"><CheckCircle2 size={20} className="shrink-0 text-accent-glow" />5 usuários da equipe Newsul, sendo 1 incluso</p>
+          <p className="mt-2 flex gap-2 text-[18px] text-primary-foreground"><CheckCircle2 size={20} className="shrink-0 text-accent-glow" />Acesso gratuito para os 70 fornecedores</p>
         </div>
       </div>
     </div>
@@ -449,7 +435,6 @@ const S13 = () => (
     <div className="flex flex-1 flex-col items-center justify-center text-center">
       <ClientSeal size={96} />
       <h2 className="mt-8 max-w-[1200px] font-display text-[56px] font-bold leading-[1.08] text-primary-foreground">Todas as filiais, um só lugar.<br /><span className="text-accent-glow">Fornecedor em dia e desvio tratado.</span></h2>
-      <p className="mt-5 text-[24px] text-primary-foreground/75">Com o aceite até <b className="text-primary-foreground">12/11/2026</b>, fazemos o kickoff em <Tbc>[data]</Tbc>.</p>
       <div className="mt-10 flex gap-4">
         <a href="mailto:andre.tanzi@myt-s.com" className="flex items-center gap-3 rounded-xl bg-accent px-6 py-4 text-[21px] font-bold text-accent-foreground"><Mail size={23} />andre.tanzi@myt-s.com</a>
         <span className="flex items-center gap-3 rounded-xl border border-primary-foreground/20 bg-primary-foreground/10 px-6 py-4 text-[21px] font-bold text-primary-foreground"><Phone size={23} />(14) 99637-0596</span>
