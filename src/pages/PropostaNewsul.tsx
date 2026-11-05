@@ -127,7 +127,6 @@ const S02 = () => (
           [Layers, "O quê", "Fornecedores e não conformidades de todas as filiais da Newsul em um lugar só.", null],
           [Users, "Para quem", "Até 70 fornecedores tier 1 — que acessam a MyTS sem custo — e 5 usuários da equipe Newsul.", null],
           [Sparkles, "Investimento", "R$ 1.130,00/mês", "+ R$ 2.260,00 de implantação (pagamento único)"],
-          [CalendarCheck, "Quando começa", <>Kickoff em <Tbc>[mês]</Tbc>, logo após o aceite.</>, null],
         ] as const).map(([Icon, label, main, sub]) => (
           <div key={label} className="flex items-center gap-5 rounded-lg border border-border bg-card px-6 py-4 shadow-card">
             <span className="grid size-12 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent"><Icon size={24} /></span>
