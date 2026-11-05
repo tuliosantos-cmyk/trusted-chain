@@ -15,3 +15,5 @@
 - Use dedicated SDR visual layouts for channel guides, cadence grids, spoken scripts, detailed call steps, objection responses and client references to keep dense training content inside the fixed print canvas; split detailed explanations across slides rather than omitting content.
 - Keep the MyTS 2.0 launch workshop at `/lancamento-myts-2` with a shared 1600×900 canvas and reusable visual layouts; derive phase definitions from the retained original script and separate source IDs from page numbering for readable continuations, while keeping live decisions in session state with explicit JSON import/export so workshop inputs are portable without implying server persistence.
 - Keep the Catupiry commercial proposal at `/proposta-catupiry` as an independent 1600×900 deck with scoped client-brand styling.
+
+- Keep the standard MyTS slide template catalog at `/apresentacao-padrao` as the reference set of reusable layouts for future decks and a presentation generator.
