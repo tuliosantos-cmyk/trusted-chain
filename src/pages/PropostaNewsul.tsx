@@ -15,7 +15,7 @@ import labImg from "@/assets/catupiry/laticinio-qualidade.jpg";
 const W = 1600;
 const H = 900;
 const P = 64;
-const TOTAL = 12;
+const TOTAL = 13;
 
 const usePrintMode = () => {
   const [print, setPrint] = useState(false);
@@ -415,7 +415,36 @@ const S11 = () => (
 );
 
 const S12 = () => (
-  <Slide n={12} dark decor={<><Grid dark /><Glyph size={760} tone="light" opacity={0.05} className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" /></>}>
+  <Slide n={12} decor={<LightEcho />}>
+    <Header n="08" label="Condições gerais" />
+    <Title>Condições gerais.</Title>
+    <div className="grid flex-1 grid-cols-[560px_1fr] items-center gap-10">
+      <div className="rounded-lg border border-border bg-card p-8 shadow-card">
+        <div className="flex items-center gap-4">
+          <span className="grid h-20 w-16 place-items-center rounded-lg bg-accent/10 text-accent"><FileText size={34} /></span>
+          <div><Pill>CT04</Pill><h3 className="mt-2 font-display text-[22px] font-bold text-foreground">Termo de Aceite e Condições de Uso da MyTS</h3></div>
+        </div>
+        <p className="mt-5 text-[18px] leading-[1.5] text-muted-foreground">As cláusulas de pagamento, acesso, proteção de dados e uso estão no CT04, que faz parte desta proposta.</p>
+        <div className="mt-5 flex flex-wrap gap-2">{["Pagamento", "Acesso", "Proteção de dados", "Uso"].map((t) => <span key={t} className="rounded-full bg-secondary px-3 py-1 text-[14px] font-bold text-foreground">{t}</span>)}</div>
+      </div>
+      <div>
+        <h3 className="font-display text-[26px] font-bold text-foreground">Logo após o aceite, a MyTS envia:</h3>
+        <div className="mt-5 space-y-4">
+          {["Cronograma de treinamento da equipe", "Estrutura dos requisitos na MyTS", "Próximos passos para o acesso dos fornecedores"].map((t, i) => (
+            <div key={t} className="flex items-center gap-5 rounded-lg border border-border bg-card px-6 py-5 shadow-card">
+              <span className="grid size-12 place-items-center rounded-full bg-accent font-display text-[20px] font-bold text-accent-foreground">{i + 1}</span>
+              <span className="text-[22px] font-semibold text-foreground">{t}</span>
+              <CheckCircle2 size={26} className="ml-auto text-success" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </Slide>
+);
+
+const S13 = () => (
+  <Slide n={13} dark decor={<><Grid dark /><Glyph size={760} tone="light" opacity={0.05} className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" /></>}>
     <div className="flex items-center justify-between"><img src={mytsLogo} alt="MyTS" className="h-[44px] w-auto" style={{ filter: "brightness(0) invert(1)" }} /><Pill dark><Handshake size={18} className="mr-2" />Próximo passo</Pill></div>
     <div className="flex flex-1 flex-col items-center justify-center text-center">
       <ClientSeal size={96} />
