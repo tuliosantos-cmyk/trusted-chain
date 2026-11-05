@@ -48,7 +48,7 @@ const Slide = ({ children, dark = false, decor, n, name }: { children: React.Rea
           <div className="relative flex h-full w-full flex-col" style={{ padding: P, paddingBottom: 40 }}>
             {children}
             <div className={`mt-auto flex items-center justify-between pt-4 text-[15px] font-semibold ${dark ? "text-primary-foreground/60" : "text-muted-foreground"}`}>
-              <img src={mytsLogo} alt="MyTS" className="h-[22px] w-auto" style={dark ? { filter: "brightness(0) invert(1)", opacity: 0.8 } : undefined} />
+              <img src={mytsLogo} alt="MyTS" className="h-[22px] w-auto" style={dark ? { filter: "brightness(0) invert(1)", opacity: 0.8 } : { filter: "brightness(0)", opacity: 0.75 }} />
               <span>{String(n).padStart(2, "0")} / {String(TOTAL).padStart(2, "0")}</span>
             </div>
           </div>
