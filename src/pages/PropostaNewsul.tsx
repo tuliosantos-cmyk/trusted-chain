@@ -265,7 +265,6 @@ const S07 = () => (
         <div className="rounded-lg border border-border bg-card p-6 shadow-card">
           <Pill>Meus Processos</Pill>
           <p className="mt-4 flex items-start gap-3 text-[19px]"><CheckCircle2 size={22} className="mt-0.5 shrink-0 text-success" /><span><b className="text-foreground">Processo de RNC.</b> <span className="text-muted-foreground">Abertura, tratativa, plano de ação e encerramento, com histórico auditável.</span></span></p>
-          <p className="mt-3 flex items-start gap-3 text-[19px]"><CheckCircle2 size={22} className="mt-0.5 shrink-0 text-success" /><span><b className="text-foreground">Automação de processos e avaliações.</b></span></p>
         </div>
       </div>
       <div className="space-y-4">
