@@ -92,8 +92,8 @@ const Window = ({ children, title }: { children: React.ReactNode; title: string 
 const Tbc = ({ children }: { children: React.ReactNode }) => <span className="rounded bg-destructive/10 px-1.5 font-bold text-destructive">{children}</span>;
 /** Selo com a logo oficial da Newsul — só como identificação do cliente. */
 const ClientSeal = ({ size = 56 }: { size?: number }) => (
-  <span className="inline-grid place-items-center overflow-hidden rounded-full border-2 border-accent/30 bg-card shadow-card" style={{ width: size, height: size }}>
-    <img src={newsulLogo.url} alt="Newsul" className="size-full object-cover" />
+  <span className="inline-flex items-center justify-center rounded-full border-2 border-accent/30 bg-card px-5 shadow-card" style={{ height: size }}>
+    <img src={newsulLogo.url} alt="Newsul" className="w-auto object-contain" style={{ height: size * 0.55 }} />
   </span>
 );
 
