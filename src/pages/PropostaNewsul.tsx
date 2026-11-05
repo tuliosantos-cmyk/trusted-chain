@@ -10,6 +10,7 @@ import { commercialClients } from "@/lib/commercial-proof";
 import mytsLogo from "@/assets/myts-logo.svg";
 import mytsMark from "@/assets/myts-mark.svg?raw";
 import labImg from "@/assets/catupiry/laticinio-qualidade.jpg";
+import newsulLogo from "@/assets/newsul/newsul-logo.png";
 
 /* Proposta Newsul — mesmo sistema visual da Proposta Catupiry / Material Comercial MyTS. */
 const W = 1600;
@@ -89,10 +90,10 @@ const Window = ({ children, title }: { children: React.ReactNode; title: string 
 );
 /** Informação ainda a confirmar com o cliente. */
 const Tbc = ({ children }: { children: React.ReactNode }) => <span className="rounded bg-destructive/10 px-1.5 font-bold text-destructive">{children}</span>;
-/** Selo de texto da Newsul — só como identificação do cliente (sem logo oficial). */
+/** Selo com a logo oficial da Newsul — só como identificação do cliente. */
 const ClientSeal = ({ size = 56 }: { size?: number }) => (
-  <span className="inline-grid place-items-center rounded-full border-2 border-accent/30 bg-card shadow-card" style={{ width: size, height: size }}>
-    <span className="font-display font-bold text-primary" style={{ fontSize: size * 0.22, letterSpacing: "0.06em" }}>NEWSUL</span>
+  <span className="inline-flex items-center justify-center rounded-full border-2 border-accent/30 bg-card px-5 shadow-card" style={{ height: size }}>
+    <img src={newsulLogo} alt="Newsul" loading="eager" className="w-auto object-contain" style={{ height: size * 0.55 }} />
   </span>
 );
 
